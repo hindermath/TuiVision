@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1.1",
+  "runId": "08154703-57ea-49e1-87f5-3fcbfeebb008",
+  "featurePath": "specs/042-transactional-form-model",
+  "branch": "042-transactional-form-model",
+  "deliveryMode": "MergeAndSync",
+  "authorityRevalidationRequired": false,
+  "stage": "Review",
+  "status": "Active",
+  "checkpointCommit": "d4f80888ea288372c569ccf6d8cd4616e5a9dbc1",
+  "acceptedArtifacts": [
+    {
+      "path": "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
+      "sha256": "45d8f8b589c3d9fd417f9b8dc9d25d09c0597f02c075b04454bbce95e095a239"
+    },
+    {
+      "path": "specs/intake-review-result.json",
+      "sha256": "4ab92b2d7499b37b68c3d90899144d89fd33c445e7dfda94872243f3f701b770"
+    }
+  ],
+  "tasks": {
+    "path": "specs/042-transactional-form-model/tasks.md",
+    "sha256": "775e4deaeef851357157c60477358e487d7f2ad305a6b9ec9ebe34fef8894cf6",
+    "completed": 19,
+    "total": 19
+  },
+  "lastPassingGate": "Release build 0/0, full tests 965/965, coverage Core 92.96 Controls 86.95 Serialization 90.47 Compatibility 80.55 Drivers 89.18, format 0/583, source and intake governance Bash/PowerShell, DocFX 0/0, Axe 2/2, Lynx, XML and diff validation all passed",
+  "nextExactAction": "Commit and push the bounded governance-fixture correction, then rerun PR #155 checks and refresh exact-head evidence before any merge decision.",
+  "lastOperation": {
+    "kind": "RemoteGateRun",
+    "state": "Failed",
+    "summary": "PR #155 head d4f80888 passed the corrected ten-target generator and alignment checks, but the negative-fixture suite still encoded the former eligible Feature 038 and seven-target expectation on all three platforms; admin bypass remained locked while that bounded test-fixture correction was prepared."
+  },
+  "stop": {
+    "reason": "N/A",
+    "requestedAt": "N/A",
+    "safeBoundary": "N/A"
+  },
+  "closeout": {
+    "mergeOrPublication": "Pending",
+    "defaultBranchSync": "Pending",
+    "postMergeActions": "Pending",
+    "finalValidation": "Pending"
+  },
+  "updatedAt": "2026-08-28T23:56:56Z"
+}

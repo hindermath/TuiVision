@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "1.0",
+  "policyId": "tuivision-source-reference-v1",
+  "effectiveMode": "Prospective",
+  "sourceRoles": [
+    {
+      "order": 1,
+      "id": "TuiVisionProductContract",
+      "normative": true,
+      "purpose": "CurrentProductSemantics"
+    },
+    {
+      "order": 2,
+      "id": "MagiblotModernDesignReference",
+      "normative": false,
+      "purpose": "ModernArchitectureAndImplementationIdeas"
+    },
+    {
+      "order": 3,
+      "id": "BorlandTv203HistoricalIntent",
+      "normative": false,
+      "purpose": "HistoricalIntentAndCompatibilityBoundary"
+    },
+    {
+      "order": 4,
+      "id": "IndependentComparison",
+      "normative": false,
+      "purpose": "FreeVisionAndTerminalGuiComparison"
+    },
+    {
+      "order": 5,
+      "id": "ConsumerEvidence",
+      "normative": false,
+      "purpose": "TvDemosTvFmAndTuiVisionExamples"
+    }
+  ],
+  "magiblot": {
+    "repository": "https://github.com/magiblot/tvision.git",
+    "commit": "57b6f56b38e0ee75240a80a10ee0e11470c24693",
+    "tree": "96dd03873955689ff0a79f6c8107a8148fe1ebd6",
+    "copyrightSha256": "66220baeb9761b723fba913b74cf8257621a65c38cadb941fbb5bc181104b548",
+    "movingBranchesAllowed": false,
+    "pinUpdateMode": "SeparateReadOnlyProvenanceAndDeltaReview"
+  },
+  "workflow": [
+    "ReadCurrentTuiVisionContract",
+    "ReviewRelevantMagiblotFilesAtApprovedPin",
+    "ReviewRelevantTv203ImplementationAndHeaders",
+    "ReviewConsumersAndIndependentImplementationsWhenMaterial",
+    "RecordExactlyOneDisposition"
+  ],
+  "dispositions": [
+    "AdoptModernization",
+    "PreserveHistoricalIntent",
+    "IntentionalTuiVisionDeviation",
+    "N/A"
+  ],
+  "conflictRules": [
+    "ExistingTuiVisionContractRemainsBindingUntilApprovedChange",
+    "SourceRankAloneNeverResolvesConflict",
+    "MagiblotDoesNotRequireCppInheritanceMemoryLayoutOrSourceForm",
+    "MaterialHistoricalDeviationRequiresVisibleRationale"
+  ],
+  "provenance": {
+    "externalCheckout": "OutsideTrackedRepository",
+    "allowSourceCopy": false,
+    "allowedStoredEvidence": [
+      "Pin",
+      "Tree",
+      "ReviewedPaths",
+      "Hashes",
+      "OriginalShortSummaries",
+      "Permalinks"
+    ],
+    "licenseRepresentation": "MultipartNotRepositoryWideMIT"
+  },
+  "reevaluationTriggers": [
+    "ChangedTuiVisionProductContract",
+    "NewApprovedMagiblotPin",
+    "MateriallyNewConsumerEvidence"
+  ],
+  "requiredSurfaces": [
+    "docs/source-reference-policy.md",
+    ".specify/memory/constitution.md",
+    ".specify/templates/constitution-template.md",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "GEMINI.md",
+    ".github/copilot-instructions.md",
+    ".github/agents/copilot-instructions.md",
+    "Pflichtenheft.md",
+    ".specify/templates/spec-template.md",
+    ".specify/templates/plan-template.md",
+    ".specify/templates/tasks-template.md",
+    ".specify/templates/commands/plan.md"
+  ]
+}

@@ -68,6 +68,7 @@
   <!-- Feature-023 A11Y framework reference application -->
   <ItemGroup>
     <ProjectReference Include="..\..\examples\A11yFramework\A11yFramework.csproj" />
+    <ProjectReference Include="..\..\examples\FormTransaction\FormTransaction.csproj" />
   </ItemGroup>
 
   <!-- Wave-5 functional TP7 examples share one compiled composition assembly -->

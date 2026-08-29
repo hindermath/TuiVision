@@ -28,8 +28,8 @@ Contracts may reference several inventory items without duplicating ownership.
 | Inventory | Count | Validation source |
 |---|---:|---|
 | Historical `.cc` rows | 151 | filesystem plus `docs/porting-status.md` |
-| Maintained production `.cs` files | 119 | five source modules |
-| Exported public types | 176 | reflection over five Release assemblies |
+| Maintained production `.cs` files | 147 | five source modules |
+| Exported public types | 235 | reflection over five Release assemblies |
 | Audit domains | 16 | canonical JSON |
 | Framework contracts | 48 | three reviewable responsibilities per domain |
 
@@ -39,16 +39,16 @@ Contracts may reference several inventory items without duplicating ownership.
 |---|---|---:|---:|---:|---:|
 | `D01` | Basistypen und Sammlungen / Base types and collections | 11 | 11 | 11 | 3 |
 | `D02` | Ereignisse, Befehle und Dispatch / Events, commands, and dispatch | 2 | 1 | 6 | 3 |
-| `D03` | View-Hierarchie, Fokus und Lebenszyklus / View hierarchy, focus, and lifecycle | 3 | 3 | 3 | 3 |
+| `D03` | View-Hierarchie, Fokus und Lebenszyklus / View hierarchy, focus, and lifecycle | 3 | 4 | 4 | 3 |
 | `D04` | Koordinaten, Clipping und Größenänderung / Coordinates, clipping, and resizing | 3 | 3 | 3 | 3 |
-| `D05` | Anwendung, Desktop und Modalität / Application, desktop, and modality | 6 | 5 | 7 | 3 |
-| `D06` | Menüs, Statuszeile und Hilfe / Menus, status line, and help | 6 | 7 | 8 | 3 |
-| `D07` | Dialoge, Controls und Validierung / Dialogs, controls, and validation | 21 | 31 | 44 | 3 |
-| `D08` | Editor, Zwischenablage und Dateien / Editor, clipboard, and files | 18 | 12 | 21 | 3 |
-| `D09` | Hilfe, Ressourcen und Lokalisierung / Help, resources, and localization | 9 | 13 | 16 | 3 |
-| `D10` | Streams, Registrierung und Persistenz / Streams, registry, and persistence | 12 | 13 | 15 | 3 |
+| `D05` | Anwendung, Desktop und Modalität / Application, desktop, and modality | 6 | 7 | 13 | 3 |
+| `D06` | Menüs, Statuszeile und Hilfe / Menus, status line, and help | 6 | 9 | 11 | 3 |
+| `D07` | Dialoge, Controls und Validierung / Dialogs, controls, and validation | 21 | 38 | 61 | 3 |
+| `D08` | Editor, Zwischenablage und Dateien / Editor, clipboard, and files | 18 | 13 | 23 | 3 |
+| `D09` | Hilfe, Ressourcen und Lokalisierung / Help, resources, and localization | 9 | 22 | 31 | 3 |
+| `D10` | Streams, Registrierung und Persistenz / Streams, registry, and persistence | 12 | 16 | 24 | 3 |
 | `D11` | Puffer, Zellen und Rendering / Buffers, cells, and rendering | 3 | 5 | 5 | 3 |
-| `D12` | Tastatur, Maus und Eingabe / Keyboard, mouse, and input | 23 | 4 | 11 | 3 |
+| `D12` | Tastatur, Maus und Eingabe / Keyboard, mouse, and input | 23 | 7 | 17 | 3 |
 | `D13` | Zeichensatz, Fonts und Terminal / Charset, fonts, and terminal | 6 | 5 | 19 | 3 |
 | `D14` | Kompatibilität und native Auslassungen / Compatibility and native omissions | 28 | 2 | 2 | 3 |
 | `D15` | Barrierefreiheit / Accessibility | 0 | 4 | 5 | 3 |
@@ -59,16 +59,16 @@ Contracts may reference several inventory items without duplicating ownership.
 | Assembly | Modern files | Exported public types |
 |---|---:|---:|
 | `TuiVision.Core` | 16 | 22 |
-| `TuiVision.Controls` | 73 | 92 |
-| `TuiVision.Serialization` | 19 | 27 |
+| `TuiVision.Controls` | 97 | 141 |
+| `TuiVision.Serialization` | 23 | 37 |
 | `TuiVision.Compatibility` | 2 | 3 |
 | `TuiVision.Drivers.Console` | 9 | 32 |
 
 ## ID- und Tabellenregeln / ID and Table Rules
 
 - Historical items use `H001` through `H151` in ordinal path order.
-- Modern source items use `M001` through `M119` in ordinal path order.
-- Exported types use `P001` through `P176` in ordinal full-name order.
+- Modern source items use stable IDs through `M147`; later additions are appended without renumbering earlier evidence.
+- Exported types use stable IDs through `P235`; later additions are appended without renumbering earlier evidence.
 - Every item has one `D01` through `D16` owner and at least one valid `C###` link.
 - Every listed item-to-contract link has a matching contract-to-item link and
   vice versa; cross-domain links are permitted when one behavioral contract
@@ -85,3 +85,7 @@ primäre Inventareigentümerschaft zu verändern.
 English: All three live sets are completely and reciprocally assigned. Revision
 2 adds semantic consumer review and 13 findings without changing primary
 inventory ownership.
+
+Feature 042 appended its additive form-transaction files and public types to
+the live inventory because it changed the current product contract. This
+inventory refresh does not reopen the completed historical audit decisions.

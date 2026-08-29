@@ -1,0 +1,46 @@
+{
+  "fixtures": [
+    {
+      "name": "unknown-schema-version",
+      "path": ["schemaVersion"],
+      "value": "2.0",
+      "expectedCode": "SRP002"
+    },
+    {
+      "name": "wrong-magiblot-pin",
+      "path": ["magiblot", "commit"],
+      "value": "0000000000000000000000000000000000000000",
+      "expectedCode": "SRP004"
+    },
+    {
+      "name": "moving-branch-enabled",
+      "path": ["magiblot", "movingBranchesAllowed"],
+      "value": true,
+      "expectedCode": "SRP009"
+    },
+    {
+      "name": "missing-disposition",
+      "path": ["dispositions"],
+      "value": ["AdoptModernization", "PreserveHistoricalIntent", "IntentionalTuiVisionDeviation"],
+      "expectedCode": "SRP005"
+    },
+    {
+      "name": "retroactive-mode",
+      "path": ["effectiveMode"],
+      "value": "Retroactive",
+      "expectedCode": "SRP006"
+    },
+    {
+      "name": "source-copy-enabled",
+      "path": ["provenance", "allowSourceCopy"],
+      "value": true,
+      "expectedCode": "SRP007"
+    },
+    {
+      "name": "unknown-root-key",
+      "path": ["unexpected"],
+      "value": "rejected",
+      "expectedCode": "SRP010"
+    }
+  ]
+}

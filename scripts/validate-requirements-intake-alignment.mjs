@@ -62,8 +62,8 @@ export function validate(options = {}) {
 
   const targets = manifest.orderedTargets ?? [];
   const targetPaths = targets.map((target) => target.path);
-  if (targetPaths.length !== 7 || new Set(targetPaths).size !== targetPaths.length) {
-    errors.push("series must contain exactly 7 unique active targets");
+  if (targetPaths.length !== 10 || new Set(targetPaths).size !== targetPaths.length) {
+    errors.push("series must contain exactly 10 unique active targets");
   }
   const expectedActive = active.map((name) => `requirements/intakes/active/${name}`).sort();
   const targetSet = new Set(targetPaths);
@@ -126,8 +126,8 @@ export function validate(options = {}) {
 
   const eligible = targets.filter((target) => target.status === "Eligible");
   if (eligible.length !== 1 ||
-      !eligible[0].path.endsWith("requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md")) {
-    errors.push("post-Wave-6 portfolio audit must be the single explicitly Eligible target");
+      !eligible[0].path.endsWith("requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md")) {
+    errors.push("documentation publishing closure must be the single explicitly Eligible target");
   }
   const wave6Closure = targets.find((target) =>
     target.path.endsWith("requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md"));
@@ -136,17 +136,49 @@ export function validate(options = {}) {
   }
   const portfolio = targets.find((target) =>
     target.path.endsWith("requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md"));
-  if (!portfolio || portfolio.status !== "Eligible") {
-    errors.push("post-Wave-6 portfolio audit must remain Eligible");
+  if (!portfolio || portfolio.status !== "Completed") {
+    errors.push("post-Wave-6 portfolio audit must remain Completed");
+  }
+
+  const portfolioClosure = targets.find((target) =>
+    target.path.endsWith("requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md"));
+  const constitution = targets.find((target) =>
+    target.path.endsWith("requirements/intakes/active/Lastenheft_Constitution_Change.md"));
+  const sourcePolicy = targets.find((target) =>
+    target.path.endsWith("requirements/intakes/active/Lastenheft_Source-Reference-Policy.md"));
+  const formModel = targets.find((target) =>
+    target.path.endsWith("requirements/intakes/active/Lastenheft_Transactional-Form-Model.md"));
+  const documentationClosure = targets.find((target) =>
+    target.path.endsWith("requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md"));
+  for (const [label, target] of [
+    ["portfolio closure", portfolioClosure],
+    ["constitution change", constitution],
+    ["source-reference policy", sourcePolicy],
+    ["transactional form model", formModel],
+  ]) {
+    if (!target || target.status !== "Completed") {
+      errors.push(`${label} must remain Completed`);
+    }
+  }
+  if (!documentationClosure || documentationClosure.status !== "Eligible") {
+    errors.push("documentation publishing closure must remain Eligible");
   }
 
   const dependencies = manifest.dependencies ?? [];
-  if (dependencies.length !== 1 ||
-      dependencies[0].kind !== "HardCompletionGate" ||
-      dependencies[0].binding !== true ||
-      dependencies[0].from !== wave6Closure?.path ||
-      dependencies[0].to !== portfolio?.path) {
-    errors.push("series must contain exactly the completed Wave-6-to-portfolio hard gate");
+  const expectedDependencies = [
+    [wave6Closure?.path, portfolio?.path, "HardCompletionGate", true],
+    [portfolio?.path, portfolioClosure?.path, "HardCompletionGate", true],
+    [constitution?.path, sourcePolicy?.path, "SharedWriterSerialization", false],
+    [sourcePolicy?.path, formModel?.path, "HardCompletionGate", true],
+    [portfolioClosure?.path, formModel?.path, "HardCompletionGate", true],
+    [formModel?.path, documentationClosure?.path, "PreferredSerialOrder", false],
+  ];
+  const dependencyKeys = new Set(dependencies.map((edge) =>
+    `${edge.from}|${edge.to}|${edge.kind}|${edge.binding}`));
+  if (dependencies.length !== expectedDependencies.length ||
+      expectedDependencies.some(([from, to, kind, binding]) =>
+        !dependencyKeys.has(`${from}|${to}|${kind}|${binding}`))) {
+    errors.push("series must contain the exact six approved delivery dependencies");
   }
   const indegree = new Map(targetPaths.map((target) => [target, 0]));
   const adjacency = new Map(targetPaths.map((target) => [target, []]));
@@ -195,7 +227,7 @@ export function validate(options = {}) {
       const spec = fs.readFileSync(path.join(physicalFeatureDirectory, "spec.md"), "utf8");
       const state = JSON.parse(fs.readFileSync(
         path.join(physicalFeatureDirectory, "autonomous-run-state.json"), "utf8"));
-      const bindingMatch = /^\*\*Binding Intake\*\*:\s*`([^`]+)`/m.exec(spec);
+      const bindingMatch = /^\*\*(?:Binding Intake|Input)\*\*:\s*`([^`]+)`/m.exec(spec);
       const bindingPath = bindingMatch?.[1];
       const bindingTarget = targets.find((target) => target.path === bindingPath);
       const bindingReview = (review.targets ?? []).find((target) => target.path === bindingPath);
@@ -204,7 +236,10 @@ export function validate(options = {}) {
         ? digest(read(bindingPath))
         : "N/A";
       const lifecycleValid = bindingTarget?.status === "Eligible" ||
-        (bindingTarget?.status === "Completed" && state.status === "Completed");
+        (bindingTarget?.status === "Completed" &&
+          (state.status === "Completed" ||
+           (state.status === "Active" && state.deliveryMode === "MergeAndSync" &&
+            ["Publish", "Review", "MergeAndSync"].includes(state.stage))));
       featureAuthorizationValid = state.featurePath === featureDirectory &&
         state.branch === path.basename(featureDirectory) &&
         Boolean(bindingPath) && lifecycleValid && review.status === "Ready" &&

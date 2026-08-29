@@ -9,96 +9,84 @@ const root = process.cwd();
 const write = process.argv.includes("--write");
 const seriesRoot = "requirements/intakes/series/tui-vision-delivery";
 const seriesId = "a73dda7c-163b-4530-97f2-fd9eea5e8986";
-const seriesReceiptId = "f7c22e54-ff1b-4646-9a41-ce8d7683e201";
-const seriesOperationId = "42a4aa44-a0ba-4e17-a141-ca0f56427786";
-const reviewId = "a1051008-6a1e-40bb-9066-a50ae099513e";
+const seriesReceiptId = "29849c81-74f5-45a3-90d2-bd7c49bee8cf";
+const seriesOperationId = "d267b4e9-1acf-4abc-be24-c2f512154c2a";
+const reviewId = "6b74e8e5-c605-48c5-b450-1a018b5dd7eb";
 const migrationProposal = "specs/requirements-reconciliation-20260726/migration-proposal.json";
 const createdAt = "2026-07-26T20:00:00Z";
-const seriesUpdatedAt = "2026-08-08T17:17:31Z";
+const seriesUpdatedAt = "2026-08-28T23:46:59Z";
 const archiveRoot =
   `specs/intake-series-archive/${seriesId}/${seriesOperationId}`;
-const priorManifestHash = "c5434625bbefe764ef4f205451f7867d391d4cd67c1be7e682f6bbca62ed3930";
-const priorReceiptHash = "287731818f69f07d617f5eda5e37240a945d938cde0deb1d818e87ce4d7fb61a";
+const priorManifestHash = "a4076abe7932973952eea5114fb31e589a510185b8a9885a52e6ce7c86759359";
+const priorReceiptHash = "92cd468151051755a950d969a2d90cf12324f8248174b870916f866db5ca8633";
 
 const normalize = (value) => value.replace(/^\uFEFF/, "").replace(/\r\n?/g, "\n");
 const hashText = (value) => crypto.createHash("sha256").update(normalize(value)).digest("hex");
 const hashFile = (relativePath) => hashText(fs.readFileSync(path.join(root, relativePath), "utf8"));
 const readJson = (relativePath) => JSON.parse(fs.readFileSync(path.join(root, relativePath), "utf8"));
 const json = (value) => JSON.stringify(value, null, 2) + "\n";
-const reviewHead = "889f2424812b03df9d4c322c0a06834e75fe8a2a";
+const reviewHead = "19450fa383abfbdf71268f09ab6d67395deb98e1";
 
 const members = [
   {
     slug: "wave6-combined-delta-closure",
     path: "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
     role: "OrderedMember",
-    receiptRole: "Primary",
     status: "Completed",
-    intakeId: "23b841f9-f5ce-49c2-ac97-71493b316c5b",
-    receiptId: "cf80a015-877a-442c-a811-81d529489a1a",
-    operationId: "099ddab3-4f16-48ff-9f12-d5084782e4b3",
-    provenance: "New",
   },
   {
     slug: "15-post-wave6-example-portfolio-conformance-audit",
     path: "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
-    role: "Primary",
-    receiptRole: "OrderedMember",
-    status: "Eligible",
-    receiptId: "296b0258-7d42-45bf-aa28-e269e9776a5d",
-    operationId: "31ee816a-3617-49da-b3f8-a28969f1f265",
-    priorReceipt: "specs/intake-authoring-receipts/history/15-post-wave6-example-portfolio-conformance-audit.schema-1.1.json",
-    priorTarget: "requirements/intakes/history/lastenheft-15-post-wave6-example-portfolio-conformance-audit/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+    role: "OrderedMember",
+    status: "Completed",
   },
   {
-    slug: "documentation-publishing-closure",
-    path: "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
-    role: "OrderedMember",
-    status: "Pending",
-    intakeId: "8e875037-f400-4a87-866b-424ecdb89f9c",
-    receiptId: "028491da-160a-4dd6-be84-46345e775ae6",
-    operationId: "0979ac20-946c-4634-9f4b-91745e2cb968",
-    provenance: "New",
+    slug: "example-portfolio-closure",
+    path: "requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md",
+    role: "Primary",
+    status: "Completed",
   },
   {
     slug: "constitution-change",
     path: "requirements/intakes/active/Lastenheft_Constitution_Change.md",
     role: "OrderedMember",
-    status: "Pending",
-    receiptId: "2e99a694-e1f1-44b3-a11b-79324c78c7e7",
-    operationId: "57ab133f-5c75-4ce5-b424-9a06a8301639",
-    priorReceipt: "specs/intake-authoring-receipts/history/constitution-change.schema-1.1.json",
-    priorTarget: "requirements/intakes/history/lastenheft-constitution-change/Lastenheft_Constitution_Change.md",
+    status: "Completed",
+  },
+  {
+    slug: "source-reference-policy",
+    path: "requirements/intakes/active/Lastenheft_Source-Reference-Policy.md",
+    role: "OrderedMember",
+    status: "Completed",
+  },
+  {
+    slug: "transactional-form-model",
+    path: "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
+    role: "OrderedMember",
+    status: "Completed",
+  },
+  {
+    slug: "documentation-publishing-closure",
+    path: "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
+    role: "OrderedMember",
+    status: "Eligible",
   },
   {
     slug: "sandbox-gestuetzte-secure-development-haertung",
     path: "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
     role: "OrderedMember",
     status: "Pending",
-    receiptId: "f904f58d-94b9-43f2-b7b1-f9f229edea7c",
-    operationId: "9f3784b1-ce1b-4d97-81e0-16c3cee2ddd7",
-    priorReceipt: "specs/intake-authoring-receipts/history/sandbox-gestuetzte-secure-development-haertung.schema-1.1.json",
-    priorTarget: "requirements/intakes/history/lastenheft-sandbox-gestuetzte-secure-development-haertung/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
   },
   {
     slug: "rl-se-checklist-selbstpruefung",
     path: "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
     role: "OrderedMember",
     status: "Pending",
-    receiptId: "1cd89c9e-1548-4a08-a053-9ae8ddae7984",
-    operationId: "0230c7b5-a32f-48c7-8f02-99bf89694f83",
-    priorReceipt: "specs/intake-authoring-receipts/history/rl-se-checklist-selbstpruefung.schema-1.1.json",
-    priorTarget: "requirements/intakes/history/lastenheft-rl-se-checklist-selbstpruefung/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
   },
   {
     slug: "gsdb-spec-kit-intensivpruefung",
     path: "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
     role: "OrderedMember",
     status: "Pending",
-    receiptId: "abd25e48-b9e8-4a92-875e-579be5d22831",
-    operationId: "b38a2f9b-1bc1-4152-87b5-5559829424ce",
-    priorReceipt: "specs/intake-authoring-receipts/history/gsdb-spec-kit-intensivpruefung.schema-1.1.json",
-    priorTarget: "requirements/intakes/history/lastenheft-gsdb-spec-kit-intensivpruefung/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
   },
 ];
 
@@ -116,15 +104,43 @@ const manifest = {
     normalizedSha256: hashFile(member.path),
     status: member.status,
   })),
-  roots: members
-    .filter((member) => member.slug !== "15-post-wave6-example-portfolio-conformance-audit")
-    .map((member) => member.path),
+  roots: [members[0].path, members[3].path, members[7].path, members[8].path, members[9].path],
   dependencies: [
     {
       from: members[0].path,
       to: members[1].path,
       kind: "HardCompletionGate",
       binding: true,
+    },
+    {
+      from: members[1].path,
+      to: members[2].path,
+      kind: "HardCompletionGate",
+      binding: true,
+    },
+    {
+      from: members[3].path,
+      to: members[4].path,
+      kind: "SharedWriterSerialization",
+      binding: false,
+    },
+    {
+      from: members[4].path,
+      to: members[5].path,
+      kind: "HardCompletionGate",
+      binding: true,
+    },
+    {
+      from: members[2].path,
+      to: members[5].path,
+      kind: "HardCompletionGate",
+      binding: true,
+    },
+    {
+      from: members[5].path,
+      to: members[6].path,
+      kind: "PreferredSerialOrder",
+      binding: false,
     },
   ],
   evidencePaths: [
@@ -241,22 +257,17 @@ function receiptFor(member, order) {
   };
 }
 
-const receipts = members.map((member, index) => ({
-  path: `specs/intake-authoring-receipts/${member.slug}.json`,
-  value: receiptFor(member, index + 1),
-}));
-
 const seriesReceipt = {
   schemaVersion: "1.0",
   documentType: "IntakeSeriesReceipt",
   receiptId: seriesReceiptId,
   seriesId,
-  generator: {preset: "intake-sequencing-governance", version: "0.1.1"},
-  createdAt: seriesUpdatedAt,
+  generator: {preset: "intake-sequencing-governance", version: "0.2.3"},
+  createdAt: "2026-08-28T22:59:38Z",
   operation: {
     operationId: seriesOperationId,
     type: "Update",
-    authorityEvidence: "Feature 037 causal closeout after PR #139 merged with all technical gates green",
+    authorityEvidence: "User-approved implementation plan for series repair, source-reference policy, and transactional form delivery",
   },
   status: "Ready",
   manifest: {path: manifestPath, normalizedSha256: manifestHash},
@@ -277,8 +288,8 @@ const operation = {
   seriesId,
   type: "Update",
   status: "Published",
-  authorityEvidence: "Feature 037 causal closeout after PR #139 merged with all technical gates green",
-  proposalNormalizedSha256: hashFile(migrationProposal),
+  authorityEvidence: "User-approved implementation plan for series repair, source-reference policy, and transactional form delivery",
+  proposalNormalizedSha256: manifestHash,
   preparedPaths: [
     `${archiveRoot}/manifest.json`,
     `${archiveRoot}/receipt.json`,
@@ -303,7 +314,7 @@ const request = {
   schemaVersion: "1.1",
   reviewId,
   mode: "Series",
-  policy: "tui-vision-delivery-v1",
+  policy: "tui-vision-lastenheft",
   targets: members.map((member) => ({path: member.path, role: member.role})),
   series: {
     orderedTargetPaths: memberPaths,
@@ -323,9 +334,10 @@ const result = {
   reviewId,
   mode: "Series",
   status: "Ready",
-  policy: "tui-vision-delivery-v1",
+  policy: "tui-vision-lastenheft",
   reviewedAt: seriesUpdatedAt,
   repository: {root: ".", head: reviewHead},
+  requestEvidence: {path: requestPath, normalizedSha256: hashText(json(request))},
   targets: members.map((member) => ({
     path: member.path,
     role: member.role,
@@ -338,34 +350,30 @@ const result = {
   operatorExceptions: [],
   coverage: {
     individual: memberPaths,
-    series: [
-      "All seven series intake paths, exact hashes, lifecycle states, roots, and the completed Wave-6 hard completion gate",
-      "Independent governance and documentation roots without invented product dependencies",
-      "DeferredOptional backlog excluded from executable targets",
-    ],
+    series: [manifestPath],
     workers: [],
   },
   summary: {critical: 0, high: 0, medium: 0, low: 0},
-  supersedes: "e320135f-b9d9-469e-bef2-510a00c8446f",
-  requestEvidence: {path: requestPath, normalizedSha256: hashText(json(request))},
+  supersedes: "a1051008-6a1e-40bb-9066-a50ae099513e",
 };
 
-const report = `# Intake Review: TuiVision Delivery Series
+const report = `# Intake-Serienreview: TuiVision Delivery nach Formabschluss
 
 ## Ergebnis / Result
 
 Status: \`Ready\`
 
-Alle sieben Serien-Intakes, ihre aktuellen Hashes, Receipt-Lineage,
-Lifecycle-Zustände und die einzige harte Abhängigkeit wurden geprüft. Der
-Wave-6-Closeout ist abgeschlossen. Der Portfolioaudit ist der einzige
-explizit berechtigte nächste Intake. Dokumentations- und Governance-Intakes
-bleiben unabhängige Wurzeln.
+Alle zehn Serien-Intakes, ihre aktuellen Hashes, Receipt-Lineage, fünf Wurzeln
+und sechs azyklischen Abhängigkeiten wurden geprüft. Wave 6, Portfolioaudit,
+Portfolioabschluss, Constitution, Quellenpolicy und Transactional Form Model
+sind abgeschlossen. Die Documentation-Publishing-Closure ist bevorzugt
+\`Eligible\`; kein Folgefeature wird durch diesen Review gestartet.
 
-*All seven series intakes, current hashes, receipt lineage, lifecycle states,
-and the single hard dependency were reviewed. Wave-6 closure is complete. The
-portfolio audit is the only explicitly eligible next intake. Documentation
-and governance intakes remain independent roots.*
+*All ten series intakes, current hashes, receipt lineage, five roots, and six
+acyclic dependencies were reviewed. Wave 6, the portfolio audit and closure,
+constitution, source policy, and Transactional Form Model are complete.
+Documentation Publishing Closure is the preferred eligible successor; this
+review starts no follow-up feature.*
 
 Es bestehen keine offenen Review-Findings. Der optionale NuGet-Backlog ist
 nicht Teil der ausführbaren Serie.
@@ -382,7 +390,6 @@ const outputs = [
   [requestPath, json(request)],
   [`${seriesRoot}/intake-review-result.json`, json(result)],
   [`${seriesRoot}/intake-review-report.md`, report],
-  ...receipts.map((entry) => [entry.path, json(entry.value)]),
 ];
 
 for (const [relativePath, content] of outputs) {
@@ -397,4 +404,4 @@ for (const [relativePath, content] of outputs) {
   }
 }
 
-console.log(`requirements intake governance PASS (${members.length} series targets, 1 binding edge)`);
+console.log(`requirements intake governance PASS (${members.length} series targets, ${manifest.dependencies.length} dependencies)`);

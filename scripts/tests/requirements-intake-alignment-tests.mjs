@@ -77,11 +77,11 @@ if (validate({root}).length !== 0) throw new Error("positive fixture failed");
 const pending = pendingIntakeFixture("valid-pending");
 expectSuccess("valid authored pending intake", pending);
 
-const activeFeatureDirectory = path.join(temp, "038-authorized-series-feature");
+const activeFeatureDirectory = path.join(temp, "043-documentation-publishing-closure");
 fs.mkdirSync(activeFeatureDirectory, {recursive: true});
-const activeFeaturePath = "specs/038-authorized-series-feature";
+const activeFeaturePath = "specs/043-documentation-publishing-closure";
 const bindingIntake =
-  "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md";
+  "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md";
 const bindingHash = awaitDigest(fs.readFileSync(path.join(root, bindingIntake), "utf8"));
 fs.writeFileSync(
   path.join(activeFeatureDirectory, "spec.md"),
@@ -90,7 +90,7 @@ fs.writeFileSync(
   path.join(activeFeatureDirectory, "autonomous-run-state.json"),
   JSON.stringify({
     featurePath: activeFeaturePath,
-    branch: "038-authorized-series-feature",
+    branch: "043-documentation-publishing-closure",
     status: "Active",
     acceptedArtifacts: [{path: bindingIntake, sha256: bindingHash}],
   }, null, 2) + "\n");
@@ -140,7 +140,7 @@ expectFailure("pending intake injected into executable series", {
       status: "Eligible",
     });
   }),
-}, /series must contain exactly 7 unique active targets/);
+}, /series must contain exactly 10 unique active targets/);
 
 expectFailure("unauthorized feature", {
   featurePath: fixture("unauthorized-feature", ".specify/feature.json", (value) => {
@@ -169,7 +169,8 @@ expectFailure("backlog target", {
 
 expectFailure("missing eligible", {
   manifestPath: fixture("missing-eligible", manifestSource, (value) => {
-    value.orderedTargets[1].status = "Pending";
+    const eligible = value.orderedTargets.find((target) => target.status === "Eligible");
+    eligible.status = "Pending";
   }),
 }, /single explicitly Eligible/);
 
@@ -195,7 +196,7 @@ expectFailure("invalid dependency cycle", {
     });
     value.roots = value.roots.filter((item) => item !== value.orderedTargets[0].path);
   }),
-}, /exactly the Wave-6-to-portfolio hard gate|cycle/);
+}, /exact six approved delivery dependencies|cycle/);
 
 expectFailure("dangling target", {
   manifestPath: fixture("dangling-target", manifestSource, (value) => {

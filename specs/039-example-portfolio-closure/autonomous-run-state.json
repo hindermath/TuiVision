@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "1.1",
+  "runId": "79452d7d-9bfd-4edc-85f0-18f1b06b031f",
+  "featurePath": "specs/039-example-portfolio-closure",
+  "branch": "039-example-portfolio-closure",
+  "deliveryMode": "LocalImplementation",
+  "authorityRevalidationRequired": false,
+  "stage": "Validate",
+  "status": "Completed",
+  "checkpointCommit": "19450fa383abfbdf71268f09ab6d67395deb98e1",
+  "acceptedArtifacts": [
+    {
+      "path": "requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md",
+      "sha256": "f5dc617b7c20d718304bb91f7f63d4a95d5c27cf09a7d0a4685a3bc4a824ab1a"
+    },
+    {
+      "path": "specs/intake-review-result.json",
+      "sha256": "83a0b0f192bf996556ed1b76c9e29e62e1911adf3c38001aeecfcbf92ce83f62"
+    },
+    {
+      "path": "specs/038-example-portfolio-conformance-audit/example-portfolio-audit.json",
+      "sha256": "f197187bbb5be70e028ea4259675869a6a7f4e0171b067ffd120c28e5fd5a984"
+    }
+  ],
+  "tasks": {
+    "path": "specs/039-example-portfolio-closure/tasks.md",
+    "sha256": "2292f132a9a622031af5073142ac8ecc53ea92d0f1816e012b1cbb321203daae",
+    "completed": 10,
+    "total": 10
+  },
+  "lastPassingGate": "Complete local closure ladder passed: 52/52 portfolio integrity tests, 940/940 release tests, five coverage gates above 80 percent, format, DocFX, Axe, Lynx, governance parity, and zero protected-root delta",
+  "nextExactAction": "N/A",
+  "lastOperation": {
+    "kind": "LocalClosureValidation",
+    "state": "Completed",
+    "summary": "Revalidated the immutable Feature 038 baseline and recorded PortfolioConformantAndLearningReady without product changes or remote claims."
+  },
+  "stop": {
+    "reason": "N/A",
+    "requestedAt": "N/A",
+    "safeBoundary": "N/A"
+  },
+  "closeout": {
+    "finalValidation": "Completed",
+    "mergeOrPublication": "N/A",
+    "defaultBranchSync": "N/A",
+    "postMergeActions": "N/A"
+  },
+  "updatedAt": "2026-08-28T21:43:49Z"
+}

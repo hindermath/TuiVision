@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "1.0",
+  "reviewId": "32d3e186-cb72-4bfa-86c9-f50f4ff9f3a0",
+  "mode": "Single",
+  "status": "Ready",
+  "policy": "tui-vision-lastenheft",
+  "reviewedAt": "2026-08-28T22:18:29Z",
+  "repository": {
+    "root": ".",
+    "head": "19450fa383abfbdf71268f09ab6d67395deb98e1"
+  },
+  "targets": [
+    {
+      "path": "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
+      "role": "Primary",
+      "normalizedSha256": "21f43c7a15d02a5e26b6a5aa6bd158c600f47c2ad34ff1e6a4d6244a47bcf54a",
+      "gitBlob": "N/A"
+    }
+  ],
+  "findings": [],
+  "questions": [],
+  "acceptedRisks": [],
+  "operatorExceptions": [],
+  "coverage": {
+    "individual": [
+      "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md"
+    ],
+    "series": [],
+    "workers": []
+  },
+  "summary": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0
+  },
+  "supersedes": "915a0930-273c-4c06-aa3d-be2286d4a0db"
+}

@@ -270,6 +270,25 @@ GitHub Pages is published from `.github/workflows/pages.yml`: build root `docfx.
   remain permanently as a local `examples/` special solution; move repeated or
   framework-replacing logic into a small framework fix or a dedicated follow-up
   hardening item.
+
+  <!-- source-reference-policy:begin -->
+  Drei-Achsen-Quellenpolicy / Three-Axis Source Reference Policy:
+  Aktuelle TuiVision-Vertraege sind die Produktnorm. `magiblot/tvision` wird
+  zuerst als moderne, nicht normative Designreferenz am Commit
+  `57b6f56b38e0ee75240a80a10ee0e11470c24693` und Tree
+  `96dd03873955689ff0a79f6c8107a8148fe1ebd6` geprueft; Borland und `tv203s/`
+  bestimmen historische Absicht. Die Abschlussentscheidung lautet genau
+  `AdoptModernization`, `PreserveHistoricalIntent`,
+  `IntentionalTuiVisionDeviation` oder `N/A`. Quellenrang allein loest keinen
+  Konflikt. Externe Checkouts bleiben untracked, Quellkopie ist ausgeschlossen
+  und der Lizenzstatus lautet `MultipartNotRepositoryWideMIT`. Die Policy gilt
+  `Prospective`; nur geaenderte TuiVision-Vertraege, ein neuer freigegebener Pin
+  oder materiell neue Consumer-Evidence loesen Re-Evaluation aus. Bewegliche
+  Branches sind keine Evidence.
+  Current contracts are normative; the pinned Magiblot revision is reviewed
+  first for modern design without replacing historical or consumer evidence.
+  <!-- source-reference-policy:end -->
+
   Fuer jede Spec-Kit-Feature-Implementierung mit historisch abgeleitetem
   Turbo-Vision-Verhalten muessen die relevanten Implementierungsdateien unter
   `tv203s/` (`.c`, `.cc`) als Read-only-Referenz geprueft werden. Wenn

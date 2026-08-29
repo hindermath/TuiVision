@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "2.0",
+  "documentType": "IntakeReceipt",
+  "receiptId": "5261d565-ccd1-4b71-b086-c8e15e51faff",
+  "intakeId": "9721716f-edd3-4d6f-8868-db140b5a79c4",
+  "generator": {
+    "preset": "intake-authoring-governance",
+    "version": "0.3.1"
+  },
+  "createdAt": "2026-08-28T21:45:48Z",
+  "operation": {
+    "operationId": "23a4876b-a358-462a-b0ae-4b36dd70f528",
+    "type": "Create",
+    "authorityEvidence": "User-approved implementation plan explicitly requires one separate Source Reference Policy intake before the Transactional Form Model."
+  },
+  "status": "ReadyForReview",
+  "target": {
+    "path": "requirements/intakes/active/Lastenheft_Source-Reference-Policy.md",
+    "normalizedSha256": "a59e9588363e385c19d48c361df9ebb019323cf25865672dd77152292e8d2776"
+  },
+  "sources": [
+    {
+      "sourceId": "SRC001",
+      "order": 1,
+      "kind": "Inline",
+      "label": "User-approved three-axis source-policy decisions",
+      "location": "SnapshotOnly",
+      "path": "N/A",
+      "requestedUrl": "N/A",
+      "finalUrl": "N/A",
+      "retrievedAt": "N/A",
+      "httpStatus": "N/A",
+      "contentType": "N/A",
+      "contentLength": "N/A",
+      "etag": "N/A",
+      "lastModified": "N/A",
+      "redirectChain": [],
+      "rawSha256": "N/A",
+      "normalizedSha256": "29f213b2dc9f40833f43dadc497c7cfe32bf8b44fdf9d0e9d053cf0846099fa0",
+      "gitBlob": "N/A",
+      "proofBoundary": "SnapshotOnly: TuiVision contracts remain product norm; pinned magiblot/tvision is the first modern design reference; tv203s and Borland define historical intent; the policy is prospective."
+    },
+    {
+      "sourceId": "SRC002",
+      "order": 2,
+      "kind": "File",
+      "label": "Delivered Feature 030 provenance and evolution-audit evidence",
+      "location": "Repository",
+      "path": "specs/030-tv203-magiblot-evolution-audit/pr-evidence.md",
+      "requestedUrl": "N/A",
+      "finalUrl": "N/A",
+      "retrievedAt": "N/A",
+      "httpStatus": "N/A",
+      "contentType": "N/A",
+      "contentLength": "N/A",
+      "etag": "N/A",
+      "lastModified": "N/A",
+      "redirectChain": [],
+      "rawSha256": "N/A",
+      "normalizedSha256": "827398bc222abb9994890442d52f05c3e2cd061375e15c3f6421c545b8028b97",
+      "gitBlob": "a825a7ce66f9996e23aa2ef8e71b63a22edbef56",
+      "proofBoundary": "Read-only repository evidence for the exact Magiblot commit, tree, source paths, multipart license boundary, and completed comparison."
+    }
+  ],
+  "profile": "level2-lastenheft",
+  "languagePolicy": "GermanFirstEnglishSecond",
+  "decisions": [
+    {
+      "id": "IAD001",
+      "status": "Answered",
+      "question": "Ist magiblot/tvision alleinige Normquelle?",
+      "answer": "Nein. Accepted TuiVision contracts are the product norm; Magiblot is the first modern design reference and tv203s/Borland define historical intent.",
+      "evidence": "User-approved three-axis policy."
+    },
+    {
+      "id": "IAD002",
+      "status": "Answered",
+      "question": "Welcher Magiblot-Stand ist zugelassen?",
+      "answer": "Commit 57b6f56b38e0ee75240a80a10ee0e11470c24693 and its Feature-030-bound tree; moving branches are forbidden as evidence.",
+      "evidence": "specs/030-tv203-magiblot-evolution-audit/pr-evidence.md"
+    },
+    {
+      "id": "IAD003",
+      "status": "Answered",
+      "question": "Gilt die Policy rückwirkend?",
+      "answer": "No. It is prospective; completed features are re-evaluated only after a changed product contract, a newly approved pin, or materially new consumer evidence.",
+      "evidence": "User-approved implementation plan."
+    },
+    {
+      "id": "IAD004",
+      "status": "Answered",
+      "question": "Welche Delivery Authority gilt?",
+      "answer": "LocalImplementation only.",
+      "evidence": "Current user authority grants implementation but no commit, push, PR, merge, bypass, or provider administration."
+    }
+  ],
+  "openDecisionIds": [],
+  "questionCount": 0,
+  "agentSurface": {
+    "specifyCanonicalId": "speckit.specify",
+    "specifyInvocation": "$speckit-specify",
+    "autonomousCanonicalId": "speckit.autonomous",
+    "autonomousInvocation": "$speckit-autonomous"
+  },
+  "deliveryAuthority": "LocalImplementation",
+  "authorityEvidence": "The approved plan authorizes local creation and implementation; remote delivery authority was not granted.",
+  "promptState": "Enabled",
+  "provenanceMode": "New",
+  "supersedes": {
+    "receiptPath": "N/A",
+    "targetNormalizedSha256": "N/A",
+    "archiveTargetPath": "N/A",
+    "archiveReceiptPath": "N/A"
+  },
+  "legacyAdoption": {
+    "evidenceType": "N/A",
+    "priorTargetNormalizedSha256": "N/A",
+    "priorGitBlob": "N/A"
+  },
+  "updateAuthorized": false,
+  "updateAuthorityEvidence": "N/A",
+  "series": {
+    "seriesId": "a73dda7c-163b-4530-97f2-fd9eea5e8986",
+    "manifestPath": "requirements/intakes/series/tui-vision-delivery/manifest.json",
+    "order": 5,
+    "role": "OrderedMember",
+    "supersedesIntakeIds": []
+  },
+  "nextAction": "$speckit-intake-review requirements/intakes/active/Lastenheft_Source-Reference-Policy.md"
+}

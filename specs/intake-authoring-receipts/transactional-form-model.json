@@ -1,0 +1,165 @@
+{
+  "schemaVersion": "2.0",
+  "documentType": "IntakeReceipt",
+  "receiptId": "82afd197-a3d2-42a7-8f41-38c97c7d51d5",
+  "intakeId": "c558ba4a-e964-4527-a368-59bdc5e16c97",
+  "generator": {
+    "preset": "intake-authoring-governance",
+    "version": "0.3.1"
+  },
+  "createdAt": "2026-08-28T22:17:24Z",
+  "operation": {
+    "operationId": "2a0fb039-8043-434e-a1e5-ca69c6c11eb4",
+    "type": "Create",
+    "authorityEvidence": "User-approved implementation plan explicitly requires a separate Transactional Form Model intake and authorizes local implementation of phases 1 through 4."
+  },
+  "status": "ReadyForReview",
+  "target": {
+    "path": "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
+    "normalizedSha256": "45d8f8b589c3d9fd417f9b8dc9d25d09c0597f02c075b04454bbce95e095a239"
+  },
+  "sources": [
+    {
+      "sourceId": "SRC001",
+      "order": 1,
+      "kind": "Inline",
+      "label": "GitHub Issue 154 content snapshot",
+      "location": "SnapshotOnly",
+      "path": "N/A",
+      "requestedUrl": "N/A",
+      "finalUrl": "N/A",
+      "retrievedAt": "N/A",
+      "httpStatus": "N/A",
+      "contentType": "N/A",
+      "contentLength": "N/A",
+      "etag": "N/A",
+      "lastModified": "N/A",
+      "redirectChain": [],
+      "rawSha256": "N/A",
+      "normalizedSha256": "581367748141c55fbedec748e22776b62996bdd2039f101f9069abdd28f1c94d",
+      "gitBlob": "N/A",
+      "proofBoundary": "SnapshotOnly: Issue #154 proposes the optional IBM-5250-inspired form transaction model, phased capabilities, non-goals, constraints, and initial acceptance criteria."
+    },
+    {
+      "sourceId": "SRC002",
+      "order": 2,
+      "kind": "Inline",
+      "label": "User-approved phase 1 through 4 implementation decisions",
+      "location": "SnapshotOnly",
+      "path": "N/A",
+      "requestedUrl": "N/A",
+      "finalUrl": "N/A",
+      "retrievedAt": "N/A",
+      "httpStatus": "N/A",
+      "contentType": "N/A",
+      "contentLength": "N/A",
+      "etag": "N/A",
+      "lastModified": "N/A",
+      "redirectChain": [],
+      "rawSha256": "N/A",
+      "normalizedSha256": "f562a6f350d221e95df4b33a03cb3fb20bf90d3e65c83e9fe15e69b7a4bd377f",
+      "gitBlob": "N/A",
+      "proofBoundary": "SnapshotOnly: one feature delivers typed POCO expressions, accept-after-persistence, explicit-culture converters, submit-time async validation, child sessions, safe JSON registry, and the FormTransaction example."
+    },
+    {
+      "sourceId": "SRC003",
+      "order": 3,
+      "kind": "File",
+      "label": "Effective canonical source-reference policy",
+      "location": "Repository",
+      "path": "requirements/source-reference-policy.json",
+      "requestedUrl": "N/A",
+      "finalUrl": "N/A",
+      "retrievedAt": "N/A",
+      "httpStatus": "N/A",
+      "contentType": "N/A",
+      "contentLength": "N/A",
+      "etag": "N/A",
+      "lastModified": "N/A",
+      "redirectChain": [],
+      "rawSha256": "N/A",
+      "normalizedSha256": "111944d23076ab7dc93e7c396d76aff291b6f52c153c3c495bbca70a1f6a70e7",
+      "gitBlob": "N/A",
+      "proofBoundary": "Repository policy binding current product contracts, the exact Magiblot pin, historical intent, closed dispositions, and no-copy provenance."
+    }
+  ],
+  "profile": "level2-lastenheft",
+  "languagePolicy": "GermanFirstEnglishSecond",
+  "decisions": [
+    {
+      "id": "IAD001",
+      "status": "Answered",
+      "question": "Werden Phase 3 und 4 verschoben?",
+      "answer": "No. Phases 1 through 4 are delivered together in one coherent feature without placeholders.",
+      "evidence": "User-approved implementation plan."
+    },
+    {
+      "id": "IAD002",
+      "status": "Answered",
+      "question": "Wann wird das POCO aktualisiert?",
+      "answer": "Only AcceptChanges after successful external persistence applies typed property bindings and then advances all baselines.",
+      "evidence": "User-approved transaction contract."
+    },
+    {
+      "id": "IAD003",
+      "status": "Answered",
+      "question": "Wie sind Async und verschachtelte Sessions begrenzt?",
+      "answer": "Async validation is submit-time and snapshot-based; drift makes results stale; parent and child sessions form one recursive atomic boundary.",
+      "evidence": "User-approved phase-4 decisions."
+    },
+    {
+      "id": "IAD004",
+      "status": "Answered",
+      "question": "Welche Inhalte darf deklaratives JSON enthalten?",
+      "answer": "Only closed semantic keys resolved by an allowlisted runtime registry; CLR names, property paths, methods, scripts, and executable content are forbidden.",
+      "evidence": "User-approved safe registry boundary."
+    },
+    {
+      "id": "IAD005",
+      "status": "Answered",
+      "question": "Welche Quellen bestimmen die Formsemantik?",
+      "answer": "Issue #154 and this intake. Magiblot and tv203s are integration references under the effective source policy, not normative form contracts.",
+      "evidence": "requirements/source-reference-policy.json"
+    },
+    {
+      "id": "IAD006",
+      "status": "Answered",
+      "question": "Welche Delivery Authority gilt?",
+      "answer": "LocalImplementation only.",
+      "evidence": "The user authorized implementation but no commit, push, PR, merge, bypass, provider administration, or secret access."
+    }
+  ],
+  "openDecisionIds": [],
+  "questionCount": 0,
+  "agentSurface": {
+    "specifyCanonicalId": "speckit.specify",
+    "specifyInvocation": "$speckit-specify",
+    "autonomousCanonicalId": "speckit.autonomous",
+    "autonomousInvocation": "$speckit-autonomous"
+  },
+  "deliveryAuthority": "LocalImplementation",
+  "authorityEvidence": "The approved plan authorizes local creation and implementation; remote delivery authority was not granted.",
+  "promptState": "Enabled",
+  "provenanceMode": "New",
+  "supersedes": {
+    "receiptPath": "N/A",
+    "targetNormalizedSha256": "N/A",
+    "archiveTargetPath": "N/A",
+    "archiveReceiptPath": "N/A"
+  },
+  "legacyAdoption": {
+    "evidenceType": "N/A",
+    "priorTargetNormalizedSha256": "N/A",
+    "priorGitBlob": "N/A"
+  },
+  "updateAuthorized": false,
+  "updateAuthorityEvidence": "N/A",
+  "series": {
+    "seriesId": "a73dda7c-163b-4530-97f2-fd9eea5e8986",
+    "manifestPath": "requirements/intakes/series/tui-vision-delivery/manifest.json",
+    "order": 6,
+    "role": "OrderedMember",
+    "supersedesIntakeIds": []
+  },
+  "nextAction": "$speckit-intake-review requirements/intakes/active/Lastenheft_Transactional-Form-Model.md"
+}

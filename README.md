@@ -40,6 +40,8 @@ Agentic-AI workflows. It is not an official Turbo Vision continuation.
   [`docs/guides/mouse-support.md`](docs/guides/mouse-support.md)
 - Bounded terminal session, KOI8-R, raw 8x16 fixture, profiles, and cell proof:
   [`docs/guides/terminal-charset-hardening.md`](docs/guides/terminal-charset-hardening.md)
+- Optional transactional fields, typed POCO binding, snapshot validation, and safe form semantics:
+  [`docs/guides/transactional-form-model.md`](docs/guides/transactional-form-model.md)
 
 ## Documentation Accessibility Checks
 

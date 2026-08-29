@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "IntakeSeriesManifest",
+  "seriesId": "a73dda7c-163b-4530-97f2-fd9eea5e8986",
+  "title": "TuiVision Delivery Intake Series",
+  "policy": "tui-vision-delivery-v1",
+  "status": "Active",
+  "orderedTargets": [
+    {
+      "path": "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "1b8ac280514c3415dfa51f2807f2b9183e51cd46b446d59980974cdce0ac70ad",
+      "status": "Completed"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "f46be28ad27bb2dd5644390a7d50bed4912b514ce924e58bfd304135b33c0ad2",
+      "status": "Completed"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md",
+      "role": "Primary",
+      "normalizedSha256": "f5dc617b7c20d718304bb91f7f63d4a95d5c27cf09a7d0a4685a3bc4a824ab1a",
+      "status": "Eligible"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "b7dbf455ff4e84b336ffe3cca3ff184e1897860592d4f53fb52f1776e7eb9e91",
+      "status": "Pending"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "df5f1876c781632c13594e9ec60c3cc8f9408c586ac03aeb48aa87442987878c",
+      "status": "Pending"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "d1f6a20535f90b78d00f7f6974a32156d7c08eeb77ebad9961a41ffbe3f84858",
+      "status": "Pending"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "62fadb9f571f6c6e5fb81badd103f5ca5087c7219698fdec7be708196d6d6863",
+      "status": "Pending"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "97d31e6eac5c2e5defeae1dd29bc5c97ddb8ba43b75106768dfe4b703c6d802d",
+      "status": "Pending"
+    }
+  ],
+  "roots": [
+    "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
+    "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
+    "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+    "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+    "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+    "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"
+  ],
+  "dependencies": [
+    {
+      "from": "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
+      "to": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+      "kind": "HardCompletionGate",
+      "binding": true
+    },
+    {
+      "from": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+      "to": "requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md",
+      "kind": "HardCompletionGate",
+      "binding": true
+    }
+  ],
+  "evidencePaths": [
+    "specs/requirements-reconciliation-20260726/requirements-coverage.json",
+    "specs/requirements-reconciliation-20260726/migration-proposal.json",
+    "Lastenheft_Abarbeitungsreihenfolge.md"
+  ]
+}

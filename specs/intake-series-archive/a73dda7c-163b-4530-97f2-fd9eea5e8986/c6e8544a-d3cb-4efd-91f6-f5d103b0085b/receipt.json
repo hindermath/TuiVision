@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "IntakeSeriesReceipt",
+  "receiptId": "13569d7c-0dd8-409e-969d-53834dca2c17",
+  "seriesId": "a73dda7c-163b-4530-97f2-fd9eea5e8986",
+  "generator": {
+    "preset": "intake-sequencing-governance",
+    "version": "0.2.3"
+  },
+  "createdAt": "2026-08-28T21:59:31Z",
+  "operation": {
+    "operationId": "9775518c-1350-4e56-a690-bbdee5eb4032",
+    "type": "Update",
+    "authorityEvidence": "User-approved implementation plan for series repair, source-reference policy, and transactional form delivery"
+  },
+  "status": "Ready",
+  "manifest": {
+    "path": "requirements/intakes/series/tui-vision-delivery/manifest.json",
+    "normalizedSha256": "bd16aaa56e03f12a80b3f1e313586c910375e2d1451097c9f60bb1cf0bff728f"
+  },
+  "supersedes": {
+    "receiptPath": "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/9775518c-1350-4e56-a690-bbdee5eb4032/receipt.json",
+    "receiptNormalizedSha256": "0c829b7e1b2eee8c6597a4560ba376868726ba6d1f8e81cc8ef06b51b172674d",
+    "manifestArchivePath": "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/9775518c-1350-4e56-a690-bbdee5eb4032/manifest.json",
+    "manifestArchiveSha256": "92f2bfbd60ac6f403cc40475af6e8db5f61270e997fa939b5051a2da4a11d834"
+  },
+  "tombstone": {
+    "path": "N/A",
+    "normalizedSha256": "N/A"
+  },
+  "nextAction": "$speckit-intake-series-status"
+}

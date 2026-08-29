@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1.1",
+  "runId": "ffff8c54-2459-449f-b9ed-ad9b671459cb",
+  "featurePath": "specs/041-source-reference-policy",
+  "branch": "041-source-reference-policy",
+  "deliveryMode": "LocalImplementation",
+  "authorityRevalidationRequired": false,
+  "stage": "Validate",
+  "status": "Completed",
+  "checkpointCommit": "19450fa383abfbdf71268f09ab6d67395deb98e1",
+  "acceptedArtifacts": [
+    {
+      "path": "requirements/intakes/active/Lastenheft_Source-Reference-Policy.md",
+      "sha256": "a59e9588363e385c19d48c361df9ebb019323cf25865672dd77152292e8d2776"
+    },
+    {
+      "path": "specs/intake-review-result.json",
+      "sha256": "2fda98450648b064e41e867453f3b7fac4fd1c9f9bc6afc3d16ad8303203fa71"
+    }
+  ],
+  "tasks": {
+    "path": "specs/041-source-reference-policy/tasks.md",
+    "sha256": "eb342bf115ba593336d206c6da74d01021a9ac7f1428331f31b25a48ad5b237f",
+    "completed": 15,
+    "total": 15
+  },
+  "lastPassingGate": "Source-policy validation passed in Bash and PowerShell, including 7/7 negative fixtures, all 13 governance surfaces, homogeneity 29/29, agent parity 3/3, secret scans, DocFX 0/0, Axe 2/2, Lynx, and zero product or historical-source delta",
+  "nextExactAction": "N/A",
+  "lastOperation": {
+    "kind": "SourceReferencePolicyDelivery",
+    "state": "Completed",
+    "summary": "Established Constitution 1.18.0 and the prospective three-axis policy with an exact Magiblot pin, closed dispositions, no-copy provenance, portable fail-closed validation, and synchronized governance surfaces."
+  },
+  "stop": {
+    "reason": "N/A",
+    "requestedAt": "N/A",
+    "safeBoundary": "N/A"
+  },
+  "closeout": {
+    "mergeOrPublication": "N/A",
+    "defaultBranchSync": "N/A",
+    "postMergeActions": "N/A",
+    "finalValidation": "Completed"
+  },
+  "updatedAt": "2026-08-28T22:14:34Z"
+}

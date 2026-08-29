@@ -166,6 +166,31 @@ npm run test:docfx
 - For relevant features, `spec.md`, `plan.md`, `tasks.md`, guides, PR evidence, or architecture/security evidence must record which historical intent is followed and which material user-visible or API-visible deviations are intentional.
 - If a feature has no historical `tv203s` relevance, a short `N/A` rationale in plan, tasks, or evidence is sufficient.
 
+<!-- source-reference-policy:begin -->
+## Drei-Achsen-Quellenpolicy / Three-Axis Source Reference Policy
+
+- Aktuelle TuiVision-Vertraege sind die Produktnorm. `magiblot/tvision` wird
+  zuerst als moderne, nicht normative Designreferenz am Commit
+  `57b6f56b38e0ee75240a80a10ee0e11470c24693` und Tree
+  `96dd03873955689ff0a79f6c8107a8148fe1ebd6` geprueft; Borland und `tv203s/`
+  bestimmen historische Absicht. Free Vision und Terminal.GUI sind unabhaengige
+  Vergleiche, `TVDEMOS`, `TVFM` und Beispiele Consumer-Evidence.
+- Der Workflow endet mit genau einer Entscheidung: `AdoptModernization`,
+  `PreserveHistoricalIntent`, `IntentionalTuiVisionDeviation` oder `N/A`.
+  Quellenrang allein loest keinen Konflikt und Magiblot erzwingt keine
+  C++-Vererbung, Speicherstruktur oder Quelltextform.
+- Externe Checkouts bleiben untracked; Quellkopie oder Vendorisierung ist
+  ausgeschlossen. Der Lizenzstatus ist `MultipartNotRepositoryWideMIT`.
+- Die Policy gilt `Prospective`. Re-Evaluation erfolgt nur bei geaendertem
+  TuiVision-Produktvertrag, neuem freigegebenem Magiblot-Pin oder materiell
+  neuer Consumer-Evidence. Bewegliche Branches sind keine Evidence.
+
+*Current TuiVision contracts remain normative. The exact Magiblot revision is
+reviewed first for modern design, while historical and consumer evidence retain
+their distinct roles. The policy is prospective and preserves the no-copy and
+multipart-license boundaries.*
+<!-- source-reference-policy:end -->
+
 ## Active Feature Context
 
 ### 004-editor-file-help-streams

@@ -1,5 +1,7 @@
 - name: Projektstatistiken
   href: project-statistics.md
+- name: Quellenreferenz-Policy
+  href: source-reference-policy.md
 - name: Anleitungen
   items:
     - name: Autonome Spec-Kit-Läufe
@@ -16,6 +18,8 @@
       href: guides/core-runtime-conformance-hardening.md
     - name: Komponenten- und Datenkonformität
       href: guides/component-data-conformance-hardening.md
+    - name: Transactional Form Model
+      href: guides/transactional-form-model.md
     - name: A11Y-Framework
       href: guides/a11y-framework.md
     - name: Beispiel-Guides
@@ -92,3 +96,5 @@
           href: guides/examples/tp7-mouse-dialog.md
         - name: TP7 File Manager
           href: guides/examples/tp7-file-manager.md
+        - name: FormTransaction
+          href: guides/transactional-form-model.md

@@ -1,19 +1,20 @@
-# Intake Review: TuiVision Delivery Series
+# Intake-Serienreview: TuiVision Delivery nach Formabschluss
 
 ## Ergebnis / Result
 
 Status: `Ready`
 
-Alle sieben Serien-Intakes, ihre aktuellen Hashes, Receipt-Lineage,
-Lifecycle-Zustände und die einzige harte Abhängigkeit wurden geprüft. Der
-Wave-6-Closeout ist abgeschlossen. Der Portfolioaudit ist der einzige
-explizit berechtigte nächste Intake. Dokumentations- und Governance-Intakes
-bleiben unabhängige Wurzeln.
+Alle zehn Serien-Intakes, ihre aktuellen Hashes, Receipt-Lineage, fünf Wurzeln
+und sechs azyklischen Abhängigkeiten wurden geprüft. Wave 6, Portfolioaudit,
+Portfolioabschluss, Constitution, Quellenpolicy und Transactional Form Model
+sind abgeschlossen. Die Documentation-Publishing-Closure ist bevorzugt
+`Eligible`; kein Folgefeature wird durch diesen Review gestartet.
 
-*All seven series intakes, current hashes, receipt lineage, lifecycle states,
-and the single hard dependency were reviewed. Wave-6 closure is complete. The
-portfolio audit is the only explicitly eligible next intake. Documentation
-and governance intakes remain independent roots.*
+*All ten series intakes, current hashes, receipt lineage, five roots, and six
+acyclic dependencies were reviewed. Wave 6, the portfolio audit and closure,
+constitution, source policy, and Transactional Form Model are complete.
+Documentation Publishing Closure is the preferred eligible successor; this
+review starts no follow-up feature.*
 
 Es bestehen keine offenen Review-Findings. Der optionale NuGet-Backlog ist
 nicht Teil der ausführbaren Serie.

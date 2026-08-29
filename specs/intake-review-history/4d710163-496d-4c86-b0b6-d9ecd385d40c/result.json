@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "1.1",
+  "reviewId": "4d710163-496d-4c86-b0b6-d9ecd385d40c",
+  "mode": "Series",
+  "status": "Ready",
+  "policy": "tui-vision-lastenheft",
+  "reviewedAt": "2026-08-28T22:22:42Z",
+  "repository": {
+    "root": ".",
+    "head": "19450fa383abfbdf71268f09ab6d67395deb98e1"
+  },
+  "requestEvidence": {
+    "path": "specs/intake-review-request.json",
+    "normalizedSha256": "94952fe95a4427808acd893b5157e92ad97c3999112826b7134fee1a19e116ef"
+  },
+  "targets": [
+    {
+      "path": "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "1b8ac280514c3415dfa51f2807f2b9183e51cd46b446d59980974cdce0ac70ad",
+      "gitBlob": "049f6c3e302412a795452976ad52cb575bff8124"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "f46be28ad27bb2dd5644390a7d50bed4912b514ce924e58bfd304135b33c0ad2",
+      "gitBlob": "73dcfe31bc1f0d0791b7fca8a1e5a217af09994e"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md",
+      "role": "Primary",
+      "normalizedSha256": "f5dc617b7c20d718304bb91f7f63d4a95d5c27cf09a7d0a4685a3bc4a824ab1a",
+      "gitBlob": "01f5b63ad6747adea8bb97d11ade7f0db21185e1"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "b7dbf455ff4e84b336ffe3cca3ff184e1897860592d4f53fb52f1776e7eb9e91",
+      "gitBlob": "350f071a91d58cbf593ba877e6ef1051ff978fa5"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Source-Reference-Policy.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "801e55636b0ae2467a7a1c82927b84c4d46d151df798af69b3a3a21e477d122a",
+      "gitBlob": "51b5d8ad0381a436329e3e54242c4cd5b81fc5fe"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "21f43c7a15d02a5e26b6a5aa6bd158c600f47c2ad34ff1e6a4d6244a47bcf54a",
+      "gitBlob": "81b6431ae718eaf7fa7d9d8bd4011763d8874d62"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "df5f1876c781632c13594e9ec60c3cc8f9408c586ac03aeb48aa87442987878c",
+      "gitBlob": "52742f79ed984714159c5fd535930d88800b6dbc"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "d1f6a20535f90b78d00f7f6974a32156d7c08eeb77ebad9961a41ffbe3f84858",
+      "gitBlob": "0616519f2d4208710b0f773e3278023936b57961"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "62fadb9f571f6c6e5fb81badd103f5ca5087c7219698fdec7be708196d6d6863",
+      "gitBlob": "f79082b4e8e977f2dd72804653c4c94766e8165f"
+    },
+    {
+      "path": "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+      "role": "OrderedMember",
+      "normalizedSha256": "97d31e6eac5c2e5defeae1dd29bc5c97ddb8ba43b75106768dfe4b703c6d802d",
+      "gitBlob": "907fc37165c48ee54b70bce61d96c7fd53c841ff"
+    }
+  ],
+  "findings": [],
+  "questions": [],
+  "acceptedRisks": [],
+  "operatorExceptions": [],
+  "coverage": {
+    "individual": [
+      "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
+      "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+      "requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md",
+      "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+      "requirements/intakes/active/Lastenheft_Source-Reference-Policy.md",
+      "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
+      "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
+      "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"
+    ],
+    "series": ["requirements/intakes/series/tui-vision-delivery/manifest.json"],
+    "workers": []
+  },
+  "summary": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0
+  },
+  "supersedes": "32d3e186-cb72-4bfa-86c9-f50f4ff9f3a0"
+}

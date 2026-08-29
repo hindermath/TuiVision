@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "1.1",
+  "reviewId": "339a343c-4973-4c86-a6f9-03ae6290a210",
+  "mode": "Series",
+  "policy": "tui-vision-lastenheft",
+  "targets": [
+    { "path": "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md", "role": "OrderedMember" },
+    { "path": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md", "role": "OrderedMember" },
+    { "path": "requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md", "role": "Primary" },
+    { "path": "requirements/intakes/active/Lastenheft_Constitution_Change.md", "role": "OrderedMember" },
+    { "path": "requirements/intakes/active/Lastenheft_Source-Reference-Policy.md", "role": "OrderedMember" },
+    { "path": "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md", "role": "OrderedMember" },
+    { "path": "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md", "role": "OrderedMember" },
+    { "path": "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md", "role": "OrderedMember" },
+    { "path": "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md", "role": "OrderedMember" },
+    { "path": "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md", "role": "OrderedMember" }
+  ],
+  "series": {
+    "orderedTargetPaths": [
+      "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
+      "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+      "requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md",
+      "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+      "requirements/intakes/active/Lastenheft_Source-Reference-Policy.md",
+      "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
+      "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
+      "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"
+    ],
+    "roots": [
+      "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
+      "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+      "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"
+    ],
+    "dependencies": [
+      { "from": "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md", "to": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md", "kind": "HardCompletionGate" },
+      { "from": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md", "to": "requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md", "kind": "HardCompletionGate" },
+      { "from": "requirements/intakes/active/Lastenheft_Constitution_Change.md", "to": "requirements/intakes/active/Lastenheft_Source-Reference-Policy.md", "kind": "SharedWriterSerialization" },
+      { "from": "requirements/intakes/active/Lastenheft_Source-Reference-Policy.md", "to": "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md", "kind": "HardCompletionGate" },
+      { "from": "requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md", "to": "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md", "kind": "HardCompletionGate" },
+      { "from": "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md", "to": "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md", "kind": "PreferredSerialOrder" }
+    ]
+  },
+  "campaign": {
+    "manifestPath": "N/A",
+    "workers": [],
+    "operatorExceptions": []
+  }
+}
