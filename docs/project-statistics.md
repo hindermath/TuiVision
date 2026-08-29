@@ -1203,14 +1203,14 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 | Textdateien / Text files | 3173 |
 | Beobachtbarer Zeitraum / Observable period | 2025-09-07..2026-08-30 |
 | Aktivtage / Active days | 93 |
-| Relevante Commits / Relevant commits | 562 |
+| Relevante Commits / Relevant commits | 563 |
 | Zeilen je Aktivtag / Lines per active day | 6708.9 |
 | Peak-Tag im Fenster / Peak day in window | 2026-03-22 / 321183 |
 | Peak-Woche im Fenster / Peak week in window | 2026-03-22 / 373576 |
 | Laengste Serie / Longest streak | 17 days |
 | Speedup vs. 80 lines/day | 83.9x |
 | Speedup vs. 125 lines/day | 53.7x |
-| Methodik / Methodology | v2; source `02d5e10d0d32` |
+| Methodik / Methodology | v2; source `d1fa4e327670` |
 
 ### Artefaktmix / Artifact Mix
 
@@ -1449,6 +1449,6 @@ DE: Das Fenster beginnt am 2025-09-07 und endet am 2026-08-30. Es enthaelt 93 ak
 | 2026-05 | 273853 |
 | 2026-06 | 42176 |
 | 2026-07 | 205615 |
-| 2026-08 | 36818 |
+| 2026-08 | 36844 |
 
 <!-- project-statistics-v2:end -->
