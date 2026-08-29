@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "1.0",
+  "gates": [
+    {
+      "gateId": "GATE-044-01",
+      "applicability": "Applicable",
+      "requiredScope": "The eligible intake, current Ready series review, feature identity, branch, accepted hashes, run state and current MergeAndSync authority remain aligned.",
+      "requiredCommandTokens": ["validate-intake-review-result", "validate-intake-series-receipt", "validate-autonomous-run-state"],
+      "requiredRunnerOrPlatformTokens": ["local"],
+      "rationale": "The sandbox decision requires immutable intake lineage and current explicit authority.",
+      "reevaluationTrigger": "Any intake, review, series, branch, authority, task or state drift."
+    },
+    {
+      "gateId": "GATE-044-02",
+      "applicability": "Applicable",
+      "requiredScope": "Exactly twelve CL-12 controls, seven mount roles and eight execution decisions validate against the accepted sandbox commit and source hashes.",
+      "requiredCommandTokens": ["test_sandbox_applicability", "validate-sandbox-applicability.sh", "validate-sandbox-applicability.ps1"],
+      "requiredRunnerOrPlatformTokens": ["local", "ubuntu", "macos", "windows"],
+      "rationale": "Cardinality, provenance and wrapper parity are the primary feature acceptance contract.",
+      "reevaluationTrigger": "Any assessment row, validator, wrapper, sandbox pin or source hash changes."
+    },
+    {
+      "gateId": "GATE-044-03",
+      "applicability": "Applicable",
+      "requiredScope": "Learner-facing security guidance is German-first and English-second at CEFR-B2, semantically structured, UTF-8 clean and usable through text-first assistive tools.",
+      "requiredCommandTokens": ["docfx docfx.json", "npm test", "lynx"],
+      "requiredRunnerOrPlatformTokens": ["local", "github", "ubuntu"],
+      "rationale": "The feature creates and publishes learner-facing security documentation.",
+      "reevaluationTrigger": "Any documentation, navigation, language or accessibility change."
+    },
+    {
+      "gateId": "GATE-044-04",
+      "applicability": "Applicable",
+      "requiredScope": "Bash, PowerShell and Python syntax, static analysis, help, manual and cross-platform wrapper behavior remain equivalent.",
+      "requiredCommandTokens": ["bash -n", "PSScriptAnalyzer", "py_compile", "--help"],
+      "requiredRunnerOrPlatformTokens": ["local", "ubuntu", "macos", "windows"],
+      "rationale": "A new portable read-only validator family is delivered.",
+      "reevaluationTrigger": "Any script, help, manual, shell or supported platform changes."
+    },
+    {
+      "gateId": "GATE-044-05",
+      "applicability": "Applicable",
+      "requiredScope": "Repository diff, formatting, statistics, agent parity, secrets, dependencies and supply-chain checks pass without product or generated-output drift.",
+      "requiredCommandTokens": ["git diff --check", "dotnet format --verify-no-changes", "check-homogeneity", "scan-agent-secrets", "dotnet list"],
+      "requiredRunnerOrPlatformTokens": ["local", "github", "ubuntu", "macos", "windows"],
+      "rationale": "Documentation and validator changes still require repository integrity and secure-development evidence.",
+      "reevaluationTrigger": "Any source, test, dependency, generated output, statistics, agent surface or delivery-set change."
+    },
+    {
+      "gateId": "GATE-044-06",
+      "applicability": "N/A",
+      "requiredScope": "Product build, runtime tests and five-assembly coverage.",
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "The final delivery set changes no product source, API, project, package, example or executable behavior; remote baseline CI remains supplemental.",
+      "reevaluationTrigger": "Executable product scope enters the delivery set."
+    },
+    {
+      "gateId": "GATE-044-07",
+      "applicability": "Applicable",
+      "requiredScope": "The exact reviewed feature head is pushed, all mandatory GitHub technical checks pass, no actionable review thread remains and provider-neutral PreMerge evidence validates.",
+      "requiredCommandTokens": ["gh pr checks", "validate-autonomous-gate-evidence", "git rev-parse HEAD"],
+      "requiredRunnerOrPlatformTokens": ["github", "ubuntu", "macos", "windows"],
+      "rationale": "Remote delivery requires exact-head technical and review convergence before any bypass decision.",
+      "reevaluationTrigger": "Any head, workflow, check, review thread, comment or authority change."
+    },
+    {
+      "gateId": "GATE-044-08",
+      "applicability": "Applicable",
+      "requiredScope": "Only after every technical gate passes, the authorized admin bypass may cover the sole remaining approval rule; merge commit, branch cleanup, main synchronization and causal PostMerge evidence complete the run.",
+      "requiredCommandTokens": ["gh pr merge --merge --admin --delete-branch", "git fetch --prune origin", "git pull --ff-only origin main"],
+      "requiredRunnerOrPlatformTokens": ["github", "local", "main"],
+      "rationale": "The latest user instruction explicitly grants MergeAndSync and a narrow approval-only bypass.",
+      "reevaluationTrigger": "Any failing technical gate, actionable review, merge failure, cleanup failure or default-branch drift."
+    }
+  ]
+}
