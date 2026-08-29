@@ -33,7 +33,7 @@
 | Analyze | 1 | Pass | `analysis.md` | null Critical, High oder Medium / zero Critical, High, or Medium |
 | Implement | 1 | Pass | Dokumentation und deterministische Nachweise / documentation and deterministic proof | nur Delivery- und Abschlussaufgaben offen / only delivery and closeout tasks remain |
 | Validate | 1 | Pass | Befehlsledger unten / command ledger below | None |
-| Deliver | 1 | Open | PR und Merge | Remote-Nachweise konvergieren |
+| Deliver | 1 | In progress | [PR #159](https://github.com/hindermath/TuiVision/pull/159) | Remote-Nachweise konvergieren / converge remote evidence |
 
 ## Entscheidungen und Folgearbeiten / Decisions and Follow-ups
 
@@ -98,8 +98,8 @@
 
 | Element / Item | Ergebnis / Result | Evidence |
 |---|---|---|
-| Push | Open | autorisiert, noch nicht ausgeführt / authorized, not run |
-| Pull Request | Open | noch nicht erstellt / not created |
+| Push | Pass | Branch `044-sandbox-secure-development-hardening`; veröffentlichter Head / published head `db3ffa6efc21818232ea59bacd0889b2b6e6c4b0` |
+| Pull Request | Pass | [hindermath/TuiVision#159](https://github.com/hindermath/TuiVision/pull/159) |
 | Pflichtchecks / Required checks | Open | noch nicht ausgeführt / not run |
 | Review-Threads | Open | noch nicht geprüft / not inspected |
 | Merge | Open | nur nach grünen Gates / only after green gates |

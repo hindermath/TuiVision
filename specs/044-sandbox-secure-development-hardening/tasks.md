@@ -95,8 +95,8 @@
 
 ## Phase 11 - MergeAndSync Delivery
 
-- [ ] T064 Commit and push the non-empty Feature 044 delivery after version alignment
-- [ ] T065 Create the feature PR from `pr-evidence.md` and monitor required checks and reviews
+- [x] T064 Commit and push the non-empty Feature 044 delivery after version alignment
+- [x] T065 Create the feature PR from `pr-evidence.md` and monitor required checks and reviews
 - [ ] T066 Map every acceptance gate to exact-head workflow, job, platform, and executed command
 - [ ] T067 Resolve every actionable review thread; unavailable review remains missing, never Pass
 - [ ] T068 Generate and validate temporary schema-2.0 PreMerge evidence for the reviewed head
