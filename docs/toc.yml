@@ -4,6 +4,30 @@
   href: source-reference-policy.md
 - name: Anleitungen
   items:
+    - name: Einstieg in TuiVision
+      href: guides/getting-started.md
+    - name: Architekturüberblick
+      href: guides/architecture.md
+    - name: Konzepte
+      items:
+        - name: Event-Loop, Ereignisse und Commands
+          href: guides/concepts/event-loop.md
+        - name: View-Hierarchie, Fokus und Zeichnen
+          href: guides/concepts/view-hierarchy.md
+        - name: Koordinatensystem und Rechtecke
+          href: guides/concepts/coordinate-system.md
+        - name: Serialisierung, Records und Ablehnung
+          href: guides/concepts/serialization.md
+    - name: Tutorials
+      items:
+        - name: Erster Dialog
+          href: guides/tutorials/first-dialog.md
+    - name: Beispiel-Lernpfade
+      href: guides/example-learning-paths.md
+    - name: Bewusste historische Abweichungen
+      href: guides/historical-deviations.md
+    - name: Dokumentations- und Publishing-Abschluss
+      href: documentation-closure.md
     - name: Autonome Spec-Kit-Läufe
       href: spec-kit-autonomous-runbook.md
     - name: Retrospektiven autonomer Spec-Kit-Läufe

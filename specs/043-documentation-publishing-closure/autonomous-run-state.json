@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "1.1",
+  "runId": "a7cdbffd-aac7-4df0-a77f-c97601a1b0d5",
+  "featurePath": "specs/043-documentation-publishing-closure",
+  "branch": "043-documentation-publishing-closure",
+  "deliveryMode": "MergeAndSync",
+  "authorityRevalidationRequired": false,
+  "stage": "Validate",
+  "status": "Active",
+  "checkpointCommit": "9dcf78e6d48e447ed20c7efd8fe98be66a5c9af9",
+  "acceptedArtifacts": [
+    {
+      "path": "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
+      "sha256": "df5f1876c781632c13594e9ec60c3cc8f9408c586ac03aeb48aa87442987878c"
+    },
+    {
+      "path": "specs/intake-review-result.json",
+      "sha256": "4ab92b2d7499b37b68c3d90899144d89fd33c445e7dfda94872243f3f701b770"
+    },
+    {
+      "path": "specs/043-documentation-publishing-closure/spec.md",
+      "sha256": "151b4a82105c2dbbd635719ed8a21e53a0fdc2d0358508cddf5880ebf5b0d32d"
+    },
+    {
+      "path": "specs/043-documentation-publishing-closure/research.md",
+      "sha256": "1db0a38d9cee0a4f0b32c63c6de50ef2c4f44c8cfae64f6680b700690a6fc804"
+    },
+    {
+      "path": "specs/043-documentation-publishing-closure/plan.md",
+      "sha256": "9a9a80beae55b8120bce278edf5b7b58625b589af5d386a0a9a505b2d51a9199"
+    },
+    {
+      "path": "specs/043-documentation-publishing-closure/data-model.md",
+      "sha256": "af1d397e84e226f7d7155204cefd493c6634da212d69c33af632f46b5a3b69f7"
+    },
+    {
+      "path": "specs/043-documentation-publishing-closure/quickstart.md",
+      "sha256": "689da64f6848945cb4bfc507df113956ef04c7abe41e793ac7deafe4e2f58ffa"
+    },
+    {
+      "path": "specs/043-documentation-publishing-closure/contracts/documentation-closure-acceptance.md",
+      "sha256": "37b44daf39df44bc51dbe4402995a4ca98aeb56c3738e866bd14af763bd8c1cd"
+    }
+  ],
+  "tasks": {
+    "path": "specs/043-documentation-publishing-closure/tasks.md",
+    "sha256": "6ea8dc3e1400b075bb41fd13552d7a3e2a282f0014dfa0448fef123e8f96ce7e",
+    "completed": 32,
+    "total": 40
+  },
+  "routing": {
+    "policy": "balanced-v1",
+    "fallbackPolicy": "fail-closed",
+    "phases": []
+  },
+  "lastPassingGate": "Documentation implementation and local validation pass at 7/38/27 cardinality, Release CS1591 0/0, DocFX 0/0, Playwright/Axe 2/2, UTF-8 Lynx, format, source-policy, agent-parity, documentation-impact and secret-scan boundaries.",
+  "nextExactAction": "Commit the locally validated documentation closure, refresh generated project statistics from a clean tree, then validate and push the complete delivery set.",
+  "lastOperation": {
+    "kind": "LocalValidation",
+    "state": "Completed",
+    "summary": "The documentation-only implementation is complete. Homogeneity reports only the expected project-statistics drift whose canonical renderer requires a clean committed tree; no product or validation defect remains."
+  },
+  "stop": {
+    "reason": "N/A",
+    "requestedAt": "N/A",
+    "safeBoundary": "N/A"
+  },
+  "closeout": {
+    "mergeOrPublication": "Pending",
+    "defaultBranchSync": "Pending",
+    "postMergeActions": "Pending",
+    "finalValidation": "Pending"
+  },
+  "updatedAt": "2026-08-29T21:05:11Z"
+}
