@@ -66,7 +66,7 @@ the multipart upstream license as repository-wide MIT.
 | Governance/source policy | Pass | Source-policy Bash/PowerShell validation covers 13 surfaces and 7/7 negative fixtures; intake authoring, 10-target series, full Ready review, 12-preset routing, agent parity 3/3 and secrets checks pass. |
 | Documentation/A11Y | Pass | DocFX reports 0 warnings/errors; Playwright/Axe passes 2/2; Lynx exposes both languages and the Submit/Accept/registry contracts without visual-only meaning. |
 | Conformance follow-through | Pass | Inventory is extended to 147 historical sources and 235 public types with reciprocal module, public-type, decision and capability links; feature 031 binds the new accepted audit hash. |
-| Remote delivery authority | Authorized, pending execution | Current user instruction: `DeliveryMode MergeAndSync mit Admin-Bypass`; exact delivery set, PR checks, review state and PreMerge evidence remain mandatory. |
+| Remote delivery authority | Pass | PR #155 merged exact head `337a9cf` as `b2a593a` after 31 successful checks, no review conversation and validated PreMerge/PostMerge evidence; the admin bypass covered only `REVIEW_REQUIRED`. |
 
 ## Remote convergence
 
@@ -89,6 +89,18 @@ The fixture now binds the actually eligible Documentation Publishing Closure,
 uses the ten-target contract and retains the same negative coverage. It passes
 all 3 positive and 16 negative cases locally. The admin bypass remained locked.
 
+The final exact-head cycle at
+`337a9cfe70bfc7ec25385eaa257b13f5e463bfed` completed with 31 successful
+checks, one expected skipped Pages deploy job, no failures or pending checks,
+and no review threads or PR comments. The schema-2.0 PreMerge snapshot passed
+both validators with normalized hash
+`38642c137bd9d52c1b9a91f2fdbf4b20bc074d8bcdd8510fb846238f9b7e5562`.
+Only `REVIEW_REQUIRED` remained. The authorized admin merge created two-parent
+merge commit `b2a593a7b394c958d58826ce2a4b46a69df4092a`, deleted the remote feature
+branch, switched to clean `main` and fast-forwarded it to `origin/main`.
+The linked PostMerge snapshot passed both validators with normalized hash
+`d49388babfa251395882a8a8eeaab848db0f354d2fcb5afc06f3c5ce28b294ca`.
+
 ## Security and residual boundaries
 
 The embedded example document has no database, network or arbitrary user-file
@@ -107,6 +119,7 @@ of scope.
 
 ## Decision
 
-`LocalValidationCompleteRemoteCloseoutAuthorized`. All local feature acceptance
-gates pass. Commit, push, PR, exact-head convergence, narrow admin merge and
-default-branch synchronization are the remaining authorized operations.
+`DeliveredAndSynchronized`. All local and remote feature acceptance gates pass.
+PR #155 is merged, the approval-only bypass boundary is recorded, the feature
+branch is cleaned up and `main` was synchronized. No next intake or feature was
+started.
