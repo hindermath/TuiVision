@@ -77,16 +77,17 @@ evidence. The no-copy policy applies prospectively with three closed triggers.*
 - Nicht blockierender Backlog: `requirements/intakes/backlog/`
 
 Wave 6, Portfolioaudit, unabhängiger Portfolioabschluss, Constitution-
-Revalidation, Quellenpolicy und das Transactional Form Model aus Issue #154
-sind abgeschlossen. Bevorzugter nächster fachlicher Intake ist die
-Documentation-Publishing-Closure. Die Reihenfolge autorisiert keinen
-impliziten Specify-, Implementierungs- oder Remote-Schritt.
+Revalidation, Quellenpolicy, Transactional Form Model und die
+Documentation-Publishing-Closure sind abgeschlossen. Bevorzugter nächster
+fachlicher Intake ist das unabhängige Sandbox-Security-Hardening. Die
+Reihenfolge autorisiert keinen impliziten Specify-, Implementierungs- oder
+Remote-Schritt.
 
 *Wave 6, the portfolio audit, independent portfolio closure, constitution
-revalidation, source policy, and the Transactional Form Model from Issue #154
-are complete. Documentation Publishing Closure is the preferred next product
-intake. Ordering grants no implicit specification, implementation, or remote
-authority.*
+revalidation, source policy, the Transactional Form Model, and Documentation
+Publishing Closure are complete. Independent sandbox security hardening is the
+preferred next intake. Ordering grants no implicit specification,
+implementation, or remote authority.*
 
 ## Änderungskontrolle / Change Control
 

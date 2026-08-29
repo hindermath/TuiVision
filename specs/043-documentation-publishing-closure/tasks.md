@@ -51,9 +51,9 @@
 ## Phase 6 - MergeAndSync delivery
 
 - [x] T034 Align the numbered-branch version, validate the intended delivery set, commit and push.
-- [ ] T035 Create the PR and converge mandatory exact-head checks and actionable review threads.
-- [ ] T036 Produce and validate provider-neutral PreMerge evidence for the exact head.
-- [ ] T037 Use admin bypass only if Human Approval is the sole remaining rule; merge with merge commit and delete the feature branch.
-- [ ] T038 Archive the completed intake and update the series only through a required causal closeout if post-merge facts cannot be truthful on the feature head.
-- [ ] T039 Produce PostMerge evidence, retrospective and final task/run-state closure.
-- [ ] T040 Return to clean synchronized `main` and prove `HEAD == origin/main` without starting another feature.
+- [x] T035 Create the PR and converge mandatory exact-head checks and actionable review threads.
+- [x] T036 Produce and validate provider-neutral PreMerge evidence for the exact head.
+- [x] T037 Use admin bypass only if Human Approval is the sole remaining rule; merge with merge commit and delete the feature branch.
+- [x] T038 Archive the completed intake and update the series only through a required causal closeout if post-merge facts cannot be truthful on the feature head.
+- [x] T039 Produce PostMerge evidence, retrospective and final task/run-state closure.
+- [x] T040 Return to clean synchronized `main` and prove `HEAD == origin/main` without starting another feature.

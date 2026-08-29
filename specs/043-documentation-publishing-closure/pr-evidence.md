@@ -28,10 +28,10 @@ actionable review thread remains, and Human Approval is the sole open rule.
 | General guides | Seven coherent onboarding and concept topics | Pass | Seven new files under `docs/guides/`, README and `docs/toc.yml` |
 | Example guides | Six learning-contract fields per guide | Pass | `docs/guides/example-learning-paths.md`: 38 unique projects, 5 `GuideAdequate`, 33 `MatrixCompletesContract` |
 | Requirements reconciliation | One closure per DocumentationAndPublishing statement | Pass | `docs/documentation-closure.md`: 22 `Closed`, 5 `AcceptedBoundary`, 0 open/duplicate IDs |
-| Language and accessibility | German-first/English-second CEFR-B2 and text-first | In validation | All new learner documents are bilingual and semantic; renderer/Axe/Lynx pending |
+| Language and accessibility | German-first/English-second CEFR-B2 and text-first | Pass | All new learner documents are bilingual and semantic; renderer, Axe and Lynx passed |
 | Multi-agent workflow | Operational `agy`; Gemini classified as legacy compatibility | Pass | `docs/guides/multi-mac-workflow.md`, maintained agent surfaces and registries already comply; no shared guidance update needed |
 | Historical deviations | Discoverable guide or changelog path | Pass | `docs/guides/historical-deviations.md` links policy, porting ledger and existing feature evidence |
-| Publishing | DocFX, Pages, CS1591, Playwright/Axe | Open | Local and exact-head proof pending |
+| Publishing | DocFX, Pages, CS1591, Playwright/Axe | Pass | Local proof and PR #157 exact-head jobs passed |
 
 ## Governance ledger
 
@@ -64,17 +64,48 @@ actionable review thread remains, and Human Approval is the sole open rule.
 | Documentation-impact fixtures | Trigger and evidence contract | Pass | Bash and PowerShell: 10/10 each |
 | Secret scan | Current diff and agent directories | Pass | 0 high; `.claude` medium is expected local permissions metadata and untracked |
 | Full local tests and coverage | Executable regression | Not triggered | No source, test, project, package, API, XML or example change; exact-head CI remains mandatory |
-| Project statistics | Canonical generated profile | Pass | Bash and PowerShell `--check-only` agree on source `388895545253`, 621546 text lines and 92 active days |
+| Project statistics | Canonical generated profile | Pass | Final feature head uses stable source `c8a3fd5d25fa`, 621552 text lines and 92 active days |
 | Homogeneity | Repository structure and statistics | Pass | 29/29, 100 percent after canonical statistics refresh |
-| GitHub exact-head checks and review | Remote delivery | Open | PreMerge evidence required |
+| GitHub exact-head checks and review | Remote delivery | Pass | 28 successful checks, one expected Pages deploy skip, zero reviews, comments or threads |
 
 The initial remote publication pushed checkpoint `c24550a` after both delivery-
 set validators accepted every changed path, zero unrelated untracked paths and
 an unchanged index/worktree during validation. The pre-push secret hook passed.
 No bypass was used for publication.
 
+## Remote convergence
+
+PR [#157](https://github.com/hindermath/TuiVision/pull/157) converged on
+exact head `4c701d80ec4b72c9d1cba27fb24dd95fb0090e9a`. All 28 technical and
+review jobs passed; the Pages deploy job was the only expected skip. GitHub
+GraphQL reported no review threads or submitted reviews, and the PR had no
+conversation comments. Copilot produced no review and is therefore recorded
+as unavailable rather than as approval.
+
+The first publication checkpoint exposed stale generated statistics in the
+three-platform Homogeneity gate. The canonical renderer and its documented
+exclusion of `Directory.Build.props` produced one stable statistics closeout;
+both local implementations then passed 29/29 and the final remote matrix was
+green. No technical failure was bypassed.
+
+The temporary schema-2.0 PreMerge snapshot passed Bash and PowerShell with
+normalized SHA-256
+`a2377f9647e6aa5fa600e451b869de074fa3fc465576c69e728cbdeb4fc84889`.
+Only `REVIEW_REQUIRED` remained, so the explicitly authorized narrow admin
+bypass created merge commit
+`1f5890767063dcebbe363fb8087e4fb89a880af1` and deleted the feature branch.
+The linked PostMerge snapshot passed both validators with normalized SHA-256
+`f930d13fd41ba9acf12b391b5ab12ae630afc26519d8fac8c15ef23267288ba0`.
+Temporary lifecycle evidence remains outside Git.
+
+The causal closeout marks the Documentation Publishing Closure `Completed`,
+archives the predecessor series manifest and receipt byte-identically, and
+makes the independent sandbox security intake the sole declared `Eligible`
+successor. It does not start that intake or another feature.
+
 ## Decision
 
-`InProgress`. Specify through Analyze converged without a critical or high
-finding. Documentation implementation is complete at the 7/38/27 cardinality
-boundary; local renderer, A11Y, governance and delivery validation remain.
+`DeliveredAndSynchronized`. The documentation-only closure is complete at the
+7/38/27 cardinality boundary. Local and exact-head documentation, A11Y,
+governance, security and platform gates passed; PR #157 is merged and the
+post-merge series transition is bounded to this causal closeout.

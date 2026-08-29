@@ -91,14 +91,14 @@ fs.writeFileSync(
   JSON.stringify({
     featurePath: activeFeaturePath,
     branch: "043-documentation-publishing-closure",
-    status: "Active",
+    status: "Completed",
     acceptedArtifacts: [{path: bindingIntake, sha256: bindingHash}],
   }, null, 2) + "\n");
 const activeFeatureMetadata = path.join(temp, "authorized-feature.json");
 fs.writeFileSync(
   activeFeatureMetadata,
   JSON.stringify({feature_directory: activeFeaturePath}, null, 2) + "\n");
-expectSuccess("eligible series feature with matching evidence", {
+expectSuccess("completed series feature with matching evidence", {
   featurePath: activeFeatureMetadata,
   featureDirectoryPath: activeFeatureDirectory,
 });

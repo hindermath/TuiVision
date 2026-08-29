@@ -46,13 +46,13 @@
       "path": "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
       "role": "OrderedMember",
       "normalizedSha256": "df5f1876c781632c13594e9ec60c3cc8f9408c586ac03aeb48aa87442987878c",
-      "status": "Completed"
+      "status": "Eligible"
     },
     {
       "path": "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
       "role": "OrderedMember",
       "normalizedSha256": "d1f6a20535f90b78d00f7f6974a32156d7c08eeb77ebad9961a41ffbe3f84858",
-      "status": "Eligible"
+      "status": "Pending"
     },
     {
       "path": "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",

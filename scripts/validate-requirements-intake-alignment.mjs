@@ -126,8 +126,8 @@ export function validate(options = {}) {
 
   const eligible = targets.filter((target) => target.status === "Eligible");
   if (eligible.length !== 1 ||
-      !eligible[0].path.endsWith("requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md")) {
-    errors.push("documentation publishing closure must be the single explicitly Eligible target");
+      !eligible[0].path.endsWith("requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md")) {
+    errors.push("sandbox security hardening must be the single explicitly Eligible target");
   }
   const wave6Closure = targets.find((target) =>
     target.path.endsWith("requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md"));
@@ -150,6 +150,8 @@ export function validate(options = {}) {
     target.path.endsWith("requirements/intakes/active/Lastenheft_Transactional-Form-Model.md"));
   const documentationClosure = targets.find((target) =>
     target.path.endsWith("requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md"));
+  const sandboxHardening = targets.find((target) =>
+    target.path.endsWith("requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md"));
   for (const [label, target] of [
     ["portfolio closure", portfolioClosure],
     ["constitution change", constitution],
@@ -160,8 +162,11 @@ export function validate(options = {}) {
       errors.push(`${label} must remain Completed`);
     }
   }
-  if (!documentationClosure || documentationClosure.status !== "Eligible") {
-    errors.push("documentation publishing closure must remain Eligible");
+  if (!documentationClosure || documentationClosure.status !== "Completed") {
+    errors.push("documentation publishing closure must remain Completed");
+  }
+  if (!sandboxHardening || sandboxHardening.status !== "Eligible") {
+    errors.push("sandbox security hardening must remain Eligible");
   }
 
   const dependencies = manifest.dependencies ?? [];
