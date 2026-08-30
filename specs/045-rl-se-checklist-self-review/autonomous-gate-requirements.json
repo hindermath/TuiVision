@@ -1,0 +1,198 @@
+{
+  "schemaVersion": "1.0",
+  "gates": [
+    {
+      "gateId": "accepted-input-and-run-state",
+      "applicability": "Applicable",
+      "requiredScope": "Prove the hash-bound intake manifest, receipt, Ready review, six accepted feature inputs, current autonomous state, branch identity, Feature 016 and Feature 044 evidence hashes, and unchanged audit-only scope before delivery; treat the stored delivery mode as historical evidence, not current remote authority.",
+      "requiredCommandTokens": [
+        "validate-intake-series-manifest.sh",
+        "validate-intake-series-receipt.sh",
+        "validate-intake-review-result.sh",
+        "validate-autonomous-run-state.sh"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Direct read-only validators avoid mutation and fail closed on accepted-input, review, series, or state drift.",
+      "reevaluationTrigger": "Any accepted input, Feature 016/044 evidence, intake review, series, branch, authority, routing, or autonomous-state change."
+    },
+    {
+      "gateId": "release-tests-coverage-and-rl-se-validator",
+      "applicability": "Applicable",
+      "requiredScope": "In one final Release and Coverlet solution run, prove the full regression suite, Test_CompleteAuditIsValid, Test_InvalidFixturesFailClosed, exactly 157 controls, exact chapter counts, five statuses, required fields, freshness, twelve presets, Markdown parity, atomic negative rejection, and at least 70 percent line coverage for Core, Controls, Serialization, Compatibility, and Drivers.Console.",
+      "requiredCommandTokens": [
+        "dotnet test TuiVision.sln",
+        "--configuration Release",
+        "XPlat Code Coverage",
+        "coverlet.runsettings",
+        "console;verbosity=detailed"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "One complete final run provides sufficient non-duplicated executable and coverage evidence; focused runs remain development proof.",
+      "reevaluationTrigger": "Any audit JSON, Markdown projection, validator, fixture, checklist baseline, preset registry, test, gate assembly, collector, or coverage-policy change."
+    },
+    {
+      "gateId": "formatting",
+      "applicability": "Applicable",
+      "requiredScope": "Verify repository C# formatting after the test-only validator change.",
+      "requiredCommandTokens": [
+        "dotnet format",
+        "--verify-no-changes"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "The feature adds test-only C# and therefore triggers the configured formatter gate.",
+      "reevaluationTrigger": "Any C# or formatting-configuration change."
+    },
+    {
+      "gateId": "supply-chain-vulnerable",
+      "applicability": "Applicable",
+      "requiredScope": "Refresh read-only transitive vulnerable-package evidence without changing packages, tools, workflows, provider settings, or release state.",
+      "requiredCommandTokens": [
+        "dotnet list TuiVision.sln package",
+        "--vulnerable",
+        "--include-transitive"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Feature 016 supply-chain results are historical input evidence whose current advisory freshness must be rechecked.",
+      "reevaluationTrigger": "Any package graph, advisory source, dependency policy, or provider-evidence change."
+    },
+    {
+      "gateId": "supply-chain-deprecated",
+      "applicability": "Applicable",
+      "requiredScope": "Refresh read-only transitive deprecated-package evidence in a separate supported command without changing repository or provider state.",
+      "requiredCommandTokens": [
+        "dotnet list TuiVision.sln package",
+        "--deprecated",
+        "--include-transitive"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "The dotnet CLI does not accept vulnerable and deprecated modes together, so the two freshness proofs remain distinct.",
+      "reevaluationTrigger": "Any package graph, deprecation source, dependency policy, or provider-evidence change."
+    },
+    {
+      "gateId": "immutable-workflow-reference-review",
+      "applicability": "Applicable",
+      "requiredScope": "Inventory every workflow uses reference and record immutable pins or current mutable-reference findings without editing workflows.",
+      "requiredCommandTokens": [
+        "git grep -n -E",
+        "uses:",
+        ".github/workflows"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Audit success means complete honest classification, not silent repair or a false claim that every current reference is immutable.",
+      "reevaluationTrigger": "Any workflow, action reference, supply-chain policy, or release-boundary change."
+    },
+    {
+      "gateId": "scope-firewall",
+      "applicability": "Applicable",
+      "requiredScope": "Prove that the primary committed candidate contains only the exact Feature 045, runner-created feature pointer, dated audit evidence, named test/fixture, index, statistics, and version allowlist; prove zero product, example, API, XML, dependency, project, workflow, governance-source, historical-source, Feature 016, or Feature 044 changes. Causally later archive, series, retrospective, state, and closeout paths are excluded from this PreMerge gate and receive their own proportional closed-set validation after the actual feature merge.",
+      "requiredCommandTokens": [
+        "git diff --name-only",
+        "git merge-base origin/main HEAD"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Audit-only acceptance depends on a closed positive allowlist and explicit protected-path review.",
+      "reevaluationTrigger": "Any committed path outside the exact allowlist or any missing paired intake rename."
+    },
+    {
+      "gateId": "secret-and-private-path-scan",
+      "applicability": "Applicable",
+      "requiredScope": "Prove that the delivered audit contains no credentials, secret patterns, private absolute paths, agent state, sessions, logs, or productive data.",
+      "requiredCommandTokens": [
+        "scan-agent-secrets.sh",
+        "--fail-on-high"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "The evidence product references many sources and must remain safe to publish.",
+      "reevaluationTrigger": "Any evidence, path, scanner, ignore rule, or secret-handling change."
+    },
+    {
+      "gateId": "docfx",
+      "applicability": "Applicable",
+      "requiredScope": "Build generated documentation for the final Security and statistics Markdown state with zero unaccepted errors or warnings.",
+      "requiredCommandTokens": [
+        "docfx",
+        "docfx.json"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "New docs/security content and the Security index are part of generated repository documentation.",
+      "reevaluationTrigger": "Any DocFX input, navigation, Markdown, XML documentation, generated-site configuration, or statistics change."
+    },
+    {
+      "gateId": "generated-doc-a11y-and-text-first",
+      "applicability": "Applicable",
+      "requiredScope": "Run the Playwright and axe DocFX smoke path and a UTF-8 lynx dump of the new German-first and English-second audit reader path to prove semantic text-first accessibility at the WCAG 2.2 AA baseline.",
+      "requiredCommandTokens": [
+        "npm run test:docfx",
+        "lynx -dump",
+        "2026-08-30-rl-se-checklist-self-review"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Learner-facing generated documentation requires both browser accessibility automation and the repository's text-browser proof path.",
+      "reevaluationTrigger": "Any generated HTML, DocFX theme, navigation, Security Markdown, A11Y test, locale, or reader-path change."
+    },
+    {
+      "gateId": "committed-candidate-integrity",
+      "applicability": "Applicable",
+      "requiredScope": "Validate whitespace, complete changed-path inventory, and classified worktree status for the exact committed candidate; runner-owned runtime output and pre-existing orchestration state are never silently staged, and staged integrity remains a required pre-commit process check rather than an exact-head claim.",
+      "requiredCommandTokens": [
+        "git diff --check",
+        "git diff --name-only",
+        "git merge-base origin/main HEAD",
+        "git status --short"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "A staged tree cannot be the final exact HEAD; the machine-readable gate must bind the committed candidate.",
+      "reevaluationTrigger": "Any commit, changed path, worktree status, or delivery-candidate change."
+    },
+    {
+      "gateId": "remote-review-and-checks",
+      "applicability": "Applicable",
+      "requiredScope": "After explicit current PublishPR or MergeAndSync authority is revalidated, prove current feature-HEAD remote technical checks and review convergence before merge; revalidate explicit current MergeAndSync authority again before merge, and keep provider refusal distinct from technical failure.",
+      "requiredCommandTokens": [
+        "gh pr checks",
+        "gh pr view"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "GitHub"
+      ],
+      "rationale": "Remote evidence can exist only after locally gated commit, push, and PR, and must remain bound to the same exact head.",
+      "reevaluationTrigger": "Any pushed HEAD, PR, check suite, review thread, required-check policy, or provider response change."
+    },
+    {
+      "gateId": "new-script-parity",
+      "applicability": "N/A",
+      "requiredScope": "Create and verify paired Bash and PowerShell validators, Unix man page, bilingual PowerShell help, approved Verb-Noun Cmdlet, safe shell discipline, and OS parity.",
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "No new script-shaped validation is necessary because the existing MSTest and System.Text.Json stack provides the portable positive and negative validator.",
+      "reevaluationTrigger": "Any new or changed .sh or .ps1 file enters the feature diff."
+    },
+    {
+      "gateId": "product-api-package-project-change",
+      "applicability": "N/A",
+      "requiredScope": "Validate a product runtime, public API, XML documentation, package, dependency, project, solution, example, or workflow change.",
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "These changes are forbidden by the accepted audit-only scope rather than optional implementation work.",
+      "reevaluationTrigger": "Any such changed path blocks the run and requires new explicit authority plus replanning."
+    },
+    {
+      "gateId": "architecture-or-source-reference-change",
+      "applicability": "N/A",
+      "requiredScope": "Validate new architecture views, ADRs, threat-model changes, historical source interpretation, Magiblot comparison, or product-semantic source disposition.",
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Feature 045 audits existing evidence but changes no architecture, trust boundary, historical intent, or product semantics; source disposition is N/A and the license boundary is MultipartNotRepositoryWideMIT.",
+      "reevaluationTrigger": "A product contract, trust boundary, historical behavior, approved Magiblot pin, or materially new consumer evidence enters the change scope."
+    },
+    {
+      "gateId": "formal-human-compliance-approval",
+      "applicability": "N/A",
+      "requiredScope": "Claim legal, organisational, provider, certification, QISMS, or formal compliance approval.",
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Repository and agent evidence cannot grant or invent human-only formal approval.",
+      "reevaluationTrigger": "An authorised human supplies current publishable evidence and explicitly expands the acceptance scope."
+    }
+  ]
+}

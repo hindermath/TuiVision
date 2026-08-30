@@ -1,0 +1,1 @@
+{"fixtureId":"invalid-wrong-total-count","baseCase":"CompleteAudit","mutatedInvariant":"WrongTotalCount","expectedErrorCode":"RLSE002","expectedMessageFragment":"Deutsch: falsche Gesamtzahl. English: wrong total count.","mustNotWrite":true}

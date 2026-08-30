@@ -1,0 +1,1 @@
+{"fixtureId":"invalid-governance-repair-claim","baseCase":"CompleteAudit","mutatedInvariant":"GovernanceRepairClaim","expectedErrorCode":"RLSE010","expectedMessageFragment":"Deutsch: Governance-Reparaturclaim. English: governance repair claim.","mustNotWrite":true}

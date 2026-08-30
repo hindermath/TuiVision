@@ -1,0 +1,8 @@
+{
+  "fixtureId": "invalid-schema-version",
+  "baseCase": "VerticalSlice",
+  "mutatedInvariant": "SchemaVersion",
+  "expectedErrorCode": "RLSE001",
+  "expectedMessageFragment": "Deutsch: ungueltiges Schema. English: invalid schema.",
+  "mustNotWrite": true
+}

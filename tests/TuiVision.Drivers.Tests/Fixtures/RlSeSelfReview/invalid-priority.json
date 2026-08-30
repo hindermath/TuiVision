@@ -1,0 +1,1 @@
+{"fixtureId":"invalid-priority","baseCase":"CompleteAudit","mutatedInvariant":"InvalidPriority","expectedErrorCode":"RLSE004","expectedMessageFragment":"Deutsch: ungueltige Prioritaet. English: invalid priority.","mustNotWrite":true}

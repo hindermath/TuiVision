@@ -1,0 +1,1 @@
+{"fixtureId":"invalid-unknown-property","baseCase":"CompleteAudit","mutatedInvariant":"UnknownProperty","expectedErrorCode":"RLSE001","expectedMessageFragment":"Deutsch: unbekannte Property. English: unknown property.","mustNotWrite":true,"unexpected":true}

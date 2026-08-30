@@ -1,0 +1,14 @@
+{
+  "fixtureId": "valid-vertical-slice",
+  "baseCase": "VerticalSlice",
+  "mutatedInvariant": "None",
+  "expectedErrorCode": "None",
+  "expectedMessageFragment": "Deutsch: gueltiger Vertikalschnitt. English: valid vertical slice.",
+  "mustNotWrite": true,
+  "controlId": "CL-01-01",
+  "status": "Applicable",
+  "priority": "High",
+  "evidenceIds": ["EVD-001", "EVD-002", "EVD-003"],
+  "presetId": "security-governance",
+  "projectionPath": "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/control-assessment.md"
+}
