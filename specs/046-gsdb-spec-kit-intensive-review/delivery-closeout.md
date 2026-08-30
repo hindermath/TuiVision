@@ -89,8 +89,12 @@ implicit execution authority exists.*
 
 Dieser Closeout ist evidence-only. Seine eigene PR-Identitaet wird nicht in den
 getrackten Kandidaten zurueckgeschrieben. Merge, Branch-Bereinigung und finale
-`main`-Synchronitaet werden nach der Lieferung read-only geprueft.
+`main`-Synchronitaet werden nach der Lieferung read-only geprueft. Die
+terminale Task- und Run-State-Projektion wird im unveraenderten Kandidaten
+vorbereitet und erst mit dessen Merge nach `main` wirksam.
 
 *This closeout is evidence-only. Its own pull-request identity is not written
 back into the tracked candidate. Merge, branch cleanup, and final `main`
-synchronization are verified read-only after delivery.*
+synchronization are verified read-only after delivery. The terminal task and
+run-state projection is prepared in the unchanged candidate and becomes
+effective only when that candidate reaches `main`.*
