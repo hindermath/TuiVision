@@ -233,14 +233,14 @@ public sealed class GsdbSpecKitIntensiveReviewEvidenceTests
         string outputDirectory = Path.Combine(RepositoryRoot(), AuditDirectory);
         Directory.CreateDirectory(outputDirectory);
         JsonObject canonical = BuildCanonicalAudit();
-        string canonicalText = canonical.ToJsonString(JsonOptions()) + "\n";
+        string canonicalText = SerializeJsonLf(canonical);
         File.WriteAllText(Path.Combine(RepositoryRoot(), CanonicalAuditPath), canonicalText, new UTF8Encoding(false));
         string canonicalHash = NormalizedTextSha256(canonicalText);
 
         foreach ((string fileName, string projectionId) in JsonProjectionDefinitions())
         {
             JsonObject projection = BuildFullJsonProjection(canonical, projectionId, canonicalHash);
-            File.WriteAllText(Path.Combine(outputDirectory, fileName), projection.ToJsonString(JsonOptions()) + "\n", new UTF8Encoding(false));
+            File.WriteAllText(Path.Combine(outputDirectory, fileName), SerializeJsonLf(projection), new UTF8Encoding(false));
         }
 
         foreach (string markdownName in MarkdownProjectionNames())
@@ -287,14 +287,14 @@ public sealed class GsdbSpecKitIntensiveReviewEvidenceTests
         foreach ((string fileName, string projectionId) in JsonProjectionDefinitions())
         {
             string actual = ReadStrictUtf8(Path.Combine(RepositoryRoot(), AuditDirectory, fileName));
-            string expected = BuildFullJsonProjection(canonicalNode, projectionId, canonicalHash).ToJsonString(JsonOptions()) + "\n";
-            string second = BuildFullJsonProjection(canonicalNode, projectionId, canonicalHash).ToJsonString(JsonOptions()) + "\n";
+            string expected = SerializeJsonLf(BuildFullJsonProjection(canonicalNode, projectionId, canonicalHash));
+            string second = SerializeJsonLf(BuildFullJsonProjection(canonicalNode, projectionId, canonicalHash));
             Assert.AreEqual(expected, actual, fileName);
             Assert.AreEqual(expected, second, fileName + " double render");
             JsonObject projection = JsonNode.Parse(actual)!.AsObject();
             string storedHash = projection["projectionPayloadSha256"]!.GetValue<string>();
             projection.Remove("projectionPayloadSha256");
-            Assert.AreEqual(storedHash, NormalizedTextSha256(projection.ToJsonString(JsonOptions()) + "\n"), fileName + " payload hash");
+            Assert.AreEqual(storedHash, NormalizedTextSha256(SerializeJsonLf(projection)), fileName + " payload hash");
         }
 
         foreach (string markdownName in MarkdownProjectionNames())
@@ -967,7 +967,7 @@ public sealed class GsdbSpecKitIntensiveReviewEvidenceTests
             default:
                 throw new InvalidOperationException(projectionId);
         }
-        string hash = NormalizedTextSha256(payload.ToJsonString(JsonOptions()) + "\n");
+        string hash = NormalizedTextSha256(SerializeJsonLf(payload));
         payload["projectionPayloadSha256"] = hash;
         return payload;
     }
@@ -1212,7 +1212,7 @@ public sealed class GsdbSpecKitIntensiveReviewEvidenceTests
                 humanBoundaryCount = model.HumanBoundaries.Length
             }
         };
-        return Encoding.UTF8.GetBytes(JsonSerializer.Serialize(canonical, JsonOptions()) + "\n");
+        return Encoding.UTF8.GetBytes(SerializeJsonLf(canonical));
     }
 
     private static byte[] RenderJsonProjection(ProjectionModel model, string type, string canonicalHash)
@@ -1234,7 +1234,7 @@ public sealed class GsdbSpecKitIntensiveReviewEvidenceTests
             canonicalNormalizedSha256 = canonicalHash,
             items = items.OrderBy(item => item.Id, StringComparer.Ordinal)
         };
-        string payloadHash = RawSha256(Encoding.UTF8.GetBytes(JsonSerializer.Serialize(payloadWithoutHash, JsonOptions()) + "\n"));
+        string payloadHash = RawSha256(Encoding.UTF8.GetBytes(SerializeJsonLf(payloadWithoutHash)));
         object payload = new
         {
             schemaVersion = "1.0",
@@ -1243,7 +1243,7 @@ public sealed class GsdbSpecKitIntensiveReviewEvidenceTests
             items = items.OrderBy(item => item.Id, StringComparer.Ordinal),
             projectionPayloadSha256 = payloadHash
         };
-        return Encoding.UTF8.GetBytes(JsonSerializer.Serialize(payload, JsonOptions()) + "\n");
+        return Encoding.UTF8.GetBytes(SerializeJsonLf(payload));
     }
 
     private static string ProjectionPayloadHash(JsonElement projection)
@@ -1255,7 +1255,7 @@ public sealed class GsdbSpecKitIntensiveReviewEvidenceTests
             canonicalNormalizedSha256 = projection.GetProperty("canonicalNormalizedSha256").GetString(),
             items = projection.GetProperty("items")
         };
-        return RawSha256(Encoding.UTF8.GetBytes(JsonSerializer.Serialize(payloadWithoutHash, JsonOptions()) + "\n"));
+        return RawSha256(Encoding.UTF8.GetBytes(SerializeJsonLf(payloadWithoutHash)));
     }
 
     private static string RenderMarkdownProjection(ProjectionModel model, string type)
@@ -1269,6 +1269,16 @@ public sealed class GsdbSpecKitIntensiveReviewEvidenceTests
     private static JsonSerializerOptions JsonOptions()
     {
         return new JsonSerializerOptions { WriteIndented = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
+    }
+
+    private static string SerializeJsonLf(JsonNode node)
+    {
+        return NormalizeLineEndings(node.ToJsonString(JsonOptions())) + "\n";
+    }
+
+    private static string SerializeJsonLf<T>(T value)
+    {
+        return NormalizeLineEndings(JsonSerializer.Serialize(value, JsonOptions())) + "\n";
     }
 
     /// <summary>
@@ -1850,8 +1860,12 @@ public sealed class GsdbSpecKitIntensiveReviewEvidenceTests
 
     private static string NormalizedTextSha256(string text)
     {
-        string normalized = text.Replace("\r\n", "\n", StringComparison.Ordinal).Replace('\r', '\n');
-        return RawSha256(Encoding.UTF8.GetBytes(normalized));
+        return RawSha256(Encoding.UTF8.GetBytes(NormalizeLineEndings(text)));
+    }
+
+    private static string NormalizeLineEndings(string text)
+    {
+        return text.Replace("\r\n", "\n", StringComparison.Ordinal).Replace('\r', '\n');
     }
 
     private static string RawSha256(byte[] bytes)
