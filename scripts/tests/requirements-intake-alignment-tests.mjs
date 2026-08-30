@@ -39,9 +39,10 @@ function activeFixture(name) {
   fs.mkdirSync(target, {recursive: true});
   const manifest = JSON.parse(fs.readFileSync(path.join(root, manifestSource), "utf8"));
   for (const member of manifest.orderedTargets) {
+    if (!member.path.includes("/active/")) continue;
     const entry = path.basename(member.path);
     fs.copyFileSync(
-      path.join(root, "requirements/intakes/active", entry),
+      path.join(root, member.path),
       path.join(target, entry));
   }
   return target;
@@ -66,6 +67,13 @@ function pendingIntakeFixture(name, mutateReceipt = () => {}) {
   mutateReceipt(receipt);
   fs.writeFileSync(path.join(receiptsPath, "future-closure.json"), JSON.stringify(receipt, null, 2) + "\n");
   return {activePath, receiptsPath, targetPath};
+}
+
+function receiptsFixture(name, mutate) {
+  const target = path.join(temp, name);
+  fs.cpSync(path.join(root, "specs/intake-authoring-receipts"), target, {recursive: true});
+  mutate(target);
+  return target;
 }
 
 function awaitDigest(value) {
@@ -186,6 +194,15 @@ expectFailure("stale target hash", {
   }),
 }, /target hash drift/);
 
+expectFailure("missing receipt target without completed archive successor", {
+  receiptsPath: receiptsFixture("orphaned-terminal-receipt", (receiptsPath) => {
+    const receiptPath = path.join(receiptsPath, "rl-se-checklist-selbstpruefung.json");
+    const receipt = JSON.parse(fs.readFileSync(receiptPath, "utf8"));
+    receipt.target.normalizedSha256 = "0".repeat(64);
+    fs.writeFileSync(receiptPath, JSON.stringify(receipt, null, 2) + "\n");
+  }),
+}, /lacks one completed archive successor/);
+
 expectFailure("invalid dependency cycle", {
   manifestPath: fixture("dependency-cycle", manifestSource, (value) => {
     value.dependencies.push({
@@ -226,4 +243,4 @@ expectFailure("positive without evidence", {
 
 fs.rmSync(temp, {recursive: true, force: true});
 console.log("requirements/intake positive fixtures PASS (3 cases)");
-console.log("requirements/intake negative fixtures PASS (16 cases)");
+console.log("requirements/intake negative fixtures PASS (17 cases)");

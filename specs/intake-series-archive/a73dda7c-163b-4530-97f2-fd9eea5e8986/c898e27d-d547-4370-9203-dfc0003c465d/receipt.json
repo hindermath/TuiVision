@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "IntakeSeriesReceipt",
+  "receiptId": "7037a4b2-c98a-4dda-9ea0-0ddbf1b90631",
+  "seriesId": "a73dda7c-163b-4530-97f2-fd9eea5e8986",
+  "generator": {
+    "preset": "intake-sequencing-governance",
+    "version": "0.2.3"
+  },
+  "createdAt": "2026-08-28T22:59:38Z",
+  "operation": {
+    "operationId": "25038b08-b3b8-4461-892d-08b75f9c6e11",
+    "type": "Update",
+    "authorityEvidence": "Feature 044 MergeAndSync authority and causal closeout for the completed sandbox-security intake"
+  },
+  "status": "Ready",
+  "manifest": {
+    "path": "requirements/intakes/series/tui-vision-delivery/manifest.json",
+    "normalizedSha256": "c2ffdd7e948a5b0f790acb244da1572ba25e29d0075b848016eb45019522fcd6"
+  },
+  "supersedes": {
+    "receiptPath": "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/25038b08-b3b8-4461-892d-08b75f9c6e11/receipt.json",
+    "receiptNormalizedSha256": "ad0fdbc597a1f867de1c549889a4b9d6218b6b2b94d4ef9b887aea29b94763be",
+    "manifestArchivePath": "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/25038b08-b3b8-4461-892d-08b75f9c6e11/manifest.json",
+    "manifestArchiveSha256": "9a7b50fcbfb8f3733f29040a17fdeda4f6e0f83b776affc7e90c4e5154650d20"
+  },
+  "tombstone": {
+    "path": "N/A",
+    "normalizedSha256": "N/A"
+  },
+  "nextAction": "$speckit-intake-series-status"
+}

@@ -55,7 +55,7 @@ export function validate(options = {}) {
   const active = fs.readdirSync(activeRoot).filter((name) => name.endsWith(".md")).sort();
   const archived = fs.readdirSync(archiveRoot).filter((name) => name.endsWith(".md")).sort();
   const rootLastenhefte = fs.readdirSync(root).filter((name) => /^Lastenheft.*\.md$/.test(name));
-  if (archived.length !== 28) errors.push(`expected 28 archived intakes, found ${archived.length}`);
+  if (archived.length !== 29) errors.push(`expected 29 archived intakes, found ${archived.length}`);
   if (rootLastenhefte.join(",") !== "Lastenheft_Abarbeitungsreihenfolge.md") {
     errors.push("only the generated processing-order view may remain as root Lastenheft");
   }
@@ -67,9 +67,11 @@ export function validate(options = {}) {
   }
   const expectedActive = active.map((name) => `requirements/intakes/active/${name}`).sort();
   const targetSet = new Set(targetPaths);
-  const missingActiveTargets = targetPaths.filter((target) => !expectedActive.includes(target));
-  if (missingActiveTargets.length > 0) {
-    errors.push(`series targets are missing from the active intake directory: ${missingActiveTargets.join(", ")}`);
+  const invalidLifecycleTargets = targets.filter((target) =>
+    target.path?.includes("/backlog/") ||
+    (target.path?.includes("/archive/") && target.status !== "Completed"));
+  if (invalidLifecycleTargets.length > 0) {
+    errors.push(`archive or backlog target has an executable lifecycle: ${invalidLifecycleTargets.map((target) => target.path).join(", ")}`);
   }
 
   const reviewedTargets = new Set((review.targets ?? []).map((target) => target.path));
@@ -85,6 +87,27 @@ export function validate(options = {}) {
       return [];
     }
   });
+  for (const receipt of receipts) {
+    const receiptTarget = receipt.value.target?.path;
+    const physicalReceiptTarget = receiptTarget?.startsWith("requirements/intakes/active/")
+      ? path.join(activeRoot, path.basename(receiptTarget))
+      : receiptTarget ? resolve(receiptTarget) : "";
+    if (!receiptTarget || fs.existsSync(physicalReceiptTarget)) continue;
+
+    const receiptHash = receipt.value.target?.normalizedSha256;
+    const originalStem = path.parse(receiptTarget).name;
+    const completedArchiveMatches = targets.filter((target) =>
+      target.status === "Completed" &&
+      target.path?.startsWith("requirements/intakes/archive/") &&
+      path.basename(target.path).startsWith(`${originalStem}.`) &&
+      target.normalizedSha256 === receiptHash &&
+      fs.existsSync(resolve(target.path)) &&
+      digest(read(target.path)) === receiptHash);
+    if (receipt.value.series?.seriesId !== manifest.seriesId ||
+        completedArchiveMatches.length !== 1) {
+      errors.push(`missing authoring receipt target lacks one completed archive successor: ${receiptTarget}`);
+    }
+  }
   for (const pendingPath of expectedActive.filter((candidate) => !targetSet.has(candidate))) {
     const matchingReceipts = receipts.filter((receipt) => receipt.value.target?.path === pendingPath);
     if (matchingReceipts.length !== 1) {
@@ -112,9 +135,6 @@ export function validate(options = {}) {
       errors.push(`active intake outside the series must declare ReadyForReview: ${pendingPath}`);
     }
   }
-  if (targetPaths.some((target) => target.includes("/archive/") || target.includes("/backlog/"))) {
-    errors.push("archive or backlog target appears in executable series");
-  }
   for (const target of targets) {
     const fullPath = path.join(root, target.path ?? "");
     if (!target.path || !fs.existsSync(fullPath)) {
@@ -126,8 +146,8 @@ export function validate(options = {}) {
 
   const eligible = targets.filter((target) => target.status === "Eligible");
   if (eligible.length !== 1 ||
-      !eligible[0].path.endsWith("requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md")) {
-    errors.push("RL-SE checklist self-review must be the single explicitly Eligible target");
+      !eligible[0].path.endsWith("requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md")) {
+    errors.push("GSDB Spec Kit intensive review must be the single explicitly Eligible target");
   }
   const wave6Closure = targets.find((target) =>
     target.path.endsWith("requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md"));
@@ -153,7 +173,9 @@ export function validate(options = {}) {
   const sandboxHardening = targets.find((target) =>
     target.path.endsWith("requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md"));
   const rlSeReview = targets.find((target) =>
-    target.path.endsWith("requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md"));
+    target.path.endsWith("requirements/intakes/archive/Lastenheft_RL-SE-Checklist-Selbstpruefung.045-rl-se-checklist-self-review.md"));
+  const gsdbReview = targets.find((target) =>
+    target.path.endsWith("requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"));
   for (const [label, target] of [
     ["portfolio closure", portfolioClosure],
     ["constitution change", constitution],
@@ -170,8 +192,11 @@ export function validate(options = {}) {
   if (!sandboxHardening || sandboxHardening.status !== "Completed") {
     errors.push("sandbox security hardening must remain Completed");
   }
-  if (!rlSeReview || rlSeReview.status !== "Eligible") {
-    errors.push("RL-SE checklist self-review must remain Eligible");
+  if (!rlSeReview || rlSeReview.status !== "Completed") {
+    errors.push("RL-SE checklist self-review must remain Completed and archived");
+  }
+  if (!gsdbReview || gsdbReview.status !== "Eligible") {
+    errors.push("GSDB Spec Kit intensive review must remain Eligible");
   }
 
   const dependencies = manifest.dependencies ?? [];
@@ -237,13 +262,21 @@ export function validate(options = {}) {
       const spec = fs.readFileSync(path.join(physicalFeatureDirectory, "spec.md"), "utf8");
       const state = JSON.parse(fs.readFileSync(
         path.join(physicalFeatureDirectory, "autonomous-run-state.json"), "utf8"));
-      const bindingMatch = /^\*\*(?:Binding Intake|Input)\*\*:\s*`([^`]+)`/m.exec(spec);
+      const bindingMatch = /^\*\*(?:Binding Intake|Binding Input|Input)\*\*:\s*`([^`]+)`/m.exec(spec);
       const bindingPath = bindingMatch?.[1];
-      const bindingTarget = targets.find((target) => target.path === bindingPath);
-      const bindingReview = (review.targets ?? []).find((target) => target.path === bindingPath);
-      const bindingArtifact = (state.acceptedArtifacts ?? []).find((artifact) => artifact.path === bindingPath);
-      const bindingHash = bindingPath && fs.existsSync(resolve(bindingPath))
-        ? digest(read(bindingPath))
+      const bindingName = bindingPath ? path.parse(bindingPath).name : "";
+      const archivedBindingPath = bindingPath && state.status === "Completed"
+        ? `requirements/intakes/archive/${bindingName}.${state.branch}.md`
+        : "N/A";
+      const effectiveBindingPath = bindingPath && fs.existsSync(resolve(bindingPath))
+        ? bindingPath
+        : archivedBindingPath;
+      const bindingTarget = targets.find((target) => target.path === effectiveBindingPath);
+      const bindingReview = (review.targets ?? []).find((target) => target.path === effectiveBindingPath);
+      const bindingArtifact = (state.acceptedArtifacts ?? []).find((artifact) =>
+        artifact.path === effectiveBindingPath);
+      const bindingHash = effectiveBindingPath !== "N/A" && fs.existsSync(resolve(effectiveBindingPath))
+        ? digest(read(effectiveBindingPath))
         : "N/A";
       const lifecycleValid = bindingTarget?.status === "Eligible" ||
         (bindingTarget?.status === "Completed" &&
