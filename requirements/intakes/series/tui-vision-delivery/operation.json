@@ -1,15 +1,15 @@
 {
   "schemaVersion": "1.0",
   "documentType": "IntakeSeriesOperation",
-  "operationId": "25038b08-b3b8-4461-892d-08b75f9c6e11",
+  "operationId": "c898e27d-d547-4370-9203-dfc0003c465d",
   "seriesId": "a73dda7c-163b-4530-97f2-fd9eea5e8986",
   "type": "Update",
   "status": "Published",
-  "authorityEvidence": "Feature 044 MergeAndSync authority and causal closeout for the completed sandbox-security intake",
-  "proposalNormalizedSha256": "c2ffdd7e948a5b0f790acb244da1572ba25e29d0075b848016eb45019522fcd6",
+  "authorityEvidence": "Feature 045 MergeAndSync authority and causal closeout for the completed RL-SE checklist self-review",
+  "proposalNormalizedSha256": "0b203c3ef32f4269d88fd477d5e21c14337ac8827b55e862dc81923b5bc69e1e",
   "preparedPaths": [
-    "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/25038b08-b3b8-4461-892d-08b75f9c6e11/manifest.json",
-    "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/25038b08-b3b8-4461-892d-08b75f9c6e11/receipt.json",
+    "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/c898e27d-d547-4370-9203-dfc0003c465d/manifest.json",
+    "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/c898e27d-d547-4370-9203-dfc0003c465d/receipt.json",
     "requirements/intakes/series/tui-vision-delivery/manifest.json",
     "requirements/intakes/series/tui-vision-delivery/receipt.json",
     "requirements/intakes/series/tui-vision-delivery/order.md"
@@ -21,8 +21,8 @@
   "publication": {
     "status": "Published",
     "publishedPaths": [
-      "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/25038b08-b3b8-4461-892d-08b75f9c6e11/manifest.json",
-      "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/25038b08-b3b8-4461-892d-08b75f9c6e11/receipt.json",
+      "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/c898e27d-d547-4370-9203-dfc0003c465d/manifest.json",
+      "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/c898e27d-d547-4370-9203-dfc0003c465d/receipt.json",
       "requirements/intakes/series/tui-vision-delivery/manifest.json",
       "requirements/intakes/series/tui-vision-delivery/receipt.json",
       "requirements/intakes/series/tui-vision-delivery/order.md"

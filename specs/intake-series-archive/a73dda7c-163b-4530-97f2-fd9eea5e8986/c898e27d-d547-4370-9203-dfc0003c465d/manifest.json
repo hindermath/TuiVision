@@ -55,23 +55,23 @@
       "status": "Completed"
     },
     {
-      "path": "requirements/intakes/archive/Lastenheft_RL-SE-Checklist-Selbstpruefung.045-rl-se-checklist-self-review.md",
+      "path": "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
       "role": "OrderedMember",
       "normalizedSha256": "62fadb9f571f6c6e5fb81badd103f5ca5087c7219698fdec7be708196d6d6863",
-      "status": "Completed"
+      "status": "Eligible"
     },
     {
       "path": "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
       "role": "OrderedMember",
       "normalizedSha256": "97d31e6eac5c2e5defeae1dd29bc5c97ddb8ba43b75106768dfe4b703c6d802d",
-      "status": "Eligible"
+      "status": "Pending"
     }
   ],
   "roots": [
     "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
     "requirements/intakes/active/Lastenheft_Constitution_Change.md",
     "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
-    "requirements/intakes/archive/Lastenheft_RL-SE-Checklist-Selbstpruefung.045-rl-se-checklist-self-review.md",
+    "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
     "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"
   ],
   "dependencies": [
