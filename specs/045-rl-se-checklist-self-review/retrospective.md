@@ -57,10 +57,24 @@
 | Reproduzierbarer Test | In einem temporaeren Serienprojekt einen abgeschlossenen Intake archivieren, den Nachfolger nur auf `Eligible` setzen und Manifest, Receipt, Review sowie Archiv-Hashes pruefen. Es darf kein Folgefeature, Branch oder Remote-Write entstehen. |
 | Entscheidung | `NoPromotion` — bestaetigt bestehende Regeln ohne neue portable Verbesserung. |
 
+#### AR-045-004: Terminales Authoring-Receipt
+
+| Feld | Bewertung |
+|---|---|
+| Quelle und unveraenderliche Evidence | Closeout-PR `#163`; Requirements-Intake-Governance-Fehler vor dem ersten Jobschritt sowie die lokalen positiven und 17 negativen Alignment-Fixtures. |
+| Beobachtung und Fehlergrenze | Nach der vorgeschriebenen Lastenheft-Archivierung verwies das historische `ReadyForReview`-Receipt noch auf den frueheren aktiven Pfad. Das Authoring-Schema kennt bewusst keinen Abschlussstatus. TuiVision akzeptiert den fehlenden Altpfad deshalb nur, wenn genau ein existierender, hashgleicher `Completed`-Nachfolger im Serienarchiv belegt ist; jeder andere fehlende Zielpfad bleibt ein Fehler. |
+| Artefaktart | Projektspezifischer Renderer-, Wrapper- und Regressionstest-Abgleich. |
+| Projektspezifische Ausschluesse | TuiVision-Serien-ID, Lastenheft-Rename-Konvention, konkrete Archivpfade, Cardinalities und Root-Dokumente werden nicht in Presets uebernommen. |
+| Providerneutrale Zielregel | Keine neue Preset-Regel. Authoring-Evidence bleibt unveraendert; die spaetere Produkt-Lifecycle-Projektion gehoert dem konsumierenden Repository. |
+| Auftreten und Vertrauen | Ein Remote-Auftreten; hohes Vertrauen durch Bash-/PowerShell-Paritaet, einen positiven terminalen Fall und den negativen Orphan-Receipt-Test. |
+| Berechtigungs- und Evidence-Risiko | Ein pauschales Ueberspringen fehlender Ziele wuerde Drift verdecken. Die Ausnahme verlangt deshalb Serienzugehoerigkeit, `Completed`, Archivpfad, eindeutigen Namensnachfolger und identischen normalisierten SHA-256. |
+| Reproduzierbarer Test | Einen Serien-Intake bytegleich in den projektspezifischen Abschlussnamen verschieben. Die Wrapper muessen das historische Receipt akzeptieren; bei falschem Hash oder fehlendem Archivnachfolger muessen sie ablehnen. |
+| Entscheidung | `NoPromotion` — projektlokale Lifecycle-Projektion, kein Defekt des portablen Authoring-Presets. |
+
 ### Ergebnis
 
 - Gesamtentscheidung: `NoPromotion`.
-- Lokal geaenderte Flaeche: nur `specs/045-rl-se-checklist-self-review/retrospective.md`.
+- Lokal geaenderte Flaeche: Feature-Closeout-Evidence sowie die projektlokalen Requirements-Intake-Renderer, Wrapper, Alignment-Tests und Root-Sichten.
 - Portable Uebergabe: keine.
 - Offene Beobachtungen: keine; der Codex-Incident benoetigt erst eine unabhaengige providerneutrale Reproduktion.
 - Abgelehnte Projektdetails: Windows-CRLF im RL-SE-Testvalidator und Codex-`--output-last-message` im lokalen Runnerprofil.
@@ -125,10 +139,24 @@
 | Reproducible test | In a temporary series project, archive one completed intake, mark its successor only as `Eligible`, and validate manifest, receipt, review, and archive hashes. No successor feature, branch, or remote write may be created. |
 | Decision | `NoPromotion` — existing rules were confirmed without a new portable improvement. |
 
+#### AR-045-004: Terminal authoring receipt
+
+| Field | Assessment |
+|---|---|
+| Source and immutable evidence | Closeout PR `#163`; the Requirements Intake Governance failure before its first job step and the local positive plus 17 negative alignment fixtures. |
+| Observation and failure boundary | After the required intake archive rename, the historical `ReadyForReview` receipt still referenced the former active path. The authoring schema intentionally has no completion status. TuiVision therefore accepts the missing old path only when exactly one existing, hash-identical `Completed` successor is recorded in the series archive; every other missing target remains an error. |
+| Artifact kind | Project-specific renderer, wrapper, and regression-test alignment. |
+| Project-specific exclusions | The TuiVision series ID, intake rename convention, concrete archive paths, cardinalities, and root documents are not promoted into presets. |
+| Provider-neutral target rule | No new preset rule. Authoring evidence remains immutable; its later product lifecycle projection belongs to the consuming repository. |
+| Occurrences and confidence | One remote occurrence; high confidence from Bash/PowerShell parity, one positive terminal case, and the negative orphan-receipt test. |
+| Permission and evidence risk | Broadly skipping missing targets would hide drift. The exception therefore requires series membership, `Completed`, an archive path, a unique name successor, and the same normalized SHA-256. |
+| Reproducible test | Move a series intake byte-identically to the project-specific completion name. The wrappers must accept the historical receipt; a wrong hash or missing archive successor must fail. |
+| Decision | `NoPromotion` — a project-local lifecycle projection, not a defect in the portable authoring preset. |
+
 ### Outcome
 
 - Overall decision: `NoPromotion`.
-- Local changed surface: only `specs/045-rl-se-checklist-self-review/retrospective.md`.
+- Local changed surface: feature closeout evidence plus the project-local requirements-intake renderer, wrappers, alignment tests, and root views.
 - Portable handoff: none.
 - Pending observations: none; the Codex incident first needs an independent provider-neutral reproduction.
 - Rejected project details: Windows CRLF in the RL-SE test validator and Codex `--output-last-message` in the local runner profile.

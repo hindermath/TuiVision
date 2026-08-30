@@ -10,8 +10,8 @@ is generated from the series manifest and is not maintained independently.*
 
 ## Bevorzugter nächster Intake / Preferred Next Intake
 
-1. `requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md`
-   - unabhängige Governance-Selbstprüfung nach dem Sandbox-Abschluss
+1. `requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md`
+   - unabhängige Governance-Intensivprüfung nach dem RL-SE-Abschluss
    - Status: `Eligible`
    - startet nicht automatisch
 
@@ -57,12 +57,17 @@ is generated from the series manifest and is not maintained independently.*
    - Status: `Completed`
    - dokumentiert die bedingte Sandbox-Anwendbarkeit und ihre Sicherheitsgrenzen
 
+10. `requirements/intakes/archive/Lastenheft_RL-SE-Checklist-Selbstpruefung.045-rl-se-checklist-self-review.md`
+   - geliefert durch Feature `045-rl-se-checklist-self-review` und PR `#162`
+   - Status: `Completed`
+   - dokumentiert die unabhängige 157-Control-Selbstprüfung
+
 ## Weitere unabhängige aktive Intakes / Other Independent Active Intakes
 
-10. `requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md`
+Keine weiteren ausführbaren Intakes sind derzeit freigegeben.
 
 Die Sicherheits- und Governance-Intakes bleiben unabhängige Wurzeln. Die
-Reihenfolge der RL-SE-Selbstprüfung ist eine Auswahlentscheidung und keine
+Reihenfolge der GSDB-Intensivprüfung ist eine Auswahlentscheidung und keine
 neu erfundene harte Produktabhängigkeit.
 
 ## Nicht ausführbarer Backlog / Non-Executable Backlog
@@ -80,5 +85,5 @@ $speckit-intake-series-status
 $speckit-intake-series-next
 ```
 
-Die RL-SE-Checklist-Selbstprüfung ist nur als nächster Intake freigegeben;
+Die GSDB-Spec-Kit-Intensivprüfung ist nur als nächster Intake freigegeben;
 kein Specify-, Implementierungs- oder Remote-Schritt wird implizit autorisiert.

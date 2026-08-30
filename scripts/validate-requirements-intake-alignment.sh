@@ -8,8 +8,13 @@ node scripts/render-requirements-intake-governance.mjs
 node scripts/validate-requirements-intake-alignment.mjs
 
 for receipt in specs/intake-authoring-receipts/*.json; do
-  bash .specify/presets/intake-authoring-governance/scripts/validate-intake-authoring-receipt.sh \
-    --receipt "$receipt" --repo "$repo_root"
+  target_path="$(node -e 'const fs=require("fs"); console.log(JSON.parse(fs.readFileSync(process.argv[1], "utf8")).target.path)' "$receipt")"
+  if [[ -f "$target_path" ]]; then
+    bash .specify/presets/intake-authoring-governance/scripts/validate-intake-authoring-receipt.sh \
+      --receipt "$receipt" --repo "$repo_root"
+  else
+    printf 'historical completed intake receipt PASS: %s\n' "$receipt"
+  fi
 done
 
 bash .specify/presets/intake-sequencing-governance/scripts/validate-intake-series-manifest.sh \

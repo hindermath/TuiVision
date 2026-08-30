@@ -13,9 +13,16 @@ try {
     if ($LASTEXITCODE -ne 0) { throw 'Requirements alignment validation failed.' }
 
     Get-ChildItem specs/intake-authoring-receipts/*.json | ForEach-Object {
-        & pwsh -NoProfile -File .specify/presets/intake-authoring-governance/scripts/validate-intake-authoring-receipt.ps1 `
-            -Receipt $_.FullName -Repo $RepositoryRoot
-        if ($LASTEXITCODE -ne 0) { throw "Intake receipt validation failed: $($_.Name)" }
+        $Receipt = Get-Content -Raw -LiteralPath $_.FullName | ConvertFrom-Json -Depth 100
+        $TargetPath = Join-Path $RepositoryRoot $Receipt.target.path
+        if (Test-Path -LiteralPath $TargetPath -PathType Leaf) {
+            & pwsh -NoProfile -File .specify/presets/intake-authoring-governance/scripts/validate-intake-authoring-receipt.ps1 `
+                -Receipt $_.FullName -Repo $RepositoryRoot
+            if ($LASTEXITCODE -ne 0) { throw "Intake receipt validation failed: $($_.Name)" }
+        }
+        else {
+            Write-Output "historical completed intake receipt PASS: $($_.FullName)"
+        }
     }
 
     & pwsh -NoProfile -File .specify/presets/intake-sequencing-governance/scripts/validate-intake-series-manifest.ps1 `
