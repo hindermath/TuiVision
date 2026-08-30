@@ -61,10 +61,10 @@
       "status": "Completed"
     },
     {
-      "path": "requirements/intakes/archive/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.046-gsdb-spec-kit-intensive-review.md",
+      "path": "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
       "role": "OrderedMember",
       "normalizedSha256": "97d31e6eac5c2e5defeae1dd29bc5c97ddb8ba43b75106768dfe4b703c6d802d",
-      "status": "Completed"
+      "status": "Eligible"
     }
   ],
   "roots": [
@@ -72,7 +72,7 @@
     "requirements/intakes/active/Lastenheft_Constitution_Change.md",
     "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
     "requirements/intakes/archive/Lastenheft_RL-SE-Checklist-Selbstpruefung.045-rl-se-checklist-self-review.md",
-    "requirements/intakes/archive/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.046-gsdb-spec-kit-intensive-review.md"
+    "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"
   ],
   "dependencies": [
     {

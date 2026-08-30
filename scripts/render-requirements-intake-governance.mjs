@@ -9,23 +9,23 @@ const root = process.cwd();
 const write = process.argv.includes("--write");
 const seriesRoot = "requirements/intakes/series/tui-vision-delivery";
 const seriesId = "a73dda7c-163b-4530-97f2-fd9eea5e8986";
-const seriesReceiptId = "0a122bc8-1598-494c-a867-647edc2efab7";
-const seriesOperationId = "c898e27d-d547-4370-9203-dfc0003c465d";
-const reviewId = "67d89984-7536-4bab-bc51-02ef8d1edec4";
+const seriesReceiptId = "bb9906d5-6c9a-43ba-b106-80ce04c4f4de";
+const seriesOperationId = "53e7f05c-68f9-4f79-95be-4534f08b63fd";
+const reviewId = "88579ec8-e830-4a07-8c29-d6035dcb4782";
 const migrationProposal = "specs/requirements-reconciliation-20260726/migration-proposal.json";
 const createdAt = "2026-07-26T20:00:00Z";
-const seriesUpdatedAt = "2026-08-30T11:30:14Z";
+const seriesUpdatedAt = "2026-08-30T16:19:20Z";
 const archiveRoot =
   `specs/intake-series-archive/${seriesId}/${seriesOperationId}`;
-const priorManifestHash = "c2ffdd7e948a5b0f790acb244da1572ba25e29d0075b848016eb45019522fcd6";
-const priorReceiptHash = "fd79bb8a96214616c3aae057c8a95735126e14e589f54f11686a267fe6ef9e4b";
+const priorManifestHash = "0b203c3ef32f4269d88fd477d5e21c14337ac8827b55e862dc81923b5bc69e1e";
+const priorReceiptHash = "fe789c56d36bbc9772baa824c64823786bb2ead4acb6ee3899941cf00257c893";
 
 const normalize = (value) => value.replace(/^\uFEFF/, "").replace(/\r\n?/g, "\n");
 const hashText = (value) => crypto.createHash("sha256").update(normalize(value)).digest("hex");
 const hashFile = (relativePath) => hashText(fs.readFileSync(path.join(root, relativePath), "utf8"));
 const readJson = (relativePath) => JSON.parse(fs.readFileSync(path.join(root, relativePath), "utf8"));
 const json = (value) => JSON.stringify(value, null, 2) + "\n";
-const reviewHead = "490581ab182fcfc87f1541b48af97c48e0acb7be";
+const reviewHead = "fe1f57c201c84fb3f81d746a6ca3d8977c9f1edb";
 
 const members = [
   {
@@ -84,9 +84,9 @@ const members = [
   },
   {
     slug: "gsdb-spec-kit-intensivpruefung",
-    path: "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+    path: "requirements/intakes/archive/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.046-gsdb-spec-kit-intensive-review.md",
     role: "OrderedMember",
-    status: "Eligible",
+    status: "Completed",
   },
 ];
 
@@ -267,7 +267,7 @@ const seriesReceipt = {
   operation: {
     operationId: seriesOperationId,
     type: "Update",
-    authorityEvidence: "Feature 045 MergeAndSync authority and causal closeout for the completed RL-SE checklist self-review",
+    authorityEvidence: "Feature 046 MergeAndSync authority and causal closeout for the completed GSDB Spec Kit intensive review",
   },
   status: "Ready",
   manifest: {path: manifestPath, normalizedSha256: manifestHash},
@@ -288,7 +288,7 @@ const operation = {
   seriesId,
   type: "Update",
   status: "Published",
-  authorityEvidence: "Feature 045 MergeAndSync authority and causal closeout for the completed RL-SE checklist self-review",
+  authorityEvidence: "Feature 046 MergeAndSync authority and causal closeout for the completed GSDB Spec Kit intensive review",
   proposalNormalizedSha256: manifestHash,
   preparedPaths: [
     `${archiveRoot}/manifest.json`,
@@ -354,28 +354,28 @@ const result = {
     workers: [],
   },
   summary: {critical: 0, high: 0, medium: 0, low: 0},
-  supersedes: "5e9620e8-9c49-44f9-84a3-fd3aa659facc",
+  supersedes: "67d89984-7536-4bab-bc51-02ef8d1edec4",
 };
 
-const report = `# Intake-Serienreview: TuiVision Delivery nach RL-SE-Abschluss
+const report = `# Intake-Serienreview: TuiVision Delivery nach GSDB-Abschluss
 
 ## Ergebnis / Result
 
 Status: \`Ready\`
 
-Alle zehn Serien-Intakes, ihre aktuellen Hashes, Receipt-Lineage, fünf Wurzeln
-und sechs azyklischen Abhängigkeiten wurden geprüft. Die
-RL-SE-Checklist-Selbstprüfung ist durch Feature 045 abgeschlossen. Die
-unabhängige GSDB-Spec-Kit-Intensivprüfung ist als einziger Eintrag \`Eligible\`;
-kein Folgefeature wird durch diesen Review gestartet.
+Alle zehn Serien-Intakes, aktuellen Hashes, Receipt-Lineage, fünf Wurzeln und
+sechs azyklischen Abhängigkeiten wurden erneut geprüft. Die
+GSDB-Spec-Kit-Intensivprüfung ist durch Feature 046 und PR #164 abgeschlossen.
+Es gibt keinen weiteren \`Eligible\`-Eintrag; dieser Review startet keinen neuen
+Feature-Lauf.
 
 *All ten series intakes, current hashes, receipt lineage, five roots, and six
-acyclic dependencies were reviewed. The RL-SE checklist self-review is
-complete through Feature 045. The independent GSDB Spec Kit intensive review
-is the only \`Eligible\` entry; this review starts no follow-up feature.*
+acyclic dependencies were re-reviewed. The GSDB Spec Kit intensive review is
+complete through Feature 046 and PR #164. No further entry is \`Eligible\`;
+this review starts no new feature run.*
 
-Es bestehen keine offenen Review-Findings. Der optionale NuGet-Backlog ist
-nicht Teil der ausführbaren Serie.
+Es bestehen keine offenen Review-Findings. Der optionale NuGet-Backlog bleibt
+nicht ausführbar und ist nicht Teil der Serie.
 `;
 
 const orderDocument = normalize(

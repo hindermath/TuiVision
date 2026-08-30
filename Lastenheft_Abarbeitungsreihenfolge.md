@@ -1,89 +1,44 @@
 # Lastenheft-Abarbeitungsreihenfolge / Requirements Processing Order
 
-Diese Datei ist die menschenlesbare Root-Ansicht der kanonischen
-Intake-Serie. Sie wird aus
-`requirements/intakes/series/tui-vision-delivery/manifest.json` erzeugt und
-nicht unabhängig bearbeitet.
+Diese Datei ist die menschenlesbare Root-Ansicht der kanonischen Intake-Serie. Sie wird aus `requirements/intakes/series/tui-vision-delivery/manifest.json` abgeleitet und nicht unabhängig gepflegt.
 
-*This file is the human-readable root view of the canonical intake series. It
-is generated from the series manifest and is not maintained independently.*
+*This file is the human-readable root view of the canonical intake series. It is derived from `requirements/intakes/series/tui-vision-delivery/manifest.json` and is not maintained independently.*
 
-## Bevorzugter nächster Intake / Preferred Next Intake
+## Serienstatus / Series Status
 
-1. `requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md`
-   - unabhängige Governance-Intensivprüfung nach dem RL-SE-Abschluss
-   - Status: `Eligible`
-   - startet nicht automatisch
+Alle zehn Einträge sind `Completed`. Es gibt derzeit keinen `Eligible`-Intake und keinen implizit autorisierten nächsten Feature-Lauf.
 
-## Abgeschlossene harte Voraussetzung / Completed Hard Prerequisite
+*All ten entries are `Completed`. There is currently no `Eligible` intake and no implicitly authorized next feature run.*
+
+## Zuletzt abgeschlossen / Most Recently Completed
+
+1. `requirements/intakes/archive/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.046-gsdb-spec-kit-intensive-review.md`
+   - geliefert durch Feature `046-gsdb-spec-kit-intensive-review` und PR `#164`
+   - Status: `Completed`
+   - unabhängige GSDB-Intensivprüfung ohne Produktänderung
+
+## Weitere abgeschlossene Einträge / Other Completed Entries
 
 2. `requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md`
-   - geliefert durch Feature `037-wave6-combined-delta-closure` und PR `#139`
-   - Status: `Completed`
-   - erfüllt die harte Voraussetzung des Portfolioaudits
-
 3. `requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md`
-   - geliefert durch Feature `038-example-portfolio-conformance-audit` und PR `#144`
-   - Status: `Completed`
-   - erfüllt die harte Voraussetzung des unabhängigen Portfolio-Closures
-
 4. `requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md`
-   - unabhängig als `PortfolioConformantAndLearningReady` abgeschlossen
-   - Status: `Completed`
-   - erfüllt die Produktvoraussetzung der späteren Formtransaktion
-
 5. `requirements/intakes/active/Lastenheft_Constitution_Change.md`
-   - CC-01 bis CC-07 als vollständig `AlreadySatisfied` revalidiert
-   - Status: `Completed`
-   - gemeinsame Schreibflächen für die Quellenpolicy sind freigegeben
-
 6. `requirements/intakes/active/Lastenheft_Source-Reference-Policy.md`
-   - durch Feature `041-source-reference-policy` lokal vollständig geliefert
-   - Status: `Completed`
-   - harte Policy-Voraussetzung des Transactional Form Model ist erfüllt
-
 7. `requirements/intakes/active/Lastenheft_Transactional-Form-Model.md`
-   - Issue #154 und die genehmigten Phasen 1 bis 4 sind durch Feature
-     `042-transactional-form-model` lokal vollständig geliefert
-   - Status: `Completed`
-
 8. `requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md`
-   - geliefert durch Feature `043-documentation-publishing-closure` und PR `#157`
-   - Status: `Completed`
-   - schließt Guides, Publishing-Nachweis und Dokumentations-Reconciliation
-
 9. `requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md`
-   - geliefert durch Feature `044-sandbox-secure-development-hardening` und PR `#159`
-   - Status: `Completed`
-   - dokumentiert die bedingte Sandbox-Anwendbarkeit und ihre Sicherheitsgrenzen
-
 10. `requirements/intakes/archive/Lastenheft_RL-SE-Checklist-Selbstpruefung.045-rl-se-checklist-self-review.md`
-   - geliefert durch Feature `045-rl-se-checklist-self-review` und PR `#162`
-   - Status: `Completed`
-   - dokumentiert die unabhängige 157-Control-Selbstprüfung
 
-## Weitere unabhängige aktive Intakes / Other Independent Active Intakes
+Die übrigen neun Einträge bleiben mit unveränderten Hashes, Rollen, Wurzeln
+und Abhängigkeiten im kanonischen Manifest dokumentiert.
 
-Keine weiteren ausführbaren Intakes sind derzeit freigegeben.
-
-Die Sicherheits- und Governance-Intakes bleiben unabhängige Wurzeln. Die
-Reihenfolge der GSDB-Intensivprüfung ist eine Auswahlentscheidung und keine
-neu erfundene harte Produktabhängigkeit.
+*The other nine entries remain documented in the canonical manifest with
+unchanged hashes, roles, roots, and dependencies.*
 
 ## Nicht ausführbarer Backlog / Non-Executable Backlog
 
-`requirements/intakes/backlog/Lastenheft_Optional-NuGet-Package.md` besitzt
-den Lifecycle `DeferredOptional`. Er wird von `next` nicht angeboten und
-blockiert keinen aktiven Intake.
+`requirements/intakes/backlog/Lastenheft_Optional-NuGet-Package.md` besitzt den Lifecycle `DeferredOptional`. Er wird von `next` nicht angeboten und blockiert keinen aktiven Intake.
 
 ## Nächste Aktion / Next Action
 
-Vor einem Feature-Start:
-
-```text
-$speckit-intake-series-status
-$speckit-intake-series-next
-```
-
-Die GSDB-Spec-Kit-Intensivprüfung ist nur als nächster Intake freigegeben;
-kein Specify-, Implementierungs- oder Remote-Schritt wird implizit autorisiert.
+`$speckit-intake-series-status` und `$speckit-intake-series-next` dürfen den Zustand ausschließlich read-only prüfen. Es wird kein neues Feature gestartet.

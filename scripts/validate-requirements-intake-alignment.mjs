@@ -55,7 +55,7 @@ export function validate(options = {}) {
   const active = fs.readdirSync(activeRoot).filter((name) => name.endsWith(".md")).sort();
   const archived = fs.readdirSync(archiveRoot).filter((name) => name.endsWith(".md")).sort();
   const rootLastenhefte = fs.readdirSync(root).filter((name) => /^Lastenheft.*\.md$/.test(name));
-  if (archived.length !== 29) errors.push(`expected 29 archived intakes, found ${archived.length}`);
+  if (archived.length !== 30) errors.push(`expected 30 archived intakes, found ${archived.length}`);
   if (rootLastenhefte.join(",") !== "Lastenheft_Abarbeitungsreihenfolge.md") {
     errors.push("only the generated processing-order view may remain as root Lastenheft");
   }
@@ -145,9 +145,8 @@ export function validate(options = {}) {
   }
 
   const eligible = targets.filter((target) => target.status === "Eligible");
-  if (eligible.length !== 1 ||
-      !eligible[0].path.endsWith("requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md")) {
-    errors.push("GSDB Spec Kit intensive review must be the single explicitly Eligible target");
+  if (eligible.length !== 0) {
+    errors.push("completed delivery series must not expose an Eligible target");
   }
   const wave6Closure = targets.find((target) =>
     target.path.endsWith("requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md"));
@@ -175,7 +174,7 @@ export function validate(options = {}) {
   const rlSeReview = targets.find((target) =>
     target.path.endsWith("requirements/intakes/archive/Lastenheft_RL-SE-Checklist-Selbstpruefung.045-rl-se-checklist-self-review.md"));
   const gsdbReview = targets.find((target) =>
-    target.path.endsWith("requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"));
+    target.path.endsWith("requirements/intakes/archive/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.046-gsdb-spec-kit-intensive-review.md"));
   for (const [label, target] of [
     ["portfolio closure", portfolioClosure],
     ["constitution change", constitution],
@@ -195,8 +194,8 @@ export function validate(options = {}) {
   if (!rlSeReview || rlSeReview.status !== "Completed") {
     errors.push("RL-SE checklist self-review must remain Completed and archived");
   }
-  if (!gsdbReview || gsdbReview.status !== "Eligible") {
-    errors.push("GSDB Spec Kit intensive review must remain Eligible");
+  if (!gsdbReview || gsdbReview.status !== "Completed") {
+    errors.push("GSDB Spec Kit intensive review must remain Completed and archived");
   }
 
   const dependencies = manifest.dependencies ?? [];
