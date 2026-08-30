@@ -48,6 +48,19 @@ public sealed class RlSeSelfReviewEvidenceTests
     }
 
     /// <summary>
+    /// Deutsch: Beweist identische Evidence-Hashes fuer LF- und CRLF-Checkouts.
+    /// English: Proves identical evidence hashes for LF and CRLF checkouts.
+    /// </summary>
+    [TestMethod]
+    public void Test_EvidenceHashIsLineEndingNeutral()
+    {
+        const string lf = "Zeile 1\nLine 2\n";
+        const string crlf = "Zeile 1\r\nLine 2\r\n";
+
+        Assert.AreEqual(CanonicalTextSha256(lf), CanonicalTextSha256(crlf));
+    }
+
+    /// <summary>
     /// Deutsch: Prueft den jeweils kumulativ abgeschlossenen Kapitelentwurf.
     /// English: Validates the cumulatively completed chapter draft.
     /// </summary>
@@ -224,7 +237,7 @@ public sealed class RlSeSelfReviewEvidenceTests
             string sha = RequiredString(item, "sha256", "RLSE007");
             Require(Regex.IsMatch(sha, "^[0-9a-f]{64}$", RegexOptions.CultureInvariant), "RLSE007", "SHA-256");
             Require(File.Exists(Path.Combine(RepositoryRoot(), relativePath)), "RLSE007", "Evidence-Pfad fehlt / path missing");
-            Require(string.Equals(sha, Sha256(Path.Combine(RepositoryRoot(), relativePath)), StringComparison.Ordinal),
+            Require(string.Equals(sha, RepositoryTextSha256(Path.Combine(RepositoryRoot(), relativePath)), StringComparison.Ordinal),
                 "RLSE007", "Evidence-Hash ist veraltet / stale hash");
             Require(RequiredString(item, "freshness", "RLSE007") is "Current" or "Stale" or "Unverifiable" or "NotApplicable",
                 "RLSE007", "Freshness");
@@ -416,6 +429,17 @@ public sealed class RlSeSelfReviewEvidenceTests
     }
 
     private static string ReadRepositoryFile(string relativePath) => File.ReadAllText(Path.Combine(RepositoryRoot(), relativePath));
+
+    private static string RepositoryTextSha256(string fullPath) => CanonicalTextSha256(File.ReadAllText(fullPath));
+
+    private static string CanonicalTextSha256(string content)
+    {
+        // Git darf Text runnerabhaengig als CRLF auschecken; die Evidence bindet kanonisches LF.
+        // Git may check out text as CRLF per runner; evidence binds canonical LF content.
+        string canonical = content.Replace("\r\n", "\n", StringComparison.Ordinal)
+            .Replace("\r", "\n", StringComparison.Ordinal);
+        return Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(canonical))).ToLowerInvariant();
+    }
 
     private static string Sha256(string fullPath) => Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(fullPath))).ToLowerInvariant();
 

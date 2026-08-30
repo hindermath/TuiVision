@@ -27,7 +27,7 @@ Human-only and external-only decisions remain with the named authorised roles.
 | Gate | Status | Evidence / Proof boundary |
 |---|---|---|
 | Accepted input and run state | Passed | T002 and resume revalidation: manifest, receipt, Ready review, and run-state validators exited 0 |
-| Release tests, coverage, and RL-SE validator | Passed | T091 passed 2/2; host T111 passed 969/969 with all five Pflichtassemblies above 70 percent |
+| Release tests, coverage, and RL-SE validator | Passed | T091 passed 2/2; corrected T121 rerun passed 970/970 with all five Pflichtassemblies above 70 percent |
 | Formatting | Passed | `dotnet format --verify-no-changes` exit 0 after bounded test-only whitespace fix |
 | Supply-chain outdated review | Reviewed | Current MSTest/transitive currency findings; no mutation |
 | Supply-chain vulnerable | Passed | Exit 0; no vulnerable direct/transitive package reported |
@@ -373,3 +373,25 @@ Erhoehung auf den entstehenden 814. Branch-Commit ausgerichtet:
 T114 Index: Exakt dieselben 49 Pfade wurden gestagt. `git diff --cached
 --check` bestand ohne Ausgabe; Status und Staged-Inventar stimmen ueberein.
 `.specify/runtime/` blieb als einzige untracked, nicht gestagte Flaeche erhalten.
+
+### T121 – Windows-Zeilenendungsbefund
+
+PR #162 meldete auf dem aktuellen Head `c5164d8` ausschließlich im Windows-
+CI-Lauf drei `RLSE007`-Fehler. Ubuntu, macOS und die übrigen Windows-Tests
+waren gruen. Ursache war die rohe Byte-Hashpruefung fuer getrackte Text-
+Evidence, deren Checkout unter Windows CRLF verwendet. Der test-only Validator
+nutzt nun das vorhandene kanonische LF-Hashmuster und besitzt den expliziten
+Regressionstest `Test_EvidenceHashIsLineEndingNeutral`; Produkt- und
+Governance-Code blieben unveraendert.
+
+Vor dem einzigen erneuten vollständigen Gate wurde der Build-Counter auf 479
+und der erwartete Korrektur-Commit auf `1.45.815.479` ausgerichtet.
+`dotnet format --verify-no-changes` bestand. Der exakte Release-/Coverlet-
+Solutionlauf bestand anschließend 970/970 Tests. Coverage blieb bei Core 92,96,
+Controls 86,95, Serialization 90,47, Compatibility 80,55 und Drivers.Console
+89,18 Prozent. Die neuen Cobertura-Run-IDs sind
+`be0e7b65-6a01-46c5-ace1-92c082b7fceb`,
+`7a9bcba7-35cb-4b29-a0ef-d3bd4e7bc0b3`,
+`5ff0d38a-cb05-4d19-940f-266f987023d4`,
+`1f239027-b7f5-4a2d-8524-2ab7e73cc7e2` und
+`02ed6f78-88be-4717-a0c7-6cf80eac0b0a`.
