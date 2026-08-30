@@ -1,17 +1,17 @@
 {
   "schemaVersion": "1.1",
-  "reviewId": "67d89984-7536-4bab-bc51-02ef8d1edec4",
+  "reviewId": "88579ec8-e830-4a07-8c29-d6035dcb4782",
   "mode": "Series",
   "status": "Ready",
   "policy": "tui-vision-lastenheft",
-  "reviewedAt": "2026-08-30T11:30:14Z",
+  "reviewedAt": "2026-08-30T16:19:20Z",
   "repository": {
     "root": ".",
-    "head": "490581ab182fcfc87f1541b48af97c48e0acb7be"
+    "head": "fe1f57c201c84fb3f81d746a6ca3d8977c9f1edb"
   },
   "requestEvidence": {
     "path": "requirements/intakes/series/tui-vision-delivery/intake-review-request.json",
-    "normalizedSha256": "2c7eff19e3e3b3d8bcd3582e62a7d8346916352756c96ad52a41465ed6728809"
+    "normalizedSha256": "f2a38d785c16953ce010cdb9cd8cb1f8987b0f7e92f47886cc2c3fd64d9b663b"
   },
   "targets": [
     {
@@ -69,7 +69,7 @@
       "gitBlob": "N/A"
     },
     {
-      "path": "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+      "path": "requirements/intakes/archive/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.046-gsdb-spec-kit-intensive-review.md",
       "role": "OrderedMember",
       "normalizedSha256": "97d31e6eac5c2e5defeae1dd29bc5c97ddb8ba43b75106768dfe4b703c6d802d",
       "gitBlob": "N/A"
@@ -90,7 +90,7 @@
       "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
       "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
       "requirements/intakes/archive/Lastenheft_RL-SE-Checklist-Selbstpruefung.045-rl-se-checklist-self-review.md",
-      "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"
+      "requirements/intakes/archive/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.046-gsdb-spec-kit-intensive-review.md"
     ],
     "series": [
       "requirements/intakes/series/tui-vision-delivery/manifest.json"
@@ -103,5 +103,5 @@
     "medium": 0,
     "low": 0
   },
-  "supersedes": "5e9620e8-9c49-44f9-84a3-fd3aa659facc"
+  "supersedes": "67d89984-7536-4bab-bc51-02ef8d1edec4"
 }

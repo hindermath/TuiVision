@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.1",
-  "reviewId": "67d89984-7536-4bab-bc51-02ef8d1edec4",
+  "reviewId": "88579ec8-e830-4a07-8c29-d6035dcb4782",
   "mode": "Series",
   "policy": "tui-vision-lastenheft",
   "targets": [
@@ -41,7 +41,7 @@
       "role": "OrderedMember"
     },
     {
-      "path": "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+      "path": "requirements/intakes/archive/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.046-gsdb-spec-kit-intensive-review.md",
       "role": "OrderedMember"
     }
   ],
@@ -56,14 +56,14 @@
       "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
       "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
       "requirements/intakes/archive/Lastenheft_RL-SE-Checklist-Selbstpruefung.045-rl-se-checklist-self-review.md",
-      "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"
+      "requirements/intakes/archive/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.046-gsdb-spec-kit-intensive-review.md"
     ],
     "roots": [
       "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
       "requirements/intakes/active/Lastenheft_Constitution_Change.md",
       "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
       "requirements/intakes/archive/Lastenheft_RL-SE-Checklist-Selbstpruefung.045-rl-se-checklist-self-review.md",
-      "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"
+      "requirements/intakes/archive/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.046-gsdb-spec-kit-intensive-review.md"
     ],
     "dependencies": [
       {

@@ -1,28 +1,28 @@
 {
   "schemaVersion": "1.0",
   "documentType": "IntakeSeriesReceipt",
-  "receiptId": "0a122bc8-1598-494c-a867-647edc2efab7",
+  "receiptId": "bb9906d5-6c9a-43ba-b106-80ce04c4f4de",
   "seriesId": "a73dda7c-163b-4530-97f2-fd9eea5e8986",
   "generator": {
     "preset": "intake-sequencing-governance",
     "version": "0.2.3"
   },
-  "createdAt": "2026-08-30T11:30:14Z",
+  "createdAt": "2026-08-30T16:19:20Z",
   "operation": {
-    "operationId": "c898e27d-d547-4370-9203-dfc0003c465d",
+    "operationId": "53e7f05c-68f9-4f79-95be-4534f08b63fd",
     "type": "Update",
-    "authorityEvidence": "Feature 045 MergeAndSync authority and causal closeout for the completed RL-SE checklist self-review"
+    "authorityEvidence": "Feature 046 MergeAndSync authority and causal closeout for the completed GSDB Spec Kit intensive review"
   },
   "status": "Ready",
   "manifest": {
     "path": "requirements/intakes/series/tui-vision-delivery/manifest.json",
-    "normalizedSha256": "0b203c3ef32f4269d88fd477d5e21c14337ac8827b55e862dc81923b5bc69e1e"
+    "normalizedSha256": "538d12fcc60cab96e5d70865a9ab9c31885634f3981e1c10dc2cd09d1ee2d2e7"
   },
   "supersedes": {
-    "receiptPath": "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/c898e27d-d547-4370-9203-dfc0003c465d/receipt.json",
-    "receiptNormalizedSha256": "fd79bb8a96214616c3aae057c8a95735126e14e589f54f11686a267fe6ef9e4b",
-    "manifestArchivePath": "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/c898e27d-d547-4370-9203-dfc0003c465d/manifest.json",
-    "manifestArchiveSha256": "c2ffdd7e948a5b0f790acb244da1572ba25e29d0075b848016eb45019522fcd6"
+    "receiptPath": "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/53e7f05c-68f9-4f79-95be-4534f08b63fd/receipt.json",
+    "receiptNormalizedSha256": "fe789c56d36bbc9772baa824c64823786bb2ead4acb6ee3899941cf00257c893",
+    "manifestArchivePath": "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/53e7f05c-68f9-4f79-95be-4534f08b63fd/manifest.json",
+    "manifestArchiveSha256": "0b203c3ef32f4269d88fd477d5e21c14337ac8827b55e862dc81923b5bc69e1e"
   },
   "tombstone": {
     "path": "N/A",
