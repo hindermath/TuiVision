@@ -1,0 +1,1 @@
+{"fixtureId":"invalid-duplicate-control-id","baseCase":"CompleteAudit","mutatedInvariant":"DuplicateControlId","expectedErrorCode":"RLSE003","expectedMessageFragment":"Deutsch: doppelte Kontroll-ID. English: duplicate control ID.","mustNotWrite":true}

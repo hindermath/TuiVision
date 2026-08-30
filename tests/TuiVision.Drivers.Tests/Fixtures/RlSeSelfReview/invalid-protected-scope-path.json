@@ -1,0 +1,1 @@
+{"fixtureId":"invalid-protected-scope-path","baseCase":"CompleteAudit","mutatedInvariant":"ProtectedScopePath","expectedErrorCode":"RLSE012","expectedMessageFragment":"Deutsch: geschuetzter Scope-Pfad. English: protected scope path.","mustNotWrite":true}

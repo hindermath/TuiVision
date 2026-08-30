@@ -1,0 +1,1 @@
+{"fixtureId":"invalid-preset-undercoverage","baseCase":"CompleteAudit","mutatedInvariant":"PresetUndercoverage","expectedErrorCode":"RLSE008","expectedMessageFragment":"Deutsch: Preset-Unterdeckung. English: preset undercoverage.","mustNotWrite":true}

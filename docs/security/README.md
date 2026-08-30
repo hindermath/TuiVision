@@ -1,7 +1,7 @@
 # Sicherheitsdokumentation / Security Documentation
 
 **Repository**: TuiVision (Level 2)
-**Stand / Current as of**: 2026-08-29
+**Stand / Current as of**: 2026-08-30
 **Owner**: TuiVision Maintainers
 **Review**: Features `016-secure-development-hardening` and `044-sandbox-secure-development-hardening`
 
@@ -36,6 +36,7 @@ and run details live in the matching `specs/<feature>/pr-evidence.md`.*
 | [regulatory-applicability.md](regulatory-applicability.md) | NIS2, CRA, EU AI Act, DORA, DPIA | Current |
 | [adr/README.md](adr/README.md) | Security-ADR-Index und Trigger / Security ADR index and trigger | Current |
 | [Sandbox-Anwendbarkeit](secure-development/2026-08-29-sandbox-applicability/README.md) | TuiVision-Mounts, CL-12, Toolchain und Proof-Grenzen / TuiVision mounts, CL-12, toolchain, and proof boundaries | `ConditionallyUsable` |
+| [RL-SE- und Checklist-Selbstpruefung](secure-development/2026-08-30-rl-se-checklist-self-review/README.md) | Nicht zertifizierender 157-Kontrollen-Audit mit Preset-, Governance- und Human-Grenzen / Non-certifying 157-control audit with preset, governance, and human boundaries | Validation pending |
 
 ## Evidenzregeln / Evidence Rules
 

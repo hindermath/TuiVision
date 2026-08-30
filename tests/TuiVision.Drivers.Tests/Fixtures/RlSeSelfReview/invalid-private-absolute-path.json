@@ -1,0 +1,1 @@
+{"fixtureId":"invalid-private-absolute-path","baseCase":"CompleteAudit","mutatedInvariant":"PrivateAbsolutePath","expectedErrorCode":"RLSE012","expectedMessageFragment":"Deutsch: privater absoluter Pfad. English: private absolute path.","mustNotWrite":true}

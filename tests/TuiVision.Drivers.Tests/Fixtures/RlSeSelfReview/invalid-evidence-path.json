@@ -1,0 +1,1 @@
+{"fixtureId":"invalid-evidence-path","baseCase":"CompleteAudit","mutatedInvariant":"InvalidEvidencePath","expectedErrorCode":"RLSE007","expectedMessageFragment":"Deutsch: ungueltiger Evidence-Pfad. English: invalid evidence path.","mustNotWrite":true}

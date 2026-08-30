@@ -1,0 +1,1 @@
+{"fixtureId":"invalid-open-contract","baseCase":"CompleteAudit","mutatedInvariant":"InvalidOpenContract","expectedErrorCode":"RLSE005","expectedMessageFragment":"Deutsch: Open-Vertrag unvollstaendig. English: Open contract incomplete.","mustNotWrite":true}

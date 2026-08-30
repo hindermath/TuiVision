@@ -1,0 +1,1 @@
+{"fixtureId":"invalid-follow-up-contract","baseCase":"CompleteAudit","mutatedInvariant":"InvalidFollowUpContract","expectedErrorCode":"RLSE005","expectedMessageFragment":"Deutsch: FollowUp-Vertrag unvollstaendig. English: FollowUp contract incomplete.","mustNotWrite":true}

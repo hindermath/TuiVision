@@ -1,0 +1,278 @@
+{
+  "schemaVersion": "1.1",
+  "runId": "0290a195-0405-43e1-9b94-64535ea9b386",
+  "featurePath": "specs/045-rl-se-checklist-self-review",
+  "branch": "045-rl-se-checklist-self-review",
+  "deliveryMode": "MergeAndSync",
+  "authorityRevalidationRequired": false,
+  "stage": "Publish",
+  "status": "Active",
+  "checkpointCommit": "6bf24ca6d18f83e0c54e9e00f50aba36fff2739c",
+  "acceptedArtifacts": [
+    {
+      "path": "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "sha256": "62fadb9f571f6c6e5fb81badd103f5ca5087c7219698fdec7be708196d6d6863"
+    },
+    {
+      "path": "requirements/intakes/series/tui-vision-delivery/intake-review-result.json",
+      "sha256": "795f0e781e6526ff9f00b54efaddb5878ce3e4bcc213646aadc15b2ad2dfb5e9"
+    },
+    {
+      "path": "specs/045-rl-se-checklist-self-review/spec.md",
+      "sha256": "b7444df145163c75810d8719018ec0743535a0d7e4e8e8b2ac1217da77165553"
+    },
+    {
+      "path": "specs/045-rl-se-checklist-self-review/checklists/requirements.md",
+      "sha256": "db780eedf1a504bc0bb7d5b701b381c6d3aa285b3f9d7365dc9cec22138768ec"
+    },
+    {
+      "path": "specs/045-rl-se-checklist-self-review/clarification-report.md",
+      "sha256": "d046dd649a06a63ac8e7e97de58917a3528d14277c2059884c13cd6d1fd45f33"
+    },
+    {
+      "path": "specs/045-rl-se-checklist-self-review/checklists/audit-readiness.md",
+      "sha256": "9a3b8e9fc207b4086740fb5481c9f8fa360c3739eed6223b45935310679f1018"
+    },
+    {
+      "path": "specs/045-rl-se-checklist-self-review/plan.md",
+      "sha256": "497ef75b29bf7e3bd14d2cd5bef6a23c303aa521cfce927af227348dfd9e116e"
+    },
+    {
+      "path": "specs/045-rl-se-checklist-self-review/research.md",
+      "sha256": "6ca44384cb6df82856b715805eb6c8b6f45d9cb7080acef0c711d55d01a0b032"
+    },
+    {
+      "path": "specs/045-rl-se-checklist-self-review/data-model.md",
+      "sha256": "bc674436968d433ee17af74ab53e08c0903574c3d7e5ea175508c710824abcce"
+    },
+    {
+      "path": "specs/045-rl-se-checklist-self-review/quickstart.md",
+      "sha256": "35e5f59801d9fe94136d40b684b6fd37a8eca08ebc4cb01af3dae1ab88e4dcbe"
+    },
+    {
+      "path": "specs/045-rl-se-checklist-self-review/contracts/rl-se-self-review-acceptance.md",
+      "sha256": "7edcb78285b421b6dcb091d43b17f431bb7116e00768175d35dcc919466f447f"
+    },
+    {
+      "path": "specs/045-rl-se-checklist-self-review/autonomous-gate-requirements.json",
+      "sha256": "8de3e9cc6e69f9886aa5730c084a97f5f358a974fbb5d3389443698bb8c54610"
+    },
+    {
+      "path": "specs/045-rl-se-checklist-self-review/plan-review.md",
+      "sha256": "16e2ab159f367948ad2c6249a9ad6ddec8770306ead6fd496bb04247d9b5e2c0"
+    },
+    {
+      "path": "specs/045-rl-se-checklist-self-review/tasks.md",
+      "sha256": "53fc96aef578e4272f386ae49e08922404d045eaf3255e5ff5cb0109a5b440ac"
+    },
+    {
+      "path": "specs/045-rl-se-checklist-self-review/analysis-report.md",
+      "sha256": "b4d7d715b9ee8e6a1a515c82bc3229988bf3d48df8f47efd3e061d9490b82ed4"
+    },
+    {
+      "path": "specs/045-rl-se-checklist-self-review/analysis-report-2.md",
+      "sha256": "caabf31497fa8094990a2ba4026dd9577fbe6afc3feee797827afbbf486c6c66"
+    }
+  ],
+  "tasks": {
+    "path": "specs/045-rl-se-checklist-self-review/tasks.md",
+    "sha256": "53fc96aef578e4272f386ae49e08922404d045eaf3255e5ff5cb0109a5b440ac",
+    "completed": 114,
+    "total": 132
+  },
+  "routing": {
+    "policy": "balanced-v1",
+    "fallbackPolicy": "fail-closed",
+    "phases": [
+      {
+        "phaseId": "specify-1",
+        "command": "speckit.specify",
+        "routingRole": "frontier-reasoning",
+        "runnerProfile": "codex-frontier-auto",
+        "status": "Completed",
+        "dependsOn": [],
+        "agentFamily": "Codex",
+        "model": "gpt-5.6-sol",
+        "reasoningEffort": "high",
+        "preflight": "Completed",
+        "exitCode": 0,
+        "updatedAt": "2026-08-29T23:13:22.006685Z",
+        "resultPath": ".specify/runtime/autonomous-routing/0290a195-0405-43e1-9b94-64535ea9b386/specify-1.result.json",
+        "resultSha256": "629a929cc39e97572e45e5b4183d110466cca7c8095c05bc3b031cadd688d245"
+      },
+      {
+        "phaseId": "clarify-1",
+        "command": "speckit.clarify",
+        "routingRole": "frontier-reasoning",
+        "runnerProfile": "codex-frontier-auto",
+        "status": "Completed",
+        "dependsOn": [
+          "specify-1"
+        ],
+        "agentFamily": "Codex",
+        "model": "gpt-5.6-sol",
+        "reasoningEffort": "high",
+        "preflight": "Completed",
+        "exitCode": 0,
+        "updatedAt": "2026-08-29T23:20:17.740609Z",
+        "resultPath": ".specify/runtime/autonomous-routing/0290a195-0405-43e1-9b94-64535ea9b386/clarify-1.result.json",
+        "resultSha256": "6ba21a688adc1d9289f0ca9622e03774f9c28b80c451101dfb0c67be6f4edcb1"
+      },
+      {
+        "phaseId": "checklist-1",
+        "command": "speckit.checklist",
+        "routingRole": "frontier-reasoning",
+        "runnerProfile": "codex-frontier-auto",
+        "status": "Completed",
+        "dependsOn": [
+          "clarify-1"
+        ],
+        "agentFamily": "Codex",
+        "model": "gpt-5.6-sol",
+        "reasoningEffort": "high",
+        "preflight": "Completed",
+        "exitCode": 0,
+        "updatedAt": "2026-08-29T23:26:13.067403Z",
+        "resultPath": ".specify/runtime/autonomous-routing/0290a195-0405-43e1-9b94-64535ea9b386/checklist-1.result.json",
+        "resultSha256": "41cdabbfade151181924bb40897606f4048c5bead6936036a08f57ea41ddd89c"
+      },
+      {
+        "phaseId": "plan-1",
+        "command": "speckit.plan",
+        "routingRole": "frontier-reasoning",
+        "runnerProfile": "codex-frontier-auto",
+        "status": "Completed",
+        "dependsOn": [
+          "checklist-1"
+        ],
+        "agentFamily": "Codex",
+        "model": "gpt-5.6-sol",
+        "reasoningEffort": "high",
+        "preflight": "Completed",
+        "exitCode": 0,
+        "updatedAt": "2026-08-30T08:33:55.968286Z",
+        "resultPath": ".specify/runtime/autonomous-routing/0290a195-0405-43e1-9b94-64535ea9b386/plan-1.result.json",
+        "resultSha256": "0d14347a8b830c89864b61c98ff973a87081f00206eab0273349e8decd46beac"
+      },
+      {
+        "phaseId": "plan-review-1",
+        "command": "speckit.analyze",
+        "routingRole": "frontier-reasoning",
+        "runnerProfile": "codex-frontier-auto",
+        "status": "Completed",
+        "dependsOn": [
+          "plan-1"
+        ],
+        "agentFamily": "Codex",
+        "model": "gpt-5.6-sol",
+        "reasoningEffort": "high",
+        "preflight": "Completed",
+        "exitCode": 0,
+        "updatedAt": "2026-08-30T09:01:37.998171Z",
+        "resultPath": ".specify/runtime/autonomous-routing/0290a195-0405-43e1-9b94-64535ea9b386/plan-review-1.result.json",
+        "resultSha256": "5b476d20e4baf49b1d04b55d17bff6bc447256ea14c3718a57219df8dbf4851c"
+      },
+      {
+        "phaseId": "tasks-1",
+        "command": "speckit.tasks",
+        "routingRole": "frontier-reasoning",
+        "runnerProfile": "codex-frontier-auto",
+        "status": "Completed",
+        "dependsOn": [
+          "plan-review-1"
+        ],
+        "agentFamily": "Codex",
+        "model": "gpt-5.6-sol",
+        "reasoningEffort": "high",
+        "preflight": "Completed",
+        "exitCode": 0,
+        "updatedAt": "2026-08-30T09:15:51.430551Z",
+        "resultPath": ".specify/runtime/autonomous-routing/0290a195-0405-43e1-9b94-64535ea9b386/tasks-1.result.json",
+        "resultSha256": "e85dc9184792a895272f5c25bab2a589f2275d34512abfb177ff47b6bff7048d"
+      },
+      {
+        "phaseId": "analyze-1",
+        "command": "speckit.analyze",
+        "routingRole": "frontier-reasoning",
+        "runnerProfile": "codex-frontier-auto",
+        "status": "Completed",
+        "dependsOn": [
+          "tasks-1"
+        ],
+        "agentFamily": "Codex",
+        "model": "gpt-5.6-sol",
+        "reasoningEffort": "high",
+        "preflight": "Completed",
+        "exitCode": 0,
+        "updatedAt": "2026-08-30T09:35:00.467258Z",
+        "resultPath": ".specify/runtime/autonomous-routing/0290a195-0405-43e1-9b94-64535ea9b386/analyze-1.result.json",
+        "resultSha256": "05cfb7023b0fb97fa8d4d0ea2e82fc31a2ab6c82fb40003972660b8d7da1bd4e"
+      },
+      {
+        "phaseId": "analyze-2",
+        "command": "speckit.analyze",
+        "routingRole": "frontier-reasoning",
+        "runnerProfile": "codex-frontier-auto",
+        "status": "Completed",
+        "dependsOn": [
+          "analyze-1"
+        ],
+        "agentFamily": "Codex",
+        "model": "gpt-5.6-sol",
+        "reasoningEffort": "high",
+        "preflight": "Completed",
+        "exitCode": 0,
+        "updatedAt": "2026-08-30T09:43:56.356795Z",
+        "resultPath": ".specify/runtime/autonomous-routing/0290a195-0405-43e1-9b94-64535ea9b386/analyze-2.result.json",
+        "resultSha256": "5e1d8f17c2b77b36475ebe35a89bb6aab65ee39053c65db4b2c95fdde7d88a94"
+      },
+      {
+        "phaseId": "implement-1",
+        "command": "speckit.implement",
+        "routingRole": "long-running-implementation",
+        "runnerProfile": "codex-implementation-auto",
+        "status": "Completed",
+        "dependsOn": [
+          "analyze-2"
+        ],
+        "agentFamily": "Codex",
+        "model": "gpt-5.6-sol",
+        "reasoningEffort": "high",
+        "preflight": "Completed",
+        "exitCode": 0,
+        "updatedAt": "2026-08-30T11:01:53Z",
+        "resultPath": ".specify/runtime/autonomous-routing/0290a195-0405-43e1-9b94-64535ea9b386/implement-1.result.json",
+        "resultSha256": "6053787fc78bc364d77c8ec2a3db8af0cd5a96a7b258606b36dd3cf59d7deab9"
+      },
+      {
+        "phaseId": "retrospective-1",
+        "command": "speckit.autonomous-retrospective",
+        "routingRole": "coding-review",
+        "runnerProfile": "codex-review-auto",
+        "status": "Pending",
+        "dependsOn": [
+          "implement-1"
+        ]
+      }
+    ]
+  },
+  "lastPassingGate": "Host T111 passed 969/969 Release tests and all five canonical assemblies exceeded the 70 percent line-coverage gate; T112 candidate freeze passed.",
+  "nextExactAction": "Execute T115: revalidate current MergeAndSync authority and commit the unchanged staged candidate.",
+  "lastOperation": {
+    "kind": "ModelRoutingPhase:implement-1",
+    "state": "Completed",
+    "summary": "Reconstructed runner JSON after output-file collision; Bash and PowerShell validators accepted Completed 112/112 with normalized result and payload hashes."
+  },
+  "stop": {
+    "reason": "N/A",
+    "requestedAt": "N/A",
+    "safeBoundary": "N/A"
+  },
+  "closeout": {
+    "mergeOrPublication": "Pending",
+    "defaultBranchSync": "Pending",
+    "postMergeActions": "Pending",
+    "finalValidation": "Pending"
+  },
+  "updatedAt": "2026-08-30T11:06:15Z"
+}

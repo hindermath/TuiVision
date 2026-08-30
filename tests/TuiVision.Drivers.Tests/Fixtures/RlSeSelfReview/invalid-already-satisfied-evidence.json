@@ -1,0 +1,1 @@
+{"fixtureId":"invalid-already-satisfied-evidence","baseCase":"CompleteAudit","mutatedInvariant":"WeakPositiveEvidence","expectedErrorCode":"RLSE006","expectedMessageFragment":"Deutsch: schwache positive Evidence. English: weak positive evidence.","mustNotWrite":true}

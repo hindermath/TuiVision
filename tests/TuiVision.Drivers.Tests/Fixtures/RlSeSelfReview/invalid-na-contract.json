@@ -1,0 +1,1 @@
+{"fixtureId":"invalid-na-contract","baseCase":"CompleteAudit","mutatedInvariant":"InvalidNaContract","expectedErrorCode":"RLSE005","expectedMessageFragment":"Deutsch: N/A-Vertrag unvollstaendig. English: N/A contract incomplete.","mustNotWrite":true}

@@ -1,0 +1,1 @@
+{"fixtureId":"invalid-status","baseCase":"CompleteAudit","mutatedInvariant":"InvalidStatus","expectedErrorCode":"RLSE004","expectedMessageFragment":"Deutsch: ungueltiger Status. English: invalid status.","mustNotWrite":true}

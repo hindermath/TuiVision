@@ -1,0 +1,1 @@
+{"fixtureId":"invalid-human-claim","baseCase":"CompleteAudit","mutatedInvariant":"UnauthorisedHumanClaim","expectedErrorCode":"RLSE009","expectedMessageFragment":"Deutsch: unbefugter Human-Claim. English: unauthorised human claim.","mustNotWrite":true}

@@ -1,0 +1,1 @@
+{"fixtureId":"invalid-empty-required-field","baseCase":"CompleteAudit","mutatedInvariant":"EmptyRequiredField","expectedErrorCode":"RLSE005","expectedMessageFragment":"Deutsch: leeres Pflichtfeld. English: empty required field.","mustNotWrite":true}
