@@ -1,0 +1,566 @@
+{
+  "schemaVersion": "1.0",
+  "featureId": "046-gsdb-spec-kit-intensive-review",
+  "projectionId": "language",
+  "canonicalNormalizedSha256": "598982b5b9d0d0957caa70f51a4849598f56608bb5f7bbb0c39900f2f46698e6",
+  "records": [
+    {
+      "languageId": "bash",
+      "labelDe": "Sprachprofil bash",
+      "labelEn": "Language profile bash",
+      "activity": "Active",
+      "ruleSourceIds": [
+        "SRC-0014ef3eb569"
+      ],
+      "trackedSelectors": [
+        ".sh",
+        ".bash"
+      ],
+      "trackedFileCount": 63,
+      "trackedSamplePaths": [
+        ".specify/extensions/git/scripts/bash/auto-commit.sh",
+        ".specify/extensions/git/scripts/bash/create-new-feature.sh",
+        ".specify/extensions/git/scripts/bash/git-common.sh",
+        ".specify/extensions/git/scripts/bash/initialize-repo.sh",
+        ".specify/presets/autonomous-run-governance/scripts/invoke-autonomous-model-phase.sh",
+        ".specify/presets/autonomous-run-governance/scripts/validate-autonomous-delivery-set.sh",
+        ".specify/presets/autonomous-run-governance/scripts/validate-autonomous-gate-evidence.sh",
+        ".specify/presets/autonomous-run-governance/scripts/validate-autonomous-phase-result.sh",
+        ".specify/presets/autonomous-run-governance/scripts/validate-autonomous-run-state.sh",
+        ".specify/presets/autonomous-run-governance/tests/test-autonomous-evidence-integrity.sh",
+        ".specify/presets/autonomous-run-governance/tests/test-model-routing.sh",
+        ".specify/presets/intake-authoring-governance/scripts/validate-intake-authoring-artifact.sh"
+      ],
+      "detectorEvidence": "git ls-files plus declared extension selectors",
+      "excludedSelectors": [
+        "bin/**",
+        "obj/**",
+        "_site/**"
+      ],
+      "secureUseAreas": [
+        "Strict mode",
+        "Quoting",
+        "Temporary files",
+        "Archive parity",
+        "Exit codes"
+      ],
+      "historicalConsultation": "N/A",
+      "controlIds": [],
+      "assessment": {
+        "disposition": "Open",
+        "dispositionLabelDe": "Offen",
+        "dispositionLabelEn": "Open",
+        "rationaleDe": "Das aktive Profil ist erfasst; vollst\u00E4ndige sichere Nutzung bleibt offen.",
+        "rationaleEn": "The active profile is captured; complete secure use remains open.",
+        "evidenceReferenceIds": [],
+        "evidenceGapDe": "Eine vollst\u00E4ndige positive Einzel-Evidence liegt nicht vor.",
+        "evidenceGapEn": "Complete positive item-level evidence is not present.",
+        "proofBoundary": "LocalDirect",
+        "owner": "Maintainer",
+        "risk": "Die Aussage bleibt begrenzt und darf nicht als Freigabe gelesen werden. / The claim remains bounded and must not be read as approval.",
+        "revalidationTrigger": "Evidence, scope, governance, provider state, or repository snapshot changes.",
+        "followUp": "Documented follow-up only; Feature 046 creates no intake, issue, branch, feature, or remediation."
+      }
+    },
+    {
+      "languageId": "batch",
+      "labelDe": "Sprachprofil batch",
+      "labelEn": "Language profile batch",
+      "activity": "Active",
+      "ruleSourceIds": [
+        "SRC-0014ef3eb569"
+      ],
+      "trackedSelectors": [
+        ".bat",
+        ".cmd"
+      ],
+      "trackedFileCount": 7,
+      "trackedSamplePaths": [
+        "TVDEMOS/MKRDEMO.BAT",
+        "TVFM/MAKETVFM.BAT",
+        "tv203s/contrib/tvision/configset.bat",
+        "tv203s/contrib/tvision/configure.bat",
+        "tv203s/contrib/tvision/djgpp/compress.bat",
+        "tv203s/contrib/tvision/djgpp/sacadeb.bat",
+        "tv203s/contrib/tvision/update.bat"
+      ],
+      "detectorEvidence": "git ls-files plus declared extension selectors",
+      "excludedSelectors": [
+        "bin/**",
+        "obj/**",
+        "_site/**"
+      ],
+      "secureUseAreas": [
+        "Windows compatibility",
+        "Quoting and exit codes"
+      ],
+      "historicalConsultation": "N/A",
+      "controlIds": [],
+      "assessment": {
+        "disposition": "Open",
+        "dispositionLabelDe": "Offen",
+        "dispositionLabelEn": "Open",
+        "rationaleDe": "Das aktive Profil ist erfasst; vollst\u00E4ndige sichere Nutzung bleibt offen.",
+        "rationaleEn": "The active profile is captured; complete secure use remains open.",
+        "evidenceReferenceIds": [],
+        "evidenceGapDe": "Eine vollst\u00E4ndige positive Einzel-Evidence liegt nicht vor.",
+        "evidenceGapEn": "Complete positive item-level evidence is not present.",
+        "proofBoundary": "LocalDirect",
+        "owner": "Maintainer",
+        "risk": "Die Aussage bleibt begrenzt und darf nicht als Freigabe gelesen werden. / The claim remains bounded and must not be read as approval.",
+        "revalidationTrigger": "Evidence, scope, governance, provider state, or repository snapshot changes.",
+        "followUp": "Documented follow-up only; Feature 046 creates no intake, issue, branch, feature, or remediation."
+      }
+    },
+    {
+      "languageId": "c-cpp",
+      "labelDe": "Sprachprofil c-cpp",
+      "labelEn": "Language profile c-cpp",
+      "activity": "ReadOnlyHistorical",
+      "ruleSourceIds": [
+        "SRC-0014ef3eb569"
+      ],
+      "trackedSelectors": [
+        ".c",
+        ".cc",
+        ".cpp",
+        ".h",
+        ".hh",
+        ".hpp"
+      ],
+      "trackedFileCount": 606,
+      "trackedSamplePaths": [
+        "tv203s/contrib/tvision/classes/calcdisp.cc",
+        "tv203s/contrib/tvision/classes/calculat.cc",
+        "tv203s/contrib/tvision/classes/codepage.cc",
+        "tv203s/contrib/tvision/classes/configfile.cc",
+        "tv203s/contrib/tvision/classes/dos/dosdis.cc",
+        "tv203s/contrib/tvision/classes/dos/doskey.cc",
+        "tv203s/contrib/tvision/classes/dos/dosmouse.cc",
+        "tv203s/contrib/tvision/classes/dos/dosscr.cc",
+        "tv203s/contrib/tvision/classes/dos/rhscreen.cc",
+        "tv203s/contrib/tvision/classes/dos/screen.cc",
+        "tv203s/contrib/tvision/classes/dos/sescreen.cc",
+        "tv203s/contrib/tvision/classes/dos/vesa.cc"
+      ],
+      "detectorEvidence": "git ls-files plus declared extension selectors",
+      "excludedSelectors": [
+        "bin/**",
+        "obj/**",
+        "_site/**"
+      ],
+      "secureUseAreas": [
+        "Read-only historical consultation",
+        "Memory safety boundary"
+      ],
+      "historicalConsultation": "N/A: no concrete GSDB question triggered consultation",
+      "controlIds": [],
+      "assessment": {
+        "disposition": "N/A",
+        "dispositionLabelDe": "Nicht anwendbar",
+        "dispositionLabelEn": "Not applicable",
+        "rationaleDe": "Die Sprache ist nur historisch oder im Produkt nicht aktiv.",
+        "rationaleEn": "The language is historical only or not active in the product.",
+        "evidenceReferenceIds": [],
+        "evidenceGapDe": "Keine Beweisl\u00FCcke; die Systemgrenze ist dokumentiert.",
+        "evidenceGapEn": "No evidence gap; the system boundary is documented.",
+        "proofBoundary": "LocalDirect",
+        "owner": "Maintainer",
+        "risk": "Die Aussage bleibt begrenzt und darf nicht als Freigabe gelesen werden. / The claim remains bounded and must not be read as approval.",
+        "revalidationTrigger": "Evidence, scope, governance, provider state, or repository snapshot changes.",
+        "followUp": "Documented follow-up only; Feature 046 creates no intake, issue, branch, feature, or remediation."
+      }
+    },
+    {
+      "languageId": "csharp-dotnet",
+      "labelDe": "Sprachprofil csharp-dotnet",
+      "labelEn": "Language profile csharp-dotnet",
+      "activity": "Active",
+      "ruleSourceIds": [
+        "SRC-0014ef3eb569"
+      ],
+      "trackedSelectors": [
+        ".cs",
+        ".csproj",
+        ".sln",
+        ".props",
+        ".targets"
+      ],
+      "trackedFileCount": 499,
+      "trackedSamplePaths": [
+        "Directory.Build.props",
+        "TuiVision.sln",
+        "examples/A11yFramework/A11yFramework.csproj",
+        "examples/A11yFramework/A11yFrameworkApp.cs",
+        "examples/A11yFramework/Program.cs",
+        "examples/BHelp/BHelp.csproj",
+        "examples/BHelp/BHelpApp.cs",
+        "examples/BHelp/Program.cs",
+        "examples/Clipboard/Clipboard.csproj",
+        "examples/Clipboard/ClipboardApp.cs",
+        "examples/Clipboard/Program.cs",
+        "examples/Cyrillic/Cyrillic.csproj"
+      ],
+      "detectorEvidence": "git ls-files plus declared extension selectors",
+      "excludedSelectors": [
+        "bin/**",
+        "obj/**",
+        "_site/**"
+      ],
+      "secureUseAreas": [
+        "MSL",
+        "API",
+        "I/O",
+        "File",
+        "Process",
+        "Serialization",
+        "HTTP",
+        "Secrets"
+      ],
+      "historicalConsultation": "N/A",
+      "controlIds": [],
+      "assessment": {
+        "disposition": "Open",
+        "dispositionLabelDe": "Offen",
+        "dispositionLabelEn": "Open",
+        "rationaleDe": "Das aktive Profil ist erfasst; vollst\u00E4ndige sichere Nutzung bleibt offen.",
+        "rationaleEn": "The active profile is captured; complete secure use remains open.",
+        "evidenceReferenceIds": [],
+        "evidenceGapDe": "Eine vollst\u00E4ndige positive Einzel-Evidence liegt nicht vor.",
+        "evidenceGapEn": "Complete positive item-level evidence is not present.",
+        "proofBoundary": "LocalDirect",
+        "owner": "Maintainer",
+        "risk": "Die Aussage bleibt begrenzt und darf nicht als Freigabe gelesen werden. / The claim remains bounded and must not be read as approval.",
+        "revalidationTrigger": "Evidence, scope, governance, provider state, or repository snapshot changes.",
+        "followUp": "Documented follow-up only; Feature 046 creates no intake, issue, branch, feature, or remediation."
+      }
+    },
+    {
+      "languageId": "pascal",
+      "labelDe": "Sprachprofil pascal",
+      "labelEn": "Language profile pascal",
+      "activity": "ReadOnlyHistorical",
+      "ruleSourceIds": [
+        "SRC-0014ef3eb569"
+      ],
+      "trackedSelectors": [
+        ".pas",
+        ".pp"
+      ],
+      "trackedFileCount": 34,
+      "trackedSamplePaths": [
+        "TVDEMOS/ASCIITAB.PAS",
+        "TVDEMOS/CALC.PAS",
+        "TVDEMOS/CALENDAR.PAS",
+        "TVDEMOS/DEMOCMDS.PAS",
+        "TVDEMOS/DEMOHELP.PAS",
+        "TVDEMOS/DEMOSTRS.PAS",
+        "TVDEMOS/GADGETS.PAS",
+        "TVDEMOS/GENRDEMO.PAS",
+        "TVDEMOS/HELPFILE.PAS",
+        "TVDEMOS/MOUSEDLG.PAS",
+        "TVDEMOS/PUZZLE.PAS",
+        "TVDEMOS/TVDEMO.PAS"
+      ],
+      "detectorEvidence": "git ls-files plus declared extension selectors",
+      "excludedSelectors": [
+        "bin/**",
+        "obj/**",
+        "_site/**"
+      ],
+      "secureUseAreas": [
+        "Read-only historical consultation"
+      ],
+      "historicalConsultation": "N/A: no concrete GSDB question triggered consultation",
+      "controlIds": [],
+      "assessment": {
+        "disposition": "N/A",
+        "dispositionLabelDe": "Nicht anwendbar",
+        "dispositionLabelEn": "Not applicable",
+        "rationaleDe": "Die Sprache ist nur historisch oder im Produkt nicht aktiv.",
+        "rationaleEn": "The language is historical only or not active in the product.",
+        "evidenceReferenceIds": [],
+        "evidenceGapDe": "Keine Beweisl\u00FCcke; die Systemgrenze ist dokumentiert.",
+        "evidenceGapEn": "No evidence gap; the system boundary is documented.",
+        "proofBoundary": "LocalDirect",
+        "owner": "Maintainer",
+        "risk": "Die Aussage bleibt begrenzt und darf nicht als Freigabe gelesen werden. / The claim remains bounded and must not be read as approval.",
+        "revalidationTrigger": "Evidence, scope, governance, provider state, or repository snapshot changes.",
+        "followUp": "Documented follow-up only; Feature 046 creates no intake, issue, branch, feature, or remediation."
+      }
+    },
+    {
+      "languageId": "perl",
+      "labelDe": "Sprachprofil perl",
+      "labelEn": "Language profile perl",
+      "activity": "ReadOnlyHistorical",
+      "ruleSourceIds": [
+        "SRC-0014ef3eb569"
+      ],
+      "trackedSelectors": [
+        ".pl",
+        ".pm"
+      ],
+      "trackedFileCount": 11,
+      "trackedSamplePaths": [
+        "tv203s/contrib/tvision/config.pl",
+        "tv203s/contrib/tvision/confignt.pl",
+        "tv203s/contrib/tvision/conflib.pl",
+        "tv203s/contrib/tvision/djgpp/compress.pl",
+        "tv203s/contrib/tvision/examples/gen_mkf.pl",
+        "tv203s/contrib/tvision/examples/patchenv.pl",
+        "tv203s/contrib/tvision/fromdos.pl",
+        "tv203s/contrib/tvision/fromunix.pl",
+        "tv203s/contrib/tvision/intl/utod.pl",
+        "tv203s/contrib/tvision/miscperl.pl",
+        "tv203s/contrib/tvision/snapshot.pl"
+      ],
+      "detectorEvidence": "git ls-files plus declared extension selectors",
+      "excludedSelectors": [
+        "bin/**",
+        "obj/**",
+        "_site/**"
+      ],
+      "secureUseAreas": [
+        "Read-only historical consultation"
+      ],
+      "historicalConsultation": "N/A: no concrete GSDB question triggered consultation",
+      "controlIds": [],
+      "assessment": {
+        "disposition": "N/A",
+        "dispositionLabelDe": "Nicht anwendbar",
+        "dispositionLabelEn": "Not applicable",
+        "rationaleDe": "Die Sprache ist nur historisch oder im Produkt nicht aktiv.",
+        "rationaleEn": "The language is historical only or not active in the product.",
+        "evidenceReferenceIds": [],
+        "evidenceGapDe": "Keine Beweisl\u00FCcke; die Systemgrenze ist dokumentiert.",
+        "evidenceGapEn": "No evidence gap; the system boundary is documented.",
+        "proofBoundary": "LocalDirect",
+        "owner": "Maintainer",
+        "risk": "Die Aussage bleibt begrenzt und darf nicht als Freigabe gelesen werden. / The claim remains bounded and must not be read as approval.",
+        "revalidationTrigger": "Evidence, scope, governance, provider state, or repository snapshot changes.",
+        "followUp": "Documented follow-up only; Feature 046 creates no intake, issue, branch, feature, or remediation."
+      }
+    },
+    {
+      "languageId": "powershell",
+      "labelDe": "Sprachprofil powershell",
+      "labelEn": "Language profile powershell",
+      "activity": "Active",
+      "ruleSourceIds": [
+        "SRC-0014ef3eb569"
+      ],
+      "trackedSelectors": [
+        ".ps1",
+        ".psm1",
+        ".psd1"
+      ],
+      "trackedFileCount": 78,
+      "trackedSamplePaths": [
+        ".specify/extensions/git/scripts/powershell/auto-commit.ps1",
+        ".specify/extensions/git/scripts/powershell/create-new-feature.ps1",
+        ".specify/extensions/git/scripts/powershell/git-common.ps1",
+        ".specify/extensions/git/scripts/powershell/initialize-repo.ps1",
+        ".specify/presets/autonomous-run-governance/scripts/invoke-autonomous-model-phase.ps1",
+        ".specify/presets/autonomous-run-governance/scripts/validate-autonomous-delivery-set.ps1",
+        ".specify/presets/autonomous-run-governance/scripts/validate-autonomous-gate-evidence.ps1",
+        ".specify/presets/autonomous-run-governance/scripts/validate-autonomous-phase-result.ps1",
+        ".specify/presets/autonomous-run-governance/scripts/validate-autonomous-run-state.ps1",
+        ".specify/presets/autonomous-run-governance/tests/fixture-model-runner.ps1",
+        ".specify/presets/autonomous-run-governance/tests/test-autonomous-evidence-integrity.ps1",
+        ".specify/presets/autonomous-run-governance/tests/test-model-routing.ps1"
+      ],
+      "detectorEvidence": "git ls-files plus declared extension selectors",
+      "excludedSelectors": [
+        "bin/**",
+        "obj/**",
+        "_site/**"
+      ],
+      "secureUseAreas": [
+        "Cmdlet semantics",
+        "Literal paths",
+        "ErrorAction",
+        "Archive parity",
+        "Help parity"
+      ],
+      "historicalConsultation": "N/A",
+      "controlIds": [],
+      "assessment": {
+        "disposition": "Open",
+        "dispositionLabelDe": "Offen",
+        "dispositionLabelEn": "Open",
+        "rationaleDe": "Das aktive Profil ist erfasst; vollst\u00E4ndige sichere Nutzung bleibt offen.",
+        "rationaleEn": "The active profile is captured; complete secure use remains open.",
+        "evidenceReferenceIds": [],
+        "evidenceGapDe": "Eine vollst\u00E4ndige positive Einzel-Evidence liegt nicht vor.",
+        "evidenceGapEn": "Complete positive item-level evidence is not present.",
+        "proofBoundary": "LocalDirect",
+        "owner": "Maintainer",
+        "risk": "Die Aussage bleibt begrenzt und darf nicht als Freigabe gelesen werden. / The claim remains bounded and must not be read as approval.",
+        "revalidationTrigger": "Evidence, scope, governance, provider state, or repository snapshot changes.",
+        "followUp": "Documented follow-up only; Feature 046 creates no intake, issue, branch, feature, or remediation."
+      }
+    },
+    {
+      "languageId": "python",
+      "labelDe": "Sprachprofil python",
+      "labelEn": "Language profile python",
+      "activity": "Active",
+      "ruleSourceIds": [
+        "SRC-0014ef3eb569"
+      ],
+      "trackedSelectors": [
+        ".py"
+      ],
+      "trackedFileCount": 16,
+      "trackedSamplePaths": [
+        ".specify/presets/autonomous-run-governance/scripts/autonomous-evidence-core.py",
+        ".specify/presets/intake-authoring-governance/scripts/validate-intake-governance-config.py",
+        ".specify/presets/intake-review-governance/scripts/validate-intake-governance-config.py",
+        ".specify/presets/intake-sequencing-governance/scripts/validate-intake-governance-config.py",
+        ".specify/presets/intake-sequencing-governance/scripts/validate-intake-series.py",
+        "scripts/lib/agentic_workspace_fleet.py",
+        "scripts/lib/linux-maintenance-hardening.py",
+        "scripts/lib/workspace_storage_maintenance.py",
+        "scripts/tests/test_feature_020_documentation_architecture.py",
+        "scripts/tests/test_linux_maintenance_hardening.py",
+        "scripts/tests/test_maintenance_tui_wrappers.py",
+        "scripts/tests/test_sandbox_applicability.py"
+      ],
+      "detectorEvidence": "git ls-files plus declared extension selectors",
+      "excludedSelectors": [
+        "bin/**",
+        "obj/**",
+        "_site/**"
+      ],
+      "secureUseAreas": [
+        "Documentation tooling",
+        "Path and process boundary"
+      ],
+      "historicalConsultation": "N/A",
+      "controlIds": [],
+      "assessment": {
+        "disposition": "Open",
+        "dispositionLabelDe": "Offen",
+        "dispositionLabelEn": "Open",
+        "rationaleDe": "Das aktive Profil ist erfasst; vollst\u00E4ndige sichere Nutzung bleibt offen.",
+        "rationaleEn": "The active profile is captured; complete secure use remains open.",
+        "evidenceReferenceIds": [],
+        "evidenceGapDe": "Eine vollst\u00E4ndige positive Einzel-Evidence liegt nicht vor.",
+        "evidenceGapEn": "Complete positive item-level evidence is not present.",
+        "proofBoundary": "LocalDirect",
+        "owner": "Maintainer",
+        "risk": "Die Aussage bleibt begrenzt und darf nicht als Freigabe gelesen werden. / The claim remains bounded and must not be read as approval.",
+        "revalidationTrigger": "Evidence, scope, governance, provider state, or repository snapshot changes.",
+        "followUp": "Documented follow-up only; Feature 046 creates no intake, issue, branch, feature, or remediation."
+      }
+    },
+    {
+      "languageId": "sql",
+      "labelDe": "Sprachprofil sql",
+      "labelEn": "Language profile sql",
+      "activity": "AbsentRuleProfile",
+      "ruleSourceIds": [
+        "SRC-0014ef3eb569"
+      ],
+      "trackedSelectors": [
+        ".sql"
+      ],
+      "trackedFileCount": 0,
+      "trackedSamplePaths": [],
+      "detectorEvidence": "git ls-files plus declared extension selectors",
+      "excludedSelectors": [
+        "bin/**",
+        "obj/**",
+        "_site/**"
+      ],
+      "secureUseAreas": [
+        "No active SQL surface",
+        "Parameterized-query trigger"
+      ],
+      "historicalConsultation": "N/A",
+      "controlIds": [],
+      "assessment": {
+        "disposition": "N/A",
+        "dispositionLabelDe": "Nicht anwendbar",
+        "dispositionLabelEn": "Not applicable",
+        "rationaleDe": "Die Sprache ist nur historisch oder im Produkt nicht aktiv.",
+        "rationaleEn": "The language is historical only or not active in the product.",
+        "evidenceReferenceIds": [],
+        "evidenceGapDe": "Keine Beweisl\u00FCcke; die Systemgrenze ist dokumentiert.",
+        "evidenceGapEn": "No evidence gap; the system boundary is documented.",
+        "proofBoundary": "LocalDirect",
+        "owner": "Maintainer",
+        "risk": "Die Aussage bleibt begrenzt und darf nicht als Freigabe gelesen werden. / The claim remains bounded and must not be read as approval.",
+        "revalidationTrigger": "Evidence, scope, governance, provider state, or repository snapshot changes.",
+        "followUp": "Documented follow-up only; Feature 046 creates no intake, issue, branch, feature, or remediation."
+      }
+    },
+    {
+      "languageId": "typescript-javascript",
+      "labelDe": "Sprachprofil typescript-javascript",
+      "labelEn": "Language profile typescript-javascript",
+      "activity": "Active",
+      "ruleSourceIds": [
+        "SRC-0014ef3eb569"
+      ],
+      "trackedSelectors": [
+        ".ts",
+        ".tsx",
+        ".js",
+        ".mjs",
+        ".cjs",
+        ".json"
+      ],
+      "trackedFileCount": 272,
+      "trackedSamplePaths": [
+        ".config/dotnet-tools.json",
+        ".release-please-manifest.json",
+        ".specify/feature.json",
+        ".specify/init-options.json",
+        ".specify/intake-authoring-policy.json",
+        ".specify/intake-review-policy.json",
+        ".specify/intake-series-policy.json",
+        ".specify/integration.json",
+        ".specify/integrations/agy.manifest.json",
+        ".specify/integrations/claude.manifest.json",
+        ".specify/integrations/codex.manifest.json",
+        ".specify/integrations/copilot.manifest.json"
+      ],
+      "detectorEvidence": "git ls-files plus declared extension selectors",
+      "excludedSelectors": [
+        "bin/**",
+        "obj/**",
+        "_site/**"
+      ],
+      "secureUseAreas": [
+        "Web accessibility",
+        "DOM safety",
+        "Dependency boundary",
+        "Playwright",
+        "axe"
+      ],
+      "historicalConsultation": "N/A",
+      "controlIds": [],
+      "assessment": {
+        "disposition": "Open",
+        "dispositionLabelDe": "Offen",
+        "dispositionLabelEn": "Open",
+        "rationaleDe": "Das aktive Profil ist erfasst; vollst\u00E4ndige sichere Nutzung bleibt offen.",
+        "rationaleEn": "The active profile is captured; complete secure use remains open.",
+        "evidenceReferenceIds": [],
+        "evidenceGapDe": "Eine vollst\u00E4ndige positive Einzel-Evidence liegt nicht vor.",
+        "evidenceGapEn": "Complete positive item-level evidence is not present.",
+        "proofBoundary": "LocalDirect",
+        "owner": "Maintainer",
+        "risk": "Die Aussage bleibt begrenzt und darf nicht als Freigabe gelesen werden. / The claim remains bounded and must not be read as approval.",
+        "revalidationTrigger": "Evidence, scope, governance, provider state, or repository snapshot changes.",
+        "followUp": "Documented follow-up only; Feature 046 creates no intake, issue, branch, feature, or remediation."
+      }
+    }
+  ],
+  "summary": {
+    "languageProfileCount": 10
+  },
+  "projectionPayloadSha256": "d7cf7776b945370107ee10d5ad6c57f531d2ce90bcd51717ded98131ed5b042c"
+}
