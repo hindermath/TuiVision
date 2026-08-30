@@ -116,7 +116,8 @@ local user paths are not part of the evidence.
 | 32 | `1.46.823.511` | manual content-review renderer | Protokollierten T070-Trace in denselben test-only Renderer binden / bind recorded T070 trace into the same test-only renderer | `dotnet build tests/TuiVision.Drivers.Tests/ --configuration Release -m:1 --no-restore` | PASS; 0 warnings, 0 errors |
 | 33 | `1.46.823.512` | preliminary full Release/Coverlet worktree | Vorläufiger vollständiger Release- und Coverage-Gate-Lauf / preliminary full Release and coverage gate run | `dotnet test TuiVision.sln --configuration Release --collect:"XPlat Code Coverage" --settings coverlet.runsettings` | PASS 1028/1028; 0 failed, 0 skipped; five gate-project Cobertura outputs produced. Example-smoke project reports collector unavailable but is outside the five-assembly coverage gate. |
 | 34 | `1.46.823.513` | resumed Feature-046 worktree after accepted T079 | Aktuelle Preset-/Agenten-Parität / current preset and agent parity | `dotnet test tests/TuiVision.Drivers.Tests/ --configuration Release --filter "Name=Test_RegistryInventory_EqualsAllEnabledCurrentPresets|Name=Test_AgentSurfaceInventory_EqualsCurrentProjectOwnedClosure"` | PASS 2/2; current enabled-preset registry and project-owned agent-surface closure match; `NoUpdateRequired` |
-| 35 | `1.46.823.514` | prospective committed candidate patch `823` | Finaler Exact-Head Release-/Coverage-Lauf / final exact-head Release and coverage run | `dotnet test TuiVision.sln --configuration Release --collect:"XPlat Code Coverage" --settings coverlet.runsettings` | Pending until T090 candidate commit / Ausstehend bis Kandidaten-Commit T090 |
+| 35 | `1.46.823.514` | stale candidate `e41a3fe9d626bc4a3ff4dbbafa3c59b5113ffc66` | Finaler Exact-Head Release-/Coverage-Lauf / final exact-head Release and coverage run | `dotnet test TuiVision.sln --configuration Release --collect:"XPlat Code Coverage" --settings coverlet.runsettings` | FAIL: 1/214 Drivers tests failed because manually appended validation text was outside the deterministic canonical renderer; candidate rejected under T094 |
+| 36 | `1.46.824.515` | prospective corrected candidate patch `824` | Wiederholter finaler Exact-Head Release-/Coverage-Lauf / repeated final exact-head Release and coverage run | `dotnet test TuiVision.sln --configuration Release --collect:"XPlat Code Coverage" --settings coverlet.runsettings` | Pending until corrected candidate commit / Ausstehend bis zum korrigierten Kandidaten-Commit |
 
 ## Proof Boundaries / Nachweisgrenzen
 
@@ -362,6 +363,26 @@ rationales. The canonical actionable-finding, positive-evidence-gap, and
 observation counts are zero. The mutable workflow reference remains a complete
 open audit note rather than a false remediation claim. There are zero scope
 violations and zero unsupported local gates.
+
+### T091–T094 Kandidaten-Neustart / Candidate restart
+
+Der erste Kandidat `e41a3fe9d626bc4a3ff4dbbafa3c59b5113ffc66` erfüllte
+Commit-Zähler `823`, Version `1.46.823.514` und einen sauberen Delivery-Baum.
+Der finale Lauf aus T092 endete dennoch mit Exitcode `1`: Genau der
+deterministische GSDB-Projektionstest schlug fehl, weil nach dem letzten
+Rendererlauf manuell ergänzte Paket-, Workflow- und A11Y-Tabellen außerhalb
+des kanonischen Renderers in `validation-evidence.md` standen. Die
+zugrunde liegenden Gate-Ergebnisse bleiben in diesem PR-Evidence-Dokument
+erhalten; die deterministische Projektion wurde auf ihren kanonisch
+gerenderten Inhalt zurückgeführt. Der Kandidat ist verworfen. T094 startet die
+Sequenz mit Patch `824` und Build `515` vollständig neu.
+
+The first candidate had correct patch/version alignment and a clean delivery
+tree, but its final run failed exactly one deterministic GSDB projection test.
+Manually appended gate tables were outside the canonical renderer. Their gate
+results remain recorded here, while the deterministic projection is restored
+to canonical output. The candidate is stale; T094 restarts the exact-head
+sequence with patch `824` and build `515`.
 
 ## PR-Vorbereitung / PR preparation
 

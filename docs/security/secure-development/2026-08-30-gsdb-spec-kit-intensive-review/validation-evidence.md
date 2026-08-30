@@ -84,39 +84,6 @@ Dies ist eine zeitpunktbezogene Review-Evidence, keine Zertifizierung, Rechtsber
 }
 ```
 
-### Aktuelle Paket-Evidence
-
-| Prüfung | Ergebnis | Grenze |
-|---|---|---|
-| Verwundbar | Exit `0`; `46/46` Projekte ohne bekannte verwundbare direkte oder transitive Pakete | Zeitpunktbezogene Provider-Evidence, keine Zertifizierung |
-| Veraltet / deprecated | Exit `0`; `46/46` Projekte ohne veraltete direkte oder transitive Pakete | Paketquellparameter und Zugangsdaten sind ausgeschlossen |
-| Aktualisierbar / outdated | Exit `0`; sechs Testprojekte melden nur `MSTest 4.3.2 -> 4.3.3`, 40 Projekte ohne Update | Keine Paketmutation; begrenzter Follow-up-Hinweis unter `CL-08-11` |
-
-Die Abfragen liefen am `2026-08-30`. Ein Provider-, Paketgraph- oder
-Repository-Snapshot-Wechsel löst die Wiederbewertung aus.
-
-### Workflow-, Publishability- und Paritätsprüfung
-
-| Prüfung | Ergebnis | Grenze |
-|---|---|---|
-| Workflow-Actions | 24 Referenzen in zwölf Dateien; 23 vollständige Commit-SHAs, ein beweglicher Tag | Ehrlicher offener Supply-Chain-Hinweis; keine Workflow-Abhilfe im Feature 046 |
-| Supply-Chain-Automation | Fünf Workflowdateien mit Secret-, Paket- oder SBOM-Prüfung | Lokale Repository-Evidence, keine Provider-Assurance |
-| Secret-Scanner | Exit `0`; `high=0`, `gitleaks_high=0` | Keine Trefferinhalte oder Zugangsdaten gespeichert |
-| Delivery-Metadaten | Private Pfade `0`; Paketquellparameter `0`; Session-/Logpfade `0`; private/credentialartige Dateinamen `0` | Runner-Runtime ist kein Delivery-Set |
-| Preset-/Agenten-Parität | Zwei gezielte Tests bestanden `2/2`; `NoUpdateRequired` | Keine gemeinsame Regel geändert |
-| Verbotene Triggerpfade | Produkt/API/XML/Script/Historie/Workflow/Projekt/Beispiel/Produkt-AI/Cloud jeweils `0` | Jeder spätere Treffer stoppt fail-closed |
-| DocFX-Trigger | 31 geänderte DocFX-Eingaben | DocFX, axe und Textbrowser bleiben anwendbar |
-
-### Generierte Dokumentation und A11Y
-
-| Pfad | Ergebnis | Grenze |
-|---|---|---|
-| `docfx docfx.json` | Exit `0`; DocFX 2.78.5; 0 Warnungen, 0 Fehler | Worktree-Snapshot auf Basis-HEAD `fc041d61ab71288cf0c882ecd00a5e019c64405b` |
-| `npm install` | Exit `0`; sieben Pakete geprüft; 0 Vulnerabilities | Node 26.7.0 außerhalb der deklarierten LTS-Engine; Warnung, keine Paketmutation |
-| Playwright-Installation | Exit `0` | Test-owned Chromium-Binary |
-| `npm run test:docfx` | Exit `0`; DocFX 0/0; Playwright/axe 2/2 bestanden | Lokaler generierter `_site/`-Snapshot |
-| UTF-8-Lynx | Exit `0`; 59 Zeilen; Deutsch Zeile 15 vor Englisch Zeile 36 | Text-first Reader-Route, kein visueller Exklusivbeleg |
-
 ## English
 
 This is point-in-time review evidence, not certification, legal advice, or formal approval. Disposition (Klartextstatus / plain-text status) is always written in words. English follows German.
@@ -200,36 +167,3 @@ This is point-in-time review evidence, not certification, legal advice, or forma
   "visuallyExclusiveMeanings": 0
 }
 ```
-
-### Current package evidence
-
-| Check | Result | Boundary |
-|---|---|---|
-| Vulnerable | Exit `0`; `46/46` projects report no known vulnerable direct or transitive package | Point-in-time provider evidence, not certification |
-| Deprecated | Exit `0`; `46/46` projects report no deprecated direct or transitive package | Package-source parameters and credentials are excluded |
-| Outdated | Exit `0`; six test projects report only `MSTest 4.3.2 -> 4.3.3`, 40 projects report no update | No package mutation; bounded follow-up observation under `CL-08-11` |
-
-The queries ran on `2026-08-30`. A provider, package-graph, or repository
-snapshot change triggers re-evaluation.
-
-### Workflow, publishability, and parity review
-
-| Check | Result | Boundary |
-|---|---|---|
-| Workflow actions | 24 references in twelve files; 23 full commit SHAs and one mutable tag | Truthful open supply-chain observation; no workflow remediation in Feature 046 |
-| Supply-chain automation | Five workflow files provide secret, package, or SBOM checks | Local repository evidence, not provider assurance |
-| Secret scanner | Exit `0`; `high=0`, `gitleaks_high=0` | No finding content or credential persisted |
-| Delivery metadata | Private paths `0`; package-source parameters `0`; session/log paths `0`; private/credential-like filenames `0` | Runner runtime is outside the delivery set |
-| Preset and agent parity | Two targeted tests passed `2/2`; `NoUpdateRequired` | No shared rule changed |
-| Prohibited trigger paths | Product/API/XML/script/history/workflow/project/example/product-AI/cloud all `0` | Any later hit fails closed |
-| DocFX trigger | 31 changed DocFX inputs | DocFX, axe, and text-browser gates remain applicable |
-
-### Generated documentation and accessibility
-
-| Path | Result | Boundary |
-|---|---|---|
-| `docfx docfx.json` | Exit `0`; DocFX 2.78.5; 0 warnings, 0 errors | Worktree snapshot based on HEAD `fc041d61ab71288cf0c882ecd00a5e019c64405b` |
-| `npm install` | Exit `0`; seven packages audited; 0 vulnerabilities | Node 26.7.0 outside declared LTS engine; warning, no package mutation |
-| Playwright install | Exit `0` | Test-owned Chromium binary |
-| `npm run test:docfx` | Exit `0`; DocFX 0/0; Playwright/axe 2/2 passed | Local generated `_site/` snapshot |
-| UTF-8 Lynx | Exit `0`; 59 lines; German line 15 before English line 36 | Text-first reader route, no visual-only proof |
