@@ -1134,24 +1134,24 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 707525 lines |
+| Textbasis / Text base | 707539 lines |
 | Textdateien / Text files | 3308 |
 | Beobachtbarer Zeitraum / Observable period | 2025-09-07..2026-08-30 |
 | Aktivtage / Active days | 93 |
-| Relevante Commits / Relevant commits | 572 |
-| Zeilen je Aktivtag / Lines per active day | 7607.8 |
+| Relevante Commits / Relevant commits | 573 |
+| Zeilen je Aktivtag / Lines per active day | 7607.9 |
 | Peak-Tag im Fenster / Peak day in window | 2026-03-22 / 321183 |
 | Peak-Woche im Fenster / Peak week in window | 2026-03-22 / 373576 |
 | Laengste Serie / Longest streak | 17 days |
 | Speedup vs. 80 lines/day | 95.1x |
 | Speedup vs. 125 lines/day | 60.9x |
-| Methodik / Methodology | v2; source `43dcda99fc4a` |
+| Methodik / Methodology | v2; source `5a521cc2f9ee` |
 
 ### Artefaktmix / Artifact Mix
 
 ```text
 Produktiv / Production          [####................]  19.7% | 139704
-Tests                           [##..................]   7.6% | 53843
+Tests                           [##..................]   7.6% | 53857
 Dokumentation / Documentation   [##########..........]  49.4% | 349306
 Skripte / Scripts               [#...................]   3.3% | 23238
 Konfiguration / Configuration   [#...................]   5.9% | 41568
@@ -1358,7 +1358,7 @@ Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen
 Scale: 0..10000 lines/day
 Experienced manual [#...................] 80
 Thorsten solo      [#...................] 125
-Visible repository [###############.....] 7607.8
+Visible repository [###############.....] 7607.9
 ```
 
 Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schreibt die Git-Aktivitaet keiner Person oder KI pauschal zu.
@@ -1384,6 +1384,6 @@ DE: Das Fenster beginnt am 2025-09-07 und endet am 2026-08-30. Es enthaelt 93 ak
 | 2026-05 | 273853 |
 | 2026-06 | 42176 |
 | 2026-07 | 205615 |
-| 2026-08 | 121108 |
+| 2026-08 | 121146 |
 
 <!-- project-statistics-v2:end -->
