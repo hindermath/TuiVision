@@ -1,0 +1,298 @@
+{
+  "schemaVersion": "1.0",
+  "gates": [
+    {
+      "gateId": "accepted-input-and-run-state",
+      "applicability": "Applicable",
+      "requiredScope": "Prove binding intake, accepted review, manifest, and receipt against acceptedArtifacts; prove each Feature 046 artifact that has a routing payload through the latest completed result file whose resultSha256 is bound by run state and whose payloadSha256 matches. Allow a result-bound review report to attest post-remediation hashes for explicitly listed artifacts, taking precedence over older phase payloads for those paths; inventory current hashes for artifacts lacking both routing payload and review attestation and bind them at the exact candidate commit. Also prove series, current autonomous state, branch identity, delivery mode, both constitutions, active preset registry, complete GSDB source set, and readable Feature 016/044/045 evidence before implementation or delivery.",
+      "requiredCommandTokens": [
+        "validate-intake-series-manifest.sh",
+        "validate-intake-series-receipt.sh",
+        "validate-intake-review-result.sh",
+        "validate-autonomous-run-state.sh"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Binding inputs and current autonomous authority must fail closed on any drift; planning observations are not later authority.",
+      "reevaluationTrigger": "Any accepted input, checklist, review, series, constitution, preset registry, GSDB source, branch, authority, routing, or autonomous-state change."
+    },
+    {
+      "gateId": "representative-red-green-and-complete-validator",
+      "applicability": "Applicable",
+      "requiredScope": "Prove one targeted failing rule before implementation, a representative vertical slice covering one source, CL-01-01, one language profile, one current preset, one evidence family, one proof boundary, summary, and projection, followed by the complete canonical dataset and all fail-closed negative fixtures in the existing Drivers MSTest project.",
+      "requiredCommandTokens": [
+        "dotnet test tests/TuiVision.Drivers.Tests/",
+        "--configuration Release",
+        "GsdbSpecKitIntensiveReviewEvidenceTests"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "A bounded vertical slice proves the chosen design before the complete evidence dataset is authored, and negative fixtures prevent optimistic validation.",
+      "reevaluationTrigger": "Any canonical schema, source rule, control rule, language rule, preset rule, evidence-family rule, projection, fixture, or validator change."
+    },
+    {
+      "gateId": "canonical-inventory-and-projection-contract",
+      "applicability": "Applicable",
+      "requiredScope": "Prove exactly 157 unique canonical controls and the exact CL-01..CL-12 partition 12/13/15/10/13/11/12/13/17/17/12/12; prove exactly one of Applicable, AlreadySatisfied, N/A, Open, or FollowUp for every control and additional checkpoint, preserved two-axis GSDB source context, physical and manifest GSDB source closure, dynamically derived language profiles with fail-closed tracked-file detector closure, every currently enabled preset and installed version from the registry, a referentially closed current project-owned agent-surface inventory, complete governance checkpoints, complete declarative evidence families derived from mandatory domains plus active obligations, independently evidenced positive dispositions, calculated summaries, LF/raw hashing rules, deterministic machine-readable source, control, language, preset/governance/agent-surface, evidence-family, and summary projections, and byte-exact German-first English-second Markdown projections.",
+      "requiredCommandTokens": [
+        "Test_CanonicalSnapshot_ContainsExactly157UniqueControls",
+        "Test_CanonicalSnapshot_MatchesExactChapterCardinalities",
+        "Test_SourceInventory_EqualsPhysicalAndManifestClosure",
+        "Test_RegistryInventory_EqualsAllEnabledCurrentPresets",
+        "Test_AgentSurfaceInventory_EqualsCurrentProjectOwnedClosure",
+        "Test_LanguageGovernanceAndEvidenceInventories_AreComplete",
+        "Test_Projections_AreByteExactAndTextFirst"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "The canonical JSON and deterministic projections are the review product; all non-control counts must be derived from the accepted snapshot rather than copied from planning observations.",
+      "reevaluationTrigger": "Any GSDB source, checklist, language profile, tracked language file, registry entry, governance source, evidence selector, canonical JSON, or projection change."
+    },
+    {
+      "gateId": "release-tests-and-coverage",
+      "applicability": "Applicable",
+      "requiredScope": "In a final Release and canonical Coverlet solution run, prove the full regression suite and at least 70 percent line coverage separately for TuiVision.Core, TuiVision.Controls, TuiVision.Serialization, TuiVision.Compatibility, and TuiVision.Drivers.Console; validate coverlet.runsettings before relying on the result.",
+      "requiredCommandTokens": [
+        "xmllint --noout coverlet.runsettings",
+        "dotnet test TuiVision.sln",
+        "--configuration Release",
+        "XPlat Code Coverage",
+        "coverlet.runsettings"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "The repository constitution and AGENTS guidance require full Release regression and assembly-specific coverage evidence even though the implementation change is test-only and evidence-only.",
+      "reevaluationTrigger": "Any code, test, fixture, gate assembly, collector, runsettings, coverage parser, or coverage-policy change."
+    },
+    {
+      "gateId": "formatting",
+      "applicability": "Applicable",
+      "requiredScope": "Verify repository C# formatting after the test-only validator change.",
+      "requiredCommandTokens": [
+        "dotnet format",
+        "--verify-no-changes"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "The feature adds test-only C# and therefore triggers the configured formatter gate.",
+      "reevaluationTrigger": "Any C# or formatting-configuration change."
+    },
+    {
+      "gateId": "supply-chain-vulnerable",
+      "applicability": "Applicable",
+      "requiredScope": "Refresh read-only transitive vulnerable-package evidence without changing packages, tools, workflows, provider settings, or release state.",
+      "requiredCommandTokens": [
+        "dotnet list TuiVision.sln package",
+        "--vulnerable",
+        "--include-transitive"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Earlier security conclusions are historical evidence and current advisory freshness must be independently rechecked.",
+      "reevaluationTrigger": "Any package graph, advisory source, dependency policy, SDK, or provider-evidence change."
+    },
+    {
+      "gateId": "supply-chain-deprecated",
+      "applicability": "Applicable",
+      "requiredScope": "Refresh read-only transitive deprecated-package evidence in a separate supported command without changing repository or provider state.",
+      "requiredCommandTokens": [
+        "dotnet list TuiVision.sln package",
+        "--deprecated",
+        "--include-transitive"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Vulnerability and deprecation are distinct freshness proofs and no prior positive result is inherited.",
+      "reevaluationTrigger": "Any package graph, deprecation source, dependency policy, SDK, or provider-evidence change."
+    },
+    {
+      "gateId": "supply-chain-outdated-review",
+      "applicability": "Applicable",
+      "requiredScope": "Record a read-only outdated-package inventory as review evidence without upgrading or changing any dependency.",
+      "requiredCommandTokens": [
+        "dotnet list TuiVision.sln package",
+        "--outdated"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Version freshness is a review input, while dependency changes are explicitly outside Feature 046.",
+      "reevaluationTrigger": "Any package graph, SDK, package source, freshness policy, or repository dependency change."
+    },
+    {
+      "gateId": "immutable-workflow-and-supply-chain-review",
+      "applicability": "Applicable",
+      "requiredScope": "Inventory every workflow uses reference and current supply-chain automation, record immutable pins or honest findings, and validate current preset and agent governance without editing workflows or provider configuration.",
+      "requiredCommandTokens": [
+        "git grep -n -E",
+        "uses:",
+        ".github/workflows"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "The intensive review must independently classify current workflow and supply-chain evidence; review success is complete evidence, not silent repair.",
+      "reevaluationTrigger": "Any workflow, action reference, dependency automation, preset, agent surface, supply-chain policy, or provider setting change."
+    },
+    {
+      "gateId": "scope-firewall-and-delivery-set",
+      "applicability": "Applicable",
+      "requiredScope": "Prove a closed positive allowlist for Feature 046 planning artifacts, dated review evidence, one named test-only validator and fixture directory, security index, feature evidence, statistics, version fields, and causally later binding-intake archive, current tui-vision-delivery review/manifest/operation/order/receipt files, governance archive, retrospective, runner-owned state, and closeout paths; prove zero product, runtime, API, XML, dependency, project, solution, example, workflow, provider-setting, secret-rotation, historical-source, or follow-up implementation changes.",
+      "requiredCommandTokens": [
+        "git diff --name-only",
+        "git merge-base origin/main HEAD",
+        "git status --short"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Evidence-only acceptance depends on exact delivery-set validation and preservation of every no-product and no-provider boundary.",
+      "reevaluationTrigger": "Any changed path, unexpected worktree item, missing paired intake move, or change outside the closed allowlist."
+    },
+    {
+      "gateId": "source-baseline-integrity",
+      "applicability": "Applicable",
+      "requiredScope": "Prove that the complete GSDB physical source set, manifest closure, normalized text hashes, raw binary hashes, and managed PDF checksum match the snapshot recorded by the canonical dataset; record declared version differences without editing the source baseline.",
+      "requiredCommandTokens": [
+        "Test_SourceInventory_EqualsPhysicalAndManifestClosure",
+        "Test_BinaryHashes_UseRawBytesAndManagedChecksumMatches"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "The audit result is meaningful only when its full source snapshot is reproducible and unchanged by the review.",
+      "reevaluationTrigger": "Any file, manifest role, declared version, media type, checksum, or hash rule under docs/secure-development."
+    },
+    {
+      "gateId": "secret-private-path-and-publishability-scan",
+      "applicability": "Applicable",
+      "requiredScope": "Prove that the complete delivery set contains no credentials, secret patterns, private absolute paths, agent sessions, transient logs, or productive user data; report only counts and safe paths, never secret values.",
+      "requiredCommandTokens": [
+        "scan-agent-secrets.sh",
+        "--fail-on-high",
+        "git diff --name-only"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "The review references broad security evidence and must remain safe to publish without rotating or exposing secrets.",
+      "reevaluationTrigger": "Any evidence, path, scanner, ignore rule, credential pattern, or secret-handling change."
+    },
+    {
+      "gateId": "docfx",
+      "applicability": "Applicable",
+      "requiredScope": "Build generated documentation for the final Security reader path, dated bilingual review, and statistics state with zero unaccepted errors or warnings; if the final diff demonstrably ceases to touch a DocFX input, record a machine-readable N/A rationale instead.",
+      "requiredCommandTokens": [
+        "docfx",
+        "docfx.json"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "The planned docs/security content and Security index are expected DocFX inputs, so the conditional trigger is currently satisfied.",
+      "reevaluationTrigger": "Any DocFX input, navigation, Markdown, XML documentation, generated-site configuration, Security index, or statistics change."
+    },
+    {
+      "gateId": "generated-doc-a11y-and-text-first",
+      "applicability": "Applicable",
+      "requiredScope": "Run the Playwright and axe DocFX smoke path and a UTF-8 text-browser dump of the German-first and English-second review reader path to prove semantic text-first accessibility at the WCAG 2.2 AA baseline.",
+      "requiredCommandTokens": [
+        "npm run test:docfx",
+        "lynx -dump",
+        "2026-08-30-gsdb-spec-kit-intensive-review"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Learner- and reviewer-facing generated documentation requires browser automation and a text-first proof route.",
+      "reevaluationTrigger": "Any generated HTML, DocFX theme, navigation, Security Markdown, A11Y test, language order, or reader-path change."
+    },
+    {
+      "gateId": "preset-registry-model-routing-and-agent-parity",
+      "applicability": "Applicable",
+      "requiredScope": "Prove every currently enabled preset, installed version, priority, registry hash, and model-routing binding; derive every project-owned agent surface from the Level-2 constitution, enabled-registry agent keys, and actually tracked guidance/command/prompt/skill/agent paths, with no fixed agent count and no personal-state access. Compare both constitutions without silently harmonizing them and record NoUpdateRequired unless a project-owned context generator is explicitly triggered.",
+      "requiredCommandTokens": [
+        "Test_RegistryInventory_EqualsAllEnabledCurrentPresets",
+        "Test_AgentSurfaceInventory_EqualsCurrentProjectOwnedClosure",
+        ".specify/presets/.registry",
+        "check-agent-parity"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "The current registry and agent surfaces are review inputs whose actual count and versions must be derived; the 12 planning-time presets are not a fixed contract.",
+      "reevaluationTrigger": "Any registry, installed preset, model routing, constitution, AGENTS, Copilot, Claude, Junie, Codex, or other project-owned agent guidance change."
+    },
+    {
+      "gateId": "committed-candidate-integrity-and-version",
+      "applicability": "Applicable",
+      "requiredScope": "Validate whitespace, complete changed-path inventory, classified worktree status, exact committed candidate HEAD, and aligned Version, AssemblyVersion, and FileVersion using 1.46.current-feature-branch-commit-count.incremented-build. Before the candidate commit set Patch to git rev-list --count HEAD plus one and Build to the next manual counter; after commit prove Patch equals actual HEAD commit count, the tree is clean, and the canonical final Release/Coverlet solution run executed on that same HEAD. Any later dotnet build or test invalidates the candidate and requires a new version/commit/final-run cycle. Write validated pre-merge evidence only to /private/tmp/046-gsdb-spec-kit-intensive-review.premerge-gate-evidence.json.",
+      "requiredCommandTokens": [
+        "git diff --check",
+        "git diff --name-only",
+        "git rev-parse HEAD",
+        "git status --short",
+        "Directory.Build.props"
+      ],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "A staged or moving tree is not exact-head evidence, and repository-wide version rules bind every build, test, commit, and push.",
+      "reevaluationTrigger": "Any build, test, commit, changed path, version field, worktree status, or delivery-candidate change."
+    },
+    {
+      "gateId": "remote-review-checks-exact-head",
+      "applicability": "Applicable",
+      "requiredScope": "After current delivery authority is revalidated, prove all required remote technical checks and review convergence on the exact feature candidate HEAD before merge; keep provider refusal, unavailable evidence, and technical failure distinct.",
+      "requiredCommandTokens": [
+        "gh pr checks",
+        "gh pr view",
+        "git rev-parse HEAD"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "GitHub"
+      ],
+      "rationale": "Remote evidence is valid only for the same committed candidate that passed local gates; a moving branch or older run is insufficient.",
+      "reevaluationTrigger": "Any pushed HEAD, pull request, check suite, review thread, required-check policy, authority, or provider response change."
+    },
+    {
+      "gateId": "human-approval-only-remote-bypass",
+      "applicability": "N/A",
+      "requiredScope": "Allow a bypass for exactly one named unavailable remote gate only after every technical local gate is green, actionableTechnicalFindingCount and actionable review thread count both equal zero, Human Approval is the only open rule, no scope violation exists, and a named authorized human records timestamp, rationale, affected gate, evidence boundary, and expiry; never replace substantive, security, coverage, scope, or dataset validation.",
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [
+        "HumanApproval"
+      ],
+      "rationale": "The accepted autonomous contract permits only a narrow human-approved remote-proof exception, not a general technical or governance override; no bypass is authorized by planning.",
+      "reevaluationTrigger": "A required remote gate is unavailable after complete technical green and explicit current human authority is supplied."
+    },
+    {
+      "gateId": "merge-sync-postmerge-and-causal-closeout",
+      "applicability": "Applicable",
+      "requiredScope": "Under current MergeAndSync authority, prove the authorized merge, exact merge commit, synchronized main branch, authorized feature-branch cleanup in this repository, post-merge evidence at /private/tmp/046-gsdb-spec-kit-intensive-review.postmerge-gate-evidence.json, and only then the evidence-only closeout: binding intake archive via the existing paired rename path, accepted series transition and governance archive validation, final Statistics Profile 2 project ledger with reproducible configuration and text alternatives, delivery closeout, retrospective, runner state, and closed delivery set; no finding remediation may enter closeout.",
+      "requiredCommandTokens": [
+        "gh pr merge",
+        "git rev-parse HEAD",
+        "validate-intake-series-manifest.sh",
+        "validate-autonomous-run-state.sh"
+      ],
+      "requiredRunnerOrPlatformTokens": [
+        "GitHub",
+        "MergeAndSync"
+      ],
+      "rationale": "Merge-dependent facts must be written causally after the actual merge and synchronization, with shared writers serialized and a separate evidence-only closeout when needed.",
+      "reevaluationTrigger": "Any merge commit, main-branch HEAD, remote check, intake location, series state, statistics, retrospective, closeout, delivery-set, or runner-state change."
+    },
+    {
+      "gateId": "new-script-parity",
+      "applicability": "N/A",
+      "requiredScope": "Create and verify paired Bash and PowerShell validators, Unix man page, bilingual PowerShell help, approved Verb-Noun cmdlet, safe shell discipline, and OS parity.",
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "No new script-shaped validation is necessary because the existing MSTest and System.Text.Json surface provides portable positive and negative validation.",
+      "reevaluationTrigger": "Any new or changed .sh or .ps1 file enters the feature diff; then full paired-script parity applies or the run stops for scope conflict."
+    },
+    {
+      "gateId": "product-api-package-project-example-workflow-change",
+      "applicability": "N/A",
+      "requiredScope": "Validate a product runtime, public API, XML documentation, package, dependency, project, solution, example, workflow, provider-setting, or secret-rotation change.",
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "These changes are forbidden by the accepted evidence-only scope rather than optional implementation work.",
+      "reevaluationTrigger": "Any such changed path or effect blocks the run and requires new explicit authority plus replanning."
+    },
+    {
+      "gateId": "architecture-historical-or-modern-source-change",
+      "applicability": "N/A",
+      "requiredScope": "Validate new architecture views, ADRs, threat-model changes, historical source interpretation, Magiblot comparison, or product-semantic source disposition.",
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Feature 046 reviews evidence but changes no architecture, trust boundary, historical intent, or product semantics; historical source roots stay read-only N/A and the license boundary remains MultipartNotRepositoryWideMIT.",
+      "reevaluationTrigger": "A concrete GSDB control question requires bounded historical consultation, or a product contract, trust boundary, approved Magiblot pin, or materially new consumer evidence enters scope."
+    },
+    {
+      "gateId": "formal-human-provider-legal-compliance-approval",
+      "applicability": "N/A",
+      "requiredScope": "Claim legal, organizational, provider, certification, QISMS, privacy, works-council, secret-store, repository-protection, or formal compliance approval.",
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "Repository and agent evidence cannot grant or invent human-only, provider-only, or legal approval; the review records these proof boundaries separately.",
+      "reevaluationTrigger": "An authorized human or provider supplies current publishable evidence and explicitly expands the acceptance scope."
+    }
+  ]
+}

@@ -37,6 +37,7 @@ and run details live in the matching `specs/<feature>/pr-evidence.md`.*
 | [adr/README.md](adr/README.md) | Security-ADR-Index und Trigger / Security ADR index and trigger | Current |
 | [Sandbox-Anwendbarkeit](secure-development/2026-08-29-sandbox-applicability/README.md) | TuiVision-Mounts, CL-12, Toolchain und Proof-Grenzen / TuiVision mounts, CL-12, toolchain, and proof boundaries | `ConditionallyUsable` |
 | [RL-SE- und Checklist-Selbstpruefung](secure-development/2026-08-30-rl-se-checklist-self-review/README.md) | Nicht zertifizierender 157-Kontrollen-Audit mit Preset-, Governance- und Human-Grenzen / Non-certifying 157-control audit with preset, governance, and human boundaries | Validation pending |
+| [GSDB-Spec-Kit-Intensivprüfung](secure-development/2026-08-30-gsdb-spec-kit-intensive-review/README.md) | Deutsche und englische, text-first Reader-Route zum zeitpunktbezogenen Snapshot für Quellen, Kontrollen, Sprachen, Presets/Governance, Evidence-Familien, menschliche Grenzen und Summary; keine Zertifizierung / German and English text-first reader route to the point-in-time snapshot for sources, controls, languages, presets/governance, evidence families, human boundaries, and summary; not certification | Current review snapshot |
 
 ## Evidenzregeln / Evidence Rules
 

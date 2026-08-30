@@ -1,0 +1,1 @@
+{"mutation":"invalid-utf8","payloadBase64":"wyg=","expectedErrorCode":"GSDB046_UTF8_INVALID"}

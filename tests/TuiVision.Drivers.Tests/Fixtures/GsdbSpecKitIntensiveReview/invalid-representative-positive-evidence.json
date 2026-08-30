@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0",
+  "fixtureId": "invalid-representative-positive-evidence",
+  "sourcePath": "docs/secure-development/README.md",
+  "controlId": "CL-01-01",
+  "languageProfileId": "csharp-dotnet",
+  "presetId": "security-governance",
+  "evidenceFamilyId": "security",
+  "proofBoundary": "LocalDirect",
+  "disposition": "AlreadySatisfied",
+  "currentEvidence": null,
+  "summary": {
+    "sourceCount": 1,
+    "controlCount": 1,
+    "languageProfileCount": 1,
+    "presetCount": 1,
+    "evidenceFamilyCount": 1
+  },
+  "projection": "CL-01-01 | AlreadySatisfied | LocalDirect",
+  "expectedErrorCode": "GSDB046_POSITIVE_EVIDENCE_MISSING",
+  "mustNotWrite": true
+}

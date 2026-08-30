@@ -1,0 +1,3 @@
+docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/*.json text eol=lf
+docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/*.md text eol=lf
+tests/TuiVision.Drivers.Tests/Fixtures/GsdbSpecKitIntensiveReview/*.json text eol=lf
