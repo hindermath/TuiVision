@@ -19,9 +19,21 @@ Alle zehn Einträge sind `Completed`. Es gibt derzeit keinen `Eligible`-Intake u
 
 ## Weitere abgeschlossene Einträge / Other Completed Entries
 
-Die übrigen neun Einträge bleiben mit unveränderten Hashes, Rollen, Wurzeln und Abhängigkeiten im kanonischen Manifest dokumentiert.
+2. `requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md`
+3. `requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md`
+4. `requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md`
+5. `requirements/intakes/active/Lastenheft_Constitution_Change.md`
+6. `requirements/intakes/active/Lastenheft_Source-Reference-Policy.md`
+7. `requirements/intakes/active/Lastenheft_Transactional-Form-Model.md`
+8. `requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md`
+9. `requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md`
+10. `requirements/intakes/archive/Lastenheft_RL-SE-Checklist-Selbstpruefung.045-rl-se-checklist-self-review.md`
 
-*The other nine entries remain documented in the canonical manifest with unchanged hashes, roles, roots, and dependencies.*
+Die übrigen neun Einträge bleiben mit unveränderten Hashes, Rollen, Wurzeln
+und Abhängigkeiten im kanonischen Manifest dokumentiert.
+
+*The other nine entries remain documented in the canonical manifest with
+unchanged hashes, roles, roots, and dependencies.*
 
 ## Nicht ausführbarer Backlog / Non-Executable Backlog
 

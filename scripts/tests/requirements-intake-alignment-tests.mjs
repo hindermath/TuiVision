@@ -175,12 +175,11 @@ expectFailure("backlog target", {
   }),
 }, /missing from the active intake directory|archive or backlog/);
 
-expectFailure("missing eligible", {
-  manifestPath: fixture("missing-eligible", manifestSource, (value) => {
-    const eligible = value.orderedTargets.find((target) => target.status === "Eligible");
-    eligible.status = "Pending";
+expectFailure("unexpected eligible", {
+  manifestPath: fixture("unexpected-eligible", manifestSource, (value) => {
+    value.orderedTargets.at(-1).status = "Eligible";
   }),
-}, /single explicitly Eligible/);
+}, /must not expose an Eligible target/);
 
 expectFailure("incomplete Wave-6 closure", {
   manifestPath: fixture("incomplete-wave6", manifestSource, (value) => {
