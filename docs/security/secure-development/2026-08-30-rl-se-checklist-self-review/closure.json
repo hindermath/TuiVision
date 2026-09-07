@@ -22,8 +22,10 @@
       "implementation": "Not Assessed",
       "evidence": "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/assurance-migration.md",
       "nextAction": "DE: Echte kontextspezifische Gate-Nachweise prüfen und ergänzen; technische Migration ist keine Freigabe. EN: Review and attach genuine context-specific gate evidence; migration grants no approval.",
-      "owner": "DE: Repository-Maintainer; konkrete Zuweisung offen. EN: Repository maintainer; assignment pending.",
-      "dueAt": "DE: Vor jeder positiven Assurance-Entscheidung; kein Owner-Termin zugewiesen. EN: Before any positive Assurance decision; owner date not assigned."
+      "owner": "DE: Codex für technische Nachweisprüfung; keine fachliche Owner-Zuweisung. EN: Codex for technical evidence inspection; no domain owner assignment.",
+      "dueAt": "2026-09-14",
+      "dueAtScope": "TechnicalReinspectionOnly",
+      "domainDeadline": "NotAssigned"
     }
   ],
   "outcome": "Blocked",

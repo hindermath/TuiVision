@@ -28,6 +28,12 @@ Sie dokumentieren, was fehlt; ihre Existenz ist kein positiver Prüfnachweis.
 - development bezeichnet ausschließlich die technische Repository-Arbeit,
   keinen Trainings-, Pilot- oder Produktbetrieb. Ablauf steht in diesem Dokument.
 
+Die neuen MIGRATION-Prüfpunkte verwenden dueAt = 2026-09-14 ausschließlich für
+die technische Nachprüfung durch Codex (dueAtScope: TechnicalReinspectionOnly).
+domainDeadline: NotAssigned hält fest, dass kein fachlicher Termin vergeben
+wurde. Übernommene Kontrolltermine und menschliche Zuständigkeiten bleiben
+unverändert; diese Wiedervorlage startet keinen automatischen Lauf.
+
 ### Tatsächliche Quellenlücken
 
 - Richtlinie_Sichere-Entwicklung.md: VersionDrift, Manifest 3.1.0, Datei / file 3.2.0.
@@ -105,6 +111,12 @@ work only, with no training, pilot or product operation. The source report
 lists actual version mismatches and reference existence/hash checks. It does
 not verify anchors, external sources or control effectiveness. Baseline sources
 and all installed presets stay unchanged.
+
+New MIGRATION checkpoints use dueAt = 2026-09-14 only for Codex's technical
+reinspection (dueAtScope: TechnicalReinspectionOnly). domainDeadline:
+NotAssigned explicitly leaves domain deadlines unset. Historical control
+deadlines and human responsibilities remain unchanged; no automatic run is
+scheduled by this reinspection limit.
 
 Next: the owner resolves version drift; review historical source freshness and
 scope, including CL-02-13; supply genuine delta and image evidence; record each
