@@ -1,0 +1,412 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "AssuranceMigrationInspection",
+  "inspectedAt": "2026-09-07T21:04:59Z",
+  "scope": "DE: Lesende Prüfung von Quellenidentität, Versionen und Referenzen; keine fachliche Wirksamkeitsprüfung. EN: Read-only source identity, version and reference inspection; not a domain effectiveness review.",
+  "sourcePath": "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+  "sourceSha256": "2f807cce16dcd0643e01d1e637638758435cee6c962cadf92296ce81af160b49",
+  "sourceControlCount": 157,
+  "baselineVersion": "3.1.0",
+  "documentDrift": [
+    {
+      "observedVersion": "3.2.0",
+      "declaredVersion": "3.1.0",
+      "kind": "VersionDrift",
+      "path": "Richtlinie_Sichere-Entwicklung.md"
+    },
+    {
+      "observedVersion": "2.2.0",
+      "declaredVersion": "2.1.0",
+      "kind": "VersionDrift",
+      "path": "Checklistensammelband_Sichere-Entwicklung.md"
+    },
+    {
+      "observedVersion": "2.2.0",
+      "declaredVersion": "2.1.0",
+      "kind": "VersionDrift",
+      "path": "checklisten/CL_09_KI-Codeerzeugung.md"
+    },
+    {
+      "observedVersion": "2.2.0",
+      "declaredVersion": "2.1.0",
+      "kind": "VersionDrift",
+      "path": "checklisten/CL_12_Agentische-KI-Sandbox.md"
+    },
+    {
+      "observedVersion": "1.2.0",
+      "declaredVersion": "1.1.0",
+      "kind": "VersionDrift",
+      "path": "mitgeltende-dokumente/Richtlinie_Secure-Development-Life-Cycle.md"
+    },
+    {
+      "observedVersion": "3.2.0",
+      "declaredVersion": "3.1.0",
+      "kind": "BaselineVersionDrift",
+      "path": "Checklistensammelband_Sichere-Entwicklung.md"
+    }
+  ],
+  "referenceChecks": [
+    {
+      "id": "EVD-001",
+      "path": ".specify/memory/constitution.md",
+      "expectedSha256": "da1bd3419a626f35bae54c8a88e4d9c888f733793f7eede0b275971ff3badf90",
+      "observedSha256": "da1bd3419a626f35bae54c8a88e4d9c888f733793f7eede0b275971ff3badf90",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-002",
+      "path": ".specify/presets/.registry",
+      "expectedSha256": "f0e7dd8d4f24c42c4a48db0ee9fd614fd3236d57ac85e68d97d784c0da09f824",
+      "observedSha256": "f0e7dd8d4f24c42c4a48db0ee9fd614fd3236d57ac85e68d97d784c0da09f824",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-003",
+      "path": ".specify/presets/a11y-governance/preset.yml",
+      "expectedSha256": "abed4e64a34853417674c8403a660daa8b97606b42782be404f0d5faa3347c10",
+      "observedSha256": "abed4e64a34853417674c8403a660daa8b97606b42782be404f0d5faa3347c10",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-004",
+      "path": ".specify/presets/agent-parity-governance/preset.yml",
+      "expectedSha256": "33ab3c1bd99a5069af5c0006899c26476d0cabd868bd7ac55659bdd4e4794952",
+      "observedSha256": "33ab3c1bd99a5069af5c0006899c26476d0cabd868bd7ac55659bdd4e4794952",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-005",
+      "path": ".specify/presets/architecture-governance/preset.yml",
+      "expectedSha256": "e2dc16bd0a566424dadbdb14a32cae5805d23d5f72e57a3bb3b5e47821882293",
+      "observedSha256": "e2dc16bd0a566424dadbdb14a32cae5805d23d5f72e57a3bb3b5e47821882293",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-006",
+      "path": ".specify/presets/autonomous-run-governance/preset.yml",
+      "expectedSha256": "9bdee271462fcecf84cdcf6b25cf70b615d9285c9107e4a30f7d4c00011f4759",
+      "observedSha256": "9bdee271462fcecf84cdcf6b25cf70b615d9285c9107e4a30f7d4c00011f4759",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-007",
+      "path": ".specify/presets/cross-platform-governance/preset.yml",
+      "expectedSha256": "9eff272453e338884da0c695fe79d56ec074e83661d95cccced8800b3337a64e",
+      "observedSha256": "9eff272453e338884da0c695fe79d56ec074e83661d95cccced8800b3337a64e",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-008",
+      "path": ".specify/presets/intake-authoring-governance/preset.yml",
+      "expectedSha256": "20e44082b29e58f7444777f31a9e2057585353567be52c81a40a9b65fef7aa4d",
+      "observedSha256": "20e44082b29e58f7444777f31a9e2057585353567be52c81a40a9b65fef7aa4d",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-009",
+      "path": ".specify/presets/intake-review-governance/preset.yml",
+      "expectedSha256": "81746b9764249a912de4f0570d1178ade21381e38c2409d87957e4a42eadc241",
+      "observedSha256": "81746b9764249a912de4f0570d1178ade21381e38c2409d87957e4a42eadc241",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-010",
+      "path": ".specify/presets/intake-sequencing-governance/preset.yml",
+      "expectedSha256": "5878fb4d4e075cea5215775ecf15d7b73bf00391c021773934477448edb4699f",
+      "observedSha256": "5878fb4d4e075cea5215775ecf15d7b73bf00391c021773934477448edb4699f",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-011",
+      "path": ".specify/presets/isaqb-architecture-governance/preset.yml",
+      "expectedSha256": "9f349a98c20f5200ec2cb50f9b18c2bee2cbfa48e7b7b5e643cd6970ac865eb9",
+      "observedSha256": "9f349a98c20f5200ec2cb50f9b18c2bee2cbfa48e7b7b5e643cd6970ac865eb9",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-012",
+      "path": ".specify/presets/model-routing-governance/preset.yml",
+      "expectedSha256": "a06eee81c3988b9ef617e131370c2522f4d4f8847c6dcfed833f465ed479fd0e",
+      "observedSha256": "a06eee81c3988b9ef617e131370c2522f4d4f8847c6dcfed833f465ed479fd0e",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-013",
+      "path": ".specify/presets/parallel-autonomous-run-governance/preset.yml",
+      "expectedSha256": "70af07aa51506790ed99e2743ec7a51127936de0d9e82239e2b3f03716539b0d",
+      "observedSha256": "70af07aa51506790ed99e2743ec7a51127936de0d9e82239e2b3f03716539b0d",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-014",
+      "path": ".specify/presets/security-governance/preset.yml",
+      "expectedSha256": "356daaedfb3b0275c093d7e522b3e616091c1249a2622e071ae4ff690b5a239d",
+      "observedSha256": "356daaedfb3b0275c093d7e522b3e616091c1249a2622e071ae4ff690b5a239d",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-015",
+      "path": "AGENTS.md",
+      "expectedSha256": "5d5e77e70e875a04495144d6652af14c22cd5be14201cf8b66cf150cba1299d3",
+      "observedSha256": "5d5e77e70e875a04495144d6652af14c22cd5be14201cf8b66cf150cba1299d3",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-016",
+      "path": "SECURITY.md",
+      "expectedSha256": "351fc1345c7f1b096e48a3f8ceeb515927d61f62757fa3a257fb9aa187ad260e",
+      "observedSha256": "351fc1345c7f1b096e48a3f8ceeb515927d61f62757fa3a257fb9aa187ad260e",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-017",
+      "path": "constitution.md",
+      "expectedSha256": "e9b7a6ecafdd3bef33100b7d65013f472945f4749b90e6ff3230b1194771947f",
+      "observedSha256": "e9b7a6ecafdd3bef33100b7d65013f472945f4749b90e6ff3230b1194771947f",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-018",
+      "path": "docs/secure-development/Checklistensammelband_Sichere-Entwicklung.md",
+      "expectedSha256": "ac4ebb80a4954db060074762f99c211930a347bec965902dc08becf608aa0b69",
+      "observedSha256": "ac4ebb80a4954db060074762f99c211930a347bec965902dc08becf608aa0b69",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-019",
+      "path": "docs/secure-development/Richtlinie_Sichere-Entwicklung.md",
+      "expectedSha256": "bd2947abf2c367a23c3461ea84de50ac5202436c3b15b5c6d9b6bb64318e132e",
+      "observedSha256": "bd2947abf2c367a23c3461ea84de50ac5202436c3b15b5c6d9b6bb64318e132e",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-020",
+      "path": "docs/secure-development/baseline-manifest.json",
+      "expectedSha256": "82449d57f2e072cb93e0066e7e1eee112219c9836cd51acd75027ec8436ec916",
+      "observedSha256": "82449d57f2e072cb93e0066e7e1eee112219c9836cd51acd75027ec8436ec916",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-021",
+      "path": "docs/secure-development/checklisten/CL_01_Standards-Anwendbarkeit.md",
+      "expectedSha256": "b0b3b15c1ad7d46a8f83f563583d9538d72332787f4468d63e691ec37fc4decf",
+      "observedSha256": "b0b3b15c1ad7d46a8f83f563583d9538d72332787f4468d63e691ec37fc4decf",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-022",
+      "path": "docs/secure-development/checklisten/CL_02_Sichere-Softwarearchitektur.md",
+      "expectedSha256": "1b387329009286ce7a0a67b7af1f4bd3f60d290413f57c2eab307ca4b257ec9d",
+      "observedSha256": "1b387329009286ce7a0a67b7af1f4bd3f60d290413f57c2eab307ca4b257ec9d",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-023",
+      "path": "docs/secure-development/checklisten/CL_03_Krypto-Mindestvorgaben.md",
+      "expectedSha256": "031cc40fa44877e34cafc1b398f4ea582c1088647cae4659824e8ff7b5e6b5e9",
+      "observedSha256": "031cc40fa44877e34cafc1b398f4ea582c1088647cae4659824e8ff7b5e6b5e9",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-024",
+      "path": "docs/secure-development/checklisten/CL_04_Bedrohungsmodellierung.md",
+      "expectedSha256": "12d26d0051f4b6de966c7c67c5f0004e25c3136a269fd586a4a3f0f9418d512e",
+      "observedSha256": "12d26d0051f4b6de966c7c67c5f0004e25c3136a269fd586a4a3f0f9418d512e",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-025",
+      "path": "docs/secure-development/checklisten/CL_05_Lieferkette-Build-Integritaet.md",
+      "expectedSha256": "058f9118d955f710953c1ef352189aaad2dda2dd833f82f26d350c5ae54260ec",
+      "observedSha256": "058f9118d955f710953c1ef352189aaad2dda2dd833f82f26d350c5ae54260ec",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-026",
+      "path": "docs/secure-development/checklisten/CL_06_Schwachstellenoffenlegung.md",
+      "expectedSha256": "b5392a2109a08770aa06d5c2a318653058b9687029cdb404ebb08c615b81b972",
+      "observedSha256": "b5392a2109a08770aa06d5c2a318653058b9687029cdb404ebb08c615b81b972",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-027",
+      "path": "docs/secure-development/checklisten/CL_07_CRA-Anwendbarkeit.md",
+      "expectedSha256": "b661bb1ab93a5d8a4105f39ab77e2738d80664ac0c1057be04dfa02069de9874",
+      "observedSha256": "b661bb1ab93a5d8a4105f39ab77e2738d80664ac0c1057be04dfa02069de9874",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-028",
+      "path": "docs/secure-development/checklisten/CL_08_Sicherheits-Code-Review.md",
+      "expectedSha256": "59e55eba03904d1a1e80f2ad4fd67c700b998006adda6a0be838f60d09a17207",
+      "observedSha256": "59e55eba03904d1a1e80f2ad4fd67c700b998006adda6a0be838f60d09a17207",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-029",
+      "path": "docs/secure-development/checklisten/CL_09_KI-Codeerzeugung.md",
+      "expectedSha256": "071ed93b5c2bcdfa585f54e7c5386db8cc265d92c6b0bc018ed77d0adfabb766",
+      "observedSha256": "071ed93b5c2bcdfa585f54e7c5386db8cc265d92c6b0bc018ed77d0adfabb766",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-030",
+      "path": "docs/secure-development/checklisten/CL_10_Sichere-Entwicklungsumgebung.md",
+      "expectedSha256": "f99e707e4a4186c6ab4031cccdb796981b766ff3d4e09f43798d223e37715f25",
+      "observedSha256": "f99e707e4a4186c6ab4031cccdb796981b766ff3d4e09f43798d223e37715f25",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-031",
+      "path": "docs/secure-development/checklisten/CL_11_Datenschutz-Folgenabschaetzung.md",
+      "expectedSha256": "f04655647392351e1fd283d39c7ac874a5974eb597068e286d11508fc4c16381",
+      "observedSha256": "f04655647392351e1fd283d39c7ac874a5974eb597068e286d11508fc4c16381",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-032",
+      "path": "docs/secure-development/checklisten/CL_12_Agentische-KI-Sandbox.md",
+      "expectedSha256": "2ef55845c8d66e7cd1da1ef4a3cb36c7c29b79a3ec1bc6b3a7edb4b4a0505784",
+      "observedSha256": "2ef55845c8d66e7cd1da1ef4a3cb36c7c29b79a3ec1bc6b3a7edb4b4a0505784",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-033",
+      "path": "docs/secure-development/mitgeltende-dokumente/Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md",
+      "expectedSha256": "779655e47fb608b689ab4aa299ddc8530144562674caf3e080d18e15bd28bbe7",
+      "observedSha256": "779655e47fb608b689ab4aa299ddc8530144562674caf3e080d18e15bd28bbe7",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-034",
+      "path": "docs/security/adr/README.md",
+      "expectedSha256": "b6eed11f87bb3f876155ba9c41b8278e3fb7df9202eacfb8ba944de67870fb95",
+      "observedSha256": "b6eed11f87bb3f876155ba9c41b8278e3fb7df9202eacfb8ba944de67870fb95",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-035",
+      "path": "docs/security/arc42-security.md",
+      "expectedSha256": "8dbe79e93275c26330b20afbb97065212c725fa9b6c450afd223fcaa2eb26387",
+      "observedSha256": "8dbe79e93275c26330b20afbb97065212c725fa9b6c450afd223fcaa2eb26387",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-036",
+      "path": "docs/security/control-assessment.md",
+      "expectedSha256": "b311c5b40d09b91cfa688469aaa38d3f8eca89545a7cec83add4a581dbbb5f13",
+      "observedSha256": "b311c5b40d09b91cfa688469aaa38d3f8eca89545a7cec83add4a581dbbb5f13",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-037",
+      "path": "docs/security/dependency-audit.md",
+      "expectedSha256": "63068ebd1693e8cff2590d5dde6b120a31934133eb30f9cbace63f731bb5e651",
+      "observedSha256": "63068ebd1693e8cff2590d5dde6b120a31934133eb30f9cbace63f731bb5e651",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-038",
+      "path": "docs/security/regulatory-applicability.md",
+      "expectedSha256": "bd0bd51510a40a12bf15a1e3455ccbe83a167abcfefaca7651c7c62ee46cc8dc",
+      "observedSha256": "bd0bd51510a40a12bf15a1e3455ccbe83a167abcfefaca7651c7c62ee46cc8dc",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-039",
+      "path": "docs/security/secure-development/2026-08-29-sandbox-applicability/assessment.json",
+      "expectedSha256": "221def400d03a84383e7d91d24e178f58c31e6eeeb9e1c29fc3c79043ebfc31d",
+      "observedSha256": "221def400d03a84383e7d91d24e178f58c31e6eeeb9e1c29fc3c79043ebfc31d",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-040",
+      "path": "docs/security/security-checklist.md",
+      "expectedSha256": "d77881f7c5cc1984b9b4912c61d55d0356f610ffed2cd08aac37d1ad410cec82",
+      "observedSha256": "d77881f7c5cc1984b9b4912c61d55d0356f610ffed2cd08aac37d1ad410cec82",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-041",
+      "path": "docs/security/security-quality-scenarios.md",
+      "expectedSha256": "866afb3a1a39b3cb4b645a9cc9d3c29d5551e904d3b179daa407978af9456cc5",
+      "observedSha256": "866afb3a1a39b3cb4b645a9cc9d3c29d5551e904d3b179daa407978af9456cc5",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-042",
+      "path": "docs/security/supply-chain-evidence.md",
+      "expectedSha256": "58516a094848cf943a65ebad474442bb172723d0f539a70fda8905806c01f3a4",
+      "observedSha256": "58516a094848cf943a65ebad474442bb172723d0f539a70fda8905806c01f3a4",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-043",
+      "path": "docs/security/threat-model.md",
+      "expectedSha256": "e114c0a21a77305d36dc23e93585ab6d749575d971bc6ea4ad97f8ee217a366f",
+      "observedSha256": "e114c0a21a77305d36dc23e93585ab6d749575d971bc6ea4ad97f8ee217a366f",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-044",
+      "path": "specs/016-secure-development-hardening/pr-evidence.md",
+      "expectedSha256": "58ff4736639c8de8deec0b3f0e2995487d68db8d2c4c80bed4ad7e5de6bb3a6c",
+      "observedSha256": "58ff4736639c8de8deec0b3f0e2995487d68db8d2c4c80bed4ad7e5de6bb3a6c",
+      "result": "HashMatch",
+      "anchorChecked": false
+    },
+    {
+      "id": "EVD-045",
+      "path": "specs/044-sandbox-secure-development-hardening/pr-evidence.md",
+      "expectedSha256": "ce57b2c41b9c13744aa142f0154947490b9f92950d114aa4c4b78eeb1f227887",
+      "observedSha256": "ce57b2c41b9c13744aa142f0154947490b9f92950d114aa4c4b78eeb1f227887",
+      "result": "HashMatch",
+      "anchorChecked": false
+    }
+  ],
+  "referenceBoundary": "DE: Nur Dateiexistenz/Hashes; Markdown-Anker und externe URLs nicht geprüft; keine Aussage zur Kontrollwirksamkeit. EN: File existence/hash only; Markdown anchors and external URLs not verified; no claim of control effectiveness.",
+  "humanDecisionBoundary": "DE: Keine historische Freigabe übertragen oder neue Freigabe erteilt. EN: No historical approval transferred or new approval granted."
+}

@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "1.0",
+  "checkedAt": "2026-09-07T21:19:33Z",
+  "platform": "macOS / Darwin",
+  "version": "1.46.835.521",
+  "command": "dotnet test --configuration Release --collect:'XPlat Code Coverage' --settings coverlet.runsettings --results-directory <temporary-results-directory>",
+  "exitCode": 0,
+  "settingsPath": "coverlet.runsettings",
+  "settingsSha256": "51a343df7577432f286d08912d1e335dddeb917a33239f03d65ec9460a3ab18f",
+  "thresholdPerAssembly": 0.7,
+  "assemblies": [
+    {
+      "assembly": "TuiVision.Core",
+      "reportSha256": "ae5680caf58e46558693fbdb5e5a1815cfc6ac5aa2d7910a426b6458023509f8",
+      "rate": 0.9296,
+      "reportId": "bd4fac9f-8d42-49d7-ab2c-9a39c6b8593d"
+    },
+    {
+      "assembly": "TuiVision.Controls",
+      "reportSha256": "69f138b989c13310bdd3c0b373557c13ca0666c9e4d2866ea14937aba921ae0c",
+      "rate": 0.8695,
+      "reportId": "9e3fa586-1cdc-4964-bb50-ee68d885f94b"
+    },
+    {
+      "assembly": "TuiVision.Serialization",
+      "reportSha256": "275553d83a790fa32ba926e71d89d1147400d982c9747181c5040068e3637aea",
+      "rate": 0.9047,
+      "reportId": "aa2a24c2-0d29-43ab-8485-28f927952628"
+    },
+    {
+      "assembly": "TuiVision.Compatibility",
+      "reportSha256": "72c017c0926ad3304f3c9b5fa8085b91eb92fc57f3b86ebd4f5297f2165f0eb7",
+      "rate": 0.8055,
+      "reportId": "1fd08926-66a3-46fc-b6d6-38ad91a3483d"
+    },
+    {
+      "assembly": "TuiVision.Drivers.Console",
+      "reportSha256": "0b8c3dd5b13607517654ccc82c4bda941b62d34c61193c7dbbd31c6a922ff7c6",
+      "rate": 0.8918,
+      "reportId": "76dc50e6-12ad-432f-96d6-52965d0b4754"
+    }
+  ],
+  "aggregation": "DE: Bester einzelner Assembly-Bericht je Modul; konservative Untergrenze der gesamten Testabdeckung, keine Addition von Prozentwerten. EN: Best individual assembly report per module; conservative lower bound of total test coverage, no addition of percentages.",
+  "artifactBoundary": "DE: Rohe Coverage-Berichte bleiben lokal; publiziert werden nur hostneutrale Bericht-IDs, Hashes und Messwerte. EN: Raw coverage reports stay local; only host-neutral report IDs, hashes and measurements are published.",
+  "warning": "DE: Das Beispiel-Smoke-Testprojekt hat keinen XPlat-Collector; seine Tests bestehen, es zählt nicht zu den fünf Framework-Coverage-Gates. EN: The example smoke-test project has no XPlat collector; its tests pass and it is not one of the five framework coverage gates.",
+  "approvalBoundary": "DE: Technischer Regressionstest, keine fachliche oder menschliche Assurance-Freigabe. EN: Technical regression test, no domain or human Assurance approval."
+}

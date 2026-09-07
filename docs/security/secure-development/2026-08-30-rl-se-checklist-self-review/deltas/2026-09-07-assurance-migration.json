@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "SecureDevelopmentGateEvidence",
+  "contextId": "rl-se-checklist-self-review",
+  "gate": "delta",
+  "mode": "development",
+  "createdAt": "2026-09-07T21:04:59Z",
+  "runbookApplicability": "N/A",
+  "runbookRationale": "DE: Nur repository-interne Evidence-Migration nach assurance-migration.md; kein Trainings-, Pilot-, Image- oder Produktionslauf. EN: Repository-internal evidence migration following assurance-migration.md only; no training, pilot, image or production run.",
+  "review": {
+    "owner": "DE: Repository-Maintainer; keine Freigabe abgeleitet. EN: Repository maintainer; no approval inferred.",
+    "reviewer": "DE: Codex; ausschließlich automatisierte technische Migrationsprüfung, kein unabhängiger menschlicher Review. EN: Codex; automated technical migration inspection only, not independent human review.",
+    "reviewedAt": "2026-09-07T21:04:59Z",
+    "reviewDue": "2026-09-14",
+    "residualRisk": "DE: Historische Bewertungen, Quellenabweichungen und offene fachliche Entscheidungen; keine Risikoakzeptanz. EN: Historical assessments, source drift and open domain decisions; no risk acceptance.",
+    "reevaluationTrigger": "DE: Sofort bei Quellen-/Scope-Änderung und vor positiver Gate-Entscheidung; spätestens nach sieben Tagen technisch neu prüfen. Keine fachliche Gültigkeitsverlängerung. EN: Immediately on source/scope change and before a positive gate decision; technical reinspection within seven days. No extension of domain validity."
+  },
+  "assessments": [
+    {
+      "id": "MIGRATION-DELTA",
+      "applicability": "Open",
+      "implementation": "Not Assessed",
+      "evidence": "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/assurance-migration.md",
+      "nextAction": "DE: Echte kontextspezifische Gate-Nachweise prüfen und ergänzen; technische Migration ist keine Freigabe. EN: Review and attach genuine context-specific gate evidence; migration grants no approval.",
+      "owner": "DE: Codex für technische Nachweisprüfung; keine fachliche Owner-Zuweisung. EN: Codex for technical evidence inspection; no domain owner assignment.",
+      "dueAt": "2026-09-14",
+      "dueAtScope": "TechnicalReinspectionOnly",
+      "domainDeadline": "NotAssigned"
+    }
+  ],
+  "outcome": "Blocked",
+  "acceptedRisks": [],
+  "externalComparisonBoundary": "HOSK/GWDG: ExternalComparison only; never local evidence",
+  "migration": {
+    "sourcePath": "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+    "sourceSha256": "2f807cce16dcd0643e01d1e637638758435cee6c962cadf92296ce81af160b49",
+    "sourceArray": "controls",
+    "sourceControlCount": 157,
+    "inspectedHead": "6af85182ba5f31964c7d92fec4d78177c81db7c0",
+    "scope": "DE: Nur technische Evidence-Migration und Lückenprüfung. EN: Technical evidence migration and gap inspection only.",
+    "sourceAssessmentsReapproved": false,
+    "humanApprovalsGranted": false,
+    "technicalReviewOnly": true
+  }
+}
