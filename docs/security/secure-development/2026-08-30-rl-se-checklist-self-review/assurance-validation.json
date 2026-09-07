@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "1.0",
+  "checkedAt": "2026-09-07T21:18:13Z",
+  "platform": "Darwin; Bash first, PowerShell 7 cross-check; not native Windows",
+  "context": "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review",
+  "sourceSha256": "2f807cce16dcd0643e01d1e637638758435cee6c962cadf92296ce81af160b49",
+  "controlMappingsVerified": 157,
+  "gateOutcomes": "Blocked",
+  "humanDecisions": "All four Open",
+  "protectedFiles": {
+    "inventorySha256": "1ba7d8b72a1c029c3f4001f5c3b06ae50516266632fdea3970bcc172d6bc8dda",
+    "count": 3414,
+    "baselineHead": "6af85182ba5f31964c7d92fec4d78177c81db7c0",
+    "comparison": "Restore only the validated metadata exception before comparing original fingerprint; all other protected files byte-identical",
+    "metadataException": {
+      "path": "Directory.Build.props",
+      "before": "1.46.835.520",
+      "scope": "Required build counter only for full local coverage test; all other bytes unchanged",
+      "fields": [
+        "Version",
+        "AssemblyVersion",
+        "FileVersion"
+      ],
+      "after": "1.46.835.521"
+    }
+  },
+  "gateFileHashes": {
+    "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/baseline.json": "d4f929f325e7e89de0df542b90096faf57b60db4e729aa089d231be4334c9666",
+    "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/deltas/2026-09-07-assurance-migration.json": "c11497061e94b1e00e1f72d092b3c40ded5c289ac48cd325c86a198b0298adf0",
+    "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/closure.json": "06503ddd05ece914f0273267b249b96f114f7e1ec7ad3ef9a425fe1720f4b029",
+    "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/image-impact.json": "e91952f87db285b8f62e8c0eef753daa2796ba4d85c6ef3a862fe67735b157ba"
+  },
+  "readOnlyPreservation": true,
+  "shellParity": true,
+  "calls": [
+    {
+      "operation": "status-before",
+      "shell": "Bash",
+      "command": "bash .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.sh status docs/security/secure-development/2026-08-30-rl-se-checklist-self-review",
+      "exitCode": 2,
+      "output": "Blocked: Richtlinienversion stimmt nicht: Richtlinie_Sichere-Entwicklung.md",
+      "outcome": "Blocked"
+    },
+    {
+      "operation": "status-before",
+      "shell": "PowerShell",
+      "command": "pwsh -NoProfile -File .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.ps1 -Action Status -EvidenceDirectory docs/security/secure-development/2026-08-30-rl-se-checklist-self-review",
+      "exitCode": 2,
+      "output": "Blocked: Dokumentversion stimmt nicht: Richtlinie_Sichere-Entwicklung.md",
+      "outcome": "Blocked"
+    },
+    {
+      "operation": "baseline",
+      "shell": "Bash",
+      "command": "bash .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.sh review baseline rl-se-checklist-self-review development",
+      "exitCode": 2,
+      "output": "Blocked: Richtlinienversion stimmt nicht: Richtlinie_Sichere-Entwicklung.md",
+      "outcome": "Blocked"
+    },
+    {
+      "operation": "baseline",
+      "shell": "PowerShell",
+      "command": "pwsh -NoProfile -File .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.ps1 -Action Review -Gate baseline -ContextId rl-se-checklist-self-review -Mode development",
+      "exitCode": 2,
+      "output": "Blocked: Dokumentversion stimmt nicht: Richtlinie_Sichere-Entwicklung.md",
+      "outcome": "Blocked"
+    },
+    {
+      "operation": "delta",
+      "shell": "Bash",
+      "command": "bash .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.sh review delta rl-se-checklist-self-review development",
+      "exitCode": 0,
+      "output": "Reviewed: gate=delta context=rl-se-checklist-self-review mode=development outcome=Blocked",
+      "outcome": "Blocked"
+    },
+    {
+      "operation": "delta",
+      "shell": "PowerShell",
+      "command": "pwsh -NoProfile -File .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.ps1 -Action Review -Gate delta -ContextId rl-se-checklist-self-review -Mode development",
+      "exitCode": 0,
+      "output": "Reviewed: gate=delta context=rl-se-checklist-self-review mode=development outcome=Blocked",
+      "outcome": "Blocked"
+    },
+    {
+      "operation": "closure",
+      "shell": "Bash",
+      "command": "bash .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.sh review closure rl-se-checklist-self-review development",
+      "exitCode": 0,
+      "output": "Reviewed: gate=closure context=rl-se-checklist-self-review mode=development outcome=Blocked",
+      "outcome": "Blocked"
+    },
+    {
+      "operation": "closure",
+      "shell": "PowerShell",
+      "command": "pwsh -NoProfile -File .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.ps1 -Action Review -Gate closure -ContextId rl-se-checklist-self-review -Mode development",
+      "exitCode": 0,
+      "output": "Reviewed: gate=closure context=rl-se-checklist-self-review mode=development outcome=Blocked",
+      "outcome": "Blocked"
+    },
+    {
+      "operation": "image-impact",
+      "shell": "Bash",
+      "command": "bash .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.sh review image-impact rl-se-checklist-self-review development",
+      "exitCode": 0,
+      "output": "Reviewed: gate=image-impact context=rl-se-checklist-self-review mode=development outcome=Blocked",
+      "outcome": "Blocked"
+    },
+    {
+      "operation": "image-impact",
+      "shell": "PowerShell",
+      "command": "pwsh -NoProfile -File .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.ps1 -Action Review -Gate image-impact -ContextId rl-se-checklist-self-review -Mode development",
+      "exitCode": 0,
+      "output": "Reviewed: gate=image-impact context=rl-se-checklist-self-review mode=development outcome=Blocked",
+      "outcome": "Blocked"
+    },
+    {
+      "operation": "status-after",
+      "shell": "Bash",
+      "command": "bash .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.sh status docs/security/secure-development/2026-08-30-rl-se-checklist-self-review",
+      "exitCode": 2,
+      "output": "Blocked: Richtlinienversion stimmt nicht: Richtlinie_Sichere-Entwicklung.md",
+      "outcome": "Blocked"
+    },
+    {
+      "operation": "status-after",
+      "shell": "PowerShell",
+      "command": "pwsh -NoProfile -File .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.ps1 -Action Status -EvidenceDirectory docs/security/secure-development/2026-08-30-rl-se-checklist-self-review",
+      "exitCode": 2,
+      "output": "Blocked: Dokumentversion stimmt nicht: Richtlinie_Sichere-Entwicklung.md",
+      "outcome": "Blocked"
+    }
+  ],
+  "interpretation": "Exit 0 may mean valid blocked evidence; never treat it as substantive Ready."
+}
