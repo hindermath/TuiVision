@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "SecureDevelopmentGateEvidence",
+  "contextId": "invalid-ready-open",
+  "gate": "baseline",
+  "mode": "training",
+  "createdAt": "2099-01-01T00:00:00Z",
+  "review": {
+    "owner": "Fixture owner",
+    "reviewer": "Fixture reviewer",
+    "reviewedAt": "2099-01-01T00:00:00Z",
+    "reviewDue": "2099-12-31",
+    "residualRisk": "Open applicability remains unresolved.",
+    "reevaluationTrigger": "Any applicability decision."
+  },
+  "outcome": "Ready",
+  "assessments": [
+    {
+      "id": "NEG-001",
+      "applicability": "Open",
+      "implementation": "Not Assessed",
+      "evidence": "N/A",
+      "nextAction": "Resolve applicability.",
+      "owner": "Fixture owner",
+      "dueAt": "2099-12-31"
+    }
+  ],
+  "externalComparisonBoundary": "HOSK/GWDG: ExternalComparison only; never local evidence"
+}

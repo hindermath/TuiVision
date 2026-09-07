@@ -401,3 +401,11 @@ Die lebende Projektstatistik steht in `docs/project-statistics.md`. Sie wird rep
 
 *The living project statistics are stored in `docs/project-statistics.md`. They are rendered reproducibly from `docs/project-statistics.config.json` with the Bash or PowerShell renderer. Every chart is ASCII-only, at most 100 characters wide, and accompanied by exact values plus German and English text alternatives.*
 <!-- statistics-profile-2-readme:end -->
+
+## Secure Development Assurance
+
+Das freigegebene 13. Preset ergänzt read-only Status und ausdrücklich beauftragte
+Gate-Reviews. [Integration, Bedienung und Evidence-Grenzen](docs/maintenance/secure-development-assurance-integration.md).
+
+*The approved thirteenth preset adds read-only status and explicitly authorized
+gate reviews. [Integration, usage and evidence boundaries](docs/maintenance/secure-development-assurance-integration.md).*

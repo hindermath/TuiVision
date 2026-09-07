@@ -19,7 +19,7 @@
       "docs/secure-development/mitgeltende-dokumente/Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md": "779655e47fb608b689ab4aa299ddc8530144562674caf3e080d18e15bd28bbe7",
       "constitution.md": "e9b7a6ecafdd3bef33100b7d65013f472945f4749b90e6ff3230b1194771947f",
       ".specify/memory/constitution.md": "da1bd3419a626f35bae54c8a88e4d9c888f733793f7eede0b275971ff3badf90",
-      ".specify/presets/.registry": "cd67504e4d25ad63cd6b24c8f20fbbd7faa4ccdc8c05ab4d27116cc4bc82909e",
+      ".specify/presets/.registry": "f0e7dd8d4f24c42c4a48db0ee9fd614fd3236d57ac85e68d97d784c0da09f824",
       "docs/secure-development/checklisten/CL_01_Standards-Anwendbarkeit.md": "b0b3b15c1ad7d46a8f83f563583d9538d72332787f4468d63e691ec37fc4decf",
       "docs/secure-development/checklisten/CL_02_Sichere-Softwarearchitektur.md": "1b387329009286ce7a0a67b7af1f4bd3f60d290413f57c2eab307ca4b257ec9d",
       "docs/secure-development/checklisten/CL_03_Krypto-Mindestvorgaben.md": "031cc40fa44877e34cafc1b398f4ea582c1088647cae4659824e8ff7b5e6b5e9",
@@ -4328,7 +4328,7 @@
     {
       "evidenceId": "EVD-002",
       "relativePath": ".specify/presets/.registry",
-      "sha256": "cd67504e4d25ad63cd6b24c8f20fbbd7faa4ccdc8c05ab4d27116cc4bc82909e",
+      "sha256": "f0e7dd8d4f24c42c4a48db0ee9fd614fd3236d57ac85e68d97d784c0da09f824",
       "observedAtUtc": "2026-08-30T10:00:00Z",
       "evidenceType": "Configuration",
       "directness": "Direct",
@@ -4523,7 +4523,7 @@
     {
       "evidenceId": "EVD-015",
       "relativePath": "AGENTS.md",
-      "sha256": "67de6b0a2b41b3198832ffda92bbdc340e841bce8b998346ea7b8a6605bf194c",
+      "sha256": "5d5e77e70e875a04495144d6652af14c22cd5be14201cf8b66cf150cba1299d3",
       "observedAtUtc": "2026-08-30T10:00:00Z",
       "evidenceType": "Audit",
       "directness": "Direct",

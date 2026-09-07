@@ -20,6 +20,9 @@
     },
     "none": {
       "presetConfig": null
+    },
+    "secure-development-assurance-thirteen-governance-presets": {
+      "presetConfig": "scripts/config/spec-kit-secure-development-assurance-governance-presets.json"
     }
   }
 }
