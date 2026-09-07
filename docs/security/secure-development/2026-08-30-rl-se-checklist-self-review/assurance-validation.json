@@ -1,21 +1,21 @@
 {
   "schemaVersion": "1.0",
   "checkedAt": "2026-09-07T21:18:13Z",
-  "platform": "Darwin; Bash first, PowerShell 7 cross-check; not native Windows",
+  "platform": "DE: Darwin; zuerst Bash, Gegenprüfung mit PowerShell 7; kein natives Windows. EN: Darwin; Bash first, PowerShell 7 cross-check; not native Windows.",
   "context": "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review",
   "sourceSha256": "2f807cce16dcd0643e01d1e637638758435cee6c962cadf92296ce81af160b49",
   "controlMappingsVerified": 157,
   "gateOutcomes": "Blocked",
-  "humanDecisions": "All four Open",
+  "humanDecisions": "DE: Alle vier Entscheidungen Open. EN: All four decisions Open.",
   "protectedFiles": {
     "inventorySha256": "1ba7d8b72a1c029c3f4001f5c3b06ae50516266632fdea3970bcc172d6bc8dda",
     "count": 3414,
     "baselineHead": "6af85182ba5f31964c7d92fec4d78177c81db7c0",
-    "comparison": "Restore only the validated metadata exception before comparing original fingerprint; all other protected files byte-identical",
+    "comparison": "DE: Vor Fingerprint-Vergleich nur die geprüfte Metadatenausnahme rechnerisch zurücknehmen; alle anderen geschützten Dateien bytegleich. EN: Restore only the validated metadata exception before comparing the original fingerprint; all other protected files byte-identical.",
     "metadataException": {
       "path": "Directory.Build.props",
       "before": "1.46.835.520",
-      "scope": "Required build counter only for full local coverage test; all other bytes unchanged",
+      "scope": "DE: Nur vorgeschriebener Buildzähler für vollständigen lokalen Coverage-Test; alle anderen Bytes unverändert. EN: Required build counter only for full local coverage test; all other bytes unchanged.",
       "fields": [
         "Version",
         "AssemblyVersion",
@@ -130,5 +130,5 @@
       "outcome": "Blocked"
     }
   ],
-  "interpretation": "Exit 0 may mean valid blocked evidence; never treat it as substantive Ready."
+  "interpretation": "DE: Exit 0 kann gültige gesperrte Evidence bedeuten; niemals als fachliches Ready werten. EN: Exit 0 may mean valid blocked evidence; never treat it as substantive Ready."
 }
