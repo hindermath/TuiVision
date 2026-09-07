@@ -1,0 +1,39 @@
+schema_version: "1.0"
+
+preset:
+  id: "secure-development-assurance-governance"
+  name: "Secure Development Assurance Governance"
+  version: "0.1.3"
+  description: "Validates project-owned secure-development manifest, version, normalized hash, checklist, review, risk, closure, and image-impact evidence without granting human approvals or certifications."
+  author: "Thorsten Hindermann"
+  repository: "https://github.com/hindermath/spec-kit-preset-secure-development-assurance-governance"
+  license: "MIT"
+
+requires:
+  speckit_version: ">=0.8.3"
+
+provides:
+  templates:
+    - type: "template"
+      name: "secure-development-evidence-contract"
+      file: "templates/secure-development-evidence-contract.md"
+      description: "Portable evidence and decision-boundary contract"
+    - type: "command"
+      name: "speckit.secure-development-status"
+      file: "commands/speckit.secure-development-status.md"
+      description: "Inspect one secure-development evidence directory without changing files"
+    - type: "command"
+      name: "speckit.secure-development-review"
+      file: "commands/speckit.secure-development-review.md"
+      description: "Validate one named secure-development gate and record only authorized review evidence"
+
+tags:
+  - "secure-development"
+  - "assurance"
+  - "evidence"
+  - "baseline-integrity"
+  - "c5-boundary"
+  - "read-only-status"
+  - "governance"
+  - "cross-platform"
+  - "spec-kit"

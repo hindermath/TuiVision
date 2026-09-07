@@ -596,6 +596,44 @@
         "speckit-autonomous-resume"
       ],
       "installed_at": "2026-08-15T23:13:17.487730+00:00"
+    },
+    "secure-development-assurance-governance": {
+      "version": "0.1.3",
+      "source": "local",
+      "manifest_hash": "sha256:8e17022fb60749a3db454239641592f125e727585c0312418fae538e2b3ca622",
+      "enabled": true,
+      "priority": 15,
+      "registered_commands": {
+        "agy": [
+          "speckit.secure-development-status",
+          "speckit.secure-development-review"
+        ],
+        "claude": [
+          "speckit.secure-development-status",
+          "speckit.secure-development-review"
+        ],
+        "codex": [
+          "speckit.secure-development-status",
+          "speckit.secure-development-review"
+        ],
+        "copilot": [
+          "speckit.secure-development-status",
+          "speckit.secure-development-review"
+        ],
+        "opencode": [
+          "speckit.secure-development-status",
+          "speckit.secure-development-review"
+        ],
+        "zed": [
+          "speckit.secure-development-status",
+          "speckit.secure-development-review"
+        ]
+      },
+      "registered_skills": [
+        "speckit-secure-development-status",
+        "speckit-secure-development-review"
+      ],
+      "installed_at": "2026-09-07T18:34:24.025103+00:00"
     }
   }
 }
