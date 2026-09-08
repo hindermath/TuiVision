@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "documentType": "SecureDevelopmentAssuranceValidationReceipt",
-  "checkedAt": "2026-09-08T09:53:32Z",
+  "checkedAt": "2026-09-08T13:45:32Z",
   "platform": "DE: macOS; Bash und PowerShell 7. EN: macOS; Bash and PowerShell 7.",
   "contextId": "gsdb-spec-kit-intensive-review",
   "evidenceDirectory": "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review",
@@ -21,27 +21,27 @@
   "gateFileHashes": [
     {
       "path": "baseline.json",
-      "rawSha256": "5988c664ff8c8742acfadb55d97363cffa3c1a801c8679d4c4220b4b98a02428"
+      "rawSha256": "0101a086ca513604d0abd8ddc402485d25e46094a3dca137bc5d2a3d5789fe74"
     },
     {
       "path": "deltas/2026-09-08-assurance-revalidation.json",
-      "rawSha256": "745bf00025b64fc0d74bd8730ec49dfb9a38a725733c7bed24ca23f624a745f5"
+      "rawSha256": "1074944a318aff55325720758f78b461d1d80539a00f52730088c97b6a321d55"
     },
     {
       "path": "closure.json",
-      "rawSha256": "5895823517fbe985a1a346ab7d08aec6156f08c351120c4226edf3160dda6664"
+      "rawSha256": "cc9210cbdd336c18b4e61c2e8b5ef6ed263126188eba1b8a52164ad0e75ba162"
     },
     {
       "path": "image-impact.json",
-      "rawSha256": "cf75e6a083dd20cae589326821380b06b7d767c12477d5ca1879e80d182f0af5"
+      "rawSha256": "af5385f265c280b5dac593069df26d8efe928ebd205b6d9cc32b936662be9620"
     },
     {
       "path": "evidence-matrix.md",
-      "rawSha256": "6a5c56417f9961e8755f54adaab9460a134785d138ef6be1ae310c443d506091"
+      "rawSha256": "17415dc45c6b6d92d4a82f316068cc4e06501a81501a822c303b2333e474d111"
     },
     {
       "path": "assurance-revalidation.md",
-      "rawSha256": "9bd09318d62f1c1ffde8f3aee6a14bbdad902da676f2a13a5b1b56a4a8182847"
+      "rawSha256": "2ae8f63d0137dde3289d5329ee606996cb83610dfc45e32623f94ed8c6d06696"
     },
     {
       "path": "gsdb-spec-kit-intensive-review.json",

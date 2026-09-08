@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "documentType": "SecureDevelopmentAssuranceValidationReceipt",
-  "checkedAt": "2026-09-08T09:53:32Z",
+  "checkedAt": "2026-09-08T13:45:32Z",
   "platform": "DE: macOS; Bash und PowerShell 7. EN: macOS; Bash and PowerShell 7.",
   "contextId": "rl-se-checklist-self-review",
   "evidenceDirectory": "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review",
@@ -21,27 +21,27 @@
   "gateFileHashes": [
     {
       "path": "baseline.json",
-      "rawSha256": "7f48a6e8e71db340bd254c5bad64113a648313666171c5097140d8a84784a829"
+      "rawSha256": "895185c3ee147238b19d5118ea80473b9fc2fee8a97d2570484e2e202128691a"
     },
     {
       "path": "deltas/2026-09-08-assurance-revalidation.json",
-      "rawSha256": "9eb00b4289d8adbef2e4874f86cc2bbf534d46302321f46cd3a4596d963979db"
+      "rawSha256": "17fefb017908086b8d8ee5ec2f43f526fd4291c51eb64caa38cbe42daa10a3b9"
     },
     {
       "path": "closure.json",
-      "rawSha256": "8efa6d352882280775176b3e9f60ee7dd9ce6727999c2e401d717c17746dfd64"
+      "rawSha256": "73e7825fcdbbc48193423645aee7e0e7e3d3ab5640c9e38aea5b7fbfe7b4f476"
     },
     {
       "path": "image-impact.json",
-      "rawSha256": "48c70c55db7581d3f4cb7bcd2422e8fdbf1533cc349d0609360411ddb3be27c1"
+      "rawSha256": "da5ef734ffd76303a2624fae2b5b8dc0eaeaf0c668e68727728d10feb990c029"
     },
     {
       "path": "evidence-matrix.md",
-      "rawSha256": "4375755a943c3a2a3f96ac95088d481aead0120f6a2b34666f76d0ec36896d8c"
+      "rawSha256": "90f73cd485371653c22bebe8f3e85da1fceacdc185a004c583d4fbe7db082afe"
     },
     {
       "path": "assurance-revalidation.md",
-      "rawSha256": "fe6e09c194e45085b74f9e4b7d5342611babd503a9d0ff5f42a05b9f2b0546b9"
+      "rawSha256": "20fa1e56248efd0d334cde78e1d5dfe560af20cae2f9af3f9bf732c8846a014a"
     },
     {
       "path": "rl-se-self-review.json",

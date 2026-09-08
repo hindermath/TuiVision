@@ -10,8 +10,8 @@
   "review": {
     "owner": "DE: TuiVision-Repository-Maintainerrolle. EN: TuiVision repository maintainer role.",
     "reviewer": "DE: Automatisierte technische Evidence-Prüfung durch Codex; keine unabhängige menschliche Freigabe. EN: Codex automated technical evidence review; not an independent human approval.",
-    "reviewedAt": "2026-09-08T08:55:00Z",
-    "reviewDue": "2026-09-15",
+    "reviewedAt": "2026-09-08T13:45:32Z",
+    "reviewDue": "2027-09-08",
     "residualRisk": "DE: Wirksamkeit fachlicher Kontrollen und menschliche Entscheidungen bleiben vom technischen Evidence-Vertrag getrennt; kein Risiko wird akzeptiert. EN: Domain-control effectiveness and human decisions remain separate from this technical evidence-contract result; no risk is accepted.",
     "reevaluationTrigger": "DE: Bei jeder Änderung an Baseline, Evidence, Produkt, Architektur, Abhängigkeiten, Workflows, Distribution, Images oder Review-Scope. EN: Any baseline, evidence, product, architecture, dependency, workflow, distribution, image, or review-scope change."
   },
@@ -52,6 +52,6 @@
       "evidence": "NotProvided"
     }
   },
-  "nextAction": "DE: pilotAuthorization, projectAcceptance und generalRelease bleiben Open, bis ausdrücklich befugte menschliche Evidence vorliegt; nach jedem dokumentierten Re-Evaluation-Trigger alle Gates erneut prüfen. EN: Keep pilotAuthorization, projectAcceptance, and generalRelease Open until explicitly authorised human evidence exists; re-run every gate after any documented re-evaluation trigger.",
+  "nextAction": "DE: pilotAuthorization, projectAcceptance und generalRelease bleiben Open. Die Community-Einreichung github/spec-kit#4455 sowie alle fünf Projektfeldtests werden vor einer zentralen v0.1.3-Preset-Entscheidung abgewartet; nach jedem dokumentierten Re-Evaluation-Trigger alle Gates erneut prüfen. EN: pilotAuthorization, projectAcceptance, and generalRelease remain Open. Wait for community submission github/spec-kit#4455 and all five project field tests before a central v0.1.3 preset decision; re-run every gate after any documented re-evaluation trigger.",
   "externalComparisonBoundary": "HOSK/GWDG: ExternalComparison only; never local evidence"
 }

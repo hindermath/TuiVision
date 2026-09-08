@@ -16,6 +16,20 @@ Ready; the strictest technical overall status is Ready. This is not a new
 domain assessment of the 157 controls. The 157 controls retain their domain dispositions: 13 AlreadySatisfied, 65 Applicable, 38 N/A, 36 Open, and 5 FollowUp. Pilot
 authorization, project acceptance, and general release remain Open.
 
+**DE:** Aktuelle Scope-Entscheidung fuer diesen Feldtest: C5, CRA und formale
+Produktkonformitaet sind fuer das nichtkommerzielle Ausbildungs- und
+Beispielprojekt `N/A`. GitHub, CI, NuGet und Artefakthosting sind Entwicklungs-
+und Lieferinfrastruktur, keine Produkt-Cloud-Runtime. Dies aendert die
+historischen 157 Kontrolldispositionen nicht. Technische Jahreswiedervorlage:
+2027-09-08; regulatorische Scope-Pruefung: 2026-12-31.
+
+**EN:** Current scope decision for this field test: C5, CRA, and formal product
+conformity are `N/A` for the non-commercial training and example project.
+GitHub, CI, NuGet, and artifact hosting are development and delivery
+infrastructure, not product cloud runtime. This does not rewrite the historical
+157 control dispositions. Technical annual review: 2027-09-08; regulatory
+scope review: 2026-12-31.
+
 **DE:** Aktuelle maschinenlesbare Gates sind baseline.json,
 deltas/2026-09-08-assurance-revalidation.json, closure.json und
 image-impact.json. Die ersetzten blockierten Migrations-Gates bleiben unter
