@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "SecureDevelopmentGateEvidence",
+  "contextId": "gsdb-spec-kit-intensive-review",
+  "gate": "delta",
+  "mode": "development",
+  "runbookApplicability": "N/A",
+  "runbookRationale": "The revalidation report defines the bounded documentation and evidence procedure; no training, product, image, or production run is performed.",
+  "createdAt": "2026-09-08T08:55:00Z",
+  "review": {
+    "owner": "TuiVision repository maintainer role",
+    "reviewer": "Codex automated technical evidence review; not an independent human approval",
+    "reviewedAt": "2026-09-08T08:55:00Z",
+    "reviewDue": "2026-09-15",
+    "residualRisk": "Domain-control effectiveness and human decisions remain separate from this technical evidence-contract result; no risk is accepted.",
+    "reevaluationTrigger": "Any baseline, evidence, product, architecture, dependency, workflow, distribution, image, or review-scope change."
+  },
+  "assessments": [
+    {
+      "id": "DELTA-001",
+      "applicability": "Applicable",
+      "implementation": "Fulfilled",
+      "evidence": "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/assurance-revalidation.md"
+    },
+    {
+      "id": "DELTA-002",
+      "applicability": "Applicable",
+      "implementation": "Fulfilled",
+      "evidence": "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+    },
+    {
+      "id": "DELTA-003",
+      "applicability": "N/A",
+      "implementation": "Not Assessed",
+      "reason": "The bounded revalidation changes managed governance documents and evidence only; it does not change product, runtime, public API, package, or deployment behavior.",
+      "reevaluationTrigger": "Any product, runtime, public API, package, deployment, or test-code change.",
+      "evidence": "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/assurance-revalidation.md"
+    }
+  ],
+  "outcome": "Ready",
+  "externalComparisonBoundary": "HOSK/GWDG: ExternalComparison only; never local evidence"
+}

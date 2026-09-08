@@ -1,5 +1,15 @@
 # Assurance-Evidence-Migration / Assurance Evidence Migration
 
+## Historischer Status / Historical Status
+
+**DE:** Dieses Dokument beschreibt die blockierte Migration vom 2026-09-07.
+Der damalige Gate-Satz ist unter archive/2026-09-07-assurance-migration/ unveraendert erhalten.
+Die aktive technische Revalidierung steht in assurance-revalidation.md.
+
+**EN:** This document describes the blocked migration dated 2026-09-07. Its
+gate set is retained unchanged under archive/2026-09-07-assurance-migration/. The active
+technical revalidation is documented in assurance-revalidation.md.
+
 ## Deutsch
 
 Technische Prüfung: 2026-09-07T21:04:59Z. Kontext: rl-se-checklist-self-review. Ergebnis: **Blocked**.
@@ -45,7 +55,7 @@ unverändert; diese Wiedervorlage startet keinen automatischen Lauf.
 
 Referenzprüfung: HashMatch: 45.
 Alle Einzelpfade und Alt-/Ist-Hashes stehen in
-[assurance-source-inspection.json](assurance-source-inspection.json).
+[archived assurance-source-inspection.json](archive/2026-09-07-assurance-migration/assurance-source-inspection.json).
 Dateiexistenz und Hashgleichheit sind keine Wirksamkeitsnachweise. Fragmente,
 externe URLs sowie fachliche Gültigkeit wurden nicht dadurch bestätigt.
 Manifest und kontrollierte Dokumente bleiben unverändert. Abweichende

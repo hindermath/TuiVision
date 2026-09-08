@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "SecureDevelopmentAssuranceValidationReceipt",
+  "checkedAt": "2026-09-08T08:55:00Z",
+  "platform": "macOS; Bash and PowerShell 7",
+  "contextId": "gsdb-spec-kit-intensive-review",
+  "evidenceDirectory": "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review",
+  "gateOutcomes": {
+    "baseline": "Ready",
+    "delta": "Ready",
+    "closure": "Ready",
+    "imageImpact": "Ready",
+    "overall": "Ready"
+  },
+  "humanDecisions": {
+    "technicalValidation": "Fulfilled",
+    "pilotAuthorization": "Open",
+    "projectAcceptance": "Open",
+    "generalRelease": "Open"
+  },
+  "gateFileHashes": [
+    {
+      "path": "baseline.json",
+      "rawSha256": "863cd0d65ebc53cdc6c36f2a5c4a4405129c70672ba839c2b1e299927a1fa139"
+    },
+    {
+      "path": "deltas/2026-09-08-assurance-revalidation.json",
+      "rawSha256": "226a9961e217217d7f3542f47a240f31f60e5bc8f69057193aecc1e4b6c323c3"
+    },
+    {
+      "path": "closure.json",
+      "rawSha256": "e71ed5ebf5080c9d0843d28cdb258aa59e852dc01249295361c2193e1b7788f7"
+    },
+    {
+      "path": "image-impact.json",
+      "rawSha256": "66715ba734cd7d41eb48b01e86dd623cb35d69f03c776431c30fd2675cc30018"
+    },
+    {
+      "path": "evidence-matrix.md",
+      "rawSha256": "1ebba8ed6c93e431444d86e362dab558186e19b00cffb212b2367ce8f785ecde"
+    },
+    {
+      "path": "assurance-revalidation.md",
+      "rawSha256": "fa316fc4bd218eecc04aa47b241a14719e7b38b8f7484081f5a7074cd845ee70"
+    },
+    {
+      "path": "gsdb-spec-kit-intensive-review.json",
+      "rawSha256": "598982b5b9d0d0957caa70f51a4849598f56608bb5f7bbb0c39900f2f46698e6"
+    }
+  ],
+  "readOnlyPreservation": {
+    "result": "Fulfilled",
+    "method": "Raw SHA-256 values were captured before and after the final Bash and PowerShell review/status sequence; every listed value remained identical."
+  },
+  "shellParity": {
+    "result": "Fulfilled",
+    "expectedExitCode": 0,
+    "expectedOverall": "Ready"
+  },
+  "calls": [
+    {
+      "shell": "Bash",
+      "action": "Review",
+      "gate": "baseline",
+      "command": "bash .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.sh review baseline gsdb-spec-kit-intensive-review development",
+      "exitCode": 0,
+      "outcome": "Ready"
+    },
+    {
+      "shell": "Bash",
+      "action": "Review",
+      "gate": "delta",
+      "command": "bash .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.sh review delta gsdb-spec-kit-intensive-review development",
+      "exitCode": 0,
+      "outcome": "Ready"
+    },
+    {
+      "shell": "Bash",
+      "action": "Review",
+      "gate": "closure",
+      "command": "bash .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.sh review closure gsdb-spec-kit-intensive-review development",
+      "exitCode": 0,
+      "outcome": "Ready"
+    },
+    {
+      "shell": "Bash",
+      "action": "Review",
+      "gate": "image-impact",
+      "command": "bash .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.sh review image-impact gsdb-spec-kit-intensive-review development",
+      "exitCode": 0,
+      "outcome": "Ready"
+    },
+    {
+      "shell": "Bash",
+      "action": "Status",
+      "gate": "all",
+      "command": "bash .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.sh status docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review",
+      "exitCode": 0,
+      "outcome": "Ready"
+    },
+    {
+      "shell": "PowerShell",
+      "action": "Review",
+      "gate": "baseline",
+      "command": "pwsh -NoProfile -File .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.ps1 -Action Review -Gate baseline -ContextId gsdb-spec-kit-intensive-review -Mode development",
+      "exitCode": 0,
+      "outcome": "Ready"
+    },
+    {
+      "shell": "PowerShell",
+      "action": "Review",
+      "gate": "delta",
+      "command": "pwsh -NoProfile -File .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.ps1 -Action Review -Gate delta -ContextId gsdb-spec-kit-intensive-review -Mode development",
+      "exitCode": 0,
+      "outcome": "Ready"
+    },
+    {
+      "shell": "PowerShell",
+      "action": "Review",
+      "gate": "closure",
+      "command": "pwsh -NoProfile -File .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.ps1 -Action Review -Gate closure -ContextId gsdb-spec-kit-intensive-review -Mode development",
+      "exitCode": 0,
+      "outcome": "Ready"
+    },
+    {
+      "shell": "PowerShell",
+      "action": "Review",
+      "gate": "image-impact",
+      "command": "pwsh -NoProfile -File .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.ps1 -Action Review -Gate image-impact -ContextId gsdb-spec-kit-intensive-review -Mode development",
+      "exitCode": 0,
+      "outcome": "Ready"
+    },
+    {
+      "shell": "PowerShell",
+      "action": "Status",
+      "gate": "all",
+      "command": "pwsh -NoProfile -File .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.ps1 -Action Status -EvidenceDirectory docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review",
+      "exitCode": 0,
+      "outcome": "Ready"
+    }
+  ],
+  "interpretation": "Technical evidence-contract validation only. Domain-control status and human pilot, project, release, risk, conformity, certification, and C5 decisions remain separate."
+}

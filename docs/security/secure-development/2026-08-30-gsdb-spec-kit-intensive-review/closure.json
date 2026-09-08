@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "documentType": "SecureDevelopmentGateEvidence",
-  "contextId": "rl-se-checklist-self-review",
+  "contextId": "gsdb-spec-kit-intensive-review",
   "gate": "closure",
   "mode": "development",
   "runbookApplicability": "N/A",
@@ -20,13 +20,13 @@
       "id": "CLOSURE-001",
       "applicability": "Applicable",
       "implementation": "Fulfilled",
-      "evidence": "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/evidence-matrix.md"
+      "evidence": "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/evidence-matrix.md"
     },
     {
       "id": "CLOSURE-002",
       "applicability": "Applicable",
       "implementation": "Fulfilled",
-      "evidence": "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/assurance-revalidation.md"
+      "evidence": "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/assurance-revalidation.md"
     }
   ],
   "outcome": "Ready",
@@ -34,7 +34,7 @@
     "technicalValidation": {
       "status": "Fulfilled",
       "authority": "Installed Secure Development Assurance validators (Bash and PowerShell)",
-      "evidence": "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/assurance-validation.json"
+      "evidence": "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/assurance-validation.json"
     },
     "pilotAuthorization": {
       "status": "Open",
