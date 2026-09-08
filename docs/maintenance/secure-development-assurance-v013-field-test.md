@@ -42,7 +42,7 @@ regulatorische Scope-Evidence erneuert; die Alt-/Neu-Provenienz steht im
 | Host | macOS 26.6.2, Apple Silicon |
 | Shells | GNU Bash 3.2.57; PowerShell 7.6.5; jq 1.7.1 |
 | Vorgelagerte Produkt-/Evidence-CI | [TuiVision PR #170](https://github.com/hindermath/TuiVision/pull/170), Head `b2089c56ff60255493a487189df441ef4093da7d`, Merge `474af1114422d980aed7ad3993435014ddf1548b` |
-| Feldtest-Lieferung | [TuiVision PR #171](https://github.com/hindermath/TuiVision/pull/171); gepruefter Evidence-Commit `7cd51bf202b54a12bd6073daa70faddfa557a87a` |
+| Feldtest-Lieferung | [TuiVision PR #171](https://github.com/hindermath/TuiVision/pull/171); gepruefter Evidence-Commit `789cabe3b67d5f7745229d666ace88ce918ac3c1` |
 
 ## Technische Pruefung / Technical Validation
 
