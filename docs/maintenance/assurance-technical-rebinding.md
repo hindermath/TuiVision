@@ -71,3 +71,25 @@ Re-Evaluation bei Quellenänderung. Hash-/Byteprüfung und vollständiger
 Release-Testlauf werden vor Lieferung erneut ausgeführt. / Technical change
 evidence, repository-local, bilingual, no Home sync. Reevaluate source changes;
 rerun hash/byte checks and the complete Release suite before delivery.
+
+## Baseline-3.2.0-Neubindung am 2026-09-08 / Baseline 3.2.0 Rebinding on 2026-09-08
+
+Die ausdrücklich beauftragte Beseitigung der Versionsabweichung aktualisiert
+genau zwei weitere technische Quellenbindungen jeweils im Review-Snapshot und
+im Evidence-Eintrag. Die fachlichen Dispositionen der 157 Kontrollen sowie
+Rollen, Risiken, Fristen und menschliche Entscheidungsgrenzen bleiben
+unverändert. / The explicitly requested version-drift correction refreshes
+exactly two further technical source bindings in both the review snapshot and
+the evidence entry. The 157 control dispositions, roles, risks, deadlines and
+human decision boundaries remain unchanged.
+
+| Evidence | Quelle / Source | Vorher / Before | Nachher / After |
+|---|---|---|---|
+| EVD-020 | `docs/secure-development/baseline-manifest.json` | `82449d57f2e072cb93e0066e7e1eee112219c9836cd51acd75027ec8436ec916` | `65d80a5cf4c93f23e81b3ec9453853c9856210f75136ab02baca0e80eb6683bb` |
+| EVD-033 | `docs/secure-development/mitgeltende-dokumente/Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md` | `779655e47fb608b689ab4aa299ddc8530144562674caf3e080d18e15bd28bbe7` | `65ea3815188c27acd000d14a908eb095ed53c782aee6556b6fcd6390cc2c4567` |
+
+Die alte Bindung bleibt im vorherigen Git-Stand und in der historischen
+Migrationsevidence nachvollziehbar. Diese Neubindung ist keine rückwirkende
+fachliche Prüfung. / The previous binding remains traceable in the preceding
+Git state and historical migration evidence. This rebinding is not a
+retroactive substantive review.

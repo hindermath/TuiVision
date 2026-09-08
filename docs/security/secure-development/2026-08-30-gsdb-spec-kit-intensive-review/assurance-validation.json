@@ -3,8 +3,8 @@
   "documentType": "SecureDevelopmentAssuranceValidationReceipt",
   "checkedAt": "2026-09-08T09:53:32Z",
   "platform": "DE: macOS; Bash und PowerShell 7. EN: macOS; Bash and PowerShell 7.",
-  "contextId": "rl-se-checklist-self-review",
-  "evidenceDirectory": "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review",
+  "contextId": "gsdb-spec-kit-intensive-review",
+  "evidenceDirectory": "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review",
   "gateOutcomes": {
     "baseline": "Ready",
     "delta": "Ready",
@@ -21,31 +21,31 @@
   "gateFileHashes": [
     {
       "path": "baseline.json",
-      "rawSha256": "7f48a6e8e71db340bd254c5bad64113a648313666171c5097140d8a84784a829"
+      "rawSha256": "5988c664ff8c8742acfadb55d97363cffa3c1a801c8679d4c4220b4b98a02428"
     },
     {
       "path": "deltas/2026-09-08-assurance-revalidation.json",
-      "rawSha256": "9eb00b4289d8adbef2e4874f86cc2bbf534d46302321f46cd3a4596d963979db"
+      "rawSha256": "745bf00025b64fc0d74bd8730ec49dfb9a38a725733c7bed24ca23f624a745f5"
     },
     {
       "path": "closure.json",
-      "rawSha256": "8efa6d352882280775176b3e9f60ee7dd9ce6727999c2e401d717c17746dfd64"
+      "rawSha256": "5895823517fbe985a1a346ab7d08aec6156f08c351120c4226edf3160dda6664"
     },
     {
       "path": "image-impact.json",
-      "rawSha256": "48c70c55db7581d3f4cb7bcd2422e8fdbf1533cc349d0609360411ddb3be27c1"
+      "rawSha256": "cf75e6a083dd20cae589326821380b06b7d767c12477d5ca1879e80d182f0af5"
     },
     {
       "path": "evidence-matrix.md",
-      "rawSha256": "4375755a943c3a2a3f96ac95088d481aead0120f6a2b34666f76d0ec36896d8c"
+      "rawSha256": "6a5c56417f9961e8755f54adaab9460a134785d138ef6be1ae310c443d506091"
     },
     {
       "path": "assurance-revalidation.md",
-      "rawSha256": "fe6e09c194e45085b74f9e4b7d5342611babd503a9d0ff5f42a05b9f2b0546b9"
+      "rawSha256": "9bd09318d62f1c1ffde8f3aee6a14bbdad902da676f2a13a5b1b56a4a8182847"
     },
     {
-      "path": "rl-se-self-review.json",
-      "rawSha256": "4ea943d06e0f7b70742af3da7d80482b63685d0c448d173226dd436b27b56ba2"
+      "path": "gsdb-spec-kit-intensive-review.json",
+      "rawSha256": "598982b5b9d0d0957caa70f51a4849598f56608bb5f7bbb0c39900f2f46698e6"
     }
   ],
   "readOnlyPreservation": {
@@ -62,7 +62,7 @@
       "shell": "Bash",
       "action": "Review",
       "gate": "baseline",
-      "command": "bash .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.sh review baseline rl-se-checklist-self-review development",
+      "command": "bash .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.sh review baseline gsdb-spec-kit-intensive-review development",
       "exitCode": 0,
       "outcome": "Ready"
     },
@@ -70,7 +70,7 @@
       "shell": "Bash",
       "action": "Review",
       "gate": "delta",
-      "command": "bash .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.sh review delta rl-se-checklist-self-review development",
+      "command": "bash .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.sh review delta gsdb-spec-kit-intensive-review development",
       "exitCode": 0,
       "outcome": "Ready"
     },
@@ -78,7 +78,7 @@
       "shell": "Bash",
       "action": "Review",
       "gate": "closure",
-      "command": "bash .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.sh review closure rl-se-checklist-self-review development",
+      "command": "bash .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.sh review closure gsdb-spec-kit-intensive-review development",
       "exitCode": 0,
       "outcome": "Ready"
     },
@@ -86,7 +86,7 @@
       "shell": "Bash",
       "action": "Review",
       "gate": "image-impact",
-      "command": "bash .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.sh review image-impact rl-se-checklist-self-review development",
+      "command": "bash .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.sh review image-impact gsdb-spec-kit-intensive-review development",
       "exitCode": 0,
       "outcome": "Ready"
     },
@@ -94,7 +94,7 @@
       "shell": "Bash",
       "action": "Status",
       "gate": "all",
-      "command": "bash .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.sh status docs/security/secure-development/2026-08-30-rl-se-checklist-self-review",
+      "command": "bash .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.sh status docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review",
       "exitCode": 0,
       "outcome": "Ready"
     },
@@ -102,7 +102,7 @@
       "shell": "PowerShell",
       "action": "Review",
       "gate": "baseline",
-      "command": "pwsh -NoProfile -File .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.ps1 -Action Review -Gate baseline -ContextId rl-se-checklist-self-review -Mode development",
+      "command": "pwsh -NoProfile -File .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.ps1 -Action Review -Gate baseline -ContextId gsdb-spec-kit-intensive-review -Mode development",
       "exitCode": 0,
       "outcome": "Ready"
     },
@@ -110,7 +110,7 @@
       "shell": "PowerShell",
       "action": "Review",
       "gate": "delta",
-      "command": "pwsh -NoProfile -File .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.ps1 -Action Review -Gate delta -ContextId rl-se-checklist-self-review -Mode development",
+      "command": "pwsh -NoProfile -File .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.ps1 -Action Review -Gate delta -ContextId gsdb-spec-kit-intensive-review -Mode development",
       "exitCode": 0,
       "outcome": "Ready"
     },
@@ -118,7 +118,7 @@
       "shell": "PowerShell",
       "action": "Review",
       "gate": "closure",
-      "command": "pwsh -NoProfile -File .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.ps1 -Action Review -Gate closure -ContextId rl-se-checklist-self-review -Mode development",
+      "command": "pwsh -NoProfile -File .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.ps1 -Action Review -Gate closure -ContextId gsdb-spec-kit-intensive-review -Mode development",
       "exitCode": 0,
       "outcome": "Ready"
     },
@@ -126,7 +126,7 @@
       "shell": "PowerShell",
       "action": "Review",
       "gate": "image-impact",
-      "command": "pwsh -NoProfile -File .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.ps1 -Action Review -Gate image-impact -ContextId rl-se-checklist-self-review -Mode development",
+      "command": "pwsh -NoProfile -File .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.ps1 -Action Review -Gate image-impact -ContextId gsdb-spec-kit-intensive-review -Mode development",
       "exitCode": 0,
       "outcome": "Ready"
     },
@@ -134,7 +134,7 @@
       "shell": "PowerShell",
       "action": "Status",
       "gate": "all",
-      "command": "pwsh -NoProfile -File .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.ps1 -Action Status -EvidenceDirectory docs/security/secure-development/2026-08-30-rl-se-checklist-self-review",
+      "command": "pwsh -NoProfile -File .specify/presets/secure-development-assurance-governance/scripts/validate-secure-development-assurance.ps1 -Action Status -EvidenceDirectory docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review",
       "exitCode": 0,
       "outcome": "Ready"
     }

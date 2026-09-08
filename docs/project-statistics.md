@@ -694,6 +694,9 @@ fortgeschrieben.
 | 2026-09-07 | Assurance-Integration und Evidence-Navigation / Assurance integration and evidence navigation | Branch `codex/assurance-preset-integration`; sichtbare Sitzung 2026-09-07. Paket-, Profil- und Dokumentationsaenderungen: +5084 / -21 Textzeilen vor Statistik-Selbstnachweis. Wiederverwendete Paketzeilen sind keine neu entwickelte Produktlogik; vorhandene Bewertungen bleiben unveraendert; genau drei ausdruecklich genehmigte technische Hashfelder sind mit Alt-/Neu-Provenienz korrigiert. Zwoelf Presets unveraendert, keine fachliche Freigabe, kein Home-Sync. Referenzen: 80 Zeilen/Arbeitstag konservativ, repo-spezifische Thorsten-Solo-Basis laut Profilkonfiguration; Speedup ist Lieferdichte. / One visible session; reused package and evidence-index volume, no new product logic or human approval. Twelve presets preserved; CI/review and MergeAndSync; no Home sync. Manual effort follows the repository statistics configuration. |
 | 2026-09-07 | Assurance-Evidence-Vertrag / Assurance evidence contract | Branch `codex/assurance-evidence-migration`, sichtbare Sitzung 2026-09-07. 157 historische Kontrollen quellengebunden abgebildet, vier Gates Blocked, vier menschliche Entscheidungen Open; 3060 neue Evidence-/Dokumentationszeilen vor Ledger und Delivery-Metadaten, 0 neue Produkt-/Testlogikzeilen. Quellen- und Shell-Paritätsprüfung: docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/assurance-validation.json. Presets und Altbewertungen unverändert. / Source-bound migration and read-only parity verification; no approval inferred, no Home sync. Manual reference: 80 lines/workday and the repository-specific configuration; speedup is delivery density, not stopwatch time. |
 
+| 2026-09-08 | Assurance-Baseline und zwei Gate-Revalidierungen / Assurance baseline and two gate revalidations | Branch `codex/assurance-evidence-ready`; sichtbare Sitzung 2026-09-08. Die verwaltete Baseline ist auf 3.2.0 synchronisiert. Der RL-SE-Gate-Satz ist auditierbar revalidiert; der GSDB-Kontext besitzt nun die fehlende Evidence-Matrix und alle vier Gates. Beide Kontexte erreichen in Bash und PowerShell den technischen Gesamtstatus `Ready`. Die fachlichen RL-SE-/GSDB-Bewertungen bleiben unveraendert; technische Validierung ist `Fulfilled`, Pilotfreigabe, Projektabnahme und allgemeine Freigabe bleiben `Open`. Umfang vor Statistik-Metadaten: `+3490 / -2286` Dokumentations-, Governance- und Evidence-Zeilen, `0` Produkt- und `0` Testcode-Zeilen. Dreizehn Presets bleiben unveraendert; keine Produkt-, API-, Paket-, Image- oder Home-Sync-Aenderung. / Synchronize baseline 3.2.0, revalidate RL-SE, and complete the missing GSDB matrix and gate set. Both contexts validate as technical `Ready` in Bash and PowerShell while domain assessments and human approvals remain unchanged. No product, package, image, or Home-sync change; manual references remain defined by the repository statistics configuration. |
+| 2026-09-08 | CI-Nachlauf fuer die RL-SE-Baseline-Bindung / CI follow-up for the RL-SE baseline binding | Zwei durch Baseline 3.2.0 veraltete normalisierte SHA-256-Bindungen wurden in Review-Snapshot und Evidence-Eintraegen nachvollziehbar erneuert. Alle 157 fachlichen Dispositionen blieben bytevergleichbar unveraendert. Die gezielten RL-SE-Tests bestanden mit 5/5, die GSDB-Tests mit 58/58 und der lokale Release-Testlauf mit 214/214; beide Assurance-Kontexte blieben unter Bash und PowerShell technisch `Ready`, bei unveraendert offenen menschlichen Freigaben. / Refresh two stale normalized SHA-256 bindings caused by baseline 3.2.0, without changing any of the 157 domain dispositions. Targeted RL-SE and GSDB tests and the local Release test run passed; both Assurance contexts remain technically `Ready` in Bash and PowerShell while human approvals stay Open. |
+
 ## Statistikprofil-1-Archiv / Statistics Profile 1 Archive
 Basis dieses Schlussblocks ist der Repository-Snapshot vom 2026-07-15. Die
 Werte schließen den aktuellen Working Tree ein und bleiben deshalb bis zum
@@ -1136,25 +1139,25 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 716258 lines |
-| Textdateien / Text files | 3352 |
-| Beobachtbarer Zeitraum / Observable period | 2025-09-14..2026-09-07 |
-| Aktivtage / Active days | 94 |
-| Relevante Commits / Relevant commits | 580 |
-| Zeilen je Aktivtag / Lines per active day | 7619.8 |
+| Textbasis / Text base | 717566 lines |
+| Textdateien / Text files | 3365 |
+| Beobachtbarer Zeitraum / Observable period | 2025-09-14..2026-09-08 |
+| Aktivtage / Active days | 95 |
+| Relevante Commits / Relevant commits | 583 |
+| Zeilen je Aktivtag / Lines per active day | 7553.3 |
 | Peak-Tag im Fenster / Peak day in window | 2026-03-22 / 321183 |
 | Peak-Woche im Fenster / Peak week in window | 2026-03-22 / 373576 |
 | Laengste Serie / Longest streak | 17 days |
-| Speedup vs. 80 lines/day | 95.2x |
-| Speedup vs. 125 lines/day | 61.0x |
-| Methodik / Methodology | v2; source `b2b3f4578fe8` |
+| Speedup vs. 80 lines/day | 94.4x |
+| Speedup vs. 125 lines/day | 60.4x |
+| Methodik / Methodology | v2; source `87d5228adea3` |
 
 ### Artefaktmix / Artifact Mix
 
 ```text
 Produktiv / Production          [####................]  19.5% | 139704
 Tests                           [##..................]   7.5% | 53856
-Dokumentation / Documentation   [##########..........]  49.9% | 357565
+Dokumentation / Documentation   [##########..........]  50.0% | 358873
 Skripte / Scripts               [#...................]   3.2% | 23259
 Konfiguration / Configuration   [#...................]   5.9% | 42008
 Daten und Medien / Data and media [#...................]   0.0% | 1
@@ -1182,7 +1185,7 @@ Sa/Sa  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 Wochen / Weeks 27..52 | 2026-03-15..2026-09-12
 So/Su  0 4 4 0 4 0 0 4 4 0 0 4 0 4 0 0 0 4 4 4 1 4 4 0 4 0
 Mo/Mo  4 4 4 0 1 4 0 4 0 0 0 1 0 2 0 3 1 4 4 0 0 0 2 0 0 4
-Di/Tu  3 3 4 0 0 0 0 3 4 0 3 2 0 0 0 2 0 4 4 4 0 0 0 0 0 -
+Di/Tu  3 3 4 0 0 0 0 3 4 0 3 2 0 0 0 2 0 4 4 4 0 0 0 0 0 4
 Mi/We  1 4 0 0 0 3 0 4 1 0 0 2 0 4 0 2 0 4 2 4 0 0 0 0 0 -
 Do/Th  0 0 0 0 0 0 4 0 0 3 3 3 4 2 0 0 0 4 4 0 0 4 0 0 0 -
 Fr/Fr  4 4 4 0 2 4 0 3 1 4 3 0 0 3 2 3 4 4 4 1 0 0 0 0 0 -
@@ -1346,8 +1349,8 @@ Die festen Slots halten den Phasenvergleich auch bei fehlenden oder spaeter erga
 
 ```text
 Scale: 0..100x
-80 lines/day       [###################.] 95.2x
-125 lines/day      [############........] 61.0x
+80 lines/day       [###################.] 94.4x
+125 lines/day      [############........] 60.4x
 ```
 
 Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen Referenzen. Sie messen keine Arbeitszeit.
@@ -1360,7 +1363,7 @@ Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen
 Scale: 0..10000 lines/day
 Experienced manual [#...................] 80
 Thorsten solo      [#...................] 125
-Visible repository [###############.....] 7619.8
+Visible repository [###############.....] 7553.3
 ```
 
 Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schreibt die Git-Aktivitaet keiner Person oder KI pauschal zu.
@@ -1369,9 +1372,9 @@ Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schre
 
 ### Textalternative / Text Alternative
 
-DE: Das Fenster beginnt am 2025-09-14 und endet am 2026-09-07. Es enthaelt 94 aktive und 265 inaktive vergangene Tage. Peak-Tag: 2026-03-22 / 321183. Peak-Woche: 2026-03-22 / 373576. Laengste Serie: 17 Tage (2026-07-10..2026-07-26).
+DE: Das Fenster beginnt am 2025-09-14 und endet am 2026-09-08. Es enthaelt 95 aktive und 265 inaktive vergangene Tage. Peak-Tag: 2026-03-22 / 321183. Peak-Woche: 2026-03-22 / 373576. Laengste Serie: 17 Tage (2026-07-10..2026-07-26).
 
-*EN: The window starts on 2025-09-14 and ends on 2026-09-07. It contains 94 active and 265 inactive elapsed days. Peak day: 2026-03-22 / 321183. Peak week: 2026-03-22 / 373576. Longest streak: 17 days (2026-07-10..2026-07-26).*
+*EN: The window starts on 2025-09-14 and ends on 2026-09-08. It contains 95 active and 265 inactive elapsed days. Peak day: 2026-03-22 / 321183. Peak week: 2026-03-22 / 373576. Longest streak: 17 days (2026-07-10..2026-07-26).*
 
 | Monat / Month | Geaenderte Textzeilen / Changed text lines |
 |---|---:|
@@ -1386,6 +1389,6 @@ DE: Das Fenster beginnt am 2025-09-14 und endet am 2026-09-07. Es enthaelt 94 ak
 | 2026-06 | 42176 |
 | 2026-07 | 205615 |
 | 2026-08 | 122136 |
-| 2026-09 | 8297 |
+| 2026-09 | 14435 |
 
 <!-- project-statistics-v2:end -->

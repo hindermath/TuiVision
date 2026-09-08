@@ -2,10 +2,10 @@
   "schemaVersion": "1.0",
   "documentType": "SecureDevelopmentGateEvidence",
   "contextId": "rl-se-checklist-self-review",
-  "gate": "image-impact",
+  "gate": "delta",
   "mode": "development",
   "runbookApplicability": "N/A",
-  "runbookRationale": "DE: Diese begrenzte Revalidierung ändert nur Governance- und Evidence-Dokumente; sie führt keine Image-, Paket-, Deployment- oder Produktionsoperation aus. EN: This bounded revalidation changes governance and evidence documents only; it performs no image, package, deployment, or production operation.",
+  "runbookRationale": "DE: Der Revalidierungsbericht definiert das begrenzte Dokumentations- und Evidence-Verfahren; es findet kein Trainings-, Produkt-, Image- oder Produktionslauf statt. EN: The revalidation report defines the bounded documentation and evidence procedure; no training, product, image, or production run is performed.",
   "createdAt": "2026-09-08T08:55:00Z",
   "review": {
     "owner": "DE: TuiVision-Repository-Maintainerrolle. EN: TuiVision repository maintainer role.",
@@ -17,31 +17,26 @@
   },
   "assessments": [
     {
-      "id": "IMAGE-001",
+      "id": "DELTA-001",
       "applicability": "Applicable",
       "implementation": "Fulfilled",
       "evidence": "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/assurance-revalidation.md"
     },
     {
-      "id": "IMAGE-002",
+      "id": "DELTA-002",
+      "applicability": "Applicable",
+      "implementation": "Fulfilled",
+      "evidence": "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json"
+    },
+    {
+      "id": "DELTA-003",
       "applicability": "N/A",
       "implementation": "Not Assessed",
-      "reason": "DE: Diese Revalidierung ändert weder Dockerfile noch Compose-Verhalten, OCI-Image, Paket, Mount, Netzwerk, Secret-Behandlung oder einen SBOM-erzeugenden Produktpfad. EN: No Dockerfile, compose behavior, OCI image, package, mount, network, secret handling, or SBOM-producing product path changes in this revalidation.",
-      "reevaluationTrigger": "DE: Bei jeder Änderung an Image, Dockerfile, Compose, Paket, Mount, Netzwerk, Secrets, Toolchain, CI oder SBOM. EN: Any image, Dockerfile, compose, package, mount, network, secret, toolchain, CI, or SBOM-related change.",
+      "reason": "DE: Die begrenzte Revalidierung ändert nur verwaltete Governance-Dokumente und Evidence; Produkt, Runtime, öffentliche API, Paket und Deployment-Verhalten bleiben unverändert. EN: The bounded revalidation changes managed governance documents and evidence only; it does not change product, runtime, public API, package, or deployment behavior.",
+      "reevaluationTrigger": "DE: Bei jeder Änderung an Produkt, Runtime, öffentlicher API, Paket, Deployment oder Testcode. EN: Any product, runtime, public API, package, deployment, or test-code change.",
       "evidence": "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/assurance-revalidation.md"
     }
   ],
-  "imageChecks": {
-    "build": "N/A",
-    "compose": "N/A",
-    "toolchain": "Fulfilled",
-    "ociDigest": "N/A",
-    "sbom": "N/A",
-    "secrets": "N/A",
-    "mounts": "N/A",
-    "network": "N/A",
-    "ci": "N/A"
-  },
   "outcome": "Ready",
   "externalComparisonBoundary": "HOSK/GWDG: ExternalComparison only; never local evidence"
 }

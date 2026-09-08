@@ -1,8 +1,8 @@
 # Mitgeltende Dokumente / Related Documents
 
-**Stand / Date:** 2026-07-17
-**Zielgruppe / Audience:** Fachinformatiker*innen in Ausbildung, Entwickler*innen, Reviewer und KI-Agenten / IT specialist apprentices, developers, reviewers, and AI agents
-**Baseline-Version / Baseline version:** 3.1.0
+**Stand / Date:** 2026-08-02
+**Zielgruppe / Audience:** Alle vier IT-Ausbildungsberufe ab dem ersten Ausbildungsjahr, Entwickler*innen, Reviewer und KI-Agenten / All four IT training occupations from the first training year, developers, reviewers, and AI agents
+**Baseline-Version / Baseline version:** 3.2.0
 
 ## Zweck / Purpose
 
@@ -37,9 +37,9 @@
 
 ## Abgleich mit Spec-Kit-Presets / Alignment With Spec Kit Presets
 
-**DE:** Die Dokumente duerfen den acht Governance-Presets nicht widersprechen. Bei neuen Spec-Kit-Laeufen gelten sie als fachliche Eingabe. Jeder Prüfpunkt erhält getrennt eine Anwendbarkeit (`Applicable`, `N/A`, `Open`) und einen Umsetzungsstatus (`Fulfilled`, `Partly Fulfilled`, `Not Fulfilled`, `Not Assessed`). Nicht anwendbare Punkte werden als `N/A` mit kurzer Begründung dokumentiert.
+**DE:** Die Dokumente duerfen dem oeffentlichen Acht-Preset-Standardprofil oder den vier optionalen Presets des verwalteten Zwölf-Preset-Profils `model-routing-twelve-governance-presets` nicht widersprechen. Model Routing auf Priorität 61 bindet ausschließlich lokal erkannte Modelle an providerneutrale Rollen; konkrete Modelle bleiben außerhalb des Repositorys. Die Intake-Presets auf 64, 65 und 66 unterstuetzen Erzeugung, Review und Reihenfolge, starten aber keinen Feature-Lauf. Die Installation erteilt keine Delivery Authority. Jeder Pruefpunkt erhaelt getrennt die Anwendbarkeit `Applicable`, `N/A` oder `Open` und den Umsetzungsstatus `Fulfilled`, `Partly Fulfilled`, `Not Fulfilled` oder `Not Assessed`. `N/A` benoetigt eine nachvollziehbare Begruendung und einen Ausloeser fuer die erneute Pruefung.
 
-**EN:** The documents must not conflict with the eight governance presets. In new Spec Kit runs, they are technical input. Each item receives a separate applicability and implementation status. Non-applicable items are recorded as `N/A` with a short rationale.
+**EN:** The documents must not conflict with the public eight-preset default or the four optional presets in the managed twelve-preset profile `model-routing-twelve-governance-presets`. Model Routing at priority 61 maps only locally discovered models to provider-neutral roles; concrete models remain outside the repository. The Intake presets at 64, 65, and 66 support authoring, review, and sequencing but start no feature run. Installation grants no delivery authority. Each item receives the separate applicability value `Applicable`, `N/A`, or `Open` and the implementation status `Fulfilled`, `Partly Fulfilled`, `Not Fulfilled`, or `Not Assessed`. `N/A` requires a traceable rationale and a trigger for reassessment.
 
 **DE:** Die Datei [Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md](Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md) ist die zentrale Lesefuehrung. Sie zeigt fuer jedes mitgeltende Dokument den Richtlinienbezug, die passenden Checklisten, die betroffenen Presets und typische Evidenzpfade. Nutze sie zuerst, wenn ein Spec-Kit-Lauf oder Review vorbereitet wird.
 
@@ -54,6 +54,10 @@
 | `agent-parity-governance` | Agenten-Dateien, Sandbox-Guidance, Templates und Skript-Hinweise synchron halten |
 | `cross-platform-governance` | Bash-/PowerShell-Paritaet, Sandbox-Bedienbarkeit und dokumentierte Bedienbarkeit |
 | `autonomous-run-governance` | Ausdrücklich delegierte autonome Läufe mit Zustands-, Berechtigungs-, Gate- und Evidenznachweisen; Installation allein erteilt keine Ausführungs- oder Remote-Berechtigung |
+| `parallel-autonomous-run-governance` | Ausdrücklich delegierte parallele Kampagnen mit isolierten Workern, Stop/Status/Resume, providergebundener Konsolidierung und Post-Merge-Abschluss; Installation allein startet keinen Lauf und erteilt keine Remote-Berechtigung |
+| `intake-authoring-governance` | Anforderungen erzeugen, lesen, aktualisieren und logisch loeschen; kein automatischer Review- oder Feature-Start |
+| `intake-review-governance` | Anforderungen einzeln oder als Serie pruefen; `Ready` ist Reife-, keine Delivery-Aussage |
+| `intake-sequencing-governance` | Reihenfolge und Abhaengigkeiten pruefen; `Eligible` erteilt keine Ausfuehrungsberechtigung |
 
 ## Didaktische Mindeststruktur / Teaching Minimum Structure
 

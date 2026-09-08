@@ -278,7 +278,7 @@ Sie sollte enthalten:
 Für Level-2-Projekte reicht oft eine kleinere Variante. Wichtig ist, dass die
 Entscheidung nachvollziehbar ist.
 
-## Bedeutung für die sechs Spec-Kit-Presets
+## Bedeutung für die acht Spec-Kit-Presets
 
 ### `security-governance`
 
@@ -311,6 +311,18 @@ gemeinsam aktualisiert werden.
 
 Skripte und Tooling für Migration, Tests und Nachweise müssen auf den
 unterstützten Plattformen nachvollziehbar funktionieren.
+
+### `autonomous-run-governance`
+
+Ein ausdrücklich delegierter autonomer Lauf muss die MSL-Entscheidung,
+Sicherheitsgates und menschliche Freigaben als prüfbare Zustände erhalten.
+Die Installation des Presets startet keinen Lauf.
+
+### `parallel-autonomous-run-governance`
+
+Parallele autonome Läufe dürfen MSL-Migrationen oder Sprachvarianten nur in
+getrennten Worktrees bearbeiten. Die spätere Konsolidierung prüft exakte
+Commit-Stände, Reviews, Tests und den dokumentierten Abschluss.
 
 ## Bedeutung für Fachinformatiker*innen
 

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "documentType": "SecureDevelopmentGateEvidence",
-  "contextId": "rl-se-checklist-self-review",
+  "contextId": "gsdb-spec-kit-intensive-review",
   "gate": "baseline",
   "mode": "development",
   "runbookApplicability": "N/A",
