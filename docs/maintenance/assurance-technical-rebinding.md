@@ -93,3 +93,29 @@ Migrationsevidence nachvollziehbar. Diese Neubindung ist keine rückwirkende
 fachliche Prüfung. / The previous binding remains traceable in the preceding
 Git state and historical migration evidence. This rebinding is not a
 retroactive substantive review.
+
+## Feldtest-Scope-Bindung am 2026-09-08 / Field-Test Scope Binding on 2026-09-08
+
+Die ausdruecklich beauftragte Feldtestvereinheitlichung aendert die aktuelle
+regulatorische Scope-Evidence. Damit der vorhandene RL-SE-Validator nicht mit
+einer veralteten Quellenbindung abbricht, wird genau das technische Hashfeld
+`evidence[EVD-038].sha256` erneuert. Die 157 Kontrolldispositionen, Rollen,
+Risiken, historischen Reviewzeitpunkte und menschlichen Entscheidungsgrenzen
+bleiben unveraendert.
+
+*The explicitly requested field-test alignment changes the current regulatory
+scope evidence. To keep the existing RL-SE validator from failing on a stale
+source binding, exactly `evidence[EVD-038].sha256` is refreshed. All 157 control
+dispositions, roles, risks, historical review timestamps, and human decision
+boundaries remain unchanged.*
+
+| Evidence | Quelle / Source | Vorher / Before | Nachher / After |
+|---|---|---|---|
+| EVD-038 | `docs/security/regulatory-applicability.md` | `bd0bd51510a40a12bf15a1e3455ccbe83a167abcfefaca7651c7c62ee46cc8dc` | `3f2efefaf379c65ac7652b8cbf9da93b470d12a1952e4fc48be7bee04f073b26` |
+
+Diese Neubindung bestaetigt nur die Dateiintegritaet der dokumentierten
+Scope-Entscheidung. Sie ist keine rueckwirkende fachliche Neubewertung, keine
+Rechtsberatung und keine Produkt-, Risiko-, C5-, Konformitaets- oder
+Zertifizierungsfreigabe. / This binding proves only file integrity for the
+documented scope decision. It is not a retroactive domain reassessment, legal
+advice, or a product, risk, C5, conformity, or certification approval.

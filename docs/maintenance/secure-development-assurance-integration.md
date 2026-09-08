@@ -1,5 +1,14 @@
 # Secure Development Assurance – TuiVision
 
+> **Aktueller Feldteststatus / Current field-test status:** Beide TuiVision-
+> Kontexte sind technisch `Ready`; fuer das unveraenderte Preset v0.1.3 gilt
+> die projektbezogene Empfehlung `ReleaseAccepted`. Siehe
+> [Feldbericht](secure-development-assurance-v013-field-test.md). Menschliche
+> Pilot-, Projekt- und allgemeine Freigaben bleiben `Open`. / Both TuiVision
+> contexts are technically `Ready`; the unchanged v0.1.3 preset has the bounded
+> project recommendation `ReleaseAccepted`. Human pilot, project, and general
+> release decisions remain `Open`.
+
 ## Auftrag und Quelle / Authority and Source
 
 Thorsten hat die Integration als fünftes und letztes Ziel des seriellen
@@ -60,42 +69,44 @@ prerequisites, recovery steps and limitations. Other agents use dot notation.*
 
 ## Evidence und Grenzen / Evidence and Boundaries
 
-Der ausgewählte Kontext ist `2026-08-30-rl-se-checklist-self-review`.
-Die neue [Evidence-Matrix](../security/secure-development/2026-08-30-rl-se-checklist-self-review/evidence-matrix.md)
-erschließt seine vorhandenen 157 Kontrollbewertungen. Einzige ausdrücklich
-genehmigte Ausnahme sind [drei technische Hashkorrekturen](assurance-technical-rebinding.md)
-im Bewertungs-JSON; alle übrigen Bytes und Bewertungen bleiben unverändert.
-Die Matrix erteilt keine neue Bewertung.
-Die früher dokumentierte Prüfung der zwölf Presets bleibt historische Evidence.
+Zwei getrennte Kontexte sind aktiv:
 
-`baseline.json`, `deltas/*.json`, `closure.json` und `image-impact.json` fehlen
-weiterhin im vollständigen Assurance-Vertrag. Deshalb bleibt Status `Blocked`,
-Exitcode 2, nicht „fehlgeschlagene Installation“. Für die vier Gates sowie
-`technicalValidation`, `pilotAuthorization`, `projectAcceptance` und
-`generalRelease` werden keine fehlenden Ergebnisse oder Freigaben erfunden.
-Eine spätere fachliche Migration erfordert einen separaten Auftrag.
+- [RL-SE-Checklist-Selbstpruefung](../security/secure-development/2026-08-30-rl-se-checklist-self-review/evidence-matrix.md)
+- [GSDB-Spec-Kit-Intensivpruefung](../security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/evidence-matrix.md)
 
-*The selected context is the RL-SE self-review dated 2026-08-30. Its new matrix
-indexes 157 existing controls. Only three explicitly authorized technical hash
-fields change, with old/new provenance; every other byte and all assessments
-remain unchanged. The old twelve-preset assessment remains historical
-evidence. Missing gate JSONs keep status Blocked (exit 2), not installation
-failure. No gate result or human decision is fabricated. A later substantive
-migration requires separate authority.*
+Beide enthalten `baseline.json`, genau ein aktives Delta, `closure.json`,
+`image-impact.json`, eine Evidence-Matrix, einen Revalidierungsbericht und eine
+hashgebundene Validierungsreceipt. Die installierten Bash- und PowerShell-
+Validatoren melden fuer alle vier Gates und den Gesamtstatus `Ready`. Die
+fachlichen 157-Kontroll-Bewertungen bleiben historische Zeitpunktaufnahmen und
+werden durch das technische Ergebnis nicht hochgestuft. Die frueher
+dokumentierte Pruefung der zwoelf Presets bleibt ebenfalls historische Evidence.
+
+*Two separate contexts are active: RL-SE checklist self-review and GSDB Spec Kit
+intensive review. Both contain the complete four-gate set, an evidence matrix,
+revalidation report, and hash-bound validation receipt. The installed Bash and
+PowerShell validators report `Ready` for all gates and overall status. Their
+157-control domain assessments remain historical point-in-time evidence and are
+not promoted by the technical result; the earlier twelve-preset review also
+remains historical evidence.*
 
 ### C5-Abgrenzung / C5 Boundary
 
-`CL-02-13 Cloud-Compliance-Assurance` bleibt eine projektbezogene Bewertung;
-sein historisches `N/A` wird nur wiedergegeben, nicht neu bestätigt. Das Preset
-prüft Evidence-Bindung und Konsistenz, keinen vollständigen C5-Katalog.
-Weder Installation noch `Ready` bedeuten C5-Konformität, Testatreife oder
-Zertifizierung. Keine Richtlinien-, Checklist-, Baseline- oder Freigabeänderung.
+Fuer den aktuellen nichtkommerziellen Ausbildungs- und Beispielscope ist C5
+`N/A`. GitHub, CI, NuGet und Artefakthosting sind Entwicklungs- und
+Lieferinfrastruktur, keine Produkt-Cloud-Runtime. Das Preset prueft Evidence-
+Bindung und Konsistenz, keinen vollstaendigen C5-Katalog; sein Negativtest gegen
+unzulaessige C5-/Zertifizierungsbehauptungen ist ein Fail-closed-
+Sicherheitstest. Weder Installation noch `Ready` oder `ReleaseAccepted`
+bedeuten C5-Konformitaet, Testatreife oder Zertifizierung.
 
-*CL-02-13 remains a project-specific assessment. Its historical N/A is copied,
-not newly confirmed. The preset validates evidence bindings and consistency,
-not all C5 criteria; neither installation nor Ready means C5 conformity,
-attestation readiness or certification. No policy/checklist/baseline/approval
-changes.*
+*C5 is `N/A` for the current non-commercial training and example scope. GitHub,
+CI, NuGet, and artifact hosting are development and delivery infrastructure,
+not product cloud runtime. The preset validates evidence binding and
+consistency rather than the complete C5 catalogue; its negative test for
+invalid C5/certification claims is a fail-closed safety check. Installation,
+`Ready`, and `ReleaseAccepted` do not mean C5 conformity, attestation readiness,
+or certification.*
 
 ## Prüfung und Lieferung / Verification and Delivery
 
@@ -173,7 +184,7 @@ central registration remains twelve. Obtain explicit authority for technical
 rebinding with old/new provenance, preserving all 157 assessments and human
 decisions, then rerun tests. Never bypass this technical gate.*
 
-### Aktueller Prüfnachweis nach Freigabe / Current Verification After Approval
+### Historischer Prüfnachweis nach Rebinding / Historical Verification After Rebinding
 
 Thorsten hat die technische Neubindung am 2026-09-07 ausdrücklich genehmigt.
 Genau drei Hashfelder wurden gemäß [Alt-/Neu-Provenienz](assurance-technical-rebinding.md)
@@ -198,6 +209,26 @@ tests, with no test modifications. All five coverage modules exceed 70%.
 Package parity/negative tests passed; documentation is text-first and links
 were checked. Separate Assurance status remains Blocked on missing genuine
 gate JSONs; product test success grants no domain approval.*
+
+### Aktueller Feldtestabschluss / Current Field-Test Closeout
+
+Die nachfolgende PR #170 hat beide vollstaendigen Gate-Saetze auf dem exakten
+Head `b2089c56ff60255493a487189df441ef4093da7d` technisch `Ready` geliefert.
+Der aktuelle [v0.1.3-Feldbericht](secure-development-assurance-v013-field-test.md)
+revalidiert beide Kontexte, die unveraenderte 13-Preset-Matrix, das oeffentliche
+Tag-ZIP, Vertrags-/Negativfaelle, acht erzeugte Agenten-/Command-Flaechen,
+Zeilenendungsparitaet, Komposition sowie unveraenderte Roh-Hashes. Die
+projektbezogene Preset-Empfehlung ist `ReleaseAccepted`; die zentrale
+Preset-Abnahme wartet weiterhin auf `github/spec-kit#4455` und die
+Zusammenfuehrung aller fuenf Feldtests.
+
+*PR #170 delivered both complete gate sets as technically `Ready` on exact head
+`b2089c56ff60255493a487189df441ef4093da7d`. The current v0.1.3 field report
+revalidates both contexts, the unchanged 13-preset matrix, public tag ZIP,
+contract/negative cases, eight generated agent/command surfaces, line-ending
+parity, composition, and unchanged raw hashes. The project-level preset
+recommendation is `ReleaseAccepted`; the central preset decision still waits
+for `github/spec-kit#4455` and consolidation of all five field tests.*
 
 ## Dokumentationsauswirkung / Documentation Impact
 

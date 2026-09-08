@@ -3,7 +3,7 @@ Total output lines: 1454
 
 # Projektstatistik TuiVision
 
-Stand: 2026-07-17 (aktualisiert einschließlich Feature-036-Delivery und Preset v0.2.2)
+Stand: 2026-09-08 (Secure Development Assurance v0.1.3-Feldtest)
 
 Aktueller Zusatz: Feature 016 dokumentiert 157/157 Secure-Development-
 Kontrollen, sechs behobene Medium-Funde, 498/498 grüne Release-Tests und eine
@@ -696,6 +696,9 @@ fortgeschrieben.
 
 | 2026-09-08 | Assurance-Baseline und zwei Gate-Revalidierungen / Assurance baseline and two gate revalidations | Branch `codex/assurance-evidence-ready`; sichtbare Sitzung 2026-09-08. Die verwaltete Baseline ist auf 3.2.0 synchronisiert. Der RL-SE-Gate-Satz ist auditierbar revalidiert; der GSDB-Kontext besitzt nun die fehlende Evidence-Matrix und alle vier Gates. Beide Kontexte erreichen in Bash und PowerShell den technischen Gesamtstatus `Ready`. Die fachlichen RL-SE-/GSDB-Bewertungen bleiben unveraendert; technische Validierung ist `Fulfilled`, Pilotfreigabe, Projektabnahme und allgemeine Freigabe bleiben `Open`. Umfang vor Statistik-Metadaten: `+3490 / -2286` Dokumentations-, Governance- und Evidence-Zeilen, `0` Produkt- und `0` Testcode-Zeilen. Dreizehn Presets bleiben unveraendert; keine Produkt-, API-, Paket-, Image- oder Home-Sync-Aenderung. / Synchronize baseline 3.2.0, revalidate RL-SE, and complete the missing GSDB matrix and gate set. Both contexts validate as technical `Ready` in Bash and PowerShell while domain assessments and human approvals remain unchanged. No product, package, image, or Home-sync change; manual references remain defined by the repository statistics configuration. |
 | 2026-09-08 | CI-Nachlauf fuer die RL-SE-Baseline-Bindung / CI follow-up for the RL-SE baseline binding | Zwei durch Baseline 3.2.0 veraltete normalisierte SHA-256-Bindungen wurden in Review-Snapshot und Evidence-Eintraegen nachvollziehbar erneuert. Alle 157 fachlichen Dispositionen blieben bytevergleichbar unveraendert. Die gezielten RL-SE-Tests bestanden mit 5/5, die GSDB-Tests mit 58/58 und der lokale Release-Testlauf mit 214/214; beide Assurance-Kontexte blieben unter Bash und PowerShell technisch `Ready`, bei unveraendert offenen menschlichen Freigaben. / Refresh two stale normalized SHA-256 bindings caused by baseline 3.2.0, without changing any of the 157 domain dispositions. Targeted RL-SE and GSDB tests and the local Release test run passed; both Assurance contexts remain technically `Ready` in Bash and PowerShell while human approvals stay Open. |
+| 2026-09-08 | Assurance-v0.1.3-Projektfeldtest abgeschlossen / Assurance v0.1.3 project field test closed | Branch `codex/assurance-v013-field-test-closeout`; eine sichtbare Sitzung. Das unveraenderte Preset erhaelt fuer beide TuiVision-Kontexte die begrenzte Empfehlung `ReleaseAccepted`. C5 sowie CRA und formale Produktkonformitaet sind fuer den aktuellen nichtkommerziellen Ausbildungs-/Beispielscope `N/A`; technische Wiedervorlage ist 2027-09-08, regulatorische Scopepruefung 2026-12-31. Alle acht Gates sind in Bash und PowerShell `Ready`, je Kontext blieben 7/7 Roh-Hashes unveraendert. Paket-, Oberflaechen-, Negativ-, Zeilenendungs- und Kompositionstests sind gruen. Umfang vor Statistik-Selbstnachweis: `+374 / -88` Textzeilen; davon `0` Produktlogik- und `0` Testcode-Zeilen. Menschliche Freigaben bleiben `Open`; keine Produkt-, API-, Runtime-, Paket-, Image- oder Home-Sync-Aenderung. / The unchanged preset earns the bounded TuiVision recommendation `ReleaseAccepted` for both contexts; all human approvals remain Open. C5/CRA/conformity are N/A in the current non-commercial scope, while cross-shell gates, raw-byte preservation, package regression, generated surfaces, line endings, and composition pass. No product behavior, API, runtime, package, image, or Home-sync change. |
+
+| 2026-09-08 | Feldtest-CI-Follow-up fuer EVD-038 / Field-test CI follow-up for EVD-038 | Der erste PR-#171-Ubuntu-Lauf fand korrekt eine veraltete RL-SE-Quellenbindung, nachdem `docs/security/regulatory-applicability.md` fuer den genehmigten Feldtest-Scope aktualisiert worden war. Ausschliesslich `evidence[EVD-038].sha256`, die davon abhaengige Matrix-/Receipt-Bindung und die Alt-/Neu-Provenienz wurden erneuert; alle 157 fachlichen Kontrolldispositionen und menschlichen Entscheidungen bleiben unveraendert. Der lokale Vollabgleich bestaetigt alle RL-SE-Quellenhashes, beide Shell-Statuspfade `Ready` und 7/7 unveraenderte Receipt-Dateien. Follow-up-Umfang vor Statistik-Selbstnachweis: `+42 / -11` Textzeilen, `0` Produkt- und `0` Testcode. / The first PR #171 Ubuntu run correctly detected stale RL-SE source binding EVD-038 after the approved regulatory scope update. Refresh only the technical hash, dependent matrix/receipt binding, and provenance; preserve all 157 domain dispositions and human decisions. Local source/hash and cross-shell gates pass; no product or test-code change. |
 
 ## Statistikprofil-1-Archiv / Statistics Profile 1 Archive
 Basis dieses Schlussblocks ist der Repository-Snapshot vom 2026-07-15. Die
@@ -1139,25 +1142,25 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 717566 lines |
-| Textdateien / Text files | 3365 |
+| Textbasis / Text base | 717883 lines |
+| Textdateien / Text files | 3367 |
 | Beobachtbarer Zeitraum / Observable period | 2025-09-14..2026-09-08 |
 | Aktivtage / Active days | 95 |
-| Relevante Commits / Relevant commits | 583 |
-| Zeilen je Aktivtag / Lines per active day | 7553.3 |
+| Relevante Commits / Relevant commits | 587 |
+| Zeilen je Aktivtag / Lines per active day | 7556.7 |
 | Peak-Tag im Fenster / Peak day in window | 2026-03-22 / 321183 |
 | Peak-Woche im Fenster / Peak week in window | 2026-03-22 / 373576 |
 | Laengste Serie / Longest streak | 17 days |
-| Speedup vs. 80 lines/day | 94.4x |
-| Speedup vs. 125 lines/day | 60.4x |
-| Methodik / Methodology | v2; source `87d5228adea3` |
+| Speedup vs. 80 lines/day | 94.5x |
+| Speedup vs. 125 lines/day | 60.5x |
+| Methodik / Methodology | v2; source `a207052718d0` |
 
 ### Artefaktmix / Artifact Mix
 
 ```text
 Produktiv / Production          [####................]  19.5% | 139704
-Tests                           [##..................]   7.5% | 53856
-Dokumentation / Documentation   [##########..........]  50.0% | 358873
+Tests                           [##..................]   7.5% | 54035
+Dokumentation / Documentation   [##########..........]  50.0% | 359011
 Skripte / Scripts               [#...................]   3.2% | 23259
 Konfiguration / Configuration   [#...................]   5.9% | 42008
 Daten und Medien / Data and media [#...................]   0.0% | 1
@@ -1349,8 +1352,8 @@ Die festen Slots halten den Phasenvergleich auch bei fehlenden oder spaeter erga
 
 ```text
 Scale: 0..100x
-80 lines/day       [###################.] 94.4x
-125 lines/day      [############........] 60.4x
+80 lines/day       [###################.] 94.5x
+125 lines/day      [############........] 60.5x
 ```
 
 Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen Referenzen. Sie messen keine Arbeitszeit.
@@ -1363,7 +1366,7 @@ Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen
 Scale: 0..10000 lines/day
 Experienced manual [#...................] 80
 Thorsten solo      [#...................] 125
-Visible repository [###############.....] 7553.3
+Visible repository [###############.....] 7556.7
 ```
 
 Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schreibt die Git-Aktivitaet keiner Person oder KI pauschal zu.
@@ -1389,6 +1392,6 @@ DE: Das Fenster beginnt am 2025-09-14 und endet am 2026-09-08. Es enthaelt 95 ak
 | 2026-06 | 42176 |
 | 2026-07 | 205615 |
 | 2026-08 | 122136 |
-| 2026-09 | 14435 |
+| 2026-09 | 14954 |
 
 <!-- project-statistics-v2:end -->

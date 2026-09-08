@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.1",
+  "feature": "secure-development-assurance-v013-field-test",
+  "entries": [
+    {
+      "changeId": "CHG001",
+      "scope": "Secure Development Assurance v0.1.3 project field-test closeout",
+      "decision": "UpdateRequired",
+      "rationale": "DE: Der projektbezogene Feldtest benoetigt einen kanonischen Bericht sowie aktualisierte C5-, CRA- und Evidence-Entscheidungen fuer beide TuiVision-Kontexte. EN: The project field test requires a canonical report plus updated C5, CRA, and evidence decisions for both TuiVision contexts.",
+      "documents": [
+        "docs/maintenance/secure-development-assurance-v013-field-test.md",
+        "docs/maintenance/secure-development-assurance-integration.md",
+        "docs/maintenance/assurance-technical-rebinding.md",
+        "docs/security/cloud-compliance-assurance.md",
+        "docs/security/regulatory-applicability.md",
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/evidence-matrix.md",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/evidence-matrix.md"
+      ],
+      "owner": "Thorsten Hindermann",
+      "audiences": [
+        "Maintainers and technical reviewers",
+        "Learners"
+      ],
+      "readerPaths": [
+        "Assurance v0.1.3 integration",
+        "Project field-test report",
+        "Security applicability documents",
+        "Machine-readable evidence for both contexts"
+      ],
+      "canonicalSource": "docs/maintenance/secure-development-assurance-v013-field-test.md",
+      "navigationImpact": "DE: Der bestehende Integrationsnachweis verweist auf den Feldtest; Produkt- und API-Navigation bleiben unveraendert. EN: The existing integration evidence links to the field test; product and API navigation remain unchanged.",
+      "documentClass": "ActiveSemantic",
+      "languageStrategy": "DE: Deutsch zuerst, Englisch danach; strukturierte Vertragswerte bleiben sprachneutral. EN: German first, English second; structured contract values remain language neutral.",
+      "languagePartners": [],
+      "platformAndExampleProof": "DE: Der Bericht ist textorientiert und dokumentiert Bash-/PowerShell-, LF-/CRLF-/BOM- sowie nichtinteraktive Smoke-Evidence. EN: The report is text-first and documents Bash/PowerShell, LF/CRLF/BOM, and non-interactive smoke evidence.",
+      "distributionClass": "sourceOnly",
+      "homeSyncRequired": false,
+      "evidence": "docs/documentation-impact/secure-development-assurance-v013-field-test.json",
+      "risk": "DE: Niedrig; nur Evidence und Dokumentation werden geaendert. Menschliche Freigaben bleiben offen. EN: Low; only evidence and documentation change. Human approvals remain open.",
+      "criticality": "Security",
+      "reevaluationTrigger": "DE: Preset-, Baseline-, Produkt-, Delivery- oder Scopeaenderung. EN: Preset, baseline, product, delivery, or scope change."
+    }
+  ]
+}

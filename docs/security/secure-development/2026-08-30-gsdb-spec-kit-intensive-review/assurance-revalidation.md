@@ -8,14 +8,18 @@ Alle vier technischen Gates sowie der strengste Gesamtstatus sind Ready.
 Dieses Ergebnis bewertet die Integritaet des Gate-Satzes, nicht die Wirksamkeit
 aller fachlichen Kontrollen. Alle 157 fachlichen Kontrollen bleiben Open; ebenso bleiben die menschlichen Entscheidungsgrenzen offen. Es wird keine
 Risikoakzeptanz, Zertifizierung, Rechts-, C5-, Pilot-, Projekt- oder
-Releasefreigabe abgeleitet.
+Releasefreigabe abgeleitet. Fuer den aktuellen nichtkommerziellen Ausbildungs-
+und Beispielscope sind C5, CRA und formale Produktkonformitaet `N/A`; die
+historischen Kontrollwerte bleiben als Zeitpunktaufnahme unveraendert.
 
 **EN:** The technical revalidation dated 2026-09-08 resolves the recorded
 baseline version drift and completes the Assurance evidence contract. All four
 technical gates and the strictest overall status are Ready. This result
 assesses gate-set integrity, not the effectiveness of every domain control.
 All 157 domain controls remain Open, as do the human decision boundaries. No risk acceptance, certification, legal, C5,
-pilot, project, or release approval is inferred.
+pilot, project, or release approval is inferred. C5, CRA, and formal product
+conformity are `N/A` for the current non-commercial training and example scope;
+the historical control values remain an unchanged point-in-time snapshot.
 
 ## Aenderung / Change
 
@@ -30,6 +34,10 @@ pilot, project, or release approval is inferred.
   damaligen Abweichung erhalten.
 - Die aktiven Gates bewerten nur den technischen Evidence-Vertrag. Fachliche
   Kontrolldispositionen werden nicht zu erfüllten Zuständen hochgestuft.
+- Die aktuelle Scope-Entscheidung behandelt GitHub, CI, NuGet und
+  Artefakthosting als Entwicklungs- und Lieferinfrastruktur, nicht als
+  Produkt-Cloud-Runtime. Eine regulatorische Scope-Pruefung ist fuer
+  2026-12-31 vorgemerkt.
 
 **EN:**
 
@@ -43,6 +51,9 @@ pilot, project, or release approval is inferred.
   values are not promoted to fulfilled states.
 - TuiVision's GSDB context additionally receives the previously missing
   evidence-matrix.md and all four machine-readable gate files.
+- The current scope decision treats GitHub, CI, NuGet, and artifact hosting as
+  development and delivery infrastructure rather than product cloud runtime.
+  Regulatory scope is scheduled for re-evaluation on 2026-12-31.
 
 ## Gate-Nachweise / Gate Evidence
 
@@ -71,7 +82,7 @@ Revalidierungsbericht, Validierungsreceipt und Projektstatistik. Der Leserpfad
 führt von der Matrix über die Gates zur fachlichen Quelle. Die Evidence ist
 repository-lokal, DE-zuerst/EN-danach, textorientiert und benötigt keinen
 Home-Sync. Nach jeder relevanten Quellen-, Scope-, Produkt- oder
-Infrastrukturänderung, spätestens am 2026-09-15, ist neu zu bewerten.
+Infrastrukturänderung, spätestens am 2027-09-08, ist neu zu bewerten.
 
 **EN:**
 
@@ -94,14 +105,16 @@ Infrastrukturänderung, spätestens am 2026-09-15, ist neu zu bewerten.
   NoHomeSyncRequired.
 - Re-evaluation: immediately after any baseline, evidence, product,
   architecture, dependency, workflow, distribution, image, or scope change,
-  and no later than 2026-09-15.
+  and no later than 2027-09-08.
 
 ## Naechste Aktion / Next Action
 
 **DE:** pilotAuthorization, projectAcceptance und generalRelease bleiben
-Open, bis ausdrücklich befugte menschliche Evidence vorliegt. Nach jedem
-Re-Evaluation-Trigger sind alle Gates erneut zu prüfen.
+Open. Die Community-Einreichung `github/spec-kit#4455` und alle fuenf
+Projektfeldtests werden vor einer zentralen v0.1.3-Preset-Entscheidung
+abgewartet. Nach jedem Re-Evaluation-Trigger sind alle Gates erneut zu prüfen.
 
-**EN:** Keep pilotAuthorization, projectAcceptance, and generalRelease Open
-until explicitly authorised human evidence exists. Re-run all gates whenever a
+**EN:** Keep pilotAuthorization, projectAcceptance, and generalRelease Open.
+Wait for community submission `github/spec-kit#4455` and all five project field
+tests before a central v0.1.3 preset decision. Re-run all gates whenever a
 re-evaluation trigger occurs.

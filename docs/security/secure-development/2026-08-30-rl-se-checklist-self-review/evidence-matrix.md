@@ -16,6 +16,20 @@ Ready; the strictest technical overall status is Ready. This is not a new
 domain assessment of the 157 controls. The 157 controls retain their domain dispositions: 13 AlreadySatisfied, 65 Applicable, 38 N/A, 36 Open, and 5 FollowUp. Pilot
 authorization, project acceptance, and general release remain Open.
 
+**DE:** Aktuelle Scope-Entscheidung fuer diesen Feldtest: C5, CRA und formale
+Produktkonformitaet sind fuer das nichtkommerzielle Ausbildungs- und
+Beispielprojekt `N/A`. GitHub, CI, NuGet und Artefakthosting sind Entwicklungs-
+und Lieferinfrastruktur, keine Produkt-Cloud-Runtime. Dies aendert die
+historischen 157 Kontrolldispositionen nicht. Technische Jahreswiedervorlage:
+2027-09-08; regulatorische Scope-Pruefung: 2026-12-31.
+
+**EN:** Current scope decision for this field test: C5, CRA, and formal product
+conformity are `N/A` for the non-commercial training and example project.
+GitHub, CI, NuGet, and artifact hosting are development and delivery
+infrastructure, not product cloud runtime. This does not rewrite the historical
+157 control dispositions. Technical annual review: 2027-09-08; regulatory
+scope review: 2026-12-31.
+
 **DE:** Aktuelle maschinenlesbare Gates sind baseline.json,
 deltas/2026-09-08-assurance-revalidation.json, closure.json und
 image-impact.json. Die ersetzten blockierten Migrations-Gates bleiben unter
@@ -46,7 +60,7 @@ roles do not constitute newly granted approvals.*
 - Kontext / context: `2026-08-30-rl-se-checklist-self-review`.
 - Kanonische Bewertungsquelle / canonical assessment source: [rl-se-self-review.json](rl-se-self-review.json).
 - SHA-256 der technisch neu gebundenen Datei / SHA-256 of the technically rebound file:
-  `4ea943d06e0f7b70742af3da7d80482b63685d0c448d173226dd436b27b56ba2`.
+  `955e4cfeb75e3ac85ba42e7cb5784a3db4262aa620443045c74e7d99fc96ba7e`.
 - Git-Stand vor Indexergänzung / Git HEAD before adding this index: `58f77c9047c3a31388995bd95e4a698408893585`.
 - Umfang / scope: 157 eindeutige Kontroll-IDs / unique control IDs.
 - Hash oben ist ein Dateibyte-Hash, keine neue normalisierte Baseline-Bindung.
