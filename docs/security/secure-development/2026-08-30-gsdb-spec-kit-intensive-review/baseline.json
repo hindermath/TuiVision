@@ -5,15 +5,15 @@
   "gate": "baseline",
   "mode": "development",
   "runbookApplicability": "N/A",
-  "runbookRationale": "Repository-local development evidence is reproducibly validated through the installed Bash and PowerShell Assurance validators; no training or operational runbook is distributed.",
+  "runbookRationale": "DE: Repository-lokale Entwicklungsevidence wird mit den installierten Bash- und PowerShell-Assurance-Validatoren reproduzierbar geprüft; es wird kein Trainings- oder Betriebs-Runbook verteilt. EN: Repository-local development evidence is reproducibly validated through the installed Bash and PowerShell Assurance validators; no training or operational runbook is distributed.",
   "createdAt": "2026-09-08T08:55:00Z",
   "review": {
-    "owner": "TuiVision repository maintainer role",
-    "reviewer": "Codex automated technical evidence review; not an independent human approval",
+    "owner": "DE: TuiVision-Repository-Maintainerrolle. EN: TuiVision repository maintainer role.",
+    "reviewer": "DE: Automatisierte technische Evidence-Prüfung durch Codex; keine unabhängige menschliche Freigabe. EN: Codex automated technical evidence review; not an independent human approval.",
     "reviewedAt": "2026-09-08T08:55:00Z",
     "reviewDue": "2026-09-15",
-    "residualRisk": "Domain-control effectiveness and human decisions remain separate from this technical evidence-contract result; no risk is accepted.",
-    "reevaluationTrigger": "Any baseline, evidence, product, architecture, dependency, workflow, distribution, image, or review-scope change."
+    "residualRisk": "DE: Wirksamkeit fachlicher Kontrollen und menschliche Entscheidungen bleiben vom technischen Evidence-Vertrag getrennt; kein Risiko wird akzeptiert. EN: Domain-control effectiveness and human decisions remain separate from this technical evidence-contract result; no risk is accepted.",
+    "reevaluationTrigger": "DE: Bei jeder Änderung an Baseline, Evidence, Produkt, Architektur, Abhängigkeiten, Workflows, Distribution, Images oder Review-Scope. EN: Any baseline, evidence, product, architecture, dependency, workflow, distribution, image, or review-scope change."
   },
   "assessments": [
     {

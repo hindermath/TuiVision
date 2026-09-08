@@ -5,15 +5,15 @@
   "gate": "image-impact",
   "mode": "development",
   "runbookApplicability": "N/A",
-  "runbookRationale": "This bounded revalidation changes governance and evidence documents only; it performs no image, package, deployment, or production operation.",
+  "runbookRationale": "DE: Diese begrenzte Revalidierung ändert nur Governance- und Evidence-Dokumente; sie führt keine Image-, Paket-, Deployment- oder Produktionsoperation aus. EN: This bounded revalidation changes governance and evidence documents only; it performs no image, package, deployment, or production operation.",
   "createdAt": "2026-09-08T08:55:00Z",
   "review": {
-    "owner": "TuiVision repository maintainer role",
-    "reviewer": "Codex automated technical evidence review; not an independent human approval",
+    "owner": "DE: TuiVision-Repository-Maintainerrolle. EN: TuiVision repository maintainer role.",
+    "reviewer": "DE: Automatisierte technische Evidence-Prüfung durch Codex; keine unabhängige menschliche Freigabe. EN: Codex automated technical evidence review; not an independent human approval.",
     "reviewedAt": "2026-09-08T08:55:00Z",
     "reviewDue": "2026-09-15",
-    "residualRisk": "Domain-control effectiveness and human decisions remain separate from this technical evidence-contract result; no risk is accepted.",
-    "reevaluationTrigger": "Any baseline, evidence, product, architecture, dependency, workflow, distribution, image, or review-scope change."
+    "residualRisk": "DE: Wirksamkeit fachlicher Kontrollen und menschliche Entscheidungen bleiben vom technischen Evidence-Vertrag getrennt; kein Risiko wird akzeptiert. EN: Domain-control effectiveness and human decisions remain separate from this technical evidence-contract result; no risk is accepted.",
+    "reevaluationTrigger": "DE: Bei jeder Änderung an Baseline, Evidence, Produkt, Architektur, Abhängigkeiten, Workflows, Distribution, Images oder Review-Scope. EN: Any baseline, evidence, product, architecture, dependency, workflow, distribution, image, or review-scope change."
   },
   "assessments": [
     {
@@ -26,8 +26,8 @@
       "id": "IMAGE-002",
       "applicability": "N/A",
       "implementation": "Not Assessed",
-      "reason": "No Dockerfile, compose behavior, OCI image, package, mount, network, secret handling, or SBOM-producing product path changes in this revalidation.",
-      "reevaluationTrigger": "Any image, Dockerfile, compose, package, mount, network, secret, toolchain, CI, or SBOM-related change.",
+      "reason": "DE: Diese Revalidierung ändert weder Dockerfile noch Compose-Verhalten, OCI-Image, Paket, Mount, Netzwerk, Secret-Behandlung oder einen SBOM-erzeugenden Produktpfad. EN: No Dockerfile, compose behavior, OCI image, package, mount, network, secret handling, or SBOM-producing product path changes in this revalidation.",
+      "reevaluationTrigger": "DE: Bei jeder Änderung an Image, Dockerfile, Compose, Paket, Mount, Netzwerk, Secrets, Toolchain, CI oder SBOM. EN: Any image, Dockerfile, compose, package, mount, network, secret, toolchain, CI, or SBOM-related change.",
       "evidence": "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/assurance-revalidation.md"
     }
   ],

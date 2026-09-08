@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0",
   "documentType": "SecureDevelopmentAssuranceValidationReceipt",
-  "checkedAt": "2026-09-08T08:55:00Z",
-  "platform": "macOS; Bash and PowerShell 7",
+  "checkedAt": "2026-09-08T09:53:32Z",
+  "platform": "DE: macOS; Bash und PowerShell 7. EN: macOS; Bash and PowerShell 7.",
   "contextId": "gsdb-spec-kit-intensive-review",
   "evidenceDirectory": "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review",
   "gateOutcomes": {
@@ -21,27 +21,27 @@
   "gateFileHashes": [
     {
       "path": "baseline.json",
-      "rawSha256": "863cd0d65ebc53cdc6c36f2a5c4a4405129c70672ba839c2b1e299927a1fa139"
+      "rawSha256": "5988c664ff8c8742acfadb55d97363cffa3c1a801c8679d4c4220b4b98a02428"
     },
     {
       "path": "deltas/2026-09-08-assurance-revalidation.json",
-      "rawSha256": "226a9961e217217d7f3542f47a240f31f60e5bc8f69057193aecc1e4b6c323c3"
+      "rawSha256": "745bf00025b64fc0d74bd8730ec49dfb9a38a725733c7bed24ca23f624a745f5"
     },
     {
       "path": "closure.json",
-      "rawSha256": "e71ed5ebf5080c9d0843d28cdb258aa59e852dc01249295361c2193e1b7788f7"
+      "rawSha256": "5895823517fbe985a1a346ab7d08aec6156f08c351120c4226edf3160dda6664"
     },
     {
       "path": "image-impact.json",
-      "rawSha256": "66715ba734cd7d41eb48b01e86dd623cb35d69f03c776431c30fd2675cc30018"
+      "rawSha256": "cf75e6a083dd20cae589326821380b06b7d767c12477d5ca1879e80d182f0af5"
     },
     {
       "path": "evidence-matrix.md",
-      "rawSha256": "1ebba8ed6c93e431444d86e362dab558186e19b00cffb212b2367ce8f785ecde"
+      "rawSha256": "6a5c56417f9961e8755f54adaab9460a134785d138ef6be1ae310c443d506091"
     },
     {
       "path": "assurance-revalidation.md",
-      "rawSha256": "fa316fc4bd218eecc04aa47b241a14719e7b38b8f7484081f5a7074cd845ee70"
+      "rawSha256": "9bd09318d62f1c1ffde8f3aee6a14bbdad902da676f2a13a5b1b56a4a8182847"
     },
     {
       "path": "gsdb-spec-kit-intensive-review.json",
@@ -139,5 +139,5 @@
       "outcome": "Ready"
     }
   ],
-  "interpretation": "Technical evidence-contract validation only. Domain-control status and human pilot, project, release, risk, conformity, certification, and C5 decisions remain separate."
+  "interpretation": "DE: Ausschließlich technische Validierung des Evidence-Vertrags. Fachlicher Kontrollstatus sowie menschliche Pilot-, Projekt-, Release-, Risiko-, Konformitäts-, Zertifizierungs- und C5-Entscheidungen bleiben getrennt. EN: Technical evidence-contract validation only. Domain-control status and human pilot, project, release, risk, conformity, certification, and C5 decisions remain separate."
 }

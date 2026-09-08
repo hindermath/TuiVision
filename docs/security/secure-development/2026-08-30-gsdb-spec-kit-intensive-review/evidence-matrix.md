@@ -16,7 +16,13 @@ Ready; the strictest technical overall status is Ready. This is not a new
 domain assessment of the 157 controls. All 157 domain controls remain Open, as do the human decision boundaries. Pilot
 authorization, project acceptance, and general release remain Open.
 
-Current machine-readable gates are baseline.json,
+**DE:** Aktuelle maschinenlesbare Gates sind baseline.json,
+deltas/2026-09-08-assurance-revalidation.json, closure.json und
+image-impact.json. Die ersetzten blockierten Migrations-Gates bleiben unter
+archive/2026-09-07-assurance-migration/ erhalten. Umfang und ausführbare
+Nachweise stehen in assurance-revalidation.md und assurance-validation.json.
+
+**EN:** Current machine-readable gates are baseline.json,
 deltas/2026-09-08-assurance-revalidation.json, closure.json, and
 image-impact.json. The superseded blocked migration gates remain under
 archive/2026-09-07-assurance-migration/. See assurance-revalidation.md and

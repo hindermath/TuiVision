@@ -5,15 +5,15 @@
   "gate": "closure",
   "mode": "development",
   "runbookApplicability": "N/A",
-  "runbookRationale": "The evidence matrix and validation receipt provide the bounded repository-internal development procedure; no operational runbook is distributed.",
+  "runbookRationale": "DE: Evidence-Matrix und Validierungsreceipt bilden das begrenzte repository-interne Entwicklungsverfahren ab; es wird kein Betriebs-Runbook verteilt. EN: The evidence matrix and validation receipt provide the bounded repository-internal development procedure; no operational runbook is distributed.",
   "createdAt": "2026-09-08T08:55:00Z",
   "review": {
-    "owner": "TuiVision repository maintainer role",
-    "reviewer": "Codex automated technical evidence review; not an independent human approval",
+    "owner": "DE: TuiVision-Repository-Maintainerrolle. EN: TuiVision repository maintainer role.",
+    "reviewer": "DE: Automatisierte technische Evidence-Prüfung durch Codex; keine unabhängige menschliche Freigabe. EN: Codex automated technical evidence review; not an independent human approval.",
     "reviewedAt": "2026-09-08T08:55:00Z",
     "reviewDue": "2026-09-15",
-    "residualRisk": "Domain-control effectiveness and human decisions remain separate from this technical evidence-contract result; no risk is accepted.",
-    "reevaluationTrigger": "Any baseline, evidence, product, architecture, dependency, workflow, distribution, image, or review-scope change."
+    "residualRisk": "DE: Wirksamkeit fachlicher Kontrollen und menschliche Entscheidungen bleiben vom technischen Evidence-Vertrag getrennt; kein Risiko wird akzeptiert. EN: Domain-control effectiveness and human decisions remain separate from this technical evidence-contract result; no risk is accepted.",
+    "reevaluationTrigger": "DE: Bei jeder Änderung an Baseline, Evidence, Produkt, Architektur, Abhängigkeiten, Workflows, Distribution, Images oder Review-Scope. EN: Any baseline, evidence, product, architecture, dependency, workflow, distribution, image, or review-scope change."
   },
   "assessments": [
     {
@@ -33,25 +33,25 @@
   "humanDecisions": {
     "technicalValidation": {
       "status": "Fulfilled",
-      "authority": "Installed Secure Development Assurance validators (Bash and PowerShell)",
+      "authority": "DE: Installierte Secure-Development-Assurance-Validatoren für Bash und PowerShell. EN: Installed Secure Development Assurance validators for Bash and PowerShell.",
       "evidence": "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/assurance-validation.json"
     },
     "pilotAuthorization": {
       "status": "Open",
-      "authority": "TuiVision authorised human pilot role",
+      "authority": "DE: Befugte menschliche Pilotrolle für TuiVision. EN: TuiVision authorised human pilot role.",
       "evidence": "NotProvided"
     },
     "projectAcceptance": {
       "status": "Open",
-      "authority": "TuiVision authorised human project-owner role",
+      "authority": "DE: Befugte menschliche Projekt-Owner-Rolle für TuiVision. EN: TuiVision authorised human project-owner role.",
       "evidence": "NotProvided"
     },
     "generalRelease": {
       "status": "Open",
-      "authority": "TuiVision authorised human release role",
+      "authority": "DE: Befugte menschliche Release-Rolle für TuiVision. EN: TuiVision authorised human release role.",
       "evidence": "NotProvided"
     }
   },
-  "nextAction": "Keep pilotAuthorization, projectAcceptance, and generalRelease Open until explicitly authorised human evidence exists; re-run every gate after any documented re-evaluation trigger.",
+  "nextAction": "DE: pilotAuthorization, projectAcceptance und generalRelease bleiben Open, bis ausdrücklich befugte menschliche Evidence vorliegt; nach jedem dokumentierten Re-Evaluation-Trigger alle Gates erneut prüfen. EN: Keep pilotAuthorization, projectAcceptance, and generalRelease Open until explicitly authorised human evidence exists; re-run every gate after any documented re-evaluation trigger.",
   "externalComparisonBoundary": "HOSK/GWDG: ExternalComparison only; never local evidence"
 }

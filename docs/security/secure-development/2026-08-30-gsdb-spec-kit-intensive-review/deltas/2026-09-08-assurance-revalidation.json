@@ -5,15 +5,15 @@
   "gate": "delta",
   "mode": "development",
   "runbookApplicability": "N/A",
-  "runbookRationale": "The revalidation report defines the bounded documentation and evidence procedure; no training, product, image, or production run is performed.",
+  "runbookRationale": "DE: Der Revalidierungsbericht definiert das begrenzte Dokumentations- und Evidence-Verfahren; es findet kein Trainings-, Produkt-, Image- oder Produktionslauf statt. EN: The revalidation report defines the bounded documentation and evidence procedure; no training, product, image, or production run is performed.",
   "createdAt": "2026-09-08T08:55:00Z",
   "review": {
-    "owner": "TuiVision repository maintainer role",
-    "reviewer": "Codex automated technical evidence review; not an independent human approval",
+    "owner": "DE: TuiVision-Repository-Maintainerrolle. EN: TuiVision repository maintainer role.",
+    "reviewer": "DE: Automatisierte technische Evidence-Prüfung durch Codex; keine unabhängige menschliche Freigabe. EN: Codex automated technical evidence review; not an independent human approval.",
     "reviewedAt": "2026-09-08T08:55:00Z",
     "reviewDue": "2026-09-15",
-    "residualRisk": "Domain-control effectiveness and human decisions remain separate from this technical evidence-contract result; no risk is accepted.",
-    "reevaluationTrigger": "Any baseline, evidence, product, architecture, dependency, workflow, distribution, image, or review-scope change."
+    "residualRisk": "DE: Wirksamkeit fachlicher Kontrollen und menschliche Entscheidungen bleiben vom technischen Evidence-Vertrag getrennt; kein Risiko wird akzeptiert. EN: Domain-control effectiveness and human decisions remain separate from this technical evidence-contract result; no risk is accepted.",
+    "reevaluationTrigger": "DE: Bei jeder Änderung an Baseline, Evidence, Produkt, Architektur, Abhängigkeiten, Workflows, Distribution, Images oder Review-Scope. EN: Any baseline, evidence, product, architecture, dependency, workflow, distribution, image, or review-scope change."
   },
   "assessments": [
     {
@@ -32,8 +32,8 @@
       "id": "DELTA-003",
       "applicability": "N/A",
       "implementation": "Not Assessed",
-      "reason": "The bounded revalidation changes managed governance documents and evidence only; it does not change product, runtime, public API, package, or deployment behavior.",
-      "reevaluationTrigger": "Any product, runtime, public API, package, deployment, or test-code change.",
+      "reason": "DE: Die begrenzte Revalidierung ändert nur verwaltete Governance-Dokumente und Evidence; Produkt, Runtime, öffentliche API, Paket und Deployment-Verhalten bleiben unverändert. EN: The bounded revalidation changes managed governance documents and evidence only; it does not change product, runtime, public API, package, or deployment behavior.",
+      "reevaluationTrigger": "DE: Bei jeder Änderung an Produkt, Runtime, öffentlicher API, Paket, Deployment oder Testcode. EN: Any product, runtime, public API, package, deployment, or test-code change.",
       "evidence": "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/assurance-revalidation.md"
     }
   ],
