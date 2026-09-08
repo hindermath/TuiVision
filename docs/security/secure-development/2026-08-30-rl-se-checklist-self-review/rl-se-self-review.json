@@ -5231,7 +5231,7 @@
     {
       "evidenceId": "EVD-038",
       "relativePath": "docs/security/regulatory-applicability.md",
-      "sha256": "bd0bd51510a40a12bf15a1e3455ccbe83a167abcfefaca7651c7c62ee46cc8dc",
+      "sha256": "3f2efefaf379c65ac7652b8cbf9da93b470d12a1952e4fc48be7bee04f073b26",
       "observedAtUtc": "2026-08-30T10:00:00Z",
       "evidenceType": "Audit",
       "directness": "Supporting",

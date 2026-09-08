@@ -10,8 +10,10 @@
       "documents": [
         "docs/maintenance/secure-development-assurance-v013-field-test.md",
         "docs/maintenance/secure-development-assurance-integration.md",
+        "docs/maintenance/assurance-technical-rebinding.md",
         "docs/security/cloud-compliance-assurance.md",
         "docs/security/regulatory-applicability.md",
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
         "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/evidence-matrix.md",
         "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/evidence-matrix.md"
       ],

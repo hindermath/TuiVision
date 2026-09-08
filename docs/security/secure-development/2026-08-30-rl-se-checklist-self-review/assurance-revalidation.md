@@ -47,10 +47,10 @@ the historical control values remain an unchanged point-in-time snapshot.
 - The former blocked migration gate set is retained under
   archive/2026-09-07-assurance-migration/; it remains historical evidence of the earlier drift.
 - Active gates assess the technical evidence-contract layer. In the domain
-  source [rl-se-self-review.json](rl-se-self-review.json), only the two
-  baseline-related SHA-256 bindings EVD-020 and EVD-033 were refreshed; all
-  157 control dispositions and their review boundaries remain unchanged and
-  are not promoted to fulfilled states.
+  source [rl-se-self-review.json](rl-se-self-review.json), the earlier
+  baseline-related SHA-256 bindings EVD-020/EVD-033 and the current field-test
+  binding EVD-038 were refreshed; all 157 control dispositions and their review
+  boundaries remain unchanged and are not promoted to fulfilled states.
 - The current scope decision treats GitHub, CI, NuGet, and artifact hosting as
   development and delivery infrastructure rather than product cloud runtime.
   Regulatory scope is scheduled for re-evaluation on 2026-12-31.

@@ -22,7 +22,10 @@ Test-Owner und technischer Reviewer ist `@hindermath`. Geprueft wurden:
 
 Produktcode, Produkt-API, Runtime, Abhaengigkeiten, Pakete, Images und
 historische Quellen wurden nicht geaendert. Die fachlichen 157-Kontroll-
-Bewertungen beider Kontexte bleiben historische Zeitpunktaufnahmen.
+Bewertungen beider Kontexte bleiben historische Zeitpunktaufnahmen. Im RL-SE-
+JSON wurde ausschliesslich die technische EVD-038-Bindung an die aktualisierte
+regulatorische Scope-Evidence erneuert; die Alt-/Neu-Provenienz steht im
+[Rebinding-Nachweis](assurance-technical-rebinding.md).
 
 ## Paket- und Umgebungsbindung / Package and Environment Binding
 
