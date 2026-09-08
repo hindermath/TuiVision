@@ -13,10 +13,10 @@
       "specs/045-rl-se-checklist-self-review/checklists/audit-readiness.md": "64e127f89ae8c960a39511911cf8c19963b055e2ea9ac729e3161d3caa7108ce"
     },
     "baselineSourceHashes": {
-      "docs/secure-development/baseline-manifest.json": "82449d57f2e072cb93e0066e7e1eee112219c9836cd51acd75027ec8436ec916",
+      "docs/secure-development/baseline-manifest.json": "65d80a5cf4c93f23e81b3ec9453853c9856210f75136ab02baca0e80eb6683bb",
       "docs/secure-development/Richtlinie_Sichere-Entwicklung.md": "bd2947abf2c367a23c3461ea84de50ac5202436c3b15b5c6d9b6bb64318e132e",
       "docs/secure-development/Checklistensammelband_Sichere-Entwicklung.md": "ac4ebb80a4954db060074762f99c211930a347bec965902dc08becf608aa0b69",
-      "docs/secure-development/mitgeltende-dokumente/Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md": "779655e47fb608b689ab4aa299ddc8530144562674caf3e080d18e15bd28bbe7",
+      "docs/secure-development/mitgeltende-dokumente/Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md": "65ea3815188c27acd000d14a908eb095ed53c782aee6556b6fcd6390cc2c4567",
       "constitution.md": "e9b7a6ecafdd3bef33100b7d65013f472945f4749b90e6ff3230b1194771947f",
       ".specify/memory/constitution.md": "da1bd3419a626f35bae54c8a88e4d9c888f733793f7eede0b275971ff3badf90",
       ".specify/presets/.registry": "f0e7dd8d4f24c42c4a48db0ee9fd614fd3236d57ac85e68d97d784c0da09f824",
@@ -4624,7 +4624,7 @@
     {
       "evidenceId": "EVD-020",
       "relativePath": "docs/secure-development/baseline-manifest.json",
-      "sha256": "82449d57f2e072cb93e0066e7e1eee112219c9836cd51acd75027ec8436ec916",
+      "sha256": "65d80a5cf4c93f23e81b3ec9453853c9856210f75136ab02baca0e80eb6683bb",
       "observedAtUtc": "2026-08-30T10:00:00Z",
       "evidenceType": "Audit",
       "directness": "Supporting",
@@ -4964,7 +4964,7 @@
     {
       "evidenceId": "EVD-033",
       "relativePath": "docs/secure-development/mitgeltende-dokumente/Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md",
-      "sha256": "779655e47fb608b689ab4aa299ddc8530144562674caf3e080d18e15bd28bbe7",
+      "sha256": "65ea3815188c27acd000d14a908eb095ed53c782aee6556b6fcd6390cc2c4567",
       "observedAtUtc": "2026-08-30T10:00:00Z",
       "evidenceType": "Audit",
       "directness": "Supporting",

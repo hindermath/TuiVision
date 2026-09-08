@@ -40,7 +40,7 @@ roles do not constitute newly granted approvals.*
 - Kontext / context: `2026-08-30-rl-se-checklist-self-review`.
 - Kanonische Bewertungsquelle / canonical assessment source: [rl-se-self-review.json](rl-se-self-review.json).
 - SHA-256 der technisch neu gebundenen Datei / SHA-256 of the technically rebound file:
-  `2f807cce16dcd0643e01d1e637638758435cee6c962cadf92296ce81af160b49`.
+  `4ea943d06e0f7b70742af3da7d80482b63685d0c448d173226dd436b27b56ba2`.
 - Git-Stand vor Indexergänzung / Git HEAD before adding this index: `58f77c9047c3a31388995bd95e4a698408893585`.
 - Umfang / scope: 157 eindeutige Kontroll-IDs / unique control IDs.
 - Hash oben ist ein Dateibyte-Hash, keine neue normalisierte Baseline-Bindung.
@@ -227,28 +227,27 @@ an evidence ID does not prove freshness or effectiveness.
 | CL-12-11 | Open | EVD-032, EVD-036, EVD-044, EVD-039 | `controls[155]` |
 | CL-12-12 | AlreadySatisfied | EVD-032, EVD-036, EVD-044, EVD-039 | `controls[156]` |
 
-## Assurance-Lücke und nächste Aktion / Assurance Gap and Next Action
+## Historische Assurance-Lücke (2026-09-07) / Historical Assurance Gap (2026-09-07)
 
-Die Matrix ergänzt nur die zuvor fehlende Navigation. In diesem Kontext fehlen
-weiterhin `baseline.json`, mindestens ein `deltas/*.json`, `closure.json` und
-`image-impact.json` im Assurance-Vertrag. Deshalb bleibt der lesende Status
-`Blocked`. Die vorhandene Selbstprüfung wird nicht nachträglich zu einem
-Assurance-Review erklärt. `technicalValidation`, `pilotAuthorization`,
-`projectAcceptance` und `generalRelease` werden weder abgeleitet noch geändert.
+Die erste Fassung der Matrix ergänzte nur die zuvor fehlende Navigation. Zu
+diesem Zeitpunkt fehlten `baseline.json`, mindestens ein `deltas/*.json`,
+`closure.json` und `image-impact.json`; der lesende Status war deshalb
+`Blocked`. Die technische Revalidierung vom 2026-09-08 hat diese Vertragslücke
+geschlossen. Die vorhandene Selbstprüfung wird weiterhin nicht nachträglich zu
+einem fachlichen Assurance-Review erklärt. `pilotAuthorization`,
+`projectAcceptance` und `generalRelease` bleiben Open.
 
-Nächster fachlicher Schritt ist ein separat beauftragter Review/Migrationslauf:
-Quellenaktualität und Manifestbindung prüfen, fehlende Gate-Evidence mit realen
-Owner-/Reviewdaten erstellen und menschliche Entscheidungen getrennt belassen.
-Erst danach erneut `status` ausführen. Keine vollständige C5-Prüfung und keine
-Aussage zu C5-Konformität, Testatreife oder Zertifizierung. `CL-02-13` bleibt
-die unveränderte projektbezogene Bewertung in der Quelle.
+Ein weiterer fachlicher Review bleibt separat zu beauftragen. Keine
+vollständige C5-Prüfung und keine Aussage zu C5-Konformität, Testatreife oder
+Zertifizierung. `CL-02-13` bleibt die unveränderte projektbezogene Bewertung
+in der Quelle.
 
-*Only the missing navigation is added. The four gate JSON contracts are still
-absent, so read-only status remains Blocked. Existing self-review is not
-reclassified as an Assurance review; none of the four human decision boundaries
-is inferred or changed. A separately authorized domain review/migration must
-check freshness and manifest bindings, provide real gate evidence and review
-metadata, then rerun status. No complete C5 assessment or conformity,
+*The first matrix version added only the missing navigation. At that time, the
+four gate JSON contracts were absent and read-only status was Blocked. The
+technical revalidation on 2026-09-08 closed that contract gap. Existing
+self-review is still not reclassified as a substantive Assurance review;
+pilot, project and general-release decisions remain Open. A further domain
+review requires separate authority. No complete C5 assessment or conformity,
 attestation-readiness or certification claim is made.*
 
 ## Leserpfad und Dokumentationsauswirkung / Reader Path and Documentation Impact
@@ -274,4 +273,7 @@ hash, scope, baseline or contract changes. Validation checks all 157 IDs, litera
 source values, file hash and read-only status under both shells.
 
 
-Technische Ausnahme vom reinen Index: [drei genehmigte Hashkorrekturen](../../../maintenance/assurance-technical-rebinding.md); alle fachlichen Bewertungen unverändert. / Technical exception: three explicitly approved hash corrections; every domain assessment is unchanged.
+Technische Ausnahme vom reinen Index: [zwei dokumentierte
+Neubindungsschritte](../../../maintenance/assurance-technical-rebinding.md);
+alle fachlichen Bewertungen bleiben unverändert. / Technical exception: two
+documented rebinding steps; every domain assessment remains unchanged.

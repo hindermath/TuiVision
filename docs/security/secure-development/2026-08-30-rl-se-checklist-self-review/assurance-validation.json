@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "documentType": "SecureDevelopmentAssuranceValidationReceipt",
-  "checkedAt": "2026-09-08T08:55:00Z",
+  "checkedAt": "2026-09-08T09:43:10Z",
   "platform": "macOS; Bash and PowerShell 7",
   "contextId": "rl-se-checklist-self-review",
   "evidenceDirectory": "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review",
@@ -37,15 +37,15 @@
     },
     {
       "path": "evidence-matrix.md",
-      "rawSha256": "90e7ac10051e644ce1df660168b1f9f25fb656d3526f8e54f275353d98e0f734"
+      "rawSha256": "875c5851b0d13a9aed53bd9f435573f3e3c3b4954491c29b506a78027babbd33"
     },
     {
       "path": "assurance-revalidation.md",
-      "rawSha256": "097e2b5f10eecd360b74a0a989c73fe65f0fad11e744005732cd5d3296d812dd"
+      "rawSha256": "43e30f96207e9be076895006385e797c97e2ba8f731007af785bc314c99273d2"
     },
     {
       "path": "rl-se-self-review.json",
-      "rawSha256": "2f807cce16dcd0643e01d1e637638758435cee6c962cadf92296ce81af160b49"
+      "rawSha256": "4ea943d06e0f7b70742af3da7d80482b63685d0c448d173226dd436b27b56ba2"
     }
   ],
   "readOnlyPreservation": {

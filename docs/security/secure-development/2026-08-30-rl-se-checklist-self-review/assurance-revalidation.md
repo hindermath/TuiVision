@@ -24,9 +24,11 @@ pilot, project, or release approval is inferred.
   CL-09, and CL-12 2.2.0, SDLC guideline 1.2.0, and integration map 1.4.0.
 - The former blocked migration gate set is retained under
   archive/2026-09-07-assurance-migration/; it remains historical evidence of the earlier drift.
-- Active gates assess the technical evidence-contract layer. The unchanged
-  domain source is [rl-se-self-review.json](rl-se-self-review.json); its
-  values are not promoted to fulfilled states.
+- Active gates assess the technical evidence-contract layer. In the domain
+  source [rl-se-self-review.json](rl-se-self-review.json), only the two
+  baseline-related SHA-256 bindings EVD-020 and EVD-033 were refreshed; all
+  157 control dispositions and their review boundaries remain unchanged and
+  are not promoted to fulfilled states.
 ## Gate-Nachweise / Gate Evidence
 
 | Gate | Outcome | Evidence boundary |
@@ -44,7 +46,8 @@ gate hashes, parity, and the read-only preservation check.
 
 - Decision: UpdateRequired.
 - Canonical source: Level-0 secure-development baseline plus this repository's
-  unchanged domain-assessment source.
+  domain-assessment source with technically refreshed baseline bindings and
+  unchanged control dispositions.
 - Owner: TuiVision repository maintainer role.
 - Affected documents: managed baseline references, active gate JSON files,
   evidence matrix, revalidation report, validation receipt, and project
