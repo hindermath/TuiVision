@@ -12,7 +12,7 @@ namespace TuiVision.Drivers.Tests;
 [TestClass]
 public sealed class RlSeSelfReviewEvidenceTests
 {
-    private const string AuditDirectory = "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review";
+    private const string AuditDirectory = "docs/security/secure-development/2026-09-12-rl-se-checklist-self-review-v043";
     private const string AuditRelativePath = AuditDirectory + "/rl-se-self-review.json";
     private static readonly int[] ExpectedChapterCounts = [12, 13, 15, 10, 13, 11, 12, 13, 17, 17, 12, 12];
     private static readonly string[] ExpectedStatuses = ["Applicable", "AlreadySatisfied", "N/A", "Open", "FollowUp"];
@@ -22,7 +22,7 @@ public sealed class RlSeSelfReviewEvidenceTests
         "security-governance@0.6.2", "architecture-governance@0.5.2", "isaqb-architecture-governance@0.2.2",
         "a11y-governance@0.4.3", "cross-platform-governance@0.2.2", "agent-parity-governance@0.4.2",
         "model-routing-governance@0.1.4", "intake-authoring-governance@0.3.1", "intake-review-governance@0.2.1",
-        "intake-sequencing-governance@0.2.3", "autonomous-run-governance@0.4.1",
+        "intake-sequencing-governance@0.2.3", "autonomous-run-governance@0.4.3",
         "parallel-autonomous-run-governance@0.2.6"
     ];
 

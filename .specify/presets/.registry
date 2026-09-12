@@ -577,9 +577,9 @@
       "installed_at": "2026-09-07T18:34:24.025103+00:00"
     },
     "autonomous-run-governance": {
-      "version": "0.4.2",
+      "version": "0.4.3",
       "source": "local",
-      "manifest_hash": "sha256:aeecb0d77afe23a1bba3b5b14be445b1796b423c71e2c13d909ef5a2a8eaafd3",
+      "manifest_hash": "sha256:bf5f848db7011b6bd3082b505a2134519c8dcf29365082f8d1177df72679906d",
       "enabled": true,
       "priority": 70,
       "registered_commands": {
@@ -633,7 +633,7 @@
         "speckit-autonomous-stop",
         "speckit-autonomous-resume"
       ],
-      "installed_at": "2026-09-12T07:08:17.202823+00:00"
+      "installed_at": "2026-09-12T14:44:01.292254+00:00"
     }
   }
 }
