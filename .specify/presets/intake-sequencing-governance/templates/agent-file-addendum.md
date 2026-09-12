@@ -13,8 +13,9 @@ and applicable WCAG 2.2 AA.
 
 When schema 2.0 is configured, resolve target paths through portable roles and
 collection paths before validating order. `RequirementsGovernanceGate` is a
-binding predecessor. Exactly one evidenced `Eligible` candidate may be
-preferred; eligibility never grants implementation or remote authority.
+binding predecessor. An active delivery series has exactly one evidenced
+`Eligible` candidate; a `Completed` series retains only terminal members and
+has none. Eligibility never grants implementation or remote authority.
 
 Represent a repository without an active intake as `Idle` with zero targets,
 roots, and dependencies. Do not create a placeholder intake. Explain the idle

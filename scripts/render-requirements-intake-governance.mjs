@@ -21,16 +21,17 @@ if (argumentsList.some((argument) => !["--check", "--write"].includes(argument))
 const write = argumentsList.includes("--write");
 const seriesRoot = "requirements/intakes/series/tui-vision-delivery";
 const seriesId = "a73dda7c-163b-4530-97f2-fd9eea5e8986";
-const seriesReceiptId = "bb9906d5-6c9a-43ba-b106-80ce04c4f4de";
-const seriesOperationId = "53e7f05c-68f9-4f79-95be-4534f08b63fd";
+const seriesReceiptId = "a76e7957-0b72-4c0b-b738-c88c3bc33885";
+const seriesOperationId = "0326e087-08a7-4318-a54d-6b4bf5993017";
 const reviewId = "88579ec8-e830-4a07-8c29-d6035dcb4782";
 const migrationProposal = "specs/requirements-reconciliation-20260726/migration-proposal.json";
 const createdAt = "2026-07-26T20:00:00Z";
-const seriesUpdatedAt = "2026-08-30T16:19:20Z";
+const seriesUpdatedAt = "2026-09-12T23:21:05Z";
+const reviewedAt = "2026-08-30T16:19:20Z";
 const archiveRoot =
   `specs/intake-series-archive/${seriesId}/${seriesOperationId}`;
-const priorManifestHash = "0b203c3ef32f4269d88fd477d5e21c14337ac8827b55e862dc81923b5bc69e1e";
-const priorReceiptHash = "fe789c56d36bbc9772baa824c64823786bb2ead4acb6ee3899941cf00257c893";
+const priorManifestHash = "538d12fcc60cab96e5d70865a9ab9c31885634f3981e1c10dc2cd09d1ee2d2e7";
+const priorReceiptHash = "eb64ab26a6e0d4fd9ab92039f61a31612cbda4ac1cd4978fabfb3ab220f71136";
 
 const normalize = (value) => value.replace(/^\uFEFF/, "").replace(/\r\n?/g, "\n");
 const hashText = (value) => crypto.createHash("sha256").update(normalize(value)).digest("hex");
@@ -109,7 +110,7 @@ const manifest = {
   seriesId,
   title: "TuiVision Delivery Intake Series",
   policy: "tui-vision-delivery-v1",
-  status: "Active",
+  status: "Completed",
   orderedTargets: members.map((member) => ({
     path: member.path,
     role: member.role,
@@ -279,7 +280,7 @@ const seriesReceipt = {
   operation: {
     operationId: seriesOperationId,
     type: "Update",
-    authorityEvidence: "Feature 046 MergeAndSync authority and causal closeout for the completed GSDB Spec Kit intensive review",
+    authorityEvidence: "Explicit user authority for completed-series lifecycle reconciliation",
   },
   status: "Ready",
   manifest: {path: manifestPath, normalizedSha256: manifestHash},
@@ -300,7 +301,7 @@ const operation = {
   seriesId,
   type: "Update",
   status: "Published",
-  authorityEvidence: "Feature 046 MergeAndSync authority and causal closeout for the completed GSDB Spec Kit intensive review",
+  authorityEvidence: "Explicit user authority for completed-series lifecycle reconciliation",
   proposalNormalizedSha256: manifestHash,
   preparedPaths: [
     `${archiveRoot}/manifest.json`,
@@ -347,7 +348,7 @@ const result = {
   mode: "Series",
   status: "Ready",
   policy: "tui-vision-lastenheft",
-  reviewedAt: seriesUpdatedAt,
+  reviewedAt,
   repository: {root: ".", head: reviewHead},
   requestEvidence: {path: requestPath, normalizedSha256: hashText(json(request))},
   targets: members.map((member) => ({
@@ -501,7 +502,7 @@ T056-locked evidence. It does not start a feature run.*
 
 - Manifest SHA-256: \`${manifestHash}\`
 - Projektions-SHA-256: \`${generationSha256}\`
-- Umfang: \`10\` aktive Zuordnungen, \`6\` unveränderte Abhängigkeiten
+- Umfang: \`10\` Serienzuordnungen, \`6\` unveränderte Abhängigkeiten
 
 | Position | Intake | Status | Spec-Kit-Feature | Direkte eingehende Abhängigkeiten |
 |---:|---|---|---|---|

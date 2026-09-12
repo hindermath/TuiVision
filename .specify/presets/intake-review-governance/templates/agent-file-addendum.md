@@ -13,7 +13,8 @@ Never infer a missing predecessor or silently accept request drift.
 # Requirements Collection Review
 
 When schema 2.0 is present, review explicit documentation language, naming
-profile, portable roles, resolved paths, hashes, receipts, references, and
-exactly one evidenced `Eligible` candidate. Implementation language and locale
-are not documentation-language evidence. A Ready review grants neither
-implementation nor remote authority.
+profile, portable roles, resolved paths, hashes, receipts, references, and the
+Series lifecycle. An active delivery series has exactly one evidenced
+`Eligible` candidate; a `Completed` series retains only terminal members and
+has none. Implementation language and locale are not documentation-language
+evidence. A Ready review grants neither implementation nor remote authority.

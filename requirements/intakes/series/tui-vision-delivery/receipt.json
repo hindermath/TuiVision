@@ -1,28 +1,28 @@
 {
   "schemaVersion": "1.0",
   "documentType": "IntakeSeriesReceipt",
-  "receiptId": "bb9906d5-6c9a-43ba-b106-80ce04c4f4de",
+  "receiptId": "a76e7957-0b72-4c0b-b738-c88c3bc33885",
   "seriesId": "a73dda7c-163b-4530-97f2-fd9eea5e8986",
   "generator": {
     "preset": "intake-sequencing-governance",
     "version": "0.2.3"
   },
-  "createdAt": "2026-08-30T16:19:20Z",
+  "createdAt": "2026-09-12T23:21:05Z",
   "operation": {
-    "operationId": "53e7f05c-68f9-4f79-95be-4534f08b63fd",
+    "operationId": "0326e087-08a7-4318-a54d-6b4bf5993017",
     "type": "Update",
-    "authorityEvidence": "Feature 046 MergeAndSync authority and causal closeout for the completed GSDB Spec Kit intensive review"
+    "authorityEvidence": "Explicit user authority for completed-series lifecycle reconciliation"
   },
   "status": "Ready",
   "manifest": {
     "path": "requirements/intakes/series/tui-vision-delivery/manifest.json",
-    "normalizedSha256": "538d12fcc60cab96e5d70865a9ab9c31885634f3981e1c10dc2cd09d1ee2d2e7"
+    "normalizedSha256": "6c086db5c8ed9cd33e221210e68edd99546efb9acbe098d863fb18201ffb5ae9"
   },
   "supersedes": {
-    "receiptPath": "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/53e7f05c-68f9-4f79-95be-4534f08b63fd/receipt.json",
-    "receiptNormalizedSha256": "fe789c56d36bbc9772baa824c64823786bb2ead4acb6ee3899941cf00257c893",
-    "manifestArchivePath": "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/53e7f05c-68f9-4f79-95be-4534f08b63fd/manifest.json",
-    "manifestArchiveSha256": "0b203c3ef32f4269d88fd477d5e21c14337ac8827b55e862dc81923b5bc69e1e"
+    "receiptPath": "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/0326e087-08a7-4318-a54d-6b4bf5993017/receipt.json",
+    "receiptNormalizedSha256": "eb64ab26a6e0d4fd9ab92039f61a31612cbda4ac1cd4978fabfb3ab220f71136",
+    "manifestArchivePath": "specs/intake-series-archive/a73dda7c-163b-4530-97f2-fd9eea5e8986/0326e087-08a7-4318-a54d-6b4bf5993017/manifest.json",
+    "manifestArchiveSha256": "538d12fcc60cab96e5d70865a9ab9c31885634f3981e1c10dc2cd09d1ee2d2e7"
   },
   "tombstone": {
     "path": "N/A",
