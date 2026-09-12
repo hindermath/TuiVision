@@ -46,23 +46,23 @@ assurance-validation.json for scope and executable proof.
 
 Dieser am 2026-09-12 revalidierte Index erschließt die aktuelle, **nicht
 zertifizierende** 157-Kontrollen-Selbstprüfung für
-`autonomous-run-governance` v0.4.3. Die fünf vom Rollout betroffenen Quellen
+`autonomous-run-governance` v0.4.4. Die fünf vom Rollout betroffenen Quellen
 wurden fachlich erneut geprüft und bytegenau gebunden. Die übrigen
 Kontrolldispositionen, Human-only-Grenzen und Rollen bleiben unverändert; sie
 werden nicht in Assurance-Gate-Ergebnisse oder neue Freigaben umgedeutet.
 
 *This index, revalidated on 2026-09-12, exposes the current, non-certifying
-157-control self-review for `autonomous-run-governance` v0.4.3. The five
+157-control self-review for `autonomous-run-governance` v0.4.4. The five
 rollout-affected sources were reviewed again and bound by exact bytes. All
 other control dispositions, human-only boundaries, and roles remain unchanged;
 they are not converted into assurance gate results or new approvals.*
 
 ## Quellenbindung / Source Binding
 
-- Kontext / context: `2026-09-12-rl-se-checklist-self-review-v043`.
+- Kontext / context: `2026-09-12-rl-se-checklist-self-review-v044`.
 - Kanonische Bewertungsquelle / canonical assessment source: [rl-se-self-review.json](rl-se-self-review.json).
 - SHA-256 der revalidierten kanonischen JSON-Datei / SHA-256 of the revalidated canonical JSON file:
-  `ea4c7b6aaa506e2b5f92991b8946b9a3e27ff7d3e1609ea77376c3a5ef629f40`.
+  `671825d25085c4aa0cdab9f6e3f385d36ccc302e53d8cce6a2075adf874f9098`.
 - Ausgangsstand der Revalidierung / Revalidation starting HEAD: `0182b5f47cd2ad0c3a887510d9ec4a85c905375b`.
 - Umfang / scope: 157 eindeutige Kontroll-IDs / unique control IDs.
 - Der Hash oben bindet die kanonische JSON-Datei; deren `reviewSnapshot` bindet

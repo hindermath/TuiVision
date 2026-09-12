@@ -1,9 +1,9 @@
-# RL-SE-Checklist-Selbstprüfung — Revalidierung für Preset v0.4.3
+# RL-SE-Checklist-Selbstprüfung — Revalidierung für Preset v0.4.4
 
 ## Deutsch
 
 Dieser Snapshot revalidiert die bestehende, nicht zertifizierende
-157-Kontrollen-Selbstprüfung für `autonomous-run-governance` v0.4.3. Die
+157-Kontrollen-Selbstprüfung für `autonomous-run-governance` v0.4.4. Die
 fachlichen Kontrolldispositionen und Human-only-Grenzen bleiben unverändert.
 Neu geprüft und in `rl-se-self-review.json` gebunden wurden das Preset-Manifest,
 die Registry, beide Constitution-Quellen und `AGENTS.md`. Die fortbestehende
@@ -16,7 +16,7 @@ Der historische Snapshot unter
 ## English
 
 This snapshot revalidates the existing non-certifying 157-control self-review
-for `autonomous-run-governance` v0.4.3. Domain dispositions and human-only
+for `autonomous-run-governance` v0.4.4. Domain dispositions and human-only
 boundaries remain unchanged. The preset manifest, registry, both constitution
 sources, and `AGENTS.md` were reviewed again and bound in
 `rl-se-self-review.json`. The continuing difference between Constitution
@@ -31,5 +31,5 @@ unchanged.
 - `RlSeSelfReviewEvidenceTests`: vertical slice, chapter draft, complete audit,
   projections, and negative fixtures.
 - Exact five-source SHA-256 refresh with LF-normalized text hashing.
-- Preset mapping remains 12 entries; `autonomous-run-governance` is v0.4.3.
+- Preset mapping remains 12 entries; `autonomous-run-governance` is v0.4.4.
 - Product and Human-only dispositions remain unchanged.

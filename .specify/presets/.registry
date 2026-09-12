@@ -577,9 +577,9 @@
       "installed_at": "2026-09-07T18:34:24.025103+00:00"
     },
     "autonomous-run-governance": {
-      "version": "0.4.3",
+      "version": "0.4.4",
       "source": "local",
-      "manifest_hash": "sha256:bf5f848db7011b6bd3082b505a2134519c8dcf29365082f8d1177df72679906d",
+      "manifest_hash": "sha256:bee76630e08942fd07776e3c7c6fff0f7b370391f95398cb7e5e50a721c7c6a9",
       "enabled": true,
       "priority": 70,
       "registered_commands": {

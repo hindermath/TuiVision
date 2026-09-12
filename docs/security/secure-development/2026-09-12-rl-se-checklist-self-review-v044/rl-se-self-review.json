@@ -2,8 +2,8 @@
   "schemaVersion": "1.0",
   "featureId": "045-rl-se-checklist-self-review",
   "reviewSnapshot": {
-    "reviewedHead": "0182b5f47cd2ad0c3a887510d9ec4a85c905375b",
-    "capturedAtUtc": "2026-09-12T14:45:20Z",
+    "reviewedHead": "3652d10261360e1c8be88d1ade261c0372a53008",
+    "capturedAtUtc": "2026-09-12T15:21:22Z",
     "bindingInputHashes": {
       "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md": "62fadb9f571f6c6e5fb81badd103f5ca5087c7219698fdec7be708196d6d6863",
       "requirements/intakes/series/tui-vision-delivery/intake-review-result.json": "795f0e781e6526ff9f00b54efaddb5878ce3e4bcc213646aadc15b2ad2dfb5e9",
@@ -17,9 +17,9 @@
       "docs/secure-development/Richtlinie_Sichere-Entwicklung.md": "bd2947abf2c367a23c3461ea84de50ac5202436c3b15b5c6d9b6bb64318e132e",
       "docs/secure-development/Checklistensammelband_Sichere-Entwicklung.md": "ac4ebb80a4954db060074762f99c211930a347bec965902dc08becf608aa0b69",
       "docs/secure-development/mitgeltende-dokumente/Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md": "65ea3815188c27acd000d14a908eb095ed53c782aee6556b6fcd6390cc2c4567",
-      "constitution.md": "88836d50201629c0ca69896c41bd4a8433185e892ae896b556c5b8f19a74b52e",
-      ".specify/memory/constitution.md": "9756be8b99b6f159a29abf03a1061286a3d092b78f3ecc5d13db6d26fb23a1b1",
-      ".specify/presets/.registry": "f004873165e565603e5d1619008e3bd5db9b04f764db61c4d502ad8e4b1dfd05",
+      "constitution.md": "3a23c3e3e0f2b696eeffb0457f080267eb857c86cf2d3460c410fe8e695e2076",
+      ".specify/memory/constitution.md": "1bf323a3627b03706e974a0f304ee1d469b86903208f54021717792ef401a386",
+      ".specify/presets/.registry": "a9b6da816e9151533b0097c8f6ef74fe9afb8ccde40a70af824e9741d4873da7",
       "docs/secure-development/checklisten/CL_01_Standards-Anwendbarkeit.md": "b0b3b15c1ad7d46a8f83f563583d9538d72332787f4468d63e691ec37fc4decf",
       "docs/secure-development/checklisten/CL_02_Sichere-Softwarearchitektur.md": "1b387329009286ce7a0a67b7af1f4bd3f60d290413f57c2eab307ca4b257ec9d",
       "docs/secure-development/checklisten/CL_03_Krypto-Mindestvorgaben.md": "031cc40fa44877e34cafc1b398f4ea582c1088647cae4659824e8ff7b5e6b5e9",
@@ -4313,8 +4313,8 @@
     {
       "evidenceId": "EVD-001",
       "relativePath": ".specify/memory/constitution.md",
-      "sha256": "9756be8b99b6f159a29abf03a1061286a3d092b78f3ecc5d13db6d26fb23a1b1",
-      "observedAtUtc": "2026-09-12T14:45:20Z",
+      "sha256": "1bf323a3627b03706e974a0f304ee1d469b86903208f54021717792ef401a386",
+      "observedAtUtc": "2026-09-12T15:21:22Z",
       "evidenceType": "Configuration",
       "directness": "Supporting",
       "freshness": "Current",
@@ -4328,8 +4328,8 @@
     {
       "evidenceId": "EVD-002",
       "relativePath": ".specify/presets/.registry",
-      "sha256": "f004873165e565603e5d1619008e3bd5db9b04f764db61c4d502ad8e4b1dfd05",
-      "observedAtUtc": "2026-09-12T14:45:20Z",
+      "sha256": "a9b6da816e9151533b0097c8f6ef74fe9afb8ccde40a70af824e9741d4873da7",
+      "observedAtUtc": "2026-09-12T15:21:22Z",
       "evidenceType": "Configuration",
       "directness": "Direct",
       "freshness": "Current",
@@ -4388,8 +4388,8 @@
     {
       "evidenceId": "EVD-006",
       "relativePath": ".specify/presets/autonomous-run-governance/preset.yml",
-      "sha256": "bf5f848db7011b6bd3082b505a2134519c8dcf29365082f8d1177df72679906d",
-      "observedAtUtc": "2026-09-12T14:45:20Z",
+      "sha256": "bee76630e08942fd07776e3c7c6fff0f7b370391f95398cb7e5e50a721c7c6a9",
+      "observedAtUtc": "2026-09-12T15:21:22Z",
       "evidenceType": "Configuration",
       "directness": "Direct",
       "freshness": "Current",
@@ -4523,8 +4523,8 @@
     {
       "evidenceId": "EVD-015",
       "relativePath": "AGENTS.md",
-      "sha256": "3f5b4882cfe74a107da5ac29cbee14384eb23b1debae2505e1fafd0bc6931368",
-      "observedAtUtc": "2026-09-12T14:45:20Z",
+      "sha256": "8e3b10cf95519de44e5c1e2c6b172db3724a6d905330b3842b6e27ecb91ab1e5",
+      "observedAtUtc": "2026-09-12T15:21:22Z",
       "evidenceType": "Audit",
       "directness": "Direct",
       "freshness": "Current",
@@ -4579,8 +4579,8 @@
     {
       "evidenceId": "EVD-017",
       "relativePath": "constitution.md",
-      "sha256": "88836d50201629c0ca69896c41bd4a8433185e892ae896b556c5b8f19a74b52e",
-      "observedAtUtc": "2026-09-12T14:45:20Z",
+      "sha256": "3a23c3e3e0f2b696eeffb0457f080267eb857c86cf2d3460c410fe8e695e2076",
+      "observedAtUtc": "2026-09-12T15:21:22Z",
       "evidenceType": "Audit",
       "directness": "Supporting",
       "freshness": "Current",
@@ -5828,16 +5828,16 @@
     },
     {
       "presetId": "autonomous-run-governance",
-      "version": "0.4.3",
-      "registryManifestHash": "bf5f848db7011b6bd3082b505a2134519c8dcf29365082f8d1177df72679906d",
-      "presetArtifactHash": "bf5f848db7011b6bd3082b505a2134519c8dcf29365082f8d1177df72679906d",
+      "version": "0.4.4",
+      "registryManifestHash": "bee76630e08942fd07776e3c7c6fff0f7b370391f95398cb7e5e50a721c7c6a9",
+      "presetArtifactHash": "bee76630e08942fd07776e3c7c6fff0f7b370391f95398cb7e5e50a721c7c6a9",
       "checkpoints": [
         "Audit-only scope",
         "Evidence freshness",
         "No automatic repair"
       ],
       "status": "Applicable",
-      "rationale": "Deutsch: v0.4.3 behaelt die CL-05-/CL-09-/CL-12-Zuordnung bei und staerkt die exakte Kandidatenpruefung durch Staging-Mengen- und Indexbyte-Bindung. English: v0.4.3 preserves the CL-05/CL-09/CL-12 mapping and strengthens exact candidate verification through staged-set and index-byte binding.",
+      "rationale": "Deutsch: v0.4.4 behaelt die CL-05-/CL-09-/CL-12-Zuordnung bei und bindet physische Rename-Pfade, regulaere Indexmodi und Indexbytes. English: v0.4.4 preserves the CL-05/CL-09/CL-12 mapping and binds physical rename paths, regular index modes, and index bytes.",
       "evidenceIds": [
         "EVD-006"
       ],
