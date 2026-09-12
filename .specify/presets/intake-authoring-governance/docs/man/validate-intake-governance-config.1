@@ -17,6 +17,9 @@ repository.
 .SH OUTCOMES
 Configured collections report Aligned, MigrationRequired, NeedsClarification,
 or Blocked. Eligibility is an ordering result and grants no delivery authority.
+A completed non-empty series is Aligned only when every retained target is
+Completed and no target is Eligible. SeriesManifest permits retained members
+across active and archive collections.
 .SH EXIT STATUS
 Zero means Aligned or a valid journal. One means migration or clarification is
 required. Two means blocked or invalid input.

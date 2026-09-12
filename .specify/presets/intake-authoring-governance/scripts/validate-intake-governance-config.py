@@ -119,6 +119,7 @@ def validate_series_manifest(
     targets = manifest.get("orderedTargets")
     if not isinstance(targets, list) or not targets:
         fail("RIG014", "series manifest must contain non-empty orderedTargets")
+    series_status = required_text(manifest, "status", "RIG017")
 
     active_paths = {
         item.relative_to(repo).as_posix()
@@ -126,6 +127,7 @@ def validate_series_manifest(
         if item.is_file() and intake_name_matches(item.name, pattern)
     }
     target_paths: list[str] = []
+    target_statuses: dict[str, str] = {}
     eligible: list[str] = []
     for index, target in enumerate(targets):
         if not isinstance(target, dict):
@@ -144,6 +146,7 @@ def validate_series_manifest(
         if normalized_sha256(target_file) != expected_hash:
             fail("RIG015", f"hash drift for {target_path}")
         status = required_text(target, "status", "RIG017")
+        target_statuses[target_path] = status
         if status == "Eligible":
             eligible.append(target_path)
 
@@ -151,7 +154,17 @@ def validate_series_manifest(
         missing = sorted(active_paths - set(target_paths))
         extra = sorted(set(target_paths) - active_paths)
         fail("RIG013", f"active inventory mismatch; missing={missing}, extra={extra}")
-    if len(eligible) != 1:
+    if series_status == "Completed":
+        if eligible:
+            fail("RIG017", "Completed series must not contain an Eligible target")
+        incomplete = sorted(
+            target_path
+            for target_path, target_status in target_statuses.items()
+            if target_status != "Completed"
+        )
+        if incomplete:
+            fail("RIG017", f"Completed series contains non-completed targets: {incomplete}")
+    elif len(eligible) != 1:
         fail("RIG017", f"exactly one Eligible target is required, found {len(eligible)}")
 
     dependencies = manifest.get("dependencies", [])
@@ -171,7 +184,7 @@ def validate_series_manifest(
     return {
         "activeIntakeCount": len(target_paths),
         "seriesTargetCount": len(target_paths),
-        "eligibleCandidate": eligible[0],
+        "eligibleCandidate": eligible[0] if eligible else "N/A",
         "dependencyCount": len(dependencies),
     }
 

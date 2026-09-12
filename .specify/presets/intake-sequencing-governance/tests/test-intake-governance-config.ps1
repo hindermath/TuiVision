@@ -89,6 +89,7 @@ try {
     $Manifest = @{
         schemaVersion = '1.0'
         documentType = 'IntakeSeriesManifest'
+        status = 'Active'
         orderedTargets = @(@{
             path = 'requirements/intakes/active/Lastenheft_Beispiel.md'
             role = 'Primary'
@@ -158,6 +159,41 @@ try {
     $InvalidEmptyManifest | ConvertTo-Json -Depth 12 |
         Set-Content -LiteralPath $ManifestPath -Encoding utf8NoBOM
     Invoke-Fixture (Write-JsonFixture 'ready-without-target.json' $ManifestInventory) 2 'RIG014'
+
+    $CompletedTarget = Join-Path $Root 'requirements/intakes/archive/Lastenheft_Abgeschlossen.md'
+    Set-Content -LiteralPath $CompletedTarget -Value '# Abgeschlossen' -Encoding utf8NoBOM
+    $CompletedManifest = @{
+        schemaVersion = '1.0'
+        documentType = 'IntakeSeriesManifest'
+        status = 'Completed'
+        orderedTargets = @(@{
+            path = 'requirements/intakes/archive/Lastenheft_Abgeschlossen.md'
+            role = 'Primary'
+            normalizedSha256 = Get-NormalizedSha256 $CompletedTarget
+            status = 'Completed'
+        })
+        roots = @('requirements/intakes/archive/Lastenheft_Abgeschlossen.md')
+        dependencies = @()
+    }
+    $CompletedManifest | ConvertTo-Json -Depth 12 |
+        Set-Content -LiteralPath $ManifestPath -Encoding utf8NoBOM
+    Invoke-Fixture (Write-JsonFixture 'completed-series.json' $ManifestInventory) 0 '"eligibleCandidate": "N/A"'
+
+    $CompletedWithEligible = $CompletedManifest.Clone()
+    $CompletedWithEligible.orderedTargets = @($CompletedManifest.orderedTargets[0].Clone())
+    $CompletedWithEligible.orderedTargets[0].status = 'Eligible'
+    $CompletedWithEligible | ConvertTo-Json -Depth 12 |
+        Set-Content -LiteralPath $ManifestPath -Encoding utf8NoBOM
+    Invoke-Fixture (Write-JsonFixture 'completed-with-eligible.json' $ManifestInventory) 2 `
+        'Completed series must not contain an Eligible target'
+
+    $CompletedWithPending = $CompletedManifest.Clone()
+    $CompletedWithPending.orderedTargets = @($CompletedManifest.orderedTargets[0].Clone())
+    $CompletedWithPending.orderedTargets[0].status = 'Pending'
+    $CompletedWithPending | ConvertTo-Json -Depth 12 |
+        Set-Content -LiteralPath $ManifestPath -Encoding utf8NoBOM
+    Invoke-Fixture (Write-JsonFixture 'completed-with-pending.json' $ManifestInventory) 2 `
+        'Completed series contains non-completed targets'
     Set-Content -LiteralPath $ManifestPath -Value $SavedManifest -Encoding utf8NoBOM
 
     $Schema1 = $Base.Clone()

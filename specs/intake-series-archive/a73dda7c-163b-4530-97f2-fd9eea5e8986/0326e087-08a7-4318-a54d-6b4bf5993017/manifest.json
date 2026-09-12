@@ -4,7 +4,7 @@
   "seriesId": "a73dda7c-163b-4530-97f2-fd9eea5e8986",
   "title": "TuiVision Delivery Intake Series",
   "policy": "tui-vision-delivery-v1",
-  "status": "Completed",
+  "status": "Active",
   "orderedTargets": [
     {
       "path": "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",

@@ -5,6 +5,8 @@ Version `0.2.3` is validated with:
 - a synthetic three-target, one-root, two-edge series;
 - an explicit zero-target `Idle` series;
 - negative fixtures for `Idle` with content and non-idle without targets;
+- a retained `Completed` series with zero eligible targets under
+  `SeriesManifest`, plus negative eligible and pending terminal fixtures;
 - a nested Git repository whose canonical index is excluded from the parent
   uniqueness check, plus a blocking ordinary duplicate-directory fixture;
 - malformed path, type, binding, order, root, lifecycle, and hash fixtures;

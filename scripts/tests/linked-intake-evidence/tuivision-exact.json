@@ -6,7 +6,7 @@
     "documentType": "TuiVisionExactActiveMapping",
     "sourceRepository": "TuiVision",
     "canonicalManifest": "requirements/intakes/series/tui-vision-delivery/manifest.json",
-    "canonicalManifestSha256": "538d12fcc60cab96e5d70865a9ab9c31885634f3981e1c10dc2cd09d1ee2d2e7",
+    "canonicalManifestSha256": "6c086db5c8ed9cd33e221210e68edd99546efb9acbe098d863fb18201ffb5ae9",
     "expectedActiveCount": 10,
     "mappings": [
       {
@@ -112,7 +112,7 @@
     "schemaVersion": "1.0",
     "documentType": "TuiVisionExactDependencyTuples",
     "canonicalManifest": "requirements/intakes/series/tui-vision-delivery/manifest.json",
-    "canonicalManifestSha256": "538d12fcc60cab96e5d70865a9ab9c31885634f3981e1c10dc2cd09d1ee2d2e7",
+    "canonicalManifestSha256": "6c086db5c8ed9cd33e221210e68edd99546efb9acbe098d863fb18201ffb5ae9",
     "expectedEdgeCount": 6,
     "expectedBindingTrueCount": 4,
     "expectedBindingFalseCount": 2,
@@ -159,7 +159,7 @@
     "schemaVersion": "1.0",
     "documentType": "TuiVisionExactBacklogSeparation",
     "canonicalManifest": "requirements/intakes/series/tui-vision-delivery/manifest.json",
-    "canonicalManifestSha256": "538d12fcc60cab96e5d70865a9ab9c31885634f3981e1c10dc2cd09d1ee2d2e7",
+    "canonicalManifestSha256": "6c086db5c8ed9cd33e221210e68edd99546efb9acbe098d863fb18201ffb5ae9",
     "intakePath": "requirements/intakes/backlog/Lastenheft_Optional-NuGet-Package.md",
     "intakeSha256": "471fd71020250310afb4093cd25a5f1baaddc57e31e1c9fbf1f9a8d97c5a4dba",
     "status": "DeferredOptional",

@@ -9,9 +9,9 @@ T056-locked evidence. It does not start a feature run.*
 <!-- linked-intake-evidence:begin -->
 ## Verlinkter Ausführungsnachweis / Linked Execution Evidence
 
-- Manifest SHA-256: `538d12fcc60cab96e5d70865a9ab9c31885634f3981e1c10dc2cd09d1ee2d2e7`
-- Projektions-SHA-256: `59f599006292ccbb09f1ee895a7280c9de88ee17a17534f16ee64841526d096d`
-- Umfang: `10` aktive Zuordnungen, `6` unveränderte Abhängigkeiten
+- Manifest SHA-256: `6c086db5c8ed9cd33e221210e68edd99546efb9acbe098d863fb18201ffb5ae9`
+- Projektions-SHA-256: `ee742b9d641546faf154e1aa27a98b14029ada3d120892d4590449aaab65efb7`
+- Umfang: `10` Serienzuordnungen, `6` unveränderte Abhängigkeiten
 
 | Position | Intake | Status | Spec-Kit-Feature | Direkte eingehende Abhängigkeiten |
 |---:|---|---|---|---|

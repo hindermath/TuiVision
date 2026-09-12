@@ -98,10 +98,12 @@ does not grant execution or remote authority.
 `RequirementsGovernanceGate` is a binding predecessor used when one shared
 requirements migration must finish before existing roots are released. Under
 schema 2.0, target paths are resolved from portable roles and collection paths.
-At most one target may explicitly declare `Eligible`; that state selects order
-only and grants no implementation or remote authority. A valid `Idle` series
-has no eligible target.
+An active delivery series has exactly one explicit `Eligible` target; that
+state selects order only and grants no implementation or remote authority. A
+`Completed` series preserves its terminal members and has no eligible target.
+A valid `Idle` series has neither members nor an eligible target.
 
-*`RequirementsGovernanceGate` sperrt bestehende Roots bis zum gemeinsamen
-Requirements-Abschluss. Schema 2.0 löst Pfade über Rollen auf. Höchstens ein
-Ziel darf `Eligible` sein; daraus entstehen keine Lieferrechte.*
+*Eine aktive Lieferserie hat genau ein `Eligible`-Ziel. Eine abgeschlossene
+Serie bewahrt ihre abgeschlossenen Mitglieder, hat aber kein ausführbares Ziel.
+`Idle` bleibt ausschließlich der leere Zustand. Aus `Eligible` entstehen keine
+Lieferrechte.*
