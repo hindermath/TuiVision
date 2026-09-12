@@ -30,6 +30,8 @@
 
 - [ ] The explicit delivery set includes every intended untracked file and no
       unrelated or ignored runtime evidence.
+- [ ] Every historical-whitespace allowance, if any, has current explicit
+      authority and binds one exact intended path plus its unchanged raw SHA-256.
 - [ ] Every routed phase has a valid structured semantic result; exit zero is
       not treated as sufficient completion evidence.
 - [ ] New merge decisions use schema-2.0 `PreMerge` evidence; schema 1.0 is
@@ -44,8 +46,8 @@
 - [ ] Exit status, required output, and structured/error channels were inspected.
 - [ ] Changed documentation, evidence, schemas, and status markers were searched
       for executable validator consumers before any test gate was skipped.
-- [ ] The exact intended delivery candidate passed `git diff --cached --check`
-      or an equivalent non-mutating local-only check.
+- [ ] The exact intended delivery candidate passed the delivery-set validator
+      in staged mode or an equivalent temporary-index local-only check.
 - [ ] Staged paths were reconciled with untracked and unstaged repository state;
       unrelated work and any prior local-only index state were preserved.
 - [ ] Triggered validation passed; skipped gates have an explicit rationale.

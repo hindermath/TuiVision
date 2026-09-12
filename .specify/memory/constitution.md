@@ -1,7 +1,8 @@
 <!--
 Sync Impact Report
-Version change: 1.18.0 -> 1.18.1
+Version change: 1.18.2 -> 1.18.3
 Modified principles:
+- Spec Kit preset governance: pin autonomous-run-governance v0.4.4 and require exact staged-candidate validation.
 - None
 Added sections:
 - None
@@ -23,7 +24,7 @@ Follow-up TODOs:
 - None
 -->
 
-# Constitution v1.18.1
+# Constitution v1.18.3
 
 # home-baseline Constitution
 
@@ -941,7 +942,7 @@ workspace family consists of:
 | `a11y-governance` | `v0.4.3` | `40` | WCAG 2.2 AA, bilingual DE/EN, CEFR B2, inclusive artefacts, didactic inline-code-comment review |
 | `cross-platform-governance` | `v0.2.2` | `50` | Bash/PowerShell parity, macOS/Linux/Windows script governance |
 | `agent-parity-governance` | `v0.4.2` | `60` | synchronized agent guidance, fleet-completion evidence, and agent-neutral Spec-Kit model routing |
-| `autonomous-run-governance` | `v0.4.1` | `70` | permission-bounded, evidence-first governance with optional intake gate and resumable, validated closeout |
+| `autonomous-run-governance` | `v0.4.4` | `70` | permission-bounded, evidence-first governance with optional intake gate and resumable, validated closeout |
 | `parallel-autonomous-run-governance` | `v0.2.6` | `80` | isolated bounded campaigns, optional schema-1.2 intake gate, cooperative stop/resume, provider-gated resumable consolidation, and declared post-merge closeout |
 
 TuiVision additionally activates optional `intake-review-governance` v0.2.1
@@ -953,6 +954,7 @@ Review and status are read-only; repair requires explicit mutation authority.
 governance matrix. Installation does not authorize an autonomous run.
 `LocalImplementation` is its safe default; installation grants no remote write, merge, bypass,
 cancellation, secret, or provider-administration authority.
+Before an authorized commit, the exact staged candidate MUST pass the delivery-set validator in staged mode with a complete intended-path inventory. Historical whitespace allowances apply only to newly added files whose index bytes match the approved raw SHA-256; every other staged diff error remains blocking.
 Its feature-local run state is validated at phase boundaries. A deliberate
 `PausedByUser` state requires `speckit.autonomous-resume`; a cooperative stop
 grants no process-kill or delivery authority, and interrupted operations must be
@@ -1032,7 +1034,7 @@ Community/catalog coordination is tracked in `github/spec-kit#2362`.
 `.github/copilot-instructions.md` for per-agent operational guidance. This
 constitution is the authoritative policy layer above all agent-specific files.
 
-**Version**: 1.18.1 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-08-30
+**Version**: 1.18.3 | **Ratified**: 2026-03-31 | **Last Amended**: 2026-09-12
 
 ## Level-2 Project Environment Addendum / Level-2-Projektumgebung
 

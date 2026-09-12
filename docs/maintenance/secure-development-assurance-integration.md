@@ -71,7 +71,7 @@ prerequisites, recovery steps and limitations. Other agents use dot notation.*
 
 Zwei getrennte Kontexte sind aktiv:
 
-- [RL-SE-Checklist-Selbstpruefung](../security/secure-development/2026-08-30-rl-se-checklist-self-review/evidence-matrix.md)
+- [RL-SE-Checklist-Selbstpruefung](../security/secure-development/2026-09-12-rl-se-checklist-self-review-v044/evidence-matrix.md)
 - [GSDB-Spec-Kit-Intensivpruefung](../security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/evidence-matrix.md)
 
 Beide enthalten `baseline.json`, genau ein aktives Delta, `closure.json`,

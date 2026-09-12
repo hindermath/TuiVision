@@ -6,6 +6,8 @@ including named untracked files, without staging or mutation. A routed phase is
 `Completed` only when exit code and structured semantic result agree. New merge
 decisions require schema-2.0 `PreMerge` evidence and a separate causal
 `PostMerge` snapshot; legacy schema 1.0 is audit-only.
+Historical trailing whitespace requires current explicit authority for one
+exact intended path and unchanged raw SHA-256; all drift fails closed.
 
 - Treat intake review as `N/A` unless the optional preset and project policy
   activate it. When active, require a current accepted result before feature
@@ -29,9 +31,10 @@ decisions require schema-2.0 `PreMerge` evidence and a separate causal
   for executable validators that consume changed paths, markers, schemas, or
   state values before skipping tests.
 - Validate the exact intended commit candidate. `git diff --check` does not
-  inspect untracked files; stage only intended paths, run
-  `git diff --cached --check`, reconcile staged paths with repository status,
-  and preserve unrelated work. Restore the prior index in local-only mode.
+  inspect untracked files; stage only intended paths, then run the delivery-set
+  validator in staged mode with every staged path named explicitly. Repeat any
+  approved path/hash allowance so the index bytes are checked. Preserve
+  unrelated work and restore the prior index in local-only mode.
 - Treat a green check as evidence only for the commands it executed. Map each
   acceptance gate to its workflow, job, runner or platform, and command before
   merge. Missing technical scope blocks merge; bypass grants no proof.

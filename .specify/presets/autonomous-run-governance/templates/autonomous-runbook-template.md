@@ -61,6 +61,8 @@ Validate the explicit delivery set read-only before staging. Name each intended
 untracked path; never infer unrelated files as delivery. Require a structured
 phase result before `Completed`. Generate schema-2.0 `PreMerge` evidence for the
 exact reviewed head and a separate `PostMerge` snapshot that binds its hash.
+If immutable historical whitespace must be retained, record current explicit
+authority and pass only its exact intended path plus unchanged raw SHA-256.
 
 Create evidence before implementation. Deliver one representative vertical
 slice with failing and green proof. Group negative cases only when each
@@ -76,11 +78,11 @@ from its file type alone. Search the repository for executable validators that
 read changed paths, markers, schemas, or state values. Update and run every
 affected validator before recording a skipped executable gate.
 
-Before an authorized commit, stage only the intended candidate, run
-`git diff --cached --check`, and reconcile staged paths with repository status.
-This closes the untracked-file gap in `git diff --check` without absorbing
-unrelated work. In `LocalImplementation`, use an equivalent per-file or
-temporary-index check and restore the prior index state.
+Before an authorized commit, stage only the intended candidate and run the
+delivery-set validator with `--staged`/`-Staged`, naming every staged path and
+repeating each approved path/hash allowance. This closes the untracked-file gap
+without absorbing unrelated work and binds historical bytes in the index. In
+`LocalImplementation`, use a temporary index and restore the prior index state.
 
 ## Delivery and Closeout
 
