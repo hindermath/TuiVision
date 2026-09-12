@@ -941,7 +941,7 @@ workspace family consists of:
 | `a11y-governance` | `v0.4.3` | `40` | WCAG 2.2 AA, bilingual DE/EN, CEFR B2, inclusive artefacts, didactic inline-code-comment review |
 | `cross-platform-governance` | `v0.2.2` | `50` | Bash/PowerShell parity, macOS/Linux/Windows script governance |
 | `agent-parity-governance` | `v0.4.2` | `60` | synchronized agent guidance, fleet-completion evidence, and agent-neutral Spec-Kit model routing |
-| `autonomous-run-governance` | `v0.4.1` | `70` | permission-bounded, evidence-first governance with optional intake gate and resumable, validated closeout |
+| `autonomous-run-governance` | `v0.4.2` | `70` | permission-bounded, evidence-first governance with optional intake gate and resumable, validated closeout |
 | `parallel-autonomous-run-governance` | `v0.2.6` | `80` | isolated bounded campaigns, optional schema-1.2 intake gate, cooperative stop/resume, provider-gated resumable consolidation, and declared post-merge closeout |
 
 TuiVision additionally activates optional `intake-review-governance` v0.2.1
