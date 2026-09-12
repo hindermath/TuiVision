@@ -1,0 +1,130 @@
+name: Linked intake evidence native proof
+
+on:
+  push:
+    branches:
+      - 047-linked-intake-evidence
+    paths:
+      - '.github/workflows/linked-intake-evidence-native-proof.yml'
+      - 'scripts/render-requirements-intake-governance.mjs'
+      - 'scripts/tests/requirements-intake-alignment-tests.mjs'
+      - 'scripts/tests/linked-intake-evidence/**'
+      - 'scripts/validate-requirements-intake-alignment.mjs'
+      - 'scripts/validate-requirements-intake-alignment.sh'
+      - 'scripts/validate-requirements-intake-alignment.ps1'
+      - 'Pflichtenheft.md'
+      - 'Lastenheft_Abarbeitungsreihenfolge.md'
+      - 'requirements/intake-governance-config.json'
+      - 'requirements/intakes/active/**'
+      - 'requirements/intakes/archive/**'
+      - 'requirements/intakes/series/tui-vision-delivery/**'
+      - 'specs/*/autonomous-run-state.json'
+      - 'specs/intake-authoring-receipts/**'
+      - 'specs/requirements-reconciliation-20260726/**'
+      - '.specify/intake-*.json'
+      - 'docs/project-statistics.config.json'
+      - 'docs/project-statistics.md'
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - '.github/workflows/linked-intake-evidence-native-proof.yml'
+      - 'scripts/render-requirements-intake-governance.mjs'
+      - 'scripts/tests/requirements-intake-alignment-tests.mjs'
+      - 'scripts/tests/linked-intake-evidence/**'
+      - 'scripts/validate-requirements-intake-alignment.mjs'
+      - 'scripts/validate-requirements-intake-alignment.sh'
+      - 'scripts/validate-requirements-intake-alignment.ps1'
+      - 'Pflichtenheft.md'
+      - 'Lastenheft_Abarbeitungsreihenfolge.md'
+      - 'requirements/intake-governance-config.json'
+      - 'requirements/intakes/active/**'
+      - 'requirements/intakes/archive/**'
+      - 'requirements/intakes/series/tui-vision-delivery/**'
+      - 'specs/*/autonomous-run-state.json'
+      - 'specs/intake-authoring-receipts/**'
+      - 'specs/requirements-reconciliation-20260726/**'
+      - '.specify/intake-*.json'
+      - 'docs/project-statistics.config.json'
+      - 'docs/project-statistics.md'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: linked-intake-evidence-native-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  native-proof:
+    name: Native proof (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, windows-2022]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+
+    steps:
+      - name: Configure byte-stable checkout
+        shell: pwsh
+        run: git config --global core.autocrlf false
+
+      - name: Check out the exact pushed SHA
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+
+      - name: Verify exact head and native runtime
+        shell: pwsh
+        run: |
+          Set-StrictMode -Version Latest
+          $ErrorActionPreference = 'Stop'
+          $actualHead = (& git rev-parse HEAD).Trim()
+          if ($actualHead -cne '${{ github.sha }}') {
+              throw "Checkout head mismatch: expected ${{ github.sha }}, observed ${actualHead}."
+          }
+          $node = Get-Command node -ErrorAction Stop
+          Write-Output "node=$($node.Source) version=$(& node --version)"
+          if ('${{ matrix.os }}' -eq 'windows-2022' -and -not $IsWindows) {
+              throw 'windows-2022 matrix entry is not running natively on Windows.'
+          }
+          if ('${{ matrix.os }}' -eq 'ubuntu-22.04' -and -not $IsLinux) {
+              throw 'ubuntu-22.04 matrix entry is not running natively on Linux.'
+          }
+
+      - name: Run exact-head Node contract
+        shell: pwsh
+        run: |
+          Set-StrictMode -Version Latest
+          $ErrorActionPreference = 'Stop'
+          & node --check scripts/render-requirements-intake-governance.mjs
+          if ($LASTEXITCODE -ne 0) { throw 'Renderer syntax validation failed.' }
+          & node scripts/render-requirements-intake-governance.mjs
+          if ($LASTEXITCODE -ne 0) { throw 'Renderer check failed.' }
+          $log = Join-Path $env:RUNNER_TEMP 'linked-intake-node.log'
+          & node scripts/tests/requirements-intake-alignment-tests.mjs 2>&1 |
+              Tee-Object -FilePath $log
+          $code = $LASTEXITCODE
+          if ($code -ne 0) { throw "Node contract failed with exit code ${code}." }
+          $sourceHash = (Get-FileHash -LiteralPath scripts/tests/requirements-intake-alignment-tests.mjs -Algorithm SHA256).Hash.ToLowerInvariant()
+          $rendererHash = (Get-FileHash -LiteralPath scripts/render-requirements-intake-governance.mjs -Algorithm SHA256).Hash.ToLowerInvariant()
+          $payloadHash = (Get-FileHash -LiteralPath $log -Algorithm SHA256).Hash.ToLowerInvariant()
+          $decision = "head=${{ github.sha }};runner=${{ matrix.os }};source=${sourceHash};renderer=${rendererHash};payload=${payloadHash};exit=${code};writes=0"
+          $decisionPath = Join-Path $env:RUNNER_TEMP 'linked-intake-decision.txt'
+          [IO.File]::WriteAllText($decisionPath, $decision, [Text.UTF8Encoding]::new($false))
+          $decisionHash = (Get-FileHash -LiteralPath $decisionPath -Algorithm SHA256).Hash.ToLowerInvariant()
+          Write-Output "LINKED_INTAKE_NODE_PROOF ${decision} decisionSha256=${decisionHash}"
+
+      - name: Prove zero repository writes
+        shell: pwsh
+        run: |
+          Set-StrictMode -Version Latest
+          $ErrorActionPreference = 'Stop'
+          & git diff --exit-code
+          if ($LASTEXITCODE -ne 0) { throw 'Node contract changed tracked content.' }
+          $status = @(& git status --porcelain=v1 --untracked-files=all)
+          if ($LASTEXITCODE -ne 0 -or $status.Count -ne 0) {
+              throw "Node contract left repository writes: $($status -join ', ')"
+          }
+          Write-Output "LINKED_INTAKE_ZERO_WRITE_PROOF head=${{ github.sha }} runner=${{ matrix.os }} writes=0"

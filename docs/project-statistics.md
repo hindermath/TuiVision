@@ -700,6 +700,8 @@ fortgeschrieben.
 
 | 2026-09-08 | Feldtest-CI-Follow-up fuer EVD-038 / Field-test CI follow-up for EVD-038 | Der erste PR-#171-Ubuntu-Lauf fand korrekt eine veraltete RL-SE-Quellenbindung, nachdem `docs/security/regulatory-applicability.md` fuer den genehmigten Feldtest-Scope aktualisiert worden war. Ausschliesslich `evidence[EVD-038].sha256`, die davon abhaengige Matrix-/Receipt-Bindung und die Alt-/Neu-Provenienz wurden erneuert; alle 157 fachlichen Kontrolldispositionen und menschlichen Entscheidungen bleiben unveraendert. Der lokale Vollabgleich bestaetigt alle RL-SE-Quellenhashes, beide Shell-Statuspfade `Ready` und 7/7 unveraenderte Receipt-Dateien. Follow-up-Umfang vor Statistik-Selbstnachweis: `+42 / -11` Textzeilen, `0` Produkt- und `0` Testcode. / The first PR #171 Ubuntu run correctly detected stale RL-SE source binding EVD-038 after the approved regulatory scope update. Refresh only the technical hash, dependent matrix/receipt binding, and provenance; preserve all 157 domain dispositions and human decisions. Local source/hash and cross-shell gates pass; no product or test-code change. |
 
+| 2026-09-12 | Feature 032: verlinkte Intake-Evidence / linked intake evidence | Der saubere Source-Checkpoint erzeugt aus dem unveraenderten TuiVision-Manifest und der T056-gesperrten Exact-Fixture zwei relative, textorientierte Ansichten mit 10/10 Intake-zu-Feature-Zuordnungen, 6/6 Kanten, Feature 046 als juengstem Abschluss an kanonischer Position 10 und einem getrennten `DeferredOptional`-Backlog. Node-, Bash-/PowerShell-, Link-, UTF-8-, Secret-, Build-, 1028/1028-Test-, Coverage-, DocFX- und Axe-Gates bestanden; jede Gate-Assembly bleibt ueber 70 Prozent. `Directory.Build.props` und Version `1.46.835.521` bleiben bytegleich, Produkt/API/Runtime/Pakete unveraendert. Der Source-Diff umfasst `+794/-59`; das Phasen-Netto ohne die sieben Konfigurationszeilen betraegt 728. Konservative Manualreferenz fuer 794 hinzugefuegte oder aktualisierte Zeilen: `9,9` Arbeitstage beziehungsweise `77,4` Stunden; Thorsten-Solo `6,4` Tage beziehungsweise `49,5` Stunden. / The unchanged manifest and exact fixture now render two linked text-first views. All required local gates pass, product and version remain unchanged, and the statistics phase records 728 net source lines outside its own configuration. |
+
 ## Statistikprofil-1-Archiv / Statistics Profile 1 Archive
 Basis dieses Schlussblocks ist der Repository-Snapshot vom 2026-07-15. Die
 Werte schließen den aktuellen Working Tree ein und bleiben deshalb bis zum
@@ -1142,27 +1144,27 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 717883 lines |
-| Textdateien / Text files | 3367 |
-| Beobachtbarer Zeitraum / Observable period | 2025-09-14..2026-09-08 |
-| Aktivtage / Active days | 95 |
-| Relevante Commits / Relevant commits | 587 |
-| Zeilen je Aktivtag / Lines per active day | 7556.7 |
+| Textbasis / Text base | 718618 lines |
+| Textdateien / Text files | 3372 |
+| Beobachtbarer Zeitraum / Observable period | 2025-09-14..2026-09-12 |
+| Aktivtage / Active days | 96 |
+| Relevante Commits / Relevant commits | 588 |
+| Zeilen je Aktivtag / Lines per active day | 7485.6 |
 | Peak-Tag im Fenster / Peak day in window | 2026-03-22 / 321183 |
 | Peak-Woche im Fenster / Peak week in window | 2026-03-22 / 373576 |
 | Laengste Serie / Longest streak | 17 days |
-| Speedup vs. 80 lines/day | 94.5x |
-| Speedup vs. 125 lines/day | 60.5x |
-| Methodik / Methodology | v2; source `a207052718d0` |
+| Speedup vs. 80 lines/day | 93.6x |
+| Speedup vs. 125 lines/day | 59.9x |
+| Methodik / Methodology | v2; source `b1475a81a13b` |
 
 ### Artefaktmix / Artifact Mix
 
 ```text
-Produktiv / Production          [####................]  19.5% | 139704
-Tests                           [##..................]   7.5% | 54035
-Dokumentation / Documentation   [##########..........]  50.0% | 359011
-Skripte / Scripts               [#...................]   3.2% | 23259
-Konfiguration / Configuration   [#...................]   5.9% | 42008
+Produktiv / Production          [####................]  19.4% | 139704
+Tests                           [##..................]   7.6% | 54317
+Dokumentation / Documentation   [##########..........]  50.0% | 359177
+Skripte / Scripts               [#...................]   3.3% | 23416
+Konfiguration / Configuration   [#...................]   5.9% | 42138
 Daten und Medien / Data and media [#...................]   0.0% | 1
 Sonstiger Text / Other text     [###.................]  13.9% | 99865
 ```
@@ -1189,10 +1191,10 @@ Wochen / Weeks 27..52 | 2026-03-15..2026-09-12
 So/Su  0 4 4 0 4 0 0 4 4 0 0 4 0 4 0 0 0 4 4 4 1 4 4 0 4 0
 Mo/Mo  4 4 4 0 1 4 0 4 0 0 0 1 0 2 0 3 1 4 4 0 0 0 2 0 0 4
 Di/Tu  3 3 4 0 0 0 0 3 4 0 3 2 0 0 0 2 0 4 4 4 0 0 0 0 0 4
-Mi/We  1 4 0 0 0 3 0 4 1 0 0 2 0 4 0 2 0 4 2 4 0 0 0 0 0 -
-Do/Th  0 0 0 0 0 0 4 0 0 3 3 3 4 2 0 0 0 4 4 0 0 4 0 0 0 -
-Fr/Fr  4 4 4 0 2 4 0 3 1 4 3 0 0 3 2 3 4 4 4 1 0 0 0 0 0 -
-Sa/Sa  4 4 0 0 0 0 4 4 0 0 4 0 4 4 0 4 4 2 4 2 4 2 0 4 0 -
+Mi/We  1 4 0 0 0 3 0 4 1 0 0 2 0 4 0 2 0 4 2 4 0 0 0 0 0 0
+Do/Th  0 0 0 0 0 0 4 0 0 3 3 3 4 2 0 0 0 4 4 0 0 4 0 0 0 0
+Fr/Fr  4 4 4 0 2 4 0 3 1 4 3 0 0 3 2 3 4 4 4 1 0 0 0 0 0 0
+Sa/Sa  4 4 0 0 0 0 4 4 0 0 4 0 4 4 0 4 4 2 4 2 4 2 0 4 0 3
 ```
 
 DE: 0 = keine Aenderung; 1 = 1..79; 2 = 80..399; 3 = 400..1599; 4 = 1600+ geaenderte Textzeilen; - = noch nicht abgelaufen.
@@ -1293,6 +1295,18 @@ Slots 32..47
              32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47
 ```
 
+```text
+Slots 48..48
+    cap 1000 | .
+         833 | .
+         667 | #
+         500 | #
+         333 | #
+         167 | #
+           0 +---
+             48
+```
+
 | Slot | Phase | Nettozeilen / Net lines |
 |---:|---|---:|
 | 0 | main / main | 10211 |
@@ -1343,6 +1357,7 @@ Slots 32..47
 | 45 | intake / intake | 395 |
 | 46 | v020 / v020 | 1542 |
 | 47 | 028i / 028i | 2422 |
+| 48 | Feature 032 verlinkte Intake-Evidence / Feature 032 linked intake evidence | 728 |
 
 Die festen Slots halten den Phasenvergleich auch bei fehlenden oder spaeter ergaenzten Werten stabil.
 
@@ -1352,8 +1367,8 @@ Die festen Slots halten den Phasenvergleich auch bei fehlenden oder spaeter erga
 
 ```text
 Scale: 0..100x
-80 lines/day       [###################.] 94.5x
-125 lines/day      [############........] 60.5x
+80 lines/day       [###################.] 93.6x
+125 lines/day      [############........] 59.9x
 ```
 
 Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen Referenzen. Sie messen keine Arbeitszeit.
@@ -1366,7 +1381,7 @@ Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen
 Scale: 0..10000 lines/day
 Experienced manual [#...................] 80
 Thorsten solo      [#...................] 125
-Visible repository [###############.....] 7556.7
+Visible repository [###############.....] 7485.6
 ```
 
 Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schreibt die Git-Aktivitaet keiner Person oder KI pauschal zu.
@@ -1375,9 +1390,9 @@ Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schre
 
 ### Textalternative / Text Alternative
 
-DE: Das Fenster beginnt am 2025-09-14 und endet am 2026-09-08. Es enthaelt 95 aktive und 265 inaktive vergangene Tage. Peak-Tag: 2026-03-22 / 321183. Peak-Woche: 2026-03-22 / 373576. Laengste Serie: 17 Tage (2026-07-10..2026-07-26).
+DE: Das Fenster beginnt am 2025-09-14 und endet am 2026-09-12. Es enthaelt 96 aktive und 268 inaktive vergangene Tage. Peak-Tag: 2026-03-22 / 321183. Peak-Woche: 2026-03-22 / 373576. Laengste Serie: 17 Tage (2026-07-10..2026-07-26).
 
-*EN: The window starts on 2025-09-14 and ends on 2026-09-08. It contains 95 active and 265 inactive elapsed days. Peak day: 2026-03-22 / 321183. Peak week: 2026-03-22 / 373576. Longest streak: 17 days (2026-07-10..2026-07-26).*
+*EN: The window starts on 2025-09-14 and ends on 2026-09-12. It contains 96 active and 268 inactive elapsed days. Peak day: 2026-03-22 / 321183. Peak week: 2026-03-22 / 373576. Longest streak: 17 days (2026-07-10..2026-07-26).*
 
 | Monat / Month | Geaenderte Textzeilen / Changed text lines |
 |---|---:|
@@ -1392,6 +1407,6 @@ DE: Das Fenster beginnt am 2025-09-14 und endet am 2026-09-08. Es enthaelt 95 ak
 | 2026-06 | 42176 |
 | 2026-07 | 205615 |
 | 2026-08 | 122136 |
-| 2026-09 | 14954 |
+| 2026-09 | 15807 |
 
 <!-- project-statistics-v2:end -->

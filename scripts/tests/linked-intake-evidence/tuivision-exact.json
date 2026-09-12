@@ -1,0 +1,168 @@
+{
+  "schemaVersion": "1.0",
+  "documentType": "TuiVisionLinkedIntakeExactFixture",
+  "activeMapping": {
+    "schemaVersion": "1.0",
+    "documentType": "TuiVisionExactActiveMapping",
+    "sourceRepository": "TuiVision",
+    "canonicalManifest": "requirements/intakes/series/tui-vision-delivery/manifest.json",
+    "canonicalManifestSha256": "538d12fcc60cab96e5d70865a9ab9c31885634f3981e1c10dc2cd09d1ee2d2e7",
+    "expectedActiveCount": 10,
+    "mappings": [
+      {
+        "position": 1,
+        "status": "Completed",
+        "intakePath": "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
+        "intakeSha256": "1b8ac280514c3415dfa51f2807f2b9183e51cd46b446d59980974cdce0ac70ad",
+        "featurePath": "specs/037-wave6-combined-delta-closure/",
+        "proofPath": "specs/037-wave6-combined-delta-closure/autonomous-run-state.json",
+        "proofSha256": "827afa08fee1de1b2ab101bb3b8a44691e3596e44e2b556d759b8b13d8bee04d"
+      },
+      {
+        "position": 2,
+        "status": "Completed",
+        "intakePath": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+        "intakeSha256": "f46be28ad27bb2dd5644390a7d50bed4912b514ce924e58bfd304135b33c0ad2",
+        "featurePath": "specs/038-example-portfolio-conformance-audit/",
+        "proofPath": "specs/038-example-portfolio-conformance-audit/autonomous-run-state.json",
+        "proofSha256": "3fc474777b0a7374569948f6ef9c3f1cdcf015951ba5aab825b0d5dd3ca422ad"
+      },
+      {
+        "position": 3,
+        "status": "Completed",
+        "intakePath": "requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md",
+        "intakeSha256": "f5dc617b7c20d718304bb91f7f63d4a95d5c27cf09a7d0a4685a3bc4a824ab1a",
+        "featurePath": "specs/039-example-portfolio-closure/",
+        "proofPath": "specs/039-example-portfolio-closure/autonomous-run-state.json",
+        "proofSha256": "279fa4169e77c0a8b0037983ebdf2f7275875ee68ca5fe34882ca6ff6906b4a7"
+      },
+      {
+        "position": 4,
+        "status": "Completed",
+        "intakePath": "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+        "intakeSha256": "b7dbf455ff4e84b336ffe3cca3ff184e1897860592d4f53fb52f1776e7eb9e91",
+        "featurePath": "specs/040-constitution-governance-closure/",
+        "proofPath": "specs/040-constitution-governance-closure/autonomous-run-state.json",
+        "proofSha256": "14723a92f49eeb8e5d46a1e4fd78ee1f9f3959ba51e0b79ee09a1d548776622d"
+      },
+      {
+        "position": 5,
+        "status": "Completed",
+        "intakePath": "requirements/intakes/active/Lastenheft_Source-Reference-Policy.md",
+        "intakeSha256": "a59e9588363e385c19d48c361df9ebb019323cf25865672dd77152292e8d2776",
+        "featurePath": "specs/041-source-reference-policy/",
+        "proofPath": "specs/041-source-reference-policy/autonomous-run-state.json",
+        "proofSha256": "ceccf547168018b3cfc7a42e43397a7cc233667ae6a72e7cb93a7ee75be86537"
+      },
+      {
+        "position": 6,
+        "status": "Completed",
+        "intakePath": "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
+        "intakeSha256": "45d8f8b589c3d9fd417f9b8dc9d25d09c0597f02c075b04454bbce95e095a239",
+        "featurePath": "specs/042-transactional-form-model/",
+        "proofPath": "specs/042-transactional-form-model/autonomous-run-state.json",
+        "proofSha256": "408c5635cfa92bab5033bbd5032db65171d3f110df7e9c6e8b4de1d7060956fe"
+      },
+      {
+        "position": 7,
+        "status": "Completed",
+        "intakePath": "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
+        "intakeSha256": "df5f1876c781632c13594e9ec60c3cc8f9408c586ac03aeb48aa87442987878c",
+        "featurePath": "specs/043-documentation-publishing-closure/",
+        "proofPath": "specs/043-documentation-publishing-closure/autonomous-run-state.json",
+        "proofSha256": "7c56533e30c4bbc1dcd1b8467d9cfb94ac7042e6150496f85182d05261e5879a"
+      },
+      {
+        "position": 8,
+        "status": "Completed",
+        "intakePath": "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+        "intakeSha256": "d1f6a20535f90b78d00f7f6974a32156d7c08eeb77ebad9961a41ffbe3f84858",
+        "featurePath": "specs/044-sandbox-secure-development-hardening/",
+        "proofPath": "specs/044-sandbox-secure-development-hardening/autonomous-run-state.json",
+        "proofSha256": "7931839f360a1ef21edd86c1f7884d891597959bda95a704c502727a52ca2de0"
+      },
+      {
+        "position": 9,
+        "status": "Completed",
+        "intakePath": "requirements/intakes/archive/Lastenheft_RL-SE-Checklist-Selbstpruefung.045-rl-se-checklist-self-review.md",
+        "intakeSha256": "62fadb9f571f6c6e5fb81badd103f5ca5087c7219698fdec7be708196d6d6863",
+        "featurePath": "specs/045-rl-se-checklist-self-review/",
+        "proofPath": "specs/045-rl-se-checklist-self-review/autonomous-run-state.json",
+        "proofSha256": "a5b3bafe2895a473de754d3160b0eb0b70309e98277c5c664a6517357127a719"
+      },
+      {
+        "position": 10,
+        "status": "Completed",
+        "intakePath": "requirements/intakes/archive/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.046-gsdb-spec-kit-intensive-review.md",
+        "intakeSha256": "97d31e6eac5c2e5defeae1dd29bc5c97ddb8ba43b75106768dfe4b703c6d802d",
+        "featurePath": "specs/046-gsdb-spec-kit-intensive-review/",
+        "proofPath": "specs/046-gsdb-spec-kit-intensive-review/autonomous-run-state.json",
+        "proofSha256": "72c732f2d6e3570d25a1eff41132a4ce75db97fdbdd024bec648330a0a257c91"
+      }
+    ],
+    "latestCompletion": {
+      "featurePath": "specs/046-gsdb-spec-kit-intensive-review/",
+      "position": 10,
+      "state": "Completed",
+      "evidencePath": "specs/046-gsdb-spec-kit-intensive-review/delivery-closeout.md",
+      "evidenceSha256": "609d5edb3a68469e67220fe7cdb2d5d9b2b246fdc220a57d675ba55495361ec3"
+    }
+  },
+  "dependencyTuples": {
+    "schemaVersion": "1.0",
+    "documentType": "TuiVisionExactDependencyTuples",
+    "canonicalManifest": "requirements/intakes/series/tui-vision-delivery/manifest.json",
+    "canonicalManifestSha256": "538d12fcc60cab96e5d70865a9ab9c31885634f3981e1c10dc2cd09d1ee2d2e7",
+    "expectedEdgeCount": 6,
+    "expectedBindingTrueCount": 4,
+    "expectedBindingFalseCount": 2,
+    "edges": [
+      {
+        "from": "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
+        "to": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+        "kind": "HardCompletionGate",
+        "binding": true
+      },
+      {
+        "from": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+        "to": "requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md",
+        "kind": "HardCompletionGate",
+        "binding": true
+      },
+      {
+        "from": "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+        "to": "requirements/intakes/active/Lastenheft_Source-Reference-Policy.md",
+        "kind": "SharedWriterSerialization",
+        "binding": false
+      },
+      {
+        "from": "requirements/intakes/active/Lastenheft_Source-Reference-Policy.md",
+        "to": "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
+        "kind": "HardCompletionGate",
+        "binding": true
+      },
+      {
+        "from": "requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md",
+        "to": "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
+        "kind": "HardCompletionGate",
+        "binding": true
+      },
+      {
+        "from": "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
+        "to": "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
+        "kind": "PreferredSerialOrder",
+        "binding": false
+      }
+    ]
+  },
+  "backlog": {
+    "schemaVersion": "1.0",
+    "documentType": "TuiVisionExactBacklogSeparation",
+    "canonicalManifest": "requirements/intakes/series/tui-vision-delivery/manifest.json",
+    "canonicalManifestSha256": "538d12fcc60cab96e5d70865a9ab9c31885634f3981e1c10dc2cd09d1ee2d2e7",
+    "intakePath": "requirements/intakes/backlog/Lastenheft_Optional-NuGet-Package.md",
+    "intakeSha256": "471fd71020250310afb4093cd25a5f1baaddc57e31e1c9fbf1f9a8d97c5a4dba",
+    "status": "DeferredOptional",
+    "active": false
+  }
+}

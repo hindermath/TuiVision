@@ -6,7 +6,19 @@ import path from "node:path";
 import process from "node:process";
 
 const root = process.cwd();
-const write = process.argv.includes("--write");
+const argumentsList = process.argv.slice(2);
+if (argumentsList.includes("--help")) {
+  console.log("Usage: node scripts/render-requirements-intake-governance.mjs [--check|--write]");
+  console.log("  --check  Verify every generated intake-governance artifact (default).");
+  console.log("  --write  Atomically regenerate the governed artifacts for this repository.");
+  process.exit(0);
+}
+if (argumentsList.some((argument) => !["--check", "--write"].includes(argument)) ||
+    argumentsList.includes("--check") && argumentsList.includes("--write")) {
+  console.error("Use exactly one of --check or --write; --check is the default.");
+  process.exit(2);
+}
+const write = argumentsList.includes("--write");
 const seriesRoot = "requirements/intakes/series/tui-vision-delivery";
 const seriesId = "a73dda7c-163b-4530-97f2-fd9eea5e8986";
 const seriesReceiptId = "bb9906d5-6c9a-43ba-b106-80ce04c4f4de";
@@ -378,14 +390,159 @@ Es bestehen keine offenen Review-Findings. Der optionale NuGet-Backlog bleibt
 nicht ausführbar und ist nicht Teil der Serie.
 `;
 
-const orderDocument = normalize(
-  fs.readFileSync(path.join(root, "Lastenheft_Abarbeitungsreihenfolge.md"), "utf8"),
-);
+const exactFixturePath = "scripts/tests/linked-intake-evidence/tuivision-exact.json";
+const backlogPath = "requirements/intakes/backlog/Lastenheft_Optional-NuGet-Package.md";
+
+function encodedRelativeDestination(outputPath, targetPath, directory = false) {
+  const relative = path.posix.relative(
+    path.posix.dirname(outputPath),
+    targetPath.replace(/\/$/, ""),
+  );
+  const encoded = relative.split("/").map((part) =>
+    [".", ".."].includes(part) ? part : encodeURIComponent(part)).join("/");
+  return directory ? `${encoded}/` : encoded;
+}
+
+function linkedIntakeOrderDocument(outputPath) {
+  const exact = readJson(exactFixturePath);
+  const mapping = exact.activeMapping;
+  const tuples = exact.dependencyTuples;
+  const backlog = exact.backlog;
+  if (mapping.canonicalManifestSha256 !== manifestHash ||
+      tuples.canonicalManifestSha256 !== manifestHash ||
+      backlog.canonicalManifestSha256 !== manifestHash ||
+      mapping.expectedActiveCount !== 10 || mapping.mappings.length !== 10 ||
+      tuples.expectedEdgeCount !== 6 || tuples.edges.length !== 6) {
+    throw new Error("TUI-EXACT-LOCK: exact fixture differs from the canonical manifest");
+  }
+
+  const manifestProjection = manifest.orderedTargets.map((target, index) => ({
+    position: index + 1,
+    status: target.status,
+    intakePath: target.path,
+    intakeSha256: target.normalizedSha256,
+  }));
+  const exactProjection = mapping.mappings.map(
+    ({position, status, intakePath, intakeSha256}) =>
+      ({position, status, intakePath, intakeSha256}),
+  );
+  if (JSON.stringify(manifestProjection) !== JSON.stringify(exactProjection) ||
+      JSON.stringify(manifest.dependencies) !== JSON.stringify(tuples.edges)) {
+    throw new Error("TUI-EXACT-CONTRACT: mapping or dependency tuple drift");
+  }
+
+  for (const item of mapping.mappings) {
+    const featureDirectory = item.featurePath.replace(/\/$/, "");
+    const proof = readJson(item.proofPath);
+    if (!fs.statSync(path.join(root, featureDirectory)).isDirectory() ||
+        hashFile(item.proofPath) !== item.proofSha256 ||
+        proof.featurePath !== featureDirectory || proof.status !== "Completed" ||
+        !proof.acceptedArtifacts?.some((artifact) =>
+          artifact.path === item.intakePath && artifact.sha256 === item.intakeSha256)) {
+      throw new Error(`TUI-EXACT-PROOF: invalid feature evidence for ${item.intakePath}`);
+    }
+  }
+
+  const latest = mapping.latestCompletion;
+  if (latest.position !== 10 || latest.featurePath !== mapping.mappings.at(-1).featurePath ||
+      hashFile(latest.evidencePath) !== latest.evidenceSha256) {
+    throw new Error("TUI-EXACT-RECENCY: Feature 046 is not the evidenced latest completion");
+  }
+  if (backlog.intakePath !== backlogPath || backlog.status !== "DeferredOptional" ||
+      backlog.active !== false || hashFile(backlog.intakePath) !== backlog.intakeSha256 ||
+      manifest.orderedTargets.some((target) => target.path === backlog.intakePath) ||
+      manifest.dependencies.some((edge) =>
+        edge.from === backlog.intakePath || edge.to === backlog.intakePath)) {
+    throw new Error("TUI-EXACT-BACKLOG: optional NuGet intake is not separated");
+  }
+  if (tuples.edges.filter((edge) => edge.binding).length !== tuples.expectedBindingTrueCount ||
+      tuples.edges.filter((edge) => !edge.binding).length !== tuples.expectedBindingFalseCount) {
+    throw new Error("TUI-EXACT-BINDING: dependency binding cardinality changed");
+  }
+
+  const rows = mapping.mappings.map((item) => {
+    const intakeLabel = path.posix.basename(item.intakePath);
+    const featurePath = item.featurePath.replace(/\/$/, "");
+    const featureLabel = path.posix.basename(featurePath);
+    const intakeLink = `[${intakeLabel}](${encodedRelativeDestination(outputPath, item.intakePath)})`;
+    const featureLink = `[${featureLabel}](${encodedRelativeDestination(outputPath, featurePath, true)})`;
+    const incoming = tuples.edges.filter((edge) => edge.to === item.intakePath);
+    const dependencyText = incoming.length === 0
+      ? "—"
+      : incoming.map((edge) => {
+        const fromLabel = path.posix.basename(edge.from);
+        const fromLink = `[${fromLabel}](${encodedRelativeDestination(outputPath, edge.from)})`;
+        return `${fromLink} · \`${edge.kind}\` · binding=\`${edge.binding}\``;
+      }).join("<br>");
+    return `| ${item.position} | ${intakeLink} | \`${item.status}\` | ${featureLink} | ${dependencyText} |`;
+  });
+  const latestPath = latest.featurePath.replace(/\/$/, "");
+  const latestLink = `[${path.posix.basename(latestPath)}](${encodedRelativeDestination(outputPath, latestPath, true)})`;
+  const backlogLink = `[${path.posix.basename(backlog.intakePath)}](${encodedRelativeDestination(outputPath, backlog.intakePath)})`;
+  const manifestLink = `[${path.posix.basename(manifestPath)}](${encodedRelativeDestination(outputPath, manifestPath)})`;
+  const generationSha256 = hashText(json({
+    manifestSha256: manifestHash,
+    mappings: mapping.mappings,
+    dependencies: tuples.edges,
+    latest,
+    backlog,
+  }));
+
+  return `# Lastenheft-Abarbeitungsreihenfolge / Requirements Processing Order
+
+Diese Ansicht wird deterministisch aus dem kanonischen Manifest ${manifestLink}
+und dem T056-gesperrten Nachweis erzeugt. Sie startet keinen Feature-Lauf.
+
+*This view is rendered deterministically from the canonical manifest and the
+T056-locked evidence. It does not start a feature run.*
+
+<!-- linked-intake-evidence:begin -->
+## Verlinkter Ausführungsnachweis / Linked Execution Evidence
+
+- Manifest SHA-256: \`${manifestHash}\`
+- Projektions-SHA-256: \`${generationSha256}\`
+- Umfang: \`10\` aktive Zuordnungen, \`6\` unveränderte Abhängigkeiten
+
+| Position | Intake | Status | Spec-Kit-Feature | Direkte eingehende Abhängigkeiten |
+|---:|---|---|---|---|
+${rows.join("\n")}
+
+### Zuletzt abgeschlossen / Latest Completion
+
+Latest completion: ${latestLink} at position \`10\` (\`Completed\`).
+
+Feature 046 bleibt an seiner kanonischen Position. Die Aktualitätsaussage
+ändert die Manifestreihenfolge nicht.
+
+*Feature 046 remains at its canonical position. Recency does not reorder the
+manifest.*
+
+### Getrennter Backlog / Separated Backlog
+
+${backlogLink} — lifecycle \`DeferredOptional\`; active=\`false\`.
+
+Der optionale Eintrag ist weder aktive Tabellenzeile noch Abhängigkeitsendpunkt.
+
+*The optional item is neither an active row nor a dependency endpoint.*
+<!-- linked-intake-evidence:end -->
+
+## Nächste Aktion / Next Action
+
+\`$speckit-intake-series-status\` und \`$speckit-intake-series-next\` prüfen den
+Zustand ausschließlich read-only. Es gibt keinen implizit autorisierten
+nächsten Feature-Lauf.
+`;
+}
+
+const orderDocuments = [
+  "Lastenheft_Abarbeitungsreihenfolge.md",
+  `${seriesRoot}/order.md`,
+].map((outputPath) => [outputPath, linkedIntakeOrderDocument(outputPath)]);
 const outputs = [
   [manifestPath, json(manifest)],
   [`${seriesRoot}/receipt.json`, json(seriesReceipt)],
   [`${seriesRoot}/operation.json`, json(operation)],
-  [`${seriesRoot}/order.md`, orderDocument],
+  ...orderDocuments,
   [requestPath, json(request)],
   [`${seriesRoot}/intake-review-result.json`, json(result)],
   [`${seriesRoot}/intake-review-report.md`, report],
