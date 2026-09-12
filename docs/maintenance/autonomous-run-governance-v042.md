@@ -15,7 +15,7 @@ Priority and other presets are preserved. Installation starts no autonomous run.
 
 Source: https://github.com/hindermath/spec-kit-preset-autonomous-run-governance/releases/tag/v0.4.2
 
-Documentation Impact: UpdateRequired. Audience: maintainers and agents.
+Documentation Impact: GeneratedUpdate. Audience: maintainers and agents.
 Reader path: preset registry and configuration to this integration record.
 Canonical product source: the standalone release above. Integration owner:
 Thorsten Hindermann. ActiveSemantic, German first / English second. Text-only
@@ -30,3 +30,7 @@ release evidence-integrity regression suite, Bash syntax, candidate diff and CI.
 Delivery authority: MergeAndSync; admin bypass only for formal merge protection
 after material checks pass. Existing runs retain their own explicit authority;
 no historical whitespace exception is granted by this update.
+
+The integration record and existing Git history are the canonical inputs.
+The repository render-project-statistics script regenerates the excluded
+statistics ledger after the integration commit; that output is part of this PR.
