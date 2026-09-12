@@ -345,6 +345,13 @@
       "labelDe": "028i",
       "labelEn": "028i",
       "netLines": 2422
+    },
+    {
+      "slot": 48,
+      "id": "linked-intake-evidence-032-slice",
+      "labelDe": "Feature 032 verlinkte Intake-Evidence",
+      "labelEn": "Feature 032 linked intake evidence",
+      "netLines": 728
     }
   ],
   "excludedPaths": [

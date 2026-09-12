@@ -240,6 +240,120 @@ expectFailure("positive without evidence", {
   }),
 }, /lacks evidence/);
 
+const exactFixturePath = "scripts/tests/linked-intake-evidence/tuivision-exact.json";
+const exact = JSON.parse(fs.readFileSync(path.join(root, exactFixturePath), "utf8"));
+const exactManifestText = fs.readFileSync(path.join(root, manifestSource), "utf8");
+const exactManifest = JSON.parse(exactManifestText);
+const mapping = exact.activeMapping;
+const tuples = exact.dependencyTuples;
+const backlog = exact.backlog;
+
+if (awaitDigest(exactManifestText) !== mapping.canonicalManifestSha256 ||
+    mapping.canonicalManifestSha256 !== tuples.canonicalManifestSha256 ||
+    mapping.canonicalManifestSha256 !== backlog.canonicalManifestSha256) {
+  throw new Error("exact fixture does not bind the current canonical manifest");
+}
+if (mapping.mappings.length !== mapping.expectedActiveCount ||
+    mapping.expectedActiveCount !== 10 || tuples.edges.length !== tuples.expectedEdgeCount ||
+    tuples.expectedEdgeCount !== 6) {
+  throw new Error("exact fixture cardinality differs from the T056 lock");
+}
+
+const manifestMapping = exactManifest.orderedTargets.map((target, index) => ({
+  position: index + 1,
+  status: target.status,
+  intakePath: target.path,
+  intakeSha256: target.normalizedSha256,
+}));
+const fixtureMapping = mapping.mappings.map(({position, status, intakePath, intakeSha256}) => ({
+  position,
+  status,
+  intakePath,
+  intakeSha256,
+}));
+if (JSON.stringify(manifestMapping) !== JSON.stringify(fixtureMapping) ||
+    JSON.stringify(exactManifest.dependencies) !== JSON.stringify(tuples.edges)) {
+  throw new Error("canonical manifest differs from the exact mapping or dependency tuples");
+}
+
+for (const item of mapping.mappings) {
+  const featureDirectory = item.featurePath.replace(/\/$/, "");
+  const featurePath = path.join(root, featureDirectory);
+  const proofPath = path.join(root, item.proofPath);
+  if (!fs.statSync(featurePath).isDirectory() || awaitDigest(fs.readFileSync(proofPath, "utf8")) !== item.proofSha256) {
+    throw new Error(`feature proof differs from the exact fixture: ${item.featurePath}`);
+  }
+  const state = JSON.parse(fs.readFileSync(proofPath, "utf8"));
+  if (state.status !== "Completed" || state.featurePath !== featureDirectory ||
+      !state.acceptedArtifacts?.some((artifact) =>
+        artifact.path === item.intakePath && artifact.sha256 === item.intakeSha256)) {
+    throw new Error(`feature proof does not bind the exact intake: ${item.featurePath}`);
+  }
+}
+
+const latest = mapping.latestCompletion;
+if (latest.position !== 10 || latest.featurePath !== mapping.mappings.at(-1).featurePath ||
+    awaitDigest(fs.readFileSync(path.join(root, latest.evidencePath), "utf8")) !== latest.evidenceSha256) {
+  throw new Error("Feature 046 is not the separately evidenced latest completion at position 10");
+}
+const backlogText = fs.readFileSync(path.join(root, backlog.intakePath), "utf8");
+if (awaitDigest(backlogText) !== backlog.intakeSha256 || backlog.status !== "DeferredOptional" ||
+    backlog.active !== false || !backlogText.includes("`DeferredOptional`") ||
+    exactManifest.orderedTargets.some((target) => target.path === backlog.intakePath) ||
+    exactManifest.dependencies.some((edge) => edge.from === backlog.intakePath || edge.to === backlog.intakePath)) {
+  throw new Error("optional NuGet intake is not exactly separated from the active series");
+}
+if (tuples.edges.filter((edge) => edge.binding).length !== tuples.expectedBindingTrueCount ||
+    tuples.edges.filter((edge) => !edge.binding).length !== tuples.expectedBindingFalseCount) {
+  throw new Error("dependency binding cardinality differs from the T056 lock");
+}
+
+function relativeDestination(outputPath, targetPath, directory = false) {
+  const relative = path.posix.relative(path.posix.dirname(outputPath), targetPath.replace(/\/$/, ""));
+  const encoded = relative.split("/").map((part) => [".", ".."].includes(part)
+    ? part
+    : encodeURIComponent(part)).join("/");
+  return directory ? `${encoded}/` : encoded;
+}
+
+for (const outputPath of [
+  "Lastenheft_Abarbeitungsreihenfolge.md",
+  "requirements/intakes/series/tui-vision-delivery/order.md",
+]) {
+  const document = fs.readFileSync(path.join(root, outputPath), "utf8");
+  if (!document.includes("<!-- linked-intake-evidence:begin -->") ||
+      !document.includes("<!-- linked-intake-evidence:end -->")) {
+    throw new Error(`linked intake projection is missing from ${outputPath}`);
+  }
+  for (const item of mapping.mappings) {
+    const intakeLabel = path.posix.basename(item.intakePath);
+    const featurePath = item.featurePath.replace(/\/$/, "");
+    const featureLabel = path.posix.basename(featurePath);
+    const intakeLink = `[${intakeLabel}](${relativeDestination(outputPath, item.intakePath)})`;
+    const featureLink = `[${featureLabel}](${relativeDestination(outputPath, featurePath, true)})`;
+    if (!document.includes(`| ${item.position} | ${intakeLink} | \`${item.status}\` | ${featureLink} |`)) {
+      throw new Error(`exact active mapping is missing from ${outputPath}: position ${item.position}`);
+    }
+  }
+  for (const edge of tuples.edges) {
+    const fromLabel = path.posix.basename(edge.from);
+    const fromLink = `[${fromLabel}](${relativeDestination(outputPath, edge.from)})`;
+    if (!document.includes(`${fromLink} · \`${edge.kind}\` · binding=\`${edge.binding}\``)) {
+      throw new Error(`exact dependency tuple is missing from ${outputPath}: ${edge.from} -> ${edge.to}`);
+    }
+  }
+  const latestPath = latest.featurePath.replace(/\/$/, "");
+  const latestLink = `[${path.posix.basename(latestPath)}](${relativeDestination(outputPath, latestPath, true)})`;
+  if (!document.includes(`Latest completion: ${latestLink} at position \`10\` (\`Completed\`).`)) {
+    throw new Error(`separate Feature 046 recency evidence is missing from ${outputPath}`);
+  }
+  const backlogLink = `[${path.posix.basename(backlog.intakePath)}](${relativeDestination(outputPath, backlog.intakePath)})`;
+  if (!document.includes(`${backlogLink} — lifecycle \`DeferredOptional\`; active=\`false\`.`)) {
+    throw new Error(`separate DeferredOptional backlog evidence is missing from ${outputPath}`);
+  }
+}
+
 fs.rmSync(temp, {recursive: true, force: true});
 console.log("requirements/intake positive fixtures PASS (3 cases)");
 console.log("requirements/intake negative fixtures PASS (17 cases)");
+console.log("TuiVision exact linked-intake fixtures PASS (10 mappings, 6 edges, 1 latest completion, 1 backlog)");
