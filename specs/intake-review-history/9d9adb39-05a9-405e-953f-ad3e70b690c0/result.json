@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.1",
+  "reviewId": "9d9adb39-05a9-405e-953f-ad3e70b690c0",
+  "mode": "Single",
+  "status": "Ready",
+  "policy": "tui-vision-lastenheft",
+  "reviewedAt": "2026-09-13T13:42:16Z",
+  "repository": { "root": ".", "head": "3b0d936e2204ba2aa8a4ee7ed99ce7070e62aa2a" },
+  "requestEvidence": {
+    "path": "specs/intake-review-request.json",
+    "normalizedSha256": "f96a8bd3bd3e5250802d63dfcd4914072bf307df7cd041fd3ded9e64e47a5211"
+  },
+  "targets": [
+    {
+      "path": "requirements/intakes/active/Lastenheft_24_Evidence-Quality-Audit-Features-044-046.md",
+      "role": "Primary",
+      "normalizedSha256": "8b2d8b48e4b229afcbc78914610dfcff3badeea41f7e88a5ec686d7626ac29ea",
+      "gitBlob": "N/A"
+    }
+  ],
+  "findings": [],
+  "questions": [],
+  "acceptedRisks": [],
+  "operatorExceptions": [],
+  "coverage": {
+    "individual": ["requirements/intakes/active/Lastenheft_24_Evidence-Quality-Audit-Features-044-046.md"],
+    "series": [],
+    "workers": []
+  },
+  "summary": { "critical": 0, "high": 0, "medium": 0, "low": 0 },
+  "supersedes": "339a343c-4973-4c86-a6f9-03ae6290a210"
+}

@@ -106,6 +106,19 @@ export function validate(options = {}) {
       return [];
     }
   });
+  for (const [field, label] of [
+    ["receiptId", "receipt ID"],
+    ["intakeId", "intake ID"],
+  ]) {
+    const values = receipts.map((receipt) => receipt.value[field]).filter(Boolean);
+    if (new Set(values).size !== values.length) {
+      errors.push(`intake receipt inventory contains a duplicate ${label}`);
+    }
+  }
+  const receiptTargets = receipts.map((receipt) => receipt.value.target?.path).filter(Boolean);
+  if (new Set(receiptTargets).size !== receiptTargets.length) {
+    errors.push("intake receipt inventory contains a duplicate target path");
+  }
   let completedStandaloneReceiptCount = 0;
   for (const receipt of receipts) {
     const receiptTarget = receipt.value.target?.path;
@@ -297,9 +310,25 @@ export function validate(options = {}) {
 
       let standaloneAuthorizationValid = false;
       const standaloneReviewFile = resolve(standaloneReviewPath);
-      if (!bindingTarget && bindingPath?.startsWith("requirements/intakes/active/") &&
-          fs.existsSync(standaloneReviewFile)) {
-        const standaloneReview = JSON.parse(fs.readFileSync(standaloneReviewFile, "utf8"));
+      if (!bindingTarget && bindingPath?.startsWith("requirements/intakes/active/")) {
+        const reviewArtifact = (state.acceptedArtifacts ?? []).find((artifact) =>
+          artifact.path === "specs/intake-review-result.json");
+        const historyRoot = resolve("specs/intake-review-history");
+        const historicalReviews = fs.existsSync(historyRoot)
+          ? fs.readdirSync(historyRoot, {withFileTypes: true})
+              .filter((entry) => entry.isDirectory())
+              .map((entry) => path.join(historyRoot, entry.name, "result.json"))
+              .filter((candidate) => fs.existsSync(candidate))
+          : [];
+        const reviewCandidates = [standaloneReviewFile, ...historicalReviews]
+          .filter((candidate) => fs.existsSync(candidate));
+        const selectedReviewFile = state.status === "Completed" && reviewArtifact?.sha256
+          ? reviewCandidates.find((candidate) =>
+              digest(fs.readFileSync(candidate, "utf8")) === reviewArtifact.sha256)
+          : reviewCandidates[0];
+        const standaloneReview = selectedReviewFile
+          ? JSON.parse(fs.readFileSync(selectedReviewFile, "utf8"))
+          : {};
         const standaloneReviewTarget = (standaloneReview.targets ?? []).find((target) =>
           target.path === bindingPath);
         const matchingReceipts = receipts.filter((receipt) =>
