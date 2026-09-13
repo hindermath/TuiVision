@@ -23,6 +23,9 @@ lesson is the separation between complete inventory and substantive assessment:
 - `PresetFollowUp`: Ein gruener Review-Workflow darf nicht als fachlicher Pass
   gelten, wenn sein inneres Provider-Ergebnis `is_error: true` meldet und keine
   Review erzeugt; Gate-Auswertung muss beide Ebenen pruefen.
+- `PresetFollowUp`: Archivierte eigenstaendige Intakes duerfen nicht kuenstlich
+  an ein Serienmanifest gebunden werden. Der Resolver muss Serie und Standalone
+  getrennt, aber jeweils eindeutig ueber Pfad, Namen und Hash pruefen.
 - `NoPromotion`: Feature 047 besitzt keine Autoritaet, Home Baseline oder ein
   Preset zu aendern; die Erkenntnisse werden nur dokumentiert.
 

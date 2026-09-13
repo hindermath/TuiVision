@@ -149,10 +149,12 @@ try {
     Write-HBText (Join-Path $Root $ArchiveRelative) ([IO.File]::ReadAllText($Target).Replace("`r`n", "`n").Replace("`r", "`n").Replace("`n", "`r`n"))
     if ((Get-HBHash (Join-Path $Root $ArchiveRelative)) -ne $Receipt.target.normalizedSha256) { throw 'Archive fixture changed normalized content' }
     Remove-Item -LiteralPath $Target
+    $SeriesMemberRelative = 'requirements/archive/series-member.001-completed.md'
+    Write-HBText (Join-Path $Root $SeriesMemberRelative) "# Series member`n"
     $Manifest = @{
         status = 'Completed'; seriesId = [guid]::NewGuid().ToString()
-        orderedTargets = @(@{ path = $ArchiveRelative; normalizedSha256 = $Receipt.target.normalizedSha256; status = 'Completed' })
-        roots = @($ArchiveRelative); dependencies = @()
+        orderedTargets = @(@{ path = $SeriesMemberRelative; normalizedSha256 = Get-HBHash (Join-Path $Root $SeriesMemberRelative); status = 'Completed' })
+        roots = @($SeriesMemberRelative); dependencies = @()
     }
     Write-HBText $ManifestPath ($Manifest | ConvertTo-Json -Depth 20)
     $ReceiptBefore = Get-FileHash -LiteralPath $ReceiptPath
@@ -168,17 +170,16 @@ try {
     $RepositorySource.proofBoundary = 'SnapshotOnly'
     $RepositorySource.normalizedSha256 = Get-HBHash (Join-Path $Root $SourceArchiveRelative)
     $Receipt.sources = @($RepositorySource)
-    $Manifest.orderedTargets += @{ path = $SourceArchiveRelative; status = 'Completed'; normalizedSha256 = $RepositorySource.normalizedSha256 }
-    Write-HBText $ManifestPath ($Manifest | ConvertTo-Json -Depth 20)
     Write-HBText $ReceiptPath ($Receipt | ConvertTo-Json -Depth 30)
     Invoke-HBPair Receipt $ReceiptPath $Root 0 'archived repository source'
     $Receipt.sources[0].normalizedSha256 = '0' * 64
     Write-HBText $ReceiptPath ($Receipt | ConvertTo-Json -Depth 30)
     Invoke-HBPair Receipt $ReceiptPath $Root 2 'archived source hash mismatch'
     $Receipt.sources = @($OriginalSource)
-    $Manifest.orderedTargets = @($Manifest.orderedTargets[0])
-    Write-HBText $ManifestPath ($Manifest | ConvertTo-Json -Depth 20)
     Write-HBText $ReceiptPath ($Receipt | ConvertTo-Json -Depth 30)
+    $Manifest.orderedTargets = @(@{ path = $ArchiveRelative; normalizedSha256 = $Receipt.target.normalizedSha256; status = 'Completed' })
+    $Manifest.roots = @($ArchiveRelative)
+    Write-HBText $ManifestPath ($Manifest | ConvertTo-Json -Depth 20)
     $Receipt.series.seriesId = [guid]::NewGuid().ToString()
     $Receipt.series.manifestPath = 'requirements/series.json'
     $Receipt.series.order = 1
@@ -192,11 +193,7 @@ try {
     Write-HBText $ReceiptPath ($Receipt | ConvertTo-Json -Depth 30)
     $DuplicateRelative = 'requirements/archive/url-source.002-completed.md'
     Copy-Item -LiteralPath (Join-Path $Root $ArchiveRelative) -Destination (Join-Path $Root $DuplicateRelative)
-    $Manifest.orderedTargets += @{ path = $DuplicateRelative; normalizedSha256 = $Receipt.target.normalizedSha256; status = 'Completed' }
-    Write-HBText $ManifestPath ($Manifest | ConvertTo-Json -Depth 20)
     Invoke-HBPair Receipt $ReceiptPath $Root 2 'ambiguous archive successors'
-    $Manifest.orderedTargets = @($Manifest.orderedTargets[0])
-    Write-HBText $ManifestPath ($Manifest | ConvertTo-Json -Depth 20)
     Write-HBText (Join-Path $Root $ArchiveRelative) '# Drift'
     Invoke-HBPair Receipt $ReceiptPath $Root 2 'archive hash drift'
     Remove-Item -LiteralPath (Join-Path $Root $ArchiveRelative)
