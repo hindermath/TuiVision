@@ -76,7 +76,8 @@ jobs:
               $Reference = $Bash
           }
           $Inventory = ($Reference | ConvertFrom-Json).inventory
-          if ($Inventory.activeIntakeCount -ne 0 -or $Inventory.activeSeriesTargetCount -ne 0 -or $Inventory.seriesTargetCount -ne 10 -or $Inventory.eligibleCandidate -ne 'N/A') { throw 'Unexpected lifecycle inventory' }
+          if ($Inventory.activeSeriesTargetCount -ne 0 -or $Inventory.seriesTargetCount -ne 10 -or $Inventory.eligibleCandidate -ne 'N/A') { throw 'Unexpected series lifecycle inventory' }
+          $StandaloneActiveCount = [int]$Inventory.activeIntakeCount
           foreach ($Kind in @('manifest','receipt')) {
               $Prefix = ".specify/presets/intake-sequencing-governance/scripts/validate-intake-series-${Kind}"
               $File = "requirements/intakes/series/tui-vision-delivery/${Kind}.json"
@@ -89,7 +90,8 @@ jobs:
           $Manifest = Get-Content requirements/intakes/series/tui-vision-delivery/manifest.json -Raw | ConvertFrom-Json
           if (@($Manifest.orderedTargets | Where-Object { $_.status -ne 'Completed' -or $_.path -notlike 'requirements/intakes/archive/*' }).Count) { throw 'Unexpected member location/status' }
           $Receipts = @(Get-ChildItem specs/intake-authoring-receipts -Filter *.json)
-          if ($Receipts.Count -ne 10) { throw 'Unexpected receipt inventory' }
+          $ExpectedReceiptCount = 10 + $StandaloneActiveCount
+          if ($Receipts.Count -ne $ExpectedReceiptCount) { throw "Unexpected receipt inventory: expected ${ExpectedReceiptCount}, found $($Receipts.Count)" }
           foreach ($Receipt in $Receipts) {
               $Prefix = '.specify/presets/intake-authoring-governance/scripts/validate-intake-authoring-receipt'
               $Bash = & bash "${Prefix}.sh" --receipt $Receipt.FullName --repo $Repo
@@ -98,4 +100,4 @@ jobs:
               if ($LASTEXITCODE -ne 0 -or $Bash -cne $Ps) { throw "Receipt parity failed: $($Receipt.Name)" }
           }
           if ($Before -cne ((git status --porcelain --untracked-files=all) -join "`n") -or $Diff -cne ((git diff HEAD --binary) -join "`n")) { throw 'Validator changed checkout' }
-          Write-Output 'PASS: three aligned presets; ten archived completed members; zero active/eligible targets; ten valid receipts; both shells; unchanged checkout'
+          Write-Output "PASS: three aligned presets; ten archived completed members; zero active/eligible series targets; ${StandaloneActiveCount} active standalone intakes; ${ExpectedReceiptCount} valid receipts; both shells; unchanged checkout"

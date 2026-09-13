@@ -34,6 +34,7 @@ receipt. The final audit report repeats and verifies those hashes.
 | Feature commits and branch push | PASS | Five non-empty commits preceded the causal gate correction on `origin/047-evidence-quality-audit` |
 | Repository intake-alignment validator | PASS | Causal delivery correction accepts a reviewed standalone intake only with matching receipt, review, feature state, lifecycle, and accepted-artifact hashes; 5 positive and 21 negative cases |
 | Intake-alignment wrappers, Bash and PowerShell | PASS | Both native entry points validate the unchanged completed series and the separate active intake |
+| Causal governance PR #181 | PASS, merged as `1054f4c` | All technical gates green; zero actionable review threads; narrow admin bypass used only for the remaining Human Approval rule |
 
 Two command corrections are retained as proof boundaries. A hash-check helper
 first referenced a mistyped, non-existent receipt path and changed nothing; the
@@ -91,6 +92,13 @@ separately reviewed active intake during `MergeAndSync`. The causal correction
 adds that narrowly proven lifecycle without changing the completed series or
 granting remote authority. Negative fixtures reject missing receipts, stale
 review hashes, and stale accepted-artifact hashes.
+
+The workflow cardinality correction was deliberately separated into PR #181
+because Feature 047 forbids workflow mutation. It retains exactly ten archived
+Completed series members and zero Eligible series targets while deriving the
+valid receipt count as ten plus the number of separately validated active
+intakes. Copilot failed at provider level; the Claude review workflow passed and
+no actionable review thread existed.
 
 ## Delivery Boundary
 

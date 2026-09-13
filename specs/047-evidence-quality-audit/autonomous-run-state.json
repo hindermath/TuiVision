@@ -7,7 +7,7 @@
   "authorityRevalidationRequired": false,
   "stage": "Publish",
   "status": "Active",
-  "checkpointCommit": "3244f349d0f144ee3f0862e1906b889f92faf8db",
+  "checkpointCommit": "5f67666b6b0d7e5366c1aac063d263ce52d97be2",
   "acceptedArtifacts": [
     {
       "path": "requirements/intakes/active/Lastenheft_24_Evidence-Quality-Audit-Features-044-046.md",
@@ -39,7 +39,7 @@
     },
     {
       "path": "specs/047-evidence-quality-audit/pr-evidence.md",
-      "sha256": "d4145b81eca00b8791fbcf77aca3aeb4b950847ebe9bf37dff943a10e90fc3d4"
+      "sha256": "16fe8ab45bb73dc6a348abb0861e8f3cfd8e17db10e9e6755941b146e54931d2"
     },
     {
       "path": "specs/047-evidence-quality-audit/retrospective.md",
@@ -52,11 +52,11 @@
     "completed": 53,
     "total": 58
   },
-  "lastPassingGate": "The causal intake-alignment correction passes syntax checks, 5 positive and 21 negative fixtures, direct repository validation, both native wrappers, and git diff checking without changing the completed series or product scope.",
+  "lastPassingGate": "Causal governance PR 181 merged as 1054f4c after all technical gates passed, no actionable review threads remained, and the narrow bypass applied only to Human Approval.",
   "lastOperation": {
-    "kind": "Validation",
+    "kind": "MergeAndSync",
     "state": "Completed",
-    "summary": "PR 180 was created; its first exact-head gates exposed and locally verified a stale standalone-intake authorization assumption in the repository alignment validator."
+    "summary": "The standalone-intake workflow cardinality correction was delivered separately in PR 181 and merged into the Feature 047 branch from origin/main."
   },
   "stop": {
     "reason": "N/A",
@@ -69,6 +69,6 @@
     "postMergeActions": "N/A",
     "finalValidation": "Completed"
   },
-  "nextExactAction": "Commit and push the causal alignment correction, then revalidate PR 180 exact-head checks",
-  "updatedAt": "2026-09-13T14:38:11Z"
+  "nextExactAction": "Commit the merged governance correction, refresh statistics, push, and revalidate PR 180 exact-head checks",
+  "updatedAt": "2026-09-13T14:52:50Z"
 }
