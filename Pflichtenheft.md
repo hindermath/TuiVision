@@ -76,20 +76,21 @@ evidence. The no-copy policy applies prospectively with three closed triggers.*
 - Abgeschlossene Intakes: `requirements/intakes/archive/`
 - Nicht blockierender Backlog: `requirements/intakes/backlog/`
 
-Wave 6, Portfolioaudit, unabhängiger Portfolioabschluss, Constitution-
-Revalidation, Quellenpolicy, Transactional Form Model, die
-Documentation-Publishing-Closure, das Sandbox-Security-Hardening und die
-RL-SE-Checklist-Selbstprüfung sind abgeschlossen. Bevorzugter nächster
-fachlicher Intake ist die unabhängige GSDB-Spec-Kit-Intensivprüfung. Die
-Reihenfolge autorisiert keinen impliziten Specify-, Implementierungs- oder
-Remote-Schritt.
+Die zehnteilige Serie `tui-vision-delivery` sowie der unabhängige
+Evidence-Qualitätsaudit in Feature 047 sind abgeschlossen. Der einzige neue
+aktive Follow-up-Intake ist
+`requirements/intakes/active/Lastenheft_25_Feature046-Evidence-Provenance-Closure.md`.
+Er bearbeitet zuerst `EQA002`, `EQA004` und `EQA010`; die Folge-Intakes für
+die übrigen Findings werden erst nach dem jeweils abgeschlossenen Vorgänger
+angelegt. Diese Reihenfolge autorisiert keinen impliziten Specify-,
+Implementierungs- oder Remote-Schritt.
 
-*Wave 6, the portfolio audit, independent portfolio closure, constitution
-revalidation, source policy, the Transactional Form Model, Documentation
-Publishing Closure, sandbox security hardening, and the RL-SE checklist
-self-review are complete. The independent GSDB Spec Kit intensive review is
-the preferred next intake. Ordering grants no implicit specification,
-implementation, or remote authority.*
+*The ten-part `tui-vision-delivery` series and the independent evidence-quality
+audit in Feature 047 are complete. The only new active follow-up intake is
+`requirements/intakes/active/Lastenheft_25_Feature046-Evidence-Provenance-Closure.md`.
+It addresses `EQA002`, `EQA004`, and `EQA010` first; later finding intakes are
+created only after their predecessor is complete. This ordering grants no
+implicit specification, implementation, or remote authority.*
 
 ## Änderungskontrolle / Change Control
 

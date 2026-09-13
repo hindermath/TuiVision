@@ -229,7 +229,7 @@ function Test-IntakeAuthoringReceipt {
     } elseif ($SchemaVersion -eq '1.1') {
         @('0.1.1')
     } elseif ($SchemaVersion -eq '2.0') {
-        @('0.2.0', '0.2.1', '0.3.0', '0.3.1', '0.3.2')
+        @('0.2.0', '0.2.1', '0.3.0', '0.3.1', '0.3.2', '0.3.4')
     } else {
         @()
     })

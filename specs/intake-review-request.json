@@ -1,11 +1,22 @@
 {
   "schemaVersion": "1.1",
-  "reviewId": "9d9adb39-05a9-405e-953f-ad3e70b690c0",
+  "reviewId": "89e83488-c4ef-466d-9ca7-c8d208d2149a",
   "mode": "Single",
   "policy": "tui-vision-lastenheft",
   "targets": [
-    { "path": "requirements/intakes/active/Lastenheft_24_Evidence-Quality-Audit-Features-044-046.md", "role": "Primary" }
+    {
+      "path": "requirements/intakes/active/Lastenheft_25_Feature046-Evidence-Provenance-Closure.md",
+      "role": "Primary"
+    }
   ],
-  "series": { "orderedTargetPaths": [], "roots": [], "dependencies": [] },
-  "campaign": { "manifestPath": "N/A", "workers": [], "operatorExceptions": [] }
+  "series": {
+    "orderedTargetPaths": [],
+    "roots": [],
+    "dependencies": []
+  },
+  "campaign": {
+    "manifestPath": "N/A",
+    "workers": [],
+    "operatorExceptions": []
+  }
 }

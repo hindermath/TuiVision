@@ -225,6 +225,25 @@ const stalePending = pendingIntakeFixture("stale-pending", (receipt) => {
 });
 expectFailure("pending intake with stale receipt", stalePending, /stale receipt evidence/);
 
+const duplicateReceiptIdentity = pendingIntakeFixture("duplicate-receipt-identity", (receipt) => {
+  const existing = JSON.parse(fs.readFileSync(
+    path.join(root, "specs/intake-authoring-receipts/24-evidence-quality-audit-features-044-046.json"),
+    "utf8"));
+  receipt.receiptId = existing.receiptId;
+  receipt.intakeId = existing.intakeId;
+});
+expectFailure("duplicate receipt and intake identities", duplicateReceiptIdentity,
+  /duplicate receipt ID|duplicate intake ID/);
+
+const duplicateReceiptTarget = pendingIntakeFixture("duplicate-receipt-target");
+const duplicateTargetReceipt = JSON.parse(fs.readFileSync(
+  path.join(duplicateReceiptTarget.receiptsPath, "future-closure.json"), "utf8"));
+fs.writeFileSync(
+  path.join(duplicateReceiptTarget.receiptsPath, "future-closure-copy.json"),
+  JSON.stringify({...duplicateTargetReceipt, receiptId: crypto.randomUUID(), intakeId: crypto.randomUUID()}, null, 2) + "\n");
+expectFailure("duplicate receipt target path", duplicateReceiptTarget,
+  /duplicate target path|requires exactly one authoring receipt/);
+
 const reviewedPending = pendingIntakeFixture("reviewed-pending");
 expectFailure("pending intake already present in accepted review", {
   ...reviewedPending,
@@ -472,5 +491,5 @@ for (const outputPath of [
 
 fs.rmSync(temp, {recursive: true, force: true});
 console.log("requirements/intake positive fixtures PASS (5 cases)");
-console.log("requirements/intake negative fixtures PASS (22 cases)");
+console.log("requirements/intake negative fixtures PASS (24 cases)");
 console.log("TuiVision exact linked-intake fixtures PASS (10 mappings, 6 edges, 1 latest completion, 1 backlog)");

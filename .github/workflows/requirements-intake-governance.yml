@@ -92,10 +92,14 @@ jobs:
           $Receipts = @(Get-ChildItem specs/intake-authoring-receipts -Filter *.json)
           # Abgeschlossene eigenstaendige Intakes behalten ihr Receipt nach der Archivierung.
           # Completed standalone intakes retain their receipt after archival.
-          $ExpectedReceiptCount = 11
-          if ($Receipts.Count -ne $ExpectedReceiptCount) { throw "Unexpected receipt inventory: expected ${ExpectedReceiptCount}, found $($Receipts.Count)" }
-          $StandaloneReceiptCount = @($Receipts | Where-Object { (Get-Content $_.FullName -Raw | ConvertFrom-Json).series.seriesId -eq 'N/A' }).Count
-          if ($StandaloneReceiptCount -ne 2) { throw "Unexpected standalone receipt inventory: expected 2, found ${StandaloneReceiptCount}" }
+          $ParsedReceipts = @($Receipts | ForEach-Object { Get-Content $_.FullName -Raw | ConvertFrom-Json })
+          foreach ($Identity in @('receiptId', 'intakeId')) {
+              $Values = @($ParsedReceipts | ForEach-Object { $_.$Identity })
+              if (@($Values | Sort-Object -Unique).Count -ne $Values.Count) { throw "Duplicate ${Identity} in receipt inventory" }
+          }
+          $TargetPaths = @($ParsedReceipts | ForEach-Object { $_.target.path })
+          if (@($TargetPaths | Sort-Object -Unique).Count -ne $TargetPaths.Count) { throw 'Duplicate target path in receipt inventory' }
+          $StandaloneReceiptCount = @($ParsedReceipts | Where-Object { $_.series.seriesId -eq 'N/A' }).Count
           foreach ($Receipt in $Receipts) {
               $Prefix = '.specify/presets/intake-authoring-governance/scripts/validate-intake-authoring-receipt'
               $Bash = & bash "${Prefix}.sh" --receipt $Receipt.FullName --repo $Repo
@@ -104,4 +108,4 @@ jobs:
               if ($LASTEXITCODE -ne 0 -or $Bash -cne $Ps) { throw "Receipt parity failed: $($Receipt.Name)" }
           }
           if ($Before -cne ((git status --porcelain --untracked-files=all) -join "`n") -or $Diff -cne ((git diff HEAD --binary) -join "`n")) { throw 'Validator changed checkout' }
-          Write-Output "PASS: three aligned presets; ten archived completed members; zero active/eligible series targets; ${StandaloneActiveCount} active standalone intakes; nine series and two archived standalone receipts; both shells; unchanged checkout"
+          Write-Output "PASS: three aligned presets; ten archived completed members; zero active/eligible series targets; ${StandaloneActiveCount} active standalone intakes; $($Receipts.Count) unique valid receipts including ${StandaloneReceiptCount} standalone receipts; both shells; unchanged checkout"
