@@ -4313,15 +4313,15 @@
     {
       "evidenceId": "EVD-001",
       "relativePath": ".specify/memory/constitution.md",
-      "sha256": "dcd072f68b2489f0cc2abc82477c08693640cb08229bcfc2712220af6ebcc5f3",
-      "observedAtUtc": "2026-09-13T20:56:04Z",
+      "sha256": "f847cd662f9a345598ce2306d870800d903538cf7522e397e1ad134a33398ee3",
+      "observedAtUtc": "2026-09-13T21:09:10Z",
       "evidenceType": "Configuration",
       "directness": "Supporting",
       "freshness": "Current",
       "supportsClaims": [
         "GOV-002"
       ],
-      "result": "Deutsch: Aktuelle Repository-Evidence wurde unter .specify/memory/constitution.md beobachtet. English: Current repository evidence was observed at .specify/memory/constitution.md. DE/EN: Version/path binding revalidated for the authorized intake rollout; no human approval or control-status change. DE: Quellenbindung nach Mermaid-/Berichtsregel geprueft; keine neue Kontroll- oder menschliche Freigabe. EN: Source binding revalidated after diagram/report guidance; no new control or human approval.",
+      "result": "Deutsch: Aktuelle Repository-Evidence wurde unter .specify/memory/constitution.md beobachtet. English: Current repository evidence was observed at .specify/memory/constitution.md. DE/EN: Version/path binding revalidated for the authorized intake rollout; no human approval or control-status change. DE: Quellenbindung nach Mermaid-/Berichtsregel geprueft; keine neue Kontroll- oder menschliche Freigabe. EN: Source binding revalidated after diagram/report guidance; no new control or human approval. DE: Quellenbindung nach Mermaid-/Berichtsregel geprueft; keine neue Kontroll- oder menschliche Freigabe. EN: Source binding revalidated after diagram/report guidance; no new control or human approval.",
       "proofBoundary": "Deutsch: Die Datei stuetzt nur benannte begrenzte Claims und keine formale Freigabe. English: The file supports named bounded claims only and no formal approval.",
       "reevaluationTrigger": "Deutsch: Hash, Governance-Vertrag oder Produktscope aendert sich. English: The hash, governance contract, or product scope changes."
     },
@@ -4579,15 +4579,15 @@
     {
       "evidenceId": "EVD-017",
       "relativePath": "constitution.md",
-      "sha256": "9fe434705177655befd32c7c9785c65b1b4259c0bff62d226e08c5880ac93224",
-      "observedAtUtc": "2026-09-13T20:56:04Z",
+      "sha256": "c7492785104f08cc5534e7f5cce84882c61ea462177c0ac3d98ef8eed0b7dd5a",
+      "observedAtUtc": "2026-09-13T21:09:10Z",
       "evidenceType": "Audit",
       "directness": "Supporting",
       "freshness": "Current",
       "supportsClaims": [
         "GOV-002"
       ],
-      "result": "Deutsch: Aktuelle Repository-Evidence wurde unter constitution.md beobachtet. English: Current repository evidence was observed at constitution.md. DE/EN: Version/path binding revalidated for the authorized intake rollout; no human approval or control-status change. DE: Quellenbindung nach Mermaid-/Berichtsregel geprueft; keine neue Kontroll- oder menschliche Freigabe. EN: Source binding revalidated after diagram/report guidance; no new control or human approval.",
+      "result": "Deutsch: Aktuelle Repository-Evidence wurde unter constitution.md beobachtet. English: Current repository evidence was observed at constitution.md. DE/EN: Version/path binding revalidated for the authorized intake rollout; no human approval or control-status change. DE: Quellenbindung nach Mermaid-/Berichtsregel geprueft; keine neue Kontroll- oder menschliche Freigabe. EN: Source binding revalidated after diagram/report guidance; no new control or human approval. DE: Quellenbindung nach Mermaid-/Berichtsregel geprueft; keine neue Kontroll- oder menschliche Freigabe. EN: Source binding revalidated after diagram/report guidance; no new control or human approval.",
       "proofBoundary": "Deutsch: Die Datei stuetzt nur benannte begrenzte Claims und keine formale Freigabe. English: The file supports named bounded claims only and no formal approval.",
       "reevaluationTrigger": "Deutsch: Hash, Governance-Vertrag oder Produktscope aendert sich. English: The hash, governance contract, or product scope changes."
     },

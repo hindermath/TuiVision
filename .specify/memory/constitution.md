@@ -3,7 +3,7 @@ Added: Mermaid and feature completion reports. Removed: none. Updated: agent gui
 spec/plan/tasks templates and completion-report-template.md. No deferred placeholders. /
 Neue Pflichten, keine entfernten Regeln; abhaengige Vorlagen synchron gepflegt. -->
 <!--
-Sync Impact Report
+Historical Sync Impact Report (superseded by the 2026-09-13 Mermaid/report amendment)
 Version change: 1.18.2 -> 1.18.3
 Modified principles:
 - Spec Kit preset governance: pin autonomous-run-governance v0.4.4 and require exact staged-candidate validation.
@@ -28,7 +28,7 @@ Follow-up TODOs:
 - None
 -->
 
-# Constitution v1.18.3
+# Constitution v1.19.0
 
 # home-baseline Constitution
 

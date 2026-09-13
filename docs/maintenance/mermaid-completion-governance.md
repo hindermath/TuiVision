@@ -27,3 +27,6 @@
   Vorhandene Validatoren und erforderliche CI-Gates werden trotzdem geprueft.
 - Restrisiko / residual risk: Agenten muessen den Bericht tatsächlich anzeigen;
   versionierte Regeln sind keine automatische UI-Ausfuehrung / guidance is not a UI execution hook.
+
+Profilbindung / profile binding: .specify/templates/intake-authoring-level2-lastenheft-profile.md
+Bootstrap-Quellen / bootstrap sources: alle vorhandenen lokalen Agent-Templates tragen dieselbe Regel; lokale Erweiterungen erhalten. / Existing local agent source templates contain the same rule; extensions preserved.

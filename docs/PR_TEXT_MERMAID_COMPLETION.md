@@ -1,4 +1,4 @@
-# Mermaid-Ergänzungen und Spec-Kit-Abschlussberichte
+# Mermaid-Ergänzungen und Spec-Kit-Abschlussberichte / Mermaid supplements and Spec Kit completion reports
 
 Neue Lastenhefte erhalten bei hilfreichen Abläufen, Zuständen oder Abhängigkeiten
 Mermaid-Quelltext und eine Textalternative. Nach abgeschlossenen Feature-Läufen
@@ -15,7 +15,7 @@ Repository-Gates; konkrete Ergebnisse und Merge-/Sync-Evidence folgen im PR.
 Kein Produktcode geändert. Admin-Bypass ist für formale Freigaben autorisiert;
 technische Fehler werden nicht als erfolgreiche Gates dargestellt.
 
-# Mermaid supplements and Spec Kit completion reports
+## English summary
 
 Require readable Mermaid and text alternatives where diagrams help new intakes,
 and complete reports in chat and versioned Markdown after completed feature runs.
