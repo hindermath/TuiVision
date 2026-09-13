@@ -37,13 +37,9 @@ function expectSuccess(name, options) {
 function activeFixture(name) {
   const target = path.join(temp, name);
   fs.mkdirSync(target, {recursive: true});
-  const manifest = JSON.parse(fs.readFileSync(path.join(root, manifestSource), "utf8"));
-  for (const member of manifest.orderedTargets) {
-    if (!member.path.includes("/active/")) continue;
-    const entry = path.basename(member.path);
-    fs.copyFileSync(
-      path.join(root, member.path),
-      path.join(target, entry));
+  const source = path.join(root, "requirements/intakes/active");
+  for (const entry of fs.readdirSync(source).filter((value) => value.endsWith(".md"))) {
+    fs.copyFileSync(path.join(source, entry), path.join(target, entry));
   }
   return target;
 }
@@ -51,7 +47,7 @@ function activeFixture(name) {
 function pendingIntakeFixture(name, mutateReceipt = () => {}) {
   const activePath = activeFixture(`${name}-active`);
   const receiptsPath = path.join(temp, `${name}-receipts`);
-  fs.mkdirSync(receiptsPath, {recursive: true});
+  fs.cpSync(path.join(root, "specs/intake-authoring-receipts"), receiptsPath, {recursive: true});
   const fileName = "Lastenheft_Future-Closure.md";
   const targetPath = `requirements/intakes/active/${fileName}`;
   const content = "# Future Closure\n\n**Status:** ReadyForReview\n";
@@ -69,6 +65,50 @@ function pendingIntakeFixture(name, mutateReceipt = () => {}) {
   return {activePath, receiptsPath, targetPath};
 }
 
+function standaloneFeatureFixture(name, mutate = () => {}) {
+  const pending = pendingIntakeFixture(name);
+  const featureName = "999-standalone-intake-audit";
+  const featurePath = `specs/${featureName}`;
+  const featureDirectoryPath = path.join(temp, `${name}-feature`);
+  fs.mkdirSync(featureDirectoryPath, {recursive: true});
+  const intakeText = fs.readFileSync(
+    path.join(pending.activePath, path.basename(pending.targetPath)), "utf8");
+  const intakeHash = awaitDigest(intakeText);
+  const state = {
+    featurePath,
+    branch: featureName,
+    stage: "Publish",
+    status: "Active",
+    deliveryMode: "MergeAndSync",
+    acceptedArtifacts: [{path: pending.targetPath, sha256: intakeHash}],
+  };
+  const review = {
+    schemaVersion: "1.1",
+    mode: "Single",
+    status: "Ready",
+    targets: [{path: pending.targetPath, normalizedSha256: intakeHash}],
+  };
+  mutate({pending, state, review});
+  fs.writeFileSync(
+    path.join(featureDirectoryPath, "spec.md"),
+    `# Standalone Feature\n\n**Binding Intake**: \`${pending.targetPath}\`\n`);
+  fs.writeFileSync(
+    path.join(featureDirectoryPath, "autonomous-run-state.json"),
+    JSON.stringify(state, null, 2) + "\n");
+  const featureMetadataPath = path.join(temp, `${name}-feature.json`);
+  fs.writeFileSync(
+    featureMetadataPath,
+    JSON.stringify({feature_directory: featurePath}, null, 2) + "\n");
+  const standaloneReviewPath = path.join(temp, `${name}-review.json`);
+  fs.writeFileSync(standaloneReviewPath, JSON.stringify(review, null, 2) + "\n");
+  return {
+    ...pending,
+    featurePath: featureMetadataPath,
+    featureDirectoryPath,
+    standaloneReviewPath,
+  };
+}
+
 function receiptsFixture(name, mutate) {
   const target = path.join(temp, name);
   fs.cpSync(path.join(root, "specs/intake-authoring-receipts"), target, {recursive: true});
@@ -82,12 +122,28 @@ function awaitDigest(value) {
 
 if (validate({root}).length !== 0) throw new Error("positive fixture failed");
 
-expectSuccess("completed series without physical active directory", {
-  activePath: path.join(temp, "absent-active-collection"),
-});
-
 const pending = pendingIntakeFixture("valid-pending");
 expectSuccess("valid authored pending intake", pending);
+
+const standaloneFeature = standaloneFeatureFixture("valid-standalone-feature");
+expectSuccess("reviewed standalone intake with active feature authorization", standaloneFeature);
+
+const staleStandaloneReview = standaloneFeatureFixture("stale-standalone-review", ({review}) => {
+  review.targets[0].normalizedSha256 = "0".repeat(64);
+});
+expectFailure("standalone feature with stale review hash", staleStandaloneReview,
+  /lacks matching series, review, specification, and autonomous-run authorization evidence/);
+
+const staleStandaloneArtifact = standaloneFeatureFixture("stale-standalone-artifact", ({state}) => {
+  state.acceptedArtifacts[0].sha256 = "0".repeat(64);
+});
+expectFailure("standalone feature with stale accepted artifact", staleStandaloneArtifact,
+  /lacks matching series, review, specification, and autonomous-run authorization evidence/);
+
+const missingStandaloneReceipt = standaloneFeatureFixture("missing-standalone-receipt");
+fs.rmSync(missingStandaloneReceipt.receiptsPath, {recursive: true, force: true});
+expectFailure("standalone feature without authoring receipt", missingStandaloneReceipt,
+  /requires exactly one authoring receipt|lacks matching series, review, specification, and autonomous-run authorization evidence/);
 
 const activeFeatureDirectory = path.join(temp, "043-documentation-publishing-closure");
 fs.mkdirSync(activeFeatureDirectory, {recursive: true});
@@ -113,6 +169,18 @@ fs.writeFileSync(
   activeFeatureMetadata,
   JSON.stringify({feature_directory: activeFeaturePath}, null, 2) + "\n");
 expectSuccess("completed series feature with matching evidence", {
+  featurePath: activeFeatureMetadata,
+  featureDirectoryPath: activeFeatureDirectory,
+});
+
+const completedSeriesReceipts = receiptsFixture("completed-series-receipts", (receiptsPath) => {
+  fs.rmSync(
+    path.join(receiptsPath, "24-evidence-quality-audit-features-044-046.json"),
+    {force: true});
+});
+expectSuccess("completed series without physical active directory", {
+  activePath: path.join(temp, "absent-active-collection"),
+  receiptsPath: completedSeriesReceipts,
   featurePath: activeFeatureMetadata,
   featureDirectoryPath: activeFeatureDirectory,
 });
@@ -376,6 +444,6 @@ for (const outputPath of [
 }
 
 fs.rmSync(temp, {recursive: true, force: true});
-console.log("requirements/intake positive fixtures PASS (4 cases)");
-console.log("requirements/intake negative fixtures PASS (18 cases)");
+console.log("requirements/intake positive fixtures PASS (5 cases)");
+console.log("requirements/intake negative fixtures PASS (21 cases)");
 console.log("TuiVision exact linked-intake fixtures PASS (10 mappings, 6 edges, 1 latest completion, 1 backlog)");

@@ -12,7 +12,9 @@
     "docs/security/secure-development/2026-09-13-evidence-quality-audit/",
     "docs/project-statistics.md",
     "Directory.Build.props",
-    ".specify/feature.json"
+    ".specify/feature.json",
+    "scripts/validate-requirements-intake-alignment.mjs",
+    "scripts/tests/requirements-intake-alignment-tests.mjs"
   ],
   "forbiddenRoots": ["src/", "examples/", ".github/workflows/", "tv203s/"],
   "remoteActionsAllowed": true,

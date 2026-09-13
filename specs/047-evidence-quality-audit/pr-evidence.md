@@ -31,7 +31,9 @@ receipt. The final audit report repeats and verifies those hashes.
 | `docfx ../../docfx.json` from `tests/web-a11y` | PASS with 19 pre-existing link warnings | 0 errors |
 | `npm install` | PASS | 0 vulnerabilities; Node 26.7 engine warning confirms EQA008 |
 | `npm run test:docfx` | PASS, 2/2 | Playwright/Axe including project statistics |
-| Feature commits and branch push | PASS | Three non-empty commits pushed to `origin/047-evidence-quality-audit` |
+| Feature commits and branch push | PASS | Five non-empty commits preceded the causal gate correction on `origin/047-evidence-quality-audit` |
+| Repository intake-alignment validator | PASS | Causal delivery correction accepts a reviewed standalone intake only with matching receipt, review, feature state, lifecycle, and accepted-artifact hashes; 5 positive and 21 negative cases |
+| Intake-alignment wrappers, Bash and PowerShell | PASS | Both native entry points validate the unchanged completed series and the separate active intake |
 
 Two command corrections are retained as proof boundaries. A hash-check helper
 first referenced a mistyped, non-existent receipt path and changed nothing; the
@@ -82,6 +84,13 @@ The canonical result is in
 No file under `src/`, `examples/`, `.github/workflows/`, or `tv203s/` changed.
 No package, project, API, generated DocFX output, remediation intake, or remote
 delivery artifact is part of the tracked result.
+
+The first exact-head CI run exposed a stale repository governance assumption:
+the intake-alignment validator authorized completed series members but not a
+separately reviewed active intake during `MergeAndSync`. The causal correction
+adds that narrowly proven lifecycle without changing the completed series or
+granting remote authority. Negative fixtures reject missing receipts, stale
+review hashes, and stale accepted-artifact hashes.
 
 ## Delivery Boundary
 

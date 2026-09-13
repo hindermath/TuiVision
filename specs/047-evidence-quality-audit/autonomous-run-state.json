@@ -7,7 +7,7 @@
   "authorityRevalidationRequired": false,
   "stage": "Publish",
   "status": "Active",
-  "checkpointCommit": "d2239bcac7a091b58f33d97e4fd9e4dad877e79c",
+  "checkpointCommit": "3244f349d0f144ee3f0862e1906b889f92faf8db",
   "acceptedArtifacts": [
     {
       "path": "requirements/intakes/active/Lastenheft_24_Evidence-Quality-Audit-Features-044-046.md",
@@ -39,7 +39,7 @@
     },
     {
       "path": "specs/047-evidence-quality-audit/pr-evidence.md",
-      "sha256": "7112d39c6da4c396205e8011946184bba7fd2bcb6ed05cdbea652678ca3d0e1a"
+      "sha256": "d4145b81eca00b8791fbcf77aca3aeb4b950847ebe9bf37dff943a10e90fc3d4"
     },
     {
       "path": "specs/047-evidence-quality-audit/retrospective.md",
@@ -52,11 +52,11 @@
     "completed": 53,
     "total": 58
   },
-  "lastPassingGate": "Local acceptance passed for 12 sandbox controls, 157 crosswalk rows, 988 mechanical references, 50 semantic references, ten findings, seven validator tests, DocFX, Axe, format, source hashes, scope, both intake validators, and a current generated statistics snapshot at the first feature commit.",
+  "lastPassingGate": "The causal intake-alignment correction passes syntax checks, 5 positive and 21 negative fixtures, direct repository validation, both native wrappers, and git diff checking without changing the completed series or product scope.",
   "lastOperation": {
-    "kind": "Retrospective",
+    "kind": "Validation",
     "state": "Completed",
-    "summary": "Feature 047 LocalImplementation completed without product mutation, remediation, follow-up intake, commit, push, pull request, merge, or remote claim."
+    "summary": "PR 180 was created; its first exact-head gates exposed and locally verified a stale standalone-intake authorization assumption in the repository alignment validator."
   },
   "stop": {
     "reason": "N/A",
@@ -69,6 +69,6 @@
     "postMergeActions": "N/A",
     "finalValidation": "Completed"
   },
-  "nextExactAction": "Create the Feature 047 pull request and validate exact-head checks",
-  "updatedAt": "2026-09-13T14:51:00Z"
+  "nextExactAction": "Commit and push the causal alignment correction, then revalidate PR 180 exact-head checks",
+  "updatedAt": "2026-09-13T14:38:11Z"
 }
