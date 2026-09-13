@@ -20,8 +20,16 @@ lesson is the separation between complete inventory and substantive assessment:
   und hashgleich sein; Worktree-only Artefakte brauchen eine ehrliche Grenze.
 - `PresetFollowUp`: Ein manueller Review mit null Sekunden ist kein belastbarer
   semantischer Nachweis.
+- `PresetFollowUp`: Ein gruener Review-Workflow darf nicht als fachlicher Pass
+  gelten, wenn sein inneres Provider-Ergebnis `is_error: true` meldet und keine
+  Review erzeugt; Gate-Auswertung muss beide Ebenen pruefen.
 - `NoPromotion`: Feature 047 besitzt keine Autoritaet, Home Baseline oder ein
   Preset zu aendern; die Erkenntnisse werden nur dokumentiert.
 
-No branch, pull request, preset release, or follow-up intake is created by this
-LocalImplementation run.
+Feature 047 aendert kein Preset und erzeugt keinen Folge-Intake. Die spaetere
+Remote-Lieferung und dieser kausale Closeout transportieren nur den unveraenderten
+Audit und seine nachweisbaren Abschlussfakten.
+
+Feature 047 changes no preset and creates no follow-up intake. The later remote
+delivery and this causal closeout carry only the unchanged audit and its
+verifiable completion facts.

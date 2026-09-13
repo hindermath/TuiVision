@@ -70,8 +70,8 @@
 - [X] T051 Revalidate current MergeAndSync authority, branch ownership, and all accepted artifacts.
 - [X] T052 Align `Directory.Build.props` to the numbered Feature-047 branch before commit.
 - [X] T053 Commit and push the non-empty Feature-047 delivery.
-- [ ] T054 Create the feature pull request and validate exact-head mandatory checks.
-- [ ] T055 Converge submitted reviews, comments, and actionable review threads.
-- [ ] T056 Use narrow admin bypass only if Human Approval is the sole remaining rule.
-- [ ] T057 Merge with a merge commit, delete the feature branch, and synchronize local `main`.
-- [ ] T058 Complete causal closeout evidence and final run state without starting another feature.
+- [X] T054 Create the feature pull request and validate exact-head mandatory checks.
+- [X] T055 Converge submitted reviews, comments, and actionable review threads.
+- [X] T056 Use narrow admin bypass only if Human Approval is the sole remaining rule.
+- [X] T057 Merge with a merge commit, delete the feature branch, and synchronize local `main`.
+- [X] T058 Complete causal closeout evidence and final run state without starting another feature.

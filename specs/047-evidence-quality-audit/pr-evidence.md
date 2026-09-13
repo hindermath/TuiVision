@@ -35,6 +35,11 @@ receipt. The final audit report repeats and verifies those hashes.
 | Repository intake-alignment validator | PASS | Causal delivery correction accepts a reviewed standalone intake only with matching receipt, review, feature state, lifecycle, and accepted-artifact hashes; 5 positive and 21 negative cases |
 | Intake-alignment wrappers, Bash and PowerShell | PASS | Both native entry points validate the unchanged completed series and the separate active intake |
 | Causal governance PR #181 | PASS, merged as `1054f4c` | All technical gates green; zero actionable review threads; narrow admin bypass used only for the remaining Human Approval rule |
+| Independent Antigravity review | APPROVE, zero actionable findings | Exact head `df49962`; transcript SHA-256 `7d7d7de510b9ff744132b606e3128a9ee58cf57c7d6907f0eacc19bc584263dc`; operator trace in PR comment `#issuecomment-5654283478` |
+| Provider-neutral PreMerge evidence | PASS, Bash and PowerShell | Exact head `df49962`; snapshot SHA-256 `87d015c1fdfc4da3ceb2bc855ace8afaf81ca7221d3706599c54ae72e7c20114` |
+| PR #180 exact-head checks | PASS | All mandatory Ubuntu, macOS, Windows, DocFX, security, package, tooling, and maintenance jobs completed without failure |
+| PR #180 delivery | PASS, merge commit `18f3387` | Zero actionable threads; Human Approval was the sole remaining rule; narrow admin bypass used as authorized |
+| Local default-branch synchronization | PASS | Clean `main`; `HEAD == origin/main == 18f3387` before this causal closeout |
 
 Two command corrections are retained as proof boundaries. A hash-check helper
 first referenced a mistyped, non-existent receipt path and changed nothing; the
@@ -114,10 +119,23 @@ are resolved outside the completed series, completed and local standalone
 lifecycles have positive and negative tests, both wrappers validate a current
 standalone review, branch-wide whitespace is checked, and delivery wording plus
 phase evidence reflect the later explicit authority. A fresh independent review
-of the corrected exact head remains mandatory before merge.
+of corrected exact head `df49962` then returned `APPROVE` with zero actionable
+findings. The exact-head GitHub checks all passed and both gate-evidence
+validators accepted the same temporary PreMerge snapshot before merge.
+
+The GitHub Claude job was green at workflow level but its internal result had
+`is_error: true` and produced no review. Copilot did not submit a review for the
+final exact head. Neither provider result was counted as independent approval;
+the local Antigravity review satisfied that non-bypassable gate. This green-job
+versus failed-inner-result mismatch is a provider-neutral `PresetFollowUp`, not
+a reason to alter the Feature-047 audit findings.
 
 ## Delivery Boundary
 
 The audit first completed under `LocalImplementation`. The user then granted
 `MergeAndSync` with a narrow admin bypass subject to green technical gates,
 zero actionable review threads, and Human Approval as the only remaining rule.
+PR #180 was merged under that narrow condition as merge commit `18f3387`. The
+active intake was then archived through the repository rename workflow, and this
+causal evidence-only closeout records the post-merge facts without rewriting the
+reviewed feature head.
