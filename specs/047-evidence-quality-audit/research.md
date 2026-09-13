@@ -14,4 +14,3 @@
 The canonical register separates quality decisions from finding categories.
 Systemic repetitions are deduplicated into one finding. Mechanical completeness
 covers all references, while a deterministic sample receives semantic review.
-

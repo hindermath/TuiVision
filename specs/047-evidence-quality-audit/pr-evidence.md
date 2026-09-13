@@ -19,15 +19,15 @@ receipt. The final audit report repeats and verifies those hashes.
 | Intake review validator, Bash and PowerShell | PASS | Single, Ready |
 | `python3 .../render_evidence.py --check` | PASS | 12/157 rows, derived summaries |
 | `python3 -m unittest .../test_evidence_quality.py` | PASS, 7/7 | Positive and malformed-data cases |
-| `git diff --check` | PASS | Current Feature-047 worktree |
+| `git diff --check origin/main...HEAD` | PASS after independent-review remediation | Entire committed Feature-047 delta, including Markdown EOF and trailing-space checks |
 | `dotnet format --verify-no-changes --no-restore` | PASS | No C# changes |
 | `scripts/scan-agent-secrets.sh --fail-on-high .` | PASS | high=0; existing local `.claude` configuration reported Medium |
 | Audited-input normalized SHA-256 comparison | PASS, 9/9 | Inputs unchanged |
 | Feature allowlist and forbidden-root check | PASS | No product, example, workflow, or historical-source change |
 | `specify check` | PASS | Local toolchain available |
 | Prerequisite check with tasks | PASS | Feature 047 resolved |
-| Autonomous state validator, Bash and PowerShell | PASS | Schema 1.1, `Retrospective`, `Completed`, 50/50 |
-| Accepted-artifact hash comparison | PASS, 9/9 | State and task binding current |
+| Autonomous state validator, Bash and PowerShell | PASS | Schema 1.1, `Publish`, `Active`, 53/58 before remote closeout |
+| Accepted-artifact hash comparison | PASS, 10/10 | State, task, gate contract, and normalized intake binding current |
 | `docfx ../../docfx.json` from `tests/web-a11y` | PASS with 19 pre-existing link warnings | 0 errors |
 | `npm install` | PASS | 0 vulnerabilities; Node 26.7 engine warning confirms EQA008 |
 | `npm run test:docfx` | PASS, 2/2 | Playwright/Axe including project statistics |
@@ -105,6 +105,16 @@ allowlist shape and therefore could not be consumed by the installed schema-2.0
 gate-evidence validator. The corrected contract declares six Applicable gates
 and one explicit product-scope `N/A`; its remote gate cannot pass until the
 current pushed head and review state are final.
+
+An independent local Antigravity review of exact head `b8121da` returned
+`CHANGES_REQUESTED` and is retained at SHA-256
+`af9556e8b55e48f57ae8018e5ac2a4eb0ab4e35fe53da052f14136a917315414`.
+Its actionable findings are addressed together: standalone archive successors
+are resolved outside the completed series, completed and local standalone
+lifecycles have positive and negative tests, both wrappers validate a current
+standalone review, branch-wide whitespace is checked, and delivery wording plus
+phase evidence reflect the later explicit authority. A fresh independent review
+of the corrected exact head remains mandatory before merge.
 
 ## Delivery Boundary
 

@@ -6,4 +6,3 @@
 - [X] Negative fixtures cover missing, duplicate, invalid, and drift states.
 - [X] Conditional governance gates have current triggers.
 - [X] No product remediation or follow-up intake is planned.
-

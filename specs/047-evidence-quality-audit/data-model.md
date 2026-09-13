@@ -23,4 +23,3 @@ Semantikentscheidung und Beweisgrenze.
 
 All counts are derived from arrays. Findings and crosswalk rows are separate so
 one systemic defect can explain many rows without inflating the finding count.
-

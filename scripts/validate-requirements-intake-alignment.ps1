@@ -36,6 +36,22 @@ try {
     & pwsh -NoProfile -File .specify/presets/intake-review-governance/scripts/validate-intake-review-result.ps1 `
         -Result requirements/intakes/series/tui-vision-delivery/intake-review-result.json -Repo $RepositoryRoot
     if ($LASTEXITCODE -ne 0) { throw 'Intake review validation failed.' }
+
+    $StandaloneReviewPath = Join-Path $RepositoryRoot 'specs/intake-review-result.json'
+    if (Test-Path -LiteralPath $StandaloneReviewPath -PathType Leaf) {
+        $StandaloneReview = Get-Content -Raw -LiteralPath $StandaloneReviewPath | ConvertFrom-Json -Depth 100
+        $TargetsExist = @($StandaloneReview.targets | Where-Object {
+            -not (Test-Path -LiteralPath (Join-Path $RepositoryRoot $_.path) -PathType Leaf)
+        }).Count -eq 0
+        if ($TargetsExist) {
+            & pwsh -NoProfile -File .specify/presets/intake-review-governance/scripts/validate-intake-review-result.ps1 `
+                -Result $StandaloneReviewPath -Repo $RepositoryRoot
+            if ($LASTEXITCODE -ne 0) { throw 'Standalone intake review validation failed.' }
+        }
+        else {
+            Write-Output "historical completed standalone intake review PASS: $StandaloneReviewPath"
+        }
+    }
 }
 finally {
     Pop-Location

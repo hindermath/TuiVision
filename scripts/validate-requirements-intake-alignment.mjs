@@ -21,6 +21,7 @@ export function validate(options = {}) {
   const standaloneReviewPath = options.standaloneReviewPath ??
     "specs/intake-review-result.json";
   const activePath = options.activePath ?? "requirements/intakes/active";
+  const archivePath = options.archivePath ?? "requirements/intakes/archive";
   const receiptsPath = options.receiptsPath ?? "specs/intake-authoring-receipts";
   const exactFixturePath = options.exactFixturePath ??
     "scripts/tests/linked-intake-evidence/tuivision-exact.json";
@@ -58,15 +59,12 @@ export function validate(options = {}) {
   }
 
   const activeRoot = resolve(activePath);
-  const archiveRoot = path.join(root, "requirements/intakes/archive");
+  const archiveRoot = resolve(archivePath);
   const active = fs.existsSync(activeRoot)
     ? fs.readdirSync(activeRoot).filter((name) => name.endsWith(".md")).sort()
     : [];
   const archived = fs.readdirSync(archiveRoot).filter((name) => name.endsWith(".md")).sort();
   const rootLastenhefte = fs.readdirSync(root).filter((name) => /^Lastenheft.*\.md$/.test(name));
-  if (archived.length !== seriesMapping.expectedArchiveCount) {
-    errors.push(`expected ${seriesMapping.expectedArchiveCount} archived intakes, found ${archived.length}`);
-  }
   if (rootLastenhefte.join(",") !== "Lastenheft_Abarbeitungsreihenfolge.md") {
     errors.push("only the generated processing-order view may remain as root Lastenheft");
   }
@@ -108,6 +106,7 @@ export function validate(options = {}) {
       return [];
     }
   });
+  let completedStandaloneReceiptCount = 0;
   for (const receipt of receipts) {
     const receiptTarget = receipt.value.target?.path;
     const physicalReceiptTarget = receiptTarget?.startsWith("requirements/intakes/active/")
@@ -117,20 +116,35 @@ export function validate(options = {}) {
 
     const receiptHash = receipt.value.target?.normalizedSha256;
     const originalStem = path.parse(receiptTarget).name;
-    const completedArchiveMatches = targets.filter((target) =>
-      target.status === "Completed" &&
-      target.path?.startsWith("requirements/intakes/archive/") &&
-      path.basename(target.path).startsWith(`${originalStem}.`) &&
-      target.normalizedSha256 === receiptHash &&
-      fs.existsSync(resolve(target.path)) &&
-      digest(read(target.path)) === receiptHash);
     const receiptSeries = receipt.value.series ?? {};
-    const compatibleSeriesLineage = receiptSeries.seriesId === manifest.seriesId ||
-      (receiptSeries.seriesId === "N/A" && receiptSeries.manifestPath === "N/A" &&
-        receiptSeries.order === "N/A" && receiptSeries.role === "N/A");
-    if (!compatibleSeriesLineage || completedArchiveMatches.length !== 1) {
+    const seriesReceipt = receiptSeries.seriesId === manifest.seriesId;
+    const standaloneReceipt = receiptSeries.seriesId === "N/A" &&
+      receiptSeries.manifestPath === "N/A" && receiptSeries.order === "N/A" &&
+      receiptSeries.role === "N/A";
+    const completedArchiveMatches = seriesReceipt
+      ? targets.filter((target) =>
+          target.status === "Completed" &&
+          target.path?.startsWith("requirements/intakes/archive/") &&
+          path.basename(target.path).startsWith(`${originalStem}.`) &&
+          target.normalizedSha256 === receiptHash &&
+          fs.existsSync(resolve(target.path)) &&
+          digest(read(target.path)) === receiptHash)
+      : standaloneReceipt
+        ? archived.filter((name) => path.parse(name).name.startsWith(`${originalStem}.`))
+            .map((name) => path.join(archiveRoot, name))
+            .filter((candidate) => digest(fs.readFileSync(candidate, "utf8")) === receiptHash)
+        : [];
+    if ((!seriesReceipt && !standaloneReceipt) || completedArchiveMatches.length !== 1) {
       errors.push(`missing authoring receipt target lacks one completed archive successor: ${receiptTarget}`);
+    } else if (standaloneReceipt) {
+      completedStandaloneReceiptCount++;
     }
+  }
+  const baselineStandaloneArchiveCount = seriesMapping.expectedStandaloneArchiveCount ?? 0;
+  const expectedArchiveCount = seriesMapping.expectedArchiveCount +
+    completedStandaloneReceiptCount - baselineStandaloneArchiveCount;
+  if (archived.length !== expectedArchiveCount) {
+    errors.push(`expected ${expectedArchiveCount} archived intakes, found ${archived.length}`);
   }
   for (const pendingPath of expectedActive.filter((candidate) => !targetSet.has(candidate))) {
     const matchingReceipts = receipts.filter((receipt) => receipt.value.target?.path === pendingPath);
@@ -266,7 +280,9 @@ export function validate(options = {}) {
         artifact.path === effectiveBindingPath);
       const effectiveBindingFile = effectiveBindingPath === bindingPath
         ? activeBindingFile
-        : effectiveBindingPath !== "N/A" ? resolve(effectiveBindingPath) : "";
+        : effectiveBindingPath?.startsWith("requirements/intakes/archive/")
+          ? path.join(archiveRoot, path.basename(effectiveBindingPath))
+          : effectiveBindingPath !== "N/A" ? resolve(effectiveBindingPath) : "";
       const bindingHash = effectiveBindingFile && fs.existsSync(effectiveBindingFile)
         ? digest(fs.readFileSync(effectiveBindingFile, "utf8"))
         : "N/A";
@@ -291,8 +307,8 @@ export function validate(options = {}) {
         const receipt = matchingReceipts.length === 1 ? matchingReceipts[0].value : null;
         const receiptHash = receipt?.target?.normalizedSha256;
         const standaloneLifecycleValid =
-          (state.status === "Active" && state.deliveryMode === "MergeAndSync" &&
-            ["Publish", "Review", "MergeAndSync"].includes(state.stage) &&
+          (state.status === "Active" &&
+            ["LocalImplementation", "PublishPR", "MergeAndSync"].includes(state.deliveryMode) &&
             effectiveBindingPath === bindingPath) ||
           (state.status === "Completed" && effectiveBindingPath === archivedBindingPath);
         const standaloneArtifact = (state.acceptedArtifacts ?? []).find((artifact) =>

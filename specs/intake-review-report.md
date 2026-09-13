@@ -7,7 +7,7 @@
 - Policy: `tui-vision-lastenheft`
 - Ergebnis: `Ready`
 - Ziel: `requirements/intakes/active/Lastenheft_24_Evidence-Quality-Audit-Features-044-046.md`
-- Normalisierter SHA-256: `57a8ec1519f5f332dadecc45d92e68cae66ad1a6495b2149281019525be34b69`
+- Normalisierter SHA-256: `8b2d8b48e4b229afcbc78914610dfcff3badeea41f7e88a5ec686d7626ac29ea`
 
 ## Befund / Finding
 

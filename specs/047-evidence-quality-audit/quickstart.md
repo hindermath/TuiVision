@@ -13,4 +13,3 @@ veraendern weder Produktcode noch die geprueften Artefakte.
 The first command renders and compares canonical evidence. The test covers
 positive invariants and malformed negative data. Neither command changes product
 code or audited artifacts.
-

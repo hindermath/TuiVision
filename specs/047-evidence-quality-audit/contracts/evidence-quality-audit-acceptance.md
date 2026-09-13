@@ -9,5 +9,4 @@
 7. The semantic sample contains at least 50 references.
 8. Missing, duplicate, invalid, unlinked, or count-drift fixtures fail closed.
 9. Audited Feature-044/045/046 artifacts and product surfaces remain unchanged.
-10. No remediation intake or remote delivery is created.
-
+10. No remediation intake is created. Remote delivery is allowed only under later explicit delivery authority and does not expand the audit scope.

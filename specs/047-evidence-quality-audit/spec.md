@@ -1,10 +1,10 @@
 # Feature Specification: Evidence-Qualitaetsaudit 044-046
 
-**Feature Branch**: `047-evidence-quality-audit`  
-**Created**: 2026-09-13  
-**Status**: Accepted  
-**Binding Input**: `requirements/intakes/active/Lastenheft_24_Evidence-Quality-Audit-Features-044-046.md`  
-**Accepted Review**: Single review `9d9adb39-05a9-405e-953f-ad3e70b690c0` (`Ready`)  
+**Feature Branch**: `047-evidence-quality-audit`
+**Created**: 2026-09-13
+**Status**: Accepted
+**Binding Input**: `requirements/intakes/active/Lastenheft_24_Evidence-Quality-Audit-Features-044-046.md`
+**Accepted Review**: Single review `9d9adb39-05a9-405e-953f-ad3e70b690c0` (`Ready`)
 **Delivery Authority**: `MergeAndSync`; granted after the completed local audit.
 
 ## Zweck / Purpose

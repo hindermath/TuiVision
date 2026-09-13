@@ -6,4 +6,3 @@ vollstaendig geplant. Es bleibt kein Critical- oder High-Befund.
 
 Result: `Ready`. Scope, data model, test strategy, immutable inputs, finding
 deduplication, semantic sample, and remote-review boundary are complete.
-

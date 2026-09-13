@@ -58,14 +58,14 @@ function pendingIntakeFixture(name, mutateReceipt = () => {}) {
     documentType: "IntakeReceipt",
     status: "ReadyForReview",
     target: {path: targetPath, normalizedSha256},
-    series: {seriesId: "N/A", manifestPath: "N/A", role: "N/A"},
+    series: {seriesId: "N/A", manifestPath: "N/A", order: "N/A", role: "N/A"},
   };
   mutateReceipt(receipt);
   fs.writeFileSync(path.join(receiptsPath, "future-closure.json"), JSON.stringify(receipt, null, 2) + "\n");
   return {activePath, receiptsPath, targetPath};
 }
 
-function standaloneFeatureFixture(name, mutate = () => {}) {
+function standaloneFeatureFixture(name, mutate = () => {}, completed = false) {
   const pending = pendingIntakeFixture(name);
   const featureName = "999-standalone-intake-audit";
   const featurePath = `specs/${featureName}`;
@@ -88,6 +88,19 @@ function standaloneFeatureFixture(name, mutate = () => {}) {
     status: "Ready",
     targets: [{path: pending.targetPath, normalizedSha256: intakeHash}],
   };
+  let archivePath;
+  if (completed) {
+    archivePath = path.join(temp, `${name}-archive`);
+    fs.cpSync(path.join(root, "requirements/intakes/archive"), archivePath, {recursive: true});
+    const archivedTargetPath =
+      `requirements/intakes/archive/${path.parse(pending.targetPath).name}.${featureName}.md`;
+    fs.renameSync(
+      path.join(pending.activePath, path.basename(pending.targetPath)),
+      path.join(archivePath, path.basename(archivedTargetPath)));
+    state.stage = "Retrospective";
+    state.status = "Completed";
+    state.acceptedArtifacts = [{path: archivedTargetPath, sha256: intakeHash}];
+  }
   mutate({pending, state, review});
   fs.writeFileSync(
     path.join(featureDirectoryPath, "spec.md"),
@@ -106,6 +119,7 @@ function standaloneFeatureFixture(name, mutate = () => {}) {
     featurePath: featureMetadataPath,
     featureDirectoryPath,
     standaloneReviewPath,
+    ...(archivePath ? {archivePath} : {}),
   };
 }
 
@@ -127,6 +141,28 @@ expectSuccess("valid authored pending intake", pending);
 
 const standaloneFeature = standaloneFeatureFixture("valid-standalone-feature");
 expectSuccess("reviewed standalone intake with active feature authorization", standaloneFeature);
+
+const localStandaloneFeature = standaloneFeatureFixture(
+  "valid-local-standalone-feature",
+  ({state}) => {
+    state.stage = "Implement";
+    state.deliveryMode = "LocalImplementation";
+  });
+expectSuccess("reviewed standalone intake with local implementation authority", localStandaloneFeature);
+
+const completedStandaloneFeature = standaloneFeatureFixture(
+  "valid-completed-standalone-feature", () => {}, true);
+expectSuccess("completed standalone intake with archived successor", completedStandaloneFeature);
+
+const duplicateCompletedStandalone = standaloneFeatureFixture(
+  "duplicate-completed-standalone", () => {}, true);
+const archivedStandaloneName = fs.readdirSync(duplicateCompletedStandalone.archivePath)
+  .find((name) => name.startsWith("Lastenheft_Future-Closure."));
+fs.copyFileSync(
+  path.join(duplicateCompletedStandalone.archivePath, archivedStandaloneName),
+  path.join(duplicateCompletedStandalone.archivePath, "Lastenheft_Future-Closure.duplicate.md"));
+expectFailure("completed standalone intake with duplicate archived successor",
+  duplicateCompletedStandalone, /lacks one completed archive successor/);
 
 const staleStandaloneReview = standaloneFeatureFixture("stale-standalone-review", ({review}) => {
   review.targets[0].normalizedSha256 = "0".repeat(64);
@@ -169,18 +205,6 @@ fs.writeFileSync(
   activeFeatureMetadata,
   JSON.stringify({feature_directory: activeFeaturePath}, null, 2) + "\n");
 expectSuccess("completed series feature with matching evidence", {
-  featurePath: activeFeatureMetadata,
-  featureDirectoryPath: activeFeatureDirectory,
-});
-
-const completedSeriesReceipts = receiptsFixture("completed-series-receipts", (receiptsPath) => {
-  fs.rmSync(
-    path.join(receiptsPath, "24-evidence-quality-audit-features-044-046.json"),
-    {force: true});
-});
-expectSuccess("completed series without physical active directory", {
-  activePath: path.join(temp, "absent-active-collection"),
-  receiptsPath: completedSeriesReceipts,
   featurePath: activeFeatureMetadata,
   featureDirectoryPath: activeFeatureDirectory,
 });
@@ -344,7 +368,8 @@ if (awaitDigest(exactManifestText) !== mapping.canonicalManifestSha256 ||
 }
 if (mapping.mappings.length !== mapping.expectedSeriesTargetCount ||
     mapping.expectedSeriesTargetCount !== 10 || mapping.expectedActiveCount !== 0 ||
-    mapping.expectedArchiveCount !== 38 || tuples.edges.length !== tuples.expectedEdgeCount ||
+    mapping.expectedArchiveCount !== 38 || mapping.expectedStandaloneArchiveCount !== 1 ||
+    tuples.edges.length !== tuples.expectedEdgeCount ||
     tuples.expectedEdgeCount !== 6) {
   throw new Error("exact fixture cardinality differs from the T056 lock");
 }
@@ -445,5 +470,5 @@ for (const outputPath of [
 
 fs.rmSync(temp, {recursive: true, force: true});
 console.log("requirements/intake positive fixtures PASS (5 cases)");
-console.log("requirements/intake negative fixtures PASS (21 cases)");
+console.log("requirements/intake negative fixtures PASS (22 cases)");
 console.log("TuiVision exact linked-intake fixtures PASS (10 mappings, 6 edges, 1 latest completion, 1 backlog)");

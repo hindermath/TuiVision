@@ -1,9 +1,9 @@
 <!-- intake-authoring:begin -->
 # Lastenheft 24: Evidence-Qualitaetsaudit fuer Features 044 bis 046
 
-**Dokumenttyp:** Eigenstaendiger Spec-Kit-Intake  
-**Status:** ReadyForReview  
-**Projekt:** TuiVision  
+**Dokumenttyp:** Eigenstaendiger Spec-Kit-Intake
+**Status:** ReadyForReview
+**Projekt:** TuiVision
 **Zielgruppe:** Maintainer, Security-Reviewer, Auszubildende und KI-Agenten
 
 ## Zweck / Purpose

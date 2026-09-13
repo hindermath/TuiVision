@@ -11,15 +11,15 @@
   "acceptedArtifacts": [
     {
       "path": "requirements/intakes/active/Lastenheft_24_Evidence-Quality-Audit-Features-044-046.md",
-      "sha256": "57a8ec1519f5f332dadecc45d92e68cae66ad1a6495b2149281019525be34b69"
+      "sha256": "8b2d8b48e4b229afcbc78914610dfcff3badeea41f7e88a5ec686d7626ac29ea"
     },
     {
       "path": "specs/intake-review-result.json",
-      "sha256": "726b6c05e01bdea6b50be62fd40ba0aaa91d9854ca743a5f1ac32680f83bcf54"
+      "sha256": "0dafe744053acd21020c90e187dc1da479bf4c158ca69e933c973487b4f32eb0"
     },
     {
       "path": "specs/047-evidence-quality-audit/spec.md",
-      "sha256": "94a08bf80f36fc94763e385e45249089b12102b255926eb35fe69f0e59d80d5a"
+      "sha256": "59ebb5a274e28937d285ee91ed98314edb5deb762e6bc6bbac73521f37dd178b"
     },
     {
       "path": "specs/047-evidence-quality-audit/plan.md",
@@ -39,7 +39,7 @@
     },
     {
       "path": "specs/047-evidence-quality-audit/pr-evidence.md",
-      "sha256": "62d5153e8d7d74647f9412ed46ca4d32aac0f6acde79742cb797358753fc40e4"
+      "sha256": "b8066e50bdd4ab3652522f9a82a584dda5a8b72f9c6d21a818d5f50ca4ba6637"
     },
     {
       "path": "specs/047-evidence-quality-audit/autonomous-gate-requirements.json",
@@ -56,11 +56,11 @@
     "completed": 53,
     "total": 58
   },
-  "lastPassingGate": "Causal governance PR 181 is merged and the Feature 047 gate contract now declares six Applicable gates plus one product-scope N/A in the installed validator schema.",
+  "lastPassingGate": "The first independent exact-head review returned actionable lifecycle, test, whitespace, wrapper, and evidence consistency findings; remediation is implemented and awaiting exact-head revalidation.",
   "lastOperation": {
     "kind": "Validation",
     "state": "Completed",
-    "summary": "The malformed internal allowlist shape was replaced by an explicit provider-neutral exact-head gate contract."
+    "summary": "Independent review findings were remediated without changing product or audited Feature-044/045/046 artifacts."
   },
   "stop": {
     "reason": "N/A",
@@ -73,6 +73,6 @@
     "postMergeActions": "N/A",
     "finalValidation": "Completed"
   },
-  "nextExactAction": "Commit and push the exact-head gate contract, then revalidate PR 180 checks and provider-neutral PreMerge evidence",
-  "updatedAt": "2026-09-13T14:58:18Z"
+  "nextExactAction": "Validate and commit the independent-review remediation, then rerun exact-head checks and independent review",
+  "updatedAt": "2026-09-13T15:25:00Z"
 }
