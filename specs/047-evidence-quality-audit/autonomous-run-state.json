@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "1.1",
+  "runId": "79a8099e-9702-45eb-a0db-7a20e33348c2",
+  "featurePath": "specs/047-evidence-quality-audit",
+  "branch": "047-evidence-quality-audit",
+  "deliveryMode": "MergeAndSync",
+  "authorityRevalidationRequired": false,
+  "stage": "Publish",
+  "status": "Active",
+  "checkpointCommit": "a072c705fb5dfbb7710c206f4b5f7de6d02619d6",
+  "acceptedArtifacts": [
+    {
+      "path": "requirements/intakes/active/Lastenheft_24_Evidence-Quality-Audit-Features-044-046.md",
+      "sha256": "8b2d8b48e4b229afcbc78914610dfcff3badeea41f7e88a5ec686d7626ac29ea"
+    },
+    {
+      "path": "specs/intake-review-result.json",
+      "sha256": "0dafe744053acd21020c90e187dc1da479bf4c158ca69e933c973487b4f32eb0"
+    },
+    {
+      "path": "specs/047-evidence-quality-audit/spec.md",
+      "sha256": "59ebb5a274e28937d285ee91ed98314edb5deb762e6bc6bbac73521f37dd178b"
+    },
+    {
+      "path": "specs/047-evidence-quality-audit/plan.md",
+      "sha256": "168bb20b870761fac7627669bb365ca679c435c2eb292fa114d81b9176970669"
+    },
+    {
+      "path": "specs/047-evidence-quality-audit/tasks.md",
+      "sha256": "a23621a99a59cc44ebadfbb59c87278725645e1f9e232b0ccc5a44373352056d"
+    },
+    {
+      "path": "docs/security/secure-development/2026-09-13-evidence-quality-audit/finding-register.json",
+      "sha256": "c820e596fe11ad83572c1ea1f08ee8faafd75aa84a5b38a7b93653bcacea43cb"
+    },
+    {
+      "path": "docs/security/secure-development/2026-09-13-evidence-quality-audit/control-crosswalk.json",
+      "sha256": "9631b7a14eeb41e456bffdf33e3c4d865c957990a04c9baeedd7a0167be9f232"
+    },
+    {
+      "path": "specs/047-evidence-quality-audit/pr-evidence.md",
+      "sha256": "b8066e50bdd4ab3652522f9a82a584dda5a8b72f9c6d21a818d5f50ca4ba6637"
+    },
+    {
+      "path": "specs/047-evidence-quality-audit/autonomous-gate-requirements.json",
+      "sha256": "b7ebc91668fa66a03c5c7f4f1186e3e80d545542c839992e18c95dcf6469d2ac"
+    },
+    {
+      "path": "specs/047-evidence-quality-audit/retrospective.md",
+      "sha256": "0d1bb9f4dec02bb28fce5822bf09ab7d0c385d9cf18153ed0380cb0a11cac00b"
+    }
+  ],
+  "tasks": {
+    "path": "specs/047-evidence-quality-audit/tasks.md",
+    "sha256": "a23621a99a59cc44ebadfbb59c87278725645e1f9e232b0ccc5a44373352056d",
+    "completed": 53,
+    "total": 58
+  },
+  "lastPassingGate": "The first independent exact-head review returned actionable lifecycle, test, whitespace, wrapper, and evidence consistency findings; remediation is implemented and awaiting exact-head revalidation.",
+  "lastOperation": {
+    "kind": "Validation",
+    "state": "Completed",
+    "summary": "Independent review findings were remediated without changing product or audited Feature-044/045/046 artifacts."
+  },
+  "stop": {
+    "reason": "N/A",
+    "requestedAt": "N/A",
+    "safeBoundary": "N/A"
+  },
+  "closeout": {
+    "mergeOrPublication": "N/A",
+    "defaultBranchSync": "N/A",
+    "postMergeActions": "N/A",
+    "finalValidation": "Completed"
+  },
+  "nextExactAction": "Validate and commit the independent-review remediation, then rerun exact-head checks and independent review",
+  "updatedAt": "2026-09-13T15:25:00Z"
+}

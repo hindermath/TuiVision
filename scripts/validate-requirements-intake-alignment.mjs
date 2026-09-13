@@ -18,7 +18,10 @@ export function validate(options = {}) {
   const featurePath = options.featurePath ?? ".specify/feature.json";
   const reviewPath = options.reviewPath ??
     "requirements/intakes/series/tui-vision-delivery/intake-review-result.json";
+  const standaloneReviewPath = options.standaloneReviewPath ??
+    "specs/intake-review-result.json";
   const activePath = options.activePath ?? "requirements/intakes/active";
+  const archivePath = options.archivePath ?? "requirements/intakes/archive";
   const receiptsPath = options.receiptsPath ?? "specs/intake-authoring-receipts";
   const exactFixturePath = options.exactFixturePath ??
     "scripts/tests/linked-intake-evidence/tuivision-exact.json";
@@ -56,15 +59,12 @@ export function validate(options = {}) {
   }
 
   const activeRoot = resolve(activePath);
-  const archiveRoot = path.join(root, "requirements/intakes/archive");
+  const archiveRoot = resolve(archivePath);
   const active = fs.existsSync(activeRoot)
     ? fs.readdirSync(activeRoot).filter((name) => name.endsWith(".md")).sort()
     : [];
   const archived = fs.readdirSync(archiveRoot).filter((name) => name.endsWith(".md")).sort();
   const rootLastenhefte = fs.readdirSync(root).filter((name) => /^Lastenheft.*\.md$/.test(name));
-  if (archived.length !== seriesMapping.expectedArchiveCount) {
-    errors.push(`expected ${seriesMapping.expectedArchiveCount} archived intakes, found ${archived.length}`);
-  }
   if (rootLastenhefte.join(",") !== "Lastenheft_Abarbeitungsreihenfolge.md") {
     errors.push("only the generated processing-order view may remain as root Lastenheft");
   }
@@ -106,6 +106,7 @@ export function validate(options = {}) {
       return [];
     }
   });
+  let completedStandaloneReceiptCount = 0;
   for (const receipt of receipts) {
     const receiptTarget = receipt.value.target?.path;
     const physicalReceiptTarget = receiptTarget?.startsWith("requirements/intakes/active/")
@@ -115,20 +116,35 @@ export function validate(options = {}) {
 
     const receiptHash = receipt.value.target?.normalizedSha256;
     const originalStem = path.parse(receiptTarget).name;
-    const completedArchiveMatches = targets.filter((target) =>
-      target.status === "Completed" &&
-      target.path?.startsWith("requirements/intakes/archive/") &&
-      path.basename(target.path).startsWith(`${originalStem}.`) &&
-      target.normalizedSha256 === receiptHash &&
-      fs.existsSync(resolve(target.path)) &&
-      digest(read(target.path)) === receiptHash);
     const receiptSeries = receipt.value.series ?? {};
-    const compatibleSeriesLineage = receiptSeries.seriesId === manifest.seriesId ||
-      (receiptSeries.seriesId === "N/A" && receiptSeries.manifestPath === "N/A" &&
-        receiptSeries.order === "N/A" && receiptSeries.role === "N/A");
-    if (!compatibleSeriesLineage || completedArchiveMatches.length !== 1) {
+    const seriesReceipt = receiptSeries.seriesId === manifest.seriesId;
+    const standaloneReceipt = receiptSeries.seriesId === "N/A" &&
+      receiptSeries.manifestPath === "N/A" && receiptSeries.order === "N/A" &&
+      receiptSeries.role === "N/A";
+    const completedArchiveMatches = seriesReceipt
+      ? targets.filter((target) =>
+          target.status === "Completed" &&
+          target.path?.startsWith("requirements/intakes/archive/") &&
+          path.basename(target.path).startsWith(`${originalStem}.`) &&
+          target.normalizedSha256 === receiptHash &&
+          fs.existsSync(resolve(target.path)) &&
+          digest(read(target.path)) === receiptHash)
+      : standaloneReceipt
+        ? archived.filter((name) => path.parse(name).name.startsWith(`${originalStem}.`))
+            .map((name) => path.join(archiveRoot, name))
+            .filter((candidate) => digest(fs.readFileSync(candidate, "utf8")) === receiptHash)
+        : [];
+    if ((!seriesReceipt && !standaloneReceipt) || completedArchiveMatches.length !== 1) {
       errors.push(`missing authoring receipt target lacks one completed archive successor: ${receiptTarget}`);
+    } else if (standaloneReceipt) {
+      completedStandaloneReceiptCount++;
     }
+  }
+  const baselineStandaloneArchiveCount = seriesMapping.expectedStandaloneArchiveCount ?? 0;
+  const expectedArchiveCount = seriesMapping.expectedArchiveCount +
+    completedStandaloneReceiptCount - baselineStandaloneArchiveCount;
+  if (archived.length !== expectedArchiveCount) {
+    errors.push(`expected ${expectedArchiveCount} archived intakes, found ${archived.length}`);
   }
   for (const pendingPath of expectedActive.filter((candidate) => !targetSet.has(candidate))) {
     const matchingReceipts = receipts.filter((receipt) => receipt.value.target?.path === pendingPath);
@@ -252,26 +268,64 @@ export function validate(options = {}) {
       const archivedBindingPath = bindingPath && state.status === "Completed"
         ? `requirements/intakes/archive/${bindingName}.${state.branch}.md`
         : "N/A";
-      const effectiveBindingPath = bindingPath && fs.existsSync(resolve(bindingPath))
+      const activeBindingFile = bindingPath?.startsWith("requirements/intakes/active/")
+        ? path.join(activeRoot, path.basename(bindingPath))
+        : bindingPath ? resolve(bindingPath) : "";
+      const effectiveBindingPath = bindingPath && fs.existsSync(activeBindingFile)
         ? bindingPath
         : archivedBindingPath;
       const bindingTarget = targets.find((target) => target.path === effectiveBindingPath);
       const bindingReview = (review.targets ?? []).find((target) => target.path === effectiveBindingPath);
       const bindingArtifact = (state.acceptedArtifacts ?? []).find((artifact) =>
         artifact.path === effectiveBindingPath);
-      const bindingHash = effectiveBindingPath !== "N/A" && fs.existsSync(resolve(effectiveBindingPath))
-        ? digest(read(effectiveBindingPath))
+      const effectiveBindingFile = effectiveBindingPath === bindingPath
+        ? activeBindingFile
+        : effectiveBindingPath?.startsWith("requirements/intakes/archive/")
+          ? path.join(archiveRoot, path.basename(effectiveBindingPath))
+          : effectiveBindingPath !== "N/A" ? resolve(effectiveBindingPath) : "";
+      const bindingHash = effectiveBindingFile && fs.existsSync(effectiveBindingFile)
+        ? digest(fs.readFileSync(effectiveBindingFile, "utf8"))
         : "N/A";
       const lifecycleValid = bindingTarget?.status === "Eligible" ||
         (bindingTarget?.status === "Completed" &&
           (state.status === "Completed" ||
            (state.status === "Active" && state.deliveryMode === "MergeAndSync" &&
             ["Publish", "Review", "MergeAndSync"].includes(state.stage))));
-      featureAuthorizationValid = state.featurePath === featureDirectory &&
-        state.branch === path.basename(featureDirectory) &&
-        Boolean(bindingPath) && lifecycleValid && review.status === "Ready" &&
+      const seriesAuthorizationValid = lifecycleValid && review.status === "Ready" &&
         bindingReview?.normalizedSha256 === bindingHash &&
         bindingArtifact?.sha256 === bindingHash;
+
+      let standaloneAuthorizationValid = false;
+      const standaloneReviewFile = resolve(standaloneReviewPath);
+      if (!bindingTarget && bindingPath?.startsWith("requirements/intakes/active/") &&
+          fs.existsSync(standaloneReviewFile)) {
+        const standaloneReview = JSON.parse(fs.readFileSync(standaloneReviewFile, "utf8"));
+        const standaloneReviewTarget = (standaloneReview.targets ?? []).find((target) =>
+          target.path === bindingPath);
+        const matchingReceipts = receipts.filter((receipt) =>
+          receipt.value.target?.path === bindingPath);
+        const receipt = matchingReceipts.length === 1 ? matchingReceipts[0].value : null;
+        const receiptHash = receipt?.target?.normalizedSha256;
+        const standaloneLifecycleValid =
+          (state.status === "Active" &&
+            ["LocalImplementation", "PublishPR", "MergeAndSync"].includes(state.deliveryMode) &&
+            effectiveBindingPath === bindingPath) ||
+          (state.status === "Completed" && effectiveBindingPath === archivedBindingPath);
+        const standaloneArtifact = (state.acceptedArtifacts ?? []).find((artifact) =>
+          artifact.path === effectiveBindingPath || artifact.path === bindingPath);
+        standaloneAuthorizationValid = standaloneLifecycleValid &&
+          receipt?.schemaVersion === "2.0" && receipt?.documentType === "IntakeReceipt" &&
+          receipt?.status === "ReadyForReview" && receipt?.series?.seriesId === "N/A" &&
+          receipt?.series?.manifestPath === "N/A" && receipt?.series?.role === "N/A" &&
+          receiptHash === bindingHash && standaloneReview.mode === "Single" &&
+          standaloneReview.status === "Ready" &&
+          standaloneReviewTarget?.normalizedSha256 === bindingHash &&
+          standaloneArtifact?.sha256 === bindingHash;
+      }
+
+      featureAuthorizationValid = state.featurePath === featureDirectory &&
+        state.branch === path.basename(featureDirectory) &&
+        Boolean(bindingPath) && (seriesAuthorizationValid || standaloneAuthorizationValid);
     } catch {
       featureAuthorizationValid = false;
     }

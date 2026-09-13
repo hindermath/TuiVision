@@ -23,3 +23,15 @@ bash .specify/presets/intake-sequencing-governance/scripts/validate-intake-serie
   --file requirements/intakes/series/tui-vision-delivery/receipt.json --repo "$repo_root"
 bash .specify/presets/intake-review-governance/scripts/validate-intake-review-result.sh \
   --result requirements/intakes/series/tui-vision-delivery/intake-review-result.json --repo "$repo_root"
+
+standalone_review='specs/intake-review-result.json'
+if [[ -f "$standalone_review" ]] && node -e '
+  const fs = require("fs");
+  const result = JSON.parse(fs.readFileSync(process.argv[1], "utf8"));
+  process.exit((result.targets ?? []).every((target) => fs.existsSync(target.path)) ? 0 : 1);
+' "$standalone_review"; then
+  bash .specify/presets/intake-review-governance/scripts/validate-intake-review-result.sh \
+    --result "$standalone_review" --repo "$repo_root"
+elif [[ -f "$standalone_review" ]]; then
+  printf 'historical completed standalone intake review PASS: %s\n' "$standalone_review"
+fi

@@ -1,0 +1,2686 @@
+{
+  "schemaVersion": "1.0",
+  "feature": "047-evidence-quality-audit",
+  "controls": [
+    {
+      "controlId": "CL-01-01",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-01-02",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-01-03",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-01-04",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-01-05",
+      "feature045Status": "FollowUp",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "FollowUp",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-01-06",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-01-07",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-01-08",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-01-09",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-01-10",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-01-11",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-01-12",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-02-01",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 5,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-02-02",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 5,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-02-03",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 5,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-02-04",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 5,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-02-05",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 5,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-02-06",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 5,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-02-07",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 5,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-02-08",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 5,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-02-09",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 5,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-02-10",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 5,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-02-11",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 5,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-02-12",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 5,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-02-13",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 5,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-03-01",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-03-02",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-03-03",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-03-04",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-03-05",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-03-06",
+      "feature045Status": "AlreadySatisfied",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "AlreadySatisfied",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-03-07",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-03-08",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-03-09",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-03-10",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-03-11",
+      "feature045Status": "AlreadySatisfied",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "AlreadySatisfied",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-03-12",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-03-13",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-03-14",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-03-15",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-04-01",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-04-02",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-04-03",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-04-04",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-04-05",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-04-06",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-04-07",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-04-08",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-04-09",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-04-10",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-05-01",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-05-02",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-05-03",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-05-04",
+      "feature045Status": "FollowUp",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "FollowUp",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-05-05",
+      "feature045Status": "FollowUp",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "FollowUp",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-05-06",
+      "feature045Status": "AlreadySatisfied",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "AlreadySatisfied",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-05-07",
+      "feature045Status": "FollowUp",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "FollowUp",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-05-08",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-05-09",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-05-10",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-05-11",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-05-12",
+      "feature045Status": "AlreadySatisfied",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "AlreadySatisfied",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-05-13",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-06-01",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 5,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-06-02",
+      "feature045Status": "FollowUp",
+      "feature045EvidenceCount": 5,
+      "feature016Status": "FollowUp",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-06-03",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 5,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-06-04",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 5,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-06-05",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 5,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-06-06",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 5,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-06-07",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 5,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-06-08",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 5,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-06-09",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 5,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-06-10",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 5,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-06-11",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 5,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-07-01",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-07-02",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-07-03",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-07-04",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-07-05",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-07-06",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-07-07",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-07-08",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-07-09",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-07-10",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-07-11",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-07-12",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-08-01",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-08-02",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-08-03",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-08-04",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-08-05",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-08-06",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-08-07",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-08-08",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-08-09",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-08-10",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-08-11",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-08-12",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-08-13",
+      "feature045Status": "AlreadySatisfied",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "AlreadySatisfied",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-09-01",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-09-02",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-09-03",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-09-04",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-09-05",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-09-06",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-09-07",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-09-08",
+      "feature045Status": "AlreadySatisfied",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "AlreadySatisfied",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-09-09",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-09-10",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-09-11",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-09-12",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-09-13",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-09-14",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-09-15",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-09-16",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-09-17",
+      "feature045Status": "AlreadySatisfied",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "AlreadySatisfied",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-10-01",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 3,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-10-02",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 3,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-10-03",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 3,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-10-04",
+      "feature045Status": "AlreadySatisfied",
+      "feature045EvidenceCount": 3,
+      "feature016Status": "AlreadySatisfied",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-10-05",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 3,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-10-06",
+      "feature045Status": "AlreadySatisfied",
+      "feature045EvidenceCount": 3,
+      "feature016Status": "AlreadySatisfied",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-10-07",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 3,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-10-08",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 3,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-10-09",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 3,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-10-10",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 3,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-10-11",
+      "feature045Status": "AlreadySatisfied",
+      "feature045EvidenceCount": 3,
+      "feature016Status": "AlreadySatisfied",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-10-12",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 3,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-10-13",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 3,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-10-14",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 3,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-10-15",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 3,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-10-16",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 3,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-10-17",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 3,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-11-01",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 3,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-11-02",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 3,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-11-03",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 3,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-11-04",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 3,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-11-05",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 3,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-11-06",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 3,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-11-07",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 3,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-11-08",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 3,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-11-09",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 3,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-11-10",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 3,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-11-11",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 3,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-11-12",
+      "feature045Status": "N/A",
+      "feature045EvidenceCount": 3,
+      "feature016Status": "N/A",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-12-01",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-12-02",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-12-03",
+      "feature045Status": "AlreadySatisfied",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "AlreadySatisfied",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-12-04",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-12-05",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-12-06",
+      "feature045Status": "AlreadySatisfied",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "AlreadySatisfied",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-12-07",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-12-08",
+      "feature045Status": "Applicable",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Applicable",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-12-09",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-12-10",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-12-11",
+      "feature045Status": "Open",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "Open",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    },
+    {
+      "controlId": "CL-12-12",
+      "feature045Status": "AlreadySatisfied",
+      "feature045EvidenceCount": 4,
+      "feature016Status": "AlreadySatisfied",
+      "feature046Disposition": "Open",
+      "feature046EvidenceReferenceCount": 0,
+      "qualityDecision": "EvidenceGap",
+      "rationale": "Feature 046 records a generic Open boundary without item-level evidence; Feature 045 does not by itself close that semantic review gap.",
+      "findingIds": [
+        "EQA001"
+      ],
+      "evidencePaths": [
+        "docs/security/secure-development/2026-08-30-rl-se-checklist-self-review/rl-se-self-review.json",
+        "docs/security/secure-development/2026-08-30-gsdb-spec-kit-intensive-review/gsdb-spec-kit-intensive-review.json"
+      ]
+    }
+  ],
+  "summary": {
+    "controlCount": 157,
+    "decisionCounts": {
+      "Contradicted": 0,
+      "Duplicate": 0,
+      "EvidenceGap": 157,
+      "OpenBoundary": 0,
+      "Superseded": 0,
+      "Supported": 0
+    }
+  }
+}

@@ -10,6 +10,7 @@
     "expectedSeriesTargetCount": 10,
     "expectedActiveCount": 0,
     "expectedArchiveCount": 38,
+    "expectedStandaloneArchiveCount": 1,
     "mappings": [
       {
         "position": 1,
