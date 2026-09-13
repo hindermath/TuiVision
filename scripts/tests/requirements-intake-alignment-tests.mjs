@@ -38,8 +38,10 @@ function activeFixture(name) {
   const target = path.join(temp, name);
   fs.mkdirSync(target, {recursive: true});
   const source = path.join(root, "requirements/intakes/active");
-  for (const entry of fs.readdirSync(source).filter((value) => value.endsWith(".md"))) {
-    fs.copyFileSync(path.join(source, entry), path.join(target, entry));
+  if (fs.existsSync(source)) {
+    for (const entry of fs.readdirSync(source).filter((value) => value.endsWith(".md"))) {
+      fs.copyFileSync(path.join(source, entry), path.join(target, entry));
+    }
   }
   return target;
 }

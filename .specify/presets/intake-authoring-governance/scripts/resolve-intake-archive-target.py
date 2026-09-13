@@ -39,7 +39,14 @@ def resolve_target(receipt_path: Path, repo: Path, source_index: int | None = No
         fail("RIG018", "historical receipt has an incompatible series binding")
     expected = reference.get("normalizedSha256")
     matches = []
-    for target in manifest["orderedTargets"]:
+    if standalone:
+        candidates = (
+            {"path": str(path.relative_to(repo)), "status": "Completed", "normalizedSha256": expected}
+            for path in archive.rglob("*") if path.is_file()
+        )
+    else:
+        candidates = iter(manifest["orderedTargets"])
+    for target in candidates:
         candidate = (repo / target["path"]).resolve()
         # DE: Name und Hash verhindern, dass ein fremdes Archivdokument als Nachfolger gilt.
         # EN: Name and hash prevent an unrelated archive document from becoming a successor.

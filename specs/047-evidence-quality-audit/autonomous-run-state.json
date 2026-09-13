@@ -5,12 +5,12 @@
   "branch": "047-evidence-quality-audit",
   "deliveryMode": "MergeAndSync",
   "authorityRevalidationRequired": false,
-  "stage": "Publish",
-  "status": "Active",
-  "checkpointCommit": "a072c705fb5dfbb7710c206f4b5f7de6d02619d6",
+  "stage": "Retrospective",
+  "status": "Completed",
+  "checkpointCommit": "18f3387a3c9edbf9a3f133e5ffd3b3dca0c13e84",
   "acceptedArtifacts": [
     {
-      "path": "requirements/intakes/active/Lastenheft_24_Evidence-Quality-Audit-Features-044-046.md",
+      "path": "requirements/intakes/archive/Lastenheft_24_Evidence-Quality-Audit-Features-044-046.047-evidence-quality-audit.md",
       "sha256": "8b2d8b48e4b229afcbc78914610dfcff3badeea41f7e88a5ec686d7626ac29ea"
     },
     {
@@ -27,7 +27,7 @@
     },
     {
       "path": "specs/047-evidence-quality-audit/tasks.md",
-      "sha256": "a23621a99a59cc44ebadfbb59c87278725645e1f9e232b0ccc5a44373352056d"
+      "sha256": "0c2a55afc926d9ef7f2b734e7cdf29d3f4ec4e6e38134e50002422e037ab13f1"
     },
     {
       "path": "docs/security/secure-development/2026-09-13-evidence-quality-audit/finding-register.json",
@@ -39,7 +39,7 @@
     },
     {
       "path": "specs/047-evidence-quality-audit/pr-evidence.md",
-      "sha256": "b8066e50bdd4ab3652522f9a82a584dda5a8b72f9c6d21a818d5f50ca4ba6637"
+      "sha256": "e243058249904abd1a0dee902cb5953c226a43bd21ba99ebf4b5f5d71f31f311"
     },
     {
       "path": "specs/047-evidence-quality-audit/autonomous-gate-requirements.json",
@@ -47,20 +47,20 @@
     },
     {
       "path": "specs/047-evidence-quality-audit/retrospective.md",
-      "sha256": "0d1bb9f4dec02bb28fce5822bf09ab7d0c385d9cf18153ed0380cb0a11cac00b"
+      "sha256": "955d6aa3e17f8e5f28f9a8a63398e0bee579534226e3e09a1d960a97c21b58cc"
     }
   ],
   "tasks": {
     "path": "specs/047-evidence-quality-audit/tasks.md",
-    "sha256": "a23621a99a59cc44ebadfbb59c87278725645e1f9e232b0ccc5a44373352056d",
-    "completed": 53,
+    "sha256": "0c2a55afc926d9ef7f2b734e7cdf29d3f4ec4e6e38134e50002422e037ab13f1",
+    "completed": 58,
     "total": 58
   },
-  "lastPassingGate": "The first independent exact-head review returned actionable lifecycle, test, whitespace, wrapper, and evidence consistency findings; remediation is implemented and awaiting exact-head revalidation.",
+  "lastPassingGate": "Exact head df49962 passed every mandatory technical check, independent Antigravity review, zero-thread convergence, and provider-neutral PreMerge gate validation before the authorized narrow bypass and merge.",
   "lastOperation": {
-    "kind": "Validation",
+    "kind": "MergeAndSync",
     "state": "Completed",
-    "summary": "Independent review findings were remediated without changing product or audited Feature-044/045/046 artifacts."
+    "summary": "PR 180 merged as 18f3387; the feature branch was deleted and local main synchronized before this causal closeout."
   },
   "stop": {
     "reason": "N/A",
@@ -68,11 +68,11 @@
     "safeBoundary": "N/A"
   },
   "closeout": {
-    "mergeOrPublication": "N/A",
-    "defaultBranchSync": "N/A",
-    "postMergeActions": "N/A",
+    "mergeOrPublication": "Completed",
+    "defaultBranchSync": "Completed",
+    "postMergeActions": "Completed",
     "finalValidation": "Completed"
   },
-  "nextExactAction": "Validate and commit the independent-review remediation, then rerun exact-head checks and independent review",
-  "updatedAt": "2026-09-13T15:25:00Z"
+  "nextExactAction": "N/A",
+  "updatedAt": "2026-09-13T15:48:57Z"
 }
