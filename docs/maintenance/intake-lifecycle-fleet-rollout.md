@@ -64,3 +64,5 @@ preset-source metadata, not consumer jobs; consumer PR gates use root workflows.
 Documentation Impact remains UpdateRequired. Re-evaluation includes portability,
 physical path aliases, source/hash bindings and local overlays. Project lifecycle
 inventory findings remain separate from successful package/regression checks.
+
+RL-SE-Revalidierung / RL-SE revalidation: Die sieben rolloutbedingt geaenderten Quellenbindungen (EVD-001, EVD-002, EVD-008, EVD-009, EVD-010, EVD-015, EVD-017) und drei installierten Preset-Identitaeten wurden neu geprueft. Die CI hatte ihre alten Hashes als RLSE007 erkannt. Kontrollbewertungen, Human-only-Grenzen und historische Receipts bleiben erhalten. / Seven changed source bindings and three installed preset identities were revalidated after CI detected stale RLSE007 hashes; control assessments, human-only boundaries and historical receipts are preserved.
