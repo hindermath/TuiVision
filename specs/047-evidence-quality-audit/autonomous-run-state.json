@@ -7,7 +7,7 @@
   "authorityRevalidationRequired": false,
   "stage": "Publish",
   "status": "Active",
-  "checkpointCommit": "3b0d936e2204ba2aa8a4ee7ed99ce7070e62aa2a",
+  "checkpointCommit": "473886e4b31a0b8273862e6dca67d2640d18a40b",
   "acceptedArtifacts": [
     {
       "path": "requirements/intakes/active/Lastenheft_24_Evidence-Quality-Audit-Features-044-046.md",
@@ -52,7 +52,7 @@
     "completed": 52,
     "total": 58
   },
-  "lastPassingGate": "Local acceptance passed for 12 sandbox controls, 157 crosswalk rows, 988 mechanical references, 50 semantic references, ten findings, seven validator tests, DocFX, Axe, format, source hashes, scope, and both intake validators.",
+  "lastPassingGate": "Local acceptance passed for 12 sandbox controls, 157 crosswalk rows, 988 mechanical references, 50 semantic references, ten findings, seven validator tests, DocFX, Axe, format, source hashes, scope, both intake validators, and a current generated statistics snapshot at the first feature commit.",
   "lastOperation": {
     "kind": "Retrospective",
     "state": "Completed",
@@ -70,5 +70,5 @@
     "finalValidation": "Completed"
   },
   "nextExactAction": "Commit and push the non-empty Feature 047 delivery",
-  "updatedAt": "2026-09-13T14:36:00Z"
+  "updatedAt": "2026-09-13T14:45:00Z"
 }
