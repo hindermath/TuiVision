@@ -82,6 +82,10 @@ function awaitDigest(value) {
 
 if (validate({root}).length !== 0) throw new Error("positive fixture failed");
 
+expectSuccess("completed series without physical active directory", {
+  activePath: path.join(temp, "absent-active-collection"),
+});
+
 const pending = pendingIntakeFixture("valid-pending");
 expectSuccess("valid authored pending intake", pending);
 
@@ -372,6 +376,6 @@ for (const outputPath of [
 }
 
 fs.rmSync(temp, {recursive: true, force: true});
-console.log("requirements/intake positive fixtures PASS (3 cases)");
+console.log("requirements/intake positive fixtures PASS (4 cases)");
 console.log("requirements/intake negative fixtures PASS (18 cases)");
 console.log("TuiVision exact linked-intake fixtures PASS (10 mappings, 6 edges, 1 latest completion, 1 backlog)");

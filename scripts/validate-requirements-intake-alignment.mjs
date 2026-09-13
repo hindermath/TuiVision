@@ -57,7 +57,9 @@ export function validate(options = {}) {
 
   const activeRoot = resolve(activePath);
   const archiveRoot = path.join(root, "requirements/intakes/archive");
-  const active = fs.readdirSync(activeRoot).filter((name) => name.endsWith(".md")).sort();
+  const active = fs.existsSync(activeRoot)
+    ? fs.readdirSync(activeRoot).filter((name) => name.endsWith(".md")).sort()
+    : [];
   const archived = fs.readdirSync(archiveRoot).filter((name) => name.endsWith(".md")).sort();
   const rootLastenhefte = fs.readdirSync(root).filter((name) => /^Lastenheft.*\.md$/.test(name));
   if (archived.length !== seriesMapping.expectedArchiveCount) {
