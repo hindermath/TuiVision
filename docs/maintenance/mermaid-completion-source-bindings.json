@@ -1,0 +1,16 @@
+[
+  {
+    "repository": "hindermath/TuiVision",
+    "before": "dcd072f68b2489f0cc2abc82477c08693640cb08229bcfc2712220af6ebcc5f3",
+    "after": "f847cd662f9a345598ce2306d870800d903538cf7522e397e1ad134a33398ee3",
+    "basis": "Append-only Mermaid/report governance and declared constitution minor version; prior controls preserved",
+    "path": ".specify/memory/constitution.md"
+  },
+  {
+    "repository": "hindermath/TuiVision",
+    "before": "9fe434705177655befd32c7c9785c65b1b4259c0bff62d226e08c5880ac93224",
+    "after": "c7492785104f08cc5534e7f5cce84882c61ea462177c0ac3d98ef8eed0b7dd5a",
+    "basis": "Append-only Mermaid/report governance and declared constitution minor version; prior controls preserved",
+    "path": "constitution.md"
+  }
+]

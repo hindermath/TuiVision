@@ -150,3 +150,11 @@ historischen Feature-Verzeichnis der Level-0-Quelle ab.
 `scripts/tests/documentation-impact/fixtures/`. The canonical maintenance
 package includes this path, so copied test runners remain executable without
 depending on a historical Level-0 feature directory.*
+
+<!-- BEGIN spec-kit-diagrams-completion -->
+## Diagramme und Ergebnisberichte / Diagrams and outcome reports
+
+[Mermaid- und Abschlussbericht-Regeln](spec-kit-diagrams-and-completion-reports.md)
+führen vom neuen Lastenheft zum belegten Feature-Ergebnisbericht. / The linked
+rules explain accessible intake diagrams and evidence-based feature reports.
+<!-- END spec-kit-diagrams-completion -->
