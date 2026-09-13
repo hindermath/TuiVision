@@ -945,7 +945,7 @@ workspace family consists of:
 | `autonomous-run-governance` | `v0.4.4` | `70` | permission-bounded, evidence-first governance with optional intake gate and resumable, validated closeout |
 | `parallel-autonomous-run-governance` | `v0.2.6` | `80` | isolated bounded campaigns, optional schema-1.2 intake gate, cooperative stop/resume, provider-gated resumable consolidation, and declared post-merge closeout |
 
-TuiVision additionally activates optional `intake-review-governance` v0.2.1
+TuiVision additionally activates optional `intake-review-governance` v0.2.2
 at priority `65`. Before feature creation, the current intake must have a
 hash-matching `Ready` result or a human-owned `ReadyWithAcceptedRisks` result.
 Review and status are read-only; repair requires explicit mutation authority.

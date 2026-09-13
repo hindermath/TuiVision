@@ -38,7 +38,7 @@ separate, current rename authority is present.
 
 Use `DirectoryStrict` when the active directory contains only active intakes.
 Use `SeriesManifest` for an established flat or mixed layout whose
-hash-validated Series manifest is the authoritative active inventory. Neither
+hash-validated Series manifest defines series membership separately from physical active inventory. Neither
 mode permits manually maintained counts as evidence.
 
 ## Quality Gates

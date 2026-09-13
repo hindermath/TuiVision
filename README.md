@@ -153,9 +153,11 @@ Standard-Preset-Set:
 - `autonomous-run-governance` v0.4.2, Priority 70
 - `parallel-autonomous-run-governance` v0.2.6, Priority 80
 
-TuiVision aktiviert zusätzlich `intake-review-governance` v0.2.1 mit Priority
+TuiVision aktiviert zusätzlich `intake-review-governance` v0.2.2 mit Priority
 65. Das Preset bleibt außerhalb der Standard-Achtermatrix und bindet den
 nächsten Intake vor der Feature-Erstellung an ein aktuelles Review-Ergebnis.
+Der [Intake-Lifecycle-Rollout](docs/maintenance/intake-lifecycle-preset-rollout.md)
+dokumentiert Authoring 0.3.2, Review 0.2.2 und Sequencing 0.2.4 mit Pruefnachweisen.
 
 Die ursprünglichen sechs Presets sind seit 2026-05-04 im `github/spec-kit`
 Community-Katalog enthalten; `autonomous-run-governance` v0.2.2 wurde dort am

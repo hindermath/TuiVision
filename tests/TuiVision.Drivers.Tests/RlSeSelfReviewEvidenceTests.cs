@@ -21,8 +21,8 @@ public sealed class RlSeSelfReviewEvidenceTests
     [
         "security-governance@0.6.2", "architecture-governance@0.5.2", "isaqb-architecture-governance@0.2.2",
         "a11y-governance@0.4.3", "cross-platform-governance@0.2.2", "agent-parity-governance@0.4.2",
-        "model-routing-governance@0.1.4", "intake-authoring-governance@0.3.1", "intake-review-governance@0.2.1",
-        "intake-sequencing-governance@0.2.3", "autonomous-run-governance@0.4.4",
+        "model-routing-governance@0.1.4", "intake-authoring-governance@0.3.2", "intake-review-governance@0.2.2",
+        "intake-sequencing-governance@0.2.4", "autonomous-run-governance@0.4.4",
         "parallel-autonomous-run-governance@0.2.6"
     ];
 

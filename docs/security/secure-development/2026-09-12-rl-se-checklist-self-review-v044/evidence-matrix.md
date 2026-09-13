@@ -300,3 +300,24 @@ Technische Ausnahme vom reinen Index: [zwei dokumentierte
 Neubindungsschritte](../../../maintenance/assurance-technical-rebinding.md);
 alle fachlichen Bewertungen bleiben unverändert. / Technical exception: two
 documented rebinding steps; every domain assessment remains unchanged.
+
+## Intake lifecycle revalidation, 2026-09-13 / Intake-Lifecycle-Revalidierung
+
+DE: Der autorisierte Rollout von Authoring 0.3.2, Review 0.2.2 und Sequencing
+0.2.4 aktualisiert die Versions- und Hashbindungen der drei Presets sowie der
+Registry, Constitution und Agent-Guidance. Die jeweiligen Aussagen wurden
+gegen den Rollout-Diff erneut geprueft: schreibfreie Validatoren, eindeutige
+Archivzuordnung und explizite Ausfuehrungsautoritaet bleiben verbindlich.
+Dies ist eine technische Revalidierung; die 157 Kontrolldispositionen und
+menschlichen Abnahmegrenzen bleiben bestehen. Die urspruengliche Beobachtung
+bleibt im Git-Verlauf und im `reviewSnapshot` nachvollziehbar. Aktuelle Evidence:
+`../../../maintenance/intake-lifecycle-preset-rollout.md`.
+
+EN: The authorized rollout of Authoring 0.3.2, Review 0.2.2 and Sequencing 0.2.4
+refreshes the three preset versions/hashes and registry, constitution and agent
+guidance bindings. Their claims were rechecked against the rollout diff:
+read-only validation, unique archive resolution and explicit execution authority
+remain binding. This is technical revalidation; the 157 control dispositions and
+human acceptance boundaries remain. Git history and `reviewSnapshot` retain the
+original observation. Current evidence:
+`../../../maintenance/intake-lifecycle-preset-rollout.md`.

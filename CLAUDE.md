@@ -654,7 +654,7 @@ For GitLab repositories, use the authenticated `glab` CLI first for equivalent a
 ## Spec-Kit-Preset-Pflege / Spec Kit Preset Maintenance
 
 - Standard-Preset-Set: `security-governance` v0.6.2 prio 10, `architecture-governance` v0.5.2 prio 20, `isaqb-architecture-governance` v0.2.2 prio 30, `a11y-governance` v0.4.3 prio 40, `cross-platform-governance` v0.2.2 prio 50, `agent-parity-governance` v0.4.2 prio 60, `autonomous-run-governance` v0.4.4 prio 70, `parallel-autonomous-run-governance` v0.2.6 prio 80.
-- Optionales Projektprofil: `intake-review-governance` v0.2.1 prio 65 ist in TuiVision aktiv. Es bindet den naechsten Intake vor Feature-Erstellung an ein aktuelles `Ready`- oder menschlich akzeptiertes `ReadyWithAcceptedRisks`-Ergebnis; Review und Status bleiben read-only, Repair benoetigt ausdrueckliche Aenderungsautoritaet. *Optional project profile: `intake-review-governance` v0.2.1 at priority 65 is active in TuiVision and hash-binds the next intake before feature creation.*
+- Optionales Projektprofil: `intake-review-governance` v0.2.2 prio 65 ist in TuiVision aktiv. Es bindet den naechsten Intake vor Feature-Erstellung an ein aktuelles `Ready`- oder menschlich akzeptiertes `ReadyWithAcceptedRisks`-Ergebnis; Review und Status bleiben read-only, Repair benoetigt ausdrueckliche Aenderungsautoritaet. *Optional project profile: `intake-review-governance` v0.2.2 at priority 65 is active in TuiVision and hash-binds the next intake before feature creation.*
 - `autonomous-run-governance` v0.4.4 prio 70 ist Teil der Standard-Achtermatrix. Ein vollständiger autonomer Lauf bleibt ausdrücklich delegationspflichtig; die Installation allein erteilt weder Ausführungsberechtigung noch Remote-, Merge-, Bypass- oder Provider-Rechte und `LocalImplementation` bleibt Default. Dokumentations-, Status-, Schema- oder Evidence-Änderungen gelten erst dann als testfrei, wenn keine ausführbaren Validatoren die geänderten Pfade, Marker, Schemas oder Zustandswerte konsumieren. Vor autorisierten Commits wird der exakt beabsichtigte Kandidat mit dem Delivery-Set-Validator im Staged-Modus einschließlich exakter Pfad- und Index-Hash-Bindung geprüft; fremde Änderungen bleiben unberührt. Vor einem Merge wird jeder Acceptance-Gate dem tatsächlich ausgeführten Workflow, Job, Runner beziehungsweise der Plattform und dem Befehl zugeordnet; grüne Namen oder ein Bypass ersetzen keinen technischen Nachweis. Bewusst pausierte Läufe werden als `PausedByUser` gespeichert und nur über `speckit.autonomous-resume` fortgesetzt; `speckit.autonomous-stop` wirkt kooperativ am nächsten sicheren Grenzpunkt, und ein gespeicherter Delivery-Modus ist keine aktuelle Berechtigung. Nach Preset- oder Governance-Drift werden neue zwingende Korrektheits-, Sicherheits-, Berechtigungs- und Evidenzregeln minimal mit akzeptierten Plan-, Task- und Checklist-Artefakten abgeglichen; reine Effizienzpräferenzen lösen keine rückwirkende Neugenerierung aus. Die lesbare Skill-Überschrift `Deliver` ist kein Run-State-Wert; für Remote-Closeout gelten ausschließlich `Publish`, `Review` oder `MergeAndSync`. Bei aktiver Intake-Policy prueft der Preflight das aktuelle hashgebundene Ergebnis vor der Feature-Erstellung; Resume prueft es nach Drift erneut.
 - `parallel-autonomous-run-governance` v0.2.6 prio 80 ist Teil der Standard-Achtermatrix. Die Installation startet keine Kampagne und erteilt keine zusaetzlichen Remote-, Merge-, Bypass-, Abbruch-, Secret- oder Provider-Rechte. Kampagnen bleiben ausdruecklich delegationspflichtig, verwenden getrennte Worktrees und maximal drei gleichzeitig aktive Worker. Schema 1.1 erlaubt ein `runnerProfile` je Worker mit Kampagnen-Fallback; Modell und Reasoning-Stufe sind optionale, nicht geheime Metadaten und werden ohne Deklaration nicht erraten. Konsolidierung verlangt exakten Head, aktuelle Review- und Check-Evidenz, ist nach Teilmerges fortsetzbar und setzt `Completed` erst nach Synchronisation, manifestdeklarierten idempotenten Post-Merge-Aktionen und Abschlussvalidierung. Schema 1.2 kann vor Worktree-Erstellung einen aktuellen Campaign-Review mit eindeutiger Intake-, Worker-, DAG- und Exception-Coverage verlangen; Resume prueft den Ergebnis-Hash erneut.
 - `a11y-governance` v0.4.3 ergänzt didaktische Inline-Code-Kommentar-Governance für neue oder geaenderte nicht-triviale Logik.
@@ -751,3 +751,19 @@ and older profiles. Status is read-only; review requires an explicit context
 and authority. No automatic GSDB/C5 assessment or approval. The published
 standalone GitHub repository is the only product source. See the integration
 record above for usage, provenance, evidence gaps and boundaries.*
+
+## Intake lifecycle preset rollout / Intake-Lifecycle-Preset-Rollout
+
+DE: TuiVision verwendet Authoring 0.3.2 (Prioritaet 64), Review 0.2.2 (65)
+und Sequencing 0.2.4 (66). Abgeschlossene Serienmitglieder bleiben im Archiv;
+die abgeschlossene Lieferreihe hat keine ausfuehrbaren Ziele. Historische
+Receipts bleiben unveraendert und benoetigen einen eindeutigen Archivnachweis.
+Die projektspezifische Requirements-Pruefung bleibt zusaetzlich verbindlich.
+Release- und Pruefnachweise: `docs/maintenance/intake-lifecycle-preset-rollout.md`.
+
+EN: TuiVision uses Authoring 0.3.2 (priority 64), Review 0.2.2 (65), and
+Sequencing 0.2.4 (66). Completed members remain archived; the completed delivery
+series has no executable targets. Historical receipts remain unchanged and need
+unique archive evidence. Project-specific requirements validation remains
+mandatory. Release and validation evidence:
+`docs/maintenance/intake-lifecycle-preset-rollout.md`.

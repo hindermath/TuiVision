@@ -102,7 +102,7 @@ try {
     Write-HBText $Target (New-HBIntake $TargetRelative)
     $Receipt = [ordered]@{
         schemaVersion = '2.0'; documentType = 'IntakeReceipt'; receiptId = $ReceiptId; intakeId = $IntakeId
-        generator = [ordered]@{ preset = 'intake-authoring-governance'; version = '0.3.1' }
+        generator = [ordered]@{ preset = 'intake-authoring-governance'; version = '0.3.2' }
         createdAt = [DateTimeOffset]::UtcNow.ToString('yyyy-MM-ddTHH:mm:ssZ')
         operation = [ordered]@{ operationId = $OperationId; type = 'Create'; authorityEvidence = 'Explicit fixture create' }
         status = 'ReadyForReview'
@@ -130,6 +130,86 @@ try {
     }
     Write-HBText $ReceiptPath ($Receipt | ConvertTo-Json -Depth 30)
     Invoke-HBPair Receipt $ReceiptPath $Root 0 'schema 2 URL receipt'
+    $ArchiveRelative = 'requirements/archive/url-source.001-completed.md'
+    $ConfigPath = Join-Path $Root 'requirements/intake-governance-config.json'
+    $ManifestPath = Join-Path $Root 'requirements/series.json'
+    $Config = @{
+        schemaVersion = '2.0'; documentationLanguage = 'en'; inventoryMode = 'SeriesManifest'
+        artifactNaming = @{ profile = 'explicit'; canonicalIndex = 'RequirementsIndex.md'; intakePattern = '<slug>.md'; orderView = 'RequirementsIntakeOrder.md' }
+        roles = @{ 'requirements-index' = 'RequirementsIndex.md'; 'requirements-intake' = 'intakes'; 'intake-order' = 'RequirementsIntakeOrder.md'; 'requirements-baseline' = 'requirements/baseline' }
+        collections = @{ active = 'intakes'; archive = 'requirements/archive'; baseline = 'requirements/baseline'; backlog = 'requirements/backlog'; history = 'requirements/history'; seriesManifest = 'requirements/series.json' }
+        legacyArtifactNames = @()
+    }
+    Write-HBText (Join-Path $Root 'RequirementsIndex.md') '# Index'
+    Write-HBText (Join-Path $Root 'RequirementsIntakeOrder.md') '# Order'
+    New-Item -ItemType Directory -Path (Join-Path $Root 'requirements/baseline') -Force | Out-Null
+    Write-HBText $ConfigPath ($Config | ConvertTo-Json -Depth 20)
+    # DE: Erst normalisieren, damit ein Windows-Checkout kein CRCRLF erzeugt.
+    # EN: Normalize first so a Windows checkout cannot produce CRCRLF.
+    Write-HBText (Join-Path $Root $ArchiveRelative) ([IO.File]::ReadAllText($Target).Replace("`r`n", "`n").Replace("`r", "`n").Replace("`n", "`r`n"))
+    if ((Get-HBHash (Join-Path $Root $ArchiveRelative)) -ne $Receipt.target.normalizedSha256) { throw 'Archive fixture changed normalized content' }
+    Remove-Item -LiteralPath $Target
+    $Manifest = @{
+        status = 'Completed'; seriesId = [guid]::NewGuid().ToString()
+        orderedTargets = @(@{ path = $ArchiveRelative; normalizedSha256 = $Receipt.target.normalizedSha256; status = 'Completed' })
+        roots = @($ArchiveRelative); dependencies = @()
+    }
+    Write-HBText $ManifestPath ($Manifest | ConvertTo-Json -Depth 20)
+    $ReceiptBefore = Get-FileHash -LiteralPath $ReceiptPath
+    Invoke-HBPair Receipt $ReceiptPath $Root 0 'historical standalone receipt / CRLF archive'
+    if ($ReceiptBefore.Hash -cne (Get-FileHash -LiteralPath $ReceiptPath).Hash) { throw 'Historical receipt was modified' }
+    $OriginalSource = $Receipt.sources[0]
+    $SourceArchiveRelative = 'requirements/archive/source.001-completed.md'
+    Write-HBText (Join-Path $Root $SourceArchiveRelative) "# Source`n"
+    $RepositorySource = [ordered]@{}
+    foreach ($Key in $OriginalSource.Keys) { $RepositorySource[$Key] = $OriginalSource[$Key] }
+    $RepositorySource.kind = 'File'; $RepositorySource.location = 'Repository'; $RepositorySource.path = 'intakes/source.md'
+    foreach ($Key in @('requestedUrl','finalUrl','retrievedAt','httpStatus','contentType','contentLength','rawSha256')) { $RepositorySource[$Key] = 'N/A' }
+    $RepositorySource.proofBoundary = 'SnapshotOnly'
+    $RepositorySource.normalizedSha256 = Get-HBHash (Join-Path $Root $SourceArchiveRelative)
+    $Receipt.sources = @($RepositorySource)
+    $Manifest.orderedTargets += @{ path = $SourceArchiveRelative; status = 'Completed'; normalizedSha256 = $RepositorySource.normalizedSha256 }
+    Write-HBText $ManifestPath ($Manifest | ConvertTo-Json -Depth 20)
+    Write-HBText $ReceiptPath ($Receipt | ConvertTo-Json -Depth 30)
+    Invoke-HBPair Receipt $ReceiptPath $Root 0 'archived repository source'
+    $Receipt.sources[0].normalizedSha256 = '0' * 64
+    Write-HBText $ReceiptPath ($Receipt | ConvertTo-Json -Depth 30)
+    Invoke-HBPair Receipt $ReceiptPath $Root 2 'archived source hash mismatch'
+    $Receipt.sources = @($OriginalSource)
+    $Manifest.orderedTargets = @($Manifest.orderedTargets[0])
+    Write-HBText $ManifestPath ($Manifest | ConvertTo-Json -Depth 20)
+    Write-HBText $ReceiptPath ($Receipt | ConvertTo-Json -Depth 30)
+    $Receipt.series.seriesId = [guid]::NewGuid().ToString()
+    $Receipt.series.manifestPath = 'requirements/series.json'
+    $Receipt.series.order = 1
+    $Receipt.series.role = 'Primary'
+    Write-HBText $ReceiptPath ($Receipt | ConvertTo-Json -Depth 30)
+    Invoke-HBPair Receipt $ReceiptPath $Root 2 'foreign series binding'
+    $Receipt.series.seriesId = $Manifest.seriesId
+    Write-HBText $ReceiptPath ($Receipt | ConvertTo-Json -Depth 30)
+    Invoke-HBPair Receipt $ReceiptPath $Root 0 'matching series binding'
+    $Receipt.series.seriesId = 'N/A'; $Receipt.series.manifestPath = 'N/A'; $Receipt.series.order = 'N/A'; $Receipt.series.role = 'N/A'
+    Write-HBText $ReceiptPath ($Receipt | ConvertTo-Json -Depth 30)
+    $DuplicateRelative = 'requirements/archive/url-source.002-completed.md'
+    Copy-Item -LiteralPath (Join-Path $Root $ArchiveRelative) -Destination (Join-Path $Root $DuplicateRelative)
+    $Manifest.orderedTargets += @{ path = $DuplicateRelative; normalizedSha256 = $Receipt.target.normalizedSha256; status = 'Completed' }
+    Write-HBText $ManifestPath ($Manifest | ConvertTo-Json -Depth 20)
+    Invoke-HBPair Receipt $ReceiptPath $Root 2 'ambiguous archive successors'
+    $Manifest.orderedTargets = @($Manifest.orderedTargets[0])
+    Write-HBText $ManifestPath ($Manifest | ConvertTo-Json -Depth 20)
+    Write-HBText (Join-Path $Root $ArchiveRelative) '# Drift'
+    Invoke-HBPair Receipt $ReceiptPath $Root 2 'archive hash drift'
+    Remove-Item -LiteralPath (Join-Path $Root $ArchiveRelative)
+    Invoke-HBPair Receipt $ReceiptPath $Root 2 'missing archive successor'
+    Move-Item -LiteralPath (Join-Path $Root $DuplicateRelative) -Destination (Join-Path $Root $ArchiveRelative)
+    $Receipt.target.path = 'intakes/unrelated.md'
+    Write-HBText $ReceiptPath ($Receipt | ConvertTo-Json -Depth 30)
+    Invoke-HBPair Receipt $ReceiptPath $Root 2 'unrelated archive name'
+    $Receipt.target.path = $TargetRelative
+    Write-HBText $ReceiptPath ($Receipt | ConvertTo-Json -Depth 30)
+    Move-Item -LiteralPath (Join-Path $Root $ArchiveRelative) -Destination $Target
+    Remove-Item -LiteralPath $ConfigPath
+    Remove-Item -LiteralPath $ManifestPath
     $Receipt.sources[0].requestedUrl = 'https://127.0.0.1/private'
     Write-HBText $ReceiptPath ($Receipt | ConvertTo-Json -Depth 30)
     Invoke-HBPair Receipt $ReceiptPath $Root 2 'private URL rejection'

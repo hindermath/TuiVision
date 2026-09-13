@@ -1,4 +1,4 @@
-.TH VALIDATE-INTAKE-GOVERNANCE-CONFIG 1 "2026-07-28" "0.3.1"
+.TH VALIDATE-INTAKE-GOVERNANCE-CONFIG 1 "2026-09-13" "0.3.2"
 .SH NAME
 validate-intake-governance-config \- validate language-aware requirements governance
 .SH SYNOPSIS
@@ -17,12 +17,12 @@ repository.
 .SH OUTCOMES
 Configured collections report Aligned, MigrationRequired, NeedsClarification,
 or Blocked. Eligibility is an ordering result and grants no delivery authority.
-A completed non-empty series is Aligned only when every retained target is
-Completed, stored in the configured archive collection, and no target is
-Eligible. SeriesManifest permits an active series to reference active targets
-and already archived predecessors together. Because Git does not preserve empty
-directories, an absent active collection is counted as empty in SeriesManifest
-mode; DirectoryStrict still requires the configured directory.
 .SH EXIT STATUS
 Zero means Aligned or a valid journal. One means migration or clarification is
 required. Two means blocked or invalid input.
+.SH LIFECYCLE
+Completed members must be archived. Non-completed members must be active.
+Completed series retain their archived members with no eligible candidate.
+SeriesManifest accepts an absent empty active directory; DirectoryStrict does not.
+activeIntakeCount counts physical matching active files; activeSeriesTargetCount
+counts active series members. RIG017 reports lifecycle mismatches, without writes.

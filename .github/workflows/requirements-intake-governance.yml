@@ -9,6 +9,8 @@ on:
       - "specs/intake-authoring-receipts/**"
       - "specs/requirements-reconciliation-20260726/**"
       - ".specify/intake-*.json"
+      - ".specify/presets/intake-*/**"
+      - ".specify/presets/.registry"
       - "scripts/*requirements-intake*"
       - "scripts/tests/requirements-intake-alignment-tests.mjs"
       - ".github/workflows/requirements-intake-governance.yml"
@@ -28,6 +30,8 @@ on:
       - "specs/intake-authoring-receipts/**"
       - "specs/requirements-reconciliation-20260726/**"
       - ".specify/intake-*.json"
+      - ".specify/presets/intake-*/**"
+      - ".specify/presets/.registry"
       - "scripts/*requirements-intake*"
       - "scripts/tests/requirements-intake-alignment-tests.mjs"
       - ".github/workflows/requirements-intake-governance.yml"
@@ -43,10 +47,55 @@ jobs:
         os: [ubuntu-latest, macos-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c # v6
+        with:
+          python-version: '3.12'
       - name: Validate requirements and intake alignment
         shell: pwsh
         run: ./scripts/validate-requirements-intake-alignment.ps1
       - name: Run negative fixtures
         shell: pwsh
         run: node scripts/tests/requirements-intake-alignment-tests.mjs
+      - name: Validate installed lifecycle presets and immutable receipts in both shells
+        shell: pwsh
+        run: |
+          Set-StrictMode -Version Latest
+          $ErrorActionPreference = 'Stop'
+          $Repo = (Get-Location).Path
+          $Before = (git status --porcelain --untracked-files=all) -join "`n"
+          $Diff = (git diff HEAD --binary) -join "`n"
+          $Reference = $null
+          foreach ($Name in @('authoring','review','sequencing')) {
+              $Prefix = ".specify/presets/intake-${Name}-governance/scripts/validate-intake-governance-config"
+              $Bash = & bash "${Prefix}.sh" --config requirements/intake-governance-config.json --repo $Repo --json
+              if ($LASTEXITCODE -ne 0) { throw "${Name}: Bash failed" }
+              $Ps = & pwsh -NoProfile -File "${Prefix}.ps1" -Config requirements/intake-governance-config.json -Repo $Repo -Json
+              if ($LASTEXITCODE -ne 0 -or $Bash -cne $Ps) { throw "${Name}: shell parity failed" }
+              if ($null -ne $Reference -and $Reference -cne $Bash) { throw 'Preset JSON differs' }
+              $Reference = $Bash
+          }
+          $Inventory = ($Reference | ConvertFrom-Json).inventory
+          if ($Inventory.activeIntakeCount -ne 0 -or $Inventory.activeSeriesTargetCount -ne 0 -or $Inventory.seriesTargetCount -ne 10 -or $Inventory.eligibleCandidate -ne 'N/A') { throw 'Unexpected lifecycle inventory' }
+          foreach ($Kind in @('manifest','receipt')) {
+              $Prefix = ".specify/presets/intake-sequencing-governance/scripts/validate-intake-series-${Kind}"
+              $File = "requirements/intakes/series/tui-vision-delivery/${Kind}.json"
+              $Bash = & bash "${Prefix}.sh" --file $File --repo $Repo --json
+              if ($LASTEXITCODE -ne 0) { throw "Series ${Kind}: Bash failed" }
+              $Ps = & pwsh -NoProfile -File "${Prefix}.ps1" -File $File -Repo $Repo -Json
+              if ($LASTEXITCODE -ne 0 -or $Bash -cne $Ps) { throw "Series ${Kind}: parity failed" }
+              Write-Output $Bash
+          }
+          $Manifest = Get-Content requirements/intakes/series/tui-vision-delivery/manifest.json -Raw | ConvertFrom-Json
+          if (@($Manifest.orderedTargets | Where-Object { $_.status -ne 'Completed' -or $_.path -notlike 'requirements/intakes/archive/*' }).Count) { throw 'Unexpected member location/status' }
+          $Receipts = @(Get-ChildItem specs/intake-authoring-receipts -Filter *.json)
+          if ($Receipts.Count -ne 10) { throw 'Unexpected receipt inventory' }
+          foreach ($Receipt in $Receipts) {
+              $Prefix = '.specify/presets/intake-authoring-governance/scripts/validate-intake-authoring-receipt'
+              $Bash = & bash "${Prefix}.sh" --receipt $Receipt.FullName --repo $Repo
+              if ($LASTEXITCODE -ne 0) { throw "Bash receipt failed: $($Receipt.Name)" }
+              $Ps = & pwsh -NoProfile -File "${Prefix}.ps1" -Receipt $Receipt.FullName -Repo $Repo
+              if ($LASTEXITCODE -ne 0 -or $Bash -cne $Ps) { throw "Receipt parity failed: $($Receipt.Name)" }
+          }
+          if ($Before -cne ((git status --porcelain --untracked-files=all) -join "`n") -or $Diff -cne ((git diff HEAD --binary) -join "`n")) { throw 'Validator changed checkout' }
+          Write-Output 'PASS: three aligned presets; ten archived completed members; zero active/eligible targets; ten valid receipts; both shells; unchanged checkout'

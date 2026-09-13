@@ -41,7 +41,7 @@ Ein gewöhnlicher zweiter Index im selben Repository bleibt ein Fehler.*
 
 ```bash
 specify preset add \
-  --from https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/archive/refs/tags/v0.2.3.zip \
+  --from https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/archive/refs/tags/v0.2.4.zip \
   --priority 66
 ```
 
@@ -98,18 +98,41 @@ does not grant execution or remote authority.
 `RequirementsGovernanceGate` is a binding predecessor used when one shared
 requirements migration must finish before existing roots are released. Under
 schema 2.0, target paths are resolved from portable roles and collection paths.
-An active delivery series has exactly one explicit `Eligible` target; that
-state selects order only and grants no implementation or remote authority. A
-`Completed` series preserves its members in the configured archive collection
-and has no eligible target. In `SeriesManifest` mode, a missing active
-collection counts as empty because Git does not preserve empty directories;
-`DirectoryStrict` still requires the configured directory.
-A valid `Idle` series has neither members nor an eligible target.
+At most one target may explicitly declare `Eligible`; that state selects order
+only and grants no implementation or remote authority. A valid `Idle` series
+has no eligible target.
 
-*Eine aktive Lieferserie hat genau ein `Eligible`-Ziel. Eine abgeschlossene
-Serie bewahrt ihre abgeschlossenen Mitglieder in der konfigurierten
-Archiv-Collection, hat aber kein ausführbares Ziel. Im Modus `SeriesManifest`
-gilt eine fehlende aktive Collection als leer, weil Git leere Verzeichnisse
-nicht speichert; `DirectoryStrict` verlangt das Verzeichnis weiterhin. `Idle`
-bleibt ausschließlich der leere Zustand. Aus `Eligible` entstehen keine
-Lieferrechte.*
+*`RequirementsGovernanceGate` sperrt bestehende Roots bis zum gemeinsamen
+Requirements-Abschluss. Schema 2.0 löst Pfade über Rollen auf. Höchstens ein
+Ziel darf `Eligible` sein; daraus entstehen keine Lieferrechte.*
+
+## Abgeschlossene Serien / Completed Series
+
+`Completed`-Mitglieder liegen in der konfigurierten Archivsammlung. Noch
+nicht abgeschlossene Serienmitglieder liegen in der aktiven Sammlung;
+Backlog und History sind keine ausfuehrbaren Serienquellen. Eine laufende
+Serie darf archivierte Vorgaenger enthalten. Eine abgeschlossene Serie
+behaelt ihre Mitglieder und hat null `Eligible`-Ziele (`eligibleCandidate: N/A`).
+
+`activeIntakeCount` zaehlt die physischen passenden Dateien direkt in der
+aktiven Sammlung; das zusaetzliche Feld `activeSeriesTargetCount` zaehlt nur
+aktive Serienmitglieder. `seriesTargetCount` umfasst auch archivierte Mitglieder.
+`SeriesManifest` erlaubt eigenstaendige aktive Intakes ausserhalb der Serie.
+Ein fehlendes leeres Aktivverzeichnis zaehlt dort als null; ein Dateipfad statt
+eines Verzeichnisses bleibt ungueltig. `DirectoryStrict` verlangt das aktive
+Verzeichnis und gleicht dessen Bestand mit den aktiven Serienmitgliedern ab.
+
+Die Pruefung meldet Status-/Ablagewidersprueche als `RIG017`, verschiebt aber
+keine Dateien. Eine Korrektur benoetigt einen eigenen Aenderungsauftrag.
+
+*Completed members belong to the configured archive. Non-completed members
+belong to the active collection; backlog and history are not executable
+sources. Active series may retain archived predecessors. Completed series
+retain all members and expose no eligible candidate. Physical active files,
+active series members, and all series members have separate counts.
+SeriesManifest permits standalone active intakes and an absent empty active
+directory. DirectoryStrict requires that directory and compares its contents
+with active series members. RIG017 reports lifecycle mismatches without moving
+files or granting repair authority.*
+
+Pruefnachweis und Release-Grenzen / Validation and release boundaries: [Lifecycle evidence](docs/completed-series-lifecycle.md).

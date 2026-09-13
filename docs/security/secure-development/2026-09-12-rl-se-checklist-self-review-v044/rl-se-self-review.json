@@ -18,8 +18,8 @@
       "docs/secure-development/Checklistensammelband_Sichere-Entwicklung.md": "ac4ebb80a4954db060074762f99c211930a347bec965902dc08becf608aa0b69",
       "docs/secure-development/mitgeltende-dokumente/Verzahnung_Richtlinie_Checklisten_Spec-Kit-Presets.md": "65ea3815188c27acd000d14a908eb095ed53c782aee6556b6fcd6390cc2c4567",
       "constitution.md": "3a23c3e3e0f2b696eeffb0457f080267eb857c86cf2d3460c410fe8e695e2076",
-      ".specify/memory/constitution.md": "1bf323a3627b03706e974a0f304ee1d469b86903208f54021717792ef401a386",
-      ".specify/presets/.registry": "a9b6da816e9151533b0097c8f6ef74fe9afb8ccde40a70af824e9741d4873da7",
+      ".specify/memory/constitution.md": "8cb91dd84becf56e2094f1c73af84856bf39dbc663be5e8e87c4e8de4bea5d36",
+      ".specify/presets/.registry": "04088f08323842781394ed5d1ce33802128878d2d02068babd81a11f632de140",
       "docs/secure-development/checklisten/CL_01_Standards-Anwendbarkeit.md": "b0b3b15c1ad7d46a8f83f563583d9538d72332787f4468d63e691ec37fc4decf",
       "docs/secure-development/checklisten/CL_02_Sichere-Softwarearchitektur.md": "1b387329009286ce7a0a67b7af1f4bd3f60d290413f57c2eab307ca4b257ec9d",
       "docs/secure-development/checklisten/CL_03_Krypto-Mindestvorgaben.md": "031cc40fa44877e34cafc1b398f4ea582c1088647cae4659824e8ff7b5e6b5e9",
@@ -4313,7 +4313,7 @@
     {
       "evidenceId": "EVD-001",
       "relativePath": ".specify/memory/constitution.md",
-      "sha256": "1bf323a3627b03706e974a0f304ee1d469b86903208f54021717792ef401a386",
+      "sha256": "8cb91dd84becf56e2094f1c73af84856bf39dbc663be5e8e87c4e8de4bea5d36",
       "observedAtUtc": "2026-09-12T15:21:22Z",
       "evidenceType": "Configuration",
       "directness": "Supporting",
@@ -4328,7 +4328,7 @@
     {
       "evidenceId": "EVD-002",
       "relativePath": ".specify/presets/.registry",
-      "sha256": "a9b6da816e9151533b0097c8f6ef74fe9afb8ccde40a70af824e9741d4873da7",
+      "sha256": "04088f08323842781394ed5d1ce33802128878d2d02068babd81a11f632de140",
       "observedAtUtc": "2026-09-12T15:21:22Z",
       "evidenceType": "Configuration",
       "directness": "Direct",
@@ -4418,7 +4418,7 @@
     {
       "evidenceId": "EVD-008",
       "relativePath": ".specify/presets/intake-authoring-governance/preset.yml",
-      "sha256": "20e44082b29e58f7444777f31a9e2057585353567be52c81a40a9b65fef7aa4d",
+      "sha256": "61107a6a8141a5df1f5088f21ef458d34b3f97f127dc399dfbf3c7ff6947b338",
       "observedAtUtc": "2026-08-30T10:00:00Z",
       "evidenceType": "Configuration",
       "directness": "Direct",
@@ -4433,7 +4433,7 @@
     {
       "evidenceId": "EVD-009",
       "relativePath": ".specify/presets/intake-review-governance/preset.yml",
-      "sha256": "81746b9764249a912de4f0570d1178ade21381e38c2409d87957e4a42eadc241",
+      "sha256": "fd34ea0e30d2dc9ae4a6ad5863d582ef04645ba58382194f8edfd7d957d9445a",
       "observedAtUtc": "2026-08-30T10:00:00Z",
       "evidenceType": "Configuration",
       "directness": "Direct",
@@ -4448,7 +4448,7 @@
     {
       "evidenceId": "EVD-010",
       "relativePath": ".specify/presets/intake-sequencing-governance/preset.yml",
-      "sha256": "5878fb4d4e075cea5215775ecf15d7b73bf00391c021773934477448edb4699f",
+      "sha256": "585b59b1044dcff182b7d89399b2447b8437c72f712db258ef2f706b7404ca54",
       "observedAtUtc": "2026-08-30T10:00:00Z",
       "evidenceType": "Configuration",
       "directness": "Direct",
@@ -4523,7 +4523,7 @@
     {
       "evidenceId": "EVD-015",
       "relativePath": "AGENTS.md",
-      "sha256": "8e3b10cf95519de44e5c1e2c6b172db3724a6d905330b3842b6e27ecb91ab1e5",
+      "sha256": "e7617aa4345f6d565d6cc15047c78e3c0bca4700c81c806ff96dcf872f3fed5a",
       "observedAtUtc": "2026-09-12T15:21:22Z",
       "evidenceType": "Audit",
       "directness": "Direct",
@@ -5756,9 +5756,9 @@
     },
     {
       "presetId": "intake-authoring-governance",
-      "version": "0.3.1",
-      "registryManifestHash": "20e44082b29e58f7444777f31a9e2057585353567be52c81a40a9b65fef7aa4d",
-      "presetArtifactHash": "20e44082b29e58f7444777f31a9e2057585353567be52c81a40a9b65fef7aa4d",
+      "version": "0.3.2",
+      "registryManifestHash": "61107a6a8141a5df1f5088f21ef458d34b3f97f127dc399dfbf3c7ff6947b338",
+      "presetArtifactHash": "61107a6a8141a5df1f5088f21ef458d34b3f97f127dc399dfbf3c7ff6947b338",
       "checkpoints": [
         "Audit-only scope",
         "Evidence freshness",
@@ -5780,9 +5780,9 @@
     },
     {
       "presetId": "intake-review-governance",
-      "version": "0.2.1",
-      "registryManifestHash": "81746b9764249a912de4f0570d1178ade21381e38c2409d87957e4a42eadc241",
-      "presetArtifactHash": "81746b9764249a912de4f0570d1178ade21381e38c2409d87957e4a42eadc241",
+      "version": "0.2.2",
+      "registryManifestHash": "fd34ea0e30d2dc9ae4a6ad5863d582ef04645ba58382194f8edfd7d957d9445a",
+      "presetArtifactHash": "fd34ea0e30d2dc9ae4a6ad5863d582ef04645ba58382194f8edfd7d957d9445a",
       "checkpoints": [
         "Audit-only scope",
         "Evidence freshness",
@@ -5804,9 +5804,9 @@
     },
     {
       "presetId": "intake-sequencing-governance",
-      "version": "0.2.3",
-      "registryManifestHash": "5878fb4d4e075cea5215775ecf15d7b73bf00391c021773934477448edb4699f",
-      "presetArtifactHash": "5878fb4d4e075cea5215775ecf15d7b73bf00391c021773934477448edb4699f",
+      "version": "0.2.4",
+      "registryManifestHash": "585b59b1044dcff182b7d89399b2447b8437c72f712db258ef2f706b7404ca54",
+      "presetArtifactHash": "585b59b1044dcff182b7d89399b2447b8437c72f712db258ef2f706b7404ca54",
       "checkpoints": [
         "Audit-only scope",
         "Evidence freshness",

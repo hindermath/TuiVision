@@ -84,10 +84,74 @@ the active Series manifest. Status reports `Aligned`, `MigrationRequired`,
 
 `DirectoryStrict` requires every matching file in the active directory to occur
 exactly once in the Series. `SeriesManifest` preserves an established flat or
-mixed layout and treats the validated Series target set as the active inventory.
+mixed layout and keeps the validated Series target set separate from physical active inventory.
 Both modes compute counts and hashes; neither trusts hand-maintained totals.
 
 An authorized migration records before/after hashes, moves, reference updates,
 validation, rollback, and any repair boundary in an operation journal. Publish
 the configuration, index, manifest, receipts, prompts, guidance, and links as
 one transaction. A partial failure must roll back or end as `NeedsRepair`.
+
+## Abgeschlossene Serien / Completed Series
+
+`Completed`-Mitglieder liegen in der konfigurierten Archivsammlung. Noch
+nicht abgeschlossene Serienmitglieder liegen in der aktiven Sammlung;
+Backlog und History sind keine ausfuehrbaren Serienquellen. Eine laufende
+Serie darf archivierte Vorgaenger enthalten. Eine abgeschlossene Serie
+behaelt ihre Mitglieder und hat null `Eligible`-Ziele (`eligibleCandidate: N/A`).
+
+`activeIntakeCount` zaehlt die physischen passenden Dateien direkt in der
+aktiven Sammlung; das zusaetzliche Feld `activeSeriesTargetCount` zaehlt nur
+aktive Serienmitglieder. `seriesTargetCount` umfasst auch archivierte Mitglieder.
+`SeriesManifest` erlaubt eigenstaendige aktive Intakes ausserhalb der Serie.
+Ein fehlendes leeres Aktivverzeichnis zaehlt dort als null; ein Dateipfad statt
+eines Verzeichnisses bleibt ungueltig. `DirectoryStrict` verlangt das aktive
+Verzeichnis und gleicht dessen Bestand mit den aktiven Serienmitgliedern ab.
+
+Die Pruefung meldet Status-/Ablagewidersprueche als `RIG017`, verschiebt aber
+keine Dateien. Eine Korrektur benoetigt einen eigenen Aenderungsauftrag.
+
+*Completed members belong to the configured archive. Non-completed members
+belong to the active collection; backlog and history are not executable
+sources. Active series may retain archived predecessors. Completed series
+retain all members and expose no eligible candidate. Physical active files,
+active series members, and all series members have separate counts.
+SeriesManifest permits standalone active intakes and an absent empty active
+directory. DirectoryStrict requires that directory and compares its contents
+with active series members. RIG017 reports lifecycle mismatches without moving
+files or granting repair authority.*
+
+## Historische Authoring-Receipts / Historical Authoring Receipts
+
+Fehlt der urspruengliche aktive Zielpfad, prueft der Receipt-Validator die
+Konfiguration unter `requirements/intake-governance-config.json` und deren
+Serienmanifest. Genau ein abgeschlossenes Archivziel muss zu Name und
+normalisiertem Hash passen. Ein urspruengliches Standalone-Receipt darf seine
+vollstaendige `N/A`-Serienbindung behalten; eine deklarierte Serienbindung muss
+zum konfigurierten Manifest passen. Fremde Bindungen, mehrere Nachfolger,
+fehlende Dateien und Hashabweichungen werden abgelehnt (`RIG018`). Das Receipt
+und seine historischen Prompts werden nie umgeschrieben. Quellenpruefung und
+alle bisherigen Receipt-Pruefungen bleiben aktiv.
+
+Der interne Resolver `scripts/resolve-intake-archive-target.py` verwendet nur
+die Python-Standardbibliothek. Auch der PowerShell-Receipt-Wrapper benoetigt
+fuer diesen Archivfall `python3`, wie bereits die Konfigurationspruefung.
+Ohne Konfiguration gibt es keine automatische Archivsuche.
+
+*For a missing original active path, receipt validation requires the configured
+manifest and exactly one completed archive successor matching name and normalized
+hash. A historical standalone receipt retains its entirely N/A series binding;
+a declared binding must match the configured series. Invalid lineage or archive
+evidence fails with RIG018. Historical prompts and receipts remain unchanged;
+source and receipt validation still run. The internal resolver uses Python's
+standard library, including when called by PowerShell. Without collection
+configuration, no archive search is attempted.*
+
+Die gleiche eindeutige Archivpruefung gilt fuer fehlende Repository-Dateiquellen
+in historischen Receipts. Der gespeicherte Quellhash muss weiterhin stimmen;
+andere fehlende Quellen bleiben Fehler. `test-intake-authoring-lifecycle.ps1`
+prueft den gueltigen Quellenumzug und eine abweichende Quellhash-Bindung.
+
+*The same unique archive proof applies to missing repository file sources in
+historical receipts. The recorded source hash must still match; other missing
+sources remain errors. Lifecycle tests cover valid source archival and hash drift.*

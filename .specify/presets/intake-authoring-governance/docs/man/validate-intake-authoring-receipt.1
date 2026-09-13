@@ -33,3 +33,9 @@ prompt contract.
 bash scripts/validate-intake-authoring-receipt.sh \
   --receipt specs/intake-authoring-receipts/example.json --repo .
 .fi
+
+.SH ARCHIVED TARGETS
+Missing active targets require exactly one completed archive successor matching
+name, manifest, and normalized hash. Historical standalone N/A binding remains
+valid; foreign series binding fails. No receipt is rewritten. The archive resolver
+requires python3 in both shells and reports RIG018 on invalid archive evidence.
