@@ -42,3 +42,25 @@ checked before the authorized MergeAndSync/admin-bypass delivery. This does not
 claim independent human approval or product conformity. Documentation impact is
 UpdateRequired, owned by the maintainer, with colocated German/English text.
 Reassess after version, profile, lifecycle or local-extension changes.
+
+## Korrigierter Patchstand / Corrected patch releases
+
+Die Flottenreviews deckten physische Collection-Aliase und Receipt-Pfadfluchten
+auf. Die zentral korrigierten Releases sind Authoring 0.3.4, Review 0.2.3 und
+Sequencing 0.2.6. Negative Tests reproduzierten die Befunde vor der Korrektur;
+anschliessend bestehen die nativen Release-Suiten auf macOS, Linux und Windows.
+Die aktuellen Profile, Source-Locks und vorhandenen Bootstrap-/Agent-Vorlagen
+verwenden diese Versionen. Die mitgelieferten verschachtelten Workflows sind
+Quellmetadaten der Presets und aktivieren keine Verbraucher-Jobs; die technischen
+PR-Gates stammen aus den Root-Workflows des jeweiligen Verbraucher-Repositories.
+
+Fleet review found physical collection aliases and receipt path escapes. The
+centrally corrected releases are Authoring 0.3.4, Review 0.2.3 and Sequencing 0.2.6.
+Shipped JSON templates are parsed and their generator versions checked in native CI. Negative tests reproduced the findings before correction; native release suites
+then pass on macOS, Linux and Windows. Existing profiles, source locks and
+bootstrap/agent templates bind these versions. Packaged nested workflows are
+preset-source metadata, not consumer jobs; consumer PR gates use root workflows.
+
+Documentation Impact remains UpdateRequired. Re-evaluation includes portability,
+physical path aliases, source/hash bindings and local overlays. Project lifecycle
+inventory findings remain separate from successful package/regression checks.

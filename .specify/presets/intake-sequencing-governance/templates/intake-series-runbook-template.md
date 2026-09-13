@@ -29,12 +29,12 @@ through `requirements/intake-governance-config.json`. Treat
 `RequirementsGovernanceGate` as a binding predecessor edge. Require one evidenced `Eligible` target for an active delivery series and none for a `Completed` series, but never interpret eligibility as implementation,
 remote-delivery, bypass, or follow-on authority.
 
-If the repository has no active intake of its own, use `status: "Idle"` with
+If the series has no members, use `status: "Idle"` with
 empty `orderedTargets`, `roots`, and `dependencies`. Status and next must report
 this state without inventing a placeholder target. Any target or edge makes an
 idle series invalid.
 
-*Hat das Repository keinen eigenen aktiven Intake, wird `Idle` mit drei leeren
+*Hat die Serie keine Mitglieder, wird `Idle` mit drei leeren
 Listen verwendet. Status und Next erklären diesen Zustand textorientiert und
 erfinden keinen Platzhalter.*
 
@@ -66,3 +66,26 @@ SeriesManifest permits standalone active intakes and an absent empty active
 directory. DirectoryStrict requires that directory and compares its contents
 with active series members. RIG017 reports lifecycle mismatches without moving
 files or granting repair authority.*
+
+## Physische Pfadgrenzen / Physical path boundaries
+
+DE: Collection-Pfade muessen sich auf unterschiedliche Orte innerhalb des
+Repositories aufloesen. Ein aktives Ziel darf auch ueber Symlinks nicht im Archiv
+liegen. Unbekannte Serien- oder Zielzustaende sind Fehler. Bestehende Receipt-Ziele
+und Repository-Dateiquellen werden vor dem Lesen einschliesslich ihrer
+Elternverzeichnisse auf Containment geprueft. Ein Fehler erteilt keine Reparatur-
+oder Ausfuehrungsbefugnis und aendert keine historische Evidence.
+
+EN: Collection paths must resolve to distinct in-repository locations. An active
+target cannot reside in the archive through a symlink. Unknown series or target
+states are errors. Existing receipt targets and repository file sources undergo
+containment checks, including parent directories, before reading. A failure
+grants no repair/execution authority and changes no historical evidence.
+
+In SeriesManifest mode, an Idle series may coexist with active standalone intakes;
+physical active inventory and series membership remain separate. DirectoryStrict
+requires the active inventory to be empty for an Idle series.
+
+Im Modus SeriesManifest darf eine Idle-Serie neben aktiven Standalone-Intakes
+bestehen. Physischer Aktivbestand und Serienmitgliedschaft bleiben getrennt.
+DirectoryStrict verlangt fuer Idle einen leeren aktiven Bestand.

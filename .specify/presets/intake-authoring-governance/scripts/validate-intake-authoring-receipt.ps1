@@ -60,12 +60,16 @@ function Test-IntakeAuthoringReceipt {
     }
 
     function Test-HBRelativePath([string]$Value) {
-        if ([IO.Path]::IsPathRooted($Value)) { return $false }
+        if ([IO.Path]::IsPathRooted($Value) -or $Value -match '^[A-Za-z]:|\\') { return $false }
         return -not ($Value -split '[\\/]' | Where-Object { $_ -eq '..' })
     }
 
     function Get-HBNormalizedText([string]$Path) {
-        $Bytes = [IO.File]::ReadAllBytes($Path)
+        # DE: Den aufgeloesten, geprueften Pfad lesen, nicht erneut dem Link folgen.
+        # EN: Read the checked resolved path rather than following the original link again.
+        $Resolved = & python3 (Join-Path $PSScriptRoot 'resolve-intake-repository-file.py') --repo $RepoRoot --file $Path
+        if ($LASTEXITCODE -ne 0) { throw 'path resolves outside the repository' }
+        $Bytes = [IO.File]::ReadAllBytes(($Resolved | ConvertFrom-Json).path)
         $Offset = if ($Bytes.Length -ge 3 -and $Bytes[0] -eq 0xEF -and $Bytes[1] -eq 0xBB -and $Bytes[2] -eq 0xBF) { 3 } else { 0 }
         $Utf8 = [Text.UTF8Encoding]::new($false, $true)
         $Text = $Utf8.GetString($Bytes, $Offset, $Bytes.Length - $Offset)

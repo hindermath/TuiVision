@@ -159,6 +159,8 @@ try {
     $IdleManifest | ConvertTo-Json -Depth 12 |
         Set-Content -LiteralPath $ManifestPath -Encoding utf8NoBOM
     Invoke-Fixture (Write-JsonFixture 'idle-series.json' $ManifestInventory) 0 '"eligibleCandidate": "N/A"'
+    Invoke-Fixture (Write-JsonFixture 'idle-with-standalone.json' $ManifestInventory) 0 '"activeIntakeCount": 1'
+    Invoke-Fixture (Write-JsonFixture 'idle-strict-with-standalone.json' $Base) 2 'RIG013'
 
     $InvalidIdleManifest = $IdleManifest.Clone()
     $InvalidIdleManifest.orderedTargets = @($Manifest.orderedTargets[0])
@@ -348,6 +350,32 @@ try {
         Invoke-Fixture (Write-JsonFixture 'english.json' $English) 0 '"activeIntakeCount": 0'
         $Root = $OriginalRoot
     }
+    foreach ($ForeignPath in @('..\outside', 'C:\outside', 'C:outside')) {
+        $Foreign = $Base.Clone()
+        $Foreign.collections = $Base.collections.Clone()
+        $Foreign.collections.backlog = $ForeignPath
+        Invoke-Fixture (Write-JsonFixture ('foreign-' + [guid]::NewGuid() + '.json') $Foreign) 2 'RIG004'
+    }
+    # DE: Unbekannte Zustaende und physisch identische Collection-Wurzeln sind ungueltig.
+    # EN: Unknown states and physically aliased collection roots are invalid.
+    $UnknownSeries = $Manifest.Clone()
+    $UnknownSeries.status = 'Bogus'
+    $UnknownSeries | ConvertTo-Json -Depth 12 | Set-Content $ManifestPath -Encoding utf8NoBOM
+    Invoke-Fixture (Write-JsonFixture 'unknown-series-state.json' $ManifestInventory) 2 'RIG017'
+    $UnknownTarget = $MultipleEligible.Clone()
+    $UnknownTarget.orderedTargets = @($MultipleEligible.orderedTargets[0].Clone(), $MultipleEligible.orderedTargets[1].Clone())
+    $UnknownTarget.orderedTargets[1].status = 'Bogus'
+    $UnknownTarget | ConvertTo-Json -Depth 12 | Set-Content $ManifestPath -Encoding utf8NoBOM
+    Invoke-Fixture (Write-JsonFixture 'unknown-target-state.json' $ManifestInventory) 2 'RIG017'
+    $Manifest | ConvertTo-Json -Depth 12 | Set-Content $ManifestPath -Encoding utf8NoBOM
+    $ActiveRoot = Join-Path $Root 'requirements/intakes/active'
+    $ArchiveRoot = Join-Path $Root 'requirements/intakes/archive'
+    Copy-Item $Target (Join-Path $ArchiveRoot (Split-Path $Target -Leaf))
+    Remove-Item $ActiveRoot -Recurse -Force
+    New-Item -ItemType SymbolicLink -Path $ActiveRoot -Target $ArchiveRoot | Out-Null
+    Invoke-Fixture (Write-JsonFixture 'aliased-collection-roots.json' $ManifestInventory) 2 'RIG007'
+    Remove-Item $ActiveRoot -Force
+    New-Item -ItemType Directory -Path $ActiveRoot | Out-Null
     Write-Output 'PASS: requirements intake governance fixtures (Bash/PowerShell JSON and zero-write parity)'
 }
 finally {

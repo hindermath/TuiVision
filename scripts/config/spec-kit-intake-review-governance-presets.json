@@ -46,10 +46,10 @@
     },
     {
       "id": "intake-review-governance",
-      "version": "v0.2.2",
+      "version": "v0.2.3",
       "priority": 65,
       "repository": "https://github.com/hindermath/spec-kit-preset-intake-review-governance",
-      "archiveUrl": "https://github.com/hindermath/spec-kit-preset-intake-review-governance/archive/refs/tags/v0.2.2.zip"
+      "archiveUrl": "https://github.com/hindermath/spec-kit-preset-intake-review-governance/archive/refs/tags/v0.2.3.zip"
     },
     {
       "id": "autonomous-run-governance",

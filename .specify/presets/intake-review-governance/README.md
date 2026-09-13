@@ -1,5 +1,14 @@
 # Intake Review Governance Preset
 
+Aktuelle Version / Current version: **0.2.3**. Dieser Patch schliesst physische
+Collection-Aliase und unbekannte Lifecycle-Zustaende aus. Authoring prueft auch
+bestehende Receipt-Ziele und Quellen vor dem Lesen gegen die Repository-Grenze.
+
+This patch rejects physical collection aliases and unknown lifecycle states.
+Authoring also checks existing receipt targets and sources for repository
+containment before reading. Earlier feature versions below describe history.
+See [boundary hardening](docs/lifecycle-boundary-hardening.md).
+
 Optional, stackable intake-quality governance for GitHub Spec Kit. Version
 `0.2.1` publishes the agent-neutral `model-routing.json` contract. Version
 `0.2.0` provides three commands, eight templates, and read-only
@@ -25,7 +34,7 @@ making those project choices itself.
 ## Install
 
 ```bash
-specify preset add --from https://github.com/hindermath/spec-kit-preset-intake-review-governance/archive/refs/tags/v0.2.2.zip --priority 65
+specify preset add --from https://github.com/hindermath/spec-kit-preset-intake-review-governance/archive/refs/tags/v0.2.3.zip --priority 65
 specify preset list
 specify preset resolve
 ```
