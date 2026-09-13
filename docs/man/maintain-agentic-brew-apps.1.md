@@ -14,6 +14,32 @@ bash scripts/maintain-agentic-brew-apps.sh [--dry-run] [--compare-only] [--allow
 
 ## Beschreibung / Description
 
+Bash ab Version 5 ist unter macOS und Linux ein Pflichtprogramm. Homebrew
+installiert und aktualisiert die Formel `bash`; ohne Homebrew verwendet Linux
+das apt-Paket `bash`. Die CLI-Probe prueft die tatsaechlich ueber PATH aufgeloeste
+Bash anhand von `BASH_VERSINFO` und gibt `BASH_VERSION` aus. Bash 3.2 erfuellt
+die Voraussetzung nicht. Homebrew-Link-Drift wird separat gemeldet; bei falscher
+PATH-Reihenfolge muss das Homebrew-bin-Verzeichnis vor dem Systempfad stehen.
+Login-Shell, `/bin/bash` und `/etc/shells` bleiben unveraendert. Windows verwendet
+weiterhin PowerShell 7. Die Mindestversion ist 5.0 ohne Major-Obergrenze.
+
+*Bash 5+ is required on macOS and Linux. Homebrew installs and upgrades the
+`bash` formula; Linux without Homebrew uses the apt package `bash`. The CLI
+probe checks the Bash actually resolved through PATH using `BASH_VERSINFO`
+and prints `BASH_VERSION`. Bash 3.2 does not qualify. Homebrew link drift is
+reported separately; Homebrew's bin directory must precede system paths.
+The login shell, `/bin/bash`, and `/etc/shells` remain unchanged. Windows keeps
+PowerShell 7. The minimum version is 5.0 with no upper major-version limit.*
+
+Documentation Impact: `UpdateRequired` — Owner: home-baseline maintainers;
+kanonische Quelle / canonical source: Pflichtregister / required registries.
+Zielgruppe / audience: Workspace-Betreiber / workspace operators. Leserpfad /
+reader path: Wartung / maintenance → diese Manpage / this manpage. DE/EN sind
+hier gemeinsam gepflegt / maintained together here. Register sind homeRuntime,
+Home-Sync und Wartungspaket-Propagation erforderlich / registries require home
+sync and maintenance propagation. Re-Evaluation bei Aenderung der Mindestversion
+oder Paketquelle / reevaluate when the minimum version or package source changes.
+
 Das Werkzeug liest
 `scripts/config/brew-apps-registry.json` und gleicht die lokale macOS-/Linux-
 Toolchain fuer agentische Entwicklung ab. Zusaetzlich liest es

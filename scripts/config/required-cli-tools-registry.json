@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-07-28",
+  "updated": "2026-09-13",
   "description": "Required CLI command checks for the learning-series MSL toolchains, SBOM tooling, GitHub Spec Kit, and required agent CLI surfaces.",
   "policy": {
     "defaultScope": "required",
@@ -12,6 +12,14 @@
     "linuxWithoutBrew": "Linux without Homebrew uses distro packages where available. Swift uses the pinned, checksum-verified official Swiftly contract on Ubuntu 22.04/24.04 x86_64/aarch64. .NET and Syft may require external package sources; GitHub Spec Kit uses uv. Antigravity CLI uses its checksum-verified official vendor installer."
   },
   "tools": [
+    {
+      "id": "bash",
+      "scope": "required",
+      "platforms": ["Darwin", "Linux"],
+      "command": "bash",
+      "args": ["--noprofile", "--norc", "-c", "printf '%s\\n' \"$BASH_VERSION\"; (( BASH_VERSINFO[0] >= 5 ))"],
+      "purpose": "Bash 5+ for workspace and AOC scripts; reject the macOS system Bash 3.2"
+    },
     {
       "id": "dotnet",
       "scope": "required",
