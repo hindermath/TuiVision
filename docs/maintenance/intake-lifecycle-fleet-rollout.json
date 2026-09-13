@@ -1,0 +1,36 @@
+{
+  "presets": {
+    "sequencing": "0.2.4",
+    "review": "0.2.2",
+    "authoring": "0.3.2"
+  },
+  "standardMatrix": "Unchanged",
+  "date": "2026-09-13",
+  "profiles": [
+    {
+      "path": "scripts/config/spec-kit-intake-authoring-governance-presets.json",
+      "sha256": "28d7c570086c33288c74511c6e55561c28dd1841e0057ca0395ccb03a65d4122"
+    },
+    {
+      "path": "scripts/config/spec-kit-intake-review-governance-presets.json",
+      "sha256": "314d54e161da775fd025bcf275bd6fcec651e8916d8489c5b0ac3ad5afe857de"
+    },
+    {
+      "path": "scripts/config/spec-kit-intake-sequencing-governance-presets.json",
+      "sha256": "e83ef82a42bdfe5cd979407bcd201fb22afab0c74500c2f6461600f67709c89c"
+    },
+    {
+      "path": "scripts/config/spec-kit-model-routing-governance-presets.json",
+      "sha256": "122306682b7821f01d15a20d00210a073a58e323a2711931f3fec0fe2fcad1ad"
+    },
+    {
+      "path": "scripts/config/spec-kit-secure-development-assurance-governance-presets.json",
+      "sha256": "d19a0531ffd47b875322d51d1054093acdc8f6d2ec78e726c5ecb00781081faa"
+    }
+  ],
+  "previousRollout": "https://github.com/hindermath/TuiVision/pull/177",
+  "status": "PreparedPendingCi",
+  "schemaVersion": 1,
+  "scope": "Existing profile bindings only",
+  "installationSkipped": true
+}

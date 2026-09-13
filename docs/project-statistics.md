@@ -704,6 +704,8 @@ fortgeschrieben.
 
 | 2026-09-13 | Intake-Lifecycle-Presets aktualisiert | Authoring 0.3.2, Review 0.2.2 und Sequencing 0.2.4 aus verifizierten Release-ZIPs; zehn archivierte Mitglieder ohne aktive/ausfuehrbare Ziele; beide Shells, 1028 Tests und fuenf Coverage-Gates bestanden. Sechs Audit-Quellen revalidiert; Projektvalidatoren und andere Presets erhalten. |
 
+| 2026-09-13 | Intake-Lifecycle-Preset-Rollout / Intake lifecycle preset rollout | Vorhandene Authoring-/Review-/Sequencing-Presets auf 0.3.2/0.2.2/0.2.4 aktualisiert; optionale Profile und Dokumentation nachgefuehrt. Pruefnachweise in docs/maintenance/intake-lifecycle-fleet-rollout.json. / Update existing presets and profile references; preserve other presets and project extensions. |
+
 ## Statistikprofil-1-Archiv / Statistics Profile 1 Archive
 Basis dieses Schlussblocks ist der Repository-Snapshot vom 2026-07-15. Die
 Werte schließen den aktuellen Working Tree ein und bleiben deshalb bis zum
