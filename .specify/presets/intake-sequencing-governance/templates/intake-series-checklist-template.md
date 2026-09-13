@@ -8,10 +8,8 @@
 - [ ] Every edge uses an accepted type and correct binding flag.
 - [ ] `RequirementsGovernanceGate` is used only for a binding predecessor that
       must complete before the dependent intake becomes eligible.
-- [ ] An active delivery series has exactly one current `Eligible` target;
-      eligibility grants no delivery authority.
-- [ ] A `Completed` series retains only archived `Completed` targets and has no
-      `Eligible` target.
+- [ ] An active delivery series has exactly one current `Eligible` target; a `Completed` series has none; eligibility
+      grants no delivery authority.
 - [ ] An `Idle` series has zero targets, roots, dependencies, and eligible
       candidates.
 - [ ] The graph is order-consistent and acyclic.
@@ -20,3 +18,32 @@
 - [ ] Read, status, and next remain read-only.
 - [ ] No downstream command is started implicitly.
 - [ ] Bash and PowerShell validators agree.
+
+## Abgeschlossene Serien / Completed Series
+
+`Completed`-Mitglieder liegen in der konfigurierten Archivsammlung. Noch
+nicht abgeschlossene Serienmitglieder liegen in der aktiven Sammlung;
+Backlog und History sind keine ausfuehrbaren Serienquellen. Eine laufende
+Serie darf archivierte Vorgaenger enthalten. Eine abgeschlossene Serie
+behaelt ihre Mitglieder und hat null `Eligible`-Ziele (`eligibleCandidate: N/A`).
+
+`activeIntakeCount` zaehlt die physischen passenden Dateien direkt in der
+aktiven Sammlung; das zusaetzliche Feld `activeSeriesTargetCount` zaehlt nur
+aktive Serienmitglieder. `seriesTargetCount` umfasst auch archivierte Mitglieder.
+`SeriesManifest` erlaubt eigenstaendige aktive Intakes ausserhalb der Serie.
+Ein fehlendes leeres Aktivverzeichnis zaehlt dort als null; ein Dateipfad statt
+eines Verzeichnisses bleibt ungueltig. `DirectoryStrict` verlangt das aktive
+Verzeichnis und gleicht dessen Bestand mit den aktiven Serienmitgliedern ab.
+
+Die Pruefung meldet Status-/Ablagewidersprueche als `RIG017`, verschiebt aber
+keine Dateien. Eine Korrektur benoetigt einen eigenen Aenderungsauftrag.
+
+*Completed members belong to the configured archive. Non-completed members
+belong to the active collection; backlog and history are not executable
+sources. Active series may retain archived predecessors. Completed series
+retain all members and expose no eligible candidate. Physical active files,
+active series members, and all series members have separate counts.
+SeriesManifest permits standalone active intakes and an absent empty active
+directory. DirectoryStrict requires that directory and compares its contents
+with active series members. RIG017 reports lifecycle mismatches without moving
+files or granting repair authority.*

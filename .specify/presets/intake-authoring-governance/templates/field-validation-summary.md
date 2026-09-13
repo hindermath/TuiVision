@@ -17,13 +17,10 @@ Version: `0.3.1`
   failed as required.
 - Requirements-collection proof: German, bilingual, and explicit naming
   profiles passed with four portable roles, six collection paths, one
-  canonical index, complete active inventory, current normalized hashes, one
-  `Eligible` candidate for an active delivery series, and zero candidates for
-  a terminal `Completed` series whose members are retained in the configured
-  archive collection through `SeriesManifest`. Schema 1.0, ambiguous language,
-  path traversal, duplicate collections, empty manifests, hash drift,
-  Completed targets in the active collection, incomplete completed series, and
-  multiple eligible candidates failed with stable error classes.
+  canonical index, complete active inventory, current normalized hashes, and
+  exactly one `Eligible` candidate. Schema 1.0, ambiguous language, path
+  traversal, duplicate collections, empty manifests, hash drift, and multiple
+  eligible candidates failed with stable error classes.
 - Eleven-preset development stack: installation, `list`, `info`, `resolve`,
   disable, enable, remove, and reinstall passed with priorities `10` through
   `80` and Authoring at `64`.

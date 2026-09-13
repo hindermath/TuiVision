@@ -115,6 +115,7 @@ def validate_series_manifest(
     archive_dir: Path,
     pattern: str,
     inventory_mode: str,
+    excluded_dirs: tuple[Path, ...] = (),
 ) -> dict:
     manifest = load_json(path)
     targets = manifest.get("orderedTargets")
@@ -131,8 +132,7 @@ def validate_series_manifest(
         if active_dir.is_dir()
         else set()
     )
-    active_prefix = f"{active_dir.relative_to(repo).as_posix().rstrip('/')}/"
-    archive_prefix = f"{archive_dir.relative_to(repo).as_posix().rstrip('/')}/"
+    active_targets: set[str] = set()
     target_paths: list[str] = []
     target_statuses: dict[str, str] = {}
     eligible: list[str] = []
@@ -145,6 +145,10 @@ def validate_series_manifest(
             fail("RIG013", f"duplicate active target {target_path}")
         target_paths.append(target_path)
         target_file = repo / target_path
+        # DE: Vor dem Lesen verhindern wir, dass Symlinks die Repository-Grenze verlassen.
+        # EN: Check containment before reading so symlinks cannot cross the repository boundary.
+        if not target_file.resolve().is_relative_to(repo):
+            fail("RIG004", "series target resolves outside the repository")
         if not target_file.is_file():
             fail("RIG014", f"missing active target {target_path}")
         expected_hash = required_text(target, "normalizedSha256", "RIG015")
@@ -154,18 +158,29 @@ def validate_series_manifest(
             fail("RIG015", f"hash drift for {target_path}")
         status = required_text(target, "status", "RIG017")
         target_statuses[target_path] = status
-        if not target_path.startswith((active_prefix, archive_prefix)):
+        resolved_target = target_file.resolve()
+        if not resolved_target.is_relative_to(repo):
+            fail("RIG004", "series target resolves outside the repository")
+        in_archive = target_file.is_relative_to(archive_dir)
+        in_active = target_file.is_relative_to(active_dir) and not in_archive
+        if any(resolved_target.is_relative_to(directory.resolve()) for directory in excluded_dirs):
+            fail("RIG017", f"series target is in a non-executable collection: {target_path}")
+        if not in_active and not in_archive:
             fail("RIG017", f"series target is outside active and archive collections: {target_path}")
-        if status == "Completed" and not target_path.startswith(archive_prefix):
+        if not resolved_target.is_relative_to((archive_dir if in_archive else active_dir).resolve()):
+            fail("RIG004", "series target resolves outside its declared collection")
+        if status == "Completed" and not in_archive:
             fail("RIG017", f"Completed target must be stored in archive collection: {target_path}")
-        if status != "Completed" and target_path.startswith(archive_prefix):
+        if status != "Completed" and in_archive:
             fail("RIG017", f"non-completed target must not be stored in archive collection: {target_path}")
+        if in_active:
+            active_targets.add(target_path)
         if status == "Eligible":
             eligible.append(target_path)
 
-    if inventory_mode == "DirectoryStrict" and set(target_paths) != active_paths:
-        missing = sorted(active_paths - set(target_paths))
-        extra = sorted(set(target_paths) - active_paths)
+    if inventory_mode == "DirectoryStrict" and active_targets != active_paths:
+        missing = sorted(active_paths - active_targets)
+        extra = sorted(active_targets - active_paths)
         fail("RIG013", f"active inventory mismatch; missing={missing}, extra={extra}")
     if series_status == "Completed":
         if eligible:
@@ -195,7 +210,8 @@ def validate_series_manifest(
             fail("RIG016", f"dependency {source} -> {target} contradicts order")
 
     return {
-        "activeIntakeCount": sum(target.startswith(active_prefix) for target in target_paths),
+        "activeIntakeCount": len(active_paths),
+        "activeSeriesTargetCount": len(active_targets),
         "seriesTargetCount": len(target_paths),
         "eligibleCandidate": eligible[0] if eligible else "N/A",
         "dependencyCount": len(dependencies),
@@ -287,7 +303,7 @@ def validate_config(data: dict, repo: Path) -> dict:
     for key in ("requirements-intake", "requirements-baseline"):
         if (repo / roles[key]).is_dir():
             continue
-        if key == "requirements-intake" and inventory_mode == "SeriesManifest":
+        if key == "requirements-intake" and inventory_mode == "SeriesManifest" and not (repo / roles[key]).exists():
             # Git speichert keine leeren Verzeichnisse; SeriesManifest beweist den Bestand.
             # Git does not store empty directories; SeriesManifest proves the inventory.
             continue
@@ -299,6 +315,7 @@ def validate_config(data: dict, repo: Path) -> dict:
     inventory = {
         "baselineCount": 0,
         "activeIntakeCount": 0,
+        "activeSeriesTargetCount": 0,
         "archiveIntakeCount": 0,
         "backlogIntakeCount": 0,
         "historyIntakeCount": 0,
@@ -317,6 +334,7 @@ def validate_config(data: dict, repo: Path) -> dict:
                 repo / collections["archive"],
                 pattern,
                 inventory_mode,
+                tuple(repo / collections[key] for key in ("baseline", "backlog", "history")),
             )
         )
         for key, result_key in (

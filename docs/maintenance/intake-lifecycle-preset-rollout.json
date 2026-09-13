@@ -1,0 +1,168 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-09-13",
+  "baselineCommit": "5074a2ccd50e8a427a3e683888945191d6dae12e",
+  "deliveryMode": "MergeAndSync",
+  "adminBypassAuthorized": true,
+  "installedPresets": [
+    {
+      "priority": 64,
+      "version": "0.3.2",
+      "presetId": "intake-authoring-governance",
+      "release": {
+        "name": "authoring",
+        "version": "0.3.2",
+        "testedCommit": "3db1801f1722c674cbe19442efe9a56bed7167ce",
+        "mergeCommit": "c2427c3ecb5e2d1ae381167da14be2956c1c2c8a",
+        "tree": "b69c023debc44c89b4e6b312717d924d4eb83317",
+        "release": "https://github.com/hindermath/spec-kit-preset-intake-authoring-governance/releases/tag/v0.3.2",
+        "sourceAssetSha256": "90710b2ad342d121d2f9424cc043e4f03f3a20e00520a3b0d1150e3048c1c075",
+        "archiveUrl": "https://github.com/hindermath/spec-kit-preset-intake-authoring-governance/archive/refs/tags/v0.3.2.zip",
+        "tagZipSha256": "6d31a4ae74e5590d53407ef3ff0623433e4799a989050863af32bc442dcad889",
+        "verifiedFileCount": 38
+      },
+      "verifiedFiles": 38,
+      "manifestHash": "sha256:61107a6a8141a5df1f5088f21ef458d34b3f97f127dc399dfbf3c7ff6947b338"
+    },
+    {
+      "priority": 65,
+      "version": "0.2.2",
+      "presetId": "intake-review-governance",
+      "release": {
+        "name": "review",
+        "version": "0.2.2",
+        "testedCommit": "a38f61048edf3803d2b550489adda77133fef117",
+        "mergeCommit": "59bb2e66e250723f1ef99a8eddc1c4725b3f1579",
+        "tree": "9779ebeec677b920631391e335bcfedc54e935d2",
+        "release": "https://github.com/hindermath/spec-kit-preset-intake-review-governance/releases/tag/v0.2.2",
+        "sourceAssetSha256": "6e6664f09631cda8d1e3210a30eea1b20b98eb5f7b31028391daa689e514e2e5",
+        "archiveUrl": "https://github.com/hindermath/spec-kit-preset-intake-review-governance/archive/refs/tags/v0.2.2.zip",
+        "tagZipSha256": "e2be3945de58503565e3743b9ad102104fbcb3bd658be7d0304294799eff8a97",
+        "verifiedFileCount": 29
+      },
+      "verifiedFiles": 29,
+      "manifestHash": "sha256:fd34ea0e30d2dc9ae4a6ad5863d582ef04645ba58382194f8edfd7d957d9445a"
+    },
+    {
+      "priority": 66,
+      "version": "0.2.4",
+      "presetId": "intake-sequencing-governance",
+      "release": {
+        "name": "sequencing",
+        "version": "0.2.4",
+        "testedCommit": "45486b1d4d635dd93acd2ef6bb70fd355efc36b1",
+        "mergeCommit": "0d334415c76a5fdce4fa003cd7a2d1b9c9c73ed6",
+        "tree": "f8c73fad84d904b4c9a2e7a2527f7f5e5692a6bc",
+        "release": "https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/releases/tag/v0.2.4",
+        "sourceAssetSha256": "01ee9cf199bbb9ffb366a1d759dbdeb184155741da152a905f2896e24f989a1a",
+        "archiveUrl": "https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/archive/refs/tags/v0.2.4.zip",
+        "tagZipSha256": "81ede6e18a8273e68da8d7be2d8e69572d0c492aa67307ea6322c5884022d11e",
+        "verifiedFileCount": 39
+      },
+      "verifiedFiles": 39,
+      "manifestHash": "sha256:585b59b1044dcff182b7d89399b2447b8437c72f712db258ef2f706b7404ca54"
+    }
+  ],
+  "auditRevalidation": [
+    {
+      "evidenceId": "EVD-001",
+      "path": ".specify/memory/constitution.md",
+      "previousSha256": "1bf323a3627b03706e974a0f304ee1d469b86903208f54021717792ef401a386",
+      "sha256": "8cb91dd84becf56e2094f1c73af84856bf39dbc663be5e8e87c4e8de4bea5d36"
+    },
+    {
+      "evidenceId": "EVD-002",
+      "path": ".specify/presets/.registry",
+      "previousSha256": "a9b6da816e9151533b0097c8f6ef74fe9afb8ccde40a70af824e9741d4873da7",
+      "sha256": "04088f08323842781394ed5d1ce33802128878d2d02068babd81a11f632de140"
+    },
+    {
+      "evidenceId": "EVD-008",
+      "path": ".specify/presets/intake-authoring-governance/preset.yml",
+      "previousSha256": "20e44082b29e58f7444777f31a9e2057585353567be52c81a40a9b65fef7aa4d",
+      "sha256": "61107a6a8141a5df1f5088f21ef458d34b3f97f127dc399dfbf3c7ff6947b338"
+    },
+    {
+      "evidenceId": "EVD-009",
+      "path": ".specify/presets/intake-review-governance/preset.yml",
+      "previousSha256": "81746b9764249a912de4f0570d1178ade21381e38c2409d87957e4a42eadc241",
+      "sha256": "fd34ea0e30d2dc9ae4a6ad5863d582ef04645ba58382194f8edfd7d957d9445a"
+    },
+    {
+      "evidenceId": "EVD-010",
+      "path": ".specify/presets/intake-sequencing-governance/preset.yml",
+      "previousSha256": "5878fb4d4e075cea5215775ecf15d7b73bf00391c021773934477448edb4699f",
+      "sha256": "585b59b1044dcff182b7d89399b2447b8437c72f712db258ef2f706b7404ca54"
+    },
+    {
+      "evidenceId": "EVD-015",
+      "path": "AGENTS.md",
+      "previousSha256": "8e3b10cf95519de44e5c1e2c6b172db3724a6d905330b3842b6e27ecb91ab1e5",
+      "sha256": "e7617aa4345f6d565d6cc15047c78e3c0bca4700c81c806ff96dcf872f3fed5a"
+    }
+  ],
+  "validation": {
+    "coverage": [
+      {
+        "assembly": "TuiVision.Core",
+        "totalLines": 199,
+        "coveredLines": 189,
+        "percent": 94.97
+      },
+      {
+        "assembly": "TuiVision.Controls",
+        "totalLines": 4063,
+        "coveredLines": 3533,
+        "percent": 86.96
+      },
+      {
+        "assembly": "TuiVision.Serialization",
+        "totalLines": 1249,
+        "coveredLines": 1130,
+        "percent": 90.47
+      },
+      {
+        "assembly": "TuiVision.Compatibility",
+        "totalLines": 72,
+        "coveredLines": 60,
+        "percent": 83.33
+      },
+      {
+        "assembly": "TuiVision.Drivers.Console",
+        "totalLines": 758,
+        "coveredLines": 712,
+        "percent": 93.93
+      }
+    ],
+    "testLogSha256": "6c1d18c1863a075cceb1d9b576f3883784d0fc36306fa53298d5d295940826f7",
+    "activeSeriesTargets": 0,
+    "dotnetCommand": "dotnet test --configuration Release --collect:\"XPlat Code Coverage\" --settings coverlet.runsettings",
+    "seriesManifest": "Valid",
+    "readOnlyGitState": "Passed",
+    "positiveProjectFixtures": 4,
+    "dotnetTests": 1028,
+    "eligibleTargets": 0,
+    "os": "macOS",
+    "dotnetFailures": 0,
+    "seriesReceipt": "Valid",
+    "validAuthoringReceipts": 10,
+    "shells": [
+      "Bash",
+      "PowerShell"
+    ],
+    "completedArchivedMembers": 10,
+    "dotnetSkipped": 0,
+    "configuration": "Aligned",
+    "negativeProjectFixtures": 18,
+    "activeIntakes": 0
+  },
+  "boundaries": {
+    "homeSync": "NotRequired",
+    "nativeRolloutCi": "RequiredBeforeMerge",
+    "centralMatrix": "Unchanged",
+    "historicalIntakesAndReceipts": "Unchanged",
+    "otherConsumers": "NotUpdated",
+    "otherPresetMetadata": "Unchanged",
+    "projectValidatorAndFixtures": "Unchanged"
+  }
+}

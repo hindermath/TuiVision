@@ -27,10 +27,14 @@ function Get-NormalizedSha256 {
 
 function Invoke-Fixture {
     param([string]$Path, [int]$ExpectedExit, [string]$ExpectedText)
+    $Before = @(Get-ChildItem -LiteralPath $Root -Recurse -File | Sort-Object FullName | ForEach-Object { $_.FullName + ':' + (Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash }) -join "`n"
     $Runs = @(
         @{ Name = 'Bash'; Output = @(& bash $BashValidator --config $Path --repo $Root --json 2>&1); Exit = $LASTEXITCODE },
         @{ Name = 'PowerShell'; Output = @(& pwsh -NoProfile -File $PowerShellValidator -Config $Path -Repo $Root -Json 2>&1); Exit = $LASTEXITCODE }
     )
+    if (($Runs[0].Output -join "`n") -cne ($Runs[1].Output -join "`n")) { throw 'Bash/PowerShell JSON differs' }
+    $After = @(Get-ChildItem -LiteralPath $Root -Recurse -File | Sort-Object FullName | ForEach-Object { $_.FullName + ':' + (Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash }) -join "`n"
+    if ($Before -cne $After) { throw 'Validator changed fixture files' }
     foreach ($Run in $Runs) {
         $Output = $Run.Output
         $Exit = $Run.Exit
@@ -138,6 +142,8 @@ try {
     $ManifestInventory = $Base.Clone()
     $ManifestInventory.inventoryMode = 'SeriesManifest'
     Invoke-Fixture (Write-JsonFixture 'series-manifest-inventory.json' $ManifestInventory) 0 '"inventoryMode": "SeriesManifest"'
+    Invoke-Fixture (Write-JsonFixture 'standalone-count.json' $ManifestInventory) 0 '"activeIntakeCount": 2'
+    Invoke-Fixture (Write-JsonFixture 'series-count.json' $ManifestInventory) 0 '"activeSeriesTargetCount": 1'
     Remove-Item -LiteralPath $HistoricalInFlatLayout
 
     $ManifestPath = Join-Path $Root 'requirements/intakes/series/manifest.json'
@@ -189,6 +195,10 @@ try {
     $ActiveCollection = Join-Path $Root 'requirements/intakes/active'
     Remove-Item -LiteralPath $ActiveCollection -Recurse -Force
     Invoke-Fixture (Write-JsonFixture 'completed-series-without-active-directory.json' $ManifestInventory) 0 '"activeIntakeCount": 0'
+    Invoke-Fixture (Write-JsonFixture 'strict-missing-active.json' $Base) 1 'MigrationRequired'
+    Set-Content -LiteralPath $ActiveCollection -Value 'not a directory'
+    Invoke-Fixture (Write-JsonFixture 'active-is-file.json' $ManifestInventory) 1 'MigrationRequired'
+    Remove-Item -LiteralPath $ActiveCollection
     New-Item -ItemType Directory -Path $ActiveCollection | Out-Null
     Set-Content -LiteralPath $Target -Value '# Beispiel' -Encoding utf8NoBOM
 
@@ -212,6 +222,34 @@ try {
     Invoke-Fixture (Write-JsonFixture 'mixed-active-series.json' $ManifestInventory) 0 `
         '"eligibleCandidate": "requirements/intakes/active/Lastenheft_Beispiel.md"'
 
+    Invoke-Fixture (Write-JsonFixture 'strict-mixed-series.json' $Base) 0 '"activeSeriesTargetCount": 1'
+    foreach ($State in @('Pending', 'Blocked')) {
+        $Bad = $CompletedManifest.Clone()
+        $Bad.status = 'Active'
+        $Bad.orderedTargets = @($CompletedManifest.orderedTargets[0].Clone())
+        $Bad.orderedTargets[0].status = $State
+        $Bad | ConvertTo-Json -Depth 12 | Set-Content -LiteralPath $ManifestPath -Encoding utf8NoBOM
+        Invoke-Fixture (Write-JsonFixture "archive-${State}.json" $ManifestInventory) 2 'RIG017'
+    }
+    foreach ($Collection in @('backlog', 'history')) {
+        $Bad = $Manifest.Clone()
+        $Bad.orderedTargets = @($Manifest.orderedTargets[0].Clone())
+        $Bad.orderedTargets[0].path = "requirements/intakes/${Collection}/Lastenheft_Beispiel.md"
+        Copy-Item -LiteralPath $Target -Destination (Join-Path $Root $Bad.orderedTargets[0].path)
+        $Bad | ConvertTo-Json -Depth 12 | Set-Content -LiteralPath $ManifestPath -Encoding utf8NoBOM
+        Invoke-Fixture (Write-JsonFixture "non-executable-${Collection}.json" $ManifestInventory) 2 'RIG017'
+    }
+    # DE: Unix-Symlinks duerfen den deklarierten Lifecycle-Ort nicht umgehen.
+    # EN: Unix symlinks must not bypass the declared lifecycle location.
+    if (-not $IsWindows) {
+        $Link = Join-Path $Root 'requirements/intakes/active/Lastenheft_Link.md'
+        New-Item -ItemType SymbolicLink -Path $Link -Target $CompletedTarget | Out-Null
+        $Bad = $Manifest.Clone()
+        $Bad.orderedTargets = @(@{ path = 'requirements/intakes/active/Lastenheft_Link.md'; role = 'Primary'; status = 'Eligible'; normalizedSha256 = Get-NormalizedSha256 $CompletedTarget })
+        $Bad | ConvertTo-Json -Depth 12 | Set-Content -LiteralPath $ManifestPath -Encoding utf8NoBOM
+        Invoke-Fixture (Write-JsonFixture 'cross-collection-symlink.json' $ManifestInventory) 2 'RIG004'
+        Remove-Item -LiteralPath $Link
+    }
     $EligibleInArchive = $MixedManifest.Clone()
     $EligibleInArchive.orderedTargets = @($CompletedManifest.orderedTargets[0].Clone())
     $EligibleInArchive.orderedTargets[0].status = 'Eligible'
@@ -288,7 +326,29 @@ try {
     $MultipleEligible | ConvertTo-Json -Depth 12 | Set-Content -LiteralPath $ManifestPath -Encoding utf8NoBOM
     Invoke-Fixture (Write-JsonFixture 'multiple-eligible.json' $Base) 2 'RIG017'
 
-    Write-Output 'PASS: requirements intake governance fixtures'
+    # DE: Echte englische Dateinamen und beide Zeilenenden pruefen denselben Vertrag.
+    # EN: Real English filenames and both line endings exercise the same contract.
+    $OriginalRoot = $Root
+    foreach ($Ending in @("`n", "`r`n")) {
+        $Root = Join-Path $OriginalRoot ('english-' + [guid]::NewGuid())
+        New-Item -ItemType Directory -Path (Join-Path $Root 'requirements/intakes/archive') -Force | Out-Null
+        New-Item -ItemType Directory -Path (Join-Path $Root 'requirements/intakes/series') -Force | Out-Null
+        New-Item -ItemType Directory -Path (Join-Path $Root 'requirements/baseline') -Force | Out-Null
+        $English = New-BaseConfig -Language 'en' -NamingProfile 'en' -Index 'RequirementsIndex.md' -Pattern 'RequirementsIntake_<slug>.md' -Order 'RequirementsIntakeOrder.md'
+        $English.inventoryMode = 'SeriesManifest'
+        [IO.File]::WriteAllText((Join-Path $Root 'RequirementsIndex.md'), "# Index${Ending}")
+        [IO.File]::WriteAllText((Join-Path $Root 'RequirementsIntakeOrder.md'), "# Order${Ending}")
+        $EnglishTarget = 'requirements/intakes/archive/RequirementsIntake_Example.001-done.md'
+        [IO.File]::WriteAllText((Join-Path $Root $EnglishTarget), "# Example${Ending}Completed.${Ending}")
+        $EnglishManifest = $CompletedManifest.Clone()
+        $EnglishManifest.orderedTargets = @(@{ path = $EnglishTarget; role = 'Primary'; status = 'Completed'; normalizedSha256 = Get-NormalizedSha256 (Join-Path $Root $EnglishTarget) })
+        $EnglishManifest.roots = @($EnglishTarget)
+        $Json = ($EnglishManifest | ConvertTo-Json -Depth 12).Replace("`r`n", "`n").Replace("`n", $Ending)
+        [IO.File]::WriteAllText((Join-Path $Root 'requirements/intakes/series/manifest.json'), $Json)
+        Invoke-Fixture (Write-JsonFixture 'english.json' $English) 0 '"activeIntakeCount": 0'
+        $Root = $OriginalRoot
+    }
+    Write-Output 'PASS: requirements intake governance fixtures (Bash/PowerShell JSON and zero-write parity)'
 }
 finally {
     Remove-Item -LiteralPath $Root -Recurse -Force -ErrorAction SilentlyContinue

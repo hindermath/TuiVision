@@ -22,9 +22,8 @@
       implementation language and locale.
 - [ ] Naming profile, four portable roles, six collection paths, canonical
       index, bounded aliases, and computed inventory agree.
-- [ ] Every Series member occurs once with a current normalized SHA-256; an
-      active delivery series has exactly one `Eligible` candidate, while a
-      `Completed` series retains only archived `Completed` members and has none.
+- [ ] Every active intake occurs once in the configured Series with a current
+      normalized SHA-256; exactly one candidate is `Eligible` in an active delivery series, none in a `Completed` series.
 - [ ] IDs, order, dependency graph, handoffs, and future-scope boundaries are consistent.
 - [ ] Schema 1.1 binds the repository-relative request path and normalized SHA-256.
 - [ ] Every target occurs exactly once in `orderedTargetPaths`.
@@ -39,3 +38,32 @@
 - [ ] Every worker has an applicability row; duplicate intake use reuses semantic review.
 - [ ] Manifest DAG, base refs, repositories, runner constraints, and intake ordering agree.
 - [ ] Operator exceptions are separate, explicitly owned, dated, justified, and expiring.
+
+## Abgeschlossene Serien / Completed Series
+
+`Completed`-Mitglieder liegen in der konfigurierten Archivsammlung. Noch
+nicht abgeschlossene Serienmitglieder liegen in der aktiven Sammlung;
+Backlog und History sind keine ausfuehrbaren Serienquellen. Eine laufende
+Serie darf archivierte Vorgaenger enthalten. Eine abgeschlossene Serie
+behaelt ihre Mitglieder und hat null `Eligible`-Ziele (`eligibleCandidate: N/A`).
+
+`activeIntakeCount` zaehlt die physischen passenden Dateien direkt in der
+aktiven Sammlung; das zusaetzliche Feld `activeSeriesTargetCount` zaehlt nur
+aktive Serienmitglieder. `seriesTargetCount` umfasst auch archivierte Mitglieder.
+`SeriesManifest` erlaubt eigenstaendige aktive Intakes ausserhalb der Serie.
+Ein fehlendes leeres Aktivverzeichnis zaehlt dort als null; ein Dateipfad statt
+eines Verzeichnisses bleibt ungueltig. `DirectoryStrict` verlangt das aktive
+Verzeichnis und gleicht dessen Bestand mit den aktiven Serienmitgliedern ab.
+
+Die Pruefung meldet Status-/Ablagewidersprueche als `RIG017`, verschiebt aber
+keine Dateien. Eine Korrektur benoetigt einen eigenen Aenderungsauftrag.
+
+*Completed members belong to the configured archive. Non-completed members
+belong to the active collection; backlog and history are not executable
+sources. Active series may retain archived predecessors. Completed series
+retain all members and expose no eligible candidate. Physical active files,
+active series members, and all series members have separate counts.
+SeriesManifest permits standalone active intakes and an absent empty active
+directory. DirectoryStrict requires that directory and compares its contents
+with active series members. RIG017 reports lifecycle mismatches without moving
+files or granting repair authority.*

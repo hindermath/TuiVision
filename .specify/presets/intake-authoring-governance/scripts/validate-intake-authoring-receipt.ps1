@@ -225,7 +225,7 @@ function Test-IntakeAuthoringReceipt {
     } elseif ($SchemaVersion -eq '1.1') {
         @('0.1.1')
     } elseif ($SchemaVersion -eq '2.0') {
-        @('0.2.0', '0.2.1', '0.3.0', '0.3.1')
+        @('0.2.0', '0.2.1', '0.3.0', '0.3.1', '0.3.2')
     } else {
         @()
     })
@@ -257,6 +257,16 @@ function Test-IntakeAuthoringReceipt {
     }
     $TargetPath = Join-Path $RepoRoot $TargetPathText
     $TargetText = ''
+    if ($TargetPathText -and (Test-HBRelativePath $TargetPathText) -and -not (Test-Path -LiteralPath $TargetPath -PathType Leaf)) {
+        # DE: Nur die Leseposition wechselt; historische Pfade und Prompts bleiben unveraendert.
+        # EN: Only the read location changes; historical paths and prompts remain unchanged.
+        $Resolution = & python3 (Join-Path $PSScriptRoot 'resolve-intake-archive-target.py') --receipt $Receipt --repo $RepoRoot
+        if ($LASTEXITCODE -eq 0) {
+            $TargetPath = Join-Path $RepoRoot ($Resolution | ConvertFrom-Json).resolvedTarget
+        } else {
+            $Errors.Add('RIG018: archive successor resolution failed')
+        }
+    }
     if ($TargetPathText -and -not (Test-Path -LiteralPath $TargetPath -PathType Leaf)) {
         $Errors.Add("target missing: $TargetPathText")
     } elseif ($TargetPathText) {
@@ -348,6 +358,14 @@ function Test-IntakeAuthoringReceipt {
             $SourcePath = Join-Path $RepoRoot $PathText
             if ([IO.Path]::GetExtension($SourcePath).ToLowerInvariant() -in $BlockedExtensions) {
                 $Errors.Add("${Label}.path uses a known binary/document extension")
+            }
+            if (-not (Test-Path -LiteralPath $SourcePath -PathType Leaf)) {
+                $Resolution = & python3 (Join-Path $PSScriptRoot 'resolve-intake-archive-target.py') --receipt $Receipt --repo $RepoRoot --source-index $Index
+                if ($LASTEXITCODE -eq 0) {
+                    $SourcePath = Join-Path $RepoRoot ($Resolution | ConvertFrom-Json).resolvedTarget
+                } else {
+                    $Errors.Add('RIG018: archive successor resolution failed')
+                }
             }
             if (-not (Test-Path -LiteralPath $SourcePath -PathType Leaf)) {
                 $Errors.Add("source missing: $PathText")

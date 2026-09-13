@@ -161,7 +161,7 @@ try {
     $LfRequest = [IO.File]::ReadAllText($RequestPath, [Text.UTF8Encoding]::new($false, $true))
     [IO.File]::WriteAllText(
         $RequestPath,
-        ([char]0xFEFF) + $LfRequest.Replace("`n", "`r`n"),
+        ([char]0xFEFF) + $LfRequest.Replace("`r`n", "`n").Replace("`r", "`n").Replace("`n", "`r`n"),
         [Text.UTF8Encoding]::new($false)
     )
     [void](Invoke-Validator Bash 0)
