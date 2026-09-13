@@ -7,7 +7,7 @@
   "authorityRevalidationRequired": false,
   "stage": "Publish",
   "status": "Active",
-  "checkpointCommit": "5f67666b6b0d7e5366c1aac063d263ce52d97be2",
+  "checkpointCommit": "a072c705fb5dfbb7710c206f4b5f7de6d02619d6",
   "acceptedArtifacts": [
     {
       "path": "requirements/intakes/active/Lastenheft_24_Evidence-Quality-Audit-Features-044-046.md",
@@ -39,7 +39,11 @@
     },
     {
       "path": "specs/047-evidence-quality-audit/pr-evidence.md",
-      "sha256": "16fe8ab45bb73dc6a348abb0861e8f3cfd8e17db10e9e6755941b146e54931d2"
+      "sha256": "62d5153e8d7d74647f9412ed46ca4d32aac0f6acde79742cb797358753fc40e4"
+    },
+    {
+      "path": "specs/047-evidence-quality-audit/autonomous-gate-requirements.json",
+      "sha256": "b7ebc91668fa66a03c5c7f4f1186e3e80d545542c839992e18c95dcf6469d2ac"
     },
     {
       "path": "specs/047-evidence-quality-audit/retrospective.md",
@@ -52,11 +56,11 @@
     "completed": 53,
     "total": 58
   },
-  "lastPassingGate": "Causal governance PR 181 merged as 1054f4c after all technical gates passed, no actionable review threads remained, and the narrow bypass applied only to Human Approval.",
+  "lastPassingGate": "Causal governance PR 181 is merged and the Feature 047 gate contract now declares six Applicable gates plus one product-scope N/A in the installed validator schema.",
   "lastOperation": {
-    "kind": "MergeAndSync",
+    "kind": "Validation",
     "state": "Completed",
-    "summary": "The standalone-intake workflow cardinality correction was delivered separately in PR 181 and merged into the Feature 047 branch from origin/main."
+    "summary": "The malformed internal allowlist shape was replaced by an explicit provider-neutral exact-head gate contract."
   },
   "stop": {
     "reason": "N/A",
@@ -69,6 +73,6 @@
     "postMergeActions": "N/A",
     "finalValidation": "Completed"
   },
-  "nextExactAction": "Commit the merged governance correction, refresh statistics, push, and revalidate PR 180 exact-head checks",
-  "updatedAt": "2026-09-13T14:52:50Z"
+  "nextExactAction": "Commit and push the exact-head gate contract, then revalidate PR 180 checks and provider-neutral PreMerge evidence",
+  "updatedAt": "2026-09-13T14:58:18Z"
 }

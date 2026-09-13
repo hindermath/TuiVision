@@ -1,22 +1,68 @@
 {
   "schemaVersion": "1.0",
-  "feature": "047-evidence-quality-audit",
-  "deliveryMode": "MergeAndSync",
-  "allowedRoots": [
-    "requirements/intakes/active/Lastenheft_24_Evidence-Quality-Audit-Features-044-046.md",
-    "specs/047-evidence-quality-audit/",
-    "specs/intake-authoring-receipts/24-evidence-quality-audit-features-044-046.json",
-    "specs/intake-review-request.json",
-    "specs/intake-review-result.json",
-    "specs/intake-review-report.md",
-    "docs/security/secure-development/2026-09-13-evidence-quality-audit/",
-    "docs/project-statistics.md",
-    "Directory.Build.props",
-    ".specify/feature.json",
-    "scripts/validate-requirements-intake-alignment.mjs",
-    "scripts/tests/requirements-intake-alignment-tests.mjs"
-  ],
-  "forbiddenRoots": ["src/", "examples/", ".github/workflows/", "tv203s/"],
-  "remoteActionsAllowed": true,
-  "independentSemanticReviewRequiredForRemoteDelivery": true
+  "gates": [
+    {
+      "gateId": "GATE-047-01",
+      "applicability": "Applicable",
+      "requiredScope": "The reviewed standalone intake, authoring receipt, Ready review, feature identity, branch, accepted hashes, run state, and current MergeAndSync authority remain aligned without mutating the completed delivery series.",
+      "requiredCommandTokens": ["specify check", "validate-intake-authoring-receipt", "validate-intake-review-result", "validate-autonomous-run-state"],
+      "requiredRunnerOrPlatformTokens": ["local"],
+      "rationale": "Feature 047 is independently authorized after a completed series and requires a complete standalone lineage.",
+      "reevaluationTrigger": "Any intake, receipt, review, feature, branch, authority, artifact hash, task, or run-state drift."
+    },
+    {
+      "gateId": "GATE-047-02",
+      "applicability": "Applicable",
+      "requiredScope": "The canonical audit outputs retain 12 Feature-044 decisions, 157 crosswalk rows, all auxiliary inventories, 988 mechanical references, at least 50 semantic traces, and derived finding counts under positive and malformed-data tests.",
+      "requiredCommandTokens": ["render_evidence.py --check", "python3 -m unittest", "test_evidence_quality.py"],
+      "requiredRunnerOrPlatformTokens": ["local"],
+      "rationale": "Deterministic cardinality, relation, and negative-fixture proof is the primary audit acceptance contract.",
+      "reevaluationTrigger": "Any audit input, renderer, test, finding, crosswalk, inventory, reference, or output change."
+    },
+    {
+      "gateId": "GATE-047-03",
+      "applicability": "Applicable",
+      "requiredScope": "The completed ten-member intake series and the separately reviewed active intake validate without lifecycle, receipt, review, feature, feature-authorization, shell-parity, or checkout-write drift.",
+      "requiredCommandTokens": ["requirements-intake-alignment-tests.mjs", "validate-requirements-intake-alignment.sh", "validate-requirements-intake-alignment.ps1"],
+      "requiredRunnerOrPlatformTokens": ["local", "ubuntu", "macos", "windows"],
+      "rationale": "The first remote head exposed a stale standalone-intake assumption that now has direct and cross-platform regression proof.",
+      "reevaluationTrigger": "Any intake collection, series lifecycle, receipt, review, alignment validator, wrapper, workflow, or supported-platform change."
+    },
+    {
+      "gateId": "GATE-047-04",
+      "applicability": "Applicable",
+      "requiredScope": "German-first and English-second CEFR-B2 audit documentation builds through DocFX and remains usable through the Playwright and Axe text-first accessibility path.",
+      "requiredCommandTokens": ["docfx docfx.json", "npm run test:docfx", "Playwright", "Axe"],
+      "requiredRunnerOrPlatformTokens": ["local", "github"],
+      "rationale": "Feature 047 publishes learner-facing audit evidence and updates project statistics.",
+      "reevaluationTrigger": "Any audit report, statistics, navigation, language, accessibility, or DocFX input change."
+    },
+    {
+      "gateId": "GATE-047-05",
+      "applicability": "Applicable",
+      "requiredScope": "Whitespace, formatting, source hashes, closed changed-path scope, statistics, secrets, dependencies, supply-chain checks, and agent surfaces remain valid without generated-output drift.",
+      "requiredCommandTokens": ["git diff --check", "dotnet format --verify-no-changes", "render-project-statistics", "scan-agent-secrets"],
+      "requiredRunnerOrPlatformTokens": ["local", "github"],
+      "rationale": "An evidence-only audit still requires repository-integrity and secure-delivery proof.",
+      "reevaluationTrigger": "Any changed path, formatting, source hash, statistic, secret, dependency, generated output, or agent surface."
+    },
+    {
+      "gateId": "GATE-047-06",
+      "applicability": "Applicable",
+      "requiredScope": "The exact reviewed feature head is pushed, every mandatory GitHub technical check passes, the independent semantic review completes, no actionable review thread remains, and provider-neutral PreMerge evidence validates before merge.",
+      "requiredCommandTokens": ["gh pr checks", "gh pr view", "git rev-parse HEAD", "validate-autonomous-gate-evidence"],
+      "requiredRunnerOrPlatformTokens": ["github", "ubuntu", "macos", "windows"],
+      "rationale": "Remote delivery and any approval-only bypass must remain bound to the exact reviewed head.",
+      "reevaluationTrigger": "Any pushed head, check suite, review, comment, thread, provider response, or delivery-authority change."
+    },
+    {
+      "gateId": "GATE-047-07",
+      "applicability": "N/A",
+      "requiredScope": "Product runtime, public API, package, project, dependency, example, or historical-source behavior validation.",
+      "requiredCommandTokens": [],
+      "requiredRunnerOrPlatformTokens": [],
+      "rationale": "The final Feature-047 scope changes audit evidence and repository governance validation only; remote baseline builds are supplemental regression evidence.",
+      "reevaluationTrigger": "Any product, API, package, project, dependency, example, or historical-source path enters the delivery set."
+    }
+  ]
 }

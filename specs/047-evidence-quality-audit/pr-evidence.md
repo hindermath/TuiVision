@@ -100,6 +100,12 @@ valid receipt count as ten plus the number of separately validated active
 intakes. Copilot failed at provider level; the Claude review workflow passed and
 no actionable review thread existed.
 
+The initial `autonomous-gate-requirements.json` used an internal changed-path
+allowlist shape and therefore could not be consumed by the installed schema-2.0
+gate-evidence validator. The corrected contract declares six Applicable gates
+and one explicit product-scope `N/A`; its remote gate cannot pass until the
+current pushed head and review state are final.
+
 ## Delivery Boundary
 
 The audit first completed under `LocalImplementation`. The user then granted
