@@ -56,8 +56,9 @@ before semantic review. The explicit BCP-47 documentation language, naming
 profile, four portable roles, collection paths, bounded aliases, canonical
 index, current hashes, and Series inventory must agree. An active delivery
 series has exactly one evidenced `Eligible` candidate. A `Completed` series
-retains only terminal members and has none. Eligibility selects the next intake
-but grants no implementation or remote-delivery authority.
+retains only `Completed` members in the configured archive collection and has
+none. Eligibility selects the next intake but grants no implementation or
+remote-delivery authority.
 
 ## Consumer Contract
 

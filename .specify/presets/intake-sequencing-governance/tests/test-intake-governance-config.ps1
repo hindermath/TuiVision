@@ -5,7 +5,8 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
 $PresetRoot = Split-Path -Parent (Split-Path -Parent $PSCommandPath)
-$Validator = Join-Path $PresetRoot 'scripts/validate-intake-governance-config.py'
+$BashValidator = Join-Path $PresetRoot 'scripts/validate-intake-governance-config.sh'
+$PowerShellValidator = Join-Path $PresetRoot 'scripts/validate-intake-governance-config.ps1'
 $Root = Join-Path ([System.IO.Path]::GetTempPath()) ("intake-governance-" + [guid]::NewGuid())
 New-Item -ItemType Directory -Path $Root | Out-Null
 
@@ -26,13 +27,19 @@ function Get-NormalizedSha256 {
 
 function Invoke-Fixture {
     param([string]$Path, [int]$ExpectedExit, [string]$ExpectedText)
-    $Output = & python3 $Validator --config $Path --repo $Root --json 2>&1
-    $Exit = $LASTEXITCODE
-    if ($Exit -ne $ExpectedExit) {
-        throw "Expected exit $ExpectedExit, got ${Exit}: $Output"
-    }
-    if (($Output -join "`n") -notmatch [regex]::Escape($ExpectedText)) {
-        throw "Expected '$ExpectedText': $Output"
+    $Runs = @(
+        @{ Name = 'Bash'; Output = @(& bash $BashValidator --config $Path --repo $Root --json 2>&1); Exit = $LASTEXITCODE },
+        @{ Name = 'PowerShell'; Output = @(& pwsh -NoProfile -File $PowerShellValidator -Config $Path -Repo $Root -Json 2>&1); Exit = $LASTEXITCODE }
+    )
+    foreach ($Run in $Runs) {
+        $Output = $Run.Output
+        $Exit = $Run.Exit
+        if ($Exit -ne $ExpectedExit) {
+            throw "$($Run.Name): expected exit $ExpectedExit, got ${Exit}: $Output"
+        }
+        if (($Output -join "`n") -notmatch [regex]::Escape($ExpectedText)) {
+            throw "$($Run.Name): expected '$ExpectedText': $Output"
+        }
     }
 }
 
@@ -179,16 +186,46 @@ try {
         Set-Content -LiteralPath $ManifestPath -Encoding utf8NoBOM
     Invoke-Fixture (Write-JsonFixture 'completed-series.json' $ManifestInventory) 0 '"eligibleCandidate": "N/A"'
 
-    $CompletedWithEligible = $CompletedManifest.Clone()
-    $CompletedWithEligible.orderedTargets = @($CompletedManifest.orderedTargets[0].Clone())
-    $CompletedWithEligible.orderedTargets[0].status = 'Eligible'
+    $CompletedInActive = $Manifest.Clone()
+    $CompletedInActive.status = 'Completed'
+    $CompletedInActive.orderedTargets = @($Manifest.orderedTargets[0].Clone())
+    $CompletedInActive.orderedTargets[0].status = 'Completed'
+    $CompletedInActive | ConvertTo-Json -Depth 12 |
+        Set-Content -LiteralPath $ManifestPath -Encoding utf8NoBOM
+    Invoke-Fixture (Write-JsonFixture 'completed-in-active.json' $ManifestInventory) 2 `
+        'Completed target must be stored in archive collection'
+
+    $MixedManifest = $Manifest.Clone()
+    $MixedManifest.orderedTargets = @(
+        $CompletedManifest.orderedTargets[0].Clone(),
+        $Manifest.orderedTargets[0].Clone()
+    )
+    $MixedManifest.roots = @($MixedManifest.orderedTargets[0].path, $MixedManifest.orderedTargets[1].path)
+    $MixedManifest | ConvertTo-Json -Depth 12 |
+        Set-Content -LiteralPath $ManifestPath -Encoding utf8NoBOM
+    Invoke-Fixture (Write-JsonFixture 'mixed-active-series.json' $ManifestInventory) 0 `
+        '"eligibleCandidate": "requirements/intakes/active/Lastenheft_Beispiel.md"'
+
+    $EligibleInArchive = $MixedManifest.Clone()
+    $EligibleInArchive.orderedTargets = @($CompletedManifest.orderedTargets[0].Clone())
+    $EligibleInArchive.orderedTargets[0].status = 'Eligible'
+    $EligibleInArchive.roots = @($EligibleInArchive.orderedTargets[0].path)
+    $EligibleInArchive | ConvertTo-Json -Depth 12 |
+        Set-Content -LiteralPath $ManifestPath -Encoding utf8NoBOM
+    Invoke-Fixture (Write-JsonFixture 'eligible-in-archive.json' $ManifestInventory) 2 `
+        'non-completed target must not be stored in archive collection'
+
+    $CompletedWithEligible = $Manifest.Clone()
+    $CompletedWithEligible.status = 'Completed'
+    $CompletedWithEligible.orderedTargets = @($Manifest.orderedTargets[0].Clone())
     $CompletedWithEligible | ConvertTo-Json -Depth 12 |
         Set-Content -LiteralPath $ManifestPath -Encoding utf8NoBOM
     Invoke-Fixture (Write-JsonFixture 'completed-with-eligible.json' $ManifestInventory) 2 `
         'Completed series must not contain an Eligible target'
 
-    $CompletedWithPending = $CompletedManifest.Clone()
-    $CompletedWithPending.orderedTargets = @($CompletedManifest.orderedTargets[0].Clone())
+    $CompletedWithPending = $Manifest.Clone()
+    $CompletedWithPending.status = 'Completed'
+    $CompletedWithPending.orderedTargets = @($Manifest.orderedTargets[0].Clone())
     $CompletedWithPending.orderedTargets[0].status = 'Pending'
     $CompletedWithPending | ConvertTo-Json -Depth 12 |
         Set-Content -LiteralPath $ManifestPath -Encoding utf8NoBOM

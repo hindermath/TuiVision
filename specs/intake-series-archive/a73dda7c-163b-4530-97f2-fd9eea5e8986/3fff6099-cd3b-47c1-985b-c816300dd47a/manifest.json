@@ -7,49 +7,49 @@
   "status": "Completed",
   "orderedTargets": [
     {
-      "path": "requirements/intakes/archive/Lastenheft_22_Wave6-Combined-Delta-Closure.037-wave6-combined-delta-closure.md",
+      "path": "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
       "role": "OrderedMember",
       "normalizedSha256": "1b8ac280514c3415dfa51f2807f2b9183e51cd46b446d59980974cdce0ac70ad",
       "status": "Completed"
     },
     {
-      "path": "requirements/intakes/archive/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.038-example-portfolio-conformance-audit.md",
+      "path": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
       "role": "OrderedMember",
       "normalizedSha256": "f46be28ad27bb2dd5644390a7d50bed4912b514ce924e58bfd304135b33c0ad2",
       "status": "Completed"
     },
     {
-      "path": "requirements/intakes/archive/Lastenheft_Example-Portfolio-Closure.039-example-portfolio-closure.md",
+      "path": "requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md",
       "role": "Primary",
       "normalizedSha256": "f5dc617b7c20d718304bb91f7f63d4a95d5c27cf09a7d0a4685a3bc4a824ab1a",
       "status": "Completed"
     },
     {
-      "path": "requirements/intakes/archive/Lastenheft_Constitution_Change.040-constitution-governance-closure.md",
+      "path": "requirements/intakes/active/Lastenheft_Constitution_Change.md",
       "role": "OrderedMember",
       "normalizedSha256": "b7dbf455ff4e84b336ffe3cca3ff184e1897860592d4f53fb52f1776e7eb9e91",
       "status": "Completed"
     },
     {
-      "path": "requirements/intakes/archive/Lastenheft_Source-Reference-Policy.041-source-reference-policy.md",
+      "path": "requirements/intakes/active/Lastenheft_Source-Reference-Policy.md",
       "role": "OrderedMember",
       "normalizedSha256": "a59e9588363e385c19d48c361df9ebb019323cf25865672dd77152292e8d2776",
       "status": "Completed"
     },
     {
-      "path": "requirements/intakes/archive/Lastenheft_Transactional-Form-Model.042-transactional-form-model.md",
+      "path": "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
       "role": "OrderedMember",
       "normalizedSha256": "45d8f8b589c3d9fd417f9b8dc9d25d09c0597f02c075b04454bbce95e095a239",
       "status": "Completed"
     },
     {
-      "path": "requirements/intakes/archive/Lastenheft_23_Documentation-Publishing-Closure.043-documentation-publishing-closure.md",
+      "path": "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
       "role": "OrderedMember",
       "normalizedSha256": "df5f1876c781632c13594e9ec60c3cc8f9408c586ac03aeb48aa87442987878c",
       "status": "Completed"
     },
     {
-      "path": "requirements/intakes/archive/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.044-sandbox-secure-development-hardening.md",
+      "path": "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
       "role": "OrderedMember",
       "normalizedSha256": "d1f6a20535f90b78d00f7f6974a32156d7c08eeb77ebad9961a41ffbe3f84858",
       "status": "Completed"
@@ -68,46 +68,46 @@
     }
   ],
   "roots": [
-    "requirements/intakes/archive/Lastenheft_22_Wave6-Combined-Delta-Closure.037-wave6-combined-delta-closure.md",
-    "requirements/intakes/archive/Lastenheft_Constitution_Change.040-constitution-governance-closure.md",
-    "requirements/intakes/archive/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.044-sandbox-secure-development-hardening.md",
+    "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
+    "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+    "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
     "requirements/intakes/archive/Lastenheft_RL-SE-Checklist-Selbstpruefung.045-rl-se-checklist-self-review.md",
     "requirements/intakes/archive/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.046-gsdb-spec-kit-intensive-review.md"
   ],
   "dependencies": [
     {
-      "from": "requirements/intakes/archive/Lastenheft_22_Wave6-Combined-Delta-Closure.037-wave6-combined-delta-closure.md",
-      "to": "requirements/intakes/archive/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.038-example-portfolio-conformance-audit.md",
+      "from": "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
+      "to": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
       "kind": "HardCompletionGate",
       "binding": true
     },
     {
-      "from": "requirements/intakes/archive/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.038-example-portfolio-conformance-audit.md",
-      "to": "requirements/intakes/archive/Lastenheft_Example-Portfolio-Closure.039-example-portfolio-closure.md",
+      "from": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+      "to": "requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md",
       "kind": "HardCompletionGate",
       "binding": true
     },
     {
-      "from": "requirements/intakes/archive/Lastenheft_Constitution_Change.040-constitution-governance-closure.md",
-      "to": "requirements/intakes/archive/Lastenheft_Source-Reference-Policy.041-source-reference-policy.md",
+      "from": "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+      "to": "requirements/intakes/active/Lastenheft_Source-Reference-Policy.md",
       "kind": "SharedWriterSerialization",
       "binding": false
     },
     {
-      "from": "requirements/intakes/archive/Lastenheft_Source-Reference-Policy.041-source-reference-policy.md",
-      "to": "requirements/intakes/archive/Lastenheft_Transactional-Form-Model.042-transactional-form-model.md",
+      "from": "requirements/intakes/active/Lastenheft_Source-Reference-Policy.md",
+      "to": "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
       "kind": "HardCompletionGate",
       "binding": true
     },
     {
-      "from": "requirements/intakes/archive/Lastenheft_Example-Portfolio-Closure.039-example-portfolio-closure.md",
-      "to": "requirements/intakes/archive/Lastenheft_Transactional-Form-Model.042-transactional-form-model.md",
+      "from": "requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md",
+      "to": "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
       "kind": "HardCompletionGate",
       "binding": true
     },
     {
-      "from": "requirements/intakes/archive/Lastenheft_Transactional-Form-Model.042-transactional-form-model.md",
-      "to": "requirements/intakes/archive/Lastenheft_23_Documentation-Publishing-Closure.043-documentation-publishing-closure.md",
+      "from": "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
+      "to": "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
       "kind": "PreferredSerialOrder",
       "binding": false
     }

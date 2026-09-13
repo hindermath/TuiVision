@@ -10,7 +10,7 @@
       must complete before the dependent intake becomes eligible.
 - [ ] An active delivery series has exactly one current `Eligible` target;
       eligibility grants no delivery authority.
-- [ ] A `Completed` series retains only `Completed` targets and has no
+- [ ] A `Completed` series retains only archived `Completed` targets and has no
       `Eligible` target.
 - [ ] An `Idle` series has zero targets, roots, dependencies, and eligible
       candidates.

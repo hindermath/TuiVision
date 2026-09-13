@@ -90,7 +90,9 @@ fs.mkdirSync(activeFeatureDirectory, {recursive: true});
 const activeFeaturePath = "specs/043-documentation-publishing-closure";
 const bindingIntake =
   "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md";
-const bindingHash = awaitDigest(fs.readFileSync(path.join(root, bindingIntake), "utf8"));
+const archivedBindingIntake =
+  "requirements/intakes/archive/Lastenheft_23_Documentation-Publishing-Closure.043-documentation-publishing-closure.md";
+const bindingHash = awaitDigest(fs.readFileSync(path.join(root, archivedBindingIntake), "utf8"));
 fs.writeFileSync(
   path.join(activeFeatureDirectory, "spec.md"),
   `# Authorized Feature\n\n**Binding Intake**: \`${bindingIntake}\`\n`);
@@ -100,7 +102,7 @@ fs.writeFileSync(
     featurePath: activeFeaturePath,
     branch: "043-documentation-publishing-closure",
     status: "Completed",
-    acceptedArtifacts: [{path: bindingIntake, sha256: bindingHash}],
+    acceptedArtifacts: [{path: archivedBindingIntake, sha256: bindingHash}],
   }, null, 2) + "\n");
 const activeFeatureMetadata = path.join(temp, "authorized-feature.json");
 fs.writeFileSync(
@@ -148,7 +150,7 @@ expectFailure("pending intake injected into executable series", {
       status: "Eligible",
     });
   }),
-}, /series must contain exactly 10 unique active targets/);
+}, /series must contain exactly 10 unique targets/);
 
 expectFailure("unauthorized feature", {
   featurePath: fixture("unauthorized-feature", ".specify/feature.json", (value) => {
@@ -166,14 +168,14 @@ expectFailure("duplicate target", {
   manifestPath: fixture("duplicate-target", manifestSource, (value) => {
     value.orderedTargets.push({...value.orderedTargets[0]});
   }),
-}, /unique active targets/);
+}, /unique targets/);
 
 expectFailure("backlog target", {
   manifestPath: fixture("backlog-target", manifestSource, (value) => {
     value.orderedTargets[6].path =
       "requirements/intakes/backlog/Lastenheft_Optional-NuGet-Package.md";
   }),
-}, /missing from the active intake directory|archive or backlog/);
+}, /status does not match its collection|series target is missing/);
 
 expectFailure("unexpected eligible", {
   manifestPath: fixture("unexpected-eligible", manifestSource, (value) => {
@@ -185,7 +187,7 @@ expectFailure("incomplete Wave-6 closure", {
   manifestPath: fixture("incomplete-wave6", manifestSource, (value) => {
     value.orderedTargets[0].status = "Pending";
   }),
-}, /Wave-6 closure must remain Completed|declared Eligible target still has a binding blocker/);
+}, /status does not match its collection|completed delivery series must retain only Completed targets/);
 
 expectFailure("stale target hash", {
   manifestPath: fixture("stale-hash", manifestSource, (value) => {
@@ -198,6 +200,21 @@ expectFailure("missing receipt target without completed archive successor", {
     const receiptPath = path.join(receiptsPath, "rl-se-checklist-selbstpruefung.json");
     const receipt = JSON.parse(fs.readFileSync(receiptPath, "utf8"));
     receipt.target.normalizedSha256 = "0".repeat(64);
+    fs.writeFileSync(receiptPath, JSON.stringify(receipt, null, 2) + "\n");
+  }),
+}, /lacks one completed archive successor/);
+
+expectFailure("standalone receipt with foreign series claim", {
+  receiptsPath: receiptsFixture("foreign-series-receipt", (receiptsPath) => {
+    const receiptPath = path.join(receiptsPath, "Lastenheft_Example-Portfolio-Closure.receipt.json");
+    const receipt = JSON.parse(fs.readFileSync(receiptPath, "utf8"));
+    receipt.series = {
+      seriesId: "00000000-0000-4000-8000-000000000001",
+      manifestPath: "requirements/intakes/series/foreign/manifest.json",
+      order: 1,
+      role: "OrderedMember",
+      supersedesIntakeIds: [],
+    };
     fs.writeFileSync(receiptPath, JSON.stringify(receipt, null, 2) + "\n");
   }),
 }, /lacks one completed archive successor/);
@@ -218,7 +235,7 @@ expectFailure("dangling target", {
   manifestPath: fixture("dangling-target", manifestSource, (value) => {
     value.orderedTargets[6].path = "requirements/intakes/active/Missing.md";
   }),
-}, /missing from the active intake directory|target is missing/);
+}, /status does not match its collection|target is missing/);
 
 expectFailure("duplicate requirement ID", {
   coveragePath: fixture("duplicate-id", coverageSource, (value) => {
@@ -244,7 +261,7 @@ const exactFixturePath = "scripts/tests/linked-intake-evidence/tuivision-exact.j
 const exact = JSON.parse(fs.readFileSync(path.join(root, exactFixturePath), "utf8"));
 const exactManifestText = fs.readFileSync(path.join(root, manifestSource), "utf8");
 const exactManifest = JSON.parse(exactManifestText);
-const mapping = exact.activeMapping;
+const mapping = exact.seriesMapping;
 const tuples = exact.dependencyTuples;
 const backlog = exact.backlog;
 
@@ -253,8 +270,9 @@ if (awaitDigest(exactManifestText) !== mapping.canonicalManifestSha256 ||
     mapping.canonicalManifestSha256 !== backlog.canonicalManifestSha256) {
   throw new Error("exact fixture does not bind the current canonical manifest");
 }
-if (mapping.mappings.length !== mapping.expectedActiveCount ||
-    mapping.expectedActiveCount !== 10 || tuples.edges.length !== tuples.expectedEdgeCount ||
+if (mapping.mappings.length !== mapping.expectedSeriesTargetCount ||
+    mapping.expectedSeriesTargetCount !== 10 || mapping.expectedActiveCount !== 0 ||
+    mapping.expectedArchiveCount !== 38 || tuples.edges.length !== tuples.expectedEdgeCount ||
     tuples.expectedEdgeCount !== 6) {
   throw new Error("exact fixture cardinality differs from the T056 lock");
 }
@@ -355,5 +373,5 @@ for (const outputPath of [
 
 fs.rmSync(temp, {recursive: true, force: true});
 console.log("requirements/intake positive fixtures PASS (3 cases)");
-console.log("requirements/intake negative fixtures PASS (17 cases)");
+console.log("requirements/intake negative fixtures PASS (18 cases)");
 console.log("TuiVision exact linked-intake fixtures PASS (10 mappings, 6 edges, 1 latest completion, 1 backlog)");

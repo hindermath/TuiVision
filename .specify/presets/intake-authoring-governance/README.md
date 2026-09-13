@@ -328,9 +328,10 @@ die hashgebundene Zielmenge des Serienmanifests als aktiven Bestand. Beide Modi
 berechnen Bestandszahlen; handgepflegte Zaehler sind keine Evidence.
 
 Eine aktive Lieferserie hat genau ein `Eligible`-Ziel. Eine `Completed`-Serie
-bewahrt ausschließlich abgeschlossene Mitglieder und hat kein `Eligible`-Ziel;
-für Mitglieder über aktive und archivierte Ablagen hinweg gilt
-`SeriesManifest`.
+bewahrt ausschließlich abgeschlossene Mitglieder in der konfigurierten
+Archiv-Collection und hat kein `Eligible`-Ziel. `SeriesManifest` erlaubt einer
+laufenden Serie, aktive Ziele und bereits archivierte Vorgänger gemeinsam zu
+referenzieren.
 
 *Version 0.3.0 describes requirements collections with schema 2.0.
 Documentation language is explicit and independent from implementation
@@ -338,8 +339,8 @@ language and locale. Portable roles resolve localized names. Migration is
 authority-bound, hash-bound, and atomic. `Eligible` selects order but grants no
 implementation or remote authority. `DirectoryStrict` validates a dedicated
 active directory; `SeriesManifest` supports established flat or mixed layouts
-without trusting manual counts. A completed Series preserves terminal members
-without inventing an eligible candidate.*
+without trusting manual counts. A completed Series preserves its members in
+the configured archive collection without inventing an eligible candidate.*
 
 ## Status / Statuspruefung
 

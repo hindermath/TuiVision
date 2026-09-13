@@ -100,10 +100,11 @@ requirements migration must finish before existing roots are released. Under
 schema 2.0, target paths are resolved from portable roles and collection paths.
 An active delivery series has exactly one explicit `Eligible` target; that
 state selects order only and grants no implementation or remote authority. A
-`Completed` series preserves its terminal members and has no eligible target.
+`Completed` series preserves its members in the configured archive collection
+and has no eligible target.
 A valid `Idle` series has neither members nor an eligible target.
 
 *Eine aktive Lieferserie hat genau ein `Eligible`-Ziel. Eine abgeschlossene
-Serie bewahrt ihre abgeschlossenen Mitglieder, hat aber kein ausführbares Ziel.
-`Idle` bleibt ausschließlich der leere Zustand. Aus `Eligible` entstehen keine
-Lieferrechte.*
+Serie bewahrt ihre abgeschlossenen Mitglieder in der konfigurierten
+Archiv-Collection, hat aber kein ausführbares Ziel. `Idle` bleibt ausschließlich
+der leere Zustand. Aus `Eligible` entstehen keine Lieferrechte.*

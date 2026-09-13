@@ -29,8 +29,9 @@ through `requirements/intake-governance-config.json`. Treat
 `RequirementsGovernanceGate` as a binding predecessor edge. Require exactly one
 evidenced `Eligible` target for an active delivery series, but never interpret
 eligibility as implementation, remote-delivery, bypass, or follow-on authority.
-A `Completed` series retains its terminal members and requires zero eligible
-targets. Use `SeriesManifest` when those members span active and archive roots.
+A `Completed` series retains its terminal members in the configured archive
+collection and requires zero eligible targets. Use `SeriesManifest` while an
+active series spans active targets and already archived predecessors.
 
 If the repository has no active intake of its own, use `status: "Idle"` with
 empty `orderedTargets`, `roots`, and `dependencies`. Status and next must report

@@ -112,6 +112,7 @@ def validate_series_manifest(
     path: Path,
     repo: Path,
     active_dir: Path,
+    archive_dir: Path,
     pattern: str,
     inventory_mode: str,
 ) -> dict:
@@ -126,6 +127,8 @@ def validate_series_manifest(
         for item in active_dir.iterdir()
         if item.is_file() and intake_name_matches(item.name, pattern)
     }
+    active_prefix = f"{active_dir.relative_to(repo).as_posix().rstrip('/')}/"
+    archive_prefix = f"{archive_dir.relative_to(repo).as_posix().rstrip('/')}/"
     target_paths: list[str] = []
     target_statuses: dict[str, str] = {}
     eligible: list[str] = []
@@ -147,6 +150,12 @@ def validate_series_manifest(
             fail("RIG015", f"hash drift for {target_path}")
         status = required_text(target, "status", "RIG017")
         target_statuses[target_path] = status
+        if not target_path.startswith((active_prefix, archive_prefix)):
+            fail("RIG017", f"series target is outside active and archive collections: {target_path}")
+        if status == "Completed" and not target_path.startswith(archive_prefix):
+            fail("RIG017", f"Completed target must be stored in archive collection: {target_path}")
+        if status != "Completed" and target_path.startswith(archive_prefix):
+            fail("RIG017", f"non-completed target must not be stored in archive collection: {target_path}")
         if status == "Eligible":
             eligible.append(target_path)
 
@@ -182,7 +191,7 @@ def validate_series_manifest(
             fail("RIG016", f"dependency {source} -> {target} contradicts order")
 
     return {
-        "activeIntakeCount": len(target_paths),
+        "activeIntakeCount": sum(target.startswith(active_prefix) for target in target_paths),
         "seriesTargetCount": len(target_paths),
         "eligibleCandidate": eligible[0] if eligible else "N/A",
         "dependencyCount": len(dependencies),
@@ -296,6 +305,7 @@ def validate_config(data: dict, repo: Path) -> dict:
                 repo / collections["seriesManifest"],
                 repo,
                 active_dir,
+                repo / collections["archive"],
                 pattern,
                 inventory_mode,
             )

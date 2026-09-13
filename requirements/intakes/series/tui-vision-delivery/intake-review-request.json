@@ -5,35 +5,35 @@
   "policy": "tui-vision-lastenheft",
   "targets": [
     {
-      "path": "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
+      "path": "requirements/intakes/archive/Lastenheft_22_Wave6-Combined-Delta-Closure.037-wave6-combined-delta-closure.md",
       "role": "OrderedMember"
     },
     {
-      "path": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+      "path": "requirements/intakes/archive/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.038-example-portfolio-conformance-audit.md",
       "role": "OrderedMember"
     },
     {
-      "path": "requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md",
+      "path": "requirements/intakes/archive/Lastenheft_Example-Portfolio-Closure.039-example-portfolio-closure.md",
       "role": "Primary"
     },
     {
-      "path": "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+      "path": "requirements/intakes/archive/Lastenheft_Constitution_Change.040-constitution-governance-closure.md",
       "role": "OrderedMember"
     },
     {
-      "path": "requirements/intakes/active/Lastenheft_Source-Reference-Policy.md",
+      "path": "requirements/intakes/archive/Lastenheft_Source-Reference-Policy.041-source-reference-policy.md",
       "role": "OrderedMember"
     },
     {
-      "path": "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
+      "path": "requirements/intakes/archive/Lastenheft_Transactional-Form-Model.042-transactional-form-model.md",
       "role": "OrderedMember"
     },
     {
-      "path": "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
+      "path": "requirements/intakes/archive/Lastenheft_23_Documentation-Publishing-Closure.043-documentation-publishing-closure.md",
       "role": "OrderedMember"
     },
     {
-      "path": "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "path": "requirements/intakes/archive/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.044-sandbox-secure-development-hardening.md",
       "role": "OrderedMember"
     },
     {
@@ -47,53 +47,53 @@
   ],
   "series": {
     "orderedTargetPaths": [
-      "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
-      "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
-      "requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md",
-      "requirements/intakes/active/Lastenheft_Constitution_Change.md",
-      "requirements/intakes/active/Lastenheft_Source-Reference-Policy.md",
-      "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
-      "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
-      "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "requirements/intakes/archive/Lastenheft_22_Wave6-Combined-Delta-Closure.037-wave6-combined-delta-closure.md",
+      "requirements/intakes/archive/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.038-example-portfolio-conformance-audit.md",
+      "requirements/intakes/archive/Lastenheft_Example-Portfolio-Closure.039-example-portfolio-closure.md",
+      "requirements/intakes/archive/Lastenheft_Constitution_Change.040-constitution-governance-closure.md",
+      "requirements/intakes/archive/Lastenheft_Source-Reference-Policy.041-source-reference-policy.md",
+      "requirements/intakes/archive/Lastenheft_Transactional-Form-Model.042-transactional-form-model.md",
+      "requirements/intakes/archive/Lastenheft_23_Documentation-Publishing-Closure.043-documentation-publishing-closure.md",
+      "requirements/intakes/archive/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.044-sandbox-secure-development-hardening.md",
       "requirements/intakes/archive/Lastenheft_RL-SE-Checklist-Selbstpruefung.045-rl-se-checklist-self-review.md",
       "requirements/intakes/archive/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.046-gsdb-spec-kit-intensive-review.md"
     ],
     "roots": [
-      "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
-      "requirements/intakes/active/Lastenheft_Constitution_Change.md",
-      "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "requirements/intakes/archive/Lastenheft_22_Wave6-Combined-Delta-Closure.037-wave6-combined-delta-closure.md",
+      "requirements/intakes/archive/Lastenheft_Constitution_Change.040-constitution-governance-closure.md",
+      "requirements/intakes/archive/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.044-sandbox-secure-development-hardening.md",
       "requirements/intakes/archive/Lastenheft_RL-SE-Checklist-Selbstpruefung.045-rl-se-checklist-self-review.md",
       "requirements/intakes/archive/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.046-gsdb-spec-kit-intensive-review.md"
     ],
     "dependencies": [
       {
-        "from": "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
-        "to": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+        "from": "requirements/intakes/archive/Lastenheft_22_Wave6-Combined-Delta-Closure.037-wave6-combined-delta-closure.md",
+        "to": "requirements/intakes/archive/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.038-example-portfolio-conformance-audit.md",
         "kind": "HardCompletionGate"
       },
       {
-        "from": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
-        "to": "requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md",
+        "from": "requirements/intakes/archive/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.038-example-portfolio-conformance-audit.md",
+        "to": "requirements/intakes/archive/Lastenheft_Example-Portfolio-Closure.039-example-portfolio-closure.md",
         "kind": "HardCompletionGate"
       },
       {
-        "from": "requirements/intakes/active/Lastenheft_Constitution_Change.md",
-        "to": "requirements/intakes/active/Lastenheft_Source-Reference-Policy.md",
+        "from": "requirements/intakes/archive/Lastenheft_Constitution_Change.040-constitution-governance-closure.md",
+        "to": "requirements/intakes/archive/Lastenheft_Source-Reference-Policy.041-source-reference-policy.md",
         "kind": "SharedWriterSerialization"
       },
       {
-        "from": "requirements/intakes/active/Lastenheft_Source-Reference-Policy.md",
-        "to": "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
+        "from": "requirements/intakes/archive/Lastenheft_Source-Reference-Policy.041-source-reference-policy.md",
+        "to": "requirements/intakes/archive/Lastenheft_Transactional-Form-Model.042-transactional-form-model.md",
         "kind": "HardCompletionGate"
       },
       {
-        "from": "requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md",
-        "to": "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
+        "from": "requirements/intakes/archive/Lastenheft_Example-Portfolio-Closure.039-example-portfolio-closure.md",
+        "to": "requirements/intakes/archive/Lastenheft_Transactional-Form-Model.042-transactional-form-model.md",
         "kind": "HardCompletionGate"
       },
       {
-        "from": "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
-        "to": "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
+        "from": "requirements/intakes/archive/Lastenheft_Transactional-Form-Model.042-transactional-form-model.md",
+        "to": "requirements/intakes/archive/Lastenheft_23_Documentation-Publishing-Closure.043-documentation-publishing-closure.md",
         "kind": "PreferredSerialOrder"
       }
     ]
