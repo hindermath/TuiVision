@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-07-22",
+  "updated": "2026-09-13",
   "description": "Homebrew top-level package registry for agentic development across the Level-0, Level-1, and Level-2 repositories.",
   "policy": {
     "formulaSource": "brew leaves --installed-on-request",
@@ -11,6 +11,7 @@
   "formulae": [
     { "name": "acme", "scope": "optional", "purpose": "Plan 9 toolchain experiments" },
     { "name": "antlr", "scope": "optional", "purpose": "Parser and language tooling" },
+    { "name": "bash", "scope": "required", "apt": "bash", "ensureLinked": true, "linkCommands": ["bash"], "purpose": "Bash 5+ for workspace and AOC scripts" },
     { "name": "cc65", "scope": "optional", "purpose": "C64 and 6502 development" },
     { "name": "cmake", "scope": "required", "apt": "cmake", "purpose": "Native build orchestration" },
     { "name": "cmake-docs", "scope": "optional", "purpose": "CMake documentation" },
@@ -57,6 +58,7 @@
     "description": "Linux fallback packages for machines without Homebrew. Only explicit mappings are installed.",
     "packages": [
       { "name": "git", "scope": "required", "purpose": "Source control" },
+      { "name": "bash", "scope": "required", "purpose": "Bash 5+ for workspace and AOC scripts" },
       { "name": "ripgrep", "scope": "required", "purpose": "Fast repository search" },
       { "name": "python3", "scope": "required", "purpose": "Python runtime for scripts and validation" },
       { "name": "nodejs", "scope": "required", "purpose": "Node.js runtime where distro package is acceptable" },
