@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0",
+  "feature": "047-evidence-quality-audit",
+  "deliveryMode": "MergeAndSync",
+  "allowedRoots": [
+    "requirements/intakes/active/Lastenheft_24_Evidence-Quality-Audit-Features-044-046.md",
+    "specs/047-evidence-quality-audit/",
+    "specs/intake-authoring-receipts/24-evidence-quality-audit-features-044-046.json",
+    "specs/intake-review-request.json",
+    "specs/intake-review-result.json",
+    "specs/intake-review-report.md",
+    "docs/security/secure-development/2026-09-13-evidence-quality-audit/",
+    "docs/project-statistics.md",
+    "Directory.Build.props",
+    ".specify/feature.json"
+  ],
+  "forbiddenRoots": ["src/", "examples/", ".github/workflows/", "tv203s/"],
+  "remoteActionsAllowed": true,
+  "independentSemanticReviewRequiredForRemoteDelivery": true
+}

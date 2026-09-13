@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "1.1",
+  "runId": "79a8099e-9702-45eb-a0db-7a20e33348c2",
+  "featurePath": "specs/047-evidence-quality-audit",
+  "branch": "047-evidence-quality-audit",
+  "deliveryMode": "MergeAndSync",
+  "authorityRevalidationRequired": false,
+  "stage": "Publish",
+  "status": "Active",
+  "checkpointCommit": "3b0d936e2204ba2aa8a4ee7ed99ce7070e62aa2a",
+  "acceptedArtifacts": [
+    {
+      "path": "requirements/intakes/active/Lastenheft_24_Evidence-Quality-Audit-Features-044-046.md",
+      "sha256": "57a8ec1519f5f332dadecc45d92e68cae66ad1a6495b2149281019525be34b69"
+    },
+    {
+      "path": "specs/intake-review-result.json",
+      "sha256": "726b6c05e01bdea6b50be62fd40ba0aaa91d9854ca743a5f1ac32680f83bcf54"
+    },
+    {
+      "path": "specs/047-evidence-quality-audit/spec.md",
+      "sha256": "94a08bf80f36fc94763e385e45249089b12102b255926eb35fe69f0e59d80d5a"
+    },
+    {
+      "path": "specs/047-evidence-quality-audit/plan.md",
+      "sha256": "168bb20b870761fac7627669bb365ca679c435c2eb292fa114d81b9176970669"
+    },
+    {
+      "path": "specs/047-evidence-quality-audit/tasks.md",
+      "sha256": "70e989f805f456e38daee94a8ce2739c8dbb917e92ec7852df122d16fea6b3af"
+    },
+    {
+      "path": "docs/security/secure-development/2026-09-13-evidence-quality-audit/finding-register.json",
+      "sha256": "c820e596fe11ad83572c1ea1f08ee8faafd75aa84a5b38a7b93653bcacea43cb"
+    },
+    {
+      "path": "docs/security/secure-development/2026-09-13-evidence-quality-audit/control-crosswalk.json",
+      "sha256": "9631b7a14eeb41e456bffdf33e3c4d865c957990a04c9baeedd7a0167be9f232"
+    },
+    {
+      "path": "specs/047-evidence-quality-audit/pr-evidence.md",
+      "sha256": "f33647e127dd3889d85453c644462a7df8840cbb0a0ef6f328deaab2e150df1d"
+    },
+    {
+      "path": "specs/047-evidence-quality-audit/retrospective.md",
+      "sha256": "0d1bb9f4dec02bb28fce5822bf09ab7d0c385d9cf18153ed0380cb0a11cac00b"
+    }
+  ],
+  "tasks": {
+    "path": "specs/047-evidence-quality-audit/tasks.md",
+    "sha256": "70e989f805f456e38daee94a8ce2739c8dbb917e92ec7852df122d16fea6b3af",
+    "completed": 52,
+    "total": 58
+  },
+  "lastPassingGate": "Local acceptance passed for 12 sandbox controls, 157 crosswalk rows, 988 mechanical references, 50 semantic references, ten findings, seven validator tests, DocFX, Axe, format, source hashes, scope, and both intake validators.",
+  "lastOperation": {
+    "kind": "Retrospective",
+    "state": "Completed",
+    "summary": "Feature 047 LocalImplementation completed without product mutation, remediation, follow-up intake, commit, push, pull request, merge, or remote claim."
+  },
+  "stop": {
+    "reason": "N/A",
+    "requestedAt": "N/A",
+    "safeBoundary": "N/A"
+  },
+  "closeout": {
+    "mergeOrPublication": "N/A",
+    "defaultBranchSync": "N/A",
+    "postMergeActions": "N/A",
+    "finalValidation": "Completed"
+  },
+  "nextExactAction": "Commit and push the non-empty Feature 047 delivery",
+  "updatedAt": "2026-09-13T14:36:00Z"
+}
