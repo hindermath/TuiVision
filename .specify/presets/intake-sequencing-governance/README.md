@@ -101,10 +101,15 @@ schema 2.0, target paths are resolved from portable roles and collection paths.
 An active delivery series has exactly one explicit `Eligible` target; that
 state selects order only and grants no implementation or remote authority. A
 `Completed` series preserves its members in the configured archive collection
-and has no eligible target.
+and has no eligible target. In `SeriesManifest` mode, a missing active
+collection counts as empty because Git does not preserve empty directories;
+`DirectoryStrict` still requires the configured directory.
 A valid `Idle` series has neither members nor an eligible target.
 
 *Eine aktive Lieferserie hat genau ein `Eligible`-Ziel. Eine abgeschlossene
 Serie bewahrt ihre abgeschlossenen Mitglieder in der konfigurierten
-Archiv-Collection, hat aber kein ausführbares Ziel. `Idle` bleibt ausschließlich
-der leere Zustand. Aus `Eligible` entstehen keine Lieferrechte.*
+Archiv-Collection, hat aber kein ausführbares Ziel. Im Modus `SeriesManifest`
+gilt eine fehlende aktive Collection als leer, weil Git leere Verzeichnisse
+nicht speichert; `DirectoryStrict` verlangt das Verzeichnis weiterhin. `Idle`
+bleibt ausschließlich der leere Zustand. Aus `Eligible` entstehen keine
+Lieferrechte.*

@@ -331,7 +331,9 @@ Eine aktive Lieferserie hat genau ein `Eligible`-Ziel. Eine `Completed`-Serie
 bewahrt ausschließlich abgeschlossene Mitglieder in der konfigurierten
 Archiv-Collection und hat kein `Eligible`-Ziel. `SeriesManifest` erlaubt einer
 laufenden Serie, aktive Ziele und bereits archivierte Vorgänger gemeinsam zu
-referenzieren.
+referenzieren. Weil Git leere Verzeichnisse nicht speichert, gilt eine fehlende
+aktive Collection in diesem Modus als Bestand null; `DirectoryStrict` verlangt
+das konfigurierte Verzeichnis weiterhin.
 
 *Version 0.3.0 describes requirements collections with schema 2.0.
 Documentation language is explicit and independent from implementation
@@ -339,8 +341,10 @@ language and locale. Portable roles resolve localized names. Migration is
 authority-bound, hash-bound, and atomic. `Eligible` selects order but grants no
 implementation or remote authority. `DirectoryStrict` validates a dedicated
 active directory; `SeriesManifest` supports established flat or mixed layouts
-without trusting manual counts. A completed Series preserves its members in
-the configured archive collection without inventing an eligible candidate.*
+without trusting manual counts. Because Git does not preserve empty directories,
+an absent active collection counts as empty in this mode; `DirectoryStrict`
+still requires the directory. A completed Series preserves its members in the
+configured archive collection without inventing an eligible candidate.*
 
 ## Status / Statuspruefung
 
