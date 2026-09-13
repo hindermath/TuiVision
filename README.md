@@ -411,3 +411,11 @@ Gate-Reviews. [Integration, Bedienung und Evidence-Grenzen](docs/maintenance/sec
 
 *The approved thirteenth preset adds read-only status and explicitly authorized
 gate reviews. [Integration, usage and evidence boundaries](docs/maintenance/secure-development-assurance-integration.md).*
+
+<!-- BEGIN spec-kit-diagrams-completion -->
+## Diagramme und Ergebnisberichte / Diagrams and outcome reports
+
+[Mermaid- und Abschlussbericht-Regeln](docs/spec-kit-diagrams-and-completion-reports.md)
+führen vom neuen Lastenheft zum belegten Feature-Ergebnisbericht. / The linked
+rules explain accessible intake diagrams and evidence-based feature reports.
+<!-- END spec-kit-diagrams-completion -->

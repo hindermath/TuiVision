@@ -4313,15 +4313,15 @@
     {
       "evidenceId": "EVD-001",
       "relativePath": ".specify/memory/constitution.md",
-      "sha256": "e19a1ab59bc1b929b89584d7f32d5d836b4ccb5a16f97295e017008784b1249a",
-      "observedAtUtc": "2026-09-13T11:30:48Z",
+      "sha256": "dcd072f68b2489f0cc2abc82477c08693640cb08229bcfc2712220af6ebcc5f3",
+      "observedAtUtc": "2026-09-13T20:56:04Z",
       "evidenceType": "Configuration",
       "directness": "Supporting",
       "freshness": "Current",
       "supportsClaims": [
         "GOV-002"
       ],
-      "result": "Deutsch: Aktuelle Repository-Evidence wurde unter .specify/memory/constitution.md beobachtet. English: Current repository evidence was observed at .specify/memory/constitution.md. DE/EN: Version/path binding revalidated for the authorized intake rollout; no human approval or control-status change.",
+      "result": "Deutsch: Aktuelle Repository-Evidence wurde unter .specify/memory/constitution.md beobachtet. English: Current repository evidence was observed at .specify/memory/constitution.md. DE/EN: Version/path binding revalidated for the authorized intake rollout; no human approval or control-status change. DE: Quellenbindung nach Mermaid-/Berichtsregel geprueft; keine neue Kontroll- oder menschliche Freigabe. EN: Source binding revalidated after diagram/report guidance; no new control or human approval.",
       "proofBoundary": "Deutsch: Die Datei stuetzt nur benannte begrenzte Claims und keine formale Freigabe. English: The file supports named bounded claims only and no formal approval.",
       "reevaluationTrigger": "Deutsch: Hash, Governance-Vertrag oder Produktscope aendert sich. English: The hash, governance contract, or product scope changes."
     },
@@ -4523,8 +4523,8 @@
     {
       "evidenceId": "EVD-015",
       "relativePath": "AGENTS.md",
-      "sha256": "68ada0ce7fc61f6b08db0537733490116d0f64e053d23690772b77e8d9a432f4",
-      "observedAtUtc": "2026-09-13T11:30:48Z",
+      "sha256": "354afa0d130c5ec2123f83ea1e6a23b179abb99d48d32cb5c7bca4734c3c83de",
+      "observedAtUtc": "2026-09-13T20:56:04Z",
       "evidenceType": "Audit",
       "directness": "Direct",
       "freshness": "Current",
@@ -4547,7 +4547,7 @@
         "CL-09-16",
         "CL-09-17"
       ],
-      "result": "Deutsch: Current repository evidence was observed at AGENTS.md. English: Current repository evidence was observed at AGENTS.md. DE/EN: Version/path binding revalidated for the authorized intake rollout; no human approval or control-status change.",
+      "result": "Deutsch: Current repository evidence was observed at AGENTS.md. English: Current repository evidence was observed at AGENTS.md. DE/EN: Version/path binding revalidated for the authorized intake rollout; no human approval or control-status change. DE: Quellenbindung nach Mermaid-/Berichtsregel geprueft; keine neue Kontroll- oder menschliche Freigabe. EN: Source binding revalidated after diagram/report guidance; no new control or human approval.",
       "proofBoundary": "Deutsch: The file supports only the named bounded claims and does not grant formal compliance approval. English: The file supports only the named bounded claims and does not grant formal compliance approval.",
       "reevaluationTrigger": "Deutsch: The file hash, product scope, policy, platform, or provider boundary changes. English: The file hash, product scope, policy, platform, or provider boundary changes."
     },
@@ -4579,15 +4579,15 @@
     {
       "evidenceId": "EVD-017",
       "relativePath": "constitution.md",
-      "sha256": "3aeabe085b62f724243c8c5106e5d66e396d2a15cfc076543b0e2be4a518cd89",
-      "observedAtUtc": "2026-09-13T11:30:48Z",
+      "sha256": "9fe434705177655befd32c7c9785c65b1b4259c0bff62d226e08c5880ac93224",
+      "observedAtUtc": "2026-09-13T20:56:04Z",
       "evidenceType": "Audit",
       "directness": "Supporting",
       "freshness": "Current",
       "supportsClaims": [
         "GOV-002"
       ],
-      "result": "Deutsch: Aktuelle Repository-Evidence wurde unter constitution.md beobachtet. English: Current repository evidence was observed at constitution.md. DE/EN: Version/path binding revalidated for the authorized intake rollout; no human approval or control-status change.",
+      "result": "Deutsch: Aktuelle Repository-Evidence wurde unter constitution.md beobachtet. English: Current repository evidence was observed at constitution.md. DE/EN: Version/path binding revalidated for the authorized intake rollout; no human approval or control-status change. DE: Quellenbindung nach Mermaid-/Berichtsregel geprueft; keine neue Kontroll- oder menschliche Freigabe. EN: Source binding revalidated after diagram/report guidance; no new control or human approval.",
       "proofBoundary": "Deutsch: Die Datei stuetzt nur benannte begrenzte Claims und keine formale Freigabe. English: The file supports named bounded claims only and no formal approval.",
       "reevaluationTrigger": "Deutsch: Hash, Governance-Vertrag oder Produktscope aendert sich. English: The hash, governance contract, or product scope changes."
     },
