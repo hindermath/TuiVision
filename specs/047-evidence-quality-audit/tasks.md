@@ -69,7 +69,7 @@
 
 - [X] T051 Revalidate current MergeAndSync authority, branch ownership, and all accepted artifacts.
 - [X] T052 Align `Directory.Build.props` to the numbered Feature-047 branch before commit.
-- [ ] T053 Commit and push the non-empty Feature-047 delivery.
+- [X] T053 Commit and push the non-empty Feature-047 delivery.
 - [ ] T054 Create the feature pull request and validate exact-head mandatory checks.
 - [ ] T055 Converge submitted reviews, comments, and actionable review threads.
 - [ ] T056 Use narrow admin bypass only if Human Approval is the sole remaining rule.

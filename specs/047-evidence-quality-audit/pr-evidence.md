@@ -31,6 +31,7 @@ receipt. The final audit report repeats and verifies those hashes.
 | `docfx ../../docfx.json` from `tests/web-a11y` | PASS with 19 pre-existing link warnings | 0 errors |
 | `npm install` | PASS | 0 vulnerabilities; Node 26.7 engine warning confirms EQA008 |
 | `npm run test:docfx` | PASS, 2/2 | Playwright/Axe including project statistics |
+| Feature commits and branch push | PASS | Three non-empty commits pushed to `origin/047-evidence-quality-audit` |
 
 Two command corrections are retained as proof boundaries. A hash-check helper
 first referenced a mistyped, non-existent receipt path and changed nothing; the
