@@ -39,7 +39,7 @@
     },
     {
       "path": "specs/047-evidence-quality-audit/pr-evidence.md",
-      "sha256": "1cadc187825df550fa6cb7a8a048a697072adfa1b6179fc8cc9736c2c0d83059"
+      "sha256": "33d7405de44514329f36b9ce945d1429499354e56c7e6c8da738b312342660be"
     },
     {
       "path": "specs/047-evidence-quality-audit/autonomous-gate-requirements.json",

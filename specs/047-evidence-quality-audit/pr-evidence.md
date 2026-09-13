@@ -139,3 +139,8 @@ PR #180 was merged under that narrow condition as merge commit `18f3387`. The
 active intake was then archived through the repository rename workflow, and this
 causal evidence-only closeout records the post-merge facts without rewriting the
 reviewed feature head.
+
+The first closeout CI run proved that a fresh checkout does not materialize the
+now-empty `requirements/intakes/active/` directory. The test fixture now treats
+that absent empty collection like the production validator does; no intake or
+governance decision changes.
