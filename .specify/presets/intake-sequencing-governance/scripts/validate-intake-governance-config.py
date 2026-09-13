@@ -145,11 +145,15 @@ def validate_series_manifest(
     if not targets:
         fail("RIG014", "series manifest must contain non-empty orderedTargets")
 
-    active_paths = {
-        item.relative_to(repo).as_posix()
-        for item in active_dir.iterdir()
-        if item.is_file() and intake_name_matches(item.name, pattern)
-    }
+    active_paths = (
+        {
+            item.relative_to(repo).as_posix()
+            for item in active_dir.iterdir()
+            if item.is_file() and intake_name_matches(item.name, pattern)
+        }
+        if active_dir.is_dir()
+        else set()
+    )
     active_prefix = f"{active_dir.relative_to(repo).as_posix().rstrip('/')}/"
     archive_prefix = f"{archive_dir.relative_to(repo).as_posix().rstrip('/')}/"
     target_paths: list[str] = []
@@ -304,8 +308,13 @@ def validate_config(data: dict, repo: Path) -> dict:
         if not (repo / roles[key]).is_file():
             missing.append(roles[key])
     for key in ("requirements-intake", "requirements-baseline"):
-        if not (repo / roles[key]).is_dir():
-            missing.append(roles[key])
+        if (repo / roles[key]).is_dir():
+            continue
+        if key == "requirements-intake" and inventory_mode == "SeriesManifest":
+            # Git speichert keine leeren Verzeichnisse; SeriesManifest beweist den Bestand.
+            # Git does not store empty directories; SeriesManifest proves the inventory.
+            continue
+        missing.append(roles[key])
     if not (repo / collections["seriesManifest"]).is_file():
         missing.append(collections["seriesManifest"])
 

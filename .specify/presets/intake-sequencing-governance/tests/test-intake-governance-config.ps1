@@ -186,6 +186,12 @@ try {
         Set-Content -LiteralPath $ManifestPath -Encoding utf8NoBOM
     Invoke-Fixture (Write-JsonFixture 'completed-series.json' $ManifestInventory) 0 '"eligibleCandidate": "N/A"'
 
+    $ActiveCollection = Join-Path $Root 'requirements/intakes/active'
+    Remove-Item -LiteralPath $ActiveCollection -Recurse -Force
+    Invoke-Fixture (Write-JsonFixture 'completed-series-without-active-directory.json' $ManifestInventory) 0 '"activeIntakeCount": 0'
+    New-Item -ItemType Directory -Path $ActiveCollection | Out-Null
+    Set-Content -LiteralPath $Target -Value '# Beispiel' -Encoding utf8NoBOM
+
     $CompletedInActive = $Manifest.Clone()
     $CompletedInActive.status = 'Completed'
     $CompletedInActive.orderedTargets = @($Manifest.orderedTargets[0].Clone())

@@ -23,7 +23,9 @@ dependencies and therefore has no eligible candidate.
 A completed non-empty series is Aligned only when every retained target is
 Completed, stored in the configured archive collection, and no target is
 Eligible. SeriesManifest permits an active series to reference active targets
-and already archived predecessors together.
+and already archived predecessors together. Because Git does not preserve empty
+directories, an absent active collection is counted as empty in SeriesManifest
+mode; DirectoryStrict still requires the configured directory.
 .PP
 Canonical-index uniqueness follows Git repository boundaries. An index in a
 nested Git checkout belongs to that checkout; an ordinary duplicate index
