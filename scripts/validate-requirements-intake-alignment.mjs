@@ -20,6 +20,8 @@ export function validate(options = {}) {
     "requirements/intakes/series/tui-vision-delivery/intake-review-result.json";
   const activePath = options.activePath ?? "requirements/intakes/active";
   const receiptsPath = options.receiptsPath ?? "specs/intake-authoring-receipts";
+  const exactFixturePath = options.exactFixturePath ??
+    "scripts/tests/linked-intake-evidence/tuivision-exact.json";
   const errors = [];
   const resolve = (candidate) => path.isAbsolute(candidate) ? candidate : path.join(root, candidate);
   const read = (relativePath) => fs.readFileSync(resolve(relativePath), "utf8");
@@ -29,6 +31,9 @@ export function validate(options = {}) {
   const coverage = parse(coveragePath);
   const manifest = parse(manifestPath);
   const review = parse(reviewPath);
+  const exact = parse(exactFixturePath);
+  const seriesMapping = exact.seriesMapping;
+  const expectedDependencyTuples = exact.dependencyTuples;
   const baselineHash = digest(read(baselinePath));
 
   if (baselineHash !== coverage.source?.normalizedSha256) {
@@ -52,26 +57,40 @@ export function validate(options = {}) {
 
   const activeRoot = resolve(activePath);
   const archiveRoot = path.join(root, "requirements/intakes/archive");
-  const active = fs.readdirSync(activeRoot).filter((name) => name.endsWith(".md")).sort();
+  const active = fs.existsSync(activeRoot)
+    ? fs.readdirSync(activeRoot).filter((name) => name.endsWith(".md")).sort()
+    : [];
   const archived = fs.readdirSync(archiveRoot).filter((name) => name.endsWith(".md")).sort();
   const rootLastenhefte = fs.readdirSync(root).filter((name) => /^Lastenheft.*\.md$/.test(name));
-  if (archived.length !== 30) errors.push(`expected 30 archived intakes, found ${archived.length}`);
+  if (archived.length !== seriesMapping.expectedArchiveCount) {
+    errors.push(`expected ${seriesMapping.expectedArchiveCount} archived intakes, found ${archived.length}`);
+  }
   if (rootLastenhefte.join(",") !== "Lastenheft_Abarbeitungsreihenfolge.md") {
     errors.push("only the generated processing-order view may remain as root Lastenheft");
   }
 
   const targets = manifest.orderedTargets ?? [];
   const targetPaths = targets.map((target) => target.path);
-  if (targetPaths.length !== 10 || new Set(targetPaths).size !== targetPaths.length) {
-    errors.push("series must contain exactly 10 unique active targets");
+  if (targetPaths.length !== seriesMapping.expectedSeriesTargetCount ||
+      new Set(targetPaths).size !== targetPaths.length) {
+    errors.push(`series must contain exactly ${seriesMapping.expectedSeriesTargetCount} unique targets`);
+  }
+  const activeSeriesTargets = targets.filter((target) =>
+    target.path?.startsWith("requirements/intakes/active/"));
+  if (activeSeriesTargets.length !== seriesMapping.expectedActiveCount) {
+    errors.push(`expected ${seriesMapping.expectedActiveCount} active series targets, found ${activeSeriesTargets.length}`);
   }
   const expectedActive = active.map((name) => `requirements/intakes/active/${name}`).sort();
   const targetSet = new Set(targetPaths);
-  const invalidLifecycleTargets = targets.filter((target) =>
-    target.path?.includes("/backlog/") ||
-    (target.path?.includes("/archive/") && target.status !== "Completed"));
+  const invalidLifecycleTargets = targets.filter((target) => {
+    const inActive = target.path?.startsWith("requirements/intakes/active/");
+    const inArchive = target.path?.startsWith("requirements/intakes/archive/");
+    return target.path?.includes("/backlog/") ||
+      target.status === "Completed" && !inArchive ||
+      target.status !== "Completed" && !inActive;
+  });
   if (invalidLifecycleTargets.length > 0) {
-    errors.push(`archive or backlog target has an executable lifecycle: ${invalidLifecycleTargets.map((target) => target.path).join(", ")}`);
+    errors.push(`series target status does not match its collection: ${invalidLifecycleTargets.map((target) => target.path).join(", ")}`);
   }
 
   const reviewedTargets = new Set((review.targets ?? []).map((target) => target.path));
@@ -103,8 +122,11 @@ export function validate(options = {}) {
       target.normalizedSha256 === receiptHash &&
       fs.existsSync(resolve(target.path)) &&
       digest(read(target.path)) === receiptHash);
-    if (receipt.value.series?.seriesId !== manifest.seriesId ||
-        completedArchiveMatches.length !== 1) {
+    const receiptSeries = receipt.value.series ?? {};
+    const compatibleSeriesLineage = receiptSeries.seriesId === manifest.seriesId ||
+      (receiptSeries.seriesId === "N/A" && receiptSeries.manifestPath === "N/A" &&
+        receiptSeries.order === "N/A" && receiptSeries.role === "N/A");
+    if (!compatibleSeriesLineage || completedArchiveMatches.length !== 1) {
       errors.push(`missing authoring receipt target lacks one completed archive successor: ${receiptTarget}`);
     }
   }
@@ -148,70 +170,33 @@ export function validate(options = {}) {
   if (eligible.length !== 0) {
     errors.push("completed delivery series must not expose an Eligible target");
   }
-  const wave6Closure = targets.find((target) =>
-    target.path.endsWith("requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md"));
-  if (!wave6Closure || wave6Closure.status !== "Completed") {
-    errors.push("Wave-6 closure must remain Completed");
+  if (manifest.status !== "Completed" || targets.some((target) => target.status !== "Completed")) {
+    errors.push("completed delivery series must retain only Completed targets");
   }
-  const portfolio = targets.find((target) =>
-    target.path.endsWith("requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md"));
-  if (!portfolio || portfolio.status !== "Completed") {
-    errors.push("post-Wave-6 portfolio audit must remain Completed");
+  const expectedTargetPaths = seriesMapping.mappings.map((item) => item.intakePath);
+  if (JSON.stringify(targetPaths) !== JSON.stringify(expectedTargetPaths)) {
+    errors.push("series target order differs from the exact feature mapping");
   }
-
-  const portfolioClosure = targets.find((target) =>
-    target.path.endsWith("requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md"));
-  const constitution = targets.find((target) =>
-    target.path.endsWith("requirements/intakes/active/Lastenheft_Constitution_Change.md"));
-  const sourcePolicy = targets.find((target) =>
-    target.path.endsWith("requirements/intakes/active/Lastenheft_Source-Reference-Policy.md"));
-  const formModel = targets.find((target) =>
-    target.path.endsWith("requirements/intakes/active/Lastenheft_Transactional-Form-Model.md"));
-  const documentationClosure = targets.find((target) =>
-    target.path.endsWith("requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md"));
-  const sandboxHardening = targets.find((target) =>
-    target.path.endsWith("requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md"));
-  const rlSeReview = targets.find((target) =>
-    target.path.endsWith("requirements/intakes/archive/Lastenheft_RL-SE-Checklist-Selbstpruefung.045-rl-se-checklist-self-review.md"));
-  const gsdbReview = targets.find((target) =>
-    target.path.endsWith("requirements/intakes/archive/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.046-gsdb-spec-kit-intensive-review.md"));
-  for (const [label, target] of [
-    ["portfolio closure", portfolioClosure],
-    ["constitution change", constitution],
-    ["source-reference policy", sourcePolicy],
-    ["transactional form model", formModel],
-  ]) {
-    if (!target || target.status !== "Completed") {
-      errors.push(`${label} must remain Completed`);
+  for (const item of seriesMapping.mappings) {
+    const target = targets.find((candidate) => candidate.path === item.intakePath);
+    const featureDirectory = item.featurePath.replace(/\/$/, "");
+    const state = parse(item.proofPath);
+    if (!target || target.status !== "Completed" || target.normalizedSha256 !== item.intakeSha256 ||
+        !fs.existsSync(resolve(featureDirectory)) || state.featurePath !== featureDirectory ||
+        state.branch !== path.basename(featureDirectory) || state.status !== "Completed" ||
+        digest(read(item.proofPath)) !== item.proofSha256 ||
+        !state.acceptedArtifacts?.some((artifact) =>
+          artifact.path === item.intakePath && artifact.sha256 === item.intakeSha256)) {
+      errors.push(`exact feature mapping is invalid: ${item.intakePath}`);
     }
-  }
-  if (!documentationClosure || documentationClosure.status !== "Completed") {
-    errors.push("documentation publishing closure must remain Completed");
-  }
-  if (!sandboxHardening || sandboxHardening.status !== "Completed") {
-    errors.push("sandbox security hardening must remain Completed");
-  }
-  if (!rlSeReview || rlSeReview.status !== "Completed") {
-    errors.push("RL-SE checklist self-review must remain Completed and archived");
-  }
-  if (!gsdbReview || gsdbReview.status !== "Completed") {
-    errors.push("GSDB Spec Kit intensive review must remain Completed and archived");
   }
 
   const dependencies = manifest.dependencies ?? [];
-  const expectedDependencies = [
-    [wave6Closure?.path, portfolio?.path, "HardCompletionGate", true],
-    [portfolio?.path, portfolioClosure?.path, "HardCompletionGate", true],
-    [constitution?.path, sourcePolicy?.path, "SharedWriterSerialization", false],
-    [sourcePolicy?.path, formModel?.path, "HardCompletionGate", true],
-    [portfolioClosure?.path, formModel?.path, "HardCompletionGate", true],
-    [formModel?.path, documentationClosure?.path, "PreferredSerialOrder", false],
-  ];
   const dependencyKeys = new Set(dependencies.map((edge) =>
     `${edge.from}|${edge.to}|${edge.kind}|${edge.binding}`));
-  if (dependencies.length !== expectedDependencies.length ||
-      expectedDependencies.some(([from, to, kind, binding]) =>
-        !dependencyKeys.has(`${from}|${to}|${kind}|${binding}`))) {
+  if (dependencies.length !== expectedDependencyTuples.expectedEdgeCount ||
+      expectedDependencyTuples.edges.some((edge) =>
+        !dependencyKeys.has(`${edge.from}|${edge.to}|${edge.kind}|${edge.binding}`))) {
     errors.push("series must contain the exact six approved delivery dependencies");
   }
   const indegree = new Map(targetPaths.map((target) => [target, 0]));
@@ -244,7 +229,7 @@ export function validate(options = {}) {
   const order = read("Lastenheft_Abarbeitungsreihenfolge.md");
   const index = read("Pflichtenheft.md");
   for (const target of targetPaths) {
-    if (!order.includes(target)) errors.push(`processing order omits active target: ${target}`);
+    if (!order.includes(target)) errors.push(`processing order omits series target: ${target}`);
   }
   if (!index.includes(manifestPath)) errors.push("Pflichtenheft index omits canonical manifest");
   if (/\[[ xX-]\]/.test(index)) errors.push("slim Pflichtenheft must not contain progress checkboxes");

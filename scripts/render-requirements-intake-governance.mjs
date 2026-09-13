@@ -21,71 +21,71 @@ if (argumentsList.some((argument) => !["--check", "--write"].includes(argument))
 const write = argumentsList.includes("--write");
 const seriesRoot = "requirements/intakes/series/tui-vision-delivery";
 const seriesId = "a73dda7c-163b-4530-97f2-fd9eea5e8986";
-const seriesReceiptId = "a76e7957-0b72-4c0b-b738-c88c3bc33885";
-const seriesOperationId = "0326e087-08a7-4318-a54d-6b4bf5993017";
+const seriesReceiptId = "d452f695-2189-42c4-9021-b54c436b7f65";
+const seriesOperationId = "3fff6099-cd3b-47c1-985b-c816300dd47a";
 const reviewId = "88579ec8-e830-4a07-8c29-d6035dcb4782";
 const migrationProposal = "specs/requirements-reconciliation-20260726/migration-proposal.json";
 const createdAt = "2026-07-26T20:00:00Z";
-const seriesUpdatedAt = "2026-09-12T23:21:05Z";
-const reviewedAt = "2026-08-30T16:19:20Z";
+const seriesUpdatedAt = "2026-09-12T23:56:52Z";
+const reviewedAt = "2026-09-12T23:56:52Z";
 const archiveRoot =
   `specs/intake-series-archive/${seriesId}/${seriesOperationId}`;
-const priorManifestHash = "538d12fcc60cab96e5d70865a9ab9c31885634f3981e1c10dc2cd09d1ee2d2e7";
-const priorReceiptHash = "eb64ab26a6e0d4fd9ab92039f61a31612cbda4ac1cd4978fabfb3ab220f71136";
+const priorManifestHash = "6c086db5c8ed9cd33e221210e68edd99546efb9acbe098d863fb18201ffb5ae9";
+const priorReceiptHash = "1ea8012359eb684753ec15e75f8ec7b71eaa05db674cd13217cd8fce14142d0f";
 
 const normalize = (value) => value.replace(/^\uFEFF/, "").replace(/\r\n?/g, "\n");
 const hashText = (value) => crypto.createHash("sha256").update(normalize(value)).digest("hex");
 const hashFile = (relativePath) => hashText(fs.readFileSync(path.join(root, relativePath), "utf8"));
 const readJson = (relativePath) => JSON.parse(fs.readFileSync(path.join(root, relativePath), "utf8"));
 const json = (value) => JSON.stringify(value, null, 2) + "\n";
-const reviewHead = "fe1f57c201c84fb3f81d746a6ca3d8977c9f1edb";
+const reviewHead = "5c2c3c301afa8c9cbdba24687294e7d53ed7e417";
 
 const members = [
   {
     slug: "wave6-combined-delta-closure",
-    path: "requirements/intakes/active/Lastenheft_22_Wave6-Combined-Delta-Closure.md",
+    path: "requirements/intakes/archive/Lastenheft_22_Wave6-Combined-Delta-Closure.037-wave6-combined-delta-closure.md",
     role: "OrderedMember",
     status: "Completed",
   },
   {
     slug: "15-post-wave6-example-portfolio-conformance-audit",
-    path: "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+    path: "requirements/intakes/archive/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.038-example-portfolio-conformance-audit.md",
     role: "OrderedMember",
     status: "Completed",
   },
   {
     slug: "example-portfolio-closure",
-    path: "requirements/intakes/active/Lastenheft_Example-Portfolio-Closure.md",
+    path: "requirements/intakes/archive/Lastenheft_Example-Portfolio-Closure.039-example-portfolio-closure.md",
     role: "Primary",
     status: "Completed",
   },
   {
     slug: "constitution-change",
-    path: "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+    path: "requirements/intakes/archive/Lastenheft_Constitution_Change.040-constitution-governance-closure.md",
     role: "OrderedMember",
     status: "Completed",
   },
   {
     slug: "source-reference-policy",
-    path: "requirements/intakes/active/Lastenheft_Source-Reference-Policy.md",
+    path: "requirements/intakes/archive/Lastenheft_Source-Reference-Policy.041-source-reference-policy.md",
     role: "OrderedMember",
     status: "Completed",
   },
   {
     slug: "transactional-form-model",
-    path: "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
+    path: "requirements/intakes/archive/Lastenheft_Transactional-Form-Model.042-transactional-form-model.md",
     role: "OrderedMember",
     status: "Completed",
   },
   {
     slug: "documentation-publishing-closure",
-    path: "requirements/intakes/active/Lastenheft_23_Documentation-Publishing-Closure.md",
+    path: "requirements/intakes/archive/Lastenheft_23_Documentation-Publishing-Closure.043-documentation-publishing-closure.md",
     role: "OrderedMember",
     status: "Completed",
   },
   {
     slug: "sandbox-gestuetzte-secure-development-haertung",
-    path: "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+    path: "requirements/intakes/archive/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.044-sandbox-secure-development-hardening.md",
     role: "OrderedMember",
     status: "Completed",
   },
@@ -165,6 +165,29 @@ const manifest = {
 
 const manifestPath = `${seriesRoot}/manifest.json`;
 const manifestHash = hashText(json(manifest));
+const reconciledFeatureStates = [
+  "specs/037-wave6-combined-delta-closure/autonomous-run-state.json",
+  "specs/038-example-portfolio-conformance-audit/autonomous-run-state.json",
+  "specs/039-example-portfolio-closure/autonomous-run-state.json",
+  "specs/040-constitution-governance-closure/autonomous-run-state.json",
+  "specs/041-source-reference-policy/autonomous-run-state.json",
+  "specs/042-transactional-form-model/autonomous-run-state.json",
+  "specs/043-documentation-publishing-closure/autonomous-run-state.json",
+  "specs/044-sandbox-secure-development-hardening/autonomous-run-state.json",
+];
+const lifecyclePublishedPaths = [
+  `${archiveRoot}/manifest.json`,
+  `${archiveRoot}/receipt.json`,
+  ...members.slice(0, 8).map((member) => member.path),
+  ...reconciledFeatureStates,
+  "Lastenheft_Abarbeitungsreihenfolge.md",
+  manifestPath,
+  `${seriesRoot}/receipt.json`,
+  `${seriesRoot}/operation.json`,
+  `${seriesRoot}/order.md`,
+  `${seriesRoot}/intake-review-request.json`,
+  `${seriesRoot}/intake-review-result.json`,
+];
 
 function sourceRecord(sourceId, relativePath, label) {
   const digest = hashFile(relativePath);
@@ -280,7 +303,7 @@ const seriesReceipt = {
   operation: {
     operationId: seriesOperationId,
     type: "Update",
-    authorityEvidence: "Explicit user authority for completed-series lifecycle reconciliation",
+    authorityEvidence: "Explicit user authority for completed-intake archive reconciliation",
   },
   status: "Ready",
   manifest: {path: manifestPath, normalizedSha256: manifestHash},
@@ -301,25 +324,13 @@ const operation = {
   seriesId,
   type: "Update",
   status: "Published",
-  authorityEvidence: "Explicit user authority for completed-series lifecycle reconciliation",
+  authorityEvidence: "Explicit user authority for completed-intake archive reconciliation",
   proposalNormalizedSha256: manifestHash,
-  preparedPaths: [
-    `${archiveRoot}/manifest.json`,
-    `${archiveRoot}/receipt.json`,
-    manifestPath,
-    `${seriesRoot}/receipt.json`,
-    `${seriesRoot}/order.md`,
-  ],
+  preparedPaths: lifecyclePublishedPaths,
   validation: {bash: "Pass", powerShell: "Pass"},
   publication: {
     status: "Published",
-    publishedPaths: [
-      `${archiveRoot}/manifest.json`,
-      `${archiveRoot}/receipt.json`,
-      manifestPath,
-      `${seriesRoot}/receipt.json`,
-      `${seriesRoot}/order.md`,
-    ],
+    publishedPaths: lifecyclePublishedPaths,
   },
 };
 
@@ -406,13 +417,14 @@ function encodedRelativeDestination(outputPath, targetPath, directory = false) {
 
 function linkedIntakeOrderDocument(outputPath) {
   const exact = readJson(exactFixturePath);
-  const mapping = exact.activeMapping;
+  const mapping = exact.seriesMapping;
   const tuples = exact.dependencyTuples;
   const backlog = exact.backlog;
   if (mapping.canonicalManifestSha256 !== manifestHash ||
       tuples.canonicalManifestSha256 !== manifestHash ||
       backlog.canonicalManifestSha256 !== manifestHash ||
-      mapping.expectedActiveCount !== 10 || mapping.mappings.length !== 10 ||
+      mapping.expectedSeriesTargetCount !== 10 || mapping.expectedActiveCount !== 0 ||
+      mapping.mappings.length !== 10 ||
       tuples.expectedEdgeCount !== 6 || tuples.edges.length !== 6) {
     throw new Error("TUI-EXACT-LOCK: exact fixture differs from the canonical manifest");
   }

@@ -24,7 +24,7 @@
       index, bounded aliases, and computed inventory agree.
 - [ ] Every Series member occurs once with a current normalized SHA-256; an
       active delivery series has exactly one `Eligible` candidate, while a
-      `Completed` series retains only terminal members and has none.
+      `Completed` series retains only archived `Completed` members and has none.
 - [ ] IDs, order, dependency graph, handoffs, and future-scope boundaries are consistent.
 - [ ] Schema 1.1 binds the repository-relative request path and normalized SHA-256.
 - [ ] Every target occurs exactly once in `orderedTargetPaths`.

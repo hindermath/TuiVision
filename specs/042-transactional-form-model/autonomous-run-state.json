@@ -10,7 +10,7 @@
   "checkpointCommit": "337a9cfe70bfc7ec25385eaa257b13f5e463bfed",
   "acceptedArtifacts": [
     {
-      "path": "requirements/intakes/active/Lastenheft_Transactional-Form-Model.md",
+      "path": "requirements/intakes/archive/Lastenheft_Transactional-Form-Model.042-transactional-form-model.md",
       "sha256": "45d8f8b589c3d9fd417f9b8dc9d25d09c0597f02c075b04454bbce95e095a239"
     },
     {

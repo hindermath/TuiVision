@@ -10,7 +10,7 @@
   "checkpointCommit": "65c04619a824f253961b58567aa4945554c22b8f",
   "acceptedArtifacts": [
     {
-      "path": "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "path": "requirements/intakes/archive/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.044-sandbox-secure-development-hardening.md",
       "sha256": "d1f6a20535f90b78d00f7f6974a32156d7c08eeb77ebad9961a41ffbe3f84858"
     },
     {
