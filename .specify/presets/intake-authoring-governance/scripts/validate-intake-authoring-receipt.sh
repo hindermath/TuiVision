@@ -27,7 +27,7 @@ import sys
 import uuid
 import ipaddress
 from datetime import datetime
-from pathlib import Path, PurePosixPath
+from pathlib import Path, PurePosixPath, PureWindowsPath
 from urllib.parse import urlsplit
 
 receipt_path = Path(sys.argv[1])
@@ -43,10 +43,15 @@ def required_text(obj, key, label):
 
 def relative(value):
     path = PurePosixPath(value)
-    return not path.is_absolute() and ".." not in path.parts
+    return not path.is_absolute() and not PureWindowsPath(value).drive and "\\" not in value and ".." not in path.parts
 
 def normalized_bytes(path):
-    raw = path.read_bytes()
+    # DE: Auch vorhandene Ziele und Quellen duerfen die Repo-Grenze nicht verlassen.
+    # EN: Existing targets and sources must also remain inside the repository.
+    resolved = path.resolve()
+    if not resolved.is_relative_to(repo):
+        raise ValueError("path resolves outside the repository")
+    raw = resolved.read_bytes()
     if raw.startswith(b"\xef\xbb\xbf"):
         raw = raw[3:]
     try:

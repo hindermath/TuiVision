@@ -1,0 +1,909 @@
+{
+  "unrelatedPresetsPreserved": true,
+  "schemaVersion": 1,
+  "presets": [
+    {
+      "version": "0.2.3",
+      "priority": 65,
+      "release": {
+        "release": "https://github.com/hindermath/spec-kit-preset-intake-review-governance/releases/tag/v0.2.3",
+        "sourceAssetSha256": "f31c08995761305bf68e2659218d0a6266a297775b871e34e201098f9d6b3550",
+        "archiveUrl": "https://github.com/hindermath/spec-kit-preset-intake-review-governance/archive/refs/tags/v0.2.3.zip",
+        "mergeCommit": "91462b4f47e64b9585c0f7d440a80449d7eb64c0",
+        "name": "review",
+        "verifiedFileCount": 30,
+        "nativeCi": [
+          {
+            "__typename": "CheckRun",
+            "completedAt": "2026-09-13T10:51:56Z",
+            "conclusion": "SUCCESS",
+            "detailsUrl": "https://github.com/hindermath/spec-kit-preset-intake-review-governance/actions/runs/34752922996/job/103712378111",
+            "name": "lifecycle (macos-latest)",
+            "startedAt": "2026-09-13T10:51:20Z",
+            "status": "COMPLETED",
+            "workflowName": "Lifecycle validation"
+          },
+          {
+            "__typename": "CheckRun",
+            "completedAt": "2026-09-13T10:51:50Z",
+            "conclusion": "SUCCESS",
+            "detailsUrl": "https://github.com/hindermath/spec-kit-preset-intake-review-governance/actions/runs/34752922996/job/103712377963",
+            "name": "lifecycle (ubuntu-latest)",
+            "startedAt": "2026-09-13T10:51:15Z",
+            "status": "COMPLETED",
+            "workflowName": "Lifecycle validation"
+          },
+          {
+            "__typename": "CheckRun",
+            "completedAt": "2026-09-13T10:52:08Z",
+            "conclusion": "SUCCESS",
+            "detailsUrl": "https://github.com/hindermath/spec-kit-preset-intake-review-governance/actions/runs/34752922996/job/103712378054",
+            "name": "lifecycle (windows-latest)",
+            "startedAt": "2026-09-13T10:51:15Z",
+            "status": "COMPLETED",
+            "workflowName": "Lifecycle validation"
+          }
+        ],
+        "version": "0.2.3",
+        "tagZipSha256": "a97d3b3039587d391cd214296d5cfd1cb7665aff76630c08a87879091ddcc1d1",
+        "tree": "5455156b7968408d0fd3484022f904049fd5c909",
+        "testedCommit": "5613550abe3758df8857221e3f0bca8a64124438",
+        "packagePath": "/tmp/intake-hardening-releases-20260913/review-tag/spec-kit-preset-intake-review-governance-0.2.3"
+      },
+      "overlays": [],
+      "id": "intake-review-governance",
+      "previous": "0.2.2",
+      "enabled": true
+    },
+    {
+      "version": "0.3.4",
+      "priority": 64,
+      "release": {
+        "version": "0.3.4",
+        "mergeCommit": "082a2ac3e4884d247466bb9f509a9bc05b9b93d6",
+        "tagZipSha256": "b08c1128756f7fc56de8deb98f9e1cb859b5f76063b39843e395aaed2b440214",
+        "release": "https://github.com/hindermath/spec-kit-preset-intake-authoring-governance/releases/tag/v0.3.4",
+        "archiveUrl": "https://github.com/hindermath/spec-kit-preset-intake-authoring-governance/archive/refs/tags/v0.3.4.zip",
+        "tree": "16be3ea6c6dfa66922365b6169c2aa04cb9a50bd",
+        "testedCommit": "2f184c337a8f8a9e23fe40890531c64cd196da5e",
+        "nativeCi": [
+          {
+            "__typename": "CheckRun",
+            "completedAt": "2026-09-13T11:04:51Z",
+            "conclusion": "SUCCESS",
+            "detailsUrl": "https://github.com/hindermath/spec-kit-preset-intake-authoring-governance/actions/runs/34753461637/job/103713775422",
+            "name": "lifecycle (macos-latest)",
+            "startedAt": "2026-09-13T11:04:05Z",
+            "status": "COMPLETED",
+            "workflowName": "Lifecycle validation"
+          },
+          {
+            "__typename": "CheckRun",
+            "completedAt": "2026-09-13T11:04:53Z",
+            "conclusion": "SUCCESS",
+            "detailsUrl": "https://github.com/hindermath/spec-kit-preset-intake-authoring-governance/actions/runs/34753461637/job/103713775453",
+            "name": "lifecycle (ubuntu-latest)",
+            "startedAt": "2026-09-13T11:04:02Z",
+            "status": "COMPLETED",
+            "workflowName": "Lifecycle validation"
+          },
+          {
+            "__typename": "CheckRun",
+            "completedAt": "2026-09-13T11:05:21Z",
+            "conclusion": "SUCCESS",
+            "detailsUrl": "https://github.com/hindermath/spec-kit-preset-intake-authoring-governance/actions/runs/34753461637/job/103713775347",
+            "name": "lifecycle (windows-latest)",
+            "startedAt": "2026-09-13T11:04:01Z",
+            "status": "COMPLETED",
+            "workflowName": "Lifecycle validation"
+          }
+        ],
+        "sourceAssetSha256": "4d496c39be8d43483b19332c96598f91999751d3a4c7eb936a8a9bda01080034",
+        "name": "authoring",
+        "packagePath": "/tmp/intake-template-releases-20260913/authoring-tag/spec-kit-preset-intake-authoring-governance-0.3.4",
+        "verifiedFileCount": 41
+      },
+      "overlays": [],
+      "id": "intake-authoring-governance",
+      "previous": "0.3.2",
+      "enabled": true
+    },
+    {
+      "version": "0.2.6",
+      "priority": 66,
+      "release": {
+        "version": "0.2.6",
+        "mergeCommit": "8aa137fcc95faf4e145ee408a1ee3790cac1873a",
+        "tagZipSha256": "d800feee907971beca4e151a75a4e4eeb9179c5772017e72cebb581022282ad6",
+        "release": "https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/releases/tag/v0.2.6",
+        "archiveUrl": "https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/archive/refs/tags/v0.2.6.zip",
+        "tree": "673abb2773efda52e3b71660e7563b3551d40091",
+        "testedCommit": "10cd246e5f315dea73850e0628e2c0d01c1ebd95",
+        "nativeCi": [
+          {
+            "__typename": "CheckRun",
+            "completedAt": "2026-09-13T11:04:51Z",
+            "conclusion": "SUCCESS",
+            "detailsUrl": "https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/actions/runs/34753464203/job/103713782620",
+            "name": "lifecycle (macos-latest)",
+            "startedAt": "2026-09-13T11:04:10Z",
+            "status": "COMPLETED",
+            "workflowName": "Lifecycle validation"
+          },
+          {
+            "__typename": "CheckRun",
+            "completedAt": "2026-09-13T11:04:49Z",
+            "conclusion": "SUCCESS",
+            "detailsUrl": "https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/actions/runs/34753464203/job/103713782616",
+            "name": "lifecycle (ubuntu-latest)",
+            "startedAt": "2026-09-13T11:04:06Z",
+            "status": "COMPLETED",
+            "workflowName": "Lifecycle validation"
+          },
+          {
+            "__typename": "CheckRun",
+            "completedAt": "2026-09-13T11:05:05Z",
+            "conclusion": "SUCCESS",
+            "detailsUrl": "https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/actions/runs/34753464203/job/103713782540",
+            "name": "lifecycle (windows-latest)",
+            "startedAt": "2026-09-13T11:04:07Z",
+            "status": "COMPLETED",
+            "workflowName": "Lifecycle validation"
+          }
+        ],
+        "sourceAssetSha256": "e393c038cdb01d9d5257108a942000a616dd3ca30f4362119eb18dd96f08a676",
+        "name": "sequencing",
+        "packagePath": "/tmp/intake-template-releases-20260913/sequencing-tag/spec-kit-preset-intake-sequencing-governance-0.2.6",
+        "verifiedFileCount": 41
+      },
+      "overlays": [],
+      "id": "intake-sequencing-governance",
+      "previous": "0.2.4",
+      "enabled": true
+    }
+  ],
+  "date": "2026-09-13",
+  "status": "LocalChecksPassedPendingCi",
+  "validation": {
+    "requiredNativeCi": "Pending",
+    "configurationChecks": [
+      {
+        "result": {
+          "collections": {
+            "active": "requirements/intakes/active",
+            "archive": "requirements/intakes/archive",
+            "backlog": "requirements/intakes/backlog",
+            "baseline": "requirements/baseline",
+            "history": "requirements/intakes/history",
+            "seriesManifest": "requirements/intakes/series/tui-vision-delivery/manifest.json"
+          },
+          "documentationLanguage": "de-DE",
+          "inventory": {
+            "activeIntakeCount": 0,
+            "activeSeriesTargetCount": 0,
+            "archiveIntakeCount": 38,
+            "backlogIntakeCount": 1,
+            "baselineCount": 1,
+            "dependencyCount": 6,
+            "eligibleCandidate": "N/A",
+            "historyIntakeCount": 5,
+            "seriesTargetCount": 10
+          },
+          "inventoryMode": "SeriesManifest",
+          "legacyArtifactNames": [],
+          "missingPaths": [],
+          "nextAction": "N/A",
+          "outcome": "Aligned",
+          "profile": "de",
+          "resolvedNaming": {
+            "canonicalIndex": "Pflichtenheft.md",
+            "intakePattern": "Lastenheft_<slug>.md",
+            "orderView": "Lastenheft_Abarbeitungsreihenfolge.md"
+          },
+          "roles": {
+            "intake-order": "Lastenheft_Abarbeitungsreihenfolge.md",
+            "requirements-baseline": "requirements/baseline",
+            "requirements-index": "Pflichtenheft.md",
+            "requirements-intake": "requirements/intakes/active"
+          },
+          "schemaVersion": "2.0"
+        },
+        "shellParity": true,
+        "config": "requirements/intake-governance-config.json",
+        "baselineExitCode": 1,
+        "preset": "review",
+        "classification": "Passed",
+        "exitCode": 0
+      },
+      {
+        "result": {
+          "collections": {
+            "active": "requirements/intakes/active",
+            "archive": "requirements/intakes/archive",
+            "backlog": "requirements/intakes/backlog",
+            "baseline": "requirements/baseline",
+            "history": "requirements/intakes/history",
+            "seriesManifest": "requirements/intakes/series/tui-vision-delivery/manifest.json"
+          },
+          "documentationLanguage": "de-DE",
+          "inventory": {
+            "activeIntakeCount": 0,
+            "activeSeriesTargetCount": 0,
+            "archiveIntakeCount": 38,
+            "backlogIntakeCount": 1,
+            "baselineCount": 1,
+            "dependencyCount": 6,
+            "eligibleCandidate": "N/A",
+            "historyIntakeCount": 5,
+            "seriesTargetCount": 10
+          },
+          "inventoryMode": "SeriesManifest",
+          "legacyArtifactNames": [],
+          "missingPaths": [],
+          "nextAction": "N/A",
+          "outcome": "Aligned",
+          "profile": "de",
+          "resolvedNaming": {
+            "canonicalIndex": "Pflichtenheft.md",
+            "intakePattern": "Lastenheft_<slug>.md",
+            "orderView": "Lastenheft_Abarbeitungsreihenfolge.md"
+          },
+          "roles": {
+            "intake-order": "Lastenheft_Abarbeitungsreihenfolge.md",
+            "requirements-baseline": "requirements/baseline",
+            "requirements-index": "Pflichtenheft.md",
+            "requirements-intake": "requirements/intakes/active"
+          },
+          "schemaVersion": "2.0"
+        },
+        "shellParity": true,
+        "config": "requirements/intake-governance-config.json",
+        "baselineExitCode": 1,
+        "preset": "authoring",
+        "classification": "Passed",
+        "exitCode": 0
+      },
+      {
+        "result": {
+          "collections": {
+            "active": "requirements/intakes/active",
+            "archive": "requirements/intakes/archive",
+            "backlog": "requirements/intakes/backlog",
+            "baseline": "requirements/baseline",
+            "history": "requirements/intakes/history",
+            "seriesManifest": "requirements/intakes/series/tui-vision-delivery/manifest.json"
+          },
+          "documentationLanguage": "de-DE",
+          "inventory": {
+            "activeIntakeCount": 0,
+            "activeSeriesTargetCount": 0,
+            "archiveIntakeCount": 38,
+            "backlogIntakeCount": 1,
+            "baselineCount": 1,
+            "dependencyCount": 6,
+            "eligibleCandidate": "N/A",
+            "historyIntakeCount": 5,
+            "seriesTargetCount": 10
+          },
+          "inventoryMode": "SeriesManifest",
+          "legacyArtifactNames": [],
+          "missingPaths": [],
+          "nextAction": "N/A",
+          "outcome": "Aligned",
+          "profile": "de",
+          "resolvedNaming": {
+            "canonicalIndex": "Pflichtenheft.md",
+            "intakePattern": "Lastenheft_<slug>.md",
+            "orderView": "Lastenheft_Abarbeitungsreihenfolge.md"
+          },
+          "roles": {
+            "intake-order": "Lastenheft_Abarbeitungsreihenfolge.md",
+            "requirements-baseline": "requirements/baseline",
+            "requirements-index": "Pflichtenheft.md",
+            "requirements-intake": "requirements/intakes/active"
+          },
+          "schemaVersion": "2.0"
+        },
+        "shellParity": true,
+        "config": "requirements/intake-governance-config.json",
+        "baselineExitCode": 1,
+        "preset": "sequencing",
+        "classification": "Passed",
+        "exitCode": 0
+      }
+    ],
+    "platform": "macOS",
+    "configurationAvailability": "Present",
+    "packages": [
+      {
+        "priority": 65,
+        "files": [
+          {
+            "sha256": "15d6155002ae45c30bf0add2d236ac02421024f8b1674a1449f4d7a292bc29dd",
+            "localExtension": false,
+            "path": "LICENSE"
+          },
+          {
+            "sha256": "95d4075edd760b4672d6bb799868ed81fac5e50c31f3def60e996073c8559a03",
+            "localExtension": false,
+            "path": "model-routing.json"
+          },
+          {
+            "sha256": "0fe3aedc8ed9b27a9874eabe28b2f457e2de68610e80e72007871249d62327ce",
+            "localExtension": false,
+            "path": "preset.yml"
+          },
+          {
+            "sha256": "39b778ffdf411bbfa963eddd571792794d78465dffaf0174eb372c05fff7f88c",
+            "localExtension": false,
+            "path": "README.md"
+          },
+          {
+            "sha256": "b676c39e0221cbeee76ecceaf4d1b39fcf1d9998f99a04ea8878b44d972976d0",
+            "localExtension": false,
+            "path": "tests/test-intake-governance-config.ps1"
+          },
+          {
+            "sha256": "89f93345d1bbb039bff5c3d05b7d0955f500071833eb6e079f5c5a4bbe35bccf",
+            "localExtension": false,
+            "path": "tests/test-intake-review-validator.ps1"
+          },
+          {
+            "sha256": "19a3a3e29b80128e59645d90ccd57c2f1a5f80151f11760de02a341874a06d62",
+            "localExtension": false,
+            "path": "tests/test-secure-casetracker-field.ps1"
+          },
+          {
+            "sha256": "e94d9be548cc47b0f55e5948501ea5e1db64d7f283f4561ca0be36e81a8a1ac9",
+            "localExtension": false,
+            "path": "docs/completed-series-lifecycle.md"
+          },
+          {
+            "sha256": "97242ad0f7afdbeca22e06f89458a54f6123a86f9cf12d6dc6b92c7a4129b479",
+            "localExtension": false,
+            "path": "docs/field-validation-summary.md"
+          },
+          {
+            "sha256": "9d600cfdee5c79f5340293f6ba8f478df8dfa093bc59bbff6b1d67b66221e791",
+            "localExtension": false,
+            "path": "docs/lifecycle-boundary-hardening.md"
+          },
+          {
+            "sha256": "e09b971a39b953941a1b72798f7fd4f2c8bcec23992935668f2e0a53f839c86e",
+            "localExtension": false,
+            "path": "docs/README.md"
+          },
+          {
+            "sha256": "f74a8de22a62ae443e299818bbcf04ce33fed5cd0aa9a9336d1e950cf10160fd",
+            "localExtension": false,
+            "path": "docs/man/validate-intake-governance-config.1"
+          },
+          {
+            "sha256": "beadcf4f0c893140d921a8a393018b65275f12101d3d2053c209725910d41bff",
+            "localExtension": false,
+            "path": "docs/man/validate-intake-review-result.1"
+          },
+          {
+            "sha256": "c14349c5f03c67a04a78eab16d3876269e16b03911e7035fe2c4dbc87bcd3e22",
+            "localExtension": false,
+            "path": "scripts/validate-intake-governance-config.ps1"
+          },
+          {
+            "sha256": "9dee2810b6d346716a55af047e91a119c11776ff58072ef8a67173620f3e4be7",
+            "localExtension": false,
+            "path": "scripts/validate-intake-governance-config.py"
+          },
+          {
+            "sha256": "65883402020f36416c652437999cf646ead4eae1a40a73012db7d4136ac7cf3d",
+            "localExtension": false,
+            "path": "scripts/validate-intake-governance-config.sh"
+          },
+          {
+            "sha256": "c94f3db6f5c8fe2f2237abafe6411484881bd404ee99311404c5558d17fff22e",
+            "localExtension": false,
+            "path": "scripts/validate-intake-review-result.ps1"
+          },
+          {
+            "sha256": "702313e7bc08df3be82b0adb2853c9ad11912db738c000debdc4ff8bb90896c7",
+            "localExtension": false,
+            "path": "scripts/validate-intake-review-result.sh"
+          },
+          {
+            "sha256": "28c6ab787cb451e163080bb5124cf6190e2826b278278e8e066fe63c32c66f60",
+            "localExtension": false,
+            "path": ".github/workflows/lifecycle-validation.yml"
+          },
+          {
+            "sha256": "6f89b33142bcdd1a86d02c6db0d79f2fb4a1a084a8bf9e0e824ae2e40654b73a",
+            "localExtension": false,
+            "path": "templates/agent-file-addendum.md"
+          },
+          {
+            "sha256": "d51c1d7b9befc3ee1dda11af62539939a89eb4b886f99fbe0a8c764189f8d374",
+            "localExtension": false,
+            "path": "templates/field-validation-summary.md"
+          },
+          {
+            "sha256": "36821186987b48d42ec15db6ff347304478d4b204fc6f779fee26a466a866cdc",
+            "localExtension": false,
+            "path": "templates/intake-review-checklist-template.md"
+          },
+          {
+            "sha256": "fcf4fc8e732e8d949dffcfc08de97ef6dd6f2b9aa23e00c68dd2ea525d2b96e0",
+            "localExtension": false,
+            "path": "templates/intake-review-policy-template.json"
+          },
+          {
+            "sha256": "56ba03fa2103f4609cac75095f3d6b6b2a5742b4b03b4ea97dbb8731e8b5699d",
+            "localExtension": false,
+            "path": "templates/intake-review-report-template.md"
+          },
+          {
+            "sha256": "e8a19f68031ece33433a9feae1b44ea8f5c7fd688bdc17d91d72d8600f251105",
+            "localExtension": false,
+            "path": "templates/intake-review-request-template.json"
+          },
+          {
+            "sha256": "3ee730932e18ebebee723bd6f502b4078081d93b271e53aca6351784ecae7a0d",
+            "localExtension": false,
+            "path": "templates/intake-review-result-template.json"
+          },
+          {
+            "sha256": "235e311927191bc9b248967a2c43cddc51a4f4b950982ede9d8f8fc5d1e4d199",
+            "localExtension": false,
+            "path": "templates/intake-review-runbook-template.md"
+          },
+          {
+            "sha256": "1b66b457c90dac96691fe04753ce8c427263c4b12c099f0a104fe78e018020e7",
+            "localExtension": false,
+            "path": "commands/speckit.intake-repair.md"
+          },
+          {
+            "sha256": "6677ce67ab427de44f1c880d7d0423826378079135672b13d286660c7693dc0f",
+            "localExtension": false,
+            "path": "commands/speckit.intake-review-status.md"
+          },
+          {
+            "sha256": "0cc99a7c633a7bfb5714d063a7192e4c52a744fb4b5f9e26cb7aa7bf13254ce0",
+            "localExtension": false,
+            "path": "commands/speckit.intake-review.md"
+          }
+        ],
+        "id": "intake-review-governance",
+        "enabled": true,
+        "version": "0.2.3"
+      },
+      {
+        "priority": 64,
+        "files": [
+          {
+            "sha256": "15d6155002ae45c30bf0add2d236ac02421024f8b1674a1449f4d7a292bc29dd",
+            "localExtension": false,
+            "path": "LICENSE"
+          },
+          {
+            "sha256": "6dd4fcb070b58cfe76c8f781ff2642e2f086ed9c14161148264f464ecb780e0f",
+            "localExtension": false,
+            "path": "model-routing.json"
+          },
+          {
+            "sha256": "3c934d29268fd284aa8641b491d6725cda54480c19065482dc7d270bf27f0186",
+            "localExtension": false,
+            "path": "preset.yml"
+          },
+          {
+            "sha256": "9528123eb8c3373ddcd0774b00dd4059327ddc26c1e7517552bea17c9244da41",
+            "localExtension": false,
+            "path": "README.md"
+          },
+          {
+            "sha256": "c460a077aa07f144fb5162c5fc79e1d093521b9510babacb3b82da92b353ac60",
+            "localExtension": false,
+            "path": "tests/test-intake-authoring-lifecycle.ps1"
+          },
+          {
+            "sha256": "b9318e7140d9554e2d0043d4f046e874a74488dce32ad1f925d9abecf7572eab",
+            "localExtension": false,
+            "path": "tests/test-intake-authoring-validator.ps1"
+          },
+          {
+            "sha256": "b676c39e0221cbeee76ecceaf4d1b39fcf1d9998f99a04ea8878b44d972976d0",
+            "localExtension": false,
+            "path": "tests/test-intake-governance-config.ps1"
+          },
+          {
+            "sha256": "1e96de19767512670d3a5f9a7e2b875280469edc378a788c1ab3b35ee7fc8f78",
+            "localExtension": false,
+            "path": "tests/test-template-integrity.ps1"
+          },
+          {
+            "sha256": "c238ac5d3d0fb67177c014f70078f9b2b76458412c1624ff58b8cd5d7a63115a",
+            "localExtension": false,
+            "path": "docs/completed-series-lifecycle.md"
+          },
+          {
+            "sha256": "1d5b145d03e53bdf07fba8ae04c9deed7fba39235ce6f14aa6db5714206460e7",
+            "localExtension": false,
+            "path": "docs/lifecycle-boundary-hardening.md"
+          },
+          {
+            "sha256": "d0bc4067ba5b4b6ba3ae8f7a0b26fd6b4cdb046c5b97370475897a8a163ba6af",
+            "localExtension": false,
+            "path": "docs/README.md"
+          },
+          {
+            "sha256": "7eac0eeea6d59a9b949a2de5e18512d676df0da773e6f53c7b4d6eaf28e6b45d",
+            "localExtension": false,
+            "path": "docs/man/validate-intake-authoring-artifact.1"
+          },
+          {
+            "sha256": "22468f6f8eb8a416df43524d0e87d23917eb4742b2bd12322f4f275a22189383",
+            "localExtension": false,
+            "path": "docs/man/validate-intake-authoring-receipt.1"
+          },
+          {
+            "sha256": "606fbe34a8c8418c59e0ee810405fa1f6ffa0095c383f03b5fa2861f55e83595",
+            "localExtension": false,
+            "path": "docs/man/validate-intake-governance-config.1"
+          },
+          {
+            "sha256": "b44309c8ec122eeb0a9052578aa8c20b39e3b0a7db8e432795a9bdda3c7380e5",
+            "localExtension": false,
+            "path": "scripts/resolve-intake-archive-target.py"
+          },
+          {
+            "sha256": "865ed197980fb7c86e575a354a4e5109e883415a1540aabf8f152c722606dc93",
+            "localExtension": false,
+            "path": "scripts/resolve-intake-repository-file.py"
+          },
+          {
+            "sha256": "e0b0f5939477308792fd6f7e3c7ef2c435ada3d04b2cd89025103c0d08bb0732",
+            "localExtension": false,
+            "path": "scripts/validate-intake-authoring-artifact.ps1"
+          },
+          {
+            "sha256": "0a529bc855321464e1392e207d6b4fbb9bde58876d561ad9271be32742743b4e",
+            "localExtension": false,
+            "path": "scripts/validate-intake-authoring-artifact.sh"
+          },
+          {
+            "sha256": "0a1b96ee499839bf23e753cdc4d9bc9482847c5e23bc7553ec0a692a0637591c",
+            "localExtension": false,
+            "path": "scripts/validate-intake-authoring-receipt.ps1"
+          },
+          {
+            "sha256": "e50987db2e1704af4790a70b84aa577bb5d49a5a48630e7b072d95f7cdb5916d",
+            "localExtension": false,
+            "path": "scripts/validate-intake-authoring-receipt.sh"
+          },
+          {
+            "sha256": "c14349c5f03c67a04a78eab16d3876269e16b03911e7035fe2c4dbc87bcd3e22",
+            "localExtension": false,
+            "path": "scripts/validate-intake-governance-config.ps1"
+          },
+          {
+            "sha256": "9dee2810b6d346716a55af047e91a119c11776ff58072ef8a67173620f3e4be7",
+            "localExtension": false,
+            "path": "scripts/validate-intake-governance-config.py"
+          },
+          {
+            "sha256": "65883402020f36416c652437999cf646ead4eae1a40a73012db7d4136ac7cf3d",
+            "localExtension": false,
+            "path": "scripts/validate-intake-governance-config.sh"
+          },
+          {
+            "sha256": "b7813f3a9ed5cb8fdc1c9508d1089175ca23f283fd1aa010a957d77f1290a4e7",
+            "localExtension": false,
+            "path": ".github/workflows/lifecycle-validation.yml"
+          },
+          {
+            "sha256": "94df4b679b5b899a363b8ce017d0ca28f3252f2adb30d2b05af3f1af55bfb60f",
+            "localExtension": false,
+            "path": "templates/agent-file-addendum.md"
+          },
+          {
+            "sha256": "ae7552df8a47c6f0361c4060f1b924c0f9599d1fdf953c6e02d4d64ecc984479",
+            "localExtension": false,
+            "path": "templates/field-validation-summary.md"
+          },
+          {
+            "sha256": "3bec18186e39747c5a71d486feda2e06148ebe0ea0e20f9ade7ea5030f74424c",
+            "localExtension": false,
+            "path": "templates/intake-authoring-operation-template.json"
+          },
+          {
+            "sha256": "8cfda1f09cf5a216caa3e34e5f049f6bcbe63c6f0a8ad6d6e5273d16b650bead",
+            "localExtension": false,
+            "path": "templates/intake-authoring-policy-template.json"
+          },
+          {
+            "sha256": "b27f7f563beb8df04494fb0e18e3db953096e962b2247042fdc9826b683336f6",
+            "localExtension": false,
+            "path": "templates/intake-authoring-receipt-template.json"
+          },
+          {
+            "sha256": "3849854773771c4c12baba412b4cc629dba8cc1426f5547175e166af9a0db309",
+            "localExtension": false,
+            "path": "templates/intake-authoring-runbook-template.md"
+          },
+          {
+            "sha256": "10e7ce5ea2ba241202f3671740f1016ceea454512d367fd222305375f0a44ad9",
+            "localExtension": false,
+            "path": "templates/intake-authoring-series-template.json"
+          },
+          {
+            "sha256": "22ed4de765599695c75d32d990882ccdf409e9c89ea6c5f950f1afc1e1b50bc4",
+            "localExtension": false,
+            "path": "templates/intake-authoring-tombstone-template.json"
+          },
+          {
+            "sha256": "83a825b53e477151252d7fb43b22f46e6ab0c7f7e9f746fc000062bbbd08f1ea",
+            "localExtension": false,
+            "path": "templates/intake-governance-config-template.json"
+          },
+          {
+            "sha256": "9143b1f48b2eaf8d33143b32ea8965c6cd8126271ca446d8cf35353ea91a8f55",
+            "localExtension": false,
+            "path": "templates/intake-governance-migration-journal-template.json"
+          },
+          {
+            "sha256": "57ccc4118e8a029c5a808c85a19f9120f111bc0e89a2c66dc7ce20e40c93716d",
+            "localExtension": false,
+            "path": "templates/intake-template.md"
+          },
+          {
+            "sha256": "0aec721f02f142e3d466337c62dc60a1e67d3a0e7f40e5fc17d97aeb3860fdcb",
+            "localExtension": false,
+            "path": "templates/project-profile-template.md"
+          },
+          {
+            "sha256": "c45bda4cae2ef9535de3927c6cb4fe0289564e2825c886bc1c96ad28e671f511",
+            "localExtension": false,
+            "path": "commands/speckit.intake-create-status.md"
+          },
+          {
+            "sha256": "ec50d2655d309abd24ba8f1df3e9cb3277ec8d00102729e96cb418be1b71cbee",
+            "localExtension": false,
+            "path": "commands/speckit.intake-create.md"
+          },
+          {
+            "sha256": "59eab66c917e13258c9c4448c35debbd4024c9f2897ecb4b8e10e83b5f9ab50c",
+            "localExtension": false,
+            "path": "commands/speckit.intake-delete.md"
+          },
+          {
+            "sha256": "7d1fef9c8b6b06427de5fc670a988795764cc641bf985e6604a55df03f70fef5",
+            "localExtension": false,
+            "path": "commands/speckit.intake-read.md"
+          },
+          {
+            "sha256": "df5608ae0d2c1378e2d700ce578c259b8904d0756c65638ee1467293ac56f0a0",
+            "localExtension": false,
+            "path": "commands/speckit.intake-update.md"
+          }
+        ],
+        "id": "intake-authoring-governance",
+        "enabled": true,
+        "version": "0.3.4"
+      },
+      {
+        "priority": 66,
+        "files": [
+          {
+            "sha256": "15d6155002ae45c30bf0add2d236ac02421024f8b1674a1449f4d7a292bc29dd",
+            "localExtension": false,
+            "path": "LICENSE"
+          },
+          {
+            "sha256": "124635fdbfa2fc8a8a41cc4b78fbbc309cea214f5c9bd9094caceb363e771a78",
+            "localExtension": false,
+            "path": "model-routing.json"
+          },
+          {
+            "sha256": "8b517455df03fcb23f5e05e4a569a751fe72bedaa6932e669bbe368d00353e48",
+            "localExtension": false,
+            "path": "preset.yml"
+          },
+          {
+            "sha256": "a8114c191d0e0effa32bcd7a1d3e3d931e1a4c420baa42e4ac2c2294820fee17",
+            "localExtension": false,
+            "path": "README.md"
+          },
+          {
+            "sha256": "3b7adc5c5a858d3f7a9f38ab7f433cfcfc32d27779dd4f69336044caa6f19f27",
+            "localExtension": false,
+            "path": "tests/test-home-baseline-field.ps1"
+          },
+          {
+            "sha256": "c34e9fc44c2b24091c112836051a54fc1785bdd12ae26d1d53d37b7710859dce",
+            "localExtension": false,
+            "path": "tests/test-intake-governance-config.ps1"
+          },
+          {
+            "sha256": "1613cc06af74f12e82b5a524b058953a7f2c876af6d945b2573538dba7a413a1",
+            "localExtension": false,
+            "path": "tests/test-intake-sequencing-validator.ps1"
+          },
+          {
+            "sha256": "1e96de19767512670d3a5f9a7e2b875280469edc378a788c1ab3b35ee7fc8f78",
+            "localExtension": false,
+            "path": "tests/test-template-integrity.ps1"
+          },
+          {
+            "sha256": "5af245fdde42674c0bf921fd7337e798ee7b5ce893fb2b8905c130a59bc25ab3",
+            "localExtension": false,
+            "path": "docs/completed-series-lifecycle.md"
+          },
+          {
+            "sha256": "fd72db78a147598209e7390fc0d8c5001c80f73de0000749fe540d61069a7997",
+            "localExtension": false,
+            "path": "docs/field-validation-summary.md"
+          },
+          {
+            "sha256": "36a3561e510c5c7c2e27deef61fd7d07610586e78758f1f26e72bda9e027ae28",
+            "localExtension": false,
+            "path": "docs/lifecycle-boundary-hardening.md"
+          },
+          {
+            "sha256": "8e6daec72c063383165f8151de24f0d3deadf4633d1270db79ef3e13df6d685f",
+            "localExtension": false,
+            "path": "docs/README.md"
+          },
+          {
+            "sha256": "27e77a97d03c3cb6a311ccc96eaa54d51f824f81e205e1a63cfbe573dd930422",
+            "localExtension": false,
+            "path": "docs/man/validate-intake-governance-config.1"
+          },
+          {
+            "sha256": "51e921fe986cc5243d45bfd268821fd0c008d7a06b1199f4101ec78279c87ebe",
+            "localExtension": false,
+            "path": "docs/man/validate-intake-series-manifest.1"
+          },
+          {
+            "sha256": "d7a686baf7eff16d27720cc140e8f09b26df1e77af262786a7b96806910835c4",
+            "localExtension": false,
+            "path": "docs/man/validate-intake-series-receipt.1"
+          },
+          {
+            "sha256": "c14349c5f03c67a04a78eab16d3876269e16b03911e7035fe2c4dbc87bcd3e22",
+            "localExtension": false,
+            "path": "scripts/validate-intake-governance-config.ps1"
+          },
+          {
+            "sha256": "15ce3094927bf38e3b3177ffb923d9c7fdd4b54d5f3d09a766fd6b4c543f3d25",
+            "localExtension": false,
+            "path": "scripts/validate-intake-governance-config.py"
+          },
+          {
+            "sha256": "65883402020f36416c652437999cf646ead4eae1a40a73012db7d4136ac7cf3d",
+            "localExtension": false,
+            "path": "scripts/validate-intake-governance-config.sh"
+          },
+          {
+            "sha256": "03e52d13276d44945dd21028a5822f004460cc920e80d22e0f06dbc300a53521",
+            "localExtension": false,
+            "path": "scripts/validate-intake-series-manifest.ps1"
+          },
+          {
+            "sha256": "ad3af65abf9d206647707b7f9cc12611a6aaa0323f4db00036db3f6b96b9d4cc",
+            "localExtension": false,
+            "path": "scripts/validate-intake-series-manifest.sh"
+          },
+          {
+            "sha256": "9950683043c0eab460b0f807576644d1ac7eae700839616c52e93ba6fb0eddaf",
+            "localExtension": false,
+            "path": "scripts/validate-intake-series-receipt.ps1"
+          },
+          {
+            "sha256": "dc06a6bb999413ff48cc267f589bd019fa64f45f531962b098fcfcbdf6559efb",
+            "localExtension": false,
+            "path": "scripts/validate-intake-series-receipt.sh"
+          },
+          {
+            "sha256": "d4627807c6cb1034862514c0b95c50ea17a7252c73a627f1e8494688f7d4c2df",
+            "localExtension": false,
+            "path": "scripts/validate-intake-series.py"
+          },
+          {
+            "sha256": "d1a4713b72e62a520f24a987bc34b265c0245e286b777004a306b24bb2559828",
+            "localExtension": false,
+            "path": ".github/workflows/lifecycle-validation.yml"
+          },
+          {
+            "sha256": "d2ae3f0ec3cc7588291a18a88ae7fe3c507d8dab6f6f79dfd620accda3b293ec",
+            "localExtension": false,
+            "path": "templates/agent-file-addendum.md"
+          },
+          {
+            "sha256": "703fabeb2fbc43045dcc0c5b09c07e0749fd7ef46c82d6014d4d4e81f33073aa",
+            "localExtension": false,
+            "path": "templates/field-validation-summary.md"
+          },
+          {
+            "sha256": "aba420fa4099b494a4876aa9f7dc2b4706d17e9326b1ed9a3b38c121fd05b369",
+            "localExtension": false,
+            "path": "templates/intake-series-checklist-template.md"
+          },
+          {
+            "sha256": "55c3e462ed5ee44f1086b526e16bb6d26b10fb8c47fe7008d8f607a15b65ba44",
+            "localExtension": false,
+            "path": "templates/intake-series-idle-manifest-template.json"
+          },
+          {
+            "sha256": "87be6594b32c92dc36b612bd6bf9af54efc705e467af145219180b477c3b5149",
+            "localExtension": false,
+            "path": "templates/intake-series-manifest-template.json"
+          },
+          {
+            "sha256": "c0dc3f41cda85792ed6e4aca91e947b9cbb2cbb26a7eee5e785b1aa794de50d0",
+            "localExtension": false,
+            "path": "templates/intake-series-operation-template.json"
+          },
+          {
+            "sha256": "0e453639ef2f6d00dafd75c31458cf6a3f6699e1d6ce8bc5f293e3fe00acbb3e",
+            "localExtension": false,
+            "path": "templates/intake-series-order-template.md"
+          },
+          {
+            "sha256": "c7362796774ec93414954a406d7a9651ef12d9c4bfa4432b1cf655786e2d0eec",
+            "localExtension": false,
+            "path": "templates/intake-series-policy-template.json"
+          },
+          {
+            "sha256": "f578ef52508ce82887b2b73b1e17bd3547bfeb58c0383345caa61dd3c7812ae6",
+            "localExtension": false,
+            "path": "templates/intake-series-receipt-template.json"
+          },
+          {
+            "sha256": "4574dec91b0611e631926cd69d21bc6c4ae89e526474b32a1a99c7e2f02ea066",
+            "localExtension": false,
+            "path": "templates/intake-series-runbook-template.md"
+          },
+          {
+            "sha256": "c5cd4405da06ee93abd62e22af24feb1e773b4622b3b8a1e4dfa434140387bdf",
+            "localExtension": false,
+            "path": "templates/intake-series-tombstone-template.json"
+          },
+          {
+            "sha256": "ff5f492bed5cd6e04cd652c054b413e24d0f87a17fd6ea338ff21f8aa2995da9",
+            "localExtension": false,
+            "path": "commands/speckit.intake-series-create.md"
+          },
+          {
+            "sha256": "b43146371f78ee75612739f083545203cead8e3de226e3d99a31c7f97d1e8add",
+            "localExtension": false,
+            "path": "commands/speckit.intake-series-delete.md"
+          },
+          {
+            "sha256": "1616cde6881295d852040a2a4a207f84e65b683e7771ff162be267b2c5b5fb07",
+            "localExtension": false,
+            "path": "commands/speckit.intake-series-next.md"
+          },
+          {
+            "sha256": "0a2b590ab26a1ac585f4da5cb9ff5c00598be97ffa17376d3e3f1cf0c0c443c6",
+            "localExtension": false,
+            "path": "commands/speckit.intake-series-read.md"
+          },
+          {
+            "sha256": "89da998fafd86ce923d8c0278743fbe9a414bb9dcaffff4ff6ad514caf3926f8",
+            "localExtension": false,
+            "path": "commands/speckit.intake-series-status.md"
+          },
+          {
+            "sha256": "2aa7c1b25e9936fde93cea58b995c5be8e8ab1c3ae74c087e3f780a94eee61b2",
+            "localExtension": false,
+            "path": "commands/speckit.intake-series-update.md"
+          }
+        ],
+        "id": "intake-sequencing-governance",
+        "enabled": true,
+        "version": "0.2.6"
+      }
+    ],
+    "shells": [
+      "Bash",
+      "PowerShell"
+    ],
+    "readOnlyCheck": "Passed"
+  }
+}

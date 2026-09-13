@@ -1,5 +1,14 @@
 # Intake Authoring Governance Preset
 
+Aktuelle Version / Current version: **0.3.4**. Dieser Patch schliesst physische
+Collection-Aliase und unbekannte Lifecycle-Zustaende aus. Authoring prueft auch
+bestehende Receipt-Ziele und Quellen vor dem Lesen gegen die Repository-Grenze.
+
+This patch rejects physical collection aliases and unknown lifecycle states.
+Authoring also checks existing receipt targets and sources for repository
+containment before reading. Earlier feature versions below describe history.
+See [boundary hardening](docs/lifecycle-boundary-hardening.md).
+
 Optional, stackable intake-authoring governance for GitHub Spec Kit. Version
 `0.3.1` publishes the agent-neutral `model-routing.json` contract. Version
 `0.3.0` governs traceable intake Create, Read, Update, logical Delete, bounded
@@ -55,7 +64,7 @@ and freshness without writing.*
 
 ```bash
 specify preset add \
-  --from https://github.com/hindermath/spec-kit-preset-intake-authoring-governance/archive/refs/tags/v0.3.2.zip \
+  --from https://github.com/hindermath/spec-kit-preset-intake-authoring-governance/archive/refs/tags/v0.3.4.zip \
   --priority 64
 specify preset list
 specify preset info intake-authoring-governance

@@ -34,9 +34,9 @@ Workspace-Familie ist:
 | `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.6` | `80` |
 
 Optional koennen `model-routing-governance` v0.1.4 mit Prioritaet `61`,
-`intake-authoring-governance` v0.3.1 mit Prioritaet `64`,
-`intake-review-governance` v0.2.1 mit Prioritaet `65` und
-`intake-sequencing-governance` v0.2.3 mit Prioritaet `66` zwischen Agent Parity
+`intake-authoring-governance` v0.3.4 mit Prioritaet `64`,
+`intake-review-governance` v0.2.3 mit Prioritaet `65` und
+`intake-sequencing-governance` v0.2.6 mit Prioritaet `66` zwischen Agent Parity
 und Preset 7 installiert werden. Alle vier bleiben ausserhalb der
 Standard-Achtermatrix.
 Authoring erzeugt aus ausdruecklich benannten geordneten UTF-8-Quellen genau
@@ -175,9 +175,9 @@ workspace family is:
 | `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.6` | `80` |
 
 Optionally install `model-routing-governance` v0.1.4 at priority `61`,
-`intake-authoring-governance` v0.3.1 at priority `64`,
-`intake-review-governance` v0.2.1 at priority `65`, and
-`intake-sequencing-governance` v0.2.3 at priority `66` between Agent Parity and
+`intake-authoring-governance` v0.3.4 at priority `64`,
+`intake-review-governance` v0.2.3 at priority `65`, and
+`intake-sequencing-governance` v0.2.6 at priority `66` between Agent Parity and
 Preset 7. All four remain outside the standard eight. Authoring creates one intake
 and receipt from explicit ordered UTF-8 sources without starting a downstream
 command. Review evaluates that intake independently. Sequencing manages order,

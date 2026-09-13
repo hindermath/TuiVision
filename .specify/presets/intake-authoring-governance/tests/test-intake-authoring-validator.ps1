@@ -185,7 +185,9 @@ Open decision: IAD001
 }
 
 $TempRoot = Join-Path ([IO.Path]::GetTempPath()) ("intake-authoring-test-" + [Guid]::NewGuid())
+$OutsideRoot = $TempRoot + '-outside'
 try {
+    New-Item -ItemType Directory -Path $OutsideRoot | Out-Null
     New-Item -ItemType Directory -Path $TempRoot | Out-Null
     $SourcePath = Join-Path $TempRoot 'planning/source.md'
     $TargetPath = Join-Path $TempRoot 'intakes/example.md'
@@ -230,6 +232,28 @@ try {
     Write-Utf8Text -Path $ReceiptPath -Text ($Receipt | ConvertTo-Json -Depth 20)
     Invoke-ReceiptValidators -Receipt $ReceiptPath -Repo $TempRoot -ExpectedExit 0 -Case 'ready fixture'
 
+    # DE: Identischer Inhalt ausserhalb des Repos darf keine gueltige Dateibindung ergeben.
+    # EN: Identical content outside the repository must not satisfy a file binding.
+    $OutsideTarget = Join-Path $OutsideRoot 'target.md'
+    Copy-Item $TargetPath $OutsideTarget
+    Remove-Item $TargetPath
+    New-Item -ItemType SymbolicLink -Path $TargetPath -Target $OutsideTarget | Out-Null
+    Invoke-ReceiptValidators -Receipt $ReceiptPath -Repo $TempRoot -ExpectedExit 2 -Case 'external target symlink'
+    Remove-Item $TargetPath -Force
+    Copy-Item $OutsideTarget $TargetPath
+    $OutsideSource = Join-Path $OutsideRoot 'source.md'
+    Copy-Item $SourcePath $OutsideSource
+    Remove-Item $SourcePath
+    New-Item -ItemType SymbolicLink -Path $SourcePath -Target $OutsideSource | Out-Null
+    Invoke-ReceiptValidators -Receipt $ReceiptPath -Repo $TempRoot -ExpectedExit 2 -Case 'external source symlink'
+    Remove-Item $SourcePath -Force
+    $PlanningDirectory = Split-Path $SourcePath -Parent
+    Remove-Item $PlanningDirectory
+    New-Item -ItemType SymbolicLink -Path $PlanningDirectory -Target $OutsideRoot | Out-Null
+    Invoke-ReceiptValidators -Receipt $ReceiptPath -Repo $TempRoot -ExpectedExit 2 -Case 'external parent directory symlink'
+    Remove-Item $PlanningDirectory -Force
+    New-Item -ItemType Directory -Path $PlanningDirectory | Out-Null
+    Copy-Item $OutsideSource $SourcePath
     $LfHash = Get-NormalizedHash $SourcePath
     [IO.File]::WriteAllText($SourcePath, "First line`r`nSecond line`r`n", [Text.UTF8Encoding]::new($true))
     if ((Get-NormalizedHash $SourcePath) -ne $LfHash) { throw 'BOM/CRLF hash normalization failed' }
@@ -278,7 +302,7 @@ try {
 
     Write-Utf8Text -Path $TargetPath -Text (New-BlockedIntake)
     $Receipt.target.normalizedSha256 = Get-NormalizedHash $TargetPath
-    Write-Utf8Text -Path $SourcePath -Text 'github_pat_ABCDEFGHIJKLMNOPQRSTUVWXYZ123456'
+    Write-Utf8Text -Path $SourcePath -Text ('github_' + 'pat_' + 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456')
     $Receipt.sources[0].normalizedSha256 = Get-NormalizedHash $SourcePath
     Write-Utf8Text -Path $ReceiptPath -Text ($Receipt | ConvertTo-Json -Depth 20)
     Invoke-ReceiptValidators -Receipt $ReceiptPath -Repo $TempRoot -ExpectedExit 2 -Case 'secret source'
@@ -359,4 +383,5 @@ try {
     Write-Host 'PASS: intake-authoring validator, normalization, negative cases, and command boundaries'
 } finally {
     Remove-Item -LiteralPath $TempRoot -Recurse -Force -ErrorAction SilentlyContinue
+    Remove-Item -LiteralPath $OutsideRoot -Recurse -Force -ErrorAction SilentlyContinue
 }

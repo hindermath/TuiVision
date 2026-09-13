@@ -1,5 +1,14 @@
 # Intake Sequencing Governance
 
+Aktuelle Version / Current version: **0.2.6**. Dieser Patch schliesst physische
+Collection-Aliase und unbekannte Lifecycle-Zustaende aus. Authoring prueft auch
+bestehende Receipt-Ziele und Quellen vor dem Lesen gegen die Repository-Grenze.
+
+This patch rejects physical collection aliases and unknown lifecycle states.
+Authoring also checks existing receipt targets and sources for repository
+containment before reading. Earlier feature versions below describe history.
+See [boundary hardening](docs/lifecycle-boundary-hardening.md).
+
 Optional Spec Kit preset for managing the order and lifecycle of existing
 intakes. Version `0.2.3` uses priority `66`: after Intake Review at `65` and
 before Autonomous Run at `70`.
@@ -41,7 +50,7 @@ Ein gewöhnlicher zweiter Index im selben Repository bleibt ein Fehler.*
 
 ```bash
 specify preset add \
-  --from https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/archive/refs/tags/v0.2.4.zip \
+  --from https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/archive/refs/tags/v0.2.6.zip \
   --priority 66
 ```
 

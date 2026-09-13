@@ -4313,30 +4313,30 @@
     {
       "evidenceId": "EVD-001",
       "relativePath": ".specify/memory/constitution.md",
-      "sha256": "8cb91dd84becf56e2094f1c73af84856bf39dbc663be5e8e87c4e8de4bea5d36",
-      "observedAtUtc": "2026-09-12T15:21:22Z",
+      "sha256": "e19a1ab59bc1b929b89584d7f32d5d836b4ccb5a16f97295e017008784b1249a",
+      "observedAtUtc": "2026-09-13T11:30:48Z",
       "evidenceType": "Configuration",
       "directness": "Supporting",
       "freshness": "Current",
       "supportsClaims": [
         "GOV-002"
       ],
-      "result": "Deutsch: Aktuelle Repository-Evidence wurde unter .specify/memory/constitution.md beobachtet. English: Current repository evidence was observed at .specify/memory/constitution.md.",
+      "result": "Deutsch: Aktuelle Repository-Evidence wurde unter .specify/memory/constitution.md beobachtet. English: Current repository evidence was observed at .specify/memory/constitution.md. DE/EN: Version/path binding revalidated for the authorized intake rollout; no human approval or control-status change.",
       "proofBoundary": "Deutsch: Die Datei stuetzt nur benannte begrenzte Claims und keine formale Freigabe. English: The file supports named bounded claims only and no formal approval.",
       "reevaluationTrigger": "Deutsch: Hash, Governance-Vertrag oder Produktscope aendert sich. English: The hash, governance contract, or product scope changes."
     },
     {
       "evidenceId": "EVD-002",
       "relativePath": ".specify/presets/.registry",
-      "sha256": "04088f08323842781394ed5d1ce33802128878d2d02068babd81a11f632de140",
-      "observedAtUtc": "2026-09-12T15:21:22Z",
+      "sha256": "0a434a1fe4fe272fa9c6dfc28d1fdd0734ef4fae0a2fd56fdcb92738d386a346",
+      "observedAtUtc": "2026-09-13T11:30:48Z",
       "evidenceType": "Configuration",
       "directness": "Direct",
       "freshness": "Current",
       "supportsClaims": [
         "GOV-003"
       ],
-      "result": "Deutsch: Aktuelle Repository-Evidence wurde unter .specify/presets/.registry beobachtet. English: Current repository evidence was observed at .specify/presets/.registry.",
+      "result": "Deutsch: Aktuelle Repository-Evidence wurde unter .specify/presets/.registry beobachtet. English: Current repository evidence was observed at .specify/presets/.registry. DE/EN: Version/path binding revalidated for the authorized intake rollout; no human approval or control-status change.",
       "proofBoundary": "Deutsch: Die Datei stuetzt nur benannte begrenzte Claims und keine formale Freigabe. English: The file supports named bounded claims only and no formal approval.",
       "reevaluationTrigger": "Deutsch: Hash, Governance-Vertrag oder Produktscope aendert sich. English: The hash, governance contract, or product scope changes."
     },
@@ -4418,45 +4418,45 @@
     {
       "evidenceId": "EVD-008",
       "relativePath": ".specify/presets/intake-authoring-governance/preset.yml",
-      "sha256": "61107a6a8141a5df1f5088f21ef458d34b3f97f127dc399dfbf3c7ff6947b338",
-      "observedAtUtc": "2026-08-30T10:00:00Z",
+      "sha256": "3c934d29268fd284aa8641b491d6725cda54480c19065482dc7d270bf27f0186",
+      "observedAtUtc": "2026-09-13T11:30:48Z",
       "evidenceType": "Configuration",
       "directness": "Direct",
       "freshness": "Current",
       "supportsClaims": [
         "intake-authoring-governance"
       ],
-      "result": "Deutsch: Aktuelle Repository-Evidence wurde unter .specify/presets/intake-authoring-governance/preset.yml beobachtet. English: Current repository evidence was observed at .specify/presets/intake-authoring-governance/preset.yml.",
+      "result": "Deutsch: Aktuelle Repository-Evidence wurde unter .specify/presets/intake-authoring-governance/preset.yml beobachtet. English: Current repository evidence was observed at .specify/presets/intake-authoring-governance/preset.yml. DE/EN: Version/path binding revalidated for the authorized intake rollout; no human approval or control-status change.",
       "proofBoundary": "Deutsch: Die Datei stuetzt nur benannte begrenzte Claims und keine formale Freigabe. English: The file supports named bounded claims only and no formal approval.",
       "reevaluationTrigger": "Deutsch: Hash, Governance-Vertrag oder Produktscope aendert sich. English: The hash, governance contract, or product scope changes."
     },
     {
       "evidenceId": "EVD-009",
       "relativePath": ".specify/presets/intake-review-governance/preset.yml",
-      "sha256": "fd34ea0e30d2dc9ae4a6ad5863d582ef04645ba58382194f8edfd7d957d9445a",
-      "observedAtUtc": "2026-08-30T10:00:00Z",
+      "sha256": "0fe3aedc8ed9b27a9874eabe28b2f457e2de68610e80e72007871249d62327ce",
+      "observedAtUtc": "2026-09-13T11:30:48Z",
       "evidenceType": "Configuration",
       "directness": "Direct",
       "freshness": "Current",
       "supportsClaims": [
         "intake-review-governance"
       ],
-      "result": "Deutsch: Aktuelle Repository-Evidence wurde unter .specify/presets/intake-review-governance/preset.yml beobachtet. English: Current repository evidence was observed at .specify/presets/intake-review-governance/preset.yml.",
+      "result": "Deutsch: Aktuelle Repository-Evidence wurde unter .specify/presets/intake-review-governance/preset.yml beobachtet. English: Current repository evidence was observed at .specify/presets/intake-review-governance/preset.yml. DE/EN: Version/path binding revalidated for the authorized intake rollout; no human approval or control-status change.",
       "proofBoundary": "Deutsch: Die Datei stuetzt nur benannte begrenzte Claims und keine formale Freigabe. English: The file supports named bounded claims only and no formal approval.",
       "reevaluationTrigger": "Deutsch: Hash, Governance-Vertrag oder Produktscope aendert sich. English: The hash, governance contract, or product scope changes."
     },
     {
       "evidenceId": "EVD-010",
       "relativePath": ".specify/presets/intake-sequencing-governance/preset.yml",
-      "sha256": "585b59b1044dcff182b7d89399b2447b8437c72f712db258ef2f706b7404ca54",
-      "observedAtUtc": "2026-08-30T10:00:00Z",
+      "sha256": "8b517455df03fcb23f5e05e4a569a751fe72bedaa6932e669bbe368d00353e48",
+      "observedAtUtc": "2026-09-13T11:30:48Z",
       "evidenceType": "Configuration",
       "directness": "Direct",
       "freshness": "Current",
       "supportsClaims": [
         "intake-sequencing-governance"
       ],
-      "result": "Deutsch: Aktuelle Repository-Evidence wurde unter .specify/presets/intake-sequencing-governance/preset.yml beobachtet. English: Current repository evidence was observed at .specify/presets/intake-sequencing-governance/preset.yml.",
+      "result": "Deutsch: Aktuelle Repository-Evidence wurde unter .specify/presets/intake-sequencing-governance/preset.yml beobachtet. English: Current repository evidence was observed at .specify/presets/intake-sequencing-governance/preset.yml. DE/EN: Version/path binding revalidated for the authorized intake rollout; no human approval or control-status change.",
       "proofBoundary": "Deutsch: Die Datei stuetzt nur benannte begrenzte Claims und keine formale Freigabe. English: The file supports named bounded claims only and no formal approval.",
       "reevaluationTrigger": "Deutsch: Hash, Governance-Vertrag oder Produktscope aendert sich. English: The hash, governance contract, or product scope changes."
     },
@@ -4523,8 +4523,8 @@
     {
       "evidenceId": "EVD-015",
       "relativePath": "AGENTS.md",
-      "sha256": "e7617aa4345f6d565d6cc15047c78e3c0bca4700c81c806ff96dcf872f3fed5a",
-      "observedAtUtc": "2026-09-12T15:21:22Z",
+      "sha256": "68ada0ce7fc61f6b08db0537733490116d0f64e053d23690772b77e8d9a432f4",
+      "observedAtUtc": "2026-09-13T11:30:48Z",
       "evidenceType": "Audit",
       "directness": "Direct",
       "freshness": "Current",
@@ -4547,7 +4547,7 @@
         "CL-09-16",
         "CL-09-17"
       ],
-      "result": "Deutsch: Current repository evidence was observed at AGENTS.md. English: Current repository evidence was observed at AGENTS.md.",
+      "result": "Deutsch: Current repository evidence was observed at AGENTS.md. English: Current repository evidence was observed at AGENTS.md. DE/EN: Version/path binding revalidated for the authorized intake rollout; no human approval or control-status change.",
       "proofBoundary": "Deutsch: The file supports only the named bounded claims and does not grant formal compliance approval. English: The file supports only the named bounded claims and does not grant formal compliance approval.",
       "reevaluationTrigger": "Deutsch: The file hash, product scope, policy, platform, or provider boundary changes. English: The file hash, product scope, policy, platform, or provider boundary changes."
     },
@@ -4579,15 +4579,15 @@
     {
       "evidenceId": "EVD-017",
       "relativePath": "constitution.md",
-      "sha256": "3a23c3e3e0f2b696eeffb0457f080267eb857c86cf2d3460c410fe8e695e2076",
-      "observedAtUtc": "2026-09-12T15:21:22Z",
+      "sha256": "3aeabe085b62f724243c8c5106e5d66e396d2a15cfc076543b0e2be4a518cd89",
+      "observedAtUtc": "2026-09-13T11:30:48Z",
       "evidenceType": "Audit",
       "directness": "Supporting",
       "freshness": "Current",
       "supportsClaims": [
         "GOV-002"
       ],
-      "result": "Deutsch: Aktuelle Repository-Evidence wurde unter constitution.md beobachtet. English: Current repository evidence was observed at constitution.md.",
+      "result": "Deutsch: Aktuelle Repository-Evidence wurde unter constitution.md beobachtet. English: Current repository evidence was observed at constitution.md. DE/EN: Version/path binding revalidated for the authorized intake rollout; no human approval or control-status change.",
       "proofBoundary": "Deutsch: Die Datei stuetzt nur benannte begrenzte Claims und keine formale Freigabe. English: The file supports named bounded claims only and no formal approval.",
       "reevaluationTrigger": "Deutsch: Hash, Governance-Vertrag oder Produktscope aendert sich. English: The hash, governance contract, or product scope changes."
     },
@@ -5756,9 +5756,9 @@
     },
     {
       "presetId": "intake-authoring-governance",
-      "version": "0.3.2",
-      "registryManifestHash": "61107a6a8141a5df1f5088f21ef458d34b3f97f127dc399dfbf3c7ff6947b338",
-      "presetArtifactHash": "61107a6a8141a5df1f5088f21ef458d34b3f97f127dc399dfbf3c7ff6947b338",
+      "version": "0.3.4",
+      "registryManifestHash": "3c934d29268fd284aa8641b491d6725cda54480c19065482dc7d270bf27f0186",
+      "presetArtifactHash": "3c934d29268fd284aa8641b491d6725cda54480c19065482dc7d270bf27f0186",
       "checkpoints": [
         "Audit-only scope",
         "Evidence freshness",
@@ -5770,8 +5770,8 @@
         "EVD-008"
       ],
       "owner": "TuiVision Maintainer",
-      "reviewer": "Security Reviewer",
-      "reviewDate": "2026-08-30",
+      "reviewer": "Codex (bounded rollout revalidation; no human approval)",
+      "reviewDate": "2026-09-13",
       "followUp": "Deutsch: None; bei Preset-, Registry- oder Feature-Trigger neu pruefen. English: None; reassess after a preset, registry, or feature trigger.",
       "priority": "Low",
       "residualRisk": "Deutsch: Dokumentierter Governance-Drift bleibt sichtbar und unrepariert. English: Documented governance drift remains visible and unrepaired.",
@@ -5780,9 +5780,9 @@
     },
     {
       "presetId": "intake-review-governance",
-      "version": "0.2.2",
-      "registryManifestHash": "fd34ea0e30d2dc9ae4a6ad5863d582ef04645ba58382194f8edfd7d957d9445a",
-      "presetArtifactHash": "fd34ea0e30d2dc9ae4a6ad5863d582ef04645ba58382194f8edfd7d957d9445a",
+      "version": "0.2.3",
+      "registryManifestHash": "0fe3aedc8ed9b27a9874eabe28b2f457e2de68610e80e72007871249d62327ce",
+      "presetArtifactHash": "0fe3aedc8ed9b27a9874eabe28b2f457e2de68610e80e72007871249d62327ce",
       "checkpoints": [
         "Audit-only scope",
         "Evidence freshness",
@@ -5794,8 +5794,8 @@
         "EVD-009"
       ],
       "owner": "TuiVision Maintainer",
-      "reviewer": "Security Reviewer",
-      "reviewDate": "2026-08-30",
+      "reviewer": "Codex (bounded rollout revalidation; no human approval)",
+      "reviewDate": "2026-09-13",
       "followUp": "Deutsch: None; bei Preset-, Registry- oder Feature-Trigger neu pruefen. English: None; reassess after a preset, registry, or feature trigger.",
       "priority": "Low",
       "residualRisk": "Deutsch: Dokumentierter Governance-Drift bleibt sichtbar und unrepariert. English: Documented governance drift remains visible and unrepaired.",
@@ -5804,9 +5804,9 @@
     },
     {
       "presetId": "intake-sequencing-governance",
-      "version": "0.2.4",
-      "registryManifestHash": "585b59b1044dcff182b7d89399b2447b8437c72f712db258ef2f706b7404ca54",
-      "presetArtifactHash": "585b59b1044dcff182b7d89399b2447b8437c72f712db258ef2f706b7404ca54",
+      "version": "0.2.6",
+      "registryManifestHash": "8b517455df03fcb23f5e05e4a569a751fe72bedaa6932e669bbe368d00353e48",
+      "presetArtifactHash": "8b517455df03fcb23f5e05e4a569a751fe72bedaa6932e669bbe368d00353e48",
       "checkpoints": [
         "Audit-only scope",
         "Evidence freshness",
@@ -5818,8 +5818,8 @@
         "EVD-010"
       ],
       "owner": "TuiVision Maintainer",
-      "reviewer": "Security Reviewer",
-      "reviewDate": "2026-08-30",
+      "reviewer": "Codex (bounded rollout revalidation; no human approval)",
+      "reviewDate": "2026-09-13",
       "followUp": "Deutsch: None; bei Preset-, Registry- oder Feature-Trigger neu pruefen. English: None; reassess after a preset, registry, or feature trigger.",
       "priority": "Low",
       "residualRisk": "Deutsch: Dokumentierter Governance-Drift bleibt sichtbar und unrepariert. English: Documented governance drift remains visible and unrepaired.",

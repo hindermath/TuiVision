@@ -465,10 +465,55 @@
       ],
       "installed_at": "2026-09-12T14:44:01.292254+00:00"
     },
-    "intake-authoring-governance": {
-      "version": "0.3.2",
+    "intake-review-governance": {
+      "version": "0.2.3",
       "source": "local",
-      "manifest_hash": "sha256:61107a6a8141a5df1f5088f21ef458d34b3f97f127dc399dfbf3c7ff6947b338",
+      "manifest_hash": "sha256:0fe3aedc8ed9b27a9874eabe28b2f457e2de68610e80e72007871249d62327ce",
+      "enabled": true,
+      "priority": 65,
+      "registered_commands": {
+        "agy": [
+          "speckit.intake-review",
+          "speckit.intake-repair",
+          "speckit.intake-review-status"
+        ],
+        "claude": [
+          "speckit.intake-review",
+          "speckit.intake-repair",
+          "speckit.intake-review-status"
+        ],
+        "codex": [
+          "speckit.intake-review",
+          "speckit.intake-repair",
+          "speckit.intake-review-status"
+        ],
+        "copilot": [
+          "speckit.intake-review",
+          "speckit.intake-repair",
+          "speckit.intake-review-status"
+        ],
+        "opencode": [
+          "speckit.intake-review",
+          "speckit.intake-repair",
+          "speckit.intake-review-status"
+        ],
+        "zed": [
+          "speckit.intake-review",
+          "speckit.intake-repair",
+          "speckit.intake-review-status"
+        ]
+      },
+      "registered_skills": [
+        "speckit-intake-review",
+        "speckit-intake-repair",
+        "speckit-intake-review-status"
+      ],
+      "installed_at": "2026-09-13T11:12:34.022923+00:00"
+    },
+    "intake-authoring-governance": {
+      "version": "0.3.4",
+      "source": "local",
+      "manifest_hash": "sha256:3c934d29268fd284aa8641b491d6725cda54480c19065482dc7d270bf27f0186",
       "enabled": true,
       "priority": 64,
       "registered_commands": {
@@ -522,57 +567,12 @@
         "speckit-intake-delete",
         "speckit-intake-create-status"
       ],
-      "installed_at": "2026-09-13T08:01:33.818750+00:00"
-    },
-    "intake-review-governance": {
-      "version": "0.2.2",
-      "source": "local",
-      "manifest_hash": "sha256:fd34ea0e30d2dc9ae4a6ad5863d582ef04645ba58382194f8edfd7d957d9445a",
-      "enabled": true,
-      "priority": 65,
-      "registered_commands": {
-        "agy": [
-          "speckit.intake-review",
-          "speckit.intake-repair",
-          "speckit.intake-review-status"
-        ],
-        "claude": [
-          "speckit.intake-review",
-          "speckit.intake-repair",
-          "speckit.intake-review-status"
-        ],
-        "codex": [
-          "speckit.intake-review",
-          "speckit.intake-repair",
-          "speckit.intake-review-status"
-        ],
-        "copilot": [
-          "speckit.intake-review",
-          "speckit.intake-repair",
-          "speckit.intake-review-status"
-        ],
-        "opencode": [
-          "speckit.intake-review",
-          "speckit.intake-repair",
-          "speckit.intake-review-status"
-        ],
-        "zed": [
-          "speckit.intake-review",
-          "speckit.intake-repair",
-          "speckit.intake-review-status"
-        ]
-      },
-      "registered_skills": [
-        "speckit-intake-review",
-        "speckit-intake-repair",
-        "speckit-intake-review-status"
-      ],
-      "installed_at": "2026-09-13T08:01:35.264101+00:00"
+      "installed_at": "2026-09-13T11:12:35.434622+00:00"
     },
     "intake-sequencing-governance": {
-      "version": "0.2.4",
+      "version": "0.2.6",
       "source": "local",
-      "manifest_hash": "sha256:585b59b1044dcff182b7d89399b2447b8437c72f712db258ef2f706b7404ca54",
+      "manifest_hash": "sha256:8b517455df03fcb23f5e05e4a569a751fe72bedaa6932e669bbe368d00353e48",
       "enabled": true,
       "priority": 66,
       "registered_commands": {
@@ -633,7 +633,7 @@
         "speckit-intake-series-status",
         "speckit-intake-series-next"
       ],
-      "installed_at": "2026-09-13T08:01:36.679022+00:00"
+      "installed_at": "2026-09-13T11:12:36.850660+00:00"
     }
   }
 }

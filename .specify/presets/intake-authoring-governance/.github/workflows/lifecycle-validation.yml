@@ -18,6 +18,9 @@ jobs:
       - uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c # v6.0.0
         with:
           python-version: '3.12'
+      - name: Shipped JSON template integrity
+        shell: pwsh
+        run: pwsh -NoProfile -File ./tests/test-template-integrity.ps1
       - name: Configuration parity and zero writes
         shell: pwsh
         run: |

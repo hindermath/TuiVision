@@ -32,3 +32,8 @@ Completed series retain their archived members with no eligible candidate.
 SeriesManifest accepts an absent empty active directory; DirectoryStrict does not.
 activeIntakeCount counts physical matching active files; activeSeriesTargetCount
 counts active series members. RIG017 reports lifecycle mismatches, without writes.
+
+.SH PHYSICAL PATH BOUNDARIES
+Collection roots must resolve to distinct locations inside the repository. Active
+targets cannot resolve into the archive. Unknown series and target states return
+RIG017; aliased roots return RIG007 and repository escapes return RIG004.
