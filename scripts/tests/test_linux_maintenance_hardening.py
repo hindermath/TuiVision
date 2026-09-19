@@ -230,6 +230,10 @@ def write_swift_registry(path: Path, digest: str) -> None:
                                 "x86_64": {
                                     "url": "https://download.swift.org/swiftly/linux/swiftly-1.1.2-x86_64.tar.gz",
                                     "sha256": digest,
+                                },
+                                "aarch64": {
+                                    "url": "https://download.swift.org/swiftly/linux/swiftly-1.1.2-aarch64.tar.gz",
+                                    "sha256": digest,
                                 }
                             },
                         },

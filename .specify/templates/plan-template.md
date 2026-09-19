@@ -100,6 +100,12 @@
   and which manual/Thorsten-Solo baseline applies.
 - **Agent guidance parity**: State whether `AGENTS.md`, `CLAUDE.md`,
   `GEMINI.md`, and `.github/copilot-instructions.md` are affected together.
+- **macOS-first platform evidence**: Name the local macOS safe-mode command.
+  If a native Linux or Windows host is unavailable, plan an isolated native
+  Linux container or narrowly scoped native Linux/Windows CI. Bind exact
+  commit, command, runner/platform, exit code, payload SHA-256, decision
+  SHA-256, and zero-write values. State which partial proofs cannot establish
+  a full regression pass.
 - **Documentation Impact**: Select exactly one of `UpdateRequired`,
   `NoUpdateRequired`, `GeneratedUpdate`, or `FollowUp`. Identify source of
   truth, owner, affected documents, generated derivations, validation, and
@@ -107,21 +113,6 @@
   class, language partner, platform/example proof, distribution class,
   Home-sync need, and re-evaluation trigger. A `FollowUp` needs owner, risk,
   due date, trigger, evidence, and scope rationale.
-
-<!-- source-reference-policy:begin -->
-- **Source-reference policy**: Treat current TuiVision contracts as normative.
-  For historically material work, inspect `magiblot/tvision` first at commit
-  `57b6f56b38e0ee75240a80a10ee0e11470c24693`, tree
-  `96dd03873955689ff0a79f6c8107a8148fe1ebd6`, as a non-normative modern
-  design reference; then inspect historical sources and material comparison or
-  consumer evidence. Record exactly `AdoptModernization`,
-  `PreserveHistoricalIntent`, `IntentionalTuiVisionDeviation`, or `N/A`.
-  Source rank alone does not resolve conflicts. Keep external sources untracked
-  and uncopied; record the license boundary as `MultipartNotRepositoryWideMIT`.
-  Apply the policy `Prospective`; re-evaluate only for a changed contract, a
-  new approved pin, or materially new consumer evidence. Never use moving
-  branches as evidence.
-<!-- source-reference-policy:end -->
 
 ## Project Structure
 

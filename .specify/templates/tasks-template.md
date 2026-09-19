@@ -25,22 +25,6 @@ description: "Task list template for feature implementation"
 - **Mobile**: `api/src/`, `ios/src/` or `android/src/`
 - Paths shown below assume single project - adjust based on plan.md structure
 
-<!-- source-reference-policy:begin -->
-## Quellenreferenz-Aufgaben / Source-reference tasks
-
-For historically material work, tasks MUST read current TuiVision contracts,
-then `magiblot/tvision` at commit
-`57b6f56b38e0ee75240a80a10ee0e11470c24693`, tree
-`96dd03873955689ff0a79f6c8107a8148fe1ebd6`, then historical sources and any
-material consumer evidence. Evidence records exactly `AdoptModernization`,
-`PreserveHistoricalIntent`, `IntentionalTuiVisionDeviation`, or `N/A`.
-Source rank alone never resolves conflicts. External source copy is forbidden;
-the license boundary is `MultipartNotRepositoryWideMIT`. This is a
-`Prospective` policy with re-evaluation only for a changed contract, new
-approved pin, or materially new consumer evidence; moving branches are not
-evidence.
-<!-- source-reference-policy:end -->
-
 <!--
   ============================================================================
   IMPORTANT: The tasks below are SAMPLE TASKS for illustration purposes only.
@@ -174,6 +158,8 @@ Examples of foundational tasks (adjust based on your project):
 - [ ] TXXX [P] Verify learner-facing content is DE-first/EN-second at CEFR B2, explains technical terms at first use, assumes no prior Spec Kit experience, and provides text-first explanations for dependencies, states, and decisions
 - [ ] TXXX [P] Update `docs/project-statistics.md` when the feature changes statistics-relevant artefacts or delivery evidence
 - [ ] TXXX [P] Review and synchronize affected AI-agent guidance files: `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md`
+- [ ] TXXX Validate platform-dependent changes macOS-first: matching local safe mode, then isolated native Linux container or narrowly scoped native Linux/Windows CI only when the target host is unavailable
+- [ ] TXXX Bind each portable platform proof to exact commit, command, runner/platform, exit code, payload SHA-256, decision SHA-256, and zero-write values; do not infer a full regression pass from a partial proof
 - [ ] TXXX Record exactly one Documentation Impact decision and complete its
   required update, generated render, no-change rationale, or bounded follow-up
   evidence

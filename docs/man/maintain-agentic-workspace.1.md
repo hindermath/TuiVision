@@ -119,6 +119,100 @@ Konfliktabweichungen nicht unbemerkt bleiben.
 After a real sync, final verification repeats this check so SHA-256, file-mode,
 or conflict drift cannot remain unnoticed.*
 
+### Lokaler CI-Gate / Local CI gate
+
+`--ci-gate` beziehungsweise `-CiGate` startet genau einen gemeinsamen
+Python-Engine-Prozess. Die Vorschau `--dry-run` / `-WhatIf` zeigt Profil,
+Entscheidung, Status, Blocker, nächste Aktion, Gate-Set-Hash, geordnete Gates
+und Evidence-Ziel in stabiler linearer Reihenfolge. Sie schreibt weder Evidence
+noch Repository- oder Home-Dateien. Ein echter Gate-Lauf publiziert nur nach
+stabilem HEAD und vollständigem Erfolg atomare maschinenlokale Evidence.
+
+*The CI-gate surface starts exactly one shared engine process. Preview is
+read-only and text-first. A real run publishes machine-local evidence only
+after all gates, HEAD, and the gate-set hash pass.*
+
+<a id="stage-b-flottenrollout-stage-b-fleet-rollout"></a>
+
+### Stage-B-Flottenrollout / Stage B fleet rollout
+
+Stage B wird ausschließlich aus dem versionierten Level-0-Quellcheckout
+ausgeführt. Auch eine Projekt- oder Home-Kopie des Wrappers verwendet den
+gemeinsamen Quellresolver: ausführendes Quellrepository, `HOME_BASELINE_SOURCE`,
+lokaler Quellnachweis, dann `~/home-baseline-source`. Engine, Konfigurationen
+und angenommene Vertragsschemata werden gemeinsam dort gelesen. Fehlt die
+Quelle oder der zentrale Kern, bricht der Aufruf ab; es gibt keinen Rückfall
+auf Projektkopien. Die Level-0-Spezifikationen werden nicht in Projekte
+verteilt. Diese Auflösung erteilt keine zusätzliche Ausführungsautorität und
+ändert weder normale Wartung noch das projektbezogene `--ci-gate`.
+
+*Stage B runs exclusively from the versioned Level-0 source checkout. Project
+and Home wrapper copies use the shared source resolver: executing source
+repository, `HOME_BASELINE_SOURCE`, local source record, then
+`~/home-baseline-source`. Engine, configuration and accepted contract schemas
+are read together there. Missing source or central engine stops execution;
+there is no project-local fallback. Level-0 specifications are not distributed
+to projects. Resolution grants no additional execution authority and changes
+neither ordinary maintenance nor the project-local `--ci-gate`.*
+
+Die sichere erste Aktion ist eine schreibfreie Vorschau:
+
+```bash
+bash scripts/maintain-agentic-workspace.sh --stage-b-action preflight --dry-run
+```
+
+```powershell
+pwsh -NoProfile -File scripts/maintain-agentic-workspace.ps1 -StageBAction Preflight -WhatIf
+```
+
+`preflight`, `validate`, `deliver`, `resume` und `verify` starten genau einen
+gemeinsamen Engine-Prozess. Vorschauen öffnen das `ExternalWriteGate` nicht.
+Die Preflight-Vorschau berechnet und zeigt den vollständigen Live-Plan, schreibt
+aber weder Evidence, Git, Provider, Home, Zielrepositories, Plan noch State.
+Ein echter `preflight` darf erst nach separater Lieferung der
+Preflight-Implementierung vom sauberen, synchronisierten Level-0-Default-Head
+laufen. Er liest Flotte und Provider live und publiziert ausschließlich lokal
+zuerst den atomaren Rolloutplan und danach den hashbindenden vorbereiteten State
+als Commit-Marker. Der Snapshot bleibt im Speicher; Git, Provider, Home und
+Zielrepositories bleiben unverändert. Vorbereitete Authority ist `Pending`, das
+Gate ist `Closed` und Admin-Bypass `NotAuthorized`.
+Ein echter `deliver`- oder `resume`-Lauf benötigt eine aktuelle, hashgebundene
+`MergeAndSync`-Autorität und arbeitet Welle für Welle mit höchstens einem
+Writer. Beim ersten nicht behebbaren Fehler stoppt er vor dem nächsten Ziel;
+`resume` prüft Plan, Flotte, Providerzustand, Budget und Autorität erneut.
+
+*The five Stage-B actions start exactly one shared engine process. Preview
+never opens the ExternalWriteGate. Preflight preview calculates and prints the
+complete live plan with zero evidence, Git, provider, Home, target, plan, or
+state writes. After the implementation has been delivered
+separately, a real preflight may publish only the local atomic plan followed by
+its hash-bound prepared state commit marker; authority remains Pending and no
+Git, provider, Home, or target write occurs. A real delivery or resume needs a current,
+hash-bound MergeAndSync authority and uses at most one writer. It stops before
+the next target on the first non-recoverable failure; resume revalidates the
+plan, fleet, provider state, budget, and authority.*
+
+Maschinenlokale Evidence wird atomar unter dem laufgebundenen Evidence-Root
+veröffentlicht. Exitcode `0` bedeutet Erfolg oder sichere Vorschau, `1` einen
+fachlichen Blocker, `2` Vertrags-, Betriebs- oder Sicherheitsfehler und `130`
+einen kontrollierten Abbruch. Regulärer Review und Merge sind der Normalweg.
+Der Admin-Bypass ist nur nach belegter Schutzregel-Ablehnung erlaubt und ersetzt
+keine Acceptance-, Security-, Review- oder Gate-Evidence. G4, Intake-Serie,
+Copilot-, Konto- und Abonnementkonfiguration liegen außerhalb von Stage B.
+
+*Evidence is published atomically below the run-bound evidence root. Exit codes
+are 0 success/preview, 1 business blocker, 2 contract/operational/security
+failure, and 130 controlled stop. Regular review and merge are normal. Admin
+bypass is restricted to an evidenced protection-only refusal and replaces no
+acceptance, security, review, or gate evidence. G4 and account-level settings
+remain outside Stage B.*
+
+Stufe A führt keinen Commit, Push, Merge, Home-Sync, Zielrepository-Write oder
+GitHub-Schreibzugriff aus und behauptet nie Remote-Konvergenz. Exitcodes:
+`0` Erfolg/Vorschau, `1` fachlicher Blocker, `2` Vertrag/Betrieb/Sicherheit,
+`130` kontrollierter Abbruch. Code `3` bleibt dem bestehenden
+Maintenance-Reparaturvertrag vorbehalten und wird vom CI-Gate nicht erzeugt.
+
 *Preset validation resolves the canonical default branch through
 validated `refs/remotes/origin/HEAD` evidence or
 `git ls-remote --symref origin HEAD`; branch names are never guessed. If the
@@ -189,6 +283,8 @@ after-hashes; unknown or partial changes block.*
 | `--no-tui` | `-NoTui` | Headless Engine und interner Rekursionsschutz / Headless engine and internal recursion guard |
 | `--check-only` | `-CheckOnly` | Nur fetchen und pruefen; keine Pulls, Datei- oder Paketupdates / Fetch and check only |
 | `--dry-run` | `-WhatIf` | Schreibende Schritte als Vorschau / Preview mutating steps |
+| `--ci-gate` | `-CiGate` | Lokalen profilgebundenen Gate ausführen; mit Vorschau keine Evidence / Run the profile-bound local gate; preview writes no evidence |
+| `--stage-b-action preflight\|validate\|deliver\|resume\|verify` | `-StageBAction Preflight\|Validate\|Deliver\|Resume\|Verify` | Genau eine Stage-B-Aktion; zuerst Vorschau / Exactly one Stage-B action; preview first |
 | `--scripts-only` | `-ScriptsOnly` | Maschinenpakete ueberspringen / Skip machine packages |
 | `--repair-drift` | `-RepairDrift` | Wartungspaket lokal reparieren; nie committen/pushen / Repair package locally; never commit/push |
 | `--include-optional` | `-IncludeOptional` | Auch optionale Maschinenpakete installieren / Install optional machine packages too |

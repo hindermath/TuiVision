@@ -1,7 +1,6 @@
-#Requires -Version 7
 <#
 .SYNOPSIS
-    Orchestrates repository and agentic toolchain maintenance on Windows.
+    Wartet Workspace/Toolchain und führt Stage B sicher aus. / Maintains the workspace/toolchain and safely runs Stage B.
 
 .DESCRIPTION
     Completes bounded fetch attempts for Level 0 and every active Git target
@@ -34,6 +33,38 @@
 .PARAMETER CheckOnly
     Fetch and report only. Do not pull repositories, synchronize files, update
     the registry, propagate files, or update packages.
+
+.PARAMETER CiGate
+    Führt den lokalen profilgebundenen CI-Gate aus. Mit -WhatIf wird derselbe
+    Engine-Einstieg ohne Evidence-Schreibzugriff vorangezeigt.
+
+    Runs the local profile-bound CI gate. With -WhatIf, the same engine entry
+    is previewed without writing evidence.
+
+    Ausgabe / Output: Profil, Entscheidung, Status, Blocker, naechste Aktion,
+    Gate-Set-Hash, geordnete Gates und Evidence-Ziel erscheinen linear und
+    ohne Farbabhaengigkeit. Stufe A schreibt weder remote noch in Home oder
+    Zielrepositorys und behauptet keine Remote-Konvergenz.
+
+    Profile, decision, status, blocker, next action, gate-set hash, ordered
+    gates, and evidence target are printed in one color-independent sequence.
+    Stage A performs no remote, Home, or target-repository write and never
+    claims remote convergence.
+
+.PARAMETER StageBAction
+    Verwendet ausschließlich die zentrale Level-0-Quelle über den gemeinsamen
+    Quellresolver, auch aus Projektkopien; keine lokale Ersatz-Engine. /
+    Uses only the central Level-0 source through the shared source resolver,
+    including from project copies; no project-local fallback engine.
+    Führt genau eine Stage-B-Aktion Preflight, Validate, Deliver, Resume oder
+    Verify über den gemeinsamen Python-Kern aus. -WhatIf öffnet niemals das
+    ExternalWriteGate. / Runs exactly one Stage-B action through the shared
+    Python core. -WhatIf prints the complete live plan and performs zero
+    evidence, Git, provider, Home, target, plan, or state writes. Preflight ohne
+    -WhatIf publiziert nur lokalen Plan und Pending-State; Git, Provider, Home
+    und Zielrepositories bleiben unverändert. / Without -WhatIf, Preflight
+    publishes only the local plan and Pending state; Git, provider, Home, and
+    target repositories remain unchanged.
 
 .PARAMETER ScriptsOnly
     Maintain repositories, home sync, registry, and propagation only. Skip
@@ -113,9 +144,45 @@
     Previews all mutating steps.
 
 .EXAMPLE
+    pwsh -NoProfile -File scripts/maintain-agentic-workspace.ps1 -CiGate -WhatIf
+
+    Previews the local CI gate without writing evidence.
+
+.EXAMPLE
+    pwsh -NoProfile -File scripts/maintain-agentic-workspace.ps1 -StageBAction Preflight -WhatIf
+
+    Zeigt Stage B ohne ExternalWriteGate oder Mutation an.
+    Previews the complete Stage-B plan without opening the ExternalWriteGate
+    or writing evidence, Git, provider, Home, targets, plan, or state.
+
+.EXAMPLE
+    pwsh -NoProfile -File scripts/maintain-agentic-workspace.ps1 -StageBAction Preflight
+
+    Publiziert nach separater Level-0-Lieferung nur lokalen Plan und
+    vorbereiteten Pending-State. / After separate Level-0 delivery, publishes
+    only the local plan and prepared Pending state.
+
+.EXAMPLE
+    pwsh -NoProfile -File scripts/maintain-agentic-workspace.ps1 -StageBAction Resume -WhatIf
+
+    Prüft den Resume-Vertrag schreibfrei. Ohne -WhatIf benötigt Resume eine
+    aktuelle MergeAndSync-Autoritätsbindung.
+    Validates resume read-only. Without -WhatIf, Resume requires a current
+    MergeAndSync authority binding.
+
+.EXAMPLE
     pwsh -NoProfile -File scripts/maintain-agentic-workspace.ps1 -ScriptsOnly -RepairDrift
 
     Updates repositories and repairs maintenance files locally without commits.
+
+.OUTPUTS
+    Lineare DE/EN-Textausgabe und der Exitcode des gemeinsamen Python-Kerns.
+    Stage-B-Evidence wird nur durch einen autorisierten Nicht-Preview-Lauf
+    atomar unter dem angegebenen Evidence-Root veröffentlicht.
+
+    Linear DE/EN text and the shared Python core exit code. Stage-B evidence is
+    atomically published only by an authorized non-preview run below the stated
+    evidence root.
 
 .NOTES
     Exit codes: 0 = current/success, 1 = drift found, 2 = operational error,
@@ -123,13 +190,38 @@
     Exitcode, sichtbarer Abschluss und JSON-Bericht werden aus derselben Run-ID
     abgeleitet. Eigene reparierte Dirty-Zwischenstaende werden nur mit exakt
     passender atomarer Resume-Evidence akzeptiert.
+
+    Fuer -CiGate gelten: 0 = Erfolg oder sichere Vorschau, 1 = fachlicher
+    Blocker, 2 = Vertrags-/Betriebs-/Sicherheitsfehler und 130 = kontrollierter
+    Abbruch. Code 3 wird von -CiGate nicht erzeugt.
+
+    For -CiGate: 0 means success or safe preview, 1 a business blocker, 2 a
+    contract/operational/security failure, and 130 controlled interruption.
+
+    Für -StageBAction gelten dieselben fail-closed Exitcodes. Deliver und Resume
+    arbeiten seriell. Regulärer Review/Merge ist der Normalweg; ein ausdrücklich
+    gebundener Admin-Bypass gilt nur für eine belegte Schutzregel-Ablehnung und
+    ersetzt keine Acceptance-, Security-, Review- oder Gate-Evidence. Stop und
+    Resume verwenden hashgebundene atomare Evidence. G4, Intake-Serie, Copilot-,
+    Konto- und Abonnementkonfiguration bleiben außerhalb dieser Schnittstelle.
+
+    Stage-B actions use the same fail-closed exit codes. Deliver and Resume are
+    serial. Regular review/merge is normal; an explicitly bound admin bypass is
+    limited to an evidenced protection-only refusal and replaces no acceptance,
+    security, review, or gate evidence. Stop/resume use hash-bound atomic
+    evidence. G4, intake series, Copilot, account, and subscription configuration
+    remain outside this surface.
 #>
+#Requires -Version 7
 [CmdletBinding(SupportsShouldProcess)]
 param(
     [switch] $Tui,
     [switch] $PlainUi,
     [switch] $NoTui,
     [switch] $CheckOnly,
+    [switch] $CiGate,
+    [ValidateSet('Preflight', 'Validate', 'Deliver', 'Resume', 'Verify')]
+    [string] $StageBAction,
     [switch] $ScriptsOnly,
     [switch] $RepairDrift,
     [switch] $IncludeOptional,
@@ -156,13 +248,54 @@ if (-not (Test-Path -LiteralPath $hardeningModule -PathType Leaf)) {
 }
 Import-Module $hardeningModule -Force
 
+function Get-HBStageBPythonCommand {
+    $candidateNames = if ($IsWindows) { @('python', 'python3') } else { @('python3', 'python') }
+    foreach ($candidateName in $candidateNames) {
+        $application = Get-Command -Name $candidateName -CommandType Application -ErrorAction SilentlyContinue |
+            Select-Object -First 1
+        if ($null -ne $application) {
+            return $application.Source
+        }
+    }
+    throw 'Python 3 fuer Stage B nicht gefunden / Python 3 for Stage B not found.'
+}
+
 function Invoke-HBAgenticWorkspaceMaintenance {
     <#
     .SYNOPSIS
+        Führt die plattformgerechte Workspace-Wartung aus.
         Runs the cross-platform one-command workspace maintenance.
     .DESCRIPTION
+        Ruft das Repository-Skript mit nativer PowerShell-Parameterbindung auf.
+        CheckOnly oder WhatIf stehen vor einem Update-Lauf. StageBAction startet
+        genau einen gemeinsamen Engine-Prozess.
+
         Invokes the repository-owned script with native PowerShell parameter
-        binding. Use CheckOnly or WhatIf before an update run.
+        binding. Use CheckOnly or WhatIf before an update run. StageBAction
+        starts exactly one shared engine process.
+    .PARAMETER StageBAction
+        Wählt Preflight, Validate, Deliver, Resume oder Verify. Preflight ohne
+        WhatIf publiziert nur lokalen Plan/Pending-State. Deliver und Resume
+        benötigen aktuelle MergeAndSync-Autorität. / Selects Preflight,
+        Validate, Deliver, Resume, or Verify. Preflight without WhatIf publishes
+        only local plan/Pending state. Deliver and Resume require current
+        MergeAndSync authority.
+    .PARAMETER RunId
+        Optionale Korrelations-ID; die autoritative Stage-B-ID kann aus der
+        laufgebundenen Umgebung kommen. / Optional correlation ID; the
+        authoritative Stage-B ID may come from the run-bound environment.
+    .EXAMPLE
+        Invoke-HBAgenticWorkspaceMaintenance -StageBAction Preflight -WhatIf
+
+        Zeigt Stage B schreibfrei an. / Previews Stage B without writes.
+    .OUTPUTS
+        Lineare DE/EN-Ausgabe und unveränderter Engine-Exitcode.
+        Linear DE/EN output and the unchanged engine exit code.
+    .NOTES
+        Vorschau öffnet kein ExternalWriteGate. Stop/Resume bleibt hashgebunden;
+        G4 und Kontoebenen-Einstellungen sind nicht Teil dieser Schnittstelle.
+        Preview opens no ExternalWriteGate. Stop/resume remains hash-bound; G4
+        and account-level settings are outside this surface.
     #>
     [CmdletBinding(SupportsShouldProcess)]
     param(
@@ -170,6 +303,9 @@ function Invoke-HBAgenticWorkspaceMaintenance {
         [switch] $PlainUi,
         [switch] $NoTui,
         [switch] $CheckOnly,
+        [switch] $CiGate,
+        [ValidateSet('Preflight', 'Validate', 'Deliver', 'Resume', 'Verify')]
+        [string] $StageBAction,
         [switch] $ScriptsOnly,
         [switch] $RepairDrift,
         [switch] $IncludeOptional,
@@ -189,6 +325,8 @@ function Invoke-HBAgenticWorkspaceMaintenance {
         PlainUi = $PlainUi
         NoTui = $NoTui
         CheckOnly = $CheckOnly
+        CiGate = $CiGate
+        StageBAction = $StageBAction
         ScriptsOnly = $ScriptsOnly
         RepairDrift = $RepairDrift
         IncludeOptional = $IncludeOptional
@@ -209,6 +347,105 @@ function Invoke-HBAgenticWorkspaceMaintenance {
 
 if ($MyInvocation.InvocationName -eq '.') {
     return
+}
+
+if ($StageBAction) {
+    # Keep this adapter below the trust boundary: native argument arrays preserve
+    # metacharacters as data, and WhatIf cannot open the external write gate.
+    $allowedStageBParameters = @('StageBAction', 'RunId', 'WhatIf')
+    $unexpectedStageBParameters = @(
+        $entryBoundParameters.Keys | Where-Object { $_ -notin $allowedStageBParameters }
+    )
+    if ($unexpectedStageBParameters.Count -gt 0) {
+        Write-Error '-StageBAction darf nicht mit Wartungsoptionen kombiniert werden / cannot be combined with maintenance options.'
+        exit 2
+    }
+    # DE: Angenommene Level-0-Vertraege bleiben zentral; kein Projekt-Fallback.
+    # EN: Accepted Level-0 contracts stay central; no project-local fallback.
+    . (Join-Path $PSScriptRoot 'lib/resolve-home-baseline-source.ps1')
+    $stageBLocalRoot = Split-Path -Parent $PSScriptRoot
+    $stageBSourceRoot = if ([string]::IsNullOrEmpty($HOME) -and
+        (Test-HBSourceRepository -Path $stageBLocalRoot)) {
+        # A direct source invocation must also work without a Home directory.
+        (Resolve-Path -LiteralPath $stageBLocalRoot).Path
+    } else {
+        Resolve-HBSourceRepository -StartPath $PSCommandPath
+    }
+    $stageBFleetEngine = Join-Path $stageBSourceRoot 'scripts/lib/agentic_workspace_fleet.py'
+    if (-not (Test-Path -LiteralPath $stageBFleetEngine -PathType Leaf)) {
+        throw 'Stage-B-Kern fehlt in Level 0 / Stage B engine missing in Level 0'
+    }
+    $stageBRunId = if ($env:HB_STAGE_B_RUN_ID) { $env:HB_STAGE_B_RUN_ID } elseif ($RunId) { $RunId } else { '' }
+    $stageBArguments = [Collections.Generic.List[string]]::new()
+    @(
+        'stage-b', '--action', $StageBAction.ToLowerInvariant(),
+        '--repository-root', $stageBSourceRoot
+    ) | ForEach-Object { $stageBArguments.Add([string]$_) }
+    if ($stageBRunId) {
+        @('--run-id', $stageBRunId) | ForEach-Object { $stageBArguments.Add([string]$_) }
+    }
+    @(
+        '--delivery-mode', $(if ($env:HB_STAGE_B_DELIVERY_MODE) { $env:HB_STAGE_B_DELIVERY_MODE } else { 'MergeAndSync' }),
+        '--wave-id', $(if ($env:HB_STAGE_B_WAVE_ID) { $env:HB_STAGE_B_WAVE_ID } else { 'N/A' }),
+        '--repository-id', $(if ($env:HB_STAGE_B_REPOSITORY_ID) { $env:HB_STAGE_B_REPOSITORY_ID } else { 'N/A' }),
+        '--profile-id', $(if ($env:HB_STAGE_B_PROFILE_ID) { $env:HB_STAGE_B_PROFILE_ID } else { 'N/A' })
+    ) | ForEach-Object { $stageBArguments.Add([string]$_) }
+    if ($WhatIfPreference) { $stageBArguments.Add('--dry-run') }
+    $stageBPythonCommand = Get-HBStageBPythonCommand
+    & $stageBPythonCommand $stageBFleetEngine @stageBArguments
+    $stageBExitCode = $LASTEXITCODE
+    exit $stageBExitCode
+}
+
+if ($CiGate) {
+    $allowedCiParameters = @('CiGate', 'WhatIf')
+    $unexpectedCiParameters = @(
+        $entryBoundParameters.Keys | Where-Object { $_ -notin $allowedCiParameters }
+    )
+    if ($unexpectedCiParameters.Count -gt 0) {
+        Write-Error '-CiGate ist nur mit -WhatIf kombinierbar / may only be combined with -WhatIf.'
+        exit 2
+    }
+    $ciSourceRoot = (Resolve-Path -LiteralPath (Split-Path -Parent $PSScriptRoot)).Path
+    $ciFleetEngine = Join-Path $ciSourceRoot 'scripts/lib/agentic_workspace_fleet.py'
+    $ciProfiles = if ($env:HB_CI_PROFILES) {
+        $env:HB_CI_PROFILES
+    } else {
+        Join-Path $ciSourceRoot 'scripts/config/ci-budget-profiles.json'
+    }
+    $ciPathContracts = if ($env:HB_CI_PATH_CONTRACTS) {
+        $env:HB_CI_PATH_CONTRACTS
+    } else {
+        Join-Path $ciSourceRoot 'scripts/config/ci-budget-path-contracts.json'
+    }
+    $ciWorkflowTemplate = if ($env:HB_CI_WORKFLOW_TEMPLATE) {
+        $env:HB_CI_WORKFLOW_TEMPLATE
+    } else {
+        Join-Path $ciSourceRoot 'scripts/templates/ci-budget-governance/private-governance-minimal-gate.yml'
+    }
+    $ciArguments = [Collections.Generic.List[string]]::new()
+    @(
+        'ci-gate', '--repository-root', $ciSourceRoot,
+        '--profiles', $ciProfiles,
+        '--path-contracts', $ciPathContracts,
+        '--workflow-template', $ciWorkflowTemplate
+    ) | ForEach-Object { $ciArguments.Add($_) }
+    if ($env:HB_CI_REPOSITORY_ID) {
+        $ciArguments.Add('--repository-id')
+        $ciArguments.Add($env:HB_CI_REPOSITORY_ID)
+    }
+    if ($env:HB_CI_FIXTURE_HEAD) {
+        $ciArguments.Add('--fixture-head')
+        $ciArguments.Add($env:HB_CI_FIXTURE_HEAD)
+    }
+    if ($env:HB_CI_EVIDENCE_ROOT) {
+        $ciArguments.Add('--evidence-root')
+        $ciArguments.Add($env:HB_CI_EVIDENCE_ROOT)
+    }
+    if ($WhatIfPreference) { $ciArguments.Add('--dry-run') }
+    & python3 $ciFleetEngine @ciArguments
+    $ciExitCode = $LASTEXITCODE
+    exit $ciExitCode
 }
 
 $uiSelectors = @($Tui, $PlainUi, $NoTui).Where({ [bool]$_ }).Count

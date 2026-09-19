@@ -137,6 +137,13 @@ Bei jeder Preset-Version oder Prioritätsänderung zuerst die zentrale Matrix
 aktualisieren und danach README-Tabellen, Constitution, Agenten-Dateien und
 Templates gemeinsam prüfen.
 
+Plattformnachweise laufen agentenneutral macOS-first: zuerst lokal im passenden
+Safe Mode, bei fehlendem Linux-Host in einem isolierten nativen Container oder
+eng begrenzter nativer Linux-CI und bei fehlendem Windows-Host in eng begrenzter
+nativer Windows-CI. Evidence bindet exakten Commit, Befehl, Runner/Plattform,
+Exitcode, Payload-/Entscheidungs-SHA-256 und Nullschreibwerte. Ein Teilnachweis
+ist kein vollständiger Regressionspass.
+
 ---
 
 ## Spec-kit Workflow
@@ -162,6 +169,13 @@ Registered level-0, level-1, and level-2 repositories install Spec Kit
 governance presets from the central matrix
 `scripts/config/spec-kit-governance-presets.json`. The standard set for this
 workspace family is:
+
+Platform evidence follows an agent-neutral macOS-first path: matching local
+safe mode first, isolated native Linux container or narrowly scoped native
+Linux CI when no Linux host is available, and narrowly scoped native Windows
+CI when no Windows host is available. Evidence binds the exact commit,
+command, runner/platform, exit code, payload and decision SHA-256, and
+zero-write values. A partial proof is not a full regression pass.
 
 | Preset ID | Name | Version | Priority |
 |---|---|---:|---:|

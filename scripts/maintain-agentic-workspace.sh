@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Orchestrate repository and agentic toolchain maintenance on macOS/Linux.
+# Wartet Workspace/Toolchain und führt Stage B sicher aus. / Maintains the workspace/toolchain and safely runs Stage B.
 set -euo pipefail
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
@@ -16,6 +16,8 @@ STORAGE_POLICY="${SOURCE_ROOT}/scripts/config/workspace-storage-maintenance.json
 
 CHECK_ONLY=0
 DRY_RUN=0
+CI_GATE=0
+STAGE_B_ACTION=""
 SCRIPTS_ONLY=0
 REPAIR_DRIFT=0
 INCLUDE_OPTIONAL=0
@@ -76,6 +78,15 @@ Freshness Barrier completes every fetch attempt before any mutation.
                      Check and fetch only; no pulls or package updates
   --dry-run          Schreibende Schritte als Vorschau ausgeben
                      Preview mutating steps
+  --ci-gate          Lokalen, profilgebundenen CI-Gate ausführen
+                     Run the local profile-bound CI gate
+  --stage-b-action ACTION
+                     Stage-B Preflight, Validate, Deliver, Resume oder Verify
+                     Stage-B preflight, validation, delivery, resume, or verify
+                     Vorschau zeigt den vollstaendigen Live-Plan ohne Writes;
+                     preview prints the complete live plan with zero writes
+                     Preflight ohne Vorschau publiziert nur lokalen Plan/State;
+                     without preview publishes local plan/state only (Pending)
   --scripts-only     Nur Repositories, Home-Sync, Registry und Propagation
                      Repositories, home sync, registry, and propagation only
   --repair-drift     Wartungspaket-Drift lokal reparieren; nie committen/pushen
@@ -111,6 +122,26 @@ die() {
 info() { printf '\n==> %s\n' "$*"; }
 ok() { printf 'OK: %s\n' "$*"; }
 warn() { printf 'WARN: %s\n' "$*" >&2; }
+
+resolve_stage_b_python() {
+  local kernel="" candidate=""
+  local -a candidates=()
+  kernel="$(uname -s 2>/dev/null || printf 'unknown')"
+  case "$kernel" in
+    MINGW*|MSYS*|CYGWIN*) candidates=(python python3) ;;
+    *) candidates=(python3 python) ;;
+  esac
+  for candidate in "${candidates[@]}"; do
+    if command -v "$candidate" >/dev/null 2>&1; then
+      # Keep the command name so Git Bash applies its native-executable path
+      # conversion to Stage-B arguments on Windows. Returning command -v's
+      # /c/... path causes the hosted Windows Python launch to fail silently.
+      printf '%s\n' "$candidate"
+      return 0
+    fi
+  done
+  return 1
+}
 
 ask_yes_no() {
   local prompt="$1" answer=""
@@ -543,6 +574,15 @@ while [ $# -gt 0 ]; do
     --no-tui) UI_MODE="headless"; UI_SELECTOR_COUNT=$((UI_SELECTOR_COUNT + 1)) ;;
     --check-only) CHECK_ONLY=1; MAINTENANCE_OPTION_SEEN=1 ;;
     --dry-run) DRY_RUN=1; MAINTENANCE_OPTION_SEEN=1 ;;
+    --ci-gate) CI_GATE=1 ;;
+    --stage-b-action)
+      [ $# -ge 2 ] || die "--stage-b-action benoetigt einen Wert / requires a value"
+      case "$2" in
+        preflight|validate|deliver|resume|verify) STAGE_B_ACTION="$2" ;;
+        *) die "Ungueltige Stage-B-Aktion / invalid Stage-B action: $2" ;;
+      esac
+      shift
+      ;;
     --scripts-only) SCRIPTS_ONLY=1; MAINTENANCE_OPTION_SEEN=1 ;;
     --repair-drift) REPAIR_DRIFT=1; MAINTENANCE_OPTION_SEEN=1 ;;
     --include-optional) INCLUDE_OPTIONAL=1; MAINTENANCE_OPTION_SEEN=1 ;;
@@ -586,6 +626,70 @@ while [ $# -gt 0 ]; do
   esac
   shift
 done
+
+if [ -n "$STAGE_B_ACTION" ]; then
+  # Keep this adapter below the trust boundary: use one argument-array process;
+  # never reconstruct a shell command, and preview cannot open the write gate.
+  if [ "$CHECK_ONLY" -eq 1 ] || [ "$CI_GATE" -eq 1 ] || [ "$SCRIPTS_ONLY" -eq 1 ] \
+      || [ "$REPAIR_DRIFT" -eq 1 ] || [ "$INCLUDE_OPTIONAL" -eq 1 ] \
+      || [ "$ALLOW_ADMIN_PROMPTS" -eq 1 ] || [ "$CLEANUP_PROFILE_EXPLICIT" -eq 1 ] \
+      || [ "$CONFIRM_DEEP_CLEANUP" -eq 1 ] || [ "$UI_SELECTOR_COUNT" -gt 0 ] \
+      || [ -n "$EVENT_STREAM" ]; then
+    die "--stage-b-action darf nicht mit Wartungsoptionen kombiniert werden / cannot be combined with maintenance options"
+  fi
+  # DE: Stage B braucht die angenommenen Level-0-Vertraege, keine Projektkopien.
+  # EN: Stage B needs the accepted Level-0 contracts, not project-local copies.
+  source "$SCRIPT_DIR/lib/resolve-home-baseline-source.sh"
+  # DE: Bei leerem HOME darf das aktuelle Verzeichnis nicht als Home gelten.
+  # EN: An empty HOME must not make the current directory the Home exclusion.
+  if [ -z "${HOME:-}" ] && _is_hb_source_repository "$SOURCE_ROOT"; then
+    stage_b_source="$SOURCE_ROOT"
+  else
+    stage_b_source="$(resolve_hb_source_repository "${BASH_SOURCE[0]}")" \
+      || die "Stage B benoetigt die Level-0-Quelle / Stage B requires the Level-0 source"
+  fi
+  stage_b_engine="$stage_b_source/scripts/lib/agentic_workspace_fleet.py"
+  [ -f "$stage_b_engine" ] \
+    || die "Stage-B-Kern fehlt in Level 0 / Stage B engine missing in Level 0"
+  stage_b_arguments=(
+    stage-b
+    --action "$STAGE_B_ACTION"
+    --repository-root "$stage_b_source"
+  )
+  stage_b_run_id="${HB_STAGE_B_RUN_ID:-${REQUESTED_RUN_ID:-}}"
+  [ -z "$stage_b_run_id" ] || stage_b_arguments+=(--run-id "$stage_b_run_id")
+  stage_b_arguments+=(
+    --delivery-mode "${HB_STAGE_B_DELIVERY_MODE:-MergeAndSync}"
+    --wave-id "${HB_STAGE_B_WAVE_ID:-N/A}"
+    --repository-id "${HB_STAGE_B_REPOSITORY_ID:-N/A}"
+    --profile-id "${HB_STAGE_B_PROFILE_ID:-N/A}"
+  )
+  [ "$DRY_RUN" -eq 1 ] && stage_b_arguments+=(--dry-run)
+  STAGE_B_PYTHON="$(resolve_stage_b_python)" \
+    || die "Python 3 fuer Stage B nicht gefunden / Python 3 for Stage B not found"
+  exec "$STAGE_B_PYTHON" "$stage_b_engine" "${stage_b_arguments[@]}"
+fi
+
+if [ "$CI_GATE" -eq 1 ]; then
+  if [ "$CHECK_ONLY" -eq 1 ] || [ "$SCRIPTS_ONLY" -eq 1 ] || [ "$REPAIR_DRIFT" -eq 1 ] \
+      || [ "$INCLUDE_OPTIONAL" -eq 1 ] || [ "$ALLOW_ADMIN_PROMPTS" -eq 1 ] \
+      || [ "$CLEANUP_PROFILE_EXPLICIT" -eq 1 ] || [ "$CONFIRM_DEEP_CLEANUP" -eq 1 ] \
+      || [ "$UI_SELECTOR_COUNT" -gt 0 ] || [ -n "$EVENT_STREAM" ] || [ -n "$REQUESTED_RUN_ID" ]; then
+    die "--ci-gate ist nur mit --dry-run kombinierbar / may only be combined with --dry-run"
+  fi
+  ci_arguments=(
+    ci-gate
+    --repository-root "$SOURCE_ROOT"
+    --profiles "${HB_CI_PROFILES:-${SOURCE_ROOT}/scripts/config/ci-budget-profiles.json}"
+    --path-contracts "${HB_CI_PATH_CONTRACTS:-${SOURCE_ROOT}/scripts/config/ci-budget-path-contracts.json}"
+    --workflow-template "${HB_CI_WORKFLOW_TEMPLATE:-${SOURCE_ROOT}/scripts/templates/ci-budget-governance/private-governance-minimal-gate.yml}"
+  )
+  [ -n "${HB_CI_REPOSITORY_ID:-}" ] && ci_arguments+=(--repository-id "$HB_CI_REPOSITORY_ID")
+  [ -n "${HB_CI_FIXTURE_HEAD:-}" ] && ci_arguments+=(--fixture-head "$HB_CI_FIXTURE_HEAD")
+  [ -n "${HB_CI_EVIDENCE_ROOT:-}" ] && ci_arguments+=(--evidence-root "$HB_CI_EVIDENCE_ROOT")
+  [ "$DRY_RUN" -eq 1 ] && ci_arguments+=(--dry-run)
+  exec python3 "$FLEET_ENGINE" "${ci_arguments[@]}"
+fi
 
 if [ "$UI_SELECTOR_COUNT" -gt 1 ]; then
   die "--tui, --plain-ui und --no-tui sind gegenseitig ausgeschlossen / are mutually exclusive"
