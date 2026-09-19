@@ -355,7 +355,8 @@
     }
   ],
   "excludedPaths": [
-    "Directory.Build.props"
+    "Directory.Build.props",
+    "docs/project-statistics/*"
   ],
   "categoryOverrides": []
 }

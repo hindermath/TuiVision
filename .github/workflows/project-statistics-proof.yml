@@ -1,0 +1,52 @@
+name: Project statistics proof
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: statistics-proof-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  native:
+    name: Statistics (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2022]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 25
+    steps:
+      - name: Preserve package bytes
+        shell: pwsh
+        run: git config --global core.autocrlf false
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@d0d8abe699bfb85fec6de9f7adb5ae17292296ff
+      - name: Install pinned Spec Kit
+        shell: pwsh
+        run: |
+          uv tool install specify-cli --from git+https://github.com/github/spec-kit.git@464d57fe30c72e9a88d279cc49834539ec989c03
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+      - name: Verify exact delivery head
+        shell: pwsh
+        env:
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          if ((git rev-parse HEAD).Trim() -cne $env:EXPECTED_HEAD) { throw 'Delivery head mismatch.' }
+          ./scripts/prove-project-statistics-context.ps1 -Repo . -EvidenceDirectory (Join-Path $env:RUNNER_TEMP 'statistics-proof')
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: project-statistics-${{ matrix.os }}
+          path: ${{ runner.temp }}/statistics-proof/
+          if-no-files-found: error
