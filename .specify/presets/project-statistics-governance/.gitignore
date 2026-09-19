@@ -1,0 +1,4 @@
+.DS_Store
+.specify/presets/.cache/
+TestResults/
+*.tmp

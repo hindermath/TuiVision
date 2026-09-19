@@ -1,0 +1,70 @@
+name: Preset validation
+on:
+  push:
+    branches: [main, 'feat/**', 'fix/**', 'docs/**']
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native:
+    name: native-${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-14, ubuntu-24.04, windows-2022]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@d0d8abe699bfb85fec6de9f7adb5ae17292296ff
+      - name: Install pinned Spec Kit
+        shell: pwsh
+        run: |
+          uv tool install specify-cli --from git+https://github.com/github/spec-kit.git@464d57fe30c72e9a88d279cc49834539ec989c03
+          if ($LASTEXITCODE) { exit $LASTEXITCODE }
+      - name: PowerShell analysis
+        shell: pwsh
+        run: |
+          Install-Module PSScriptAnalyzer -RequiredVersion 1.25.0 -Scope CurrentUser -Force
+          Import-Module PSScriptAnalyzer -RequiredVersion 1.25.0
+          $findings = @(Invoke-ScriptAnalyzer -Path scripts -Recurse -Severity Error,Warning)
+          $findings += @(Invoke-ScriptAnalyzer -Path tests -Recurse -Severity Error,Warning)
+          $findings | Format-Table -Wrap
+          if ($findings.Count) { exit 1 }
+      - name: Native fixtures
+        shell: pwsh
+        run: |
+          # A child process isolates fixture cwd and expected negative exit codes.
+          $output = & pwsh -NoProfile -File ./tests/test-project-statistics.ps1 2>&1
+          $code = $LASTEXITCODE
+          $output | Tee-Object -FilePath fixture-evidence.txt
+          exit $code
+      - name: Installed surfaces
+        shell: pwsh
+        run: |
+          $output = & pwsh -NoProfile -File ./tests/test-installed-preset.ps1 2>&1
+          $code = $LASTEXITCODE
+          $output | Tee-Object -FilePath install-evidence.txt
+          exit $code
+      - name: Exact source evidence
+        shell: pwsh
+        run: |
+          $record = [ordered]@{
+            source = (git rev-parse HEAD)
+            runner = '${{ matrix.os }}'
+            powerShell = "$($PSVersionTable.PSVersion)"
+            fixtureHash = (Get-FileHash fixture-evidence.txt -Algorithm SHA256).Hash.ToLowerInvariant()
+            installHash = (Get-FileHash install-evidence.txt -Algorithm SHA256).Hash.ToLowerInvariant()
+            commands = @('pwsh -NoProfile -File tests/test-project-statistics.ps1', 'pwsh -NoProfile -File tests/test-installed-preset.ps1')
+            exitCodes = @(0, 0)
+          }
+          $record | ConvertTo-Json -Depth 5 | Set-Content native-evidence.json -Encoding utf8
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: evidence-${{ matrix.os }}
+          path: '*evidence.*'
+          if-no-files-found: error

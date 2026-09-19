@@ -412,6 +412,19 @@ Gate-Reviews. [Integration, Bedienung und Evidence-Grenzen](docs/maintenance/sec
 *The approved thirteenth preset adds read-only status and explicitly authorized
 gate reviews. [Integration, usage and evidence boundaries](docs/maintenance/secure-development-assurance-integration.md).*
 
+## Reproduzierbare Projekttransparenz / Reproducible Project Transparency
+
+Das aktuelle 14-Preset-Profil ergaenzt Statistik v0.1.0 bei Prioritaet 90.
+Der [getrennte Statistik-Kontext](docs/project-statistics/README.md) erfasst
+Git-getrackten Text und sichtbare Aktivitaet. Profil 2 bleibt kanonisch;
+Referenzmodelle im neuen UTC-Kontext bleiben aus. Zahlen belegen weder
+Qualitaet, Sicherheit, Lernleistung noch KI-Produktivitaet.
+
+*The current fourteen-preset profile adds statistics v0.1.0 at priority 90.
+The separate context reports tracked text and visible activity. Keep Profile 2
+authoritative and disable reference models in the UTC context. These numbers
+do not prove quality, security, learning or AI productivity.*
+
 <!-- BEGIN spec-kit-diagrams-completion -->
 ## Diagramme und Ergebnisberichte / Diagrams and outcome reports
 

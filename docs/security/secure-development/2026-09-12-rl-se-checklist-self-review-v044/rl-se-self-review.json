@@ -4328,15 +4328,15 @@
     {
       "evidenceId": "EVD-002",
       "relativePath": ".specify/presets/.registry",
-      "sha256": "0a434a1fe4fe272fa9c6dfc28d1fdd0734ef4fae0a2fd56fdcb92738d386a346",
-      "observedAtUtc": "2026-09-13T11:30:48Z",
+      "sha256": "313c8aeef2ec5baa40190cd1a14e0a14b2d9a63d4b519cfc95a03ff48eb66bec",
+      "observedAtUtc": "2026-09-19T13:22:00Z",
       "evidenceType": "Configuration",
       "directness": "Direct",
       "freshness": "Current",
       "supportsClaims": [
         "GOV-003"
       ],
-      "result": "Deutsch: Aktuelle Repository-Evidence wurde unter .specify/presets/.registry beobachtet. English: Current repository evidence was observed at .specify/presets/.registry. DE/EN: Version/path binding revalidated for the authorized intake rollout; no human approval or control-status change.",
+      "result": "DE: Statistik-Rollout-Delta nachgeprueft: 13 bestehende Eintraege erhalten, Statistik v0.1.0 bei Prioritaet 90 hinzugefuegt. Historische Bindung und begrenzte Claim-Pruefung: statistics-rollout-delta-2026-09-19.md. Keine neue Kontroll- oder menschliche Freigabe. EN: Statistics rollout delta revalidated: preserve 13 entries, add statistics v0.1.0 at priority 90. Historical binding and bounded claim review: statistics-rollout-delta-2026-09-19.md. No new control or human approval.",
       "proofBoundary": "Deutsch: Die Datei stuetzt nur benannte begrenzte Claims und keine formale Freigabe. English: The file supports named bounded claims only and no formal approval.",
       "reevaluationTrigger": "Deutsch: Hash, Governance-Vertrag oder Produktscope aendert sich. English: The hash, governance contract, or product scope changes."
     },
@@ -4523,8 +4523,8 @@
     {
       "evidenceId": "EVD-015",
       "relativePath": "AGENTS.md",
-      "sha256": "354afa0d130c5ec2123f83ea1e6a23b179abb99d48d32cb5c7bca4734c3c83de",
-      "observedAtUtc": "2026-09-13T20:56:04Z",
+      "sha256": "8f47fc80c6843d956692186138ebd4fe020f4f79d2fd9d2a796b0c662bd8a7d8",
+      "observedAtUtc": "2026-09-19T13:22:00Z",
       "evidenceType": "Audit",
       "directness": "Direct",
       "freshness": "Current",
@@ -4547,7 +4547,7 @@
         "CL-09-16",
         "CL-09-17"
       ],
-      "result": "Deutsch: Current repository evidence was observed at AGENTS.md. English: Current repository evidence was observed at AGENTS.md. DE/EN: Version/path binding revalidated for the authorized intake rollout; no human approval or control-status change. DE: Quellenbindung nach Mermaid-/Berichtsregel geprueft; keine neue Kontroll- oder menschliche Freigabe. EN: Source binding revalidated after diagram/report guidance; no new control or human approval.",
+      "result": "DE: Statistik-Guidance-Delta gegen CL-09-01 bis CL-09-17 geprueft; Sicherheits-, Review- und Freigabepflichten bleiben erhalten. Historie und Bewertung: statistics-rollout-delta-2026-09-19.md. Keine neue Kontroll- oder menschliche Freigabe. EN: Statistics guidance delta reviewed against CL-09-01 through CL-09-17; security, review and approval obligations remain unchanged. History and assessment: statistics-rollout-delta-2026-09-19.md. No new control or human approval.",
       "proofBoundary": "Deutsch: The file supports only the named bounded claims and does not grant formal compliance approval. English: The file supports only the named bounded claims and does not grant formal compliance approval.",
       "reevaluationTrigger": "Deutsch: The file hash, product scope, policy, platform, or provider boundary changes. English: The file hash, product scope, policy, platform, or provider boundary changes."
     },

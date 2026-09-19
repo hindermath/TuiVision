@@ -634,6 +634,51 @@
         "speckit-intake-series-next"
       ],
       "installed_at": "2026-09-13T11:12:36.850660+00:00"
+    },
+    "project-statistics-governance": {
+      "version": "0.1.0",
+      "source": "local",
+      "manifest_hash": "sha256:5359a8ef0d576fd9afb3b34a70ec41adbb665abcc29394750d5d94689037ef4c",
+      "enabled": true,
+      "priority": 90,
+      "registered_commands": {
+        "agy": [
+          "speckit.statistics-init",
+          "speckit.statistics-status",
+          "speckit.statistics-update"
+        ],
+        "claude": [
+          "speckit.statistics-init",
+          "speckit.statistics-status",
+          "speckit.statistics-update"
+        ],
+        "codex": [
+          "speckit.statistics-init",
+          "speckit.statistics-status",
+          "speckit.statistics-update"
+        ],
+        "copilot": [
+          "speckit.statistics-init",
+          "speckit.statistics-status",
+          "speckit.statistics-update"
+        ],
+        "opencode": [
+          "speckit.statistics-init",
+          "speckit.statistics-status",
+          "speckit.statistics-update"
+        ],
+        "zed": [
+          "speckit.statistics-init",
+          "speckit.statistics-status",
+          "speckit.statistics-update"
+        ]
+      },
+      "registered_skills": [
+        "speckit-statistics-init",
+        "speckit-statistics-status",
+        "speckit-statistics-update"
+      ],
+      "installed_at": "2026-09-19T13:02:02.362125+00:00"
     }
   }
 }

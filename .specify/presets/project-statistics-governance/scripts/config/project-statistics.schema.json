@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Project Transparency configuration v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "methodology",
+    "repositoryName",
+    "timeZone",
+    "activityWindowWeeks",
+    "excludedPaths",
+    "categoryOverrides",
+    "phases",
+    "references"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "methodology": {
+      "const": "project-transparency/1"
+    },
+    "repositoryName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "timeZone": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "activityWindowWeeks": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 104
+    },
+    "excludedPaths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "categoryOverrides": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "pattern",
+          "category"
+        ],
+        "properties": {
+          "pattern": {
+            "type": "string",
+            "minLength": 1
+          },
+          "category": {
+            "enum": [
+              "Production",
+              "Tests",
+              "Documentation",
+              "Scripts",
+              "Configuration",
+              "DataMedia",
+              "Other"
+            ]
+          }
+        }
+      }
+    },
+    "phases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "slot",
+          "id",
+          "labelDe",
+          "labelEn",
+          "netLines"
+        ],
+        "properties": {
+          "slot": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9._-]*$",
+            "maxLength": 70
+          },
+          "labelDe": {
+            "type": "string",
+            "maxLength": 90
+          },
+          "labelEn": {
+            "type": "string",
+            "maxLength": 90
+          },
+          "netLines": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "references": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "enabled",
+        "scenarios"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "scenarios": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "linesPerDay"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 35
+              },
+              "linesPerDay": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

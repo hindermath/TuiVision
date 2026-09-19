@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "1.0",
+  "presetId": "project-statistics-governance",
+  "defaultRole": "frontier-reasoning",
+  "commands": {
+    "speckit.statistics-init": "frontier-reasoning",
+    "speckit.statistics-status": "fast-mechanical",
+    "speckit.statistics-update": "frontier-reasoning"
+  },
+  "fallbackPolicy": "fail-closed"
+}

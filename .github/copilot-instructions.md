@@ -674,7 +674,7 @@ review baseline wherever applicable.*
 
 ## Freigegebenes Assurance-Profil / Approved Assurance Profile
 
-Dieses Repository verwendet das ausdrücklich freigegebene 13er-Profil mit
+Die erhaltene Assurance-Basis ist das ausdruecklich freigegebene 13er-Profil mit
 `secure-development-assurance-governance` v0.1.3, aktiviert mit Priorität 15.
 Die bisherigen zwölf Presets und älteren Profile bleiben unverändert.
 `status` ist strikt lesend; `review` benötigt einen ausdrücklich benannten
@@ -683,7 +683,7 @@ Produktquelle ist ausschließlich das veröffentlichte eigenständige GitHub-Rep
 Bedienung, Paketbindung, Evidence-Lücken und Grenzen:
 `docs/maintenance/secure-development-assurance-integration.md`.
 
-*This repository uses the explicitly approved thirteen-preset profile with
+*The preserved assurance base is the explicitly approved thirteen-preset profile with
 Assurance v0.1.3, enabled at priority 15. Preserve the existing twelve presets
 and older profiles. Status is read-only; review requires an explicit context
 and authority. No automatic GSDB/C5 assessment or approval. The published
@@ -739,3 +739,29 @@ checks. Add final merge/sync proof in chat and existing closeout evidence, witho
 commits solely for self-referential counts or IDs. Preserve local rules/templates
 across Spec Kit updates.*
 <!-- END spec-kit-diagrams-completion -->
+
+<!-- project-statistics-rollout:begin -->
+## Statistik-Preset und Pflege / Statistics preset and maintenance
+
+Das aktuelle Projektprofil ist `project-statistics-fourteen-governance-presets`:
+bestehende 13er-Basis plus Statistik v0.1.0 bei Prioritaet 90. Globale Defaults
+bleiben erhalten; die operative lokale Zuordnung folgt erst nach Lieferung.
+`docs/project-statistics/config.json` steuert den getrennten UTC-/52-Wochen-Kontext.
+Profil 2 bleibt kanonisch; Referenzmodelle im neuen Kontext bleiben aus.
+Nach abgeschlossenem Feature/Implementierungsabschnitt Inhalte zuerst committen,
+Update ausdruecklich beauftragen und vorab im Dry-Run pruefen. Beide Statistiken
+aus derselben Inhaltsrevision pflegen, Ausgaben committen und lesend verifizieren.
+Keine Personen-, Lernleistungs-, Qualitaets-, Sicherheits- oder KI-Produktivitaetsbewertung.
+Bedienung: `docs/project-statistics/README.md`; Quellen und Abnahme:
+`docs/maintenance/project-statistics-rollout-v010.md`. Kein automatischer
+Spec-Kit-Lauf und keine Commit-/Push-/Merge- oder menschliche Freigabe durch das Preset.
+
+The current profile adds statistics v0.1.0 at priority 90 to the unchanged
+thirteen-preset base. Preserve global defaults and defer operational assignment
+until delivery. Keep legacy Profile 2 authoritative; use the separate UTC context
+with reference models disabled. After feature/implementation completion, commit
+content first, preview an expressly authorized update, render both contexts,
+commit outputs and verify read-only status. Statistics do not rate people,
+learning, quality, security or AI productivity. See the repository-relative
+usage and rollout records. Installation grants no feature or delivery authority.
+<!-- project-statistics-rollout:end -->
