@@ -65,6 +65,13 @@ change: this is not a numbered feature branch. Leave the release PR untouched.
 
 ## Dokumentationsauswirkung und Sicherheit / Documentation impact and security
 
+Die beauftragte [RL-SE-Delta-Nachpruefung](../security/secure-development/2026-09-12-rl-se-checklist-self-review-v044/statistics-rollout-delta-2026-09-19.md)
+haelt alte/neue Quellenbindungen und den semantischen Vergleich getrennt fest.
+Historische Kontrollentscheidungen und menschliche Freigaben bleiben erhalten.
+
+The authorized RL-SE delta review records previous/current source bindings and
+the semantic assessment separately, without changing historical control decisions.
+
 
 `UpdateRequired`; Owner Thorsten Hindermann. Zielgruppen: Lernende ab Jahr 1,
 Maintainer und Reviewer. README -> Kontextanleitung -> Bericht/Snapshot ->
