@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "repository": "hindermath/TuiVision",
+  "baselineCommit": "e1edbb1c2f9b0e0a8e0ee93c50bb578fdf4260d5",
+  "observedOn": "2026-09-19",
+  "profile": "project-statistics-fourteen-governance-presets",
+  "matrixSourceCommit": "72f8d37af007c2364f0edfeb57d1811dfea8c1b4",
+  "matrixSha256": "f71224fc7c6c5e68431a9dfe507e8210f834d70c91f5dc63b85ce9f608fa6617",
+  "preset": {
+    "id": "project-statistics-governance",
+    "version": "0.1.0",
+    "priority": 90,
+    "commit": "7e824ca8de11212aefdc5b05d7d05637f5343dab",
+    "tagObject": "fe5243020993787065c469b263f7198f9c345a23",
+    "archiveSha256": "d8ad7d5eef920f50b629121b64ba8123c22ec4f6dadd14da5cd826d1c50f420a"
+  },
+  "preservedRegistryEntries": 13,
+  "preExistingIntegrationFileChanges": 0,
+  "installedPayloadFiles": [
+    {
+      "path": ".gitattributes",
+      "sha256": "61ab59ad32526bd749ecde8161da0d8650790b86161a88609e2f25a03d9e4ecf"
+    },
+    {
+      "path": ".github/workflows/preset.yml",
+      "sha256": "9a97a905ef6ced48961f46b41e4ad4087534eda5cb89594d9a5009cb7bd1a631"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "895affeefeea25d7684b84736c04e8b95ef3676e3d1844f4fa3347d7e9f142d2"
+    },
+    {
+      "path": "commands/speckit.statistics-init.md",
+      "sha256": "74099dc6c1e5409ee9762b7702e77109064456ce29b5439e0f50f91bc4daec8f"
+    },
+    {
+      "path": "commands/speckit.statistics-status.md",
+      "sha256": "add4166dc90136a017ec68ffff3407ed3da268f9384a86e371980c9033d03aed"
+    },
+    {
+      "path": "commands/speckit.statistics-update.md",
+      "sha256": "94ea47db90314fe91bd36f11d300fc9ab9b9d6853df64d7c8d5a9768fcc7b74a"
+    },
+    {
+      "path": "docs/delivery.md",
+      "sha256": "e703463301a2d0ef6591ae214ad57ba9adb0eb4a45209ee803f3806e6bd3f8c6"
+    },
+    {
+      "path": "docs/man/project-statistics.1.md",
+      "sha256": "ffa98d42386c83a8316c2421217b1fa96e6d4adaff31d7e0af3501cc018c0ae4"
+    },
+    {
+      "path": "docs/methodology.md",
+      "sha256": "0f7e34b4d617127e837b4840ef9767831b6551bffc082a6a7340bc9d81a2d6fe"
+    },
+    {
+      "path": "docs/provenance.md",
+      "sha256": "e7090805b3ce4b8906392a9259deb3705af6e969b98b53b0cd6eb4b9b36dee7e"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "754eee5a3fef7b3f494ddae222894746fbba49d034cd3d32b49189ca56bc3ffb"
+    },
+    {
+      "path": "model-routing.json",
+      "sha256": "1ca99bf0c360ced91f74959eebde245c8fffd76a08703367e5285f942a8ce70d"
+    },
+    {
+      "path": "preset.yml",
+      "sha256": "5359a8ef0d576fd9afb3b34a70ec41adbb665abcc29394750d5d94689037ef4c"
+    },
+    {
+      "path": "README.md",
+      "sha256": "b28384dd9e7232c3b8c06e3bea95122b829be7d0039ad96a65663150473423dc"
+    },
+    {
+      "path": "scripts/config/project-statistics.schema.json",
+      "sha256": "cb031f5e991e433fdf08e76a3fa703fa647f697ab395177a31083ae5b24e7003"
+    },
+    {
+      "path": "scripts/lib/GitBlobCounter.cs",
+      "sha256": "3ea0b81af6d8434774bf08a280e8445ab494a1a3898169a59874fd4d0b46ec5a"
+    },
+    {
+      "path": "scripts/lib/profile-helpers.ps1",
+      "sha256": "2f5d0bfda8c04c35d7abd0832453838a46b7d4114ece2d16436ea1d8a9b81f4f"
+    },
+    {
+      "path": "scripts/project-statistics.ps1",
+      "sha256": "c73d466b5430a1e1e8a6ecf9d5ea6eca4b306d6ea6dfb694f15e1cb81a4ee1df"
+    },
+    {
+      "path": "scripts/project-statistics.sh",
+      "sha256": "5ca5298166ab375736c817765f7051a6613d47ea047a1ef610364b98402c1fa8"
+    },
+    {
+      "path": "templates/config.json",
+      "sha256": "d8152b1c1b9f1faab844e2f40d19f8f58d84c3ef606213c6f1fdfdfc048fa522"
+    },
+    {
+      "path": "templates/constitution-addendum.md",
+      "sha256": "53e954d5eeaae301f5c8bb10f43646cc7262524f870f93185f69ef86bb8ad6df"
+    },
+    {
+      "path": "templates/plan-addendum.md",
+      "sha256": "53e954d5eeaae301f5c8bb10f43646cc7262524f870f93185f69ef86bb8ad6df"
+    },
+    {
+      "path": "templates/project-statistics-contract.md",
+      "sha256": "1183c8c1eb9146ba1c24760a0a2bbd6c0b0948df6a7aedc4e90728a9ff775d31"
+    },
+    {
+      "path": "templates/tasks-addendum.md",
+      "sha256": "53e954d5eeaae301f5c8bb10f43646cc7262524f870f93185f69ef86bb8ad6df"
+    },
+    {
+      "path": "tests/test-installed-preset.ps1",
+      "sha256": "a80af0cd3e8f1a2927efdec36a02de43871bf86ce1a48e248af0e700cf0b5249"
+    },
+    {
+      "path": "tests/test-project-statistics.ps1",
+      "sha256": "6c3f215e53b7724f6c37d8422d10d51043c3cc2c4afb0d0af0cd73757b4e7d1a"
+    }
+  ],
+  "decision": "Installation verified; measurement, native CI and human acceptance pending"
+}

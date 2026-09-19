@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "methodology": "project-transparency/1",
+  "repositoryName": "Project",
+  "timeZone": "UTC",
+  "activityWindowWeeks": 52,
+  "excludedPaths": [],
+  "categoryOverrides": [],
+  "phases": [],
+  "references": {
+    "enabled": false,
+    "scenarios": []
+  }
+}
