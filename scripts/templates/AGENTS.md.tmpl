@@ -276,6 +276,25 @@ never relies on visual-only dependency information, and uses WCAG 2.2 Level AA
 as the applicable review baseline.*
 <!-- learner-a11y-baseline:end -->
 
+## macOS-first-Plattformnachweis / macOS-First Platform Evidence
+
+Auf macOS zuerst lokal im passenden Safe Mode prüfen. Fehlt ein nativer
+Linux-Host, einen isolierten nativen Container mit schreibgeschütztem
+Repository und ohne unnötiges Netzwerk oder einen eng begrenzten nativen
+Linux-CI-Job verwenden. Fehlt ein nativer Windows-Host, einen eng begrenzten
+nativen Windows-CI-Job verwenden. Evidence bindet exakten Commit, Befehl,
+Runner/Plattform, Exitcode, Payload-SHA-256, Entscheidungs-SHA-256 und
+Nullschreibwerte. Ein Teilnachweis ist kein Vollregressions-, Security-, A11Y-,
+Review- oder Delivery-Pass.
+
+*Run the matching local safe mode on macOS first. Without a native Linux host,
+use an isolated native container with a read-only repository and no unnecessary
+network, or narrowly scoped native Linux CI. Without a native Windows host,
+use narrowly scoped native Windows CI. Evidence binds the exact commit,
+command, runner/platform, exit code, payload SHA-256, decision SHA-256, and
+zero-write values. A partial proof is not a full regression, security,
+accessibility, review, or delivery pass.*
+
 <!-- EN: AGENTS.md contains bilingual agent guidance for this level-2 project. -->
 
 <!-- BEGIN spec-kit-diagrams-completion -->

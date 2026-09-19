@@ -18,14 +18,14 @@
     "model-routing-twelve-governance-presets": {
       "presetConfig": "scripts/config/spec-kit-model-routing-governance-presets.json"
     },
+    "secure-development-assurance-thirteen-governance-presets": {
+      "presetConfig": "scripts/config/spec-kit-secure-development-assurance-governance-presets.json"
+    },
     "project-statistics-fourteen-governance-presets": {
       "presetConfig": "scripts/config/spec-kit-project-statistics-governance-presets.json"
     },
     "none": {
       "presetConfig": null
-    },
-    "secure-development-assurance-thirteen-governance-presets": {
-      "presetConfig": "scripts/config/spec-kit-secure-development-assurance-governance-presets.json"
     }
   }
 }

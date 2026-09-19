@@ -25,6 +25,24 @@ Auto-generated from all feature plans. Last updated: [DATE]
 [LAST 3 FEATURES AND WHAT THEY ADDED]
 
 
+## macOS-first-Plattformnachweis / macOS-First Platform Evidence
+
+- Zuerst die passende lokale macOS-Safe-Mode-Prüfung ausführen.
+- Fehlt ein nativer Linux-Host, einen isolierten nativen Container mit
+  schreibgeschütztem Repository und ohne unnötiges Netzwerk oder eng begrenzte
+  native Linux-CI verwenden; ohne nativen Windows-Host eng begrenzte native
+  Windows-CI verwenden.
+- Evidence an exakten Commit, Befehl, Runner/Plattform, Exitcode,
+  Payload-SHA-256, Entscheidungs-SHA-256 und Nullschreibwerte binden.
+- Teilnachweise nie als vollständigen Regressions-, Security-, A11Y-, Review-
+  oder Delivery-Pass ausgeben.
+
+*Run the matching local macOS safe mode first. Without a native target host,
+use isolated native Linux container/CI or narrowly scoped native Windows CI as
+applicable. Bind exact commit, command, runner/platform, exit code, payload and
+decision SHA-256, and zero-write values. Never promote partial proof to a full
+regression, security, accessibility, review, or delivery pass.*
+
 ## Spec-Kit-Modell-Routing / Spec Kit Model Routing
 
 - Modellwahl ist operative Agenten-Routing-Guidance, keine Feature-Anforderung. Modellnamen nicht in `spec.md`, `plan.md`, `tasks.md` oder einzelne Feature-Specs schreiben; diese Artefakte muessen reproduzierbar bleiben, auch wenn Modellnamen wechseln oder ein anderer KI-Agent verwendet wird.
