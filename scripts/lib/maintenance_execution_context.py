@@ -79,9 +79,11 @@ import json, pathlib, re, subprocess, sys
 p = json.load(sys.stdin)
 root = pathlib.Path(p["root"])
 repo = pathlib.Path(p["repository"])
-if root.resolve() != root or repo.resolve() != repo:
+if not root.is_absolute() or root.resolve() != root or repo.resolve() != repo:
     raise SystemExit("Symlink boundary rejected")
 repo.relative_to(root)
+if any(char in str(repo) for char in ("*", "\n", "\r")):
+    raise SystemExit("Wildcard or control character in Git target")
 if (repo / ".git").is_symlink():
     raise SystemExit("Symlink Git directory rejected")
 if p["action"] == "probe":
@@ -103,7 +105,10 @@ elif p["action"] == "git":
         raise SystemExit("Symbolic-ref mutation is not allowed")
     if effective[0] == "merge" and (len(effective) != 3 or effective[1] != "--ff-only" or not re.fullmatch(r"[0-9a-f]{40,64}", effective[2])):
         raise SystemExit("Only bounded fast-forward merge is allowed")
-    result = subprocess.run(["git", "-C", str(repo), *args], capture_output=True, text=True)
+    # Reset inherited trust (including '*') and trust only this validated repo.
+    # Command-scope configuration survives recreation without writing .gitconfig.
+    result = subprocess.run(["git", "-c", "safe.directory=", "-c", "safe.directory=" + str(repo),
+                             "-C", str(repo), *args], capture_output=True, text=True)
     print(json.dumps({"returncode":result.returncode,"stdout":result.stdout,"stderr":result.stderr}))
 else:
     raise SystemExit("Unknown maintenance action")

@@ -5,9 +5,53 @@ import json
 import pathlib
 import subprocess
 import tempfile
+import os
+import contextlib
+
+
+@contextlib.contextmanager
+def repository_trust(entries):
+    """Scope Git trust to validated targets and restore the caller even on error."""
+    paths = []
+    for entry in entries:
+        repo = pathlib.Path(entry["containerPath"])
+        root = pathlib.Path(entry["containerRoot"])
+        if not root.is_absolute() or repo.resolve() != repo or root.resolve() != root:
+            raise ValueError("Delegated path has symlink components or is not absolute")
+        repo.relative_to(root)
+        if any(char in str(repo) for char in ("*", "\n", "\r")):
+            raise ValueError("Wildcard or control character in delegated Git target")
+        if (repo / ".git").is_symlink() or not (repo / ".git").is_dir():
+            raise ValueError("Missing delegated Git target")
+        paths.append(str(repo))
+    # The leaf worker is a dedicated, single-threaded process. Its children
+    # (including Bash/PowerShell and storage helpers) inherit the same exact
+    # list. Empty first value resets broader system/global safe.directory lists.
+    keys = {key for key in os.environ if key == "GIT_CONFIG_PARAMETERS" or
+            key == "GIT_CONFIG_COUNT" or key.startswith(("GIT_CONFIG_KEY_", "GIT_CONFIG_VALUE_"))}
+    previous = {key: os.environ[key] for key in keys}
+    values = ["", *sorted(set(paths))]
+    managed = {"GIT_CONFIG_COUNT": str(len(values))}
+    for index, value in enumerate(values):
+        managed[f"GIT_CONFIG_KEY_{index}"] = "safe.directory"
+        managed[f"GIT_CONFIG_VALUE_{index}"] = value
+    try:
+        for key in keys:
+            del os.environ[key]
+        os.environ.update(managed)
+        yield
+    finally:
+        for key in managed:
+            os.environ.pop(key, None)
+        os.environ.update(previous)
 
 
 def execute(payload: dict) -> dict:
+    with repository_trust(payload["entries"]):
+        return _execute(payload)
+
+
+def _execute(payload: dict) -> dict:
     source = pathlib.Path(payload["source"])
     mode = payload["mode"]
     if mode not in ("check-only", "dry-run", "update"):

@@ -35,6 +35,64 @@ def contract():
 
 
 class ExecutionContextTests(unittest.TestCase):
+    def test_command_trust_without_global_config_after_recreation(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory).resolve()
+            repo = root / "repo with spaces"
+            subprocess.run(["git", "init", "-q", str(repo)], check=True)
+            payload = {"root": str(root), "repository": str(repo), "action": "git",
+                       "arguments": ["status", "--porcelain=v1"]}
+            # A new HOME models a recreated container with no user Git config.
+            for generation in ("first", "recreated"):
+                home = root / generation
+                home.mkdir()
+                env = {**os.environ, "HOME": str(home), "GIT_CONFIG_NOSYSTEM": "1",
+                       "GIT_CONFIG_GLOBAL": str(home / ".gitconfig"),
+                       "GIT_TEST_ASSUME_DIFFERENT_OWNER": "1"}
+                denied = subprocess.run(["git", "-C", str(repo), "status"], env=env, capture_output=True)
+                self.assertNotEqual(denied.returncode, 0)
+                result = subprocess.run([sys.executable, "-c", context.REMOTE_PROGRAM],
+                                        input=json.dumps(payload), text=True, capture_output=True, env=env)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assertEqual(json.loads(result.stdout)["returncode"], 0, result.stdout)
+                self.assertFalse((home / ".gitconfig").exists())
+
+    @unittest.skipIf(os.name == "nt", "Linux container environment: Windows drops empty env values; Windows hosts delegate to Linux")
+    def test_worker_trust_exact_inherited_and_restored_on_error(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory).resolve()
+            payload = self.worker_payload(root)
+            repo = Path(payload["entries"][0]["containerPath"])
+            subprocess.run(["git", "init", "-q", str(repo)], check=True)
+            other = root / "not-declared"
+            subprocess.run(["git", "init", "-q", str(other)], check=True)
+            with patch.dict(os.environ, {"GIT_TEST_ASSUME_DIFFERENT_OWNER": "1",
+                                        "GIT_CONFIG_COUNT": "1", "GIT_CONFIG_KEY_0": "safe.directory",
+                                        "GIT_CONFIG_VALUE_0": "*"}):
+                before = dict(os.environ)
+                with self.assertRaisesRegex(RuntimeError, "fixture"):
+                    with worker.repository_trust(payload["entries"]):
+                        for _ in range(2):
+                            child = ["bash", "-c", 'git -C "$1" status --porcelain=v1', "bash", str(repo)]
+                            good = subprocess.run(child, capture_output=True)
+                            bad = subprocess.run(["git", "-C", str(other), "status"], capture_output=True)
+                            self.assertEqual(good.returncode, 0, good.stderr)
+                            self.assertNotEqual(bad.returncode, 0)
+                        raise RuntimeError("fixture")
+                self.assertEqual(dict(os.environ), before)
+
+    def test_worker_trust_rejects_wildcard_and_escape_before_environment_change(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory).resolve()
+            payload = self.worker_payload(root)
+            before = dict(os.environ)
+            for path in (str(root / "*"), str(root.parent)):
+                entry = {**payload["entries"][0], "containerPath": path}
+                with self.assertRaises(ValueError):
+                    with worker.repository_trust([entry]):
+                        self.fail("Unsafe target accepted")
+                self.assertEqual(dict(os.environ), before)
+
     def test_strict_contract_and_expiry(self):
         self.assertEqual(context.validate_contract(contract()), contract())
         for changes in ({"schemaVersion": True}, {"schemaVersion": 2}, {"expiresOn": "2000-01-01"},
