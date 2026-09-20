@@ -42,6 +42,27 @@ is insufficient. For `SandboxPreflightBlocked`, inspect the report, explicitly
 publish the reviewed package and pin it in the sandbox image. Maintenance
 never rebuilds or replaces the image automatically.*
 
+Nach bestandener Vorprüfung gilt Git-Vertrauen nur für den jeweiligen
+Wartungsprozess und die exakt deklarierten Repository-Pfade. Eine leere
+Vertrauensliste setzt geerbte pauschale Freigaben zurück, bevor die geprüften
+Pfade ergänzt werden. Es wird keine `.gitconfig` geschrieben. Damit bleibt
+`--check-only` schreibfrei und die Wartung benötigt nach einer
+Container-Neuerzeugung keine manuelle `safe.directory`-Liste. Interaktive
+Git-Aufrufe außerhalb der Wartung erhalten dadurch keine Freigabe.
+Auf anderen Systemen müssen deren Mounts und Zielpfade im freigegebenen
+Ausführungs- und Flottenvertrag übereinstimmen; es gibt keine Pfadsuche oder
+Wildcard-Freigabe. Details und Aktivierungsstand:
+[Prozessgebundenes Git-Vertrauen](https://github.com/hindermath/home-baseline/blob/4459e744d126d51b832986b09ac1a73cf88c1607/docs/maintenance/container-git-trust.md).
+
+*After successful preflight, Git trust applies only to the maintenance process
+and exact declared repository paths. An empty trust entry resets inherited
+broad permissions before validated paths are added. No `.gitconfig` is written;
+check-only stays read-only and recreated containers need no manual trust list
+for maintenance. Interactive Git outside maintenance receives no additional
+trust. Other systems must match their approved execution and fleet contracts;
+there is no path discovery or wildcard permission. See the linked operating
+note for activation status.*
+
 Ohne Optionen öffnet ein vollständig interaktives Terminal zuerst die
 Wartungs-TUI. TUI bedeutet Terminal User Interface, also eine
 textbasierte Benutzungsoberfläche im Terminal. Die Vorauswahl ist
