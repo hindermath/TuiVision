@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "container": "absdd-image-sandbox_ade_1",
+  "user": "adedev",
+  "source": "/opt/home-baseline",
+  "approvalPath": "container-images/absdd-image-sandbox/docs/security/sandbox-freigabe.md",
+  "expiresOn": "2026-12-31",
+  "mounts": [
+    {"host": "SecureCaseTrackerProjects", "container": "/secure-case-tracker-projects"},
+    {"host": "SecureOrderDeskProjects", "container": "/secure-order-desk-projects"},
+    {"host": "SecureServiceHarvesterProjects", "container": "/secure-service-harvester-projects"}
+  ]
+}

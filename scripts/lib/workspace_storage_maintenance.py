@@ -1139,7 +1139,7 @@ def execute(args: argparse.Namespace) -> int:
                 if candidate.get("eligible")
             )
 
-        result["providers"].extend(handle_cache_providers(
+        result["providers"].extend([] if getattr(args, "projects_only", False) else handle_cache_providers(
             home,
             mode=args.mode,
             profile=args.profile,
@@ -1147,7 +1147,7 @@ def execute(args: argparse.Namespace) -> int:
             retention_days=retention_days,
             processes=processes,
         ))
-        result["providers"].extend(handle_container_provider(
+        result["providers"].extend([] if getattr(args, "projects_only", False) else handle_container_provider(
             mode=args.mode,
             pressure_mode=pressure_mode,
             retention_days=retention_days,
@@ -1211,6 +1211,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--profile", choices=sorted(VALID_PROFILES), default="safe")
     parser.add_argument("--confirm-deep-cleanup", action="store_true")
     parser.add_argument("--run-id")
+    parser.add_argument("--projects-only", action="store_true", help="Inventory project outputs only; no global caches or container cleanup")
     return parser
 
 

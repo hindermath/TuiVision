@@ -24,6 +24,7 @@ from urllib.parse import urlsplit
 
 
 VALID_KINDS = {"git-repository", "collection"}
+EXECUTION_CONTEXTS = None
 VALID_CLASSES = {"canonical-fleet", "preset"}
 VALID_FORGES = {"github", "gitlab", "codeberg", "forgejo", "generic-git"}
 KNOWN_MSL_LANGUAGES = {
@@ -56,6 +57,11 @@ def utc_now() -> str:
 
 
 def run_git(repository: pathlib.Path | None, *arguments: str, check: bool = True) -> subprocess.CompletedProcess[str]:
+    if EXECUTION_CONTEXTS is not None and repository is not None and EXECUTION_CONTEXTS.mapping(repository):
+        result = EXECUTION_CONTEXTS.git(repository, arguments)
+        if check and result.returncode:
+            raise ContractError("Delegated Git operation failed")
+        return result
     command = ["git"]
     if repository is not None:
         command.extend(["-C", str(repository)])
@@ -2896,10 +2902,18 @@ def resolve_default_branch_evidence(
 def classify_repository(
     target: dict, path: pathlib.Path, mode: str, allowed_dirty_paths: set[str] | None = None
 ) -> dict:
-    if path.is_symlink() or (path.exists() and not path.is_dir()):
+    delegated = EXECUTION_CONTEXTS is not None and EXECUTION_CONTEXTS.mapping(path)
+    probe = EXECUTION_CONTEXTS.request(path, "probe") if delegated else None
+    exists = probe["exists"] if probe is not None else path.exists()
+    directory = probe["directory"] if probe is not None else path.is_dir()
+    git_directory = probe["git"] if probe is not None else (path / ".git").exists()
+    if (not delegated and path.is_symlink()) or (exists and not directory):
         return target_result(target, status="PATH_CONFLICT", result="Blocked", findingCode="PathConflict",
                              nextAction="Konfliktpfad nach manueller Prüfung entfernen oder verschieben / remove or relocate it after review.")
-    if not path.exists():
+    if not exists:
+        if delegated:
+            return target_result(target, status="MISSING", result="Blocked", findingCode="MissingSandboxTarget",
+                                 nextAction="Ziel separat in der Sandbox bereitstellen / provision the target separately in the sandbox.")
         if mode == "check-only":
             return target_result(target, status="MISSING", action="CLONE_REQUIRED", result="Blocked",
                                  findingCode="MissingTarget", nextAction="Nach Remote-Prüfung im Update-Modus ausführen / run update after reviewing the remote.")
@@ -2907,7 +2921,7 @@ def classify_repository(
             return target_result(target, status="MISSING", action="WOULD_CLONE", result="Warning",
                                  findingCode="MissingTarget", nextAction="Update-Modus zum Klonen ausführen / run update to clone this target.")
         return clone_repository(target, path)
-    if not (path / ".git").exists():
+    if not git_directory:
         return target_result(target, status="PATH_CONFLICT", result="Blocked", findingCode="PathConflict",
                              nextAction="Nicht-Git-Verzeichnis prüfen; es wird nie automatisch entfernt / review the directory; it is never removed.")
 
@@ -3393,19 +3407,35 @@ def recover_worktree_leases(args: argparse.Namespace) -> int:
 
 
 def execute_fleet(args: argparse.Namespace) -> int:
+    global EXECUTION_CONTEXTS
+    EXECUTION_CONTEXTS = None
     started = time.monotonic()
     started_at = utc_now()
     run_id = args.run_id or str(uuid.uuid4())
     try:
         manifest = load_manifest(args.manifest)
+        context_evidence = None
+        if getattr(args, "execution_contract", None):
+            from maintenance_execution_context import ExecutionContexts, ExecutionContextError
+            try:
+                EXECUTION_CONTEXTS = ExecutionContexts(args.execution_contract, args.home_dir, manifest["targets"])
+                context_evidence = EXECUTION_CONTEXTS.preflight()
+            except (ExecutionContextError, OSError, ValueError, subprocess.SubprocessError) as exc:
+                raise ContractError(f"SandboxPreflightBlocked: {exc}") from exc
     except ContractError as exc:
+        failure_code = "SandboxPreflightBlocked" if str(exc).startswith("SandboxPreflightBlocked:") else "ManifestInvalid"
+        next_action = ("Sandbox-Quellpaket und Freigabe prüfen / inspect sandbox source package and approval."
+                       if failure_code == "SandboxPreflightBlocked" else
+                       "Manifest korrigieren und erneut ausführen / correct the manifest and retry.")
         report = {
             "schemaVersion": "1.0", "runId": run_id, "platform": sys.platform, "mode": args.mode,
             "startedAt": started_at, "completedAt": utc_now(), "overallStatus": "FAILED", "exitCode": 2,
             "stages": [{"stageId": "fleet", "status": "Failed", "exitCode": 2, "durationMs": 0,
-                        "summary": str(exc), "nextAction": "Manifest korrigieren und erneut ausführen / correct the manifest and retry."}],
-            "targets": [], "toolchain": [], "findings": [{"code": "ManifestInvalid", "severity": "Fatal",
-            "summary": str(exc), "nextAction": "Manifest korrigieren und erneut ausführen / correct the manifest and retry."}],
+                        "summary": str(exc), "nextAction": next_action}],
+            "targets": [], "toolchain": [], "findings": [{"code": failure_code, "severity": "Fatal",
+            "summary": str(exc), "nextAction": next_action}],
+            "mutationBarrier": {"allFetchAttemptsCompleted": False, "fleetReady": False,
+                                "domainMutationAllowed": False, "nextAction": next_action},
             "artifacts": {"logPath": str(args.log), "reportPath": str(args.report)}
         }
         write_report(args.report, report)
@@ -3429,7 +3459,7 @@ def execute_fleet(args: argparse.Namespace) -> int:
                 "defaultBranch": branch.stdout.strip(),
             }
             level0_result = classify_repository(
-                level0_target, level0, args.mode, allowed_dirty_paths
+                level0_target, level0, "dry-run" if EXECUTION_CONTEXTS and args.mode == "update" else args.mode, allowed_dirty_paths
             )
             results.append(level0_result)
             print(
@@ -3456,12 +3486,57 @@ def execute_fleet(args: argparse.Namespace) -> int:
             continue
         relative = validate_relative_path(target["path"])
         target_path = home.joinpath(*relative.parts)
-        result = (collection_result(target, target_path, args.mode)
-                  if target["kind"] == "collection"
-                  else classify_repository(target, target_path, args.mode, allowed_dirty_paths))
+        evaluation_mode = "dry-run" if EXECUTION_CONTEXTS and args.mode == "update" else args.mode
+        try:
+            result = (collection_result(target, target_path, evaluation_mode)
+                      if target["kind"] == "collection"
+                      else classify_repository(target, target_path, evaluation_mode, allowed_dirty_paths))
+        except (ValueError, RuntimeError, OSError, subprocess.SubprocessError) as exc:
+            if not EXECUTION_CONTEXTS:
+                raise
+            result = target_result(target, status="UNAVAILABLE", result="Failed",
+                                   findingCode="ExecutionContextLost", mutationAllowed=False,
+                                   nextAction="Sandbox prüfen; kein Host-Fallback / inspect sandbox; no host fallback.")
+        result["executionContext"] = "container" if (target["kind"] == "git-repository" and
+            EXECUTION_CONTEXTS and EXECUTION_CONTEXTS.mapping(target_path)) else "host"
         results.append(result)
         print(f"TARGET\t{target['id']}\t{result['status']}\t{result['action']}\t{result['nextAction']}")
 
+    # DE: Erst alle Fetches und Statuspruefungen, danach lokale Fast-forwards.
+    # EN: Finish every fetch and status check before any local fast-forward.
+    if EXECUTION_CONTEXTS and args.mode == "update":
+        ready = all(item["result"] == "Pass" or (item["status"] == "BEHIND" and item["action"] == "WOULD_PULL") for item in results)
+        if ready:
+            for item in results:
+                if item["status"] != "BEHIND":
+                    continue
+                repository = args.level0_dir if item["targetId"] == "level0" else home / item["path"]
+                try:
+                    dirty = run_git(repository, "status", "--porcelain=v1", "--untracked-files=all").stdout
+                    branch = run_git(repository, "symbolic-ref", "--quiet", "--short", "HEAD").stdout.strip()
+                    expected = item["defaultBranchEvidence"]["trackingCommit"]
+                    current = run_git(repository, "rev-parse", item["upstream"]).stdout.strip()
+                    result = None
+                    if not dirty and branch == item["branch"] and current == expected:
+                        result = run_git(repository, "merge", "--ff-only", expected, check=False)
+                        if result.returncode == 0 and run_git(repository, "rev-parse", "HEAD").stdout.strip() != expected:
+                            result = None
+                except (ValueError, RuntimeError, OSError, subprocess.SubprocessError):
+                    result = None
+                if result is None or result.returncode:
+                    item.update(status="UNAVAILABLE", result="Failed", findingCode="FastForwardFailed", mutationAllowed=False)
+                    break
+                item.update(status="UPDATED", action="PULL", result="Pass", behind=0, findingCode="N/A", mutationAllowed=True, nextAction="N/A")
+            try:
+                refreshed_context = EXECUTION_CONTEXTS.preflight()
+                if refreshed_context != context_evidence:
+                    raise ContractError("Execution binding changed after fetch/fast-forward")
+            except (ValueError, RuntimeError, OSError, subprocess.SubprocessError):
+                # Pulling Level 0 can change the package underneath this
+                # process. Close the domain gate before Home sync in that case.
+                results[0].update(status="UNAVAILABLE", result="Failed", mutationAllowed=False,
+                                  findingCode="SandboxBindingChanged",
+                                  nextAction="Sandbox-Quellbindung erneuern / refresh the sandbox source binding.")
     overall, exit_code = derive_status(results, args.mode)
     findings = [
         {"targetId": item["targetId"], "code": item["findingCode"],
@@ -3539,6 +3614,8 @@ def execute_fleet(args: argparse.Namespace) -> int:
         },
         "artifacts": {"logPath": str(args.log), "reportPath": str(args.report)}
     }
+    if context_evidence:
+        report["executionContexts"] = [context_evidence, {"context": "host", "networkGit": True}]
     write_report(args.report, report)
     print(f"SUMMARY\tfleet\t{overall}\t{exit_code}\t{args.report}")
     return exit_code
@@ -3907,6 +3984,10 @@ def list_canonical_repositories(args: argparse.Namespace) -> int:
         return 2
 
     home = args.home_dir.resolve()
+    router = None
+    if getattr(args, "exclude_execution_contract", None):
+        from maintenance_execution_context import ExecutionContexts
+        router = ExecutionContexts(args.exclude_execution_contract, home, manifest["targets"])
     repositories: list[tuple[int, pathlib.Path]] = []
     for target in manifest["targets"]:
         if (
@@ -3916,6 +3997,8 @@ def list_canonical_repositories(args: argparse.Namespace) -> int:
         ):
             continue
         relative = validate_relative_path(target["path"])
+        if router and router.mapping(home.joinpath(*relative.parts)):
+            continue
         repository = home.joinpath(*relative.parts).resolve()
         try:
             repository.relative_to(home)
@@ -3931,6 +4014,15 @@ def list_canonical_repositories(args: argparse.Namespace) -> int:
 
     for level, repository in sorted(repositories, key=lambda item: (item[0], str(item[1]).casefold())):
         print(f"{level}\t{repository}")
+    return 0
+
+
+def execution_required(args):
+    from maintenance_execution_context import validate_contract
+    manifest = load_manifest(args.manifest)
+    contract = validate_contract(json.loads(args.contract.read_text(encoding="utf-8")), check_expiry=False)
+    roots = {item["host"] for item in contract["mounts"]}
+    print("1" if any(item["active"] and item["path"].split("/")[0] in roots for item in manifest["targets"]) else "0")
     return 0
 
 
@@ -4963,6 +5055,7 @@ def build_parser() -> argparse.ArgumentParser:
     fleet.add_argument("--run-id")
     fleet.add_argument("--allowed-dirty-path", action="append", default=[])
     fleet.add_argument("--level0-dir", type=pathlib.Path)
+    fleet.add_argument("--execution-contract", type=pathlib.Path)
     fleet.set_defaults(handler=execute_fleet)
     stage = subparsers.add_parser("stage")
     stage.add_argument("--report", type=pathlib.Path, required=True)
@@ -5023,7 +5116,12 @@ def build_parser() -> argparse.ArgumentParser:
     repositories.add_argument("--manifest", type=pathlib.Path, required=True)
     repositories.add_argument("--home-dir", type=pathlib.Path, required=True)
     repositories.add_argument("--existing-only", action="store_true")
+    repositories.add_argument("--exclude-execution-contract", type=pathlib.Path)
     repositories.set_defaults(handler=list_canonical_repositories)
+    execution = subparsers.add_parser("execution-required")
+    execution.add_argument("--manifest", type=pathlib.Path, required=True)
+    execution.add_argument("--contract", type=pathlib.Path, required=True)
+    execution.set_defaults(handler=execution_required)
     default_ref = subparsers.add_parser("default-ref")
     default_ref.add_argument("--repository", type=pathlib.Path, required=True)
     default_ref.set_defaults(handler=print_default_remote_ref)
@@ -5066,6 +5164,8 @@ def build_parser() -> argparse.ArgumentParser:
             "propagation",
             "preset-profiles",
             "toolchain",
+            "model-routing",
+            "storage-cleanup",
             "final",
         ),
     )

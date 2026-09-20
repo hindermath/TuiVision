@@ -18,6 +18,30 @@ pwsh -NoProfile -File scripts/maintain-agentic-workspace.ps1 [OPTIONEN]
 
 ## DESCRIPTION
 
+Secure-Trader-Ziele werden anhand von
+`scripts/config/maintenance-execution-contexts.json` einer freigegebenen
+Podman-Sandbox zugeordnet. Podman ist die hier verwendete Container-Laufzeit.
+Lokale Git- und Wartungsoperationen dieser Ziele haben keinen Host-Fallback.
+Authentifizierte Fetches verbleiben auf dem Host; Zugangsdaten werden nicht
+in den Container kopiert. Vor Fetches und Änderungen müssen Mounts,
+Owner-Freigabe, Ablaufdatum und Hashbindung des eingebauten Quellpakets
+übereinstimmen. Ein laufender Container allein genügt nicht.
+Bei `SandboxPreflightBlocked` zuerst den Bericht prüfen und das geprüfte
+Quellpaket ausdrücklich veröffentlichen sowie im Sandbox-Image pinnen.
+Das Wartungsskript baut oder ersetzt kein Image automatisch.
+Arbeits- und Freigabestand:
+[Container-Delegation](../maintenance/container-delegation-2026-09-20.md).
+
+*Secure Trader targets use the approved Podman sandbox declared in
+`scripts/config/maintenance-execution-contexts.json`. Podman is the container
+runtime used here. Local Git and maintenance operations never fall back to
+the host. Authenticated fetches stay on the host; credentials are not copied
+into the container. Before fetches or changes, mounts, Owner approval,
+expiry and embedded package hashes must match. A running container alone
+is insufficient. For `SandboxPreflightBlocked`, inspect the report, explicitly
+publish the reviewed package and pin it in the sandbox image. Maintenance
+never rebuilds or replaces the image automatically.*
+
 Ohne Optionen öffnet ein vollständig interaktives Terminal zuerst die
 Wartungs-TUI. TUI bedeutet Terminal User Interface, also eine
 textbasierte Benutzungsoberfläche im Terminal. Die Vorauswahl ist
@@ -82,6 +106,19 @@ matrices; the current count is evidence, not a coded maximum.*
 Die unterstuetzten Profilnamen und ihre Matrixdateien stehen zentral in
 `scripts/config/spec-kit-preset-profiles.json`. Lokale Registry-Eintraege mit
 unbekannten Profilen brechen weiterhin fail-closed ab.
+
+Die lokale Registry kann `level0PresetProfile` fuer die ausfuehrende
+Level-0-Quelle setzen. Fehlt dieses Feld, gilt wie bisher
+`defaultPresetProfile`. Projektbezogene 14er-Freigaben erhoehen dadurch
+nicht den Standard fuer andere oder neu registrierte Repositories.
+`model-routing` und `storage-cleanup` sind gueltige Live-Ereignisphasen
+im unveraenderten Ereignisschema 1.
+
+*The local registry may set `level0PresetProfile` for the executing Level-0
+source. When absent, `defaultPresetProfile` remains the fallback. A reviewed
+fourteen-preset opt-in does not raise the default for other or newly
+registered repositories. Model routing and storage cleanup are valid live
+event phases in the unchanged event schema version 1.*
 
 Die portable Sollquelle steht in
 `scripts/config/agentic-workspace-fleet.json`. Sie unterscheidet kanonische
