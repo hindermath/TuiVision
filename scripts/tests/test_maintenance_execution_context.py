@@ -12,6 +12,11 @@ import unittest
 from unittest.mock import patch
 
 MODULE = Path(__file__).resolve().parents[1] / "lib/maintenance_execution_context.py"
+# Consumer packages deliberately omit the Level-0 orchestration manifest and
+# installers. Keep their unit contracts runnable through ordinary discovery;
+# the complete integration suite remains mandatory in the canonical source.
+CANONICAL_SOURCE = (MODULE.parents[2] / "scripts/config/agentic-toolchain-maintenance-files.json").is_file()
+central_only = unittest.skipUnless(CANONICAL_SOURCE, "Requires canonical Level-0 source; covered by central/image integration tests")
 spec = importlib.util.spec_from_file_location("maintenance_execution_context", MODULE)
 context = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(context)
@@ -112,6 +117,7 @@ class ExecutionContextTests(unittest.TestCase):
             with self.assertRaises(context.ExecutionContextError):
                 context.source_bindings(root)
 
+    @central_only
     def test_real_package_binds_worker_and_contract(self):
         bindings = context.source_bindings(MODULE.parents[2])
         self.assertIn("scripts/lib/maintenance_container_worker.py", bindings)
@@ -193,6 +199,7 @@ class ExecutionContextTests(unittest.TestCase):
             run.assert_not_called()
 
     @unittest.skipIf(os.name == "nt", "Linux leaf worker; native Windows wrapper is tested separately")
+    @central_only
     def test_real_registry_worker_preserves_curated_metadata(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory).resolve()
@@ -210,6 +217,7 @@ class ExecutionContextTests(unittest.TestCase):
                 self.assertEqual(returned[key], entry["registry"][key])
 
     @unittest.skipIf(os.name == "nt", "Linux leaf worker; native Windows wrapper is tested separately")
+    @central_only
     def test_real_propagation_worker_reports_drift_without_writes(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory).resolve()
@@ -223,6 +231,7 @@ class ExecutionContextTests(unittest.TestCase):
             self.assertEqual(result["status"], "Blocked", result)
             self.assertEqual(before, sorted(p.relative_to(repo).as_posix() for p in repo.rglob("*")))
 
+    @central_only
     def test_preflight_failure_closes_barrier_before_git(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory).resolve()
@@ -238,6 +247,7 @@ class ExecutionContextTests(unittest.TestCase):
             self.assertFalse(report["mutationBarrier"]["domainMutationAllowed"])
             self.assertEqual(report["findings"][0]["code"], "SandboxPreflightBlocked")
 
+    @central_only
     def test_two_delegated_fast_forwards_follow_all_fetches(self):
         fixture_spec = importlib.util.spec_from_file_location("fleet_fixtures", Path(__file__).with_name("test_agentic_workspace_maintenance.py"))
         fixtures = importlib.util.module_from_spec(fixture_spec)
@@ -306,6 +316,7 @@ class ExecutionContextTests(unittest.TestCase):
             confirm_deep_cleanup=False, output=root / "host-registry.json")
         return args, evidence
 
+    @central_only
     def test_registry_return_is_translated_and_host_entries_are_preserved(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory).resolve()
@@ -322,6 +333,7 @@ class ExecutionContextTests(unittest.TestCase):
             self.assertEqual(entries[1], {"path": "Other/repo", "level": 2})
             self.assertEqual(json.loads(args.report.read_text())["delegatedPhases"][0]["executionContext"], "container")
 
+    @central_only
     def test_lost_container_does_not_modify_registry_or_report(self):
         with tempfile.TemporaryDirectory() as directory:
             args, evidence = self.phase_fixture(Path(directory).resolve())
