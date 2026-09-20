@@ -3,6 +3,16 @@
     Wartet Workspace/Toolchain und führt Stage B sicher aus. / Maintains the workspace/toolchain and safely runs Stage B.
 
 .DESCRIPTION
+    Secure-Trader-Ziele benötigen die konfigurierte Podman-Sandbox mit
+    gültiger Owner-Freigabe und identischem, unveränderlichem Quellpaket.
+    Die Vorprüfung blockiert vor Fetches und Änderungen. Lokale Operationen
+    dieser Ziele haben keinen Host-Fallback; Zugangsdaten bleiben auf dem Host.
+
+    Secure Trader targets require the configured Podman sandbox with valid
+    Owner approval and an identical immutable source package. Preflight blocks
+    before fetches or changes. Local operations never fall back to the host;
+    provider credentials remain on the host.
+
     Completes bounded fetch attempts for Level 0 and every active Git target
     before any domain mutation. Only clean canonical behind-only branches are
     fast-forwarded. It then synchronizes the local home baseline, checks the
@@ -786,6 +796,9 @@ if ($PlainUi) {
 }
 
 $registry = Join-Path $HomeDir '.home-baseline/level2-repository-registry.json'
+$executionContract = Join-Path $sourceRoot 'scripts/config/maintenance-execution-contexts.json'
+$containerExecution = $false
+$domainRegistry = $registry
 $stateDir = Join-Path $HomeDir '.home-baseline'
 $lockDir = Join-Path $stateDir 'locks/agentic-workspace-maintenance.lock'
 $logDir = Join-Path $stateDir 'logs'
@@ -1080,6 +1093,7 @@ function Invoke-HBFleetContract {
     foreach ($path in $script:ResumeAllowedPaths) {
         $arguments += @('--allowed-dirty-path', $path)
     }
+    if ($containerExecution) { $arguments += @('--execution-contract', $executionContract) }
     Invoke-HBPythonCommand -Arguments $arguments | ForEach-Object { Write-Host $_ }
     $status = $LASTEXITCODE
     return [int]$status
@@ -1238,12 +1252,15 @@ function Test-HBRepository {
 }
 
 function Get-HBManagedRepositories {
+    $executionArguments = @()
+    if ($containerExecution) { $executionArguments = @('--exclude-execution-contract', $executionContract) }
     $lines = @(
         Invoke-HBPythonCommand -Arguments @(
             $fleetEngine, 'canonical-repositories',
             '--manifest', $ManifestPath,
             '--home-dir', $HomeDir,
             '--existing-only'
+            $executionArguments
         )
     )
     if ($LASTEXITCODE -ne 0) {
@@ -1280,6 +1297,17 @@ function Get-HBManagedDirtyPaths {
 function Initialize-HBResumeState {
     if (-not (Test-Path -LiteralPath $resumeEvidenceFile -PathType Leaf)) { return }
     $evidence = Get-Content -LiteralPath $resumeEvidenceFile -Raw -Encoding UTF8 | ConvertFrom-Json
+    if ($containerExecution) {
+        $contextContract = Get-Content -LiteralPath $executionContract -Raw -Encoding UTF8 | ConvertFrom-Json
+        foreach ($file in @($evidence.files)) {
+            $relative = ([string]$file.path).Replace('\', '/')
+            foreach ($mount in @($contextContract.mounts)) {
+                if ($relative.StartsWith("$($mount.host)/", [StringComparison]::OrdinalIgnoreCase)) {
+                    throw 'Container-Resume-Evidence benötigt separaten Review; kein Host-Zugriff / container resume evidence requires separate review; no host access.'
+                }
+            }
+        }
+    }
     $dirtyPaths = @(Get-HBManagedDirtyPaths)
     if ($evidence.status -eq 'Applied') {
         if ($dirtyPaths.Count -eq 0) {
@@ -1358,7 +1386,35 @@ function Get-HBPropagationPlan {
     return @($changes | Sort-Object Path)
 }
 
+function Invoke-HBContainerPhase {
+    param([Parameter(Mandatory)][string] $Phase)
+    if (-not $containerExecution) { return $true }
+    $arguments = @((Join-Path $sourceRoot 'scripts/lib/maintenance_execution_context.py'),
+        '--contract', $executionContract, '--manifest', $ManifestPath,
+        '--home-dir', $HomeDir, '--source', $sourceRoot, '--registry', $registry,
+        '--report', $reportFile, '--mode', $maintenanceMode.FleetMode, '--phase', $Phase,
+        '--cleanup-profile', $CleanupProfile.ToLowerInvariant())
+    if ($RepairDrift) { $arguments += '--repair-drift' }
+    if ($ConfirmDeepCleanup) { $arguments += '--confirm-deep-cleanup' }
+    if ($Phase -eq 'host-registry') {
+        $script:domainRegistry = Join-Path $reportDir "host-registry-${runId}.json"
+        $arguments += @('--output', $script:domainRegistry)
+    }
+    Invoke-HBPythonCommand -Arguments $arguments | ForEach-Object { Write-Host $_ }
+    if ($LASTEXITCODE -eq 3) {
+        $script:RepairApplied = $true
+        return $true
+    }
+    if ($LASTEXITCODE -ne 0) {
+        $script:Findings++
+        Write-Warning "Container-Phase blockiert / container phase blocked: ${Phase}"
+        return $false
+    }
+    return $true
+}
+
 function Test-HBRegistry {
+    if (-not (Invoke-HBContainerPhase -Phase registry)) { return }
     $registerScript = Join-Path $sourceRoot 'scripts/register-level2-repository.ps1'
     if (-not (Test-Path -LiteralPath $registerScript -PathType Leaf)) {
         throw "Registry-Skript fehlt / missing: ${registerScript}"
@@ -1403,18 +1459,19 @@ function Test-HBRegistry {
 
 function Invoke-HBPropagationCheck {
     $propagation = Join-Path $sourceRoot 'scripts/propagate-agentic-toolchain-maintenance.ps1'
-    & $propagation -HomeDir $HomeDir -Registry $registry -CheckOnly
+    & $propagation -HomeDir $HomeDir -Registry $domainRegistry -CheckOnly
     return $LASTEXITCODE
 }
 
 function Invoke-HBPropagation {
+    if (-not (Invoke-HBContainerPhase -Phase propagation)) { return }
     $propagation = Join-Path $sourceRoot 'scripts/propagate-agentic-toolchain-maintenance.ps1'
     if (-not (Test-Path -LiteralPath $propagation -PathType Leaf)) {
         throw "Propagationsskript fehlt / missing: ${propagation}"
     }
 
     if ($WhatIfPreference) {
-        $previewOutput = @(& $propagation -HomeDir $HomeDir -Registry $registry -DryRun 6>&1)
+        $previewOutput = @(& $propagation -HomeDir $HomeDir -Registry $domainRegistry -DryRun 6>&1)
         $previewStatus = if ($null -eq $LASTEXITCODE) { 0 } else { $LASTEXITCODE }
         $previewOutput | ForEach-Object { Write-Host "$_" }
         if ($previewStatus -ne 0) {
@@ -1434,7 +1491,7 @@ function Invoke-HBPropagation {
                 $script:Findings++
                 return
             }
-            & $propagation -HomeDir $HomeDir -Registry $registry -DryRun
+            & $propagation -HomeDir $HomeDir -Registry $domainRegistry -DryRun
             if ($LASTEXITCODE -ne 0) { throw 'Propagation-Vorschau fehlgeschlagen / preview failed.' }
             $plannedChanges = @(Get-HBPropagationPlan)
             if ($plannedChanges.Count -eq 0) {
@@ -1449,7 +1506,7 @@ function Invoke-HBPropagation {
             $null = Write-HBResumeEvidence -Path $resumeEvidenceFile -RunId $runId `
                 -Phase 'propagation' -Files $evidenceChanges -Status Prepared `
                 -NextAction 'Propagation ausfuehren und Hashes verifizieren / execute propagation and verify hashes'
-            & $propagation -HomeDir $HomeDir -Registry $registry
+            & $propagation -HomeDir $HomeDir -Registry $domainRegistry
             if ($LASTEXITCODE -ne 0) { throw 'Propagation fehlgeschlagen / failed.' }
             foreach ($change in $plannedChanges) {
                 $current = Get-HBFileSha256 -Path (Join-Path $HomeDir $change.Path)
@@ -1488,14 +1545,23 @@ function Get-HBPresetConfig {
 }
 
 function Get-HBPresetTargets {
-    if (-not (Test-Path -LiteralPath $registry -PathType Leaf)) { return @() }
-    $data = Get-Content -LiteralPath $registry -Raw | ConvertFrom-Json
+    if (-not (Test-Path -LiteralPath $domainRegistry -PathType Leaf)) { return @() }
+    $data = Get-Content -LiteralPath $domainRegistry -Raw | ConvertFrom-Json
     $defaultProfile = if (($data.PSObject.Properties.Name -contains 'defaultPresetProfile') -and $data.defaultPresetProfile) {
         [string]$data.defaultPresetProfile
     } else {
         'standard-eight-governance-presets'
     }
-    $targets = @([pscustomobject]@{ Level = 0; Path = $sourceRoot; Profile = $defaultProfile })
+    # Keep an explicit Level-0 opt-in separate from the fleet-wide default.
+    $level0Profile = if ($data.PSObject.Properties.Name -contains 'level0PresetProfile') {
+        [string]$data.level0PresetProfile
+    } else {
+        $defaultProfile
+    }
+    if ([string]::IsNullOrWhiteSpace($level0Profile)) {
+        throw 'Ungueltiges Level-0-Profil / invalid Level-0 preset profile.'
+    }
+    $targets = @([pscustomobject]@{ Level = 0; Path = $sourceRoot; Profile = $level0Profile })
     foreach ($entry in @($data.repositories)) {
         if (-not $entry.path -or $entry.level -notin @(1, 2)) { throw 'Ungueltiger Registry-Eintrag / invalid registry entry.' }
         $path = [IO.Path]::GetFullPath((Join-Path $HomeDir ([string]$entry.path)))
@@ -1620,6 +1686,7 @@ function Invoke-HBPresetInstallerProcess {
 }
 
 function Invoke-HBPresetProfiles {
+    if (-not (Invoke-HBContainerPhase -Phase preset-profiles)) { return }
     $installer = Join-Path $sourceRoot 'scripts/install-spec-kit-governance-presets.ps1'
     if (-not (Test-Path -LiteralPath $installer -PathType Leaf)) {
         throw "Preset-Installer fehlt / missing: ${installer}"
@@ -1705,6 +1772,9 @@ try {
         -DetailsJson (@{ mode = $maintenanceMode.FleetMode } | ConvertTo-Json -Compress)
 
     try {
+        $required = @(Invoke-HBPythonCommand -Arguments @($fleetEngine, 'execution-required', '--manifest', $ManifestPath, '--contract', $executionContract))
+        if ($LASTEXITCODE -ne 0) { throw 'Invalid container execution contract.' }
+        $containerExecution = ($required -join '').Trim() -eq '1'
         Initialize-HBResumeState
     } catch {
         Write-HBEarlyFailureReport -Status BLOCKED -ExitCode 1 `
@@ -1813,6 +1883,7 @@ try {
         $registrySafe = $registryStatus -eq 0
         if (-not $registrySafe) { $script:Findings++ }
     }
+    if (-not (Invoke-HBContainerPhase -Phase host-registry)) { $registrySafe = $false }
     if ($script:Findings -gt $findingsBefore -or -not $registrySafe) {
         Add-HBReportStage -StageId 'registry' -Status Blocked -ExitCode 1 `
             -Summary 'Registry-Pruefung mit Befund / registry check has findings' `
@@ -1932,9 +2003,10 @@ try {
         $CleanupProfile -ne 'None') {
         Start-HBMaintenanceEventPhase -PhaseId 'storage-cleanup'
         Write-HBInfo 'Workspace-Speicher pflegen / Maintain workspace storage'
+        $null = Invoke-HBContainerPhase -Phase storage-cleanup
         $storageParameters = @{
             HomeDir = $HomeDir
-            RegistryPath = $registry
+            RegistryPath = $domainRegistry
             PolicyPath = $storagePolicy
             ResultFile = $storageResultFile
             RunId = $runId

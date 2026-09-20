@@ -738,6 +738,9 @@ esac
 mkdir -p -- "$HOME_DIR"
 HOME_DIR="$(cd -- "$HOME_DIR" && pwd -P)"
 REGISTRY="${HOME_DIR}/.home-baseline/level2-repository-registry.json"
+EXECUTION_CONTRACT="${SOURCE_ROOT}/scripts/config/maintenance-execution-contexts.json"
+CONTAINER_EXECUTION=0
+DOMAIN_REGISTRY="$REGISTRY"
 
 # A stale copy in ~/scripts must delegate before it updates that directory.
 if [ "$SCRIPT_DIR" = "${HOME_DIR}/scripts" ]; then
@@ -763,6 +766,12 @@ if [ "$UI_MODE" = "plain" ]; then
   run_plain_ui
   exit $?
 fi
+
+# Erst der Engine-Lauf braucht den Flottenvertrag; UI-Abbruch und Home-
+# Delegation muessen ohne lokale Level-0-Manifeste funktionieren.
+# Only engine execution needs the fleet contract; UI cancellation and Home
+# delegation must work without a local copy of Level-0 manifests.
+CONTAINER_EXECUTION="$(python3 "$FLEET_ENGINE" execution-required --manifest "$FLEET_MANIFEST" --contract "$EXECUTION_CONTRACT")"
 
 [ -f "$STORAGE_MAINTAINER" ] || die "Storage-Wartung fehlt / storage maintainer missing: $STORAGE_MAINTAINER"
 [ -f "$STORAGE_POLICY" ] || die "Storage-Policy fehlt / storage policy missing: $STORAGE_POLICY"
@@ -851,6 +860,8 @@ record_stage() {
 
 run_fleet_contract() {
   local fleet_mode="update" status=0
+  local -a execution_arguments=()
+  [ "$CONTAINER_EXECUTION" -eq 1 ] && execution_arguments+=(--execution-contract "$EXECUTION_CONTRACT")
   [ "$CHECK_ONLY" -eq 1 ] && fleet_mode="check-only"
   [ "$DRY_RUN" -eq 1 ] && fleet_mode="dry-run"
   python3 "$FLEET_ENGINE" fleet \
@@ -860,7 +871,7 @@ run_fleet_contract() {
     --report "$REPORT_FILE" \
     --log "$LOG_FILE" \
     --run-id "$RUN_ID" \
-    --level0-dir "$SOURCE_ROOT" || status=$?
+    --level0-dir "$SOURCE_ROOT" ${execution_arguments[@]+"${execution_arguments[@]}"} || status=$?
   return "$status"
 }
 
@@ -930,16 +941,49 @@ check_repository() {
 }
 
 discover_repositories() {
+  local -a execution_arguments=()
+  [ "$CONTAINER_EXECUTION" -eq 1 ] && execution_arguments+=(--exclude-execution-contract "$EXECUTION_CONTRACT")
   python3 "$FLEET_ENGINE" canonical-repositories \
     --manifest "$FLEET_MANIFEST" \
     --home-dir "$HOME_DIR" \
-    --existing-only
+    --existing-only ${execution_arguments[@]+"${execution_arguments[@]}"}
+}
+
+run_container_phase() {
+  [ "$CONTAINER_EXECUTION" -eq 1 ] || return 0
+  local phase="$1" execution_mode="update" status=0
+  local -a arguments
+  [ "$CHECK_ONLY" -eq 1 ] && execution_mode="check-only"
+  [ "$DRY_RUN" -eq 1 ] && execution_mode="dry-run"
+  arguments=(python3 "${SOURCE_ROOT}/scripts/lib/maintenance_execution_context.py"
+    --contract "$EXECUTION_CONTRACT" --manifest "$FLEET_MANIFEST"
+    --home-dir "$HOME_DIR" --source "$SOURCE_ROOT" --registry "$REGISTRY"
+    --report "$REPORT_FILE" --mode "$execution_mode" --phase "$phase" --cleanup-profile "$CLEANUP_PROFILE")
+  [ "$REPAIR_DRIFT" -eq 1 ] && arguments+=(--repair-drift)
+  [ "$CONFIRM_DEEP_CLEANUP" -eq 1 ] && arguments+=(--confirm-deep-cleanup)
+  if [ "$phase" = "host-registry" ]; then
+    DOMAIN_REGISTRY="${REPORT_DIR}/host-registry-${RUN_ID}.json"
+    arguments+=(--output "$DOMAIN_REGISTRY")
+  fi
+  "${arguments[@]}" || status=$?
+  if [ "$status" -eq 3 ]; then
+    REPAIR_APPLIED=1
+    return 0
+  fi
+  if [ "$status" -ne 0 ]; then
+    FINDINGS=$((FINDINGS + 1))
+    [ "$status" -ge 2 ] && OPERATIONAL_FAILURE=1
+    warn "Container-Phase blockiert / container phase blocked: ${phase}"
+    return 1
+  fi
+  return 0
 }
 
 ensure_registry() {
   local register_script="${SOURCE_ROOT}/scripts/register-level2-repository.sh"
   local level repo preview_output registry_drift=0
   [ -f "$register_script" ] || die "Registry-Skript fehlt / missing: $register_script"
+  run_container_phase registry || return 1
 
   while IFS=$'\t' read -r level repo; do
     [ -n "$repo" ] || continue
@@ -966,16 +1010,17 @@ ensure_registry() {
 
 run_propagation_check() {
   local propagation="${SOURCE_ROOT}/scripts/propagate-agentic-toolchain-maintenance.sh"
-  HOME="$HOME_DIR" bash "$propagation" --home-dir "$HOME_DIR" --registry "$REGISTRY" --check-only
+  HOME="$HOME_DIR" bash "$propagation" --home-dir "$HOME_DIR" --registry "$DOMAIN_REGISTRY" --check-only
 }
 
 handle_propagation() {
   local propagation="${SOURCE_ROOT}/scripts/propagate-agentic-toolchain-maintenance.sh"
   local status=0 preview_output=""
   [ -f "$propagation" ] || die "Propagationsskript fehlt / missing: $propagation"
+  run_container_phase propagation || return 0
 
   if [ "$DRY_RUN" -eq 1 ]; then
-    preview_output="$(HOME="$HOME_DIR" bash "$propagation" --home-dir "$HOME_DIR" --registry "$REGISTRY" --dry-run)" || status=$?
+    preview_output="$(HOME="$HOME_DIR" bash "$propagation" --home-dir "$HOME_DIR" --registry "$DOMAIN_REGISTRY" --dry-run)" || status=$?
     printf '%s\n' "$preview_output"
     if [ "$status" -ne 0 ]; then
       FINDINGS=$((FINDINGS + 1))
@@ -994,8 +1039,8 @@ handle_propagation() {
         FINDINGS=$((FINDINGS + 1))
         return
       fi
-      HOME="$HOME_DIR" bash "$propagation" --home-dir "$HOME_DIR" --registry "$REGISTRY" --dry-run
-      HOME="$HOME_DIR" bash "$propagation" --home-dir "$HOME_DIR" --registry "$REGISTRY"
+      HOME="$HOME_DIR" bash "$propagation" --home-dir "$HOME_DIR" --registry "$DOMAIN_REGISTRY" --dry-run
+      HOME="$HOME_DIR" bash "$propagation" --home-dir "$HOME_DIR" --registry "$DOMAIN_REGISTRY"
       run_propagation_check
       REPAIR_APPLIED=1
       ;;
@@ -1012,7 +1057,7 @@ preset_config_for_profile() {
 }
 
 discover_preset_targets() {
-  python3 - "$HOME_DIR" "$REGISTRY" "$SOURCE_ROOT" <<'PY'
+  python3 - "$HOME_DIR" "$DOMAIN_REGISTRY" "$SOURCE_ROOT" <<'PY'
 import json
 import pathlib
 import sys
@@ -1022,7 +1067,11 @@ registry_path = pathlib.Path(sys.argv[2])
 source = pathlib.Path(sys.argv[3]).resolve()
 data = json.loads(registry_path.read_text(encoding="utf-8"))
 default_profile = data.get("defaultPresetProfile", "standard-eight-governance-presets")
-print(f"0\t{source}\t{default_profile}")
+# A reviewed Level-0 opt-in must not silently raise the fleet-wide default.
+level0_profile = data.get("level0PresetProfile", default_profile)
+if not isinstance(level0_profile, str) or not level0_profile.strip():
+    raise SystemExit("Invalid Level-0 preset profile")
+print(f"0\t{source}\t{level0_profile}")
 for entry in data.get("repositories", []):
     raw = entry.get("path")
     profile = entry.get("presetProfile", default_profile)
@@ -1106,6 +1155,7 @@ handle_preset_profiles() {
   local level repo profile config status target isolated
   [ -f "$installer" ] || die "Preset-Installer fehlt / missing: $installer"
   [ -f "$PRESET_PROFILE_CATALOG" ] || die "Preset-Profilkatalog fehlt / missing: $PRESET_PROFILE_CATALOG"
+  run_container_phase preset-profiles || return 0
 
   while IFS=$'\t' read -r level repo profile; do
     [ -n "$repo" ] || continue
@@ -1230,6 +1280,9 @@ if [ -f "$REGISTRY" ]; then
   python3 "$FLEET_ENGINE" registry --manifest "$FLEET_MANIFEST" --registry "$REGISTRY" || registry_status=$?
   [ "$registry_status" -eq 0 ] && registry_safe=1
   [ "$registry_status" -eq 0 ] || FINDINGS=$((FINDINGS + 1))
+fi
+if ! run_container_phase host-registry; then
+  registry_safe=0
 fi
 if [ "$FINDINGS" -gt "$findings_before" ] || [ "$registry_safe" -ne 1 ]; then
   record_stage "registry" "Blocked" 1 "Registry-Pruefung mit Befund / registry check has findings" \
@@ -1379,10 +1432,11 @@ if [ "$registry_safe" -eq 1 ] \
     "Storage-Inventur gestartet." "Storage inventory started."
   info "Workspace-Speicher pflegen / Maintain workspace storage"
   storage_status=0
+  run_container_phase storage-cleanup || true
   storage_arguments=(
     bash "$STORAGE_MAINTAINER"
     --home-dir "$HOME_DIR"
-    --registry "$REGISTRY"
+    --registry "$DOMAIN_REGISTRY"
     --policy "$STORAGE_POLICY"
     --run-id "$RUN_ID"
     --profile "$CLEANUP_PROFILE"
