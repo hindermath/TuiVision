@@ -82,7 +82,11 @@ case "${1:-}" in
     fi
     ;;
   info)
-    printf '{"formulae":[]}\n'
+    if [ -n "${HB_TEST_BREW_INFO_FILE:-}" ]; then
+      cat -- "$HB_TEST_BREW_INFO_FILE"
+    else
+      printf '{"formulae":[]}\n'
+    fi
     ;;
   install)
     item="${2:-}"
@@ -103,6 +107,9 @@ case "${1:-}" in
 esac
 """,
     )
+    # Keep every toolchain fixture independent from the host PowerShell setup.
+    # The module registry is empty, so an unavailable optional probe is expected.
+    write_executable(bin_dir / "pwsh", "#!/usr/bin/env bash\nexit 1\n")
     return bin_dir, state, log
 
 
@@ -290,8 +297,7 @@ class LinuxMaintenanceHardeningTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             paths = empty_registries(root)
-            bin_dir, _, _ = install_fake_brew(root)
-            write_executable(bin_dir / "pwsh", "#!/usr/bin/env bash\nexit 1\n")
+            install_fake_brew(root)
 
             completed = run_brew_maintainer(root, paths)
 
@@ -385,6 +391,48 @@ class LinuxMaintenanceHardeningTests(unittest.TestCase):
                 sorted(state.read_text(encoding="utf-8").splitlines()),
                 ["alpha", "beta", "gamma"],
             )
+
+    def test_large_brew_inventory_is_streamed_without_argument_overflow(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            paths = empty_registries(root)
+            _, state, _ = install_fake_brew(root)
+            formula = "fixture/requested"
+            state.write_text(f"{formula}\n", encoding="utf-8")
+            write_json(
+                paths["brew"],
+                {
+                    "schemaVersion": 1,
+                    "formulae": [{"name": formula, "scope": "required"}],
+                    "casks": [],
+                    "aptFallback": {"packages": []},
+                },
+            )
+            inventory = root / "large-brew-inventory.json"
+            write_json(
+                inventory,
+                {
+                    "formulae": [
+                        {
+                            "full_name": formula if index == 0 else f"fixture/dependency-{index}",
+                            "installed": [{"installed_on_request": index == 0}],
+                            "metadata": "x" * 1024,
+                        }
+                        for index in range(256)
+                    ]
+                },
+            )
+            self.assertGreater(inventory.stat().st_size, 128 * 1024)
+
+            completed = run_brew_maintainer(
+                root,
+                paths,
+                environment_updates={"HB_TEST_BREW_INFO_FILE": str(inventory)},
+            )
+
+            self.assertEqual(completed.returncode, 0, completed.stdout)
+            self.assertNotIn("Argument list too long", completed.stdout)
+            self.assertIn("missing_from_registry.formulae: none", completed.stdout)
 
     def test_required_cli_drift_fails_but_optional_only_does_not(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
