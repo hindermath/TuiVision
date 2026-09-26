@@ -26,12 +26,12 @@ jobs:
       - name: Preserve package bytes
         shell: pwsh
         run: git config --global core.autocrlf false
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
           persist-credentials: false
-      - uses: astral-sh/setup-uv@d0d8abe699bfb85fec6de9f7adb5ae17292296ff
+      - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e
       - name: Install pinned Spec Kit
         shell: pwsh
         run: |
@@ -44,7 +44,7 @@ jobs:
         run: |
           if ((git rev-parse HEAD).Trim() -cne $env:EXPECTED_HEAD) { throw 'Delivery head mismatch.' }
           ./scripts/prove-project-statistics-context.ps1 -Repo . -EvidenceDirectory (Join-Path $env:RUNNER_TEMP 'statistics-proof')
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         if: always()
         with:
           name: project-statistics-${{ matrix.os }}
