@@ -47,6 +47,19 @@ blocking local Git hooks; semantic content remains unchanged.*
 
 ## Optionen / Options
 
+Unter PowerShell erzwingt der Installer UTF-8 fuer die Standard- und
+Fehlerausgabe jedes `specify`-Aufrufs. Damit scheitern Statuszeichen wie das
+Haekchen auch in umgeleiteten Windows-Logs nicht an CP1252. Prozessumgebung
+und Konsolen-Ausgabecodierung werden auch bei Fehlern wiederhergestellt;
+Benutzer- und Systemeinstellungen bleiben unveraendert. CLI-Fehler brechen
+weiterhin ab, auch beim Ermitteln bereits installierter Presets.
+
+*Under PowerShell, the installer forces UTF-8 for stdout and stderr of each
+`specify` call, preventing status symbols from failing with CP1252 in redirected
+Windows logs. Process environment and console output encoding are restored
+even after failure; user and system settings are unchanged. CLI failures still
+abort, including failures while detecting installed presets.*
+
 | Bash | PowerShell | Bedeutung / Meaning |
 |---|---|---|
 | `--repo PATH` | `-Repo PATH` | Ziel-Repository; wiederholbar |

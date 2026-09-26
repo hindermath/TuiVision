@@ -528,20 +528,23 @@ installed_registry_formulae() {
 }
 
 installed_requested_formulae() {
-  local inventory
-  inventory="$(brew info --json=v2 --installed 2>/dev/null)" || inventory='{"formulae":[]}'
-  python3 - "$inventory" <<'PY'
+  # Stream metadata: large inventories exceed Linux's per-argument size limit.
+  {
+    if ! brew info --json=v2 --installed 2>/dev/null; then
+      printf '%s\n' '{"formulae":[]}'
+    fi
+  } | python3 -c '
 import json
 import sys
 
 try:
-    data = json.loads(sys.argv[1] or '{"formulae":[]}')
-except (json.JSONDecodeError, TypeError):
+    data = json.load(sys.stdin)
+except (json.JSONDecodeError, TypeError, UnicodeDecodeError):
     data = {"formulae": []}
 for formula in data.get("formulae", []):
     if any(item.get("installed_on_request") for item in formula.get("installed", [])):
         print(formula["full_name"])
-PY
+'
 }
 
 installed_casks() {

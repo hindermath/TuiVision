@@ -19,6 +19,12 @@ The matrix is the only place where preset versions and priorities are maintained
 Use -WhatIf to preview actions and -Force to reinstall existing presets from the
 current matrix.
 
+Die specify-Unterprozesse verwenden UTF-8 fuer Standardausgabe und Fehlerausgabe,
+auch bei umgeleiteten Windows-Logs. Die vorherige Prozessumgebung bleibt erhalten.
+
+The specify child processes use UTF-8 for stdout and stderr, including redirected
+Windows logs. The previous process environment is restored after each call.
+
 .PARAMETER Repo
 Ziel-Repository. Kann mehrfach uebergeben werden. Standard ist das aktuelle
 Verzeichnis.
@@ -78,6 +84,26 @@ function Resolve-HBPath {
     return $Path
 }
 
+function Invoke-SpecifyUtf8 {
+    param([string[]]$Arguments)
+
+    $previousEncoding = [Environment]::GetEnvironmentVariable('PYTHONIOENCODING', 'Process')
+    $previousOutputEncoding = [Console]::OutputEncoding
+    try {
+        # Redirected Python output can default to CP1252 on Windows. A status
+        # symbol must not abort removal before the replacement preset is added.
+        $env:PYTHONIOENCODING = 'utf-8'
+        [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
+        & specify @Arguments
+        if ($LASTEXITCODE -ne 0) {
+            throw "specify $($Arguments -join ' ') failed in ${PWD} (exit ${LASTEXITCODE})"
+        }
+    } finally {
+        [Environment]::SetEnvironmentVariable('PYTHONIOENCODING', $previousEncoding, 'Process')
+        [Console]::OutputEncoding = $previousOutputEncoding
+    }
+}
+
 function Test-PresetInstalled {
     param(
         [string]$Repository,
@@ -86,7 +112,7 @@ function Test-PresetInstalled {
 
     Push-Location $Repository
     try {
-        $listOutput = (specify preset list 2>$null | Out-String)
+        $listOutput = (Invoke-SpecifyUtf8 -Arguments @('preset', 'list') | Out-String)
         return $listOutput -match "\($([regex]::Escape($PresetId))\)"
     } finally {
         Pop-Location
@@ -103,10 +129,7 @@ function Invoke-PresetCommand {
     if ($PSCmdlet.ShouldProcess($Repository, $Description)) {
         Push-Location $Repository
         try {
-            & specify @Arguments
-            if ($LASTEXITCODE -ne 0) {
-                throw "specify $($Arguments -join ' ') failed in ${Repository}"
-            }
+            Invoke-SpecifyUtf8 -Arguments $Arguments
         } finally {
             Pop-Location
         }
