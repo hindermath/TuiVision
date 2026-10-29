@@ -1157,6 +1157,24 @@ passed. Documentation Impact: UpdateRequired; the man page documents the safe
 mode boundary. Statistics provide Git-based transparency, not measured AI
 productivity.
 
+### 2026-10-29 - Terminal-Steuerzeichen-Neutralisierung / Terminal control-character neutralization
+
+DE: Der reale Konsolen-Presenter neutralisiert jetzt alle C0-, DEL- und
+C1-Steuerzeichen unmittelbar vor der Host-Ausgabe. Die Originaldaten bleiben
+in Puffern, Dateipfaden und alternativen Presentern erhalten. 1.038
+Release-Tests, die fuenf Coverage-Gates, DocFX sowie zwei Playwright-/axe-
+Pruefungen bestanden. Documentation Impact: UpdateRequired; Terminal-Guide und
+Bedrohungsmodell beschreiben die neue Sicherheitsgrenze. Statistik ist
+Git-basierte Transparenz, keine gemessene KI-Produktivitaet.
+
+EN: The real console presenter now neutralizes every C0, DEL, and C1 control
+character immediately before host output. Original data remains available in
+buffers, file paths, and alternative presenters. All 1,038 Release tests, the
+five coverage gates, DocFX, and two Playwright/axe checks passed.
+Documentation Impact: UpdateRequired; the terminal guide and threat model
+document the new security boundary. Statistics provide Git-based
+transparency, not measured AI productivity.
+
 ## Gesamtstatistik / Overall Statistics
 
 <!-- project-statistics-v2:begin -->
