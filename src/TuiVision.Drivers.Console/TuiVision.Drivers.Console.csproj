@@ -10,4 +10,8 @@
     <ProjectReference Include="..\TuiVision.Core\TuiVision.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="TuiVision.Drivers.Tests" />
+  </ItemGroup>
+
 </Project>

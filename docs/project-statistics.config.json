@@ -360,6 +360,14 @@
       "labelEn": "Storage check-only Make hardening",
       "netLines": 187,
       "activeDays": 1
+    },
+    {
+      "slot": 50,
+      "id": "terminal-output-control-neutralization",
+      "labelDe": "Terminal-Steuerzeichen-Neutralisierung",
+      "labelEn": "Terminal control-character neutralization",
+      "netLines": 175,
+      "activeDays": 1
     }
   ],
   "excludedPaths": [

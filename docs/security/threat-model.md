@@ -1,6 +1,6 @@
 # Bedrohungsmodell / Threat Model: TuiVision
 
-**Stand / Current as of**: 2026-07-12
+**Stand / Current as of**: 2026-10-29
 **Methode / Method**: STRIDE with CIA impact and selected CAPEC patterns
 **Scope**: Local terminal UI framework, tests, examples, repository tooling, CI
 
@@ -40,6 +40,7 @@ Security-`N/A`.
 | Terminal-/Eventeingabe | Tampering, DoS; I/A | CAPEC-10 Buffer Overflow, CAPEC-20 Input Data Manipulation | Begrenzte managed Buffer, Eventvalidierung, Tests in Core/Controls/Drivers | Low |
 | SGR-1006-Mauseingang | Spoofing, Tampering, DoS; I/A | CAPEC-20 Input Data Manipulation, CAPEC-130 Excessive Allocation | Feste Sequenz-/Zahlengrenzen, atomare Syntax-/Koordinaten-/Phasenprüfung, genau null oder ein Event, Capability-Reset und Driver-/App-Loop-Tests | Low; physische Terminalvarianten bleiben Host-Evidence |
 | Terminal-, Charset-, Font- und Profileingabe | Spoofing, Tampering, DoS; I/A | CAPEC-20 Input Data Manipulation, CAPEC-130 Excessive Allocation, CAPEC-153 Input Data Manipulation | 64-Zeichen-/4-Parameter-/9.999-Wert-Grenzen, atomare Parser-Recovery, 4.096-Zellen-FIFO, feste KOI8-R-Tabelle, exakte 8x16-Fixture und geschlossenes JSON-Schema | Low; vollständige Emulation und physische Hostvarianten bleiben außerhalb des Vertrags |
+| Host-Terminalausgabe aus View-Zellen | Spoofing, Tampering, DoS; I/A | CAPEC-20 Input Data Manipulation, CAPEC-15 Command Delimiters | Gemeinsame Neutralisierung aller C0-, DEL- und C1-Zeichen unmittelbar vor der realen Konsolenausgabe; einzellige Ersetzung und negative Tests fuer ESC, CSI, DCS und OSC | Low; bidi-/breitenrelevante Unicode-Formatzeichen und physische Terminalvarianten sind getrennte Kompatibilitaetsgrenzen |
 | Wave-4-Fixture und Ressourcenmanifeste | Spoofing, Tampering, DoS; I/A | CAPEC-20 Input Data Manipulation, CAPEC-130 Excessive Allocation, CAPEC-153 Input Data Manipulation | Byte-identische 4.096-Byte-Fixture, exakte Geometrie/Quelle/Format, eindeutige case-sensitive Manifest-Schlüssel und atomare `Rejected`-/`Unsupported`-Fallbacks vor sichtbarer Veröffentlichung | Low; native ETerm-/XTerm-Ressourcen und physische Hostbeobachtung bleiben außerhalb des Claims |
 | Datei-/Ressourcenpfade | Tampering, Information Disclosure; C/I/A | CAPEC-126 Path Traversal, CAPEC-153 Input Data Manipulation | Pfadvalidierung, kontrollierte Fixtures, sichere Ablehnung, keine beliebigen Dateiinhalte als Proof | Low |
 | Serialisierte Daten | Tampering, DoS; I/A | CAPEC-130 Excessive Allocation, CAPEC-153 | Truncated/trailing/unknown/cyclic rejection tests, Typregistrierung | Low |

@@ -5440,8 +5440,8 @@
     {
       "evidenceId": "EVD-043",
       "relativePath": "docs/security/threat-model.md",
-      "sha256": "e114c0a21a77305d36dc23e93585ab6d749575d971bc6ea4ad97f8ee217a366f",
-      "observedAtUtc": "2026-08-30T10:00:00Z",
+      "sha256": "f3f8671c87823e27f29fafa6ce898cf35cf41e05c72ea12a93d58b36355140c3",
+      "observedAtUtc": "2026-10-29T00:00:00Z",
       "evidenceType": "Audit",
       "directness": "Supporting",
       "freshness": "Current",

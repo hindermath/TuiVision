@@ -1157,6 +1157,24 @@ passed. Documentation Impact: UpdateRequired; the man page documents the safe
 mode boundary. Statistics provide Git-based transparency, not measured AI
 productivity.
 
+### 2026-10-29 - Terminal-Steuerzeichen-Neutralisierung / Terminal control-character neutralization
+
+DE: Der reale Konsolen-Presenter neutralisiert jetzt alle C0-, DEL- und
+C1-Steuerzeichen unmittelbar vor der Host-Ausgabe. Die Originaldaten bleiben
+in Puffern, Dateipfaden und alternativen Presentern erhalten. 1.038
+Release-Tests, die fuenf Coverage-Gates, DocFX sowie zwei Playwright-/axe-
+Pruefungen bestanden. Documentation Impact: UpdateRequired; Terminal-Guide und
+Bedrohungsmodell beschreiben die neue Sicherheitsgrenze. Statistik ist
+Git-basierte Transparenz, keine gemessene KI-Produktivitaet.
+
+EN: The real console presenter now neutralizes every C0, DEL, and C1 control
+character immediately before host output. Original data remains available in
+buffers, file paths, and alternative presenters. All 1,038 Release tests, the
+five coverage gates, DocFX, and two Playwright/axe checks passed.
+Documentation Impact: UpdateRequired; the terminal guide and threat model
+document the new security boundary. Statistics provide Git-based
+transparency, not measured AI productivity.
+
 ## Gesamtstatistik / Overall Statistics
 
 <!-- project-statistics-v2:begin -->
@@ -1167,25 +1185,25 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 751881 lines |
-| Textdateien / Text files | 3487 |
+| Textbasis / Text base | 752064 lines |
+| Textdateien / Text files | 3489 |
 | Beobachtbarer Zeitraum / Observable period | 2025-11-02..2026-10-29 |
 | Aktivtage / Active days | 101 |
-| Relevante Commits / Relevant commits | 624 |
-| Zeilen je Aktivtag / Lines per active day | 7444.4 |
+| Relevante Commits / Relevant commits | 626 |
+| Zeilen je Aktivtag / Lines per active day | 7446.2 |
 | Peak-Tag im Fenster / Peak day in window | 2026-03-22 / 321183 |
 | Peak-Woche im Fenster / Peak week in window | 2026-03-22 / 373576 |
 | Laengste Serie / Longest streak | 17 days |
 | Speedup vs. 80 lines/day | 93.1x |
 | Speedup vs. 125 lines/day | 59.6x |
-| Methodik / Methodology | v2; source `f0ec3f0d5ade` |
+| Methodik / Methodology | v2; source `66adcb70fb5a` |
 
 ### Artefaktmix / Artifact Mix
 
 ```text
-Produktiv / Production          [####................]  18.6% | 140068
-Tests                           [#...................]   7.4% | 55356
-Dokumentation / Documentation   [##########..........]  51.1% | 384471
+Produktiv / Production          [####................]  18.6% | 140085
+Tests                           [#...................]   7.4% | 55447
+Dokumentation / Documentation   [##########..........]  51.1% | 384546
 Skripte / Scripts               [#...................]   3.9% | 28955
 Konfiguration / Configuration   [#...................]   5.7% | 43165
 Daten und Medien / Data and media [#...................]   0.0% | 1
@@ -1215,7 +1233,7 @@ So/Su  4 4 0 0 4 0 4 0 0 0 4 4 4 1 4 4 0 4 0 4 4 0 0 0 0 0
 Mo/Mo  4 0 0 0 1 0 2 0 3 1 4 4 0 0 0 2 0 0 4 0 0 0 0 0 0 0
 Di/Tu  3 4 0 3 2 0 0 0 2 0 4 4 4 0 0 0 0 0 4 0 0 0 0 0 0 0
 Mi/We  4 1 0 0 2 0 4 0 2 0 4 2 4 0 0 0 0 0 0 0 0 0 0 0 0 0
-Do/Th  0 0 3 3 3 4 2 0 0 0 4 4 0 0 4 0 0 0 0 0 0 0 0 0 0 2
+Do/Th  0 0 3 3 3 4 2 0 0 0 4 4 0 0 4 0 0 0 0 0 0 0 0 0 0 3
 Fr/Fr  3 1 4 3 0 0 3 2 3 4 4 4 1 0 0 0 0 0 0 0 0 0 0 0 0 -
 Sa/Sa  4 0 0 4 0 4 4 0 4 4 2 4 2 4 2 0 4 0 4 4 2 0 0 0 0 -
 ```
@@ -1319,15 +1337,15 @@ Slots 32..47
 ```
 
 ```text
-Slots 48..49
-    cap 1000 | . .
-         833 | . .
-         667 | # .
-         500 | # .
-         333 | # .
-         167 | # #
-           0 +-----
-             48 49
+Slots 48..50
+    cap 1000 | . . .
+         833 | . . .
+         667 | # . .
+         500 | # . .
+         333 | # . .
+         167 | # # #
+           0 +-------
+             48 49 50
 ```
 
 | Slot | Phase | Nettozeilen / Net lines |
@@ -1382,6 +1400,7 @@ Slots 48..49
 | 47 | 028i / 028i | 2422 |
 | 48 | Feature 032 verlinkte Intake-Evidence / Feature 032 linked intake evidence | 728 |
 | 49 | Storage-Check-only-Make-Härtung / Storage check-only Make hardening | 187 |
+| 50 | Terminal-Steuerzeichen-Neutralisierung / Terminal control-character neutralization | 175 |
 
 Die festen Slots halten den Phasenvergleich auch bei fehlenden oder spaeter ergaenzten Werten stabil.
 
@@ -1405,7 +1424,7 @@ Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen
 Scale: 0..10000 lines/day
 Experienced manual [#...................] 80
 Thorsten solo      [#...................] 125
-Visible repository [###############.....] 7444.4
+Visible repository [###############.....] 7446.2
 ```
 
 Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schreibt die Git-Aktivitaet keiner Person oder KI pauschal zu.
@@ -1431,6 +1450,6 @@ DE: Das Fenster beginnt am 2025-11-02 und endet am 2026-10-29. Es enthaelt 101 a
 | 2026-07 | 205615 |
 | 2026-08 | 122136 |
 | 2026-09 | 53155 |
-| 2026-10 | 277 |
+| 2026-10 | 468 |
 
 <!-- project-statistics-v2:end -->

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "1.1",
+  "feature": "terminal-output-control-neutralization",
+  "entries": [
+    {
+      "changeId": "CHG001",
+      "scope": "Neutralize terminal control characters at the real host-console output boundary",
+      "decision": "UpdateRequired",
+      "rationale": "DE: Die Sicherheitsgrenze der realen Terminalausgabe aendert sich und muss fuer Nutzende sowie Security-Reviewer sichtbar sein. EN: The real terminal-output security boundary changes and must be visible to users and security reviewers.",
+      "documents": [
+        "docs/guides/terminal-charset-hardening.md",
+        "docs/security/threat-model.md"
+      ],
+      "owner": "Thorsten Hindermann",
+      "audiences": [
+        "Maintainers and technical reviewers",
+        "Users embedding TuiVision in terminal applications"
+      ],
+      "readerPaths": [
+        "Terminal and charset hardening guide",
+        "Threat model and residual-risk review"
+      ],
+      "canonicalSource": "src/TuiVision.Drivers.Console/SystemConsolePresenter.cs",
+      "navigationImpact": "DE: Die vorhandene Terminal-Haertungsanleitung erhaelt einen neuen Abschnitt; die Navigation bleibt unveraendert. EN: The existing terminal-hardening guide gains a new section; navigation remains unchanged.",
+      "documentClass": "ActiveSemantic",
+      "languageStrategy": "DE: Deutsch zuerst, Englisch danach in denselben kurzen Dokumentabschnitten. EN: German first, English second in the same short document sections.",
+      "languagePartners": [],
+      "platformAndExampleProof": "DE: Deterministische .NET-Tests pruefen C0, DEL, C1 sowie druckbare Unicode-Zeichen; physische Terminalvarianten bleiben getrennte Host-Evidence. EN: Deterministic .NET tests cover C0, DEL, C1, and printable Unicode; physical terminal variants remain separate host evidence.",
+      "distributionClass": "sourceOnly",
+      "homeSyncRequired": false,
+      "evidence": "docs/documentation-impact/terminal-output-control-neutralization.json",
+      "risk": "DE: Niedrig nach Neutralisierung am gemeinsamen Sink; Unicode-Bidi- und Breitenfragen bleiben ausserhalb dieses Control-Injection-Befunds. EN: Low after neutralization at the shared sink; Unicode bidi and width questions remain outside this control-injection finding.",
+      "criticality": "Security",
+      "reevaluationTrigger": "DE: Neuer Host-Presenter, direkter Konsolenausgabepfad oder geaenderte Terminalprotokolle. EN: A new host presenter, direct console-output path, or changed terminal protocols."
+    }
+  ]
+}

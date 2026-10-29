@@ -196,6 +196,35 @@ The proof changes no host fonts, keyboard maps, codepages, terminal profiles,
 window colors, or audio settings. It reads no arbitrary user files and starts
 no external processes.
 
+## Schutz der Host-Terminalausgabe / Host Terminal Output Protection
+
+Der reale `SystemConsolePresenter` behandelt alle Zellen als potenziell nicht
+vertrauenswuerdig. Unmittelbar vor `System.Console.Write` ersetzt er jedes
+C0-, DEL- oder C1-Steuerzeichen durch genau eine sichtbare
+Unicode-Ersetzungsglyphe (`U+FFFD`). Dadurch koennen Dateinamen,
+Verzeichnisnamen, Editorinhalte oder andere View-Texte keine ESC-, CSI-, DCS-
+oder OSC-Folge an das Host-Terminal senden. Die einzellige Ersetzung erhaelt
+die bestehende Frame-Geometrie.
+
+The real `SystemConsolePresenter` treats every cell as potentially untrusted.
+Immediately before `System.Console.Write`, it replaces every C0, DEL, or C1
+control character with exactly one visible Unicode replacement glyph
+(`U+FFFD`). Therefore file names, directory names, editor contents, and other
+view text cannot send an ESC, CSI, DCS, or OSC sequence to the host terminal.
+The one-cell replacement preserves the existing frame geometry.
+
+Puffer, Dateipfade, Auswahlzustand und alternative `IConsolePresenter`-Ziele
+behalten die Originaldaten. Sichtbare Control-Pictures wie `U+241B`,
+druckbare Unicode-Zeichen, Farben und Clipping werden nicht veraendert. Die
+festen, vertrauenswuerdigen Maus-Protokollsequenzen von `TProgram` liegen
+ausserhalb dieses Renderpfads und bleiben absichtlich erhalten.
+
+Buffers, file paths, selection state, and alternative `IConsolePresenter`
+targets retain the original data. Visible control pictures such as `U+241B`,
+printable Unicode characters, colors, and clipping remain unchanged. The
+fixed trusted mouse-protocol sequences owned by `TProgram` are outside this
+rendering path and intentionally remain available.
+
 ## Historische Abweichung / Historical Deviation
 
 Die historischen Beispiele nutzten Ringpuffer, Shells, Console-Geräte,

@@ -49,7 +49,7 @@ public sealed class SystemConsolePresenter : IConsolePresenter
                 {
                     System.Console.ForegroundColor = cell.Foreground;
                     System.Console.BackgroundColor = cell.Background;
-                    System.Console.Write(cell.Glyph);
+                    System.Console.Write(SanitizeGlyph(cell.Glyph));
                 }
                 catch { break; }
             }
@@ -57,4 +57,17 @@ public sealed class SystemConsolePresenter : IConsolePresenter
 
         try { System.Console.ResetColor(); } catch { }
     }
+
+    /// <summary>
+    /// Ersetzt Terminal-Steuerzeichen durch genau eine sichtbare Ersetzungsglyphe.
+    /// Die Neutralisierung erfolgt erst an der echten Host-Ausgabe, damit Puffer,
+    /// Dateipfade und alternative Presenter ihre unveraenderten Daten behalten.
+    ///
+    /// Replaces terminal control characters with exactly one visible replacement glyph.
+    /// Neutralization happens only at the real host output so buffers, file paths,
+    /// and alternative presenters retain their unchanged data.
+    /// </summary>
+    /// <param name="glyph">Die auszugebende Glyphe. / The glyph to write.</param>
+    /// <returns>Eine fuer die Host-Konsole sichere Glyphe. / A glyph safe for the host console.</returns>
+    internal static char SanitizeGlyph(char glyph) => char.IsControl(glyph) ? '\uFFFD' : glyph;
 }

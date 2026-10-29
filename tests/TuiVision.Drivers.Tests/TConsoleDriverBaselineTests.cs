@@ -82,6 +82,26 @@ public sealed class TConsoleDriverBaselineTests
     }
 
     /// <summary>
+    /// Prueft, dass der Treiber und alternative Presenter den unveraenderten Frame
+    /// erhalten. Nur der echte Host-Presenter neutralisiert Steuerzeichen.
+    ///
+    /// Verifies that the driver and alternative presenters receive the unchanged
+    /// frame. Only the real host presenter neutralizes control characters.
+    /// </summary>
+    [TestMethod]
+    public void Test_DriverPresent_PreservesControlGlyphForAlternativePresenters()
+    {
+        TConsoleDriver driver = new(2, 1);
+        driver.BackBuffer.SetCell(0, 0, new TConsoleCell('\u001B', ConsoleColor.White, ConsoleColor.Black));
+
+        CapturingPresenter presenter = new();
+        driver.Present(presenter);
+
+        Assert.IsNotNull(presenter.LastFrame);
+        Assert.AreEqual('\u001B', presenter.LastFrame!.GetCell(0, 0).Glyph);
+    }
+
+    /// <summary>
     /// Prüft, dass <see cref="TConsoleBuffer"/> eine <see cref="ArgumentOutOfRangeException"/>
     /// auslöst, wenn Breite oder Höhe nicht positiv ist.
     ///
