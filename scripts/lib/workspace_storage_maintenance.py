@@ -509,8 +509,19 @@ def handle_cc65(
             candidates.append(candidate_record(repository, path, "cc65-root-clean", retention_days, True))
         if not existing:
             return candidates, protected, 0, status, warnings
-        preview = run_command(["make", "-n", "clean"], cwd=repository, timeout=180)
+        for candidate in candidates:
+            candidate["action"] = "RootMakeClean"
+        if mode != "update":
+            return candidates, protected, 0, status, warnings
+        if dirty or busy:
+            for candidate in candidates:
+                candidate["status"] = "SkippedDirtyOrBusy"
+            return candidates, protected, 0, "Warning", warnings
         try:
+            # GNU Make evaluates functions such as $(shell ...) even with -n.
+            # Run the scope preview only after explicit update authority and
+            # the dirty/busy gates, never during inventory-only modes.
+            preview = run_command(["make", "-n", "clean"], cwd=repository, timeout=180)
             if preview.returncode != 0:
                 raise StorageContractError("cc65 root make clean preview failed")
             validate_cc65_make_preview(
@@ -518,21 +529,14 @@ def handle_cc65(
                 all_paths,
                 adapter.get("protectedEvidencePatterns", []),
             )
+            before = sum(item["sizeBytes"] for item in candidates)
+            result = run_command(["make", "clean"], cwd=repository, timeout=900)
+            if result.returncode != 0:
+                raise StorageContractError("cc65 root make clean failed")
+            freed = before
             for candidate in candidates:
-                candidate["action"] = "RootMakeClean"
-            if mode == "update" and not dirty and not busy:
-                before = sum(item["sizeBytes"] for item in candidates)
-                result = run_command(["make", "clean"], cwd=repository, timeout=900)
-                if result.returncode != 0:
-                    raise StorageContractError("cc65 root make clean failed")
-                freed = before
-                for candidate in candidates:
-                    candidate["status"] = "Removed"
-                    candidate["freedBytes"] = candidate["sizeBytes"]
-            elif mode == "update":
-                status = "Warning"
-                for candidate in candidates:
-                    candidate["status"] = "SkippedDirtyOrBusy"
+                candidate["status"] = "Removed"
+                candidate["freedBytes"] = candidate["sizeBytes"]
             return candidates, protected, freed, status, warnings
         except StorageContractError as exc:
             # The upstream root clean currently reaches additional tool and
@@ -557,6 +561,17 @@ def handle_cc65(
         candidates.extend(group_candidates)
         if not any(item["eligible"] for item in group_candidates):
             continue
+        for candidate in group_candidates:
+            if candidate["eligible"]:
+                candidate["action"] = "NativeMakeClean"
+        if mode != "update":
+            continue
+        if dirty or busy:
+            status = "Warning"
+            for candidate in group_candidates:
+                if candidate["eligible"]:
+                    candidate["status"] = "SkippedDirtyOrBusy"
+            continue
         preview = make_preview(repository, str(group["makeDirectory"]), str(group["target"]))
         if preview.returncode != 0:
             raise StorageContractError(f"cc65 make preview failed for {group['id']}")
@@ -565,28 +580,19 @@ def handle_cc65(
             group["paths"],
             adapter.get("protectedEvidencePatterns", []),
         )
+        before = sum(item["sizeBytes"] for item in group_candidates if item["eligible"])
+        result = run_command(
+            ["make", "-C", str(group["makeDirectory"]), str(group["target"])],
+            cwd=repository,
+            timeout=900,
+        )
+        if result.returncode != 0:
+            raise StorageContractError(f"cc65 make clean failed for {group['id']}")
+        freed += before
         for candidate in group_candidates:
             if candidate["eligible"]:
-                candidate["action"] = "NativeMakeClean"
-        if mode == "update" and not dirty and not busy:
-            before = sum(item["sizeBytes"] for item in group_candidates if item["eligible"])
-            result = run_command(
-                ["make", "-C", str(group["makeDirectory"]), str(group["target"])],
-                cwd=repository,
-                timeout=900,
-            )
-            if result.returncode != 0:
-                raise StorageContractError(f"cc65 make clean failed for {group['id']}")
-            freed += before
-            for candidate in group_candidates:
-                if candidate["eligible"]:
-                    candidate["status"] = "Removed"
-                    candidate["freedBytes"] = candidate["sizeBytes"]
-        elif mode == "update":
-            status = "Warning"
-            for candidate in group_candidates:
-                if candidate["eligible"]:
-                    candidate["status"] = "SkippedDirtyOrBusy"
+                candidate["status"] = "Removed"
+                candidate["freedBytes"] = candidate["sizeBytes"]
     return candidates, protected, freed, status, warnings
 
 
