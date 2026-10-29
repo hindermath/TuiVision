@@ -34,8 +34,15 @@ space, pressure mode makes safe candidates eligible regardless of age.*
 Das Profil `deep` nimmt zusätzlich wiederherstellbare Dependency-Caches auf
 und erfordert in einem echten Lauf `--confirm-deep-cleanup` beziehungsweise
 `-ConfirmDeepCleanup`. `none` ist ein explizites No-op-Profil. `check-only`
-inventarisiert, Dry-run/WhatIf zeigt den Plan und nur ein bestätigter echter
-Lauf führt Providerbefehle oder Löschungen aus.
+inventarisiert, Dry-run/WhatIf zeigt den Plan und beide Modi starten keine
+projektgesteuerten Buildsysteme. Nur ein bestätigter echter Lauf führt
+Providerbefehle oder Löschungen aus.
+
+*The `deep` profile also includes recoverable dependency caches and requires
+`--confirm-deep-cleanup` or `-ConfirmDeepCleanup` for an update run. `none` is
+an explicit no-op profile. Check-only inventories state and dry-run/WhatIf
+shows the plan; neither mode starts project-controlled build systems. Only a
+confirmed update run invokes provider commands or performs deletion.*
 
 Providerwarnungen werden im privaten, atomaren JSON-Bericht festgehalten und
 haben Exitcode `0`. Aufruf-, Policy-, Pfad- und Betriebsfehler haben Exitcode
@@ -51,12 +58,17 @@ für Hostwerkzeuge, Laufzeitbibliotheken, generierte Dokumentation und
 Regression-Arbeitsverzeichnisse aus. Sample- und Targettest-Nachweise wie
 Disk-Images, Zielbinärdateien, Maps, Labels und Debuglisten bleiben erhalten.
 `make zap` wird nie verwendet; Root-`make clean` gehört nur zu `deep`. Weicht
-dessen Vorschau von den deklarierten Pfaden ab, protokolliert Deep die
-Scope-Warnung und fällt auf die einzeln geprüften Safe-Gruppen zurück.
+dessen Scope-Prüfung im autorisierten, sauberen und nicht beschäftigten
+Updatepfad von den deklarierten Pfaden ab, protokolliert Deep die Scope-Warnung
+und fällt auf die einzeln geprüften Safe-Gruppen zurück. Check-only und Dry-run
+leiten den Plan ausschließlich aus Policy und Dateisystemzustand ab und werten
+kein Makefile aus.
 
 *`make zap` is never used, and root `make clean` belongs to `deep` only. If its
-preview exceeds the declared paths, Deep records the scope warning and falls
-back to the individually proven Safe groups.*
+scope check in the authorized, clean, idle update path exceeds the declared
+paths, Deep records the scope warning and falls back to the individually
+proven Safe groups. Check-only and dry-run derive the plan from policy and
+filesystem state only and do not evaluate a Makefile.*
 
 `CLionProjects/tvision` bleibt wegen Quell-/ABI-Kompatibilität C++14. Ein
 CMake-Buildverzeichnis wird nur akzeptiert, wenn sein `CMakeCache.txt` auf
