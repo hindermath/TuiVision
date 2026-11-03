@@ -1,41 +1,102 @@
 {
-  "feature": "retire-claude-github-integration",
   "schemaVersion": "1.1",
+  "feature": "retire-claude-github-integration",
   "entries": [
     {
-      "readerPaths": [
-        ".github/DEPENDENCY-MAINTENANCE.md -> GitHub checks and manual review"
-      ],
+      "scope": "Retire Claude GitHub PR and issue automation",
+      "owner": "Repository Maintainer",
+      "decision": "UpdateRequired",
+      "reevaluationTrigger": "Explicit owner decision to introduce another GitHub review integration",
       "documents": [
         ".github/DEPENDENCY-MAINTENANCE.md"
       ],
-      "changeId": "CLAUDE001",
+      "criticality": "Usage",
+      "risk": "Retired AI review is not acceptance evidence; technical checks and manual reviews remain binding",
+      "rationale": "Record the explicit owner decision, operational boundaries and independent local tools",
+      "navigationImpact": "Retirement policy remains in the existing maintenance guide or README",
+      "languageStrategy": "German first, equivalent English",
+      "canonicalSource": ".github/DEPENDENCY-MAINTENANCE.md",
+      "distributionClass": "sourceOnly",
       "languagePartners": [],
-      "decision": "UpdateRequired",
+      "readerPaths": [
+        ".github/DEPENDENCY-MAINTENANCE.md -> technical checks -> reviewed PR"
+      ],
+      "documentClass": "ActiveSemantic",
       "audiences": [
         "Maintainers",
         "AI agents"
       ],
-      "risk": "Retired automated AI review provides no replacement acceptance evidence",
-      "documentClass": "ActiveSemantic",
-      "canonicalSource": "Owner decision and tracked GitHub workflow removal",
-      "navigationImpact": "Retirement note in the existing maintenance guide or README",
+      "evidence": ".github/DEPENDENCY-MAINTENANCE.md",
+      "changeId": "CHG001",
       "homeSyncRequired": false,
-      "distributionClass": "sourceOnly",
-      "owner": "Repository Maintainer",
-      "reevaluationTrigger": "Explicit owner decision to introduce another review integration",
-      "languageStrategy": "German first, equivalent English",
-      "platformAndExampleProof": "Workflow absence, YAML parsing, exact staged delivery, secret scan and exact-head hosted technical checks",
-      "scope": "Retire only Claude GitHub PR/issue automation"
+      "platformAndExampleProof": "macOS repository Documentation Impact validator and workflow YAML parsing; exact-head hosted checks on the delivery PR"
     },
     {
+      "scope": "Generated legacy Profile 2 statistics block",
       "owner": "Repository Maintainer",
-      "canonicalSource": "Committed workflow removal and Git history",
-      "scope": "Installed statistics outputs, if present",
-      "distributionClass": "sourceOnly",
-      "homeSyncRequired": false,
       "decision": "GeneratedUpdate",
-      "changeId": "CLAUDE002"
+      "reevaluationTrigger": "Changed statistics source configuration, renderer or method",
+      "documents": [
+        "docs/project-statistics.md"
+      ],
+      "criticality": "Normal",
+      "risk": "Git statistics do not establish quality, acceptance or measured AI productivity",
+      "rationale": "Render statistics from the committed retirement evidence using the installed canonical configuration",
+      "navigationImpact": "Existing canonical ledger entry point is retained",
+      "languageStrategy": "German first, equivalent English",
+      "canonicalSource": "docs/project-statistics.config.json",
+      "distributionClass": "sourceOnly",
+      "languagePartners": [],
+      "readerPaths": [
+        "docs/project-statistics.md -> source configuration -> Git history"
+      ],
+      "documentClass": "Generated",
+      "audiences": [
+        "Maintainers",
+        "AI agents"
+      ],
+      "evidence": "docs/project-statistics.md",
+      "changeId": "CHG002",
+      "generatedSource": {
+        "path": "docs/project-statistics.config.json",
+        "renderer": "bash scripts/render-project-statistics.sh --repo ."
+      },
+      "homeSyncRequired": false,
+      "platformAndExampleProof": "Installed legacy renderer preview, rendering and check-only on macOS"
+    },
+    {
+      "scope": "Installed separate project-statistics context outputs",
+      "owner": "Repository Maintainer",
+      "decision": "GeneratedUpdate",
+      "reevaluationTrigger": "Changed context configuration, renderer or method",
+      "documents": [
+        "docs/project-statistics/report.md",
+        "docs/project-statistics/snapshot.json"
+      ],
+      "criticality": "Normal",
+      "risk": "Context output is transparency evidence, not human or product acceptance",
+      "rationale": "Keep the separate UTC statistics context synchronized with committed source changes",
+      "navigationImpact": "Separate context keeps its existing navigation",
+      "languageStrategy": "Bilingual report; language-neutral JSON snapshot",
+      "canonicalSource": "docs/project-statistics/config.json",
+      "distributionClass": "sourceOnly",
+      "languagePartners": [],
+      "readerPaths": [
+        "docs/project-statistics/report.md -> snapshot.json -> config.json"
+      ],
+      "documentClass": "Generated",
+      "audiences": [
+        "Maintainers",
+        "AI agents"
+      ],
+      "evidence": "docs/project-statistics/report.md",
+      "changeId": "CHG003",
+      "generatedSource": {
+        "path": "docs/project-statistics/config.json",
+        "renderer": "bash .specify/presets/project-statistics-governance/scripts/project-statistics.sh update --repo . --config docs/project-statistics/config.json"
+      },
+      "homeSyncRequired": false,
+      "platformAndExampleProof": "Installed context renderer dry-run, update and read-only status on macOS"
     }
   ]
 }
