@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "1.1",
+  "feature": "dependabot-maintenance",
+  "entries": [
+    {
+      "changeId": "CHG001",
+      "scope": "Dependabot configuration and repository-specific update ownership",
+      "decision": "UpdateRequired",
+      "rationale": "Document schedules, grouping, exclusions, review boundaries and troubleshooting.",
+      "documents": [
+        ".github/DEPENDENCY-MAINTENANCE.md",
+        "docs/project-statistics.md",
+        "docs/project-statistics/report.md",
+        "docs/project-statistics/snapshot.json"
+      ],
+      "owner": "Repository Maintainer",
+      "audiences": [
+        "Maintainers",
+        "AI agents"
+      ],
+      "readerPaths": [
+        "Dependabot configuration -> maintenance guide -> run or alert -> reviewed PR"
+      ],
+      "canonicalSource": ".github/dependabot.yml",
+      "navigationImpact": "Configuration header points to the bilingual guide; the guide links back to the configuration and monitoring pages.",
+      "documentClass": "ActiveSemantic",
+      "languageStrategy": "German first, equivalent English in the same file",
+      "languagePartners": [],
+      "platformAndExampleProof": "Local macOS YAML round-trip, SchemaStore Dependabot schema and manifest coverage checks; exact-head hosted checks on the PR. Statistics outputs are regenerated from the committed dependency-maintenance revision and checked for drift before delivery.",
+      "distributionClass": "sourceOnly",
+      "homeSyncRequired": false,
+      "evidence": ".github/DEPENDENCY-MAINTENANCE.md",
+      "risk": "Dependency PRs still require compatibility and security review; exclusions retain canonical maintenance ownership.",
+      "criticality": "Security",
+      "reevaluationTrigger": "New manifests, changed paths, pins or maintenance ownership"
+    }
+  ]
+}
