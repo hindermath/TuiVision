@@ -1195,6 +1195,14 @@ policy, documentation, delivery scope and secret scan passed. Hosted checks
 are tracked on the PR. No packages updated; Git statistics do not measure
 AI time savings.
 
+### 2026-11-03 - Claude-GitHub-Integration entfernt / Claude GitHub integration retired
+
+DE: Zwei Claude-PR-/Issue-Workflows auf Ownerwunsch entfernt; GitHub-App widerrufen.
+Technische Checks und manuelle Review-Grenzen bleiben verbindlich. Source-only.
+
+EN: Removes two Claude PR/issue workflows at the owner's request and revokes the app.
+Technical checks and manual review boundaries remain binding. Source-only.
+
 ## Gesamtstatistik / Overall Statistics
 
 <!-- project-statistics-v2:begin -->
