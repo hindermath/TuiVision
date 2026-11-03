@@ -1,35 +1,90 @@
+# Wartung und Grenzen / Maintenance and boundaries: .github/DEPENDENCY-MAINTENANCE.md
+# Major-Updates bleiben einzeln; Sicherheitsupdates haben eigene Gruppen.
+# Major updates stay separate; security updates use independent groups.
+---
 version: 2
 updates:
-  - package-ecosystem: nuget
-    directory: /
-    schedule:
-      interval: weekly
-    groups:
-      dotnet-test-tooling:
-        patterns:
-          - MSTest
-          - coverlet.collector
-        update-types:
-          - minor
-          - patch
-
-  - package-ecosystem: github-actions
-    directory: /
-    schedule:
-      interval: weekly
-    groups:
-      github-actions:
-        patterns:
-          - "*"
-
-  - package-ecosystem: npm
-    directory: /tests/web-a11y
-    schedule:
-      interval: weekly
-    groups:
-      web-a11y-tooling:
-        patterns:
-          - "*"
-        update-types:
-          - minor
-          - patch
+- package-ecosystem: github-actions
+  directory: "/"
+  schedule:
+    interval: weekly
+    day: monday
+    time: '06:40'
+    timezone: Europe/Berlin
+  open-pull-requests-limit: 5
+  groups:
+    github-actions-minor-patch:
+      applies-to: version-updates
+      patterns:
+      - "*"
+      update-types:
+      - minor
+      - patch
+    github-actions-security:
+      applies-to: security-updates
+      patterns:
+      - "*"
+- package-ecosystem: nuget
+  directory: "/"
+  schedule:
+    interval: weekly
+    day: monday
+    time: '06:40'
+    timezone: Europe/Berlin
+  open-pull-requests-limit: 5
+  groups:
+    nuget-minor-patch:
+      applies-to: version-updates
+      patterns:
+      - "*"
+      update-types:
+      - minor
+      - patch
+    nuget-security:
+      applies-to: security-updates
+      patterns:
+      - "*"
+  exclude-paths:
+  - scripts/lib/maintenance-tui/**
+  - specs/**
+  - docs/**
+- package-ecosystem: npm
+  directory: "/tests/web-a11y"
+  schedule:
+    interval: weekly
+    day: monday
+    time: '06:40'
+    timezone: Europe/Berlin
+  open-pull-requests-limit: 5
+  groups:
+    npm-minor-patch:
+      applies-to: version-updates
+      patterns:
+      - "*"
+      update-types:
+      - minor
+      - patch
+    npm-security:
+      applies-to: security-updates
+      patterns:
+      - "*"
+- package-ecosystem: dotnet-sdk
+  directory: "/"
+  schedule:
+    interval: weekly
+    day: monday
+    time: '06:40'
+    timezone: Europe/Berlin
+  open-pull-requests-limit: 5
+  groups:
+    dotnet-sdk-minor-patch:
+      applies-to: version-updates
+      patterns:
+      - "*"
+      update-types:
+      - minor
+      - patch
+    dotnet-sdk-security:
+      applies-to: security-updates
+      patterns:
+      - "*"
