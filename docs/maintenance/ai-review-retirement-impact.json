@@ -1,0 +1,41 @@
+{
+  "feature": "retire-claude-github-integration",
+  "schemaVersion": "1.1",
+  "entries": [
+    {
+      "readerPaths": [
+        ".github/DEPENDENCY-MAINTENANCE.md -> GitHub checks and manual review"
+      ],
+      "documents": [
+        ".github/DEPENDENCY-MAINTENANCE.md"
+      ],
+      "changeId": "CLAUDE001",
+      "languagePartners": [],
+      "decision": "UpdateRequired",
+      "audiences": [
+        "Maintainers",
+        "AI agents"
+      ],
+      "risk": "Retired automated AI review provides no replacement acceptance evidence",
+      "documentClass": "ActiveSemantic",
+      "canonicalSource": "Owner decision and tracked GitHub workflow removal",
+      "navigationImpact": "Retirement note in the existing maintenance guide or README",
+      "homeSyncRequired": false,
+      "distributionClass": "sourceOnly",
+      "owner": "Repository Maintainer",
+      "reevaluationTrigger": "Explicit owner decision to introduce another review integration",
+      "languageStrategy": "German first, equivalent English",
+      "platformAndExampleProof": "Workflow absence, YAML parsing, exact staged delivery, secret scan and exact-head hosted technical checks",
+      "scope": "Retire only Claude GitHub PR/issue automation"
+    },
+    {
+      "owner": "Repository Maintainer",
+      "canonicalSource": "Committed workflow removal and Git history",
+      "scope": "Installed statistics outputs, if present",
+      "distributionClass": "sourceOnly",
+      "homeSyncRequired": false,
+      "decision": "GeneratedUpdate",
+      "changeId": "CLAUDE002"
+    }
+  ]
+}

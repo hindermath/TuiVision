@@ -60,3 +60,17 @@ Nachweis / evidence: YAML round-trip, Dependabot schema and manifest coverage ch
 hosted checks are recorded on the configuration PR before merge.
 Risiko / risk: update proposals still require compatibility and security review.
 Neu pruefen bei / reevaluate on: new manifests, moved paths, changed pins or maintenance ownership.
+
+## Claude-GitHub-Integration entfernt / Claude GitHub Integration Retired
+
+DE: Die Claude-GitHub-App und ihre automatischen PR-/Issue-Workflows wurden
+auf ausdruecklichen Ownerwunsch entfernt. Fuer dieses Repository starten keine
+Claude-Code-GitHub-Actions mehr. Lokale Claude-Werkzeuge und CLAUDE.md bleiben
+unabhaengige Entwicklungswerkzeuge. Technische Checks und menschliche Reviews
+gelten weiter; Abhaengigkeits-PRs erhalten kein Auto-Merge.
+
+EN: The owner explicitly retired the Claude GitHub App and its automatic
+PR/issue workflows. This repository no longer starts Claude Code GitHub Actions.
+Local Claude tools and CLAUDE.md remain independent development tools.
+Technical checks and human reviews remain required; dependency PRs receive
+no auto-merge.
