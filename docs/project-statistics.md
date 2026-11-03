@@ -1195,6 +1195,14 @@ policy, documentation, delivery scope and secret scan passed. Hosted checks
 are tracked on the PR. No packages updated; Git statistics do not measure
 AI time savings.
 
+### 2026-11-03 - Claude-GitHub-Integration entfernt / Claude GitHub integration retired
+
+DE: Zwei Claude-PR-/Issue-Workflows auf Ownerwunsch entfernt; GitHub-App widerrufen.
+Technische Checks und manuelle Review-Grenzen bleiben verbindlich. Source-only.
+
+EN: Removes two Claude PR/issue workflows at the owner's request and revokes the app.
+Technical checks and manual review boundaries remain binding. Source-only.
+
 ## Gesamtstatistik / Overall Statistics
 
 <!-- project-statistics-v2:begin -->
@@ -1205,27 +1213,27 @@ Profil 2 verwendet Git-getrackte Textdateien und sichtbare Git-Aktivitaet. Die W
 
 | Kennzahl / Metric | Wert / Value |
 |---|---:|
-| Textbasis / Text base | 752222 lines |
-| Textdateien / Text files | 3491 |
+| Textbasis / Text base | 752232 lines |
+| Textdateien / Text files | 3490 |
 | Beobachtbarer Zeitraum / Observable period | 2025-11-09..2026-11-03 |
 | Aktivtage / Active days | 102 |
-| Relevante Commits / Relevant commits | 629 |
-| Zeilen je Aktivtag / Lines per active day | 7374.7 |
+| Relevante Commits / Relevant commits | 631 |
+| Zeilen je Aktivtag / Lines per active day | 7374.8 |
 | Peak-Tag im Fenster / Peak day in window | 2026-03-22 / 321183 |
 | Peak-Woche im Fenster / Peak week in window | 2026-03-22 / 373576 |
 | Laengste Serie / Longest streak | 17 days |
 | Speedup vs. 80 lines/day | 92.2x |
 | Speedup vs. 125 lines/day | 59.0x |
-| Methodik / Methodology | v2; source `3ca3ec1d13ff` |
+| Methodik / Methodology | v2; source `9973856c5f53` |
 
 ### Artefaktmix / Artifact Mix
 
 ```text
 Produktiv / Production          [####................]  18.6% | 140085
 Tests                           [#...................]   7.4% | 55447
-Dokumentation / Documentation   [##########..........]  51.1% | 384608
+Dokumentation / Documentation   [##########..........]  51.1% | 384724
 Skripte / Scripts               [#...................]   3.8% | 28955
-Konfiguration / Configuration   [#...................]   5.8% | 43261
+Konfiguration / Configuration   [#...................]   5.7% | 43155
 Daten und Medien / Data and media [#...................]   0.0% | 1
 Sonstiger Text / Other text     [###.................]  13.3% | 99865
 ```
@@ -1251,7 +1259,7 @@ Sa/Sa  0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 4 0 0 0 0 4 4
 Wochen / Weeks 27..52 | 2026-05-10..2026-11-07
 So/Su  4 0 0 4 0 4 0 0 0 4 4 4 1 4 4 0 4 0 4 4 0 0 0 0 0 0
 Mo/Mo  0 0 0 1 0 2 0 3 1 4 4 0 0 0 2 0 0 4 0 0 0 0 0 0 0 0
-Di/Tu  4 0 3 2 0 0 0 2 0 4 4 4 0 0 0 0 0 4 0 0 0 0 0 0 0 2
+Di/Tu  4 0 3 2 0 0 0 2 0 4 4 4 0 0 0 0 0 4 0 0 0 0 0 0 0 3
 Mi/We  1 0 0 2 0 4 0 2 0 4 2 4 0 0 0 0 0 0 0 0 0 0 0 0 0 -
 Do/Th  0 3 3 3 4 2 0 0 0 4 4 0 0 4 0 0 0 0 0 0 0 0 0 0 3 -
 Fr/Fr  1 4 3 0 0 3 2 3 4 4 4 1 0 0 0 0 0 0 0 0 0 0 0 0 0 -
@@ -1444,7 +1452,7 @@ Die Faktoren vergleichen sichtbare Lieferdichte mit den dokumentierten manuellen
 Scale: 0..10000 lines/day
 Experienced manual [#...................] 80
 Thorsten solo      [#...................] 125
-Visible repository [###############.....] 7374.7
+Visible repository [###############.....] 7374.8
 ```
 
 Die gemeinsame Skala vergleicht Referenzen und sichtbare Lieferdichte. Sie schreibt die Git-Aktivitaet keiner Person oder KI pauschal zu.
@@ -1470,6 +1478,6 @@ DE: Das Fenster beginnt am 2025-11-09 und endet am 2026-11-03. Es enthaelt 102 a
 | 2026-08 | 122136 |
 | 2026-09 | 53155 |
 | 2026-10 | 468 |
-| 2026-11 | 228 |
+| 2026-11 | 486 |
 
 <!-- project-statistics-v2:end -->
