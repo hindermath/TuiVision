@@ -8,7 +8,10 @@
       "decision": "UpdateRequired",
       "rationale": "Document schedules, grouping, exclusions, review boundaries and troubleshooting.",
       "documents": [
-        ".github/DEPENDENCY-MAINTENANCE.md"
+        ".github/DEPENDENCY-MAINTENANCE.md",
+        "docs/project-statistics.md",
+        "docs/project-statistics/report.md",
+        "docs/project-statistics/snapshot.json"
       ],
       "owner": "Repository Maintainer",
       "audiences": [
@@ -23,7 +26,7 @@
       "documentClass": "ActiveSemantic",
       "languageStrategy": "German first, equivalent English in the same file",
       "languagePartners": [],
-      "platformAndExampleProof": "Local macOS YAML round-trip, SchemaStore Dependabot schema and manifest coverage checks; exact-head hosted checks on the PR.",
+      "platformAndExampleProof": "Local macOS YAML round-trip, SchemaStore Dependabot schema and manifest coverage checks; exact-head hosted checks on the PR. Statistics outputs are regenerated from the committed dependency-maintenance revision and checked for drift before delivery.",
       "distributionClass": "sourceOnly",
       "homeSyncRequired": false,
       "evidence": ".github/DEPENDENCY-MAINTENANCE.md",

@@ -1175,6 +1175,26 @@ Documentation Impact: UpdateRequired; the terminal guide and threat model
 document the new security boundary. Statistics provide Git-based
 transparency, not measured AI productivity.
 
+### 2026-11-03 - Dependabot-Wartung / Dependabot maintenance
+
+DE: Branch `codex/dependabot-maintenance-20261103`, Arbeitsfenster 2026-11-03.
+Repository-spezifische Versions-/Sicherheitsgruppen und zweisprachige
+Wartungshinweise ergaenzt. Kein Produktions- oder Testcode geaendert;
+Konfigurations-/Dokumentationsumfang ist im PR-Diff belegt. Profil 2 wird
+aus der committed Inhaltsrevision gerendert; bestehende Referenzen bleiben.
+YAML/Schema, Manifestabdeckung, Policy, Dokumentation, Liefermenge und
+Secret-Scan bestanden. Hosted-Checks werden am PR verfolgt. Keine Pakete
+aktualisiert; Git-basierte Statistik misst keine KI-Zeitersparnis.
+
+EN: Branch `codex/dependabot-maintenance-20261103`, work window 2026-11-03.
+Adds repository-specific version/security groups and bilingual maintenance
+guidance. No production or test code changed; the PR diff records the exact
+configuration/documentation scope. Profile 2 is rendered from the committed
+content revision with existing references. YAML/schema, manifest coverage,
+policy, documentation, delivery scope and secret scan passed. Hosted checks
+are tracked on the PR. No packages updated; Git statistics do not measure
+AI time savings.
+
 ## Gesamtstatistik / Overall Statistics
 
 <!-- project-statistics-v2:begin -->
