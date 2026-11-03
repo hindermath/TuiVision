@@ -74,3 +74,12 @@ PR/issue workflows. This repository no longer starts Claude Code GitHub Actions.
 Local Claude tools and CLAUDE.md remain independent development tools.
 Technical checks and human reviews remain required; dependency PRs receive
 no auto-merge.
+
+## CI-Runner / CI runners
+
+DE: Technische macOS-Pruefungen verwenden macos-15, da GitHub macos-14 am
+2. November 2026 eingestellt hat. Pruefumfang, Berechtigungen und SHA-Pins bleiben erhalten.
+EN: Technical macOS checks use macos-15 because GitHub retired macos-14 on
+2 November 2026. Test coverage, permissions and SHA pins are retained.
+
+Quelle / Source: https://github.blog/changelog/2026-10-01-github-actions-macos-14-runner-image-retirement/

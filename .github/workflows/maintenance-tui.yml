@@ -24,7 +24,7 @@ jobs:
       matrix:
         # Keep the expensive cross-platform canary on the three public reference
         # repositories. Distributed/private fleet copies use Linux continuously.
-        os: ${{ fromJSON(contains(fromJSON('["hindermath/home-baseline","hindermath/agent-operations-cockpit","hindermath/TuiVision"]'), github.repository) && '["ubuntu-22.04","macos-14","windows-2022"]' || '["ubuntu-22.04"]') }}
+        os: ${{ fromJSON(contains(fromJSON('["hindermath/home-baseline","hindermath/agent-operations-cockpit","hindermath/TuiVision"]'), github.repository) && '["ubuntu-22.04","macos-15","windows-2022"]' || '["ubuntu-22.04"]') }}
 
     steps:
       - name: Check out repository
