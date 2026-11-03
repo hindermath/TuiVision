@@ -24,6 +24,9 @@ updates:
       applies-to: security-updates
       patterns:
       - "*"
+  exclude-paths:
+  - ".github/workflows/maintenance-tui.yml"
+  - ".github/workflows/powershell-analysis.yml"
 - package-ecosystem: nuget
   directory: "/"
   schedule:
