@@ -18,7 +18,7 @@ public sealed class Wave6FileOperationTests
     public void Wave6Operation_Cancel_And_Foreign_Intent_Do_Not_Mutate()
     {
         using OperationFixture fixture = new();
-        using ControlledFileWorkspace workspace = new(fixture.Root);
+        using ControlledFileWorkspace workspace = Wave6WorkspaceTestFactory.Open(fixture.Root);
         byte[] before = File.ReadAllBytes(fixture.Source);
         Wave6OperationIntent intent = workspace.PrepareOperation(Wave6OperationKind.Copy, "source.txt", "copy.txt");
 
@@ -37,7 +37,7 @@ public sealed class Wave6FileOperationTests
     public void Wave6Operation_Copy_And_Rename_Are_Confirmed_And_OneShot()
     {
         using OperationFixture fixture = new();
-        using ControlledFileWorkspace workspace = new(fixture.Root);
+        using ControlledFileWorkspace workspace = Wave6WorkspaceTestFactory.Open(fixture.Root);
         Wave6OperationIntent copy = workspace.PrepareOperation(Wave6OperationKind.Copy, "source.txt", "copy.txt");
 
         Wave6OperationResult copied = workspace.Execute(copy, confirmed: true);
@@ -59,7 +59,7 @@ public sealed class Wave6FileOperationTests
     {
         using OperationFixture fixture = new();
         File.WriteAllText(Path.Combine(fixture.Root, "exists.txt"), "exists");
-        using ControlledFileWorkspace workspace = new(fixture.Root);
+        using ControlledFileWorkspace workspace = Wave6WorkspaceTestFactory.Open(fixture.Root);
 
         Assert.ThrowsExactly<InvalidOperationException>(() =>
             workspace.PrepareOperation(Wave6OperationKind.Copy, "source.txt", "source.txt"));
@@ -74,7 +74,7 @@ public sealed class Wave6FileOperationTests
     public void Wave6Operation_Rejects_Stale_Or_Removed_Source()
     {
         using OperationFixture fixture = new();
-        using ControlledFileWorkspace workspace = new(fixture.Root);
+        using ControlledFileWorkspace workspace = Wave6WorkspaceTestFactory.Open(fixture.Root);
         Wave6OperationIntent stale = workspace.PrepareOperation(Wave6OperationKind.Copy, "source.txt", "stale.txt");
         File.AppendAllText(fixture.Source, "-changed");
 
@@ -98,7 +98,7 @@ public sealed class Wave6FileOperationTests
         Directory.CreateDirectory(staging);
         string outside = Path.Combine(Path.GetTempPath(), $"tuivision-wave6-target-{Guid.NewGuid():N}");
         Directory.CreateDirectory(outside);
-        using ControlledFileWorkspace workspace = new(fixture.Root);
+        using ControlledFileWorkspace workspace = Wave6WorkspaceTestFactory.Open(fixture.Root);
         Wave6OperationIntent intent = workspace.PrepareOperation(Wave6OperationKind.Copy, "source.txt", "staging/copy.txt");
 
         try
@@ -135,7 +135,7 @@ public sealed class Wave6FileOperationTests
     public void Wave6Operation_Rejects_Unknown_Kind_Without_Mutation()
     {
         using OperationFixture fixture = new();
-        using ControlledFileWorkspace workspace = new(fixture.Root);
+        using ControlledFileWorkspace workspace = Wave6WorkspaceTestFactory.Open(fixture.Root);
         Wave6OperationIntent intent = workspace.PrepareOperation((Wave6OperationKind)999, "source.txt");
 
         Wave6OperationResult result = workspace.Execute(intent, confirmed: true);
@@ -151,7 +151,7 @@ public sealed class Wave6FileOperationTests
     public void Wave6Operation_Deletes_And_Toggles_ReadOnly()
     {
         using OperationFixture fixture = new();
-        using ControlledFileWorkspace workspace = new(fixture.Root);
+        using ControlledFileWorkspace workspace = Wave6WorkspaceTestFactory.Open(fixture.Root);
         Wave6OperationIntent set = workspace.PrepareOperation(Wave6OperationKind.SetReadOnly, "source.txt");
         Assert.AreEqual(Wave6OperationState.Completed, workspace.Execute(set, confirmed: true).State);
         Assert.IsTrue(File.GetAttributes(fixture.Source).HasFlag(FileAttributes.ReadOnly));

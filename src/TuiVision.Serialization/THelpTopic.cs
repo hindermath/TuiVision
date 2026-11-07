@@ -21,6 +21,8 @@ public readonly record struct THelpCrossReference(int TargetContext, string Labe
 /// </summary>
 public sealed class THelpTopic : ITStreamSerializable
 {
+    private const int MaxParagraphs = 100_000;
+    private const int MaxCrossReferences = 100_000;
     private readonly List<string> _paragraphs = [];
     private readonly List<THelpCrossReference> _crossReferences = [];
 
@@ -95,6 +97,7 @@ public sealed class THelpTopic : ITStreamSerializable
     /// <param name="writer">Der Ziel-Writer. / The destination writer.</param>
     public void SaveTo(TBinaryArchiveWriter writer)
     {
+        EnsureCollectionLimits();
         writer.WriteInt32(Context);
         writer.WriteString(Title);
         writer.WriteInt32(_paragraphs.Count);
@@ -123,22 +126,14 @@ public sealed class THelpTopic : ITStreamSerializable
     public static THelpTopic LoadFrom(TBinaryArchiveReader reader)
     {
         THelpTopic topic = new(reader.ReadInt32(), reader.ReadString());
-        int paragraphCount = reader.ReadInt32();
-        if (paragraphCount < 0)
-        {
-            throw new InvalidDataException("Help-topic paragraph count must be non-negative.");
-        }
+        int paragraphCount = reader.ReadBoundedCount(MaxParagraphs, "Help-topic paragraph");
 
         for (int index = 0; index < paragraphCount; index++)
         {
             topic.AddParagraph(reader.ReadString());
         }
 
-        int referenceCount = reader.ReadInt32();
-        if (referenceCount < 0)
-        {
-            throw new InvalidDataException("Help-topic reference count must be non-negative.");
-        }
+        int referenceCount = reader.ReadBoundedCount(MaxCrossReferences, "Help-topic reference");
 
         for (int index = 0; index < referenceCount; index++)
         {
@@ -155,22 +150,14 @@ public sealed class THelpTopic : ITStreamSerializable
     internal static THelpTopic ReadFrom(ipstream stream)
     {
         THelpTopic topic = new(stream.ReadInt32(), stream.ReadString());
-        int paragraphCount = stream.ReadInt32();
-        if (paragraphCount < 0)
-        {
-            throw new InvalidDataException("Help-topic paragraph count must be non-negative.");
-        }
+        int paragraphCount = stream.ReadBoundedCount(MaxParagraphs, "Help-topic paragraph");
 
         for (int index = 0; index < paragraphCount; index++)
         {
             topic.AddParagraph(stream.ReadString());
         }
 
-        int referenceCount = stream.ReadInt32();
-        if (referenceCount < 0)
-        {
-            throw new InvalidDataException("Help-topic reference count must be non-negative.");
-        }
+        int referenceCount = stream.ReadBoundedCount(MaxCrossReferences, "Help-topic reference");
 
         for (int index = 0; index < referenceCount; index++)
         {
@@ -186,6 +173,7 @@ public sealed class THelpTopic : ITStreamSerializable
 
     internal static void WriteTo(opstream stream, THelpTopic topic)
     {
+        topic.EnsureCollectionLimits();
         stream.WriteInt32(topic.Context);
         stream.WriteString(topic.Title);
         stream.WriteInt32(topic._paragraphs.Count);
@@ -201,6 +189,19 @@ public sealed class THelpTopic : ITStreamSerializable
             stream.WriteString(reference.Label);
             stream.WriteInt32(reference.Offset);
             stream.WriteInt32(reference.Length);
+        }
+    }
+
+    private void EnsureCollectionLimits()
+    {
+        if (_paragraphs.Count > MaxParagraphs)
+        {
+            throw new InvalidDataException($"Help-topic paragraph count exceeds {MaxParagraphs}.");
+        }
+
+        if (_crossReferences.Count > MaxCrossReferences)
+        {
+            throw new InvalidDataException($"Help-topic reference count exceeds {MaxCrossReferences}.");
         }
     }
 }

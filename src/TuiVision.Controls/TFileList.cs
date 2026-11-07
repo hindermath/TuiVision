@@ -51,6 +51,8 @@ public enum TFileEntryKind
 /// </summary>
 public sealed class TFileList : TListBox
 {
+    /// <summary>Maximal sichtbare Dateieinträge. / Maximum visible file entries.</summary>
+    public const int MaxVisibleEntries = 512;
     private readonly List<string> _entries = [];
 
     /// <summary>
@@ -107,6 +109,12 @@ public sealed class TFileList : TListBox
     /// <summary>Die text-first Fehlermeldung des letzten Refresh. / The text-first error message of the latest refresh.</summary>
     public string? LastErrorMessage { get; private set; }
 
+    /// <summary>Zeigt eine gekürzte Liste an. / Indicates a truncated list.</summary>
+    public bool IsTruncated { get; private set; }
+
+    /// <summary>Textorientierter Listenstatus. / Text-oriented list status.</summary>
+    public string? StatusMessage { get; private set; }
+
     /// <summary>
     /// Laedt die Dateieintraege fuer einen Ordner und ein Filtermuster.
     ///
@@ -118,19 +126,29 @@ public sealed class TFileList : TListBox
     {
         string candidateDirectory;
         string candidateWildcard = string.IsNullOrWhiteSpace(wildcard) ? "*" : wildcard;
-        string[] files;
+        List<string> files = [];
         try
         {
             candidateDirectory = Path.GetFullPath(directory);
-            files = Directory.EnumerateFiles(candidateDirectory, candidateWildcard)
-                .OrderBy(path => path, StringComparer.Ordinal)
-                .ToArray();
+            IsTruncated = false;
+            foreach (string path in Directory.EnumerateFiles(candidateDirectory, candidateWildcard))
+            {
+                if (files.Count >= MaxVisibleEntries)
+                {
+                    IsTruncated = true;
+                    break;
+                }
+                files.Add(path);
+            }
+            files.Sort(StringComparer.Ordinal);
         }
         catch (Exception exception) when (IsPathFailure(exception))
         {
             LastRefreshSucceeded = false;
             LastErrorCode = exception is ArgumentException or NotSupportedException ? "invalid-filter" : "directory-unavailable";
             LastErrorMessage = $"Dateiliste nicht verfügbar: {exception.GetType().Name}. / File list unavailable: {exception.GetType().Name}.";
+            IsTruncated = false;
+            StatusMessage = LastErrorMessage;
             CurrentInfo = new TFileSelectionInfo(
                 directory,
                 TFileEntryKind.Missing,
@@ -146,13 +164,16 @@ public sealed class TFileList : TListBox
         LastRefreshSucceeded = true;
         LastErrorCode = null;
         LastErrorMessage = null;
+        StatusMessage = IsTruncated
+            ? $"Eintragsgrenze {MaxVisibleEntries} erreicht; Liste ist unvollständig. / Entry limit {MaxVisibleEntries} reached; list is incomplete."
+            : null;
         _entries.Clear();
         List!.Clear();
 
         foreach (string path in files)
         {
             _entries.Add(path);
-            List.Add(Path.GetFileName(path));
+            List.Add(TFileSystemDisplayText.Escape(Path.GetFileName(path)));
         }
 
         if (_entries.Count > 0)

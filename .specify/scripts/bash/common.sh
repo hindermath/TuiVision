@@ -196,7 +196,7 @@ feature_json_matches_feature_dir() {
     _fd=$(read_feature_json_feature_directory "$repo_root")
 
     [[ -n "$_fd" ]] || return 1
-    [[ "$_fd" != /* ]] && _fd="$repo_root/$_fd"
+    _fd=$(resolve_confined_feature_directory "$repo_root" "$_fd") || return 1
     [[ -d "$_fd" ]] || return 1
 
     local norm_json norm_active
@@ -204,6 +204,32 @@ feature_json_matches_feature_dir() {
     norm_active="$(cd -- "$active_feature_dir" 2>/dev/null && pwd -P)" || return 1
 
     [[ "$norm_json" == "$norm_active" ]]
+}
+
+# Resolves feature directories to one direct child of the repository's specs/
+# tree and rejects existing or dangling link components.
+resolve_confined_feature_directory() {
+    local repo_root="$1"
+    local value="$2"
+    local relative name specs_dir candidate
+    [[ -n "$value" && "$value" != *$'\n'* && "$value" != *$'\r'* ]] || return 1
+    if [[ "$value" == /* ]]; then
+        [[ "$value" == "$repo_root/specs/"* ]] || return 1
+        relative="${value#"$repo_root/"}"
+    else
+        relative="$value"
+    fi
+    [[ "$relative" == specs/* ]] || return 1
+    name="${relative#specs/}"
+    [[ -n "$name" && "$name" != */* && "$name" != '.' && "$name" != '..' ]] || return 1
+    [[ "$name" =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ ]] || return 1
+    specs_dir="$repo_root/specs"
+    candidate="$specs_dir/$name"
+    [[ ! -L "$specs_dir" && ! -L "$candidate" ]] || return 1
+    if [[ -e "$candidate" && ! -d "$candidate" ]]; then
+        return 1
+    fi
+    printf '%s' "$candidate"
 }
 
 # Find feature directory by numeric prefix instead of exact branch match
@@ -266,18 +292,20 @@ get_feature_paths() {
     #   3. Branch-name-based prefix lookup (legacy fallback)
     local feature_dir
     if [[ -n "${SPECIFY_FEATURE_DIRECTORY:-}" ]]; then
-        feature_dir="$SPECIFY_FEATURE_DIRECTORY"
-        # Normalize relative paths to absolute under repo root
-        [[ "$feature_dir" != /* ]] && feature_dir="$repo_root/$feature_dir"
+        feature_dir=$(resolve_confined_feature_directory "$repo_root" "$SPECIFY_FEATURE_DIRECTORY") || {
+            echo "ERROR: Feature directory override must be one link-free child of specs/" >&2
+            return 1
+        }
     elif [[ -f "$repo_root/.specify/feature.json" ]]; then
         # Shared, set -e-safe parser: jq -> python3 -> grep/sed. Returns empty on
         # missing/unparseable/unset so we fall through to the branch-prefix lookup.
         local _fd
         _fd=$(read_feature_json_feature_directory "$repo_root")
         if [[ -n "$_fd" ]]; then
-            feature_dir="$_fd"
-            # Normalize relative paths to absolute under repo root
-            [[ "$feature_dir" != /* ]] && feature_dir="$repo_root/$feature_dir"
+            feature_dir=$(resolve_confined_feature_directory "$repo_root" "$_fd") || {
+                echo "ERROR: feature.json feature_directory must be one link-free child of specs/" >&2
+                return 1
+            }
         elif ! feature_dir=$(find_feature_dir_by_prefix "$repo_root" "$current_branch"); then
             echo "ERROR: Failed to resolve feature directory" >&2
             return 1
@@ -286,6 +314,11 @@ get_feature_paths() {
         echo "ERROR: Failed to resolve feature directory" >&2
         return 1
     fi
+
+    feature_dir=$(resolve_confined_feature_directory "$repo_root" "$feature_dir") || {
+        echo "ERROR: Resolved feature directory leaves the link-free specs/ boundary" >&2
+        return 1
+    }
 
     # Use printf '%q' to safely quote values, preventing shell injection
     # via crafted branch names or paths containing special characters

@@ -502,6 +502,14 @@ public sealed class TFileDialog : TDialog
                 : StandardDialogValidationSeverity.Info;
             messages.Add(new StandardDialogValidationMessage("file-state", Files.CurrentInfo.FallbackMessage!, severity));
         }
+        if (Files.IsTruncated)
+        {
+            messages.Add(new StandardDialogValidationMessage("file-list-truncated", Files.StatusMessage!, StandardDialogValidationSeverity.Info));
+        }
+        if (Directories.IsTruncated)
+        {
+            messages.Add(new StandardDialogValidationMessage("directory-list-truncated", Directories.StatusMessage!, StandardDialogValidationSeverity.Info));
+        }
 
         StandardDialogKind kind = Mode == TFileDialogMode.SelectDirectory ? StandardDialogKind.Directory : StandardDialogKind.File;
         FlowState = new StandardDialogFlowState(kind, state, true, messages, LastDecision);

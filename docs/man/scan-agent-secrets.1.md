@@ -32,12 +32,16 @@ afterwards. The Bash scanner additionally evaluates known AI agent directories,
 while the PowerShell variant checks git-tracked files.*
 
 Der gemeinsame `pre-push`-Hook nutzt `gitleaks` separat fuer die zu pushenden
-Commit-Ranges. Fehlt `gitleaks`, blockiert das allein nicht; der Regex-Fallback
-bleibt fuer die geaenderten getrackten Dateien aus diesen Push-Ranges aktiv.
+Commit-Ranges. Fehlt `gitleaks`, wird der Push sicher abgebrochen, weil ein
+Regex-Scan des aktuellen Worktrees geloeschte Dateien und Zwischen-Commits
+nicht vollstaendig pruefen kann. Die Regex-Pruefung bleibt als zusaetzliche
+Schicht fuer aktuelle getrackte Dateien aktiv.
 
 *The shared `pre-push` hook uses `gitleaks` separately for the commit ranges
-being pushed. Missing `gitleaks` does not block by itself; the regex fallback
-remains active for the changed tracked files from those push ranges.*
+being pushed. If `gitleaks` is missing, the push fails closed because a regex
+scan of the current worktree cannot fully inspect deleted files or intermediate
+commits. Regex checks remain active as an additional layer for current tracked
+files.*
 
 ## Optionen / Options
 

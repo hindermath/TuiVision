@@ -34,11 +34,19 @@ public sealed class THelpCompilerOptions
     /// </summary>
     public int MaxTopics { get; init; } = 10_000;
 
+    /// <summary>
+    /// Die maximale Anzahl erzeugter Themen-, Absatz- und Verweiseintraege.
+    ///
+    /// The maximum number of generated topic, paragraph, and reference entries.
+    /// </summary>
+    public int MaxExpandedModelItems { get; init; } = 100_000;
+
     internal void Validate()
     {
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(MaxSourceCharacters);
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(MaxLineCharacters);
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(MaxTopics);
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(MaxExpandedModelItems);
     }
 }
 
@@ -310,6 +318,16 @@ public sealed class THelpSourceCompiler
             return Failure(diagnostics);
         }
 
+        if (ExceedsExpandedModelLimit(topics, _options.MaxExpandedModelItems))
+        {
+            return Failure(Diagnostic(
+                "THC009",
+                "Erzeugtes Hilfemodell ueberschreitet die konfigurierte Groessengrenze. / Generated help model exceeds the configured size limit.",
+                sourceName,
+                1,
+                1));
+        }
+
         // Erst nach vollstaendiger Validierung entsteht das veroeffentlichte Modell; Fehler brauchen daher keinen Rollback.
         // The published model is created only after full validation, so failures require no rollback.
         THelpFile helpFile = BuildHelpFile(topics, symbols);
@@ -468,6 +486,25 @@ public sealed class THelpSourceCompiler
         }
 
         return helpFile;
+    }
+
+    private static bool ExceedsExpandedModelLimit(IReadOnlyList<TopicBuilder> topics, int maximumItems)
+    {
+        long remainingItems = maximumItems;
+        foreach (TopicBuilder topic in topics)
+        {
+            long itemsPerAlias = 1L + topic.Paragraphs.Count + topic.References.Count;
+            // Die Division prueft die Multiplikation, bevor Alias-Kopien Speicher belegen.
+            // Division checks the multiplication before alias copies occupy memory.
+            if (topic.Symbols.Count > remainingItems / itemsPerAlias)
+            {
+                return true;
+            }
+
+            remainingItems -= topic.Symbols.Count * itemsPerAlias;
+        }
+
+        return false;
     }
 
     private static bool IsValidSymbol(string value)

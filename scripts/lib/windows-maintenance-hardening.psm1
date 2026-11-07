@@ -459,6 +459,42 @@ function Get-HBCanonicalExitCode {
     }
 }
 
+function Resolve-HBNpmPackTarball {
+    <#
+    .SYNOPSIS
+    Prueft mehrzeilige npm-pack-Metadaten und liefert nur das gebundene Archiv.
+
+    Verifies multiline npm-pack metadata and returns only the bound archive.
+    #>
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)][string[]]$PackJson,
+        [Parameter(Mandatory)][string]$PackDirectory,
+        [Parameter(Mandatory)][string]$ExpectedPackage,
+        [Parameter(Mandatory)][string]$ExpectedVersion,
+        [Parameter(Mandatory)][string]$ExpectedIntegrity
+    )
+
+    $jsonText = $PackJson -join [Environment]::NewLine
+    $metadata = @($jsonText | ConvertFrom-Json)
+    if ($metadata.Count -ne 1 -or
+        [string]$metadata[0].name -cne $ExpectedPackage -or
+        [string]$metadata[0].version -cne $ExpectedVersion -or
+        [string]$metadata[0].integrity -cne $ExpectedIntegrity) {
+        throw "npm package identity or integrity mismatch for '$ExpectedPackage@$ExpectedVersion'."
+    }
+
+    $filename = [string]$metadata[0].filename
+    if (-not $filename -or [IO.Path]::GetFileName($filename) -cne $filename) {
+        throw "npm pack returned an invalid filename for '$ExpectedPackage@$ExpectedVersion'."
+    }
+    $tarball = Join-Path $PackDirectory $filename
+    if (-not (Test-Path -LiteralPath $tarball -PathType Leaf)) {
+        throw "Verified npm tarball is missing for '$ExpectedPackage@$ExpectedVersion'."
+    }
+    return (Resolve-Path -LiteralPath $tarball).Path
+}
+
 Export-ModuleMember -Function @(
     'Get-HBMaintenanceMode',
     'Invoke-HBBoundedProcess',
@@ -470,5 +506,6 @@ Export-ModuleMember -Function @(
     'Test-HBResumeEvidence',
     'Get-HBGitNormalizedHash',
     'Get-HBPackageResults',
-    'Get-HBCanonicalExitCode'
+    'Get-HBCanonicalExitCode',
+    'Resolve-HBNpmPackTarball'
 )

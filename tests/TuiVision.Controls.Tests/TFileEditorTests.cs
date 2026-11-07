@@ -65,4 +65,25 @@ public sealed class TFileEditorTests
         Assert.IsTrue(accepted);
         StringAssert.Contains(File.ReadAllText(path), "BX");
     }
+
+    /// <summary>
+    /// Trennt Tippgruppen am gespeicherten Clean-Zustand.
+    ///
+    /// Separates typing groups at the saved clean state.
+    /// </summary>
+    [TestMethod]
+    public void TFileEditor_Save_Ends_Typing_Undo_Group()
+    {
+        using EditorShellTestContext.TemporaryDirectory temp = EditorShellTestContext.CreateTemporaryDirectory();
+        string path = Path.Combine(temp.Path, "notes.txt");
+        TFileEditor editor = new(new TRect(0, 0, 20, 5));
+        editor.HandleEvent(ControlEventFactory.CreateKeyDown(charCode: 'A'));
+        Assert.IsTrue(editor.SaveAs(path));
+        editor.HandleEvent(ControlEventFactory.CreateKeyDown(charCode: 'B'));
+
+        Assert.IsTrue(editor.Undo());
+
+        Assert.AreEqual("A", editor.GetText());
+        Assert.IsFalse(editor.Modified);
+    }
 }

@@ -6,8 +6,10 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 REGISTRY="$REPO_ROOT/scripts/config/brew-apps-registry.json"
 VSCODE_REGISTRY="$REPO_ROOT/scripts/config/vscode-extensions-registry.json"
-CLI_REGISTRY="$REPO_ROOT/scripts/config/required-cli-tools-registry.json"
-NPM_AGENT_REGISTRY="$REPO_ROOT/scripts/config/npm-agent-cli-registry.json"
+CANONICAL_CLI_REGISTRY="$REPO_ROOT/scripts/config/required-cli-tools-registry.json"
+CANONICAL_NPM_AGENT_REGISTRY="$REPO_ROOT/scripts/config/npm-agent-cli-registry.json"
+CLI_REGISTRY="$CANONICAL_CLI_REGISTRY"
+NPM_AGENT_REGISTRY="$CANONICAL_NPM_AGENT_REGISTRY"
 POWERSHELL_MODULE_REGISTRY="$REPO_ROOT/scripts/config/powershell-modules-registry.json"
 LINUX_HARDENING="$REPO_ROOT/scripts/lib/linux-maintenance-hardening.py"
 DRY_RUN=0
@@ -188,6 +190,61 @@ RESULT_ROWS="$WORK_DIR/registry-item-results.tsv"
 ATTEMPTS_FILE="$WORK_DIR/attempts.tsv"
 FAILED_ATTEMPTS_FILE="$WORK_DIR/failed-attempts.tsv"
 : > "$RESULT_ROWS"
+
+normalize_probe_registry() {
+  local selected="$1" canonical="$2" destination="$3" label="$4"
+  python3 - "$selected" "$canonical" "$destination" "$label" <<'PY'
+import copy
+import json
+import os
+import sys
+import tempfile
+
+selected_path, canonical_path, destination, label = sys.argv[1:5]
+with open(selected_path, encoding="utf-8") as source:
+    selected = json.load(source)
+with open(canonical_path, encoding="utf-8") as source:
+    canonical = json.load(source)
+
+canonical_by_id = {item.get("id"): item for item in canonical.get("tools", [])}
+seen = set()
+normalized = []
+for selected_item in selected.get("tools", []):
+    tool_id = selected_item.get("id")
+    if not tool_id or tool_id in seen or tool_id not in canonical_by_id:
+        raise SystemExit(f"{label}: unknown or duplicate trusted tool id: {tool_id!r}")
+    seen.add(tool_id)
+    canonical_item = canonical_by_id[tool_id]
+    for key, value in selected_item.items():
+        if key == "scope":
+            if value not in {"required", "optional"}:
+                raise SystemExit(f"{label}: invalid scope for {tool_id}")
+            continue
+        if key not in canonical_item or value != canonical_item[key]:
+            raise SystemExit(f"{label}: untrusted field {key!r} for {tool_id}")
+    item = copy.deepcopy(canonical_item)
+    item["scope"] = selected_item.get("scope", canonical_item.get("scope", "required"))
+    normalized.append(item)
+
+payload = {"schemaVersion": canonical.get("schemaVersion", 1), "tools": normalized}
+descriptor, temporary = tempfile.mkstemp(prefix=".registry-", dir=os.path.dirname(destination))
+try:
+    with os.fdopen(descriptor, "w", encoding="utf-8") as output:
+        json.dump(payload, output, ensure_ascii=False, indent=2)
+        output.write("\n")
+        output.flush()
+        os.fsync(output.fileno())
+    os.replace(temporary, destination)
+finally:
+    try:
+        os.unlink(temporary)
+    except FileNotFoundError:
+        pass
+PY
+}
+
+NORMALIZED_CLI_REGISTRY="$WORK_DIR/required-cli-tools-registry.json"
+NORMALIZED_NPM_AGENT_REGISTRY="$WORK_DIR/npm-agent-cli-registry.json"
 : > "$ATTEMPTS_FILE"
 : > "$FAILED_ATTEMPTS_FILE"
 
@@ -235,6 +292,13 @@ trap finalize_exit EXIT
 trap 'handle_signal 130' INT
 trap 'handle_signal 143' TERM
 
+normalize_probe_registry "$CLI_REGISTRY" "$CANONICAL_CLI_REGISTRY" \
+  "$NORMALIZED_CLI_REGISTRY" "required CLI registry" || exit 2
+normalize_probe_registry "$NPM_AGENT_REGISTRY" "$CANONICAL_NPM_AGENT_REGISTRY" \
+  "$NORMALIZED_NPM_AGENT_REGISTRY" "npm agent registry" || exit 2
+CLI_REGISTRY="$NORMALIZED_CLI_REGISTRY"
+NPM_AGENT_REGISTRY="$NORMALIZED_NPM_AGENT_REGISTRY"
+
 if [ -z "$RESULT_FILE" ]; then
   RESULT_FILE="$WORK_DIR/toolchain-result.json"
 fi
@@ -265,6 +329,7 @@ parse_probe_fields() {
   printf '%s' "$probe_output" > "$probe_json"
   python3 - "$probe_json" "$probe_fields" <<'PY'
 import json
+import re
 import sys
 
 try:
@@ -456,14 +521,23 @@ for item in data.get("tools", []):
     if os_name not in item.get("platforms", []):
         continue
     install = item.get("install", {})
+    manager = install.get("manager") or "-"
+    arguments = install.get("arguments", [])
+    if manager == "uv-git":
+        repository = install.get("repository", "")
+        revision = install.get("revision", "")
+        package = install.get("package", "")
+        if repository != "https://github.com/github/spec-kit.git" or not re.fullmatch(r"[0-9a-f]{40}", revision) or not package:
+            raise SystemExit(f"invalid immutable uv-git contract for {item.get('id', '')}")
+        arguments = ["tool", "install", package, "--from", f"git+{repository}@{revision}"]
     print(
         "\t".join(
             [
                 item.get("id", ""),
                 item.get("command", ""),
                 json.dumps(item.get("args", []), separators=(",", ":")),
-                install.get("manager") or "-",
-                json.dumps(install.get("arguments", []), separators=(",", ":")),
+                manager,
+                json.dumps(arguments, separators=(",", ":")),
                 install.get("url", ""),
                 install.get("sha256", ""),
                 install.get("interpreter", ""),
@@ -493,6 +567,8 @@ for item in data.get("tools", []):
             [
                 item.get("id", ""),
                 item.get("package", ""),
+                item.get("version", ""),
+                item.get("integrity", ""),
                 item.get("command", ""),
                 json.dumps(item.get("args", []), separators=(",", ":")),
             ]
@@ -829,7 +905,7 @@ install_cli_tool() {
   local arg
 
   case "$manager" in
-    uv)
+    uv|uv-git)
       while IFS= read -r arg; do
         install_args+=("$arg")
       done < <(json_array_items "$install_args_json")
@@ -920,21 +996,74 @@ install_cli_tools() {
 }
 
 install_npm_agent_tools() {
-  local scope id package_name command_name args_json snapshot
+  local scope id package_name package_version package_integrity command_name args_json snapshot
+  local package_spec pack_dir pack_json pack_metadata tarball pack_status
   scope="required"
   [ "$INCLUDE_OPTIONAL" -eq 1 ] && scope="all"
   snapshot="$(snapshot_registry npm-install.tsv npm_agent_registry_items "$scope")"
 
-  while IFS=$'\t' read -r -u 3 id package_name command_name args_json; do
+  while IFS=$'\t' read -r -u 3 id package_name package_version package_integrity command_name args_json; do
     [ -n "$id" ] || continue
     validate_item_id "$id"
     validate_item_id "$package_name"
     if cli_tool_available "$id" "$command_name" "$args_json"; then
       log "OK npm agent cli: $id"
     elif [ "$DRY_RUN" -eq 1 ] || command -v npm >/dev/null 2>&1; then
-      log "INSTALL npm agent cli: $id ($package_name)"
+      if [[ ! "$package_version" =~ ^[0-9]+\.[0-9]+\.[0-9]+([-.][0-9A-Za-z.-]+)?$ ]] \
+          || [[ ! "$package_integrity" =~ ^sha512-[A-Za-z0-9+/]+={0,2}$ ]]; then
+        log "SKIP npm agent cli: $id (ungueltiger unveraenderlicher Paketvertrag)"
+        mark_failed_attempt npm-cli "$id"
+        continue
+      fi
+      package_spec="${package_name}@${package_version}"
+      log "INSTALL npm agent cli: $id ($package_spec, $package_integrity)"
       mark_attempt npm-cli "$id"
-      if ! run_cmd npm install -g "$package_name" </dev/null; then
+      if [ "$DRY_RUN" -eq 1 ]; then
+        log "DRY-RUN: npm pack $package_spec; verify $package_integrity; npm install -g <verified-tarball>"
+        continue
+      fi
+      pack_dir="$WORK_DIR/npm-pack-$id"
+      mkdir -p "$pack_dir"
+      set +e
+      pack_json=$(npm pack "$package_spec" --json --ignore-scripts --pack-destination "$pack_dir" </dev/null 2>/dev/null)
+      pack_status=$?
+      set -e
+      if [ "$pack_status" -ne 0 ]; then
+        log "SKIP npm agent cli: $id (npm pack fehlgeschlagen)"
+        mark_failed_attempt npm-cli "$id"
+        continue
+      fi
+      pack_metadata="$pack_dir/metadata.json"
+      printf '%s' "$pack_json" > "$pack_metadata"
+      tarball=$(python3 - "$pack_metadata" "$pack_dir" "$package_name" "$package_version" "$package_integrity" <<'PY'
+import json
+import pathlib
+import sys
+
+metadata_path, pack_dir, package, version, expected_integrity = sys.argv[1:6]
+with open(metadata_path, encoding="utf-8") as source:
+    values = json.load(source)
+if not isinstance(values, list) or len(values) != 1:
+    raise SystemExit(1)
+value = values[0]
+if value.get("name") != package or value.get("version") != version or value.get("integrity") != expected_integrity:
+    raise SystemExit(1)
+filename = value.get("filename", "")
+if not filename or pathlib.Path(filename).name != filename:
+    raise SystemExit(1)
+tarball = pathlib.Path(pack_dir, filename).resolve()
+root = pathlib.Path(pack_dir).resolve()
+if tarball.parent != root or not tarball.is_file():
+    raise SystemExit(1)
+print(tarball)
+PY
+      ) || tarball=""
+      if [ -z "$tarball" ]; then
+        log "SKIP npm agent cli: $id (Integritaet oder Paketidentitaet stimmt nicht)"
+        mark_failed_attempt npm-cli "$id"
+        continue
+      fi
+      if ! run_cmd npm install -g "$tarball" </dev/null; then
         mark_failed_attempt npm-cli "$id"
       fi
     else
@@ -985,12 +1114,12 @@ compare_cli_registry() {
 compare_npm_agent_scope() {
   local scope="$1"
   local label="$2"
-  local id package_name command_name args_json
+  local id package_name package_version package_integrity command_name args_json
   local missing snapshot attempted final_status
   missing=""
   snapshot="$(snapshot_registry "npm-compare-${scope}.tsv" npm_agent_registry_items "$scope")"
 
-  while IFS=$'\t' read -r -u 3 id package_name command_name args_json; do
+  while IFS=$'\t' read -r -u 3 id package_name package_version package_integrity command_name args_json; do
     [ -n "$id" ] || continue
     attempted=false
     was_attempted npm-cli "$id" && attempted=true

@@ -116,11 +116,90 @@ def is_transient_git_failure(detail: str) -> bool:
     )
 
 
+def delegated_network_environment() -> dict[str, str]:
+    """Keep host authentication while removing repository-routing overrides."""
+    blocked = {
+        "GIT_DIR", "GIT_WORK_TREE", "GIT_COMMON_DIR", "GIT_INDEX_FILE",
+        "GIT_OBJECT_DIRECTORY", "GIT_ALTERNATE_OBJECT_DIRECTORIES", "GIT_NAMESPACE",
+        "GIT_CEILING_DIRECTORIES", "GIT_DISCOVERY_ACROSS_FILESYSTEM", "GIT_CONFIG_COUNT",
+    }
+    return {
+        key: value for key, value in os.environ.items()
+        if key not in blocked
+        and re.fullmatch(r"GIT_CONFIG_(?:KEY|VALUE)_\d+", key) is None
+    }
+
+
 def run_git_network(
-    repository: pathlib.Path | None, *arguments: str
+    repository: pathlib.Path | None, *arguments: str, trusted_remote: str | None = None
 ) -> tuple[subprocess.CompletedProcess[str], int, int]:
     attempts = max(1, min(10, int(os.environ.get("HB_GIT_RETRY_ATTEMPTS", "3"))))
     timeout = max(5, min(3600, int(os.environ.get("HB_GIT_TIMEOUT_SECONDS", "300"))))
+    if trusted_remote is not None:
+        if repository is None or EXECUTION_CONTEXTS is None:
+            raise ContractError("delegated network operation requires an execution context")
+        allowed = {
+            ("fetch", "--prune"),
+            ("ls-remote", "--symref", "origin", "HEAD"),
+        }
+        if arguments not in allowed:
+            raise ContractError("delegated host network operation is outside the transfer contract")
+        result: subprocess.CompletedProcess[str] | None = None
+        started = time.monotonic()
+        for attempt in range(1, attempts + 1):
+            with tempfile.TemporaryDirectory(prefix="hb-git-network-") as temporary:
+                temporary_path = pathlib.Path(temporary)
+                environment = delegated_network_environment()
+                if arguments[0] == "ls-remote":
+                    command = [
+                        "git", "-c", "protocol.ext.allow=never", "ls-remote",
+                        "--symref", "--", trusted_remote, "HEAD",
+                    ]
+                    result = subprocess.run(
+                        command, text=True, capture_output=True, check=False,
+                        timeout=timeout, env=environment,
+                    )
+                else:
+                    mirror = temporary_path / "mirror.git"
+                    initialized = subprocess.run(
+                        ["git", "init", "--bare", "-q", str(mirror)],
+                        text=True, capture_output=True, check=False, timeout=30,
+                        env=environment,
+                    )
+                    if initialized.returncode:
+                        return initialized, attempt, int((time.monotonic() - started) * 1000)
+                    command = [
+                        "git", "-c", "core.hooksPath=/dev/null", "-c", "protocol.ext.allow=never",
+                        "-C", str(mirror), "fetch", "--prune", "--no-recurse-submodules", "--",
+                        trusted_remote, "+refs/heads/*:refs/heads/*",
+                    ]
+                    result = subprocess.run(
+                        command, text=True, capture_output=True, check=False,
+                        timeout=timeout, env=environment,
+                    )
+                    if result.returncode == 0:
+                        bundle = temporary_path / "fetch.bundle"
+                        bundled = subprocess.run(
+                            ["git", "-C", str(mirror), "bundle", "create", str(bundle), "--all"],
+                            text=True, capture_output=True, check=False, timeout=timeout,
+                            env=environment,
+                        )
+                        if bundled.returncode:
+                            return bundled, attempt, int((time.monotonic() - started) * 1000)
+                        bundle_hash = hashlib.sha256()
+                        with bundle.open("rb") as stream:
+                            for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+                                bundle_hash.update(chunk)
+                        digest = bundle_hash.hexdigest()
+                        result = EXECUTION_CONTEXTS.import_bundle(repository, bundle, digest)
+                detail = (result.stderr or result.stdout).strip()
+                if result.returncode == 0 or attempt == attempts or not is_transient_git_failure(detail):
+                    return result, attempt, int((time.monotonic() - started) * 1000)
+                delay = min(3.0, 0.25 * (2 ** (attempt - 1)))
+                time.sleep(delay + random.uniform(0, delay / 4))
+        assert result is not None
+        return result, attempts, int((time.monotonic() - started) * 1000)
+
     command = ["git"]
     if repository is not None:
         command.extend(["-C", str(repository)])
@@ -2853,8 +2932,13 @@ def resolve_default_branch_evidence(
             "remoteHeadAttempt": None,
         }, None, None
 
+    trusted_remote = (
+        target["remote"]
+        if EXECUTION_CONTEXTS is not None and EXECUTION_CONTEXTS.mapping(path)
+        else None
+    )
     remote, attempts, duration_ms = run_git_network(
-        path, "ls-remote", "--symref", "origin", "HEAD"
+        path, "ls-remote", "--symref", "origin", "HEAD", trusted_remote=trusted_remote
     )
     attempt = network_attempt("ls-remote", remote, attempts, duration_ms)
     if remote.returncode != 0:
@@ -2934,7 +3018,12 @@ def classify_repository(
         path, "symbolic-ref", "--quiet", "refs/remotes/origin/HEAD", check=False
     )
     local_symbolic_ref = local_symbolic.stdout.strip() if local_symbolic.returncode == 0 else ""
-    fetch, fetch_attempts, fetch_duration = run_git_network(path, "fetch", "--prune")
+    fetch, fetch_attempts, fetch_duration = run_git_network(
+        path,
+        "fetch",
+        "--prune",
+        trusted_remote=target["remote"] if delegated else None,
+    )
     freshness = network_attempt("fetch", fetch, fetch_attempts, fetch_duration)
     if fetch.returncode != 0:
         finding = "FetchTimedOut" if fetch.returncode == 124 else "FetchFailed"

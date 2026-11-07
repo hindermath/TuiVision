@@ -5,9 +5,8 @@ using TuiVision.Core;
 using TuiVision.Examples.Wave6;
 
 string sourceRoot = Path.Combine(AppContext.BaseDirectory, "Fixtures");
-string workspaceRoot = Path.Combine(Path.GetTempPath(), $"tuivision-tvfm-{Guid.NewGuid():N}");
-CopyFixture(sourceRoot, workspaceRoot);
-using ControlledFileWorkspace workspace = new(workspaceRoot, ownsRoot: true);
+using ControlledFileWorkspace workspace = ControlledFileWorkspace.CreateOwned(
+    workspaceRoot => CopyFixture(sourceRoot, workspaceRoot));
 
 bool headless = args.Contains("--smoke", StringComparer.Ordinal);
 int width = TryReadConsoleDimension(() => Console.WindowWidth, 80);

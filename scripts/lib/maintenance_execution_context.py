@@ -17,6 +17,7 @@ import argparse
 import os
 import sys
 import stat
+import uuid
 
 
 class ExecutionContextError(ValueError):
@@ -75,7 +76,7 @@ def validate_contract(data: dict, today: datetime.date | None = None, *, check_e
 # This small, fixed program runs *inside* Podman. Arguments are JSON, never
 # shell fragments. Resolve every path component there before touching Git.
 REMOTE_PROGRAM = r'''
-import json, pathlib, re, subprocess, sys
+import hashlib, json, os, pathlib, re, subprocess, sys
 p = json.load(sys.stdin)
 root = pathlib.Path(p["root"])
 repo = pathlib.Path(p["repository"])
@@ -86,6 +87,41 @@ if any(char in str(repo) for char in ("*", "\n", "\r")):
     raise SystemExit("Wildcard or control character in Git target")
 if (repo / ".git").is_symlink():
     raise SystemExit("Symlink Git directory rejected")
+
+def bounded_git(args):
+    # Lokale Hooks sind ausführbarer Verwaltungszustand und dürfen bei der
+    # delegierten Wartung nicht die Schreibrechte des Containers erben.
+    # Local hooks are executable administrative state and must not inherit the
+    # delegated maintenance container's write authority.
+    base = ["git", "-c", "safe.directory=", "-c", "safe.directory=" + str(repo),
+            "-c", "core.hooksPath=/dev/null", "-C", str(repo)]
+    blocked = {
+        "GIT_DIR", "GIT_WORK_TREE", "GIT_COMMON_DIR", "GIT_INDEX_FILE",
+        "GIT_OBJECT_DIRECTORY", "GIT_ALTERNATE_OBJECT_DIRECTORIES", "GIT_NAMESPACE",
+        "GIT_CEILING_DIRECTORIES", "GIT_DISCOVERY_ACROSS_FILESYSTEM", "GIT_CONFIG_COUNT",
+    }
+    environment = {
+        key: value for key, value in os.environ.items()
+        if key not in blocked
+        and re.fullmatch(r"GIT_CONFIG_(?:KEY|VALUE)_\d+", key) is None
+    }
+    configured = subprocess.run(
+        [*base, "config", "--name-only", "--get-regexp", r"^hook\..*\.(command|event|enabled)$"],
+        capture_output=True, text=True, env=environment,
+    )
+    if configured.returncode not in (0, 1):
+        raise SystemExit("Git hook configuration cannot be inspected")
+    disabled = []
+    for key in configured.stdout.splitlines():
+        match = re.fullmatch(r"hook\.(.+)\.(?:command|event|enabled)", key, re.IGNORECASE)
+        if not match or any(char in match.group(1) for char in ("\0", "\n", "\r", "=")):
+            raise SystemExit("Unsafe Git hook configuration")
+        disabled.extend(["-c", "hook." + match.group(1) + ".enabled=false"])
+    return subprocess.run(
+        [*base[:-2], *disabled, *base[-2:], *args],
+        capture_output=True, text=True, env=environment,
+    )
+
 if p["action"] == "probe":
     print(json.dumps({"exists":repo.exists(), "directory":repo.is_dir(),
                       "git":(repo / ".git").is_dir()}))
@@ -107,8 +143,29 @@ elif p["action"] == "git":
         raise SystemExit("Only bounded fast-forward merge is allowed")
     # Reset inherited trust (including '*') and trust only this validated repo.
     # Command-scope configuration survives recreation without writing .gitconfig.
-    result = subprocess.run(["git", "-c", "safe.directory=", "-c", "safe.directory=" + str(repo),
-                             "-C", str(repo), *args], capture_output=True, text=True)
+    result = bounded_git(args)
+    print(json.dumps({"returncode":result.returncode,"stdout":result.stdout,"stderr":result.stderr}))
+elif p["action"] == "bundle":
+    if not (repo / ".git").is_dir():
+        raise SystemExit("Missing declared Git repository")
+    bundle = pathlib.Path(p["bundle"])
+    if bundle.parent != pathlib.Path("/tmp") or not re.fullmatch(r"hb-fetch-[0-9a-f]{32}\.bundle", bundle.name):
+        raise SystemExit("Invalid transfer bundle path")
+    if bundle.is_symlink() or not bundle.is_file():
+        raise SystemExit("Missing regular transfer bundle")
+    try:
+        bundle_hash = hashlib.sha256()
+        with bundle.open("rb") as stream:
+            for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+                bundle_hash.update(chunk)
+        if bundle_hash.hexdigest() != p["sha256"]:
+            raise SystemExit("Transfer bundle digest mismatch")
+        result = bounded_git([
+            "fetch", "--prune", "--no-recurse-submodules", "--", str(bundle),
+            "+refs/heads/*:refs/remotes/origin/*",
+        ])
+    finally:
+        bundle.unlink(missing_ok=True)
     print(json.dumps({"returncode":result.returncode,"stdout":result.stdout,"stderr":result.stderr}))
 else:
     raise SystemExit("Unknown maintenance action")
@@ -353,6 +410,41 @@ class ExecutionContexts:
         result = self.request(repository, "git", arguments)
         return subprocess.CompletedProcess(["podman", "exec", "git", *arguments],
                                            result["returncode"], result["stdout"], result["stderr"])
+
+    def import_bundle(
+        self, repository: pathlib.Path, bundle: pathlib.Path, sha256: str
+    ) -> subprocess.CompletedProcess:
+        mapping = self.mapping(repository)
+        if mapping is None or self.container_id is None:
+            raise ExecutionContextError("Sandbox preflight required for bundle import")
+        if not re.fullmatch(r"[0-9a-f]{64}", sha256):
+            raise ExecutionContextError("Invalid transfer bundle digest")
+        self.inspect()
+        remote_bundle = f"/tmp/hb-fetch-{uuid.uuid4().hex}.bundle"
+        copied = subprocess.run(
+            ["podman", "cp", str(bundle), f"{self.container_id}:{remote_bundle}"],
+            capture_output=True, text=True, timeout=120,
+        )
+        if copied.returncode:
+            return copied
+        process = subprocess.run(
+            ["podman", "exec", "-i", self.container_id, "python3", "-c", REMOTE_PROGRAM],
+            input=json.dumps({
+                "root": mapping[0], "repository": mapping[1], "action": "bundle",
+                "bundle": remote_bundle, "sha256": sha256,
+            }),
+            text=True, capture_output=True, timeout=900,
+        )
+        if process.returncode:
+            return process
+        try:
+            result = json.loads(process.stdout)
+        except ValueError as exc:
+            raise ExecutionContextError("Malformed container response") from exc
+        return subprocess.CompletedProcess(
+            ["podman", "exec", "git", "fetch", "<verified-bundle>"],
+            result["returncode"], result["stdout"], result["stderr"],
+        )
 
 
 if __name__ == "__main__":

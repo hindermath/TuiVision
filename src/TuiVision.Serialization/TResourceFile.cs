@@ -12,6 +12,7 @@ public sealed class TResourceFile
 {
     private const int MaxEntries = 4096;
     private const int MaxPayloadBytes = 4 * 1024 * 1024;
+    private const long MaxAggregatePayloadBytes = 64L * 1024 * 1024;
     private readonly TRecordRegistry _registry;
 
     /// <summary>
@@ -101,6 +102,7 @@ public sealed class TResourceFile
         }
 
         writer.WriteInt32(entries.Count);
+        long aggregatePayloadBytes = 0;
         foreach (KeyValuePair<string, object> entry in entries)
         {
             writer.WriteString(entry.Key);
@@ -114,6 +116,12 @@ public sealed class TResourceFile
             if (bytes.Length > MaxPayloadBytes)
             {
                 throw new InvalidDataException($"Resource payload exceeds {MaxPayloadBytes} bytes.");
+            }
+
+            aggregatePayloadBytes = checked(aggregatePayloadBytes + bytes.Length);
+            if (aggregatePayloadBytes > MaxAggregatePayloadBytes)
+            {
+                throw new InvalidDataException($"Aggregate resource payload exceeds {MaxAggregatePayloadBytes} bytes.");
             }
 
             writer.WriteInt32(bytes.Length);
@@ -144,15 +152,12 @@ public sealed class TResourceFile
     private static TResourceFile LoadCore(Stream stream, TRecordRegistry registry)
     {
         TResourceFile resourceFile = new(registry);
-        using TBinaryArchiveReader reader = new(stream, leaveOpen: true);
-        int count = reader.ReadInt32();
+        TArchiveReadBudget budget = new();
+        using TBinaryArchiveReader reader = new(stream, leaveOpen: true, budget);
+        int count = reader.ReadBoundedCount(MaxEntries, "Resource entry");
         // Negative Zähler würden sonst wie eine gültige leere Ressourcendatei wirken.
         // Negative counts would otherwise look like a valid empty resource file.
-        if (count is < 0 or > MaxEntries)
-        {
-            throw new InvalidDataException("Resource entry count must be non-negative.");
-        }
-
+        long aggregatePayloadBytes = 0;
         for (int index = 0; index < count; index++)
         {
             string key = reader.ReadString();
@@ -169,9 +174,15 @@ public sealed class TResourceFile
                 throw new InvalidDataException("Resource payload length must be non-negative.");
             }
 
+            aggregatePayloadBytes = checked(aggregatePayloadBytes + payloadLength);
+            if (aggregatePayloadBytes > MaxAggregatePayloadBytes)
+            {
+                throw new InvalidDataException($"Aggregate resource payload exceeds {MaxAggregatePayloadBytes} bytes.");
+            }
+
             byte[] payload = reader.ReadBytes(payloadLength);
             using MemoryStream payloadStream = new(payload, writable: false);
-            using ipstream payloadReader = new(payloadStream, registry, leaveOpen: true);
+            using ipstream payloadReader = new(payloadStream, registry, leaveOpen: true, budget);
             object? value = payloadReader.ReadObject();
             payloadReader.EnsureFullyConsumed();
             resourceFile.Put(key, value ?? throw new InvalidDataException("Resource payload is missing."));

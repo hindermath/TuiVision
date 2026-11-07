@@ -10,6 +10,7 @@ namespace TuiVision.Serialization;
 /// </summary>
 public sealed class THelpIndex : ITStreamSerializable
 {
+    private const int MaxEntries = 10_000;
     private readonly Dictionary<int, int> _positions = new();
 
     /// <summary>
@@ -42,6 +43,11 @@ public sealed class THelpIndex : ITStreamSerializable
     /// <param name="writer">Der Ziel-Writer. / The destination writer.</param>
     public void SaveTo(TBinaryArchiveWriter writer)
     {
+        if (_positions.Count > MaxEntries)
+        {
+            throw new InvalidDataException($"Help-index entry count exceeds {MaxEntries}.");
+        }
+
         writer.WriteInt32(_positions.Count);
         foreach ((int context, int position) in _positions.OrderBy(pair => pair.Key))
         {
@@ -60,13 +66,7 @@ public sealed class THelpIndex : ITStreamSerializable
     public static THelpIndex LoadFrom(TBinaryArchiveReader reader)
     {
         THelpIndex index = new();
-        int count = reader.ReadInt32();
-        // Ein negativer Zähler ist beschädigte Eingabe und kein leerer Index.
-        // A negative count is malformed input, not an empty index.
-        if (count < 0)
-        {
-            throw new InvalidDataException("Help-index entry count must be non-negative.");
-        }
+        int count = reader.ReadBoundedCount(MaxEntries, "Help-index entry");
 
         for (int current = 0; current < count; current++)
         {

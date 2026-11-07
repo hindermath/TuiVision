@@ -405,7 +405,9 @@
         "M036",
         "M043",
         "M049",
-        "M134"
+        "M134",
+        "M148",
+        "M149"
       ],
       "publicContractItemIds": [
         "P097",
@@ -430,7 +432,8 @@
         "P166",
         "P171",
         "P202",
-        "P203"
+        "P203",
+        "P236"
       ],
       "contractIds": [
         "C022",
@@ -3810,6 +3813,24 @@
       "contractIds": [
         "C029"
       ]
+    },
+    {
+      "itemId": "M148",
+      "path": "src/TuiVision.Core/TControlledOutputDirectory.cs",
+      "assembly": "TuiVision.Core",
+      "domainId": "D08",
+      "contractIds": [
+        "C023"
+      ]
+    },
+    {
+      "itemId": "M149",
+      "path": "src/TuiVision.Controls/TFileSystemDisplayText.cs",
+      "assembly": "TuiVision.Controls",
+      "domainId": "D08",
+      "contractIds": [
+        "C023"
+      ]
     }
   ],
   "publicContractItems": [
@@ -5885,6 +5906,13 @@
       "fullTypeName": "TuiVision.Serialization.TFormSemanticJson",
       "domainId": "D10",
       "contractIds": ["C029"]
+    },
+    {
+      "itemId": "P236",
+      "assembly": "TuiVision.Core",
+      "fullTypeName": "TuiVision.Core.TControlledOutputDirectory",
+      "domainId": "D08",
+      "contractIds": ["C023"]
     }
   ],
   "contracts": [
@@ -6824,7 +6852,9 @@
         "M031",
         "M034",
         "M043",
-        "M134"
+        "M134",
+        "M148",
+        "M149"
       ],
       "publicContractItemIds": [
         "P099",
@@ -6835,7 +6865,8 @@
         "P157",
         "P166",
         "P202",
-        "P203"
+        "P203",
+        "P236"
       ],
       "borlandSources": [
         "tv203s/contrib/tvision/classes/tchdirdi.cc",

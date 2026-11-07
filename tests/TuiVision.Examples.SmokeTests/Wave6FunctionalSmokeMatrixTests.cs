@@ -63,7 +63,7 @@ public sealed class Wave6FunctionalSmokeMatrixTests : ExampleTestBase
         string root = CreateWorkspace();
         try
         {
-            using ControlledFileWorkspace workspace = new(root);
+            using ControlledFileWorkspace workspace = Wave6WorkspaceTestFactory.Open(root);
             Tp7FileManagerApp app = new(workspace, DefaultBounds(), headless: true);
             app.QueueEvents(
             [
@@ -92,7 +92,7 @@ public sealed class Wave6FunctionalSmokeMatrixTests : ExampleTestBase
         string root = CreateWorkspace();
         try
         {
-            using ControlledFileWorkspace workspace = new(root);
+            using ControlledFileWorkspace workspace = Wave6WorkspaceTestFactory.Open(root);
             Tp7FileManagerApp app = new(workspace, DefaultBounds(48, 16), headless: true);
             app.QueueEvents([TEvent.CreateKeyDown(new TKeyDownEvent('\0', 0x3B, 0x3B00, 0, 0x3B))]);
 
@@ -115,7 +115,7 @@ public sealed class Wave6FunctionalSmokeMatrixTests : ExampleTestBase
         string root = CreateWorkspace();
         try
         {
-            using ControlledFileWorkspace workspace = new(root);
+            using ControlledFileWorkspace workspace = Wave6WorkspaceTestFactory.Open(root);
             Tp7FileManagerApp app = new(workspace, DefaultBounds(), headless: true);
             app.QueueEvents(
             [
@@ -149,7 +149,7 @@ public sealed class Wave6FunctionalSmokeMatrixTests : ExampleTestBase
         string root = CreateWorkspace();
         try
         {
-            using ControlledFileWorkspace workspace = new(root);
+            using ControlledFileWorkspace workspace = Wave6WorkspaceTestFactory.Open(root);
             Tp7FileManagerApp app = new(workspace, DefaultBounds(), headless: true);
             app.QueueEvents(
             [
@@ -180,8 +180,8 @@ public sealed class Wave6FunctionalSmokeMatrixTests : ExampleTestBase
         string mouseRoot = CreateWorkspace();
         try
         {
-            using ControlledFileWorkspace keyboardWorkspace = new(keyboardRoot);
-            using ControlledFileWorkspace mouseWorkspace = new(mouseRoot);
+            using ControlledFileWorkspace keyboardWorkspace = Wave6WorkspaceTestFactory.Open(keyboardRoot);
+            using ControlledFileWorkspace mouseWorkspace = Wave6WorkspaceTestFactory.Open(mouseRoot);
             Tp7FileManagerApp keyboard = new(keyboardWorkspace, DefaultBounds(), headless: true);
             Tp7FileManagerApp mouse = new(mouseWorkspace, DefaultBounds(), headless: true);
             keyboard.QueueEvents([TEvent.CreateCommand(Tp7FileManagerApp.CmKeyboardDropIntent)]);

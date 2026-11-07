@@ -28,8 +28,9 @@ Overview text with {details:Details}.
   before success.
 - Stream input is decoded as strict UTF-8; invalid byte sequences are rejected
   with a source diagnostic. String input is treated as already decoded text.
-- Default limits are 1 MiB of decoded source, 16,384 characters per line, and
-  10,000 topics; applications may configure positive alternatives.
+- Default limits are 1 MiB of decoded source, 16,384 characters per line,
+  10,000 topic declarations, and 100,000 expanded topic, paragraph, and
+  cross-reference entries; applications may configure positive alternatives.
 - Duplicate symbols/contexts, invalid numbers, malformed directives/references,
   unresolved targets, or exceeded limits produce diagnostics and no model.
 - Stable error families are `THC001` no topic, `THC002` malformed placement or

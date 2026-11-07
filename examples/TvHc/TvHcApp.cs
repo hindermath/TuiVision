@@ -23,13 +23,13 @@ public sealed class TvHcApp : Wave3Application
     private const string ValidSource = ".topic Welcome=1\nWelcome\nOpen {Next:Next}.\n.topic Next=2\nNext topic";
     private const string InvalidSource = ".topic Broken=1\nSee {Missing:Missing}.";
     private readonly THelpSourceCompiler _compiler = new();
-    private readonly string? _allowedOutputDirectory;
+    private readonly TControlledOutputDirectory? _outputDirectory;
     private readonly List<string> _visibleHistory = [];
 
     /// <summary>Initialisiert die Compiler-Demo. / Initializes the compiler demo.</summary>
-    public TvHcApp(TRect bounds, bool headless = false, string? allowedOutputDirectory = null) : base(bounds, headless)
+    public TvHcApp(TRect bounds, bool headless = false, TControlledOutputDirectory? outputDirectory = null) : base(bounds, headless)
     {
-        _allowedOutputDirectory = allowedOutputDirectory is null ? null : Path.GetFullPath(allowedOutputDirectory);
+        _outputDirectory = outputDirectory;
         ShowCompilation("valid.topic", ValidSource);
     }
 
@@ -118,18 +118,20 @@ public sealed class TvHcApp : Wave3Application
     private void PersistOwned(string? relativePath)
     {
         LastPersistRejected = true;
-        if (_allowedOutputDirectory is null || string.IsNullOrWhiteSpace(relativePath) || Path.IsPathRooted(relativePath))
+        if (_outputDirectory is null || string.IsNullOrWhiteSpace(relativePath) || Path.IsPathRooted(relativePath))
         {
             SetWave3Status("TvHc", "persist rejected: no owned target");
             return;
         }
 
-        string root = Path.TrimEndingDirectorySeparator(_allowedOutputDirectory);
-        string candidate = Path.GetFullPath(Path.Combine(root, relativePath));
-        string prefix = root + Path.DirectorySeparatorChar;
-        if (!candidate.StartsWith(prefix, StringComparison.Ordinal))
+        string candidate;
+        try
         {
-            SetWave3Status("TvHc", "persist rejected: outside owned root");
+            candidate = _outputDirectory.ResolveNewFile(relativePath);
+        }
+        catch (Exception exception) when (exception is ArgumentException or InvalidOperationException or IOException)
+        {
+            SetWave3Status("TvHc", "persist rejected: unsafe owned target");
             return;
         }
 
@@ -142,7 +144,6 @@ public sealed class TvHcApp : Wave3Application
             return;
         }
 
-        Directory.CreateDirectory(root);
         result.HelpFile!.Save(candidate);
         LastOutputPath = candidate;
         LastPersistRejected = false;

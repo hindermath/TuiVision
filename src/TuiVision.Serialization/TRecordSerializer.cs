@@ -80,6 +80,13 @@ public sealed class TRecordSerializer
                 throw new InvalidDataException("Payload length must be non-negative.");
             }
 
+            // Die endliche Envelope-Groesse wird vor jeder payload-abhaengigen Allokation geprueft.
+            // The finite envelope size is checked before any payload-dependent allocation.
+            if (payloadLength > reader.GetRemainingByteCount())
+            {
+                throw new InvalidDataException("Serialized payload is truncated.");
+            }
+
             byte[] payload = reader.ReadBytes(payloadLength);
             reader.EnsureFullyConsumed();
 

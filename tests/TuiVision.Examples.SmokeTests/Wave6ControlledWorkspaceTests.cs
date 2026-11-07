@@ -2,7 +2,10 @@
 // Licensed under the MIT Licence. See LICENSE file in the project root for full licence information.
 
 using System.Text;
+using System.Reflection;
 using TuiVision.Examples.Wave6;
+using System.Security.AccessControl;
+using System.Runtime.Versioning;
 
 namespace TuiVision.Examples.SmokeTests;
 
@@ -14,12 +17,90 @@ namespace TuiVision.Examples.SmokeTests;
 [TestClass]
 public sealed class Wave6ControlledWorkspaceTests
 {
+    /// <summary>
+    /// Prüft die öffentliche private Wurzel und ihre Lebensdauer.
+    ///
+    /// Verifies the public private-root factory and its lifetime.
+    /// </summary>
+    [TestMethod]
+    public void Wave6Workspace_PublicFactory_Owns_Private_Root()
+    {
+        string? root = null;
+        using (ControlledFileWorkspace workspace = ControlledFileWorkspace.CreateOwned(
+            path => File.WriteAllText(Path.Combine(path, "fixture.txt"), "owned")))
+        {
+            root = workspace.RootPath;
+            Assert.IsTrue(File.Exists(Path.Combine(root, "fixture.txt")));
+            Assert.IsFalse(typeof(ControlledFileWorkspace).GetConstructors().Any());
+            if (!OperatingSystem.IsWindows())
+            {
+                UnixFileMode mode = File.GetUnixFileMode(root);
+                UnixFileMode external = UnixFileMode.GroupRead | UnixFileMode.GroupWrite | UnixFileMode.GroupExecute
+                    | UnixFileMode.OtherRead | UnixFileMode.OtherWrite | UnixFileMode.OtherExecute;
+                Assert.AreEqual((UnixFileMode)0, mode & external);
+            }
+            else
+            {
+                AssertWindowsRootIsPrivate(root);
+            }
+        }
+
+        Assert.IsNotNull(root);
+        Assert.IsFalse(Directory.Exists(root));
+    }
+
+    [SupportedOSPlatform("windows")]
+    private static void AssertWindowsRootIsPrivate(string root)
+    {
+        DirectorySecurity security = FileSystemAclExtensions.GetAccessControl(new DirectoryInfo(root));
+        Assert.IsTrue(security.AreAccessRulesProtected);
+        Assert.IsFalse(security.GetAccessRules(true, true, typeof(System.Security.Principal.SecurityIdentifier))
+            .Cast<FileSystemAccessRule>()
+            .Any(rule => rule.IsInherited));
+    }
+
+    /// <summary>
+    /// Lehnt einen extern beschreibbaren Temp-Elternpfad ohne Sticky-Schutz ab.
+    ///
+    /// Rejects an externally writable temporary parent without sticky protection.
+    /// </summary>
+    [TestMethod]
+    public void Wave6Workspace_Rejects_Permissive_Temporary_Parent()
+    {
+        if (OperatingSystem.IsWindows())
+        {
+            return;
+        }
+
+        string parent = Directory.CreateTempSubdirectory("tuivision-permissive-").FullName;
+        try
+        {
+            File.SetUnixFileMode(
+                parent,
+                UnixFileMode.UserRead | UnixFileMode.UserWrite | UnixFileMode.UserExecute
+                    | UnixFileMode.GroupRead | UnixFileMode.GroupWrite | UnixFileMode.GroupExecute
+                    | UnixFileMode.OtherRead | UnixFileMode.OtherWrite | UnixFileMode.OtherExecute);
+            MethodInfo validator = typeof(ControlledFileWorkspace).GetMethod(
+                "ValidateTemporaryParent",
+                BindingFlags.Static | BindingFlags.NonPublic)
+                ?? throw new InvalidOperationException("Temporary-parent validator was not found.");
+
+            TargetInvocationException error = Assert.ThrowsExactly<TargetInvocationException>(
+                () => validator.Invoke(null, [parent]));
+            Assert.IsInstanceOfType<InvalidOperationException>(error.InnerException);
+        }
+        finally
+        {
+            Directory.Delete(parent);
+        }
+    }
+
     /// <summary>Prüft stabile Wurzel- und Unterverzeichnislisten. / Verifies stable root and child directory listings.</summary>
     [TestMethod]
     public void Wave6Workspace_Lists_And_Navigates_Only_Below_Root()
     {
         using WorkspaceFixture fixture = new();
-        using ControlledFileWorkspace workspace = new(fixture.Root);
+        using ControlledFileWorkspace workspace = Wave6WorkspaceTestFactory.Open(fixture.Root);
 
         Wave6DirectorySnapshot root = workspace.List();
         Wave6DirectorySnapshot child = workspace.List("docs");
@@ -37,7 +118,7 @@ public sealed class Wave6ControlledWorkspaceTests
         using WorkspaceFixture fixture = new();
         File.WriteAllText(Path.Combine(fixture.Root, "long.txt"), string.Join('\n', Enumerable.Repeat("line", 100)), Encoding.UTF8);
         File.WriteAllBytes(Path.Combine(fixture.Root, "invalid.txt"), [0x66, 0x80, 0x6f]);
-        using ControlledFileWorkspace workspace = new(fixture.Root);
+        using ControlledFileWorkspace workspace = Wave6WorkspaceTestFactory.Open(fixture.Root);
 
         Wave6PreviewResult limited = workspace.PreviewText("long.txt");
         Wave6PreviewResult invalid = workspace.PreviewText("invalid.txt");
@@ -53,10 +134,10 @@ public sealed class Wave6ControlledWorkspaceTests
     public void Wave6Workspace_Rejects_Missing_And_Disposed_Root()
     {
         string missing = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString("N"));
-        Assert.ThrowsExactly<DirectoryNotFoundException>(() => new ControlledFileWorkspace(missing));
+        Assert.ThrowsExactly<TargetInvocationException>(() => Wave6WorkspaceTestFactory.Open(missing));
 
         using WorkspaceFixture fixture = new();
-        ControlledFileWorkspace workspace = new(fixture.Root);
+        ControlledFileWorkspace workspace = Wave6WorkspaceTestFactory.Open(fixture.Root);
         workspace.Dispose();
 
         Assert.IsTrue(workspace.IsDisposed);
@@ -83,7 +164,7 @@ public sealed class Wave6ControlledWorkspaceTests
                 Assert.Inconclusive($"Symbolic-link creation is unavailable: {exception.GetType().Name}");
             }
 
-            using ControlledFileWorkspace workspace = new(fixture.Root);
+            using ControlledFileWorkspace workspace = Wave6WorkspaceTestFactory.Open(fixture.Root);
             Assert.ThrowsExactly<InvalidOperationException>(() => workspace.List("linked"));
             Assert.ThrowsExactly<InvalidOperationException>(() => workspace.PreviewText("linked/secret.txt"));
         }
@@ -105,7 +186,7 @@ public sealed class Wave6ControlledWorkspaceTests
         using WorkspaceFixture fixture = new();
         File.WriteAllText(Path.Combine(fixture.Root, "small.txt"), "1");
         File.WriteAllText(Path.Combine(fixture.Root, "large.txt"), "123456");
-        using ControlledFileWorkspace workspace = new(fixture.Root);
+        using ControlledFileWorkspace workspace = Wave6WorkspaceTestFactory.Open(fixture.Root);
 
         Wave6DirectorySnapshot filtered = workspace.List(filter: "*.txt", sort: Wave6Sort.Size);
         Wave6DirectorySnapshot empty = workspace.List(filter: "*.missing");
@@ -126,7 +207,7 @@ public sealed class Wave6ControlledWorkspaceTests
         File.WriteAllBytes(
             Path.Combine(fixture.Root, "large.bin"),
             Enumerable.Range(0, ControlledFileWorkspace.PreviewByteLimit + 5).Select(value => (byte)value).ToArray());
-        using ControlledFileWorkspace workspace = new(fixture.Root);
+        using ControlledFileWorkspace workspace = Wave6WorkspaceTestFactory.Open(fixture.Root);
 
         Wave6PreviewResult preview = workspace.PreviewHex("large.bin");
 
@@ -142,7 +223,7 @@ public sealed class Wave6ControlledWorkspaceTests
     public void Wave6Workspace_Searches_And_Selects_Only_Internal_Viewers()
     {
         using WorkspaceFixture fixture = new();
-        using ControlledFileWorkspace workspace = new(fixture.Root);
+        using ControlledFileWorkspace workspace = Wave6WorkspaceTestFactory.Open(fixture.Root);
 
         Wave6SearchResult result = workspace.Search("", "*.txt");
         using CancellationTokenSource canceled = new();
@@ -171,7 +252,7 @@ public sealed class Wave6ControlledWorkspaceTests
             File.WriteAllText(Path.Combine(current, $"depth-{depth}.hit"), "depth");
         }
 
-        using ControlledFileWorkspace depthWorkspace = new(depthFixture.Root);
+        using ControlledFileWorkspace depthWorkspace = Wave6WorkspaceTestFactory.Open(depthFixture.Root);
         Wave6SearchResult depthResult = depthWorkspace.Search("", "depth-*.hit");
 
         using WorkspaceFixture fileFixture = new();
@@ -180,7 +261,7 @@ public sealed class Wave6ControlledWorkspaceTests
             File.WriteAllText(Path.Combine(fileFixture.Root, $"visited-{index:D3}.nomatch"), "visited");
         }
 
-        using ControlledFileWorkspace fileWorkspace = new(fileFixture.Root);
+        using ControlledFileWorkspace fileWorkspace = Wave6WorkspaceTestFactory.Open(fileFixture.Root);
         Wave6SearchResult files = fileWorkspace.Search("", "*.absent");
 
         using WorkspaceFixture resultFixture = new();
@@ -189,7 +270,7 @@ public sealed class Wave6ControlledWorkspaceTests
             File.WriteAllText(Path.Combine(resultFixture.Root, $"result-{index:D3}.hit"), "result");
         }
 
-        using ControlledFileWorkspace resultWorkspace = new(resultFixture.Root);
+        using ControlledFileWorkspace resultWorkspace = Wave6WorkspaceTestFactory.Open(resultFixture.Root);
         Wave6SearchResult results = resultWorkspace.Search("", "result-*.hit");
 
         CollectionAssert.Contains(depthResult.Matches.ToArray(), "d1/d2/d3/d4/d5/d6/d7/d8/depth-8.hit");

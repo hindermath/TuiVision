@@ -109,6 +109,159 @@ public sealed class SerializationHardeningEndToEndTests
         Assert.ThrowsExactly<InvalidDataException>(() => THelpTopic.LoadFrom(topicReader));
     }
 
+    /// <summary>
+    /// Prueft extreme Help-Zaehler vor dem Eintritt in Sammlungs-Schleifen.
+    ///
+    /// Verifies extreme help counts before entering collection loops.
+    /// </summary>
+    [TestMethod]
+    public void HelpLoad_ExtremeCounts_RejectBeforeMaterialization()
+    {
+        using MemoryStream helpStream = WriteArchive(writer => writer.WriteInt32(int.MaxValue));
+        using TBinaryArchiveReader helpReader = new(helpStream, leaveOpen: true);
+        Assert.ThrowsExactly<InvalidDataException>(() => THelpFile.LoadFrom(helpReader));
+
+        using MemoryStream paragraphStream = WriteArchive(writer =>
+        {
+            writer.WriteInt32(1);
+            writer.WriteString("One");
+            writer.WriteInt32(int.MaxValue);
+        });
+        using TBinaryArchiveReader paragraphReader = new(paragraphStream, leaveOpen: true);
+        Assert.ThrowsExactly<InvalidDataException>(() => THelpTopic.LoadFrom(paragraphReader));
+
+        using MemoryStream referenceStream = WriteArchive(writer =>
+        {
+            writer.WriteInt32(1);
+            writer.WriteString("One");
+            writer.WriteInt32(0);
+            writer.WriteInt32(int.MaxValue);
+        });
+        using TBinaryArchiveReader referenceReader = new(referenceStream, leaveOpen: true);
+        Assert.ThrowsExactly<InvalidDataException>(() => THelpTopic.LoadFrom(referenceReader));
+
+        using MemoryStream indexStream = WriteArchive(writer => writer.WriteInt32(int.MaxValue));
+        using TBinaryArchiveReader indexReader = new(indexStream, leaveOpen: true);
+        Assert.ThrowsExactly<InvalidDataException>(() => THelpIndex.LoadFrom(indexReader));
+    }
+
+    /// <summary>
+    /// Prueft dieselbe Themenbegrenzung im registrierten Kompatibilitaets-Stream.
+    ///
+    /// Verifies the same topic bound in the registered compatibility stream.
+    /// </summary>
+    [TestMethod]
+    public void HelpLoad_StreamFactoryExtremeTopicCount_RejectsBeforeLoop()
+    {
+        TRecordRegistry registry = new();
+        THelpFile.RegisterRecords(registry);
+        using MemoryStream stream = WriteArchive(writer =>
+        {
+            writer.WriteByte(1);
+            writer.WriteString("help-file");
+            writer.WriteInt32(1);
+            writer.WriteInt32(int.MaxValue);
+        });
+        using ipstream reader = new(stream, registry, leaveOpen: true);
+
+        Assert.ThrowsExactly<InvalidDataException>(() => reader.ReadObject<THelpFile>());
+    }
+
+    /// <summary>
+    /// Prueft, dass extreme Stringlaengen vor der Nutzdatenallokation scheitern.
+    ///
+    /// Verifies that extreme string lengths fail before payload allocation.
+    /// </summary>
+    [TestMethod]
+    public void ArchiveString_ExtremeEncodedLength_RejectsBeforeAllocation()
+    {
+        using MemoryStream stream = new([0xFF, 0xFF, 0xFF, 0xFF, 0x07]);
+        using TBinaryArchiveReader reader = new(stream);
+
+        Assert.ThrowsExactly<InvalidDataException>(() => reader.ReadString());
+        Assert.ThrowsExactly<InvalidDataException>(() =>
+        {
+            using MemoryStream target = new();
+            using TBinaryArchiveWriter writer = new(target);
+            writer.WriteString(new string('x', 65_537));
+        });
+    }
+
+    /// <summary>
+    /// Prueft das kombinierte Help-Modellbudget in beiden Writer-Darstellungen.
+    ///
+    /// Verifies the combined help-model budget in both writer representations.
+    /// </summary>
+    [TestMethod]
+    public void HelpSave_CombinedModelBudget_RejectsUnreadableOutput()
+    {
+        THelpFile helpFile = new();
+        for (int topicIndex = 0; topicIndex < 10; topicIndex++)
+        {
+            THelpTopic topic = new(topicIndex + 1, $"Topic {topicIndex}");
+            for (int paragraphIndex = 0; paragraphIndex < 10_000; paragraphIndex++)
+            {
+                topic.AddParagraph(string.Empty);
+            }
+
+            helpFile.AddTopic(topic);
+        }
+
+        Assert.ThrowsExactly<InvalidDataException>(() =>
+        {
+            using MemoryStream archive = new();
+            using TBinaryArchiveWriter writer = new(archive);
+            helpFile.SaveTo(writer);
+        });
+
+        TRecordRegistry registry = new();
+        THelpFile.RegisterRecords(registry);
+        Assert.ThrowsExactly<InvalidDataException>(() =>
+        {
+            using MemoryStream compatibility = new();
+            using opstream writer = new(compatibility, registry);
+            writer.WriteObject(helpFile);
+        });
+    }
+
+    /// <summary>
+    /// Prueft das gemeinsame Objektbudget ueber mehrere Ressourcen-Payloads.
+    ///
+    /// Verifies the shared object budget across multiple resource payloads.
+    /// </summary>
+    [TestMethod]
+    public void ResourceLoad_ObjectBudgetCannotResetPerPayload()
+    {
+        TRecordRegistry registry = new();
+        TResourceFile.RegisterBuiltInTypes(registry);
+        THelpFile helpFile = new();
+        for (int index = 0; index < 2_100; index++)
+        {
+            helpFile.AddTopic(new THelpTopic(index + 1, $"T{index}"));
+        }
+
+        TResourceFile resources = new(registry);
+        resources.Put("first", helpFile);
+        resources.Put("second", helpFile);
+        using MemoryStream stream = new();
+        resources.Save(stream);
+        stream.Position = 0;
+
+        Assert.ThrowsExactly<InvalidDataException>(() => TResourceFile.Load(stream, registry));
+    }
+
+    private static MemoryStream WriteArchive(Action<TBinaryArchiveWriter> write)
+    {
+        MemoryStream stream = new();
+        using (TBinaryArchiveWriter writer = new(stream, leaveOpen: true))
+        {
+            write(writer);
+        }
+
+        stream.Position = 0;
+        return stream;
+    }
+
     private static byte[] CreatePayload(TRecordRegistry registry, object value)
     {
         using MemoryStream payload = new();

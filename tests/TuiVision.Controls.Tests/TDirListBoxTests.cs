@@ -51,4 +51,47 @@ public sealed class TDirListBoxTests
         Assert.IsEmpty(dialog.Files.Entries);
         Assert.AreEqual(TFileEntryKind.Missing, dialog.CurrentInfo.Kind);
     }
+
+    /// <summary>
+    /// Zeigt Formatzeichen im Verzeichnisnamen als sichtbares Escape an.
+    ///
+    /// Displays directory-name format characters as a visible escape.
+    /// </summary>
+    [TestMethod]
+    public void TDirListBox_Refresh_Escapes_Format_Characters_But_Navigates_Original()
+    {
+        using EditorShellTestContext.TemporaryDirectory temp = EditorShellTestContext.CreateTemporaryDirectory();
+        string child = Path.Combine(temp.Path, "safe\u2066name");
+        Directory.CreateDirectory(child);
+        TDirListBox directories = new(new TRect(0, 0, 40, 5));
+
+        directories.Refresh(temp.Path);
+
+        Assert.AreEqual("safe\\u2066name", directories.GetText(0, 40));
+        Assert.AreEqual(child, directories.NavigateToFocusedDirectory());
+    }
+
+    /// <summary>
+    /// Begrenzt Verzeichnislisten und hält Modell und Anzeige synchron.
+    ///
+    /// Bounds directory lists and keeps model and display synchronized.
+    /// </summary>
+    [TestMethod]
+    public void TDirListBox_Refresh_Bounds_Entry_Cardinality()
+    {
+        using EditorShellTestContext.TemporaryDirectory temp = EditorShellTestContext.CreateTemporaryDirectory();
+        for (int index = 0; index < TDirListBox.MaxVisibleEntries + 5; index++)
+        {
+            Directory.CreateDirectory(Path.Combine(temp.Path, $"dir-{index:D4}"));
+        }
+        TDirListBox directories = new(new TRect(0, 0, 30, 5));
+
+        directories.Refresh(temp.Path);
+
+        Assert.HasCount(TDirListBox.MaxVisibleEntries, directories.Entries);
+        Assert.AreEqual(TDirListBox.MaxVisibleEntries, directories.List!.Count);
+        Assert.IsTrue(directories.IsTruncated);
+        StringAssert.Contains(directories.StatusMessage, "list is incomplete");
+        Assert.AreEqual(directories.Entries[0], directories.SelectedDirectory);
+    }
 }

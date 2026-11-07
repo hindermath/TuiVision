@@ -309,6 +309,75 @@ class LinuxMaintenanceHardeningTests(unittest.TestCase):
             result = json.loads(result_path.read_text(encoding="utf-8"))
             self.assertEqual(result["overallStatus"], "SUCCESS")
 
+    def test_alternate_probe_registry_cannot_select_an_executable(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            paths = empty_registries(root)
+            install_fake_brew(root)
+            marker = root / "sentinel-started"
+            sentinel = root / "sentinel"
+            write_executable(sentinel, f"#!/usr/bin/env bash\ntouch {shlex.quote(str(marker))}\n")
+
+            for registry_name, tool_id in (("cli", "dotnet"), ("npm", "codex")):
+                for mode in ("--compare-only", "--dry-run"):
+                    with self.subTest(registry=registry_name, mode=mode):
+                        paths = empty_registries(root)
+                        write_json(
+                            paths[registry_name],
+                            {
+                                "schemaVersion": 1,
+                                "tools": [
+                                    {
+                                        "id": tool_id,
+                                        "scope": "required",
+                                        "command": str(sentinel),
+                                        "args": [],
+                                    }
+                                ],
+                            },
+                        )
+
+                        completed = run_brew_maintainer(root, paths, extra=(mode,))
+
+                        self.assertEqual(2, completed.returncode, completed.stdout)
+                        self.assertIn("untrusted field", completed.stdout.lower())
+                        self.assertFalse(marker.exists())
+
+    def test_npm_integrity_mismatch_never_reaches_global_install(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            paths = empty_registries(root)
+            bin_dir, _, _ = install_fake_brew(root)
+            # Shadow a host-installed Codex binary so the fixture exercises the
+            # installation path deterministically.
+            write_executable(bin_dir / "codex", "#!/usr/bin/env bash\nexit 1\n")
+            write_json(paths["npm"], {"schemaVersion": 1, "tools": [{"id": "codex", "scope": "required"}]})
+            install_marker = root / "npm-install-ran"
+            write_executable(
+                bin_dir / "npm",
+                f"""#!/usr/bin/env bash
+set -euo pipefail
+if [ "${{1:-}}" = "pack" ]; then
+  destination=""
+  while [ "$#" -gt 0 ]; do
+    if [ "$1" = "--pack-destination" ]; then destination="$2"; shift; fi
+    shift
+  done
+  touch "$destination/openai-codex-fixture.tgz"
+  printf '[{{"name":"@openai/codex","version":"0.167.0","integrity":"sha512-wrong","filename":"openai-codex-fixture.tgz"}}]\n'
+  exit 0
+fi
+if [ "${{1:-}}" = "install" ]; then touch {shlex.quote(str(install_marker))}; fi
+exit 0
+""",
+            )
+
+            completed = run_brew_maintainer(root, paths)
+
+            self.assertNotEqual(0, completed.returncode, completed.stdout)
+            self.assertIn("Integritaet oder Paketidentitaet stimmt nicht", completed.stdout)
+            self.assertFalse(install_marker.exists())
+
     def test_toolchain_result_contract_classifies_invalid_inputs(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -445,26 +514,21 @@ class LinuxMaintenanceHardeningTests(unittest.TestCase):
                     "schemaVersion": 1,
                     "tools": [
                         {
-                            "id": "required-missing",
+                            "id": "syft",
                             "scope": "required",
-                            "platforms": [platform.system()],
-                            "command": "required-missing",
-                            "args": ["--version"],
-                        },
-                        {
-                            "id": "optional-missing",
-                            "scope": "optional",
-                            "platforms": [platform.system()],
-                            "command": "optional-missing",
-                            "args": ["--version"],
                         },
                     ],
                 },
             )
-            required = run_brew_maintainer(root, paths)
+            restricted_path = f"{root / 'bin'}{os.pathsep}/usr/bin{os.pathsep}/bin"
+            required = run_brew_maintainer(
+                root,
+                paths,
+                environment_updates={"PATH": restricted_path},
+            )
             self.assertEqual(required.returncode, 1, required.stdout)
             self.assertIn("missing_on_machine.required.cli_tools", required.stdout)
-            self.assertIn("required-missing", required.stdout)
+            self.assertIn("syft", required.stdout)
 
             write_json(
                 paths["cli"],
@@ -472,18 +536,19 @@ class LinuxMaintenanceHardeningTests(unittest.TestCase):
                     "schemaVersion": 1,
                     "tools": [
                         {
-                            "id": "optional-missing",
+                            "id": "syft",
                             "scope": "optional",
-                            "platforms": [platform.system()],
-                            "command": "optional-missing",
-                            "args": ["--version"],
                         }
                     ],
                 },
             )
-            optional = run_brew_maintainer(root, paths)
+            optional = run_brew_maintainer(
+                root,
+                paths,
+                environment_updates={"PATH": restricted_path},
+            )
             self.assertEqual(optional.returncode, 0, optional.stdout)
-            self.assertIn("optional-missing", optional.stdout)
+            self.assertIn("syft", optional.stdout)
 
     def test_probe_classifies_timeout_capability_and_redacts_paths(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -618,7 +683,7 @@ class LinuxMaintenanceHardeningTests(unittest.TestCase):
             self.assertEqual(json.loads(rejected.stdout)["status"], "IntegrityMismatch")
 
     @unittest.skipUnless(platform.system() == "Linux", "Linux-only Swift provisioning")
-    def test_swiftly_install_is_verified_active_and_idempotent(self) -> None:
+    def test_noncanonical_swift_install_metadata_is_rejected_before_execution(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             paths = empty_registries(root)
@@ -649,36 +714,20 @@ cp "${HB_TEST_SWIFT_ARCHIVE:?}" "$output"
                 "HB_TEST_SWIFT_ARCHIVE": str(archive),
                 "HB_TEST_SWIFT_LOG": str(install_log),
             }
-            first = run_brew_maintainer(
+            completed = run_brew_maintainer(
                 root,
                 paths,
                 extra=("--allow-admin-prompts",),
                 environment_updates=environment,
             )
             installed_swift = root / "home" / ".local" / "bin" / "swift"
-            diagnostic = (
-                installed_swift.read_text(encoding="utf-8")
-                if installed_swift.exists()
-                else "installed Swift fixture is missing"
-            )
-            self.assertEqual(first.returncode, 0, first.stdout + "\n" + diagnostic)
-            result = json.loads((root / "toolchain-result.json").read_text(encoding="utf-8"))
-            swift = next(item for item in result["items"] if item["itemId"] == "swift")
-            self.assertEqual(swift["finalStatus"], "Installed")
-            self.assertEqual(swift["probeStatus"], "Available")
-            self.assertEqual(install_log.read_text(encoding="utf-8").splitlines(), ["6.3.3"])
-
-            second = run_brew_maintainer(
-                root,
-                paths,
-                extra=("--allow-admin-prompts",),
-                environment_updates=environment,
-            )
-            self.assertEqual(second.returncode, 0, second.stdout)
-            self.assertEqual(install_log.read_text(encoding="utf-8").splitlines(), ["6.3.3"])
+            self.assertEqual(completed.returncode, 2, completed.stdout)
+            self.assertIn("untrusted field 'install'", completed.stdout)
+            self.assertFalse(installed_swift.exists())
+            self.assertEqual(install_log.read_text(encoding="utf-8"), "")
 
     @unittest.skipUnless(platform.system() == "Linux", "Linux-only Swift provisioning")
-    def test_swiftly_bad_hash_and_missing_admin_authority_do_not_execute(self) -> None:
+    def test_noncanonical_swift_hash_is_rejected_before_admin_or_download(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             paths = empty_registries(root)
@@ -712,8 +761,8 @@ exit 2
                 paths,
                 environment_updates=environment,
             )
-            self.assertEqual(denied.returncode, 1, denied.stdout)
-            self.assertIn("DEFERRED_ADMIN_REQUIRED", denied.stdout)
+            self.assertEqual(denied.returncode, 2, denied.stdout)
+            self.assertIn("untrusted field 'install'", denied.stdout)
             self.assertEqual(install_log.read_text(encoding="utf-8"), "")
 
             bad_hash = run_brew_maintainer(
@@ -722,8 +771,8 @@ exit 2
                 extra=("--allow-admin-prompts",),
                 environment_updates=environment,
             )
-            self.assertEqual(bad_hash.returncode, 1, bad_hash.stdout)
-            self.assertIn("SHA-256", bad_hash.stdout)
+            self.assertEqual(bad_hash.returncode, 2, bad_hash.stdout)
+            self.assertIn("untrusted field 'install'", bad_hash.stdout)
             self.assertEqual(install_log.read_text(encoding="utf-8"), "")
 
     def test_fleet_finalization_replaces_stale_success_and_is_idempotent(self) -> None:

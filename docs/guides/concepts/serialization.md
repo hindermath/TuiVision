@@ -28,6 +28,12 @@ Trailing Data, unbekannte Typen, negative Längen, ungültige Referenzen und
 Zyklen werden ausdrücklich abgelehnt. Stream-Ownership wird über `leaveOpen`
 bewusst festgelegt.
 
+Binärstrings sind auf 64 KiB pro Feld und 64 MiB kumulierte kodierte Daten pro
+Reader begrenzt. Persistierte Help-Modelle erlauben höchstens 10.000 Themen und
+100.000 Themen-, Absatz- und Verweiseinträge zusammen. Direkte Help-Dateien und
+die kumulierten Payloads eines Ressourcenkatalogs sind auf 64 MiB begrenzt; die
+bestehende Grenze von 4 MiB pro Ressourcen-Payload bleibt zusätzlich bestehen.
+
 ### Sichere Anwendung
 
 - Verwende eine neue, vertrauenswürdige Registry für den erwarteten Vertrag.
@@ -54,6 +60,12 @@ exact and case-sensitive.
 Truncated or trailing data, unknown types, negative lengths, invalid
 references, and cycles are rejected explicitly. Stream ownership is chosen
 through `leaveOpen`; data cannot select CLR types, methods, or scripts.
+
+Binary strings are limited to 64 KiB per field and 64 MiB of cumulative encoded
+data per reader. Persisted help models allow at most 10,000 topics and 100,000
+combined topic, paragraph, and reference entries. Direct help files and the
+cumulative payloads of one resource catalog are limited to 64 MiB; the existing
+4 MiB per-resource payload limit remains an additional sublimit.
 
 ### Exercise
 

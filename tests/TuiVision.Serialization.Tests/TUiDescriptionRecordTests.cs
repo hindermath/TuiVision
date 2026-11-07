@@ -12,6 +12,27 @@ namespace TuiVision.Serialization.Tests;
 public sealed class TUiDescriptionRecordTests
 {
     /// <summary>
+    /// Akzeptiert den maximalen flachen Menürecord ohne quadratische Kindersuche.
+    ///
+    /// Accepts the maximum flat menu record without quadratic child lookup.
+    /// </summary>
+    [TestMethod]
+    public void TMenuDescriptionRecord_MaximumFlatGraph_Validates()
+    {
+        List<TMenuItemDescriptionRecord> items = [new("root", null, 0, "Root", 0, 0, false)];
+        for (int index = 1; index < TMenuDescriptionRecord.MaxItems; index++)
+        {
+            items.Add(new TMenuItemDescriptionRecord(
+                $"leaf-{index}", "root", index, $"Leaf {index}", (ushort)(index % ushort.MaxValue + 1), 0, false));
+        }
+
+        TMenuDescriptionRecord record = new(TMenuDescriptionRecord.CurrentFormatVersion, items);
+        SaveArchive(record);
+
+        Assert.HasCount(TMenuDescriptionRecord.MaxItems, record.Items);
+    }
+
+    /// <summary>
     /// Prüft Built-in-Roundtrips für Dialog, Menü und StatusLine mit exakten Keys.
     /// Verifies built-in roundtrips for dialog, menu, and status line with exact keys.
     /// </summary>

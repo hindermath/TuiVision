@@ -3,6 +3,9 @@
 
 using System.Globalization;
 using System.IO.Enumeration;
+using System.Runtime.Versioning;
+using System.Security.AccessControl;
+using System.Security.Principal;
 using System.Text;
 
 namespace TuiVision.Examples.Wave6;
@@ -32,10 +35,10 @@ public sealed class ControlledFileWorkspace : IDisposable
     private readonly HashSet<Guid> _consumedOperations = [];
     private readonly Dictionary<Guid, Wave6OperationIntent> _preparedOperations = [];
 
-    /// <summary>Initialisiert die kontrollierte Wurzel. / Initializes the controlled root.</summary>
+    /// <summary>Initialisiert eine testinterne kontrollierte Wurzel. / Initializes a test-internal controlled root.</summary>
     /// <param name="rootPath">Explizite Wurzel. / Explicit root.</param>
     /// <param name="ownsRoot">Löscht die Wurzel beim Dispose. / Deletes the root on dispose.</param>
-    public ControlledFileWorkspace(string rootPath, bool ownsRoot = false)
+    private ControlledFileWorkspace(string rootPath, bool ownsRoot = false)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(rootPath);
         RootPath = Path.TrimEndingDirectorySeparator(Path.GetFullPath(rootPath));
@@ -53,6 +56,172 @@ public sealed class ControlledFileWorkspace : IDisposable
         _pathComparison = OperatingSystem.IsWindows()
             ? StringComparison.OrdinalIgnoreCase
             : StringComparison.Ordinal;
+    }
+
+    /// <summary>
+    /// Erstellt einen Workspace in einer privaten, vom Workspace besessenen Temp-Wurzel.
+    ///
+    /// Creates a workspace in a private, workspace-owned temporary root.
+    /// </summary>
+    /// <param name="initialize">
+    /// Optionale synchrone Initialisierung innerhalb der neuen Wurzel. Der
+    /// Initialisierer darf den Pfad nicht an geringer vertraute Prozesse oder
+    /// Komponenten weitergeben. Prozesse derselben OS-Identität gehören zu
+    /// derselben Vertrauensdomäne.
+    ///
+    /// Optional synchronous initialization inside the new root. The initializer
+    /// must not disclose the path to lower-trust processes or components.
+    /// Processes running as the same OS identity share one trust domain.
+    /// </param>
+    /// <returns>Besessener Workspace. / Owned workspace.</returns>
+    public static ControlledFileWorkspace CreateOwned(Action<string>? initialize = null)
+    {
+        string parent = Path.TrimEndingDirectorySeparator(Path.GetTempPath());
+        ValidateTemporaryParent(parent);
+        string root = Path.Combine(parent, $"tuivision-wave6-{Guid.NewGuid():N}");
+        Directory.CreateDirectory(root);
+        try
+        {
+            if (!OperatingSystem.IsWindows())
+            {
+                File.SetUnixFileMode(
+                    root,
+                    UnixFileMode.UserRead | UnixFileMode.UserWrite | UnixFileMode.UserExecute);
+            }
+            else
+            {
+                ProtectWindowsRoot(root);
+            }
+
+            initialize?.Invoke(root);
+            if (!OperatingSystem.IsWindows())
+            {
+                File.SetUnixFileMode(
+                    root,
+                    UnixFileMode.UserRead | UnixFileMode.UserWrite | UnixFileMode.UserExecute);
+            }
+            else
+            {
+                ProtectWindowsRoot(root);
+            }
+            return new ControlledFileWorkspace(root, ownsRoot: true);
+        }
+        catch
+        {
+            if (Directory.Exists(root) && !IsReparsePoint(root))
+            {
+                Directory.Delete(root, recursive: true);
+            }
+
+            throw;
+        }
+    }
+
+    [SupportedOSPlatform("windows")]
+    private static void ProtectWindowsRoot(string root)
+    {
+        using WindowsIdentity identity = WindowsIdentity.GetCurrent();
+        SecurityIdentifier owner = identity.User
+            ?? throw new InvalidOperationException("The current Windows identity has no security identifier.");
+        DirectorySecurity security = new();
+        security.SetOwner(owner);
+        security.SetAccessRuleProtection(isProtected: true, preserveInheritance: false);
+        InheritanceFlags inheritance = InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit;
+        security.AddAccessRule(new FileSystemAccessRule(
+            owner,
+            FileSystemRights.FullControl,
+            inheritance,
+            PropagationFlags.None,
+            AccessControlType.Allow));
+        security.AddAccessRule(new FileSystemAccessRule(
+            new SecurityIdentifier(WellKnownSidType.LocalSystemSid, null),
+            FileSystemRights.FullControl,
+            inheritance,
+            PropagationFlags.None,
+            AccessControlType.Allow));
+        security.AddAccessRule(new FileSystemAccessRule(
+            new SecurityIdentifier(WellKnownSidType.BuiltinAdministratorsSid, null),
+            FileSystemRights.FullControl,
+            inheritance,
+            PropagationFlags.None,
+            AccessControlType.Allow));
+        FileSystemAclExtensions.SetAccessControl(new DirectoryInfo(root), security);
+
+        DirectorySecurity applied = FileSystemAclExtensions.GetAccessControl(new DirectoryInfo(root));
+        if (!applied.AreAccessRulesProtected)
+        {
+            throw new InvalidOperationException("The private Windows workspace ACL is not protected.");
+        }
+
+        HashSet<string> trusted =
+        [
+            owner.Value,
+            new SecurityIdentifier(WellKnownSidType.LocalSystemSid, null).Value,
+            new SecurityIdentifier(WellKnownSidType.BuiltinAdministratorsSid, null).Value
+        ];
+        foreach (FileSystemAccessRule rule in applied.GetAccessRules(
+                     includeExplicit: true,
+                     includeInherited: true,
+                     targetType: typeof(SecurityIdentifier)))
+        {
+            if (rule.AccessControlType == AccessControlType.Allow
+                && !trusted.Contains(((SecurityIdentifier)rule.IdentityReference).Value))
+            {
+                throw new InvalidOperationException("The private Windows workspace grants access to an untrusted identity.");
+            }
+        }
+    }
+
+    private static void ValidateTemporaryParent(string parent)
+    {
+        if (!Directory.Exists(parent) || IsReparsePoint(parent))
+        {
+            throw new InvalidOperationException("The temporary parent must be an existing real directory.");
+        }
+
+        if (!OperatingSystem.IsWindows())
+        {
+            UnixFileMode mode = File.GetUnixFileMode(parent);
+            UnixFileMode externalWrite = UnixFileMode.GroupWrite | UnixFileMode.OtherWrite;
+            if ((mode & externalWrite) != 0 && (mode & UnixFileMode.StickyBit) == 0)
+            {
+                throw new InvalidOperationException("The temporary parent is externally writable without sticky protection.");
+            }
+
+            return;
+        }
+
+        ValidateWindowsTemporaryParent(parent);
+    }
+
+    [SupportedOSPlatform("windows")]
+    private static void ValidateWindowsTemporaryParent(string parent)
+    {
+        using WindowsIdentity identity = WindowsIdentity.GetCurrent();
+        SecurityIdentifier owner = identity.User
+            ?? throw new InvalidOperationException("The current Windows identity has no security identifier.");
+        HashSet<string> trusted =
+        [
+            owner.Value,
+            new SecurityIdentifier(WellKnownSidType.LocalSystemSid, null).Value,
+            new SecurityIdentifier(WellKnownSidType.BuiltinAdministratorsSid, null).Value,
+            new SecurityIdentifier(WellKnownSidType.CreatorOwnerSid, null).Value
+        ];
+        FileSystemRights dangerous = FileSystemRights.Write
+            | FileSystemRights.Delete
+            | FileSystemRights.DeleteSubdirectoriesAndFiles
+            | FileSystemRights.ChangePermissions
+            | FileSystemRights.TakeOwnership;
+        DirectorySecurity security = FileSystemAclExtensions.GetAccessControl(new DirectoryInfo(parent));
+        foreach (FileSystemAccessRule rule in security.GetAccessRules(true, true, typeof(SecurityIdentifier)))
+        {
+            if (rule.AccessControlType == AccessControlType.Allow
+                && (rule.FileSystemRights & dangerous) != 0
+                && !trusted.Contains(((SecurityIdentifier)rule.IdentityReference).Value))
+            {
+                throw new InvalidOperationException("The temporary parent permits untrusted directory replacement.");
+            }
+        }
     }
 
     /// <summary>Kanonische kontrollierte Wurzel. / Canonical controlled root.</summary>

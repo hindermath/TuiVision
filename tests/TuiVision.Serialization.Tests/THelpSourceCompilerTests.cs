@@ -173,6 +173,8 @@ public sealed class THelpSourceCompilerTests
     {
         Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
             new THelpSourceCompiler(new THelpCompilerOptions { MaxTopics = 0 }));
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
+            new THelpSourceCompiler(new THelpCompilerOptions { MaxExpandedModelItems = 0 }));
 
         THelpCompilationResult longLine = new THelpSourceCompiler(
             new THelpCompilerOptions { MaxLineCharacters = 8 }).Compile(".topic One=1\nLong body");
@@ -183,6 +185,48 @@ public sealed class THelpSourceCompilerTests
         Assert.IsTrue(topics.Diagnostics.Any(item => item.Code == "THC009"));
         Assert.IsNull(longLine.HelpFile);
         Assert.IsNull(topics.HelpFile);
+    }
+
+    /// <summary>
+    /// Prueft, dass Alias-Kopien vor der Modellerzeugung atomisch begrenzt werden.
+    ///
+    /// Verifies that alias copies are bounded atomically before model generation.
+    /// </summary>
+    [TestMethod]
+    public void Compile_AliasExpansionBeyondConfiguredLimit_ReturnsAtomicDiagnostic()
+    {
+        const string source = ".topic A=1,B=2\n{x:A}{x:A}";
+        THelpSourceCompiler rejectingCompiler = new(new THelpCompilerOptions { MaxExpandedModelItems = 7 });
+        THelpSourceCompiler acceptingCompiler = new(new THelpCompilerOptions { MaxExpandedModelItems = 8 });
+        using MemoryStream stream = new(Encoding.UTF8.GetBytes(source));
+
+        THelpCompilationResult rejected = rejectingCompiler.Compile(stream);
+        THelpCompilationResult accepted = acceptingCompiler.Compile(source);
+
+        Assert.IsFalse(rejected.Success);
+        Assert.IsNull(rejected.HelpFile);
+        Assert.IsEmpty(rejected.Symbols);
+        Assert.IsTrue(rejected.Diagnostics.Any(item => item.Code == "THC009"));
+        Assert.IsTrue(accepted.Success);
+        Assert.HasCount(2, accepted.HelpFile!.Topics);
+    }
+
+    /// <summary>
+    /// Prueft die Standardgrenze gegen eine kleine Quelle mit starker Alias-Vermehrung.
+    ///
+    /// Verifies the default limit against a small source with strong alias amplification.
+    /// </summary>
+    [TestMethod]
+    public void Compile_DefaultLimitRejectsAmplifiedAliasReferenceModel()
+    {
+        string aliases = string.Join(",", Enumerable.Range(0, 200).Select(index => $"A{index}={index + 1}"));
+        string references = string.Concat(Enumerable.Repeat("{x:A0}", 600));
+
+        THelpCompilationResult result = new THelpSourceCompiler().Compile($".topic {aliases}\n{references}");
+
+        Assert.IsFalse(result.Success);
+        Assert.IsNull(result.HelpFile);
+        Assert.IsTrue(result.Diagnostics.Any(item => item.Code == "THC009"));
     }
 
     /// <summary>

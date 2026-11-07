@@ -30,26 +30,20 @@ public sealed class TvHcSmokeTests : ExampleTestBase
     [TestMethod]
     public void TvHc_AppLoop_Persists_Only_Inside_TestTemp_And_Shows_Description()
     {
-        string root = Path.Combine(Path.GetTempPath(), $"tuivision-tvhc-{Guid.NewGuid():N}");
-        try
-        {
-            TvHcApp app = new(DefaultBounds(), headless: true, allowedOutputDirectory: root);
-            app.QueueEvents(InteractiveSmokeEventScript.FromEvents(
-                TEvent.CreateCommand(TvHcApp.CmPersistValid, "compiled.hlp"),
-                TEvent.CreateCommand(TvHcApp.CmPersistValid, "../escape.hlp"),
-                TEvent.CreateCommand(TvHcApp.CmDescription)).Events);
-            AssertSmokeRunCompletes(() => app.Run());
-            AssertTrue(app.LastOutputPath is not null, "TvHc output path recorded");
-            AssertTrue(Path.GetFullPath(app.LastOutputPath!).StartsWith(Path.GetFullPath(root), StringComparison.Ordinal), "TvHc output remains in test temp");
-            AssertTrue(File.Exists(app.LastOutputPath), "TvHc output created");
-            Assert.IsFalse(File.Exists(Path.Combine(root, "..", "escape.hlp")), "TvHc traversal output rejected");
-            AssertTrue(app.LastPersistRejected, "TvHc records rejected unsafe output");
-            AssertRenderedRegionContainsFromAppLoop(app.Driver.BackBuffer, app.LastVisibleRegion, "TvHc description", "TvHc description cells");
-            AssertPrimaryAssertionUsedAppLoop();
-        }
-        finally
-        {
-            if (Directory.Exists(root)) Directory.Delete(root, recursive: true);
-        }
+        using TControlledOutputDirectory output = TControlledOutputDirectory.Create();
+        string root = output.RootPath;
+        TvHcApp app = new(DefaultBounds(), headless: true, outputDirectory: output);
+        app.QueueEvents(InteractiveSmokeEventScript.FromEvents(
+            TEvent.CreateCommand(TvHcApp.CmPersistValid, "compiled.hlp"),
+            TEvent.CreateCommand(TvHcApp.CmPersistValid, "../escape.hlp"),
+            TEvent.CreateCommand(TvHcApp.CmDescription)).Events);
+        AssertSmokeRunCompletes(() => app.Run());
+        AssertTrue(app.LastOutputPath is not null, "TvHc output path recorded");
+        AssertTrue(Path.GetFullPath(app.LastOutputPath!).StartsWith(Path.GetFullPath(root), StringComparison.Ordinal), "TvHc output remains in test temp");
+        AssertTrue(File.Exists(app.LastOutputPath), "TvHc output created");
+        Assert.IsFalse(File.Exists(Path.Combine(root, "..", "escape.hlp")), "TvHc traversal output rejected");
+        AssertTrue(app.LastPersistRejected, "TvHc records rejected unsafe output");
+        AssertRenderedRegionContainsFromAppLoop(app.Driver.BackBuffer, app.LastVisibleRegion, "TvHc description", "TvHc description cells");
+        AssertPrimaryAssertionUsedAppLoop();
     }
 }

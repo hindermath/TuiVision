@@ -12,6 +12,8 @@ namespace TuiVision.Controls;
 /// </summary>
 public sealed class TDirListBox : TListBox
 {
+    /// <summary>Maximal sichtbare Verzeichnisse. / Maximum visible directories.</summary>
+    public const int MaxVisibleEntries = 512;
     private readonly List<string> _entries = [];
 
     /// <summary>
@@ -39,6 +41,12 @@ public sealed class TDirListBox : TListBox
     /// </summary>
     public IReadOnlyList<string> Entries => _entries.AsReadOnly();
 
+    /// <summary>Zeigt eine gekürzte Liste an. / Indicates a truncated list.</summary>
+    public bool IsTruncated { get; private set; }
+
+    /// <summary>Textorientierter Listenstatus. / Text-oriented list status.</summary>
+    public string? StatusMessage { get; private set; }
+
     /// <summary>
     /// Der aktuell fokussierte Verzeichnispfad.
     ///
@@ -59,21 +67,37 @@ public sealed class TDirListBox : TListBox
         _entries.Clear();
         List!.Clear();
 
-        IEnumerable<string> directories;
+        List<string> directories = [];
         try
         {
-            directories = Directory.EnumerateDirectories(CurrentDirectory).OrderBy(path => path, StringComparer.Ordinal).ToArray();
+            IsTruncated = false;
+            foreach (string path in Directory.EnumerateDirectories(CurrentDirectory))
+            {
+                if (directories.Count >= MaxVisibleEntries)
+                {
+                    IsTruncated = true;
+                    break;
+                }
+                directories.Add(path);
+            }
+            directories.Sort(StringComparer.Ordinal);
         }
         catch (Exception exception) when (exception is IOException or UnauthorizedAccessException or DirectoryNotFoundException)
         {
+            IsTruncated = false;
+            StatusMessage = $"Verzeichnisliste nicht verfügbar: {exception.GetType().Name}. / Directory list unavailable: {exception.GetType().Name}.";
             List.Add($"<unreadable: {exception.GetType().Name}>");
             return;
         }
 
+        StatusMessage = IsTruncated
+            ? $"Eintragsgrenze {MaxVisibleEntries} erreicht; Liste ist unvollständig. / Entry limit {MaxVisibleEntries} reached; list is incomplete."
+            : null;
+
         foreach (string path in directories)
         {
             _entries.Add(path);
-            List.Add(Path.GetFileName(path));
+            List.Add(TFileSystemDisplayText.Escape(Path.GetFileName(path)));
         }
 
         if (_entries.Count > 0)

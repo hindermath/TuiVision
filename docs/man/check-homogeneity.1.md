@@ -20,6 +20,19 @@ Das Skript prueft ein Zielverzeichnis gegen die Homogenitaets-Baseline des Works
 
 *The script checks a target directory against the workspace homogeneity baseline, produces a compliance score, and optionally writes `STATS.md` and a `memory-patch.md`. Output is human-readable or JSON; with `--apply-patch` a patch is applied and committed.*
 
+Im Apply-Modus muessen alle `### Target:`-Werte normalisierte, relative Pfade
+innerhalb von `TARGET_DIR` sein. Absolute Pfade, Parent-Traversal, Wildcards,
+Laufwerks-/ADS-Syntax sowie symbolische Links oder Reparse Points werden vor
+jeder Aenderung abgelehnt. Nur validierte Ziele werden atomar ersetzt und fuer
+den Patch-Commit gestaged; `--yes` beziehungsweise `-Yes` ueberspringt nur die
+Bestaetigungsfrage, niemals die Validierung.
+
+*In apply mode, every `### Target:` value must be a normalized relative path
+inside `TARGET_DIR`. Absolute paths, parent traversal, wildcards, drive or ADS
+syntax, and symbolic links or reparse points are rejected before any change.
+Only validated targets are atomically replaced and staged for the patch commit;
+`--yes` or `-Yes` skips only the confirmation prompt, never validation.*
+
 ## OPTIONS
 
 | Bash | PowerShell | Bedeutung / Meaning |

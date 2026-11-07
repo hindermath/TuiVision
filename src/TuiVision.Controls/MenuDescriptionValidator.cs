@@ -18,6 +18,7 @@ public static class MenuDescriptionValidator
         }
 
         Dictionary<string, MenuItemDescription> byId = new(StringComparer.Ordinal);
+        HashSet<string> parentIds = new(StringComparer.Ordinal);
         foreach (MenuItemDescription item in description.Items)
         {
             if (string.IsNullOrWhiteSpace(item.Id) || !byId.TryAdd(item.Id, item))
@@ -28,6 +29,10 @@ public static class MenuDescriptionValidator
             if (item.Order < 0 || string.IsNullOrWhiteSpace(item.Label) || item.HelpContext < 0)
             {
                 throw new InvalidDataException($"Menu item '{item.Id}' has invalid order, label, or help context.");
+            }
+            if (item.ParentId is not null)
+            {
+                parentIds.Add(item.ParentId);
             }
         }
 
@@ -49,7 +54,7 @@ public static class MenuDescriptionValidator
 
         foreach (MenuItemDescription item in description.Items)
         {
-            bool hasChildren = description.Items.Any(candidate => string.Equals(candidate.ParentId, item.Id, StringComparison.Ordinal));
+            bool hasChildren = parentIds.Contains(item.Id);
             bool isSeparator = item.Label == "---";
             if ((!hasChildren && !isSeparator && item.CommandId == 0) || ((hasChildren || isSeparator) && item.CommandId != 0))
             {

@@ -83,25 +83,144 @@ if ($ApplyPatch) {
         exit 2
     }
     $content = Get-Content -LiteralPath $ApplyPatch
+    $TargetRoot = (Resolve-Path -LiteralPath $TargetDir).Path
+    $gitMetadataRoot = $null
+    $gitMetadataCandidate = & git -C $TargetRoot rev-parse --absolute-git-dir 2>$null
+    if ($LASTEXITCODE -eq 0 -and $gitMetadataCandidate -and
+        (Test-Path -LiteralPath $gitMetadataCandidate -PathType Container)) {
+        $gitMetadataRoot = (Resolve-Path -LiteralPath $gitMetadataCandidate).Path
+    }
+
+    function Resolve-SafePatchTarget {
+        param([Parameter(Mandatory)][string]$RelativePath)
+
+        if ([string]::IsNullOrWhiteSpace($RelativePath) -or
+            [IO.Path]::IsPathRooted($RelativePath) -or
+            $RelativePath.StartsWith('~') -or
+            $RelativePath.Contains('\') -or
+            $RelativePath.Contains(':') -or
+            $RelativePath.IndexOfAny([char[]]'*?[') -ge 0 -or
+            $RelativePath.Contains("`n") -or
+            $RelativePath.Contains("`r") -or
+            $RelativePath.Contains("`t")) {
+            throw "Patch target is not a normalized repository-relative path: $RelativePath"
+        }
+
+        $components = $RelativePath.Split('/', [StringSplitOptions]::None)
+        if ($components | Where-Object {
+                $_ -eq '' -or $_ -eq '.' -or $_ -eq '..' -or
+                $_.Equals('.git', [StringComparison]::OrdinalIgnoreCase) -or
+                $_.EndsWith('.') -or $_.EndsWith(' ')
+            }) {
+            throw "Patch target contains an invalid path component: $RelativePath"
+        }
+
+        $fullPath = [IO.Path]::GetFullPath((Join-Path $TargetRoot $RelativePath))
+        $rootPrefix = $TargetRoot.TrimEnd(
+            [IO.Path]::DirectorySeparatorChar,
+            [IO.Path]::AltDirectorySeparatorChar
+        ) + [IO.Path]::DirectorySeparatorChar
+        if (-not $fullPath.StartsWith($rootPrefix, [StringComparison]::Ordinal)) {
+            throw "Patch target escapes the target repository: $RelativePath"
+        }
+        if ($gitMetadataRoot) {
+            $gitPrefix = $gitMetadataRoot.TrimEnd(
+                [IO.Path]::DirectorySeparatorChar,
+                [IO.Path]::AltDirectorySeparatorChar
+            ) + [IO.Path]::DirectorySeparatorChar
+            if ($fullPath.Equals($gitMetadataRoot, [StringComparison]::OrdinalIgnoreCase) -or
+                $fullPath.StartsWith($gitPrefix, [StringComparison]::OrdinalIgnoreCase)) {
+                throw "Patch target addresses Git metadata: $RelativePath"
+            }
+        }
+
+        $current = $TargetRoot
+        for ($index = 0; $index -lt $components.Count; $index++) {
+            $current = Join-Path $current $components[$index]
+            if (Test-Path -LiteralPath $current) {
+                $item = Get-Item -LiteralPath $current -Force
+                if (($item.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0) {
+                    throw "Patch target crosses a link or reparse point: $RelativePath"
+                }
+                if ($index -lt $components.Count - 1 -and -not $item.PSIsContainer) {
+                    throw "Patch target parent is not a directory: $RelativePath"
+                }
+                if ($index -eq $components.Count - 1 -and $item.PSIsContainer) {
+                    throw "Patch target is not a regular file: $RelativePath"
+                }
+            } elseif ($index -lt $components.Count - 1) {
+                throw "Patch target parent does not exist: $RelativePath"
+            }
+        }
+
+        [pscustomobject]@{ Relative = $RelativePath; Full = $fullPath }
+    }
+
+    $patchRecords = [System.Collections.Generic.List[object]]::new()
+    $validatedDestinations = [System.Collections.Generic.List[object]]::new()
+    $currentTarget = $null
+    try {
+        foreach ($line in $content) {
+            if ($line -match '^### Target: (.+)$') {
+                $currentTarget = Resolve-SafePatchTarget -RelativePath $Matches[1]
+                $validatedDestinations.Add($currentTarget)
+            } elseif ($line -match '^\+\+\+ (.*)$') {
+                if ($null -eq $currentTarget) {
+                    throw 'Patch content has no validated target.'
+                }
+                $patchRecords.Add([pscustomobject]@{
+                    Relative = $currentTarget.Relative
+                    Full = $currentTarget.Full
+                    Content = $Matches[1]
+                })
+            }
+        }
+    } catch {
+        Write-Error "FATAL: $($_.Exception.Message)"
+        exit 2
+    }
+
     Write-Host "Patch-Datei: $ApplyPatch"
     Write-Host ""
     Write-Host "Vorgeschlagene Aenderungen:"
     $content | Select-String '^\#\#|^- |^\*\*' | Select-Object -First 30 | ForEach-Object { Write-Host $_.Line }
     Write-Host ""
+    Write-Host 'Validierte Ziele:'
+    $validatedDestinations | ForEach-Object { Write-Host "  $($_.Full)" }
+    Write-Host ""
 
     $answer = if ($Yes) { 'j' } else { Read-Host "Patch anwenden? [j/N]" }
     if ($answer -match '^[jJyY]') {
         $patchCount = 0
-        $targetFile = ''
-        foreach ($line in $content) {
-            if ($line -match '### Target: (.+)') { $targetFile = $Matches[1] }
-            if ($line -match '^\+\+\+ (.+)' -and $targetFile) {
-                Add-Content -Path $targetFile -Value $Matches[1]
+        foreach ($record in $patchRecords) {
+            $temporary = $null
+            try {
+                $validated = Resolve-SafePatchTarget -RelativePath $record.Relative
+                $parent = Split-Path -Parent $validated.Full
+                $temporary = Join-Path $parent ('.hg-patch.{0}' -f [guid]::NewGuid().ToString('N'))
+                if (Test-Path -LiteralPath $validated.Full -PathType Leaf) {
+                    Copy-Item -LiteralPath $validated.Full -Destination $temporary
+                } else {
+                    [IO.File]::WriteAllBytes($temporary, [byte[]]::new(0))
+                }
+                Add-Content -LiteralPath $temporary -Value $record.Content -Encoding utf8
+                [IO.File]::Move($temporary, $validated.Full, $true)
                 $patchCount++
+            } catch {
+                if ($temporary -and (Test-Path -LiteralPath $temporary)) {
+                    Remove-Item -LiteralPath $temporary -Force
+                }
+                Write-Error "FATAL: $($_.Exception.Message)"
+                exit 2
             }
         }
-        git -C $TargetDir add -A 2>$null
-        git -C $TargetDir commit -m "chore: apply memory-patch -- $patchCount entries updated" 2>$null
+        $uniqueTargets = @($patchRecords.Relative | Select-Object -Unique)
+        if ($uniqueTargets.Count -gt 0) {
+            & git -C $TargetRoot add -- $uniqueTargets 2>$null
+            if ($LASTEXITCODE -ne 0) { Write-Error 'FATAL: git add failed'; exit 2 }
+            & git -C $TargetRoot commit --only -m "chore: apply memory-patch -- $patchCount entries updated" -- $uniqueTargets 2>$null
+            if ($LASTEXITCODE -ne 0) { Write-Error 'FATAL: git commit failed'; exit 2 }
+        }
         Write-Host "Patch angewendet: $patchCount Eintraege, git-Commit erstellt."
     } else {
         Write-Host "Patch abgebrochen."

@@ -145,6 +145,23 @@ sources. The Homebrew registry contains top-level packages
 (`brew leaves --installed-on-request`) and macOS casks, not transitive
 dependencies. `xquartz` is intentionally excluded.*
 
+Alternative CLI- und npm-Agent-Registries sind nur Auswahlmanifeste fuer
+bekannte Tool-IDs und Required-/Optional-Scope. Befehle, Argumente, Pakete und
+Installationsmetadaten stammen immer aus der eingecheckten kanonischen Policy;
+abweichende oder unbekannte Definitionen werden vor jeder Probe abgelehnt.
+Die npm-Fallbacks werden mit exakter Version und SRI-Integritaet gepinnt. Das
+Skript prueft das von `npm pack` gemeldete Paket und installiert ausschliesslich
+das verifizierte lokale Archiv. Git-basierte CLI-Werkzeuge verwenden eine
+vollstaendige Commit-ID statt eines beweglichen Branches oder Tags.
+
+*Alternative CLI and npm-agent registries are selection manifests only for
+known tool IDs and required/optional scope. Commands, arguments, packages, and
+installation metadata always come from the checked-in canonical policy;
+changed or unknown definitions are rejected before any probe.*
+*npm fallbacks are pinned by exact version and SRI integrity. The script checks
+the package reported by `npm pack` and installs only the verified local archive.
+Git-based CLI tools use a full commit ID instead of a moving branch or tag.*
+
 ## Optionen / Options
 
 | Option | Bedeutung / Meaning |
@@ -152,9 +169,9 @@ dependencies. `xquartz` is intentionally excluded.*
 | `--dry-run` | Paketmanager-Aktionen anzeigen, nicht ausfuehren |
 | `--compare-only` | Registry-Drift nach Required/Optional getrennt melden, nichts installieren oder upgraden |
 | `--registry PATH` | Alternative Registry-Datei verwenden |
-| `--cli-registry PATH` | Alternative Required-CLI-Registry verwenden |
+| `--cli-registry PATH` | Alternatives Auswahlmanifest fuer bekannte Required-CLI-IDs verwenden |
 | `--vscode-registry PATH` | Alternative VS-Code-Extension-Registry verwenden |
-| `--npm-agent-registry PATH` | Alternative npm-Agent-CLI-Registry verwenden |
+| `--npm-agent-registry PATH` | Alternatives Auswahlmanifest fuer bekannte npm-Agent-CLI-IDs verwenden |
 | `--powershell-module-registry PATH` | Alternative PowerShell-Modul-Registry verwenden |
 | `--skip-upgrade` | `brew update`/`brew upgrade` bzw. apt-Update/Upgrade ueberspringen |
 | `--skip-vscode-extensions` | VS-Code-Extensions weder installieren noch vergleichen |

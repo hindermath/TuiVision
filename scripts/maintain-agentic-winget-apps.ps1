@@ -85,8 +85,9 @@ if (-not $VSCodeRegistry) {
     $VSCodeRegistry = Join-Path $repoRoot 'scripts/config/vscode-extensions-registry.json'
 }
 $cliRegistry = Join-Path $repoRoot 'scripts/config/required-cli-tools-registry.json'
+$canonicalNpmAgentRegistry = Join-Path $repoRoot 'scripts/config/npm-agent-cli-registry.json'
 if (-not $NpmAgentRegistry) {
-    $NpmAgentRegistry = Join-Path $repoRoot 'scripts/config/npm-agent-cli-registry.json'
+    $NpmAgentRegistry = $canonicalNpmAgentRegistry
 }
 if (-not $PowerShellModuleRegistry) {
     $PowerShellModuleRegistry = Join-Path $repoRoot 'scripts/config/powershell-modules-registry.json'
@@ -119,7 +120,63 @@ $script:PackageObservations = [Collections.Generic.List[object]]::new()
 $registryData = Get-Content -Path $Registry -Raw | ConvertFrom-Json
 $vscodeRegistryData = if ($SkipVSCodeExtensions) { $null } else { Get-Content -Path $VSCodeRegistry -Raw | ConvertFrom-Json }
 $cliRegistryData = Get-Content -Path $cliRegistry -Raw | ConvertFrom-Json
-$npmAgentRegistryData = Get-Content -Path $NpmAgentRegistry -Raw | ConvertFrom-Json
+$selectedNpmAgentRegistryData = Get-Content -LiteralPath $NpmAgentRegistry -Raw | ConvertFrom-Json
+$canonicalNpmAgentRegistryData = Get-Content -LiteralPath $canonicalNpmAgentRegistry -Raw | ConvertFrom-Json
+
+function ConvertTo-HBTrustedNpmRegistry {
+    param(
+        [Parameter(Mandatory)] $Selected,
+        [Parameter(Mandatory)] $Canonical
+    )
+
+    $canonicalById = @{}
+    foreach ($item in @($Canonical.tools)) {
+        $canonicalById[[string]$item.id] = $item
+    }
+
+    $seen = [Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+    $normalized = [Collections.Generic.List[object]]::new()
+    foreach ($selectedItem in @($Selected.tools)) {
+        $toolId = [string]$selectedItem.id
+        if (-not $toolId -or -not $seen.Add($toolId) -or -not $canonicalById.ContainsKey($toolId)) {
+            throw "Unknown or duplicate trusted npm tool id: '$toolId'."
+        }
+
+        $canonicalItem = $canonicalById[$toolId]
+        foreach ($property in $selectedItem.PSObject.Properties) {
+            if ($property.Name -eq 'scope') {
+                if ([string]$property.Value -notin @('required', 'optional')) {
+                    throw "Invalid npm tool scope for '$toolId'."
+                }
+                continue
+            }
+
+            $canonicalProperty = $canonicalItem.PSObject.Properties[$property.Name]
+            $selectedJson = $property.Value | ConvertTo-Json -Depth 32 -Compress
+            $canonicalJson = if ($canonicalProperty) {
+                $canonicalProperty.Value | ConvertTo-Json -Depth 32 -Compress
+            } else {
+                $null
+            }
+            if (-not $canonicalProperty -or $selectedJson -cne $canonicalJson) {
+                throw "Untrusted npm registry field '$($property.Name)' for '$toolId'."
+            }
+        }
+
+        $trustedItem = $canonicalItem | ConvertTo-Json -Depth 32 | ConvertFrom-Json
+        $selectedScope = $selectedItem.PSObject.Properties['scope']
+        if ($selectedScope) {
+            $trustedItem.scope = [string]$selectedScope.Value
+        }
+        $normalized.Add($trustedItem)
+    }
+
+    return [pscustomobject]@{ tools = @($normalized) }
+}
+
+$npmAgentRegistryData = ConvertTo-HBTrustedNpmRegistry `
+    -Selected $selectedNpmAgentRegistryData `
+    -Canonical $canonicalNpmAgentRegistryData
 $installScope = if ($IncludeOptional) { @('required', 'optional') } else { @('required') }
 $allRegistryIds = @($registryData.packages | ForEach-Object { $_.id } | Sort-Object -Unique)
 $requiredRegistryIds = @(
@@ -498,8 +555,32 @@ function Install-HBNpmAgentTools {
         }
 
         if ($WhatIfPreference -or (Get-Command npm -ErrorAction SilentlyContinue)) {
-            Write-Host "INSTALL npm agent cli: $($tool.id) ($($tool.package))"
-            [void](Invoke-HBExternal -Command 'npm' -Arguments @('install', '-g', [string]$tool.package) -Action "Install npm agent CLI $($tool.id)")
+            $version = [string]$tool.version
+            $integrity = [string]$tool.integrity
+            if ($version -notmatch '^[0-9]+\.[0-9]+\.[0-9]+(?:[-.][0-9A-Za-z.-]+)?$' -or
+                $integrity -notmatch '^sha512-[A-Za-z0-9+/]+={0,2}$') {
+                throw "Invalid immutable npm package contract for '$($tool.id)'."
+            }
+            $packageSpec = "$($tool.package)@$version"
+            Write-Host "INSTALL npm agent cli: $($tool.id) ($packageSpec, $integrity)"
+            if ($WhatIfPreference) {
+                Write-Host "WHATIF: npm pack $packageSpec; verify $integrity; npm install -g <verified-tarball>"
+                continue
+            }
+
+            $packDirectory = Join-Path ([IO.Path]::GetTempPath()) ("hb-npm-{0}" -f [guid]::NewGuid().ToString('N'))
+            [void][IO.Directory]::CreateDirectory($packDirectory)
+            try {
+                $packJson = & npm pack $packageSpec --json --ignore-scripts --pack-destination $packDirectory
+                if ($LASTEXITCODE -ne 0) { throw "npm pack failed for '$packageSpec'." }
+                $tarball = Resolve-HBNpmPackTarball -PackJson @($packJson) `
+                    -PackDirectory $packDirectory -ExpectedPackage ([string]$tool.package) `
+                    -ExpectedVersion $version -ExpectedIntegrity $integrity
+                $exitCode = Invoke-HBExternal -Command 'npm' -Arguments @('install', '-g', $tarball) -Action "Install verified npm agent CLI $($tool.id)"
+                if ($exitCode -ne 0) { throw "npm install failed for '$packageSpec'." }
+            } finally {
+                Remove-Item -LiteralPath $packDirectory -Recurse -Force -ErrorAction SilentlyContinue
+            }
         } else {
             Write-Host "MISSING npm agent cli: $($tool.id) (npm fehlt)"
         }
@@ -536,8 +617,19 @@ function Install-HBCLITool {
     param([Parameter(Mandatory)] $Tool)
 
     $install = if ($Tool.PSObject.Properties.Name -contains 'install') { $Tool.install } else { $null }
-    if ($install -and $install.manager -eq 'uv') {
-        $arguments = @($install.arguments | ForEach-Object { [string]$_ })
+    if ($install -and $install.manager -in @('uv', 'uv-git')) {
+        if ($install.manager -eq 'uv-git') {
+            $revision = [string]$install.revision
+            $repository = [string]$install.repository
+            $package = [string]$install.package
+            if ($repository -cne 'https://github.com/github/spec-kit.git' -or
+                $revision -notmatch '^[0-9a-f]{40}$' -or -not $package) {
+                throw "Invalid immutable uv-git contract for '$($Tool.id)'."
+            }
+            $arguments = @('tool', 'install', $package, '--from', "git+$repository@$revision")
+        } else {
+            $arguments = @($install.arguments | ForEach-Object { [string]$_ })
+        }
         Write-Host "INSTALL cli tool: $($Tool.id)"
         if ($WhatIfPreference -or (Get-Command uv -ErrorAction SilentlyContinue)) {
             [void](Invoke-HBExternal -Command 'uv' -Arguments $arguments -Action "Install CLI tool $($Tool.id)")

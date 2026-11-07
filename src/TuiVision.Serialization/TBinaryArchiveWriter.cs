@@ -14,6 +14,7 @@ public sealed class TBinaryArchiveWriter : IDisposable
 {
     private readonly BinaryWriter _writer;
     private readonly bool _leaveOpen;
+    private long _encodedStringBytes;
 
     /// <summary>
     /// Initialisiert einen neuen Archiv-Writer.
@@ -83,6 +84,18 @@ public sealed class TBinaryArchiveWriter : IDisposable
     public void WriteString(string value)
     {
         ArgumentNullException.ThrowIfNull(value);
+        int byteCount = Encoding.UTF8.GetByteCount(value);
+        if (byteCount > TBinaryArchiveReader.MaximumStringByteCount)
+        {
+            throw new InvalidDataException($"Encoded string exceeds {TBinaryArchiveReader.MaximumStringByteCount} bytes.");
+        }
+
+        if (_encodedStringBytes > TBinaryArchiveReader.MaximumAggregateStringBytes - byteCount)
+        {
+            throw new InvalidDataException($"Aggregate encoded strings exceed {TBinaryArchiveReader.MaximumAggregateStringBytes} bytes.");
+        }
+
+        _encodedStringBytes += byteCount;
         _writer.Write(value);
     }
 

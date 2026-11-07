@@ -42,7 +42,7 @@ public sealed class Wave6ShowcaseSmokeMatrixTests : ExampleTestBase
         string root = CreateWorkspace();
         try
         {
-            using ControlledFileWorkspace workspace = new(root);
+            using ControlledFileWorkspace workspace = Wave6WorkspaceTestFactory.Open(root);
             Tp7FileManagerApp app = new(workspace, DefaultBounds(), headless: true);
             TWindow? initialWindow = app.MainWindow;
             app.QueueEvents(
@@ -76,7 +76,7 @@ public sealed class Wave6ShowcaseSmokeMatrixTests : ExampleTestBase
         string root = CreateWorkspace();
         try
         {
-            using ControlledFileWorkspace workspace = new(root);
+            using ControlledFileWorkspace workspace = Wave6WorkspaceTestFactory.Open(root);
             Tp7FileManagerApp app = new(workspace, DefaultBounds(), headless: true);
             app.QueueEvents([TEvent.CreateKeyDown(new TKeyDownEvent('\0', 0x3B, 0x3B00, 0, 0x3B))]);
 
@@ -108,7 +108,7 @@ public sealed class Wave6ShowcaseSmokeMatrixTests : ExampleTestBase
         string root = CreateWorkspace();
         try
         {
-            using ControlledFileWorkspace workspace = new(root);
+            using ControlledFileWorkspace workspace = Wave6WorkspaceTestFactory.Open(root);
             Tp7FileManagerApp app = new(workspace, DefaultBounds(48, 16), headless: true);
             app.QueueEvents(
             [
@@ -144,7 +144,7 @@ public sealed class Wave6ShowcaseSmokeMatrixTests : ExampleTestBase
         string root = CreateWorkspace();
         try
         {
-            using ControlledFileWorkspace workspace = new(root);
+            using ControlledFileWorkspace workspace = Wave6WorkspaceTestFactory.Open(root);
             Tp7FileManagerApp app = new(workspace, DefaultBounds(), headless: true);
             TMenuItem[] groups = EnumerateSiblings(app.MenuBar?.Menu).ToArray();
             string[] names = groups.Select(item => StripMarkers(item.Name)).ToArray();
@@ -182,11 +182,11 @@ public sealed class Wave6ShowcaseSmokeMatrixTests : ExampleTestBase
             File.WriteAllText(
                 Path.Combine(textRoot, "docs", "large.txt"),
                 new string('x', ControlledFileWorkspace.PreviewByteLimit + 20));
-            using ControlledFileWorkspace textWorkspace = new(textRoot);
+            using ControlledFileWorkspace textWorkspace = Wave6WorkspaceTestFactory.Open(textRoot);
             Wave6PreviewResult truncated = textWorkspace.PreviewText("docs/large.txt");
             Assert.IsTrue(truncated.Truncated);
 
-            using ControlledFileWorkspace hexWorkspace = new(hexRoot);
+            using ControlledFileWorkspace hexWorkspace = Wave6WorkspaceTestFactory.Open(hexRoot);
             Tp7FileManagerApp app = new(hexWorkspace, DefaultBounds(), headless: true);
             app.QueueEvents(
             [
@@ -223,7 +223,7 @@ public sealed class Wave6ShowcaseSmokeMatrixTests : ExampleTestBase
         string root = CreateWorkspace();
         try
         {
-            using ControlledFileWorkspace workspace = new(root);
+            using ControlledFileWorkspace workspace = Wave6WorkspaceTestFactory.Open(root);
             Assert.HasCount(0, workspace.List("docs", "*.missing").Entries);
             Tp7FileManagerApp app = new(workspace, DefaultBounds(), headless: true);
             app.QueueEvents(
@@ -263,7 +263,7 @@ public sealed class Wave6ShowcaseSmokeMatrixTests : ExampleTestBase
                 File.WriteAllText(Path.Combine(root, $"match-{index:D3}.txt"), "match");
             }
 
-            using ControlledFileWorkspace workspace = new(root);
+            using ControlledFileWorkspace workspace = Wave6WorkspaceTestFactory.Open(root);
             Wave6SearchResult limited = workspace.Search("", "*.txt");
             Assert.IsTrue(limited.LimitReached);
             Assert.HasCount(ControlledFileWorkspace.SearchResultLimit, limited.Matches);
@@ -294,7 +294,7 @@ public sealed class Wave6ShowcaseSmokeMatrixTests : ExampleTestBase
         try
         {
             File.WriteAllText(Path.Combine(associationRoot, "docs", "unknown.xyz"), "unknown");
-            using ControlledFileWorkspace associationWorkspace = new(associationRoot);
+            using ControlledFileWorkspace associationWorkspace = Wave6WorkspaceTestFactory.Open(associationRoot);
             Tp7FileManagerApp associationApp = new(associationWorkspace, DefaultBounds(), headless: true);
             associationApp.QueueEvents(
             [
@@ -306,7 +306,7 @@ public sealed class Wave6ShowcaseSmokeMatrixTests : ExampleTestBase
             AssertSmokeRunCompletes(() => associationApp.Run());
             AssertRenderedContainsFromAppLoop(associationApp.Driver.BackBuffer, "fallback", "association fallback");
 
-            using ControlledFileWorkspace paletteWorkspace = new(paletteRoot);
+            using ControlledFileWorkspace paletteWorkspace = Wave6WorkspaceTestFactory.Open(paletteRoot);
             Tp7FileManagerApp paletteApp = new(paletteWorkspace, DefaultBounds(), headless: true);
             paletteApp.QueueEvents([TEvent.CreateCommand(Tp7FileManagerApp.CmChangePalette, "unknown-palette")]);
             AssertSmokeRunCompletes(() => paletteApp.Run());
@@ -335,7 +335,7 @@ public sealed class Wave6ShowcaseSmokeMatrixTests : ExampleTestBase
         string cancelRoot = CreateWorkspace();
         try
         {
-            using ControlledFileWorkspace confirmWorkspace = new(confirmRoot);
+            using ControlledFileWorkspace confirmWorkspace = Wave6WorkspaceTestFactory.Open(confirmRoot);
             Tp7FileManagerApp confirmApp = new(confirmWorkspace, DefaultBounds(), headless: true);
             confirmApp.QueueEvents(
             [
@@ -351,7 +351,7 @@ public sealed class Wave6ShowcaseSmokeMatrixTests : ExampleTestBase
             StringAssert.Contains(confirmApp.LastDialogPreview, "README.txt -> confirmed.txt");
             AssertRenderedContainsFromAppLoop(confirmApp.Driver.BackBuffer, "Completed", "copy dialog result");
 
-            using ControlledFileWorkspace cancelWorkspace = new(cancelRoot);
+            using ControlledFileWorkspace cancelWorkspace = Wave6WorkspaceTestFactory.Open(cancelRoot);
             Tp7FileManagerApp cancelApp = new(cancelWorkspace, DefaultBounds(), headless: true);
             cancelApp.QueueEvents(
             [
@@ -386,7 +386,7 @@ public sealed class Wave6ShowcaseSmokeMatrixTests : ExampleTestBase
         string readOnlyRoot = CreateWorkspace();
         try
         {
-            using ControlledFileWorkspace renameWorkspace = new(renameRoot);
+            using ControlledFileWorkspace renameWorkspace = Wave6WorkspaceTestFactory.Open(renameRoot);
             Tp7FileManagerApp renameApp = new(renameWorkspace, DefaultBounds(), headless: true);
             renameApp.QueueEvents(
             [
@@ -397,7 +397,7 @@ public sealed class Wave6ShowcaseSmokeMatrixTests : ExampleTestBase
             Assert.IsFalse(File.Exists(Path.Combine(renameRoot, "README.txt")));
             Assert.IsTrue(File.Exists(Path.Combine(renameRoot, "renamed.txt")));
 
-            using ControlledFileWorkspace deleteWorkspace = new(deleteRoot);
+            using ControlledFileWorkspace deleteWorkspace = Wave6WorkspaceTestFactory.Open(deleteRoot);
             Tp7FileManagerApp deleteApp = new(deleteWorkspace, DefaultBounds(), headless: true);
             deleteApp.QueueEvents(
             [
@@ -407,7 +407,7 @@ public sealed class Wave6ShowcaseSmokeMatrixTests : ExampleTestBase
             AssertSmokeRunCompletes(() => deleteApp.Run());
             Assert.IsFalse(File.Exists(Path.Combine(deleteRoot, "README.txt")));
 
-            using ControlledFileWorkspace readOnlyWorkspace = new(readOnlyRoot);
+            using ControlledFileWorkspace readOnlyWorkspace = Wave6WorkspaceTestFactory.Open(readOnlyRoot);
             Tp7FileManagerApp readOnlyApp = new(readOnlyWorkspace, DefaultBounds(), headless: true);
             readOnlyApp.QueueEvents(
             [
@@ -439,7 +439,7 @@ public sealed class Wave6ShowcaseSmokeMatrixTests : ExampleTestBase
         try
         {
             File.WriteAllText(Path.Combine(root, "exists.txt"), "exists");
-            using ControlledFileWorkspace workspace = new(root);
+            using ControlledFileWorkspace workspace = Wave6WorkspaceTestFactory.Open(root);
             Tp7FileManagerApp app = new(workspace, DefaultBounds(), headless: true);
             app.QueueEvents(
             [
@@ -482,7 +482,7 @@ public sealed class Wave6ShowcaseSmokeMatrixTests : ExampleTestBase
         string root = CreateWorkspace();
         try
         {
-            using ControlledFileWorkspace workspace = new(root);
+            using ControlledFileWorkspace workspace = Wave6WorkspaceTestFactory.Open(root);
             Tp7FileManagerApp app = new(workspace, DefaultBounds(), headless: true);
             app.QueueEvents(
             [
@@ -518,8 +518,8 @@ public sealed class Wave6ShowcaseSmokeMatrixTests : ExampleTestBase
         string mouseRoot = CreateWorkspace();
         try
         {
-            using ControlledFileWorkspace keyboardWorkspace = new(keyboardRoot);
-            using ControlledFileWorkspace mouseWorkspace = new(mouseRoot);
+            using ControlledFileWorkspace keyboardWorkspace = Wave6WorkspaceTestFactory.Open(keyboardRoot);
+            using ControlledFileWorkspace mouseWorkspace = Wave6WorkspaceTestFactory.Open(mouseRoot);
             Tp7FileManagerApp keyboard = new(keyboardWorkspace, DefaultBounds(), headless: true);
             Tp7FileManagerApp mouse = new(mouseWorkspace, DefaultBounds(), headless: true);
             keyboard.QueueEvents([TEvent.CreateCommand(Tp7FileManagerApp.CmKeyboardDropIntent)]);
@@ -564,7 +564,7 @@ public sealed class Wave6ShowcaseSmokeMatrixTests : ExampleTestBase
         string sourceRoot = CreateWorkspace();
         try
         {
-            using ControlledFileWorkspace outsideWorkspace = new(outsideRoot);
+            using ControlledFileWorkspace outsideWorkspace = Wave6WorkspaceTestFactory.Open(outsideRoot);
             Tp7FileManagerApp outside = new(outsideWorkspace, DefaultBounds(), headless: true);
             outside.QueueEvents(
             [
@@ -578,7 +578,7 @@ public sealed class Wave6ShowcaseSmokeMatrixTests : ExampleTestBase
             Assert.AreEqual("invalid-target", outside.LastMouseCancellationReason);
             Assert.IsFalse(File.Exists(Path.Combine(outsideRoot, "README.txt.copy")));
 
-            using ControlledFileWorkspace buttonWorkspace = new(buttonRoot);
+            using ControlledFileWorkspace buttonWorkspace = Wave6WorkspaceTestFactory.Open(buttonRoot);
             Tp7FileManagerApp button = new(buttonWorkspace, DefaultBounds(), headless: true);
             button.QueueEvents(
             [
@@ -588,7 +588,7 @@ public sealed class Wave6ShowcaseSmokeMatrixTests : ExampleTestBase
             Assert.IsNull(button.PendingOperation);
             Assert.IsNull(button.LastOperation);
 
-            using ControlledFileWorkspace sourceWorkspace = new(sourceRoot);
+            using ControlledFileWorkspace sourceWorkspace = Wave6WorkspaceTestFactory.Open(sourceRoot);
             Tp7FileManagerApp source = new(sourceWorkspace, DefaultBounds(), headless: true);
             File.Delete(Path.Combine(sourceRoot, "README.txt"));
             source.QueueEvents(
@@ -622,7 +622,7 @@ public sealed class Wave6ShowcaseSmokeMatrixTests : ExampleTestBase
         string shutdownRoot = CreateWorkspace();
         try
         {
-            using ControlledFileWorkspace escapeWorkspace = new(escapeRoot);
+            using ControlledFileWorkspace escapeWorkspace = Wave6WorkspaceTestFactory.Open(escapeRoot);
             Tp7FileManagerApp escape = new(escapeWorkspace, DefaultBounds(), headless: true);
             escape.QueueEvents(
             [
@@ -633,7 +633,7 @@ public sealed class Wave6ShowcaseSmokeMatrixTests : ExampleTestBase
             Assert.IsNull(escape.PendingOperation);
             Assert.AreEqual("escape", escape.LastMouseCancellationReason);
 
-            using ControlledFileWorkspace capabilityWorkspace = new(capabilityRoot);
+            using ControlledFileWorkspace capabilityWorkspace = Wave6WorkspaceTestFactory.Open(capabilityRoot);
             Tp7FileManagerApp capability = new(capabilityWorkspace, DefaultBounds(), headless: true);
             capability.QueueEvents(
             [
@@ -646,7 +646,7 @@ public sealed class Wave6ShowcaseSmokeMatrixTests : ExampleTestBase
             Assert.IsNull(capability.PendingOperation);
             Assert.AreEqual("capability-loss", capability.LastMouseCancellationReason);
 
-            using ControlledFileWorkspace removalWorkspace = new(removalRoot);
+            using ControlledFileWorkspace removalWorkspace = Wave6WorkspaceTestFactory.Open(removalRoot);
             Tp7FileManagerApp removal = new(removalWorkspace, DefaultBounds(), headless: true);
             Assert.IsNotNull(removal.MainWindow);
             removal.Desktop?.Remove(removal.MainWindow);
@@ -658,7 +658,7 @@ public sealed class Wave6ShowcaseSmokeMatrixTests : ExampleTestBase
             Assert.IsNull(removal.PendingOperation);
             Assert.IsNull(removal.LastOperation);
 
-            using ControlledFileWorkspace shutdownWorkspace = new(shutdownRoot);
+            using ControlledFileWorkspace shutdownWorkspace = Wave6WorkspaceTestFactory.Open(shutdownRoot);
             Tp7FileManagerApp shutdown = new(shutdownWorkspace, DefaultBounds(), headless: true);
             shutdown.QueueEvents(
             [
@@ -691,7 +691,7 @@ public sealed class Wave6ShowcaseSmokeMatrixTests : ExampleTestBase
         string root = CreateWorkspace();
         try
         {
-            using ControlledFileWorkspace workspace = new(root);
+            using ControlledFileWorkspace workspace = Wave6WorkspaceTestFactory.Open(root);
             Tp7FileManagerApp app = new(workspace, DefaultBounds(48, 16), headless: true);
             app.QueueEvents(
             [

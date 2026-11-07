@@ -17,9 +17,13 @@ public sealed class ipstream : pstream
     private const byte NullMarker = 0;
     private const byte NewObjectMarker = 1;
     private const byte ReferenceMarker = 2;
+    private const int MaxObjectDepth = 64;
+    private const int MaxNewObjectCount = 4096;
 
     private readonly TBinaryArchiveReader _reader;
     private readonly Dictionary<int, object> _references = new();
+    private readonly TArchiveReadBudget _budget;
+    private int _objectDepth;
 
     /// <summary>
     /// Initialisiert einen neuen Lesestream.
@@ -30,9 +34,15 @@ public sealed class ipstream : pstream
     /// <param name="registry">Die Typ-Registry. / The type registry.</param>
     /// <param name="leaveOpen">Gibt an, ob der Stream offen bleiben soll. / Indicates whether the stream should remain open.</param>
     public ipstream(Stream stream, TRecordRegistry registry, bool leaveOpen = false)
+        : this(stream, registry, leaveOpen, new TArchiveReadBudget())
+    {
+    }
+
+    internal ipstream(Stream stream, TRecordRegistry registry, bool leaveOpen, TArchiveReadBudget budget)
         : base(stream, registry, leaveOpen)
     {
-        _reader = new TBinaryArchiveReader(stream, leaveOpen: true);
+        _budget = budget ?? throw new ArgumentNullException(nameof(budget));
+        _reader = new TBinaryArchiveReader(stream, leaveOpen: true, budget);
     }
 
     /// <summary>
@@ -66,6 +76,9 @@ public sealed class ipstream : pstream
     /// </summary>
     /// <returns>Der gelesene String. / The read string.</returns>
     public string ReadString() => _reader.ReadString();
+
+    internal int ReadBoundedCount(int maximum, string description) =>
+        _reader.ReadBoundedCount(maximum, description);
 
     /// <summary>
     /// Liest ein registriertes Objekt mit Shared-Reference-Semantik.
@@ -140,16 +153,35 @@ public sealed class ipstream : pstream
 
     private T ReadNewObject<T>() where T : class
     {
-        string typeId = ReadString();
-        int referenceId = ReadInt32();
-        object value = Registry.CreateStream(typeId, this);
-        _references[referenceId] = value;
-
-        if (value is not T typed)
+        if (_objectDepth >= MaxObjectDepth)
         {
-            throw new InvalidDataException($"Stream object '{typeId}' does not contain '{typeof(T).Name}'.");
+            throw new InvalidDataException($"Serialized object depth exceeds {MaxObjectDepth}.");
         }
 
-        return typed;
+        if (_budget.NewObjects >= MaxNewObjectCount)
+        {
+            throw new InvalidDataException($"Serialized object count exceeds {MaxNewObjectCount}.");
+        }
+
+        _budget.NewObjects++;
+        _objectDepth++;
+        try
+        {
+            string typeId = ReadString();
+            int referenceId = ReadInt32();
+            object value = Registry.CreateStream(typeId, this);
+            _references[referenceId] = value;
+
+            if (value is not T typed)
+            {
+                throw new InvalidDataException($"Stream object '{typeId}' does not contain '{typeof(T).Name}'.");
+            }
+
+            return typed;
+        }
+        finally
+        {
+            _objectDepth--;
+        }
     }
 }

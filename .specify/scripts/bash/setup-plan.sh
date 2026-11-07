@@ -39,17 +39,32 @@ fi
 
 # Ensure the feature directory exists
 mkdir -p "$FEATURE_DIR"
+if [[ -L "$FEATURE_DIR" || ! -d "$FEATURE_DIR" || "$(cd -- "$FEATURE_DIR" && pwd -P)" != "$FEATURE_DIR" ]]; then
+    echo "ERROR: Feature directory is linked or changed after validation" >&2
+    exit 1
+fi
+if [[ -L "$IMPL_PLAN" || ( -e "$IMPL_PLAN" && ! -f "$IMPL_PLAN" ) ]]; then
+    echo "ERROR: plan.md must be a regular non-link target" >&2
+    exit 1
+fi
+
+PLAN_TEMP=$(mktemp "$FEATURE_DIR/.plan.md.tmp.XXXXXX")
+cleanup_plan_temp() { rm -f -- "$PLAN_TEMP"; }
+trap cleanup_plan_temp EXIT HUP INT TERM
 
 # Copy plan template if it exists
 TEMPLATE=$(resolve_template "plan-template" "$REPO_ROOT") || true
 if [[ -n "$TEMPLATE" ]] && [[ -f "$TEMPLATE" ]]; then
-    cp "$TEMPLATE" "$IMPL_PLAN"
+    cp "$TEMPLATE" "$PLAN_TEMP"
+    mv -f -- "$PLAN_TEMP" "$IMPL_PLAN"
     echo "Copied plan template to $IMPL_PLAN"
 else
     echo "Warning: Plan template not found"
     # Create a basic plan file if template doesn't exist
-    touch "$IMPL_PLAN"
+    : > "$PLAN_TEMP"
+    mv -f -- "$PLAN_TEMP" "$IMPL_PLAN"
 fi
+trap - EXIT HUP INT TERM
 
 # Output results
 if $JSON_MODE; then

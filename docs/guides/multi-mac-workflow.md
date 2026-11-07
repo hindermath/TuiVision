@@ -92,9 +92,8 @@ Wenn sich oeffentliche API oder XML-Kommentare geaendert haben, danach docfx neu
 
 ```bash
 if [[ -f "docfx.json" ]]; then
-  dotnet tool update --global docfx || dotnet tool install --global docfx
-  export PATH="$PATH:$HOME/.dotnet/tools"
-  docfx docfx.json
+  dotnet tool restore
+  dotnet tool run docfx -- docfx.json
 else
   echo "docfx.json nicht gefunden - docfx-Schritt uebersprungen."
 fi
@@ -169,8 +168,8 @@ Tools installiert sind.
 Installation oder Update von `specify`:
 
 ```bash
-# Erstinstallation aus dem aktuellen main-Stand
-uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
+# Erstinstallation aus der eingecheckten unveraenderlichen Registry-Revision
+uv tool install specify-cli --from git+https://github.com/github/spec-kit.git@f3d6fb762c8e6718bf2dedcba38cc5dc93f65645
 
 # Upgrade auf einen konkreten Release-Tag
 uv tool install specify-cli --force --from git+https://github.com/github/spec-kit.git@vX.Y.Z
@@ -602,9 +601,8 @@ gh auth login
 ### `docfx` wird nicht gefunden
 ```bash
 if [[ -f "docfx.json" ]]; then
-  dotnet tool update --global docfx || dotnet tool install --global docfx
-  export PATH="$PATH:$HOME/.dotnet/tools"
-  docfx docfx.json
+  dotnet tool restore
+  dotnet tool run docfx -- docfx.json
 else
   echo "docfx.json nicht gefunden."
 fi
@@ -619,7 +617,7 @@ Wenn der Befehl nicht aufloest, GitHub Spec-Kit CLI auf dem betroffenen Mac
 installieren oder die lokale Shell-/PATH-Konfiguration korrigieren:
 
 ```bash
-uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
+uv tool install specify-cli --from git+https://github.com/github/spec-kit.git@f3d6fb762c8e6718bf2dedcba38cc5dc93f65645
 ```
 
 ### `specify check` meldet fehlende Tools
