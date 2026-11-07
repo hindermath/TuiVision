@@ -396,6 +396,7 @@ class ExecutionContextTests(unittest.TestCase):
             self.assertTrue(recorder.imported)
             self.assertFalse(marker.exists())
 
+    @unittest.skipIf(os.name == "nt", "Delegated bundle import runs in the Linux container")
     def test_delegated_network_fetch_uses_explicit_remote_and_ignores_git_routing_environment(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

@@ -14,6 +14,19 @@ BASH_SCRIPT = REPOSITORY / "scripts" / "check-homogeneity.sh"
 POWERSHELL_SCRIPT = REPOSITORY / "scripts" / "check-homogeneity.ps1"
 
 
+def usable_bash() -> bool:
+    executable = shutil.which("bash")
+    if not executable:
+        return False
+    completed = subprocess.run(
+        [executable, "--version"],
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    return completed.returncode == 0
+
+
 class CheckHomogeneityPatchTests(unittest.TestCase):
     def setUp(self) -> None:
         self.temporary = tempfile.TemporaryDirectory()
@@ -31,7 +44,7 @@ class CheckHomogeneityPatchTests(unittest.TestCase):
         self.temporary.cleanup()
 
     def variants(self) -> list[str]:
-        variants = ["bash"]
+        variants = ["bash"] if usable_bash() else []
         if shutil.which("pwsh"):
             variants.append("powershell")
         return variants

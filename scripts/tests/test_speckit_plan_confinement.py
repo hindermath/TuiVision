@@ -13,6 +13,20 @@ import unittest
 REPOSITORY = Path(__file__).resolve().parents[2]
 
 
+def usable_bash() -> bool:
+    executable = shutil.which("bash")
+    if not executable:
+        return False
+    completed = subprocess.run(
+        [executable, "--version"],
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    return completed.returncode == 0
+
+
+@unittest.skipUnless(usable_bash(), "A functional Bash runtime is required.")
 class SpecKitPlanConfinementTests(unittest.TestCase):
     def _repository(self, root: Path) -> Path:
         repo = root / "repo"

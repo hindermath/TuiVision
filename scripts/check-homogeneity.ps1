@@ -114,7 +114,12 @@ if ($ApplyPatch) {
             [IO.Path]::DirectorySeparatorChar,
             [IO.Path]::AltDirectorySeparatorChar
         ) + [IO.Path]::DirectorySeparatorChar
-        if (-not $fullPath.StartsWith($rootPrefix, [StringComparison]::Ordinal)) {
+        $pathComparison = if ($IsWindows) {
+            [StringComparison]::OrdinalIgnoreCase
+        } else {
+            [StringComparison]::Ordinal
+        }
+        if (-not $fullPath.StartsWith($rootPrefix, $pathComparison)) {
             throw "Patch target escapes the target repository: $RelativePath"
         }
         if ($gitMetadataRoot) {

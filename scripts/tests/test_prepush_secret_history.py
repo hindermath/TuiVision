@@ -15,6 +15,7 @@ HOOK = REPOSITORY / "scripts" / "hooks" / "pre-push"
 ZERO_SHA = "0" * 40
 
 
+@unittest.skipUnless(Path("/bin/bash").is_file(), "The pre-push hook requires a Unix Bash runtime.")
 class PrePushSecretHistoryTests(unittest.TestCase):
     def create_history(self, root: Path) -> tuple[str, str]:
         subprocess.run(["git", "init", "-q", str(root)], check=True)
