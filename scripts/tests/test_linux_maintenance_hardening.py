@@ -221,7 +221,7 @@ def write_swift_registry(path: Path, digest: str) -> None:
                 {
                     "id": "swift",
                     "scope": "required",
-                    "platforms": ["Linux"],
+                    "platforms": ["Darwin", "Linux", "Windows"],
                     "command": "swift",
                     "args": ["--version"],
                     "install": {

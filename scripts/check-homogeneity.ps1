@@ -70,12 +70,6 @@ if (-not (Test-Path -LiteralPath $TargetDir -PathType Container)) {
 }
 $TargetDir = (Resolve-Path -LiteralPath $TargetDir).Path
 
-# Check ripgrep availability
-if (-not (Get-Command rg -ErrorAction SilentlyContinue)) {
-    Write-Error "FATAL: ripgrep (rg) not found"
-    exit 2
-}
-
 # ─── Apply-Patch Mode ────────────────────────────────────────────────────────
 if ($ApplyPatch) {
     if (-not (Test-Path -LiteralPath $ApplyPatch -PathType Leaf)) {
@@ -226,6 +220,13 @@ if ($ApplyPatch) {
         Write-Host "Patch abgebrochen."
     }
     exit 0
+}
+
+# Patch application validates and writes declared targets without scanning.
+# Keep its confined recovery path usable even when the scan-only tool is absent.
+if (-not (Get-Command rg -ErrorAction SilentlyContinue)) {
+    Write-Error "FATAL: ripgrep (rg) not found"
+    exit 2
 }
 
 # ─── Scan State ──────────────────────────────────────────────────────────────

@@ -82,6 +82,11 @@ public sealed class TFileListTests
     [TestMethod]
     public void TFileList_Refresh_Escapes_Literal_Backslash()
     {
+        if (OperatingSystem.IsWindows())
+        {
+            Assert.Inconclusive("Windows reserves the backslash as a path separator; the filename cannot exist on that platform.");
+        }
+
         using EditorShellTestContext.TemporaryDirectory temp = EditorShellTestContext.CreateTemporaryDirectory();
         string name = "literal\\u202E.txt";
         File.WriteAllText(Path.Combine(temp.Path, name), "payload");
