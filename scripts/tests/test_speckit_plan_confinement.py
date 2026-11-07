@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 import shutil
 import subprocess
@@ -13,20 +14,7 @@ import unittest
 REPOSITORY = Path(__file__).resolve().parents[2]
 
 
-def usable_bash() -> bool:
-    executable = shutil.which("bash")
-    if not executable:
-        return False
-    completed = subprocess.run(
-        [executable, "--version"],
-        text=True,
-        capture_output=True,
-        check=False,
-    )
-    return completed.returncode == 0
-
-
-@unittest.skipUnless(usable_bash(), "A functional Bash runtime is required.")
+@unittest.skipIf(os.name == "nt", "The Spec Kit Bash scripts run on Unix targets.")
 class SpecKitPlanConfinementTests(unittest.TestCase):
     def _repository(self, root: Path) -> Path:
         repo = root / "repo"

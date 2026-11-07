@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 import shutil
 import subprocess
 import tempfile
@@ -12,19 +13,6 @@ from pathlib import Path
 REPOSITORY = Path(__file__).resolve().parents[2]
 BASH_SCRIPT = REPOSITORY / "scripts" / "check-homogeneity.sh"
 POWERSHELL_SCRIPT = REPOSITORY / "scripts" / "check-homogeneity.ps1"
-
-
-def usable_bash() -> bool:
-    executable = shutil.which("bash")
-    if not executable:
-        return False
-    completed = subprocess.run(
-        [executable, "--version"],
-        text=True,
-        capture_output=True,
-        check=False,
-    )
-    return completed.returncode == 0
 
 
 class CheckHomogeneityPatchTests(unittest.TestCase):
@@ -44,7 +32,7 @@ class CheckHomogeneityPatchTests(unittest.TestCase):
         self.temporary.cleanup()
 
     def variants(self) -> list[str]:
-        variants = ["bash"] if usable_bash() else []
+        variants = [] if os.name == "nt" else ["bash"]
         if shutil.which("pwsh"):
             variants.append("powershell")
         return variants

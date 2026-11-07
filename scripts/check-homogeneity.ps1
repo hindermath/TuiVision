@@ -110,16 +110,11 @@ if ($ApplyPatch) {
         }
 
         $fullPath = [IO.Path]::GetFullPath((Join-Path $TargetRoot $RelativePath))
-        $rootPrefix = $TargetRoot.TrimEnd(
-            [IO.Path]::DirectorySeparatorChar,
-            [IO.Path]::AltDirectorySeparatorChar
-        ) + [IO.Path]::DirectorySeparatorChar
-        $pathComparison = if ($IsWindows) {
-            [StringComparison]::OrdinalIgnoreCase
-        } else {
-            [StringComparison]::Ordinal
-        }
-        if (-not $fullPath.StartsWith($rootPrefix, $pathComparison)) {
+        $confinedRelative = [IO.Path]::GetRelativePath($TargetRoot, $fullPath)
+        if ([IO.Path]::IsPathRooted($confinedRelative) -or
+            $confinedRelative -eq '..' -or
+            $confinedRelative.StartsWith('../', [StringComparison]::Ordinal) -or
+            $confinedRelative.StartsWith('..\', [StringComparison]::Ordinal)) {
             throw "Patch target escapes the target repository: $RelativePath"
         }
         if ($gitMetadataRoot) {
