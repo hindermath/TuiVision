@@ -12,6 +12,59 @@ namespace TuiVision.Serialization.Tests;
 public sealed class TUiDescriptionRecordTests
 {
     /// <summary>
+    /// Akzeptiert den maximalen flachen Menürecord ohne quadratische Kindersuche.
+    ///
+    /// Accepts the maximum flat menu record without quadratic child lookup.
+    /// </summary>
+    [TestMethod]
+    public void TMenuDescriptionRecord_MaximumFlatGraph_Validates()
+    {
+        List<TMenuItemDescriptionRecord> items = [new("root", null, 0, "Root", 0, 0, false)];
+        for (int index = 1; index < TMenuDescriptionRecord.MaxItems; index++)
+        {
+            items.Add(new TMenuItemDescriptionRecord(
+                $"leaf-{index}", "root", index, $"Leaf {index}", (ushort)(index % ushort.MaxValue + 1), 0, false));
+        }
+
+        TMenuDescriptionRecord record = new(TMenuDescriptionRecord.CurrentFormatVersion, items);
+        SaveArchive(record);
+
+        Assert.HasCount(TMenuDescriptionRecord.MaxItems, record.Items);
+    }
+
+    /// <summary>
+    /// Lehnt viele einzeln gueltige Menues ab, sobald sie das gemeinsame Archivbudget ueberschreiten.
+    ///
+    /// Rejects many individually valid menus once they exceed the shared archive budget.
+    /// </summary>
+    [TestMethod]
+    public void TMenuDescriptionRecord_AggregateResourceItems_ConsumeSharedBudget()
+    {
+        TRecordRegistry registry = SerializationTestSupport.CreateStreamRegistry();
+        TResourceFile.RegisterBuiltInTypes(registry);
+        TResourceFile resources = new(registry);
+        List<TMenuItemDescriptionRecord> items = [new("root", null, 0, "Root", 0, 0, false)];
+        for (int index = 1; index < TMenuDescriptionRecord.MaxItems; index++)
+        {
+            items.Add(new TMenuItemDescriptionRecord(
+                $"leaf-{index}", "root", index, $"Leaf {index}", (ushort)(index % ushort.MaxValue + 1), 0, false));
+        }
+
+        TMenuDescriptionRecord menu = new(TMenuDescriptionRecord.CurrentFormatVersion, items);
+        for (int index = 0; index < 25; index++)
+        {
+            resources.Put($"Menu-{index}", menu);
+        }
+
+        using MemoryStream stream = new();
+        resources.Save(stream);
+        stream.Position = 0;
+
+        InvalidDataException exception = Assert.ThrowsExactly<InvalidDataException>(() => TResourceFile.Load(stream, registry));
+        StringAssert.Contains(exception.Message, "Aggregate collection count");
+    }
+
+    /// <summary>
     /// Prüft Built-in-Roundtrips für Dialog, Menü und StatusLine mit exakten Keys.
     /// Verifies built-in roundtrips for dialog, menu, and status line with exact keys.
     /// </summary>

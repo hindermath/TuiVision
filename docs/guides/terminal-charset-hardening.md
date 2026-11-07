@@ -62,6 +62,9 @@ emulation.
 | Grenze / Limit | Wert / Value | Verhalten / Behavior |
 |---|---:|---|
 | Verlauf / History | 4.096 Cells | FIFO; älteste Cell wird zuerst entfernt / FIFO; oldest cell is removed first |
+| Beobachtung / Observation | 4.096 Zeichen und Operationen / characters and operations | Überlänge wird vor dem Parsen atomar abgelehnt / Oversize is rejected atomically before parsing |
+| Sichtbarer Puffer / Visible buffer | 512 x 256 Cells | Größere Erstellung und Resize werden abgelehnt / Larger construction and resize are rejected |
+| Arbeit je Aufruf / Work per call | 1.048.576 Einheiten / units | Scroll-, Reset- und Löschkosten werden vor Anwendung simuliert / Scroll, reset, and erase costs are simulated before application |
 | Steuerfolge / Control sequence | 64 Zeichen / characters | Überlänge wird atomar abgelehnt / Oversize is rejected atomically |
 | Numerische Parameter / Numeric parameters | 4 | Fünfter Parameter wird abgelehnt / Fifth parameter is rejected |
 | Parameterwert / Parameter value | 0 bis / through 9.999 | 10.000 wird abgelehnt / 10,000 is rejected |

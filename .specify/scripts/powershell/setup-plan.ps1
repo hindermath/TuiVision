@@ -30,16 +30,31 @@ if (-not (Test-FeatureBranch -Branch $paths.CURRENT_BRANCH -HasGit $paths.HAS_GI
 
 # Ensure the feature directory exists
 New-Item -ItemType Directory -Path $paths.FEATURE_DIR -Force | Out-Null
+$featureItem = Get-Item -LiteralPath $paths.FEATURE_DIR -Force
+$specsItem = Get-Item -LiteralPath (Join-Path $paths.REPO_ROOT 'specs') -Force
+if (($featureItem.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0 -or
+    ($specsItem.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0) {
+    throw 'Feature directory must stay in a link-free specs tree.'
+}
+if (Test-Path -LiteralPath $paths.IMPL_PLAN) {
+    $planItem = Get-Item -LiteralPath $paths.IMPL_PLAN -Force
+    if (($planItem.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0 -or $planItem.PSIsContainer) {
+        throw 'plan.md must be a regular non-link target.'
+    }
+}
+$planTemp = Join-Path $paths.FEATURE_DIR ('.plan.md.tmp.{0}' -f [guid]::NewGuid().ToString('N'))
 
 # Copy plan template if it exists, otherwise note it or create empty file
 $template = Join-Path $paths.REPO_ROOT '.specify/templates/plan-template.md'
 if (Test-Path $template) {
-    Copy-Item $template $paths.IMPL_PLAN -Force
+    Copy-Item -LiteralPath $template -Destination $planTemp
+    Move-Item -LiteralPath $planTemp -Destination $paths.IMPL_PLAN -Force
     Write-Output "Copied plan template to $($paths.IMPL_PLAN)"
 } else {
     Write-Warning "Plan template not found at $template"
     # Create a basic plan file if template doesn't exist
-    New-Item -ItemType File -Path $paths.IMPL_PLAN -Force | Out-Null
+    New-Item -ItemType File -Path $planTemp | Out-Null
+    Move-Item -LiteralPath $planTemp -Destination $paths.IMPL_PLAN -Force
 }
 
 # Output results

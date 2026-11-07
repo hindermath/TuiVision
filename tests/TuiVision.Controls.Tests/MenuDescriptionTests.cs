@@ -76,6 +76,26 @@ public sealed class MenuDescriptionTests
         Assert.IsFalse(record.GetType().GetProperties().Any(property => typeof(TView).IsAssignableFrom(property.PropertyType)));
     }
 
+    /// <summary>
+    /// Validiert und rekonstruiert den maximalen flachen Menügraphen begrenzt.
+    ///
+    /// Validates and reconstructs the maximum flat menu graph with bounded work.
+    /// </summary>
+    [TestMethod]
+    public void MenuDescription_MaximumFlatGraph_Reconstructs()
+    {
+        List<MenuItemDescription> items = [new("root", null, 0, "Root", 0, 0, false)];
+        for (int index = 1; index < 4096; index++)
+        {
+            items.Add(new MenuItemDescription($"leaf-{index}", "root", index, $"Leaf {index}", (ushort)(index % ushort.MaxValue + 1), 0, false));
+        }
+
+        TMenuBar menu = MenuDescriptionFactory.CreateMenuBar(new MenuDescription(1, items), new TRect(0, 0, 80, 1));
+
+        Assert.IsNotNull(menu.Menu);
+        Assert.IsNotNull(menu.Menu.SubMenu);
+    }
+
     private static MenuDescription CreateValid() => new(
         1,
         [

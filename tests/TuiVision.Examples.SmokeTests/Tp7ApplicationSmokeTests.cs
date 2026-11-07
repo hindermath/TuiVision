@@ -115,34 +115,29 @@ public sealed class Tp7ApplicationSmokeTests : ExampleTestBase
     [TestMethod]
     public void Tp7Edit_AppLoop_Requires_Conflict_Decision_And_Rejects_Traversal()
     {
-        string root = Path.Combine(Path.GetTempPath(), $"tuivision-tp7edit-{Guid.NewGuid():N}");
-        Directory.CreateDirectory(root);
+        using TControlledOutputDirectory output = TControlledOutputDirectory.Create();
+        string root = output.RootPath;
         string target = Path.Combine(root, "lesson.txt");
         File.WriteAllText(target, "EXTERNAL");
-        try
         {
-            Tp7EditApp rejected = new(DefaultBounds(), headless: true, allowedOutputDirectory: root);
+            Tp7EditApp rejected = new(DefaultBounds(), headless: true, outputDirectory: output);
             rejected.QueueEvents([TEvent.CreateCommand(Tp7EditApp.CmSaveOwned, new Tp7EditApp.SaveRequest("lesson.txt", false))]);
             AssertSmokeRunCompletes(() => rejected.Run());
             Assert.IsFalse(rejected.SaveAccepted);
             Assert.AreEqual(TuiVision.Controls.TFileSaveConflictKind.ReplaceExisting, rejected.LastConflictKind);
             Assert.AreEqual("EXTERNAL", File.ReadAllText(target));
 
-            Tp7EditApp accepted = new(DefaultBounds(), headless: true, allowedOutputDirectory: root);
+            Tp7EditApp accepted = new(DefaultBounds(), headless: true, outputDirectory: output);
             accepted.QueueEvents([TEvent.CreateCommand(Tp7EditApp.CmSaveOwned, new Tp7EditApp.SaveRequest("lesson.txt", true))]);
             AssertSmokeRunCompletes(() => accepted.Run());
             Assert.IsTrue(accepted.SaveAccepted);
 
-            Tp7EditApp traversal = new(DefaultBounds(), headless: true, allowedOutputDirectory: root);
+            Tp7EditApp traversal = new(DefaultBounds(), headless: true, outputDirectory: output);
             traversal.QueueEvents([TEvent.CreateCommand(Tp7EditApp.CmSaveOwned, new Tp7EditApp.SaveRequest("../escape.txt", true))]);
             AssertSmokeRunCompletes(() => traversal.Run());
             Assert.IsFalse(traversal.SaveAccepted);
             Assert.IsFalse(File.Exists(Path.Combine(root, "..", "escape.txt")));
-            AssertVisibleContainsFromAppLoop(traversal.LastStatusMessage, "outside", "TP7 Edit traversal status");
-        }
-        finally
-        {
-            Directory.Delete(root, recursive: true);
+            AssertVisibleContainsFromAppLoop(traversal.LastStatusMessage, "unsafe", "TP7 Edit traversal status");
         }
     }
 

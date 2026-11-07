@@ -24,10 +24,10 @@ public sealed class Tp7EditApp : Wave5Application
     /// <summary>Initialisiert den Editor. / Initializes the editor.</summary>
     /// <param name="bounds">Anwendungsgrenzen. / Application bounds.</param>
     /// <param name="headless">Kontrollierter Smoke-Modus. / Controlled smoke mode.</param>
-    /// <param name="allowedOutputDirectory">Optionales test-eigenes Ziel. / Optional test-owned target.</param>
-    public Tp7EditApp(TRect bounds, bool headless = false, string? allowedOutputDirectory = null) : base(bounds, headless)
+    /// <param name="outputDirectory">Optionale besessene Ausgabe-Capability. / Optional owned output capability.</param>
+    public Tp7EditApp(TRect bounds, bool headless = false, TControlledOutputDirectory? outputDirectory = null) : base(bounds, headless)
     {
-        AllowedOutputDirectory = allowedOutputDirectory is null ? null : Path.GetFullPath(allowedOutputDirectory);
+        OutputDirectory = outputDirectory;
         TRect region = new(2, 1, Math.Max(14, Desktop!.Size.X - 2), Math.Max(7, Desktop.Size.Y - 2));
         Editor = new TFileEditor(new TRect(1, 1, Math.Max(3, region.Width - 1), Math.Max(3, region.Height - 2)));
         Editor.LoadText("TP7 editor fixture\nReady.", markClean: true);
@@ -42,7 +42,7 @@ public sealed class Tp7EditApp : Wave5Application
     }
 
     /// <summary>Optionales kontrolliertes Ziel. / Optional controlled target.</summary>
-    public string? AllowedOutputDirectory { get; }
+    public TControlledOutputDirectory? OutputDirectory { get; }
 
     /// <summary>Echter Dateieditor. / Real file editor.</summary>
     public TFileEditor Editor { get; }
@@ -162,7 +162,7 @@ public sealed class Tp7EditApp : Wave5Application
     {
         SaveAccepted = false;
         LastConflictKind = null;
-        if (AllowedOutputDirectory is null
+        if (OutputDirectory is null
             || string.IsNullOrWhiteSpace(request.RelativePath)
             || Path.IsPathRooted(request.RelativePath))
         {
@@ -170,18 +170,16 @@ public sealed class Tp7EditApp : Wave5Application
             return;
         }
 
-        string root = Path.TrimEndingDirectorySeparator(AllowedOutputDirectory);
-        string candidate = Path.GetFullPath(Path.Combine(root, request.RelativePath));
-        string prefix = root + Path.DirectorySeparatorChar;
-        // Der Präfixvergleich ist die kontrollierte Proof-Grenze; relative Segmente dürfen den Test-Root nicht verlassen.
-        // The prefix comparison is the controlled proof boundary; relative segments must not leave the test root.
-        if (!candidate.StartsWith(prefix, StringComparison.Ordinal))
+        string candidate;
+        try
         {
-            SetStatus("Tp7Edit", "save rejected: outside controlled root");
+            candidate = OutputDirectory.ResolveNewFile(request.RelativePath);
+        }
+        catch (Exception exception) when (exception is ArgumentException or InvalidOperationException or IOException)
+        {
+            SetStatus("Tp7Edit", "save rejected: unsafe controlled target");
             return;
         }
-
-        Directory.CreateDirectory(root);
         Editor.ConfirmOverwrite = conflict =>
         {
             LastConflictKind = conflict.Kind;

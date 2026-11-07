@@ -5,6 +5,15 @@ using System.Text;
 
 namespace TuiVision.Serialization;
 
+internal sealed class TArchiveReadBudget
+{
+    internal long DecodedStringBytes { get; set; }
+
+    internal int CollectionItems { get; set; }
+
+    internal int NewObjects { get; set; }
+}
+
 /// <summary>
 /// Schmaler BinaryReader fuer deterministische Deserialisierung.
 ///
@@ -12,9 +21,15 @@ namespace TuiVision.Serialization;
 /// </summary>
 public sealed class TBinaryArchiveReader : IDisposable
 {
+    internal const int MaximumStringByteCount = 64 * 1024;
+    internal const long MaximumAggregateStringBytes = 64L * 1024 * 1024;
+    internal const int MaximumCollectionItems = 100_000;
+
+    private static readonly UTF8Encoding StrictUtf8 = new(false, true);
     private readonly BinaryReader _reader;
     private readonly Stream _stream;
     private readonly bool _leaveOpen;
+    private readonly TArchiveReadBudget _budget;
 
     /// <summary>
     /// Initialisiert einen neuen Archiv-Reader.
@@ -24,8 +39,14 @@ public sealed class TBinaryArchiveReader : IDisposable
     /// <param name="stream">Der Quellstream. / The source stream.</param>
     /// <param name="leaveOpen">Gibt an, ob der Stream offen bleiben soll. / Indicates whether the stream should stay open.</param>
     public TBinaryArchiveReader(Stream stream, bool leaveOpen = false)
+        : this(stream, leaveOpen, new TArchiveReadBudget())
+    {
+    }
+
+    internal TBinaryArchiveReader(Stream stream, bool leaveOpen, TArchiveReadBudget budget)
     {
         ArgumentNullException.ThrowIfNull(stream);
+        ArgumentNullException.ThrowIfNull(budget);
         if (!stream.CanRead)
         {
             throw new ArgumentException("Stream must be readable.", nameof(stream));
@@ -34,6 +55,7 @@ public sealed class TBinaryArchiveReader : IDisposable
         _stream = stream;
         _reader = new BinaryReader(stream, Encoding.UTF8, leaveOpen);
         _leaveOpen = leaveOpen;
+        _budget = budget;
     }
 
     /// <summary>
@@ -82,7 +104,30 @@ public sealed class TBinaryArchiveReader : IDisposable
     /// Reads a string.
     /// </summary>
     /// <returns>Der gelesene String. / The read string.</returns>
-    public string ReadString() => _reader.ReadString();
+    public string ReadString()
+    {
+        int byteCount = Read7BitEncodedLength();
+        if (byteCount > MaximumStringByteCount)
+        {
+            throw new InvalidDataException($"Encoded string exceeds {MaximumStringByteCount} bytes.");
+        }
+
+        if (_budget.DecodedStringBytes > MaximumAggregateStringBytes - byteCount)
+        {
+            throw new InvalidDataException($"Aggregate encoded strings exceed {MaximumAggregateStringBytes} bytes.");
+        }
+
+        byte[] bytes = ReadBytes(byteCount);
+        _budget.DecodedStringBytes += byteCount;
+        try
+        {
+            return StrictUtf8.GetString(bytes);
+        }
+        catch (DecoderFallbackException exception)
+        {
+            throw new InvalidDataException("Serialized string is not valid UTF-8.", exception);
+        }
+    }
 
     /// <summary>
     /// Liest exakt die angegebene Anzahl Bytes.
@@ -98,6 +143,11 @@ public sealed class TBinaryArchiveReader : IDisposable
             throw new ArgumentOutOfRangeException(nameof(count), "Byte count must be non-negative.");
         }
 
+        if (_stream.CanSeek && count > GetRemainingByteCount())
+        {
+            throw new EndOfStreamException("Unexpected end of stream.");
+        }
+
         byte[] result = _reader.ReadBytes(count);
         if (result.Length != count)
         {
@@ -105,6 +155,66 @@ public sealed class TBinaryArchiveReader : IDisposable
         }
 
         return result;
+    }
+
+    /// <summary>
+    /// Liefert die noch lesbare Bytezahl fuer Streams mit bekannter Laenge.
+    ///
+    /// Returns the remaining readable byte count for streams with a known length.
+    /// </summary>
+    /// <returns>Die verbleibende Bytezahl. / The remaining byte count.</returns>
+    /// <exception cref="NotSupportedException">Der Stream unterstuetzt keine Positionsabfrage. / The stream does not support position queries.</exception>
+    internal long GetRemainingByteCount()
+    {
+        if (!_stream.CanSeek)
+        {
+            throw new NotSupportedException("The remaining byte count requires a seekable stream.");
+        }
+
+        return checked(_stream.Length - _stream.Position);
+    }
+
+    internal int ReadBoundedCount(int maximum, string description)
+    {
+        int count = ReadInt32();
+        if (count is < 0 || count > maximum)
+        {
+            throw new InvalidDataException($"{description} count must be between 0 and {maximum}.");
+        }
+
+        if (_budget.CollectionItems > MaximumCollectionItems - count)
+        {
+            throw new InvalidDataException($"Aggregate collection count exceeds {MaximumCollectionItems}.");
+        }
+
+        _budget.CollectionItems += count;
+        return count;
+    }
+
+    private int Read7BitEncodedLength()
+    {
+        uint value = 0;
+        for (int shift = 0; shift < 35; shift += 7)
+        {
+            byte current = _reader.ReadByte();
+            if (shift == 28 && (current & 0xF0) != 0)
+            {
+                throw new InvalidDataException("Encoded string length is invalid.");
+            }
+
+            value |= (uint)(current & 0x7F) << shift;
+            if ((current & 0x80) == 0)
+            {
+                if (value > int.MaxValue)
+                {
+                    throw new InvalidDataException("Encoded string length is invalid.");
+                }
+
+                return (int)value;
+            }
+        }
+
+        throw new InvalidDataException("Encoded string length is invalid.");
     }
 
     /// <summary>

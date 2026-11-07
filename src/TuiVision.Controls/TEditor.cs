@@ -23,7 +23,14 @@ public class TEditor : TScroller, ICommandStateProvider
     private const byte ScanInsert = 0x52;
     private const byte ScanDelete = 0x53;
 
-    private readonly Stack<EditorSnapshot> _undoStack = new();
+    /// <summary>Maximale Zahl gespeicherter Undo-Schritte. / Maximum retained undo steps.</summary>
+    public const int MaxUndoEntries = 128;
+    /// <summary>Maximales UTF-16-Textbudget der Undo-Historie. / Maximum UTF-16 text budget of undo history.</summary>
+    public const long MaxUndoRetainedTextBytes = 2 * 1024 * 1024;
+
+    private readonly LinkedList<EditorSnapshot> _undoHistory = new();
+    private long _undoRetainedTextBytes;
+    private bool _typingUndoGroupActive;
     private string _text = string.Empty;
     private int _cursorIndex;
     private int _selectionStart;
@@ -114,6 +121,12 @@ public class TEditor : TScroller, ICommandStateProvider
     /// </summary>
     public bool HasSelection => SelectionStart != SelectionEnd;
 
+    /// <summary>Zahl gespeicherter Undo-Schritte. / Number of retained undo steps.</summary>
+    public int UndoEntryCount => _undoHistory.Count;
+
+    /// <summary>Retenierte UTF-16-Textbytes. / Retained UTF-16 text bytes.</summary>
+    public long UndoRetainedTextBytes => _undoRetainedTextBytes;
+
     /// <summary>
     /// Gibt die normalisierte Dokumentzeichenkette zurueck.
     ///
@@ -137,7 +150,9 @@ public class TEditor : TScroller, ICommandStateProvider
         _selectionEnd = 0;
         _preferredColumn = 0;
         Modified = !markClean;
-        _undoStack.Clear();
+        _undoHistory.Clear();
+        _undoRetainedTextBytes = 0;
+        _typingUndoGroupActive = false;
         UpdateLimits();
         EnsureCursorVisible();
         OnChanged();
@@ -152,6 +167,7 @@ public class TEditor : TScroller, ICommandStateProvider
     /// <param name="column">Die Zielspalte. / The target column.</param>
     public void MoveCursorTo(int row, int column)
     {
+        EndTypingUndoGroup();
         _cursorIndex = GetIndexFromPoint(row, column);
         ClearSelection();
         EnsureCursorVisible();
@@ -167,6 +183,7 @@ public class TEditor : TScroller, ICommandStateProvider
     /// <param name="end">Der Endindex. / The end index.</param>
     public void Select(int start, int end)
     {
+        EndTypingUndoGroup();
         _selectionStart = ClampIndex(start);
         _selectionEnd = ClampIndex(end);
         _cursorIndex = _selectionEnd;
@@ -210,6 +227,7 @@ public class TEditor : TScroller, ICommandStateProvider
             return;
         }
 
+        EndTypingUndoGroup();
         SaveSnapshot();
         ClipboardText = _text[SelectionStart..SelectionEnd];
         DeleteSelectionCore();
@@ -228,6 +246,7 @@ public class TEditor : TScroller, ICommandStateProvider
             return;
         }
 
+        EndTypingUndoGroup();
         SaveSnapshot();
         InsertTextCore(ClipboardText);
         MarkModified();
@@ -241,12 +260,15 @@ public class TEditor : TScroller, ICommandStateProvider
     /// <returns><c>true</c>, wenn ein Undo ausgefuehrt wurde. / <c>true</c> if an undo was performed.</returns>
     public bool Undo()
     {
-        if (_undoStack.Count == 0)
+        EndTypingUndoGroup();
+        if (_undoHistory.First is null)
         {
             return false;
         }
 
-        EditorSnapshot snapshot = _undoStack.Pop();
+        EditorSnapshot snapshot = _undoHistory.First.Value;
+        _undoHistory.RemoveFirst();
+        _undoRetainedTextBytes -= SnapshotTextBytes(snapshot);
         _text = snapshot.Text;
         _cursorIndex = snapshot.CursorIndex;
         _selectionStart = snapshot.SelectionStart;
@@ -303,6 +325,7 @@ public class TEditor : TScroller, ICommandStateProvider
             return false;
         }
 
+        EndTypingUndoGroup();
         SaveSnapshot();
         InsertTextCore(replacement, replaceSelection: true);
         MarkModified();
@@ -321,6 +344,7 @@ public class TEditor : TScroller, ICommandStateProvider
     public int ReplaceAll(string term, string replacement, bool caseSensitive = false)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(term);
+        EndTypingUndoGroup();
 
         StringComparison comparison = caseSensitive ? StringComparison.Ordinal : StringComparison.OrdinalIgnoreCase;
         int count = 0;
@@ -367,7 +391,7 @@ public class TEditor : TScroller, ICommandStateProvider
     {
         return command switch
         {
-            ShellCommandIds.cmUndo => _undoStack.Count > 0,
+            ShellCommandIds.cmUndo => _undoHistory.Count > 0,
             ShellCommandIds.cmCopy => HasSelection,
             ShellCommandIds.cmCut => HasSelection,
             ShellCommandIds.cmPaste => !string.IsNullOrEmpty(ClipboardText),
@@ -472,6 +496,7 @@ public class TEditor : TScroller, ICommandStateProvider
                 @event.Clear(this);
                 return;
             case ScanInsert:
+                EndTypingUndoGroup();
                 InsertMode = !InsertMode;
                 SetState(TViewState.CursorInsert, InsertMode);
                 OnChanged();
@@ -486,14 +511,14 @@ public class TEditor : TScroller, ICommandStateProvider
                 @event.Clear(this);
                 return;
             case ScanEnter:
-                InsertText(Environment.NewLine == "\r\n" ? "\n" : "\n");
+                InsertText("\n", coalesceTyping: false);
                 @event.Clear(this);
                 return;
         }
 
         if (ShouldInsertCharacter(@event.KeyDown))
         {
-            InsertText(@event.KeyDown.CharCode.ToString());
+            InsertText(@event.KeyDown.CharCode.ToString(), coalesceTyping: true);
             @event.Clear(this);
         }
     }
@@ -520,13 +545,18 @@ public class TEditor : TScroller, ICommandStateProvider
     /// </summary>
     protected void MarkClean()
     {
+        EndTypingUndoGroup();
         Modified = false;
         OnChanged();
     }
 
-    private void InsertText(string text)
+    private void InsertText(string text, bool coalesceTyping)
     {
-        SaveSnapshot();
+        if (!coalesceTyping || !_typingUndoGroupActive)
+        {
+            SaveSnapshot();
+        }
+        _typingUndoGroupActive = coalesceTyping;
         InsertTextCore(text);
         MarkModified();
     }
@@ -538,6 +568,7 @@ public class TEditor : TScroller, ICommandStateProvider
             return;
         }
 
+        EndTypingUndoGroup();
         SaveSnapshot();
         if (HasSelection)
         {
@@ -561,6 +592,7 @@ public class TEditor : TScroller, ICommandStateProvider
             return;
         }
 
+        EndTypingUndoGroup();
         SaveSnapshot();
         if (HasSelection)
         {
@@ -578,6 +610,7 @@ public class TEditor : TScroller, ICommandStateProvider
 
     private void MoveHorizontal(int delta)
     {
+        EndTypingUndoGroup();
         _cursorIndex = ClampIndex(_cursorIndex + delta);
         ClearSelection();
         _preferredColumn = CursorColumn;
@@ -587,6 +620,7 @@ public class TEditor : TScroller, ICommandStateProvider
 
     private void MoveVertical(int deltaRows)
     {
+        EndTypingUndoGroup();
         (int row, int column) = GetPointFromIndex(_cursorIndex);
         int targetRow = Math.Max(0, Math.Min(GetLines().Length - 1, row + deltaRows));
         _cursorIndex = GetIndexFromPoint(targetRow, _preferredColumn);
@@ -597,6 +631,7 @@ public class TEditor : TScroller, ICommandStateProvider
 
     private void MoveToLineBoundary(bool start)
     {
+        EndTypingUndoGroup();
         (int row, _) = GetPointFromIndex(_cursorIndex);
         _cursorIndex = GetIndexFromPoint(row, start ? 0 : int.MaxValue);
         ClearSelection();
@@ -645,8 +680,21 @@ public class TEditor : TScroller, ICommandStateProvider
 
     private void SaveSnapshot()
     {
-        _undoStack.Push(new EditorSnapshot(_text, _cursorIndex, _selectionStart, _selectionEnd, InsertMode, Modified));
+        EditorSnapshot snapshot = new(_text, _cursorIndex, _selectionStart, _selectionEnd, InsertMode, Modified);
+        _undoHistory.AddFirst(snapshot);
+        _undoRetainedTextBytes += SnapshotTextBytes(snapshot);
+        while (_undoHistory.Count > 1
+               && (_undoHistory.Count > MaxUndoEntries || _undoRetainedTextBytes > MaxUndoRetainedTextBytes))
+        {
+            EditorSnapshot oldest = _undoHistory.Last!.Value;
+            _undoHistory.RemoveLast();
+            _undoRetainedTextBytes -= SnapshotTextBytes(oldest);
+        }
     }
+
+    private void EndTypingUndoGroup() => _typingUndoGroupActive = false;
+
+    private static long SnapshotTextBytes(EditorSnapshot snapshot) => (long)snapshot.Text.Length * sizeof(char);
 
     private void MarkModified()
     {

@@ -176,41 +176,29 @@ class WorkspaceStorageMaintenanceTests(unittest.TestCase):
             self.assertEqual(["build"], [item["path"] for item in candidates])
             self.assertEqual("cmake-out-of-source", candidates[0]["adapter"])
 
-    def test_cc65_make_preview_rejects_protected_or_unbounded_deletion(self) -> None:
-        storage.validate_cc65_make_preview(
-            "rm -rf ../wrk ../bin\n",
-            ["wrk", "bin"],
-            ["*.d64", "*.prg"],
-        )
-        with self.assertRaisesRegex(storage.StorageContractError, "protected deletion"):
-            storage.validate_cc65_make_preview(
-                "rm -f samples/demo.d64\n",
-                ["wrk", "bin"],
-                ["*.d64", "*.prg"],
-            )
-        with self.assertRaisesRegex(storage.StorageContractError, "outside declared group"):
-            storage.validate_cc65_make_preview(
-                "rm -rf ../samples\n",
-                ["wrk", "bin"],
-                ["*.d64", "*.prg"],
-            )
-        with self.assertRaisesRegex(storage.StorageContractError, "outside declared group"):
-            storage.validate_cc65_make_preview(
-                "rm -rf ../wrk ../unexpected\n",
-                ["wrk", "bin"],
-                ["*.d64", "*.prg"],
-            )
-        self.assertNotIn("zap", POLICY_PATH.read_text(encoding="utf-8").casefold())
+    def test_direct_remove_translates_operating_system_failure(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            repository = pathlib.Path(temporary) / "repo"
+            initialize_repository(repository)
+            (repository / ".gitignore").write_text("build/\n", encoding="utf-8")
+            run("git", "add", ".gitignore", cwd=repository)
+            run("git", "commit", "-qm", "fixture", cwd=repository)
+            build = repository / "build"
+            build.mkdir()
+            candidate = storage.candidate_record(repository, build, "fixture", 7, True)
 
-    @unittest.skipUnless(os.name != "nt" and shutil.which("make"), "GNU Make fixture requires a POSIX runner")
+            with mock.patch.object(storage.shutil, "rmtree", side_effect=PermissionError("fixture")), \
+                    self.assertRaisesRegex(storage.StorageContractError, "candidate removal failed: build"):
+                storage.remove_candidate(repository, candidate)
+
     def test_cc65_inventory_and_blocked_update_modes_never_evaluate_makefiles(self) -> None:
         cases = (
-            ("safe", "check-only", False, False, "NativeMakeClean", "Planned"),
-            ("safe", "dry-run", False, False, "NativeMakeClean", "Planned"),
-            ("deep", "check-only", False, False, "RootMakeClean", "Planned"),
-            ("deep", "dry-run", False, False, "RootMakeClean", "Planned"),
-            ("safe", "update", True, False, "NativeMakeClean", "SkippedDirtyOrBusy"),
-            ("deep", "update", False, True, "RootMakeClean", "SkippedDirtyOrBusy"),
+            ("safe", "check-only", False, False, "DirectRemove", "Planned"),
+            ("safe", "dry-run", False, False, "DirectRemove", "Planned"),
+            ("deep", "check-only", False, False, "DirectRemove", "Planned"),
+            ("deep", "dry-run", False, False, "DirectRemove", "Planned"),
+            ("safe", "update", True, False, "DirectRemove", "SkippedDirtyOrBusy"),
+            ("deep", "update", False, True, "DirectRemove", "SkippedDirtyOrBusy"),
         )
         for profile, mode, dirty, busy, action, expected_status in cases:
             with self.subTest(profile=profile, mode=mode, dirty=dirty, busy=busy), \
@@ -262,19 +250,16 @@ class WorkspaceStorageMaintenanceTests(unittest.TestCase):
                 self.assertEqual("Warning" if mode == "update" else "Passed", result_status)
                 self.assertTrue((repository / "wrk").exists())
 
-    @unittest.skipUnless(os.name != "nt" and shutil.which("make"), "GNU Make fixture requires a POSIX runner")
-    def test_cc65_authorized_update_preserves_preview_and_clean(self) -> None:
-        for profile, make_directory, recipe, action in (
-            ("safe", "src", "rm -rf ../wrk", "NativeMakeClean"),
-            ("deep", ".", "rm -rf wrk", "RootMakeClean"),
-        ):
+    def test_cc65_authorized_update_removes_only_candidates_without_running_make(self) -> None:
+        for profile, make_directory in (("safe", "src"), ("deep", ".")):
             with self.subTest(profile=profile), tempfile.TemporaryDirectory() as temporary:
                 repository = pathlib.Path(temporary) / "cc65"
                 initialize_repository(repository)
+                marker = pathlib.Path(temporary) / "make-ran"
                 (repository / ".gitignore").write_text("wrk/\n", encoding="utf-8")
                 (repository / "src").mkdir()
                 (repository / make_directory / "Makefile").write_text(
-                    f".PHONY: clean\nclean:\n\t{recipe}\n",
+                    f'SIDE_EFFECT := $(shell touch "{marker}")\n.PHONY: clean\nclean:\n\ttouch "{marker}"\n',
                     encoding="utf-8",
                 )
                 tracked_makefile = "Makefile" if make_directory == "." else "src/Makefile"
@@ -307,68 +292,43 @@ class WorkspaceStorageMaintenanceTests(unittest.TestCase):
                 self.assertGreater(freed, 0)
                 self.assertEqual("Passed", status)
                 self.assertEqual([], warnings)
-                self.assertEqual(action, candidates[0]["action"])
+                self.assertEqual("DirectRemove", candidates[0]["action"])
                 self.assertEqual("Removed", candidates[0]["status"])
+                self.assertFalse(marker.exists())
 
-    @unittest.skipUnless(os.name != "nt" and shutil.which("make"), "GNU Make fixture requires a POSIX runner")
-    def test_cc65_deep_scope_drift_falls_back_before_any_root_clean(self) -> None:
+    def test_cmake_update_removes_verified_tree_without_running_generated_clean_rules(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
-            repository = pathlib.Path(temporary) / "cc65"
+            repository = pathlib.Path(temporary) / "repo"
             initialize_repository(repository)
-            (repository / ".gitignore").write_text("wrk/\n", encoding="utf-8")
-            (repository / "src").mkdir()
-            (repository / "Makefile").write_text(
-                ".PHONY: clean\nclean:\n\trm -rf unexpected\n",
-                encoding="utf-8",
-            )
-            (repository / "src/Makefile").write_text(
-                ".PHONY: clean\nclean:\n\trm -rf ../wrk\n",
-                encoding="utf-8",
-            )
-            run("git", "add", ".gitignore", "Makefile", "src/Makefile", cwd=repository)
+            marker = pathlib.Path(temporary) / "cmake-clean-ran"
+            (repository / ".gitignore").write_text("build/\n", encoding="utf-8")
+            (repository / "CMakeLists.txt").write_text("cmake_minimum_required(VERSION 3.20)\n", encoding="utf-8")
+            run("git", "add", ".gitignore", "CMakeLists.txt", cwd=repository)
             run("git", "commit", "-qm", "fixture", cwd=repository)
-            (repository / "wrk").mkdir()
-            (repository / "wrk/output.o").write_bytes(b"generated")
-            adapter = {
-                "safeGroups": [{
-                    "id": "host-tools",
-                    "makeDirectory": "src",
-                    "target": "clean",
-                    "paths": ["wrk"],
-                }],
-                "protectedEvidencePatterns": [],
-            }
-            make_commands: list[list[str]] = []
-            original_run_command = storage.run_command
+            build = repository / "build"
+            build.mkdir()
+            (build / "CMakeCache.txt").write_text(
+                f"CMAKE_HOME_DIRECTORY:INTERNAL={repository}\n", encoding="utf-8"
+            )
+            (build / "Makefile").write_text(
+                f'.PHONY: clean\nclean:\n\ttouch "{marker}"\n', encoding="utf-8"
+            )
 
-            def record_make_commands(command: list[str], **kwargs: object) -> subprocess.CompletedProcess[str]:
-                if command and command[0] == "make":
-                    make_commands.append(command.copy())
-                return original_run_command(command, **kwargs)
+            candidates, freed, status = storage.handle_cmake(
+                repository,
+                {"buildDirectoryPatterns": ["build"]},
+                mode="update",
+                retention_days=7,
+                pressure_mode=True,
+                dirty=False,
+                busy=False,
+            )
 
-            with mock.patch.object(storage, "run_command", side_effect=record_make_commands):
-                candidates, _, freed, status, warnings = storage.handle_cc65(
-                    repository,
-                    adapter,
-                    mode="update",
-                    profile="deep",
-                    retention_days=7,
-                    pressure_mode=True,
-                    dirty=False,
-                    busy=False,
-                )
-
-            self.assertEqual([
-                ["make", "-n", "clean"],
-                ["make", "-C", "src", "-n", "clean"],
-                ["make", "-C", "src", "clean"],
-            ], make_commands)
-            self.assertNotIn(["make", "clean"], make_commands)
-            self.assertFalse(repository.joinpath("wrk").exists())
+            self.assertFalse(build.exists())
+            self.assertFalse(marker.exists())
             self.assertGreater(freed, 0)
-            self.assertEqual("Warning", status)
-            self.assertTrue(any(item.startswith("DeepRootCleanFallback:") for item in warnings))
-            self.assertEqual("NativeMakeClean", candidates[0]["action"])
+            self.assertEqual("Passed", status)
+            self.assertEqual("DirectRemove", candidates[0]["action"])
             self.assertEqual("Removed", candidates[0]["status"])
 
     def test_container_contract_prunes_only_dangling_images(self) -> None:

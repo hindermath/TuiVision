@@ -76,6 +76,21 @@ public sealed class TerminalSession : IDisposable
     /// <summary>Größter zulässiger Parameterwert. / Largest accepted parameter value.</summary>
     public const int MaximumParameterValue = 9999;
 
+    /// <summary>Maximale Zeichen pro atomarer Beobachtung. / Maximum characters per atomic observation.</summary>
+    public const int MaximumObservationCharacters = 4096;
+
+    /// <summary>Maximale Operationen pro atomarer Beobachtung. / Maximum operations per atomic observation.</summary>
+    public const int MaximumOperations = 4096;
+
+    /// <summary>Maximale Breite des sichtbaren Puffers. / Maximum visible-buffer width.</summary>
+    public const int MaximumWidth = 512;
+
+    /// <summary>Maximale Höhe des sichtbaren Puffers. / Maximum visible-buffer height.</summary>
+    public const int MaximumHeight = 256;
+
+    /// <summary>Maximale geschätzte Arbeit pro Beobachtung. / Maximum estimated work per observation.</summary>
+    public const long MaximumWorkUnits = 1_048_576;
+
     private readonly Queue<TConsoleCell> _history = new();
     private TConsoleBuffer _visibleBuffer;
     private int _cursorX;
@@ -152,11 +167,21 @@ public sealed class TerminalSession : IDisposable
             return Reject("Lifecycle", "Closed or disposed sessions reject input. / Geschlossene oder freigegebene Sitzungen lehnen Eingabe ab.");
         }
 
+        if (input.Length > MaximumObservationCharacters)
+        {
+            return Reject("Observation", $"Observation exceeds {MaximumObservationCharacters} characters. / Beobachtung überschreitet {MaximumObservationCharacters} Zeichen.");
+        }
+
         ParseResult parsed = Parse(input);
         if (parsed.Outcome != TerminalEmulationOutcome.Accepted)
         {
             StatusText = parsed.StatusText;
             return new TerminalEmulationResult(parsed.Outcome, parsed.Command, false, parsed.StatusText);
+        }
+
+        if (parsed.Operations.Count > MaximumOperations || !IsWithinWorkBudget(parsed.Operations))
+        {
+            return Reject("Observation", "Terminal observation exceeds the bounded work budget. / Terminalbeobachtung überschreitet das begrenzte Arbeitsbudget.");
         }
 
         // Erst die vollständige Operationsliste macht die Beobachtung atomar.
@@ -313,6 +338,146 @@ public sealed class TerminalSession : IDisposable
         {
             throw new ArgumentOutOfRangeException(nameof(height), "Height must be positive.");
         }
+
+
+        if (width > MaximumWidth || height > MaximumHeight ||
+            checked((long)width * height) > (long)MaximumWidth * MaximumHeight)
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(width),
+                $"Terminal dimensions must not exceed {MaximumWidth}x{MaximumHeight}.");
+        }
+    }
+
+    private bool IsWithinWorkBudget(IReadOnlyList<TerminalOperation> operations)
+    {
+        int simulatedX = _cursorX;
+        int simulatedY = _cursorY;
+        bool simulatedWrap = _pendingWrap;
+        long work = 0;
+        long cellCount = (long)_visibleBuffer.Width * _visibleBuffer.Height;
+        // Enqueue und moegliches Dequeue kommen zu Kopieren und Leeren jeder Scroll-Zeile hinzu.
+        // Enqueue and possible dequeue add to copying and clearing every scrolled row.
+        long scrollWork = (long)_visibleBuffer.Width * (_visibleBuffer.Height + 2L);
+
+        bool Charge(long units)
+        {
+            work = checked(work + units);
+            return work <= MaximumWorkUnits;
+        }
+
+        bool MoveDown()
+        {
+            if (simulatedY < _visibleBuffer.Height - 1)
+            {
+                simulatedY++;
+                return true;
+            }
+
+            return Charge(scrollWork);
+        }
+
+        foreach (TerminalOperation operation in operations)
+        {
+            if (!Charge(1))
+            {
+                return false;
+            }
+
+            switch (operation.Kind)
+            {
+                case OperationKind.Text:
+                    if (simulatedWrap)
+                    {
+                        simulatedX = 0;
+                        if (!MoveDown())
+                        {
+                            return false;
+                        }
+
+                        simulatedWrap = false;
+                    }
+
+                    if (simulatedX == _visibleBuffer.Width - 1)
+                    {
+                        simulatedWrap = true;
+                    }
+                    else
+                    {
+                        simulatedX++;
+                    }
+                    break;
+                case OperationKind.Backspace:
+                    simulatedWrap = false;
+                    simulatedX = Math.Max(0, simulatedX - 1);
+                    break;
+                case OperationKind.Tab:
+                    simulatedWrap = false;
+                    simulatedX = Math.Min(_visibleBuffer.Width - 1, ((simulatedX / 8) + 1) * 8);
+                    break;
+                case OperationKind.CarriageReturn:
+                    simulatedWrap = false;
+                    simulatedX = 0;
+                    break;
+                case OperationKind.LineFeed:
+                    simulatedWrap = false;
+                    if (!MoveDown())
+                    {
+                        return false;
+                    }
+                    break;
+                case OperationKind.FullReset:
+                    if (!Charge(cellCount + _history.Count))
+                    {
+                        return false;
+                    }
+
+                    simulatedX = 0;
+                    simulatedY = 0;
+                    simulatedWrap = false;
+                    break;
+                case OperationKind.Csi:
+                    simulatedWrap = false;
+                    if (!SimulateCsi(operation, ref simulatedX, ref simulatedY, cellCount, ref work))
+                    {
+                        return false;
+                    }
+                    break;
+            }
+        }
+
+        return true;
+    }
+
+    private bool SimulateCsi(
+        TerminalOperation operation,
+        ref int x,
+        ref int y,
+        long cellCount,
+        ref long work)
+    {
+        int FirstOrDefaultOne() =>
+            operation.Parameters.Count == 0 || operation.Parameters[0] == 0 ? 1 : operation.Parameters[0];
+
+        switch (operation.Command)
+        {
+            case 'A': y = Math.Max(0, y - FirstOrDefaultOne()); break;
+            case 'B': y = Math.Min(_visibleBuffer.Height - 1, y + FirstOrDefaultOne()); break;
+            case 'C': x = Math.Min(_visibleBuffer.Width - 1, x + FirstOrDefaultOne()); break;
+            case 'D': x = Math.Max(0, x - FirstOrDefaultOne()); break;
+            case 'H':
+            case 'f':
+                int row = operation.Parameters.Count == 0 || operation.Parameters[0] == 0 ? 1 : operation.Parameters[0];
+                int column = operation.Parameters.Count < 2 || operation.Parameters[1] == 0 ? 1 : operation.Parameters[1];
+                y = Math.Clamp(row - 1, 0, _visibleBuffer.Height - 1);
+                x = Math.Clamp(column - 1, 0, _visibleBuffer.Width - 1);
+                break;
+            case 'J': work = checked(work + cellCount); break;
+            case 'K': work = checked(work + _visibleBuffer.Width); break;
+            case 'm': work = checked(work + operation.Parameters.Count); break;
+        }
+
+        return work <= MaximumWorkUnits;
     }
 
     private static ParseResult Parse(string input)

@@ -15,24 +15,47 @@ public static class MenuDescriptionFactory
     public static TMenuBar CreateMenuBar(MenuDescription description, TRect bounds)
     {
         MenuDescriptionValidator.Validate(description);
+        List<MenuItemDescription> roots = [];
+        Dictionary<string, List<MenuItemDescription>> childrenByParent = new(StringComparer.Ordinal);
+        foreach (MenuItemDescription item in description.Items)
+        {
+            if (item.ParentId is null)
+            {
+                roots.Add(item);
+            }
+            else
+            {
+                if (!childrenByParent.TryGetValue(item.ParentId, out List<MenuItemDescription>? children))
+                {
+                    children = [];
+                    childrenByParent.Add(item.ParentId, children);
+                }
+                children.Add(item);
+            }
+        }
+        roots.Sort((left, right) => left.Order.CompareTo(right.Order));
+        foreach (List<MenuItemDescription> children in childrenByParent.Values)
+        {
+            children.Sort((left, right) => left.Order.CompareTo(right.Order));
+        }
         TMenuBar menu = new(bounds)
         {
-            Menu = BuildSiblings(description.Items, null)
+            Menu = BuildSiblings(roots, childrenByParent)
         };
         return menu;
     }
 
-    private static TMenuItem? BuildSiblings(IReadOnlyList<MenuItemDescription> items, string? parentId)
+    private static TMenuItem? BuildSiblings(
+        IReadOnlyList<MenuItemDescription> siblings,
+        IReadOnlyDictionary<string, List<MenuItemDescription>> childrenByParent)
     {
-        MenuItemDescription[] siblings = items
-            .Where(item => string.Equals(item.ParentId, parentId, StringComparison.Ordinal))
-            .OrderBy(item => item.Order)
-            .ToArray();
         TMenuItem? next = null;
-        for (int index = siblings.Length - 1; index >= 0; index--)
+        for (int index = siblings.Count - 1; index >= 0; index--)
         {
             MenuItemDescription source = siblings[index];
-            TMenuItem? children = BuildSiblings(items, source.Id);
+            TMenuItem? children = childrenByParent.TryGetValue(source.Id, out List<MenuItemDescription>? descriptions)
+                ? BuildSiblings(descriptions, childrenByParent)
+                : null;
             TMenuItem item = new(source.Label, source.CommandId, next, children)
             {
                 Disabled = source.Disabled

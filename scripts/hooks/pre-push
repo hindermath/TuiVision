@@ -68,16 +68,17 @@ collect_regex_files_for_new_ref() {
 }
 
 run_gitleaks_range_scan() {
-  local gitleaks_available=1
   if ! command -v gitleaks >/dev/null 2>&1; then
-    echo "pre-push: gitleaks nicht gefunden; Regex-Fallback bleibt aktiv."
-    gitleaks_available=0
+    echo "  HIGH: gitleaks fehlt; Commit-Historie kann nicht sicher geprüft werden." >&2
+    echo "  HIGH: gitleaks is missing; commit history cannot be scanned safely." >&2
+    return 2
   fi
 
   local local_ref local_sha remote_ref remote_sha
   local scanned=0
   local status=0
   local log_opts=""
+  local pending_commits=""
 
   while read -r local_ref local_sha remote_ref remote_sha; do
     [ -n "${local_sha:-}" ] || continue
@@ -87,14 +88,30 @@ run_gitleaks_range_scan() {
     fi
 
     if [ "${remote_sha:-$zero_sha}" = "$zero_sha" ]; then
-      if [ -n "$(git -C "$REPO_ROOT" rev-list --max-count=1 "$local_sha" --not --remotes 2>/dev/null || true)" ]; then
+      set +e
+      pending_commits=$(git -C "$REPO_ROOT" rev-list --max-count=1 "$local_sha" --not --remotes 2>/dev/null)
+      status=$?
+      set -e
+      if [ "$status" -ne 0 ]; then
+        echo "  HIGH: Git-Range fuer neuen Ref konnte nicht aufgeloest werden. / New-ref Git range could not be resolved." >&2
+        return 2
+      fi
+      if [ -n "$pending_commits" ]; then
         log_opts="$local_sha --not --remotes"
         collect_regex_files_for_new_ref "$local_sha"
       else
         continue
       fi
     else
-      if [ -z "$(git -C "$REPO_ROOT" rev-list --max-count=1 "$remote_sha..$local_sha" 2>/dev/null || true)" ]; then
+      set +e
+      pending_commits=$(git -C "$REPO_ROOT" rev-list --max-count=1 "$remote_sha..$local_sha" 2>/dev/null)
+      status=$?
+      set -e
+      if [ "$status" -ne 0 ]; then
+        echo "  HIGH: Git-Push-Range konnte nicht aufgeloest werden. / Git push range could not be resolved." >&2
+        return 2
+      fi
+      if [ -z "$pending_commits" ]; then
         continue
       fi
       log_opts="$remote_sha..$local_sha"
@@ -102,23 +119,19 @@ run_gitleaks_range_scan() {
     fi
 
     scanned=1
-    if [ "$gitleaks_available" -eq 1 ]; then
-      echo "pre-push: gitleaks prüft zu pushende Commits (${remote_ref:-$local_ref}) …"
-      set +e
-      gitleaks git --redact --no-banner --no-color --log-level warn --exit-code 2 --log-opts="$log_opts" "$REPO_ROOT"
-      status=$?
-      set -e
+    echo "pre-push: gitleaks prüft zu pushende Commits (${remote_ref:-$local_ref}) …"
+    set +e
+    gitleaks git --redact --no-banner --no-color --log-level warn --exit-code 2 --log-opts="$log_opts" "$REPO_ROOT"
+    status=$?
+    set -e
 
-      if [ "$status" -ne 0 ]; then
-        echo "  HIGH: gitleaks hat mögliche Secrets in zu pushenden Commits gefunden oder konnte den Scan nicht abschließen." >&2
-        return 2
-      fi
+    if [ "$status" -ne 0 ]; then
+      echo "  HIGH: gitleaks hat mögliche Secrets in zu pushenden Commits gefunden oder konnte den Scan nicht abschließen." >&2
+      return 2
     fi
   done
 
-  if [ "$gitleaks_available" -eq 0 ]; then
-    return 0
-  elif [ "$scanned" -eq 0 ]; then
+  if [ "$scanned" -eq 0 ]; then
     echo "pre-push: gitleaks hatte keine neuen Commit-Ranges zu prüfen."
   else
     echo "pre-push: gitleaks-Scan ohne Befund."
@@ -128,8 +141,8 @@ run_gitleaks_range_scan() {
 if ! run_gitleaks_range_scan; then
   echo "" >&2
   echo "╔══════════════════════════════════════════════════════════════╗" >&2
-  echo "║  PUSH ABGEBROCHEN: gitleaks hat Secrets erkannt!            ║" >&2
-  echo "║  Bitte Befund bereinigen, Secret rotieren und erneut pushen. ║" >&2
+  echo "║  PUSH ABGEBROCHEN: gitleaks fehlt oder Scan fehlgeschlagen! ║" >&2
+  echo "║  Werkzeug installieren beziehungsweise Befund bereinigen.   ║" >&2
   echo "╚══════════════════════════════════════════════════════════════╝" >&2
   exit 2
 fi

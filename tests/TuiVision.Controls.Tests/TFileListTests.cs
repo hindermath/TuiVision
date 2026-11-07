@@ -51,4 +51,73 @@ public sealed class TFileListTests
         Assert.AreEqual(missing, list.CurrentInfo.ResolvedPath);
         Assert.AreEqual(TFileEntryKind.Missing, list.CurrentInfo.Kind);
     }
+
+    /// <summary>
+    /// Macht Unicode-Formatzeichen sichtbar, ohne die echte Auswahlidentität zu verändern.
+    ///
+    /// Makes Unicode format characters visible without changing the real selection identity.
+    /// </summary>
+    [TestMethod]
+    public void TFileList_Refresh_Escapes_Unicode_Format_Characters()
+    {
+        using EditorShellTestContext.TemporaryDirectory temp = EditorShellTestContext.CreateTemporaryDirectory();
+        string name = "report\u202Etxt.exe";
+        string path = Path.Combine(temp.Path, name);
+        File.WriteAllText(path, "payload");
+        TFileList list = new(new TRect(0, 0, 40, 5));
+
+        list.Refresh(temp.Path, "*");
+
+        Assert.AreEqual("report\\u202Etxt.exe", list.GetText(0, 40));
+        Assert.IsFalse(list.GetText(0, 40).Contains('\u202E'));
+        list.SelectByName(name);
+        Assert.AreEqual(path, list.CurrentInfo.ResolvedPath);
+    }
+
+    /// <summary>
+    /// Unterscheidet literale Escape-Texte eindeutig von echten Formatzeichen.
+    ///
+    /// Distinguishes literal escape text from real format characters.
+    /// </summary>
+    [TestMethod]
+    public void TFileList_Refresh_Escapes_Literal_Backslash()
+    {
+        if (OperatingSystem.IsWindows())
+        {
+            Assert.Inconclusive("Windows reserves the backslash as a path separator; the filename cannot exist on that platform.");
+        }
+
+        using EditorShellTestContext.TemporaryDirectory temp = EditorShellTestContext.CreateTemporaryDirectory();
+        string name = "literal\\u202E.txt";
+        File.WriteAllText(Path.Combine(temp.Path, name), "payload");
+        TFileList list = new(new TRect(0, 0, 40, 5));
+
+        list.Refresh(temp.Path, "*");
+
+        Assert.AreEqual("literal\\\\u202E.txt", list.GetText(0, 40));
+    }
+
+    /// <summary>
+    /// Begrenzt erfolgreiche Dateiaufzählungen mit sichtbarem Status.
+    ///
+    /// Bounds successful file enumeration with visible status.
+    /// </summary>
+    [TestMethod]
+    public void TFileList_Refresh_Bounds_Entry_Cardinality()
+    {
+        using EditorShellTestContext.TemporaryDirectory temp = EditorShellTestContext.CreateTemporaryDirectory();
+        for (int index = 0; index < TFileList.MaxVisibleEntries + 5; index++)
+        {
+            File.WriteAllText(Path.Combine(temp.Path, $"file-{index:D4}.txt"), "x");
+        }
+        TFileList list = new(new TRect(0, 0, 30, 5));
+
+        list.Refresh(temp.Path, "*.txt");
+
+        Assert.HasCount(TFileList.MaxVisibleEntries, list.Entries);
+        Assert.AreEqual(TFileList.MaxVisibleEntries, list.List!.Count);
+        Assert.IsTrue(list.IsTruncated);
+        StringAssert.Contains(list.StatusMessage, "list is incomplete");
+        CollectionAssert.AreEqual(list.Entries.Order(StringComparer.Ordinal).ToArray(), list.Entries.ToArray());
+    }
 }

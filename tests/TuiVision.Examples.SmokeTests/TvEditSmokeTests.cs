@@ -80,24 +80,18 @@ public sealed class TvEditSmokeTests : ExampleTestBase
     [TestMethod]
     public void TvEdit_AppLoop_Saves_Only_Inside_Owned_TestTemp()
     {
-        string root = Path.Combine(Path.GetTempPath(), $"tuivision-tvedit-{Guid.NewGuid():N}");
-        try
-        {
-            TvEditApp app = new(DefaultBounds(), headless: true, allowedOutputDirectory: root);
-            app.QueueEvents(InteractiveSmokeEventScript.FromEvents(
-                TEvent.CreateCommand(TvEditApp.CmSaveOwned, "lesson.txt"),
-                TEvent.CreateCommand(TvEditApp.CmSaveOwned, "../escape.txt")).Events);
-            AssertSmokeRunCompletes(() => app.Run());
+        using TControlledOutputDirectory output = TControlledOutputDirectory.Create();
+        string root = output.RootPath;
+        TvEditApp app = new(DefaultBounds(), headless: true, outputDirectory: output);
+        app.QueueEvents(InteractiveSmokeEventScript.FromEvents(
+            TEvent.CreateCommand(TvEditApp.CmSaveOwned, "lesson.txt"),
+            TEvent.CreateCommand(TvEditApp.CmSaveOwned, "../escape.txt")).Events);
+        AssertSmokeRunCompletes(() => app.Run());
 
-            AssertTrue(File.Exists(Path.Combine(root, "lesson.txt")), "TvEdit owned output created");
-            Assert.IsFalse(File.Exists(Path.Combine(root, "..", "escape.txt")), "TvEdit traversal output rejected");
-            AssertTrue(app.LastSaveRejected, "TvEdit records rejected unsafe save");
-            AssertVisibleContainsFromAppLoop(app.LastStatusMessage, "save rejected", "TvEdit save rejection status");
-            AssertPrimaryAssertionUsedAppLoop();
-        }
-        finally
-        {
-            if (Directory.Exists(root)) Directory.Delete(root, recursive: true);
-        }
+        AssertTrue(File.Exists(Path.Combine(root, "lesson.txt")), "TvEdit owned output created");
+        Assert.IsFalse(File.Exists(Path.Combine(root, "..", "escape.txt")), "TvEdit traversal output rejected");
+        AssertTrue(app.LastSaveRejected, "TvEdit records rejected unsafe save");
+        AssertVisibleContainsFromAppLoop(app.LastStatusMessage, "save rejected", "TvEdit save rejection status");
+        AssertPrimaryAssertionUsedAppLoop();
     }
 }

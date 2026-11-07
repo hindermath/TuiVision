@@ -7,7 +7,7 @@
     "node": "20.x || 22.x || 24.x"
   },
   "scripts": {
-    "docs:build": "docfx ../../docfx.json",
+    "docs:build": "dotnet tool run docfx -- ../../docfx.json",
     "serve:docfx": "python3 -m http.server 8123 --directory ../../_site",
     "test": "playwright test",
     "test:docfx": "npm run docs:build && npm test",

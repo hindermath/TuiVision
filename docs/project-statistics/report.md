@@ -9,25 +9,25 @@ Git-bound inventory and activity; not a measure of quality, learning performance
 
 | Kennzahl / Metric | Wert / Value |
 | --- | --- |
-| Textdateien / Text files | 3491 |
-| Textzeilen / Text lines | 752326 |
-| Aktivtage / Active days | 101 |
-| Stichtag / As of | 2026-11-03 |
+| Textdateien / Text files | 3502 |
+| Textzeilen / Text lines | 756005 |
+| Aktivtage / Active days | 102 |
+| Stichtag / As of | 2026-11-07 |
 | Fensterbeginn / Window start | 2025-11-09 |
 | Zeitzone / Time zone | UTC |
 
 Quellrevision / Source revision:
-5f98da25dc6bd5b1613390a051918a24314d5cce
+349282a8b8dc8ed7ef2b352716a5d44b96b8c477
 
 ### Artefakte / Artifacts
 
 | Kategorie / Category | Dateien / Files | Zeilen / Lines |
 | --- | ---: | ---: |
-| Production | 854 | 140085 |
-| Tests | 430 | 55432 |
-| Documentation | 1604 | 384833 |
-| Scripts | 136 | 28955 |
-| Configuration | 138 | 43155 |
+| Production | 856 | 141157 |
+| Tests | 439 | 57270 |
+| Documentation | 1604 | 384963 |
+| Scripts | 136 | 29558 |
+| Configuration | 138 | 43191 |
 | DataMedia | 1 | 1 |
 | Other | 328 | 99865 |
 
@@ -53,10 +53,10 @@ Wochen / Weeks 27..52 | 2026-05-10..2026-11-07
 So/Su  4 0 0 3 0 4 0 0 0 4 4 4 1 4 0 0 4 0 4 3 0 0 0 0 0 0
 Mo/Mo  0 0 0 1 0 2 0 3 1 4 0 0 0 0 2 0 0 4 0 0 0 0 0 0 0 0
 Di/Tu  4 0 3 2 0 0 0 2 0 4 4 4 0 0 0 0 0 4 0 0 0 0 0 0 0 4
-Mi/We  1 0 0 2 0 4 0 2 0 4 2 4 0 0 0 0 0 0 0 0 0 0 0 0 0 -
-Do/Th  0 3 3 3 4 2 0 0 0 4 4 0 0 4 0 0 0 0 0 0 0 0 0 0 3 -
-Fr/Fr  1 4 3 0 0 4 2 3 4 4 4 1 0 0 0 4 0 0 0 0 0 0 0 0 0 -
-Sa/Sa  0 0 4 0 4 3 0 4 4 2 4 2 4 4 0 4 0 4 4 2 0 0 0 0 0 -
+Mi/We  1 0 0 2 0 4 0 2 0 4 2 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+Do/Th  0 3 3 3 4 2 0 0 0 4 4 0 0 4 0 0 0 0 0 0 0 0 0 0 3 0
+Fr/Fr  1 4 3 0 0 4 2 3 4 4 4 1 0 0 0 4 0 0 0 0 0 0 0 0 0 0
+Sa/Sa  0 0 4 0 4 3 0 4 4 2 4 2 4 4 0 4 0 4 4 2 0 0 0 0 0 4
 ```
 
 | Datum / Date | Hinzu / Added | Entfernt / Removed |
@@ -162,6 +162,7 @@ Sa/Sa  0 0 4 0 4 3 0 4 4 2 4 2 4 4 0 4 0 4 4 2 0 0 0 0 0 -
 | 2026-09-26 | 101 | 14 |
 | 2026-10-29 | 423 | 45 |
 | 2026-11-03 | 963 | 701 |
+| 2026-11-07 | 4505 | 826 |
 
 ### Abdeckung / Coverage
 

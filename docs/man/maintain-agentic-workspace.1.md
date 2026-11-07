@@ -23,7 +23,10 @@ Secure-Trader-Ziele werden anhand von
 Podman-Sandbox zugeordnet. Podman ist die hier verwendete Container-Laufzeit.
 Lokale Git- und Wartungsoperationen dieser Ziele haben keinen Host-Fallback.
 Authentifizierte Fetches verbleiben auf dem Host; Zugangsdaten werden nicht
-in den Container kopiert. Vor Fetches und Änderungen müssen Mounts,
+in den Container kopiert. Für delegierte Ziele lädt der Host die Manifest-
+Remote in ein frisches temporäres Bare-Repository und öffnet das beschreibbare
+Ziel-`.git` nicht. Ein SHA-256-gebundenes Bundle wird anschließend im Container
+mit festem Ref-Spec eingespielt. Vor Fetches und Änderungen müssen Mounts,
 Owner-Freigabe, Ablaufdatum und Hashbindung des eingebauten Quellpakets
 übereinstimmen. Ein laufender Container allein genügt nicht.
 Bei `SandboxPreflightBlocked` zuerst den Bericht prüfen und das geprüfte
@@ -36,7 +39,10 @@ Arbeits- und Freigabestand:
 `scripts/config/maintenance-execution-contexts.json`. Podman is the container
 runtime used here. Local Git and maintenance operations never fall back to
 the host. Authenticated fetches stay on the host; credentials are not copied
-into the container. Before fetches or changes, mounts, Owner approval,
+into the container. For delegated targets, the host fetches the manifest remote
+into a fresh temporary bare repository and never opens the writable target
+`.git`. A SHA-256-bound bundle is then imported in the container with a fixed
+refspec. Before fetches or changes, mounts, Owner approval,
 expiry and embedded package hashes must match. A running container alone
 is insufficient. For `SandboxPreflightBlocked`, inspect the report, explicitly
 publish the reviewed package and pin it in the sandbox image. Maintenance

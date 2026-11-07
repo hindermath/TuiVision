@@ -3,6 +3,7 @@ import datetime
 import importlib.util
 import json
 import os
+import shutil
 import sys
 from pathlib import Path
 import subprocess
@@ -199,6 +200,266 @@ class ExecutionContextTests(unittest.TestCase):
                 result = subprocess.run(["python3", "-c", context.REMOTE_PROGRAM], input=json.dumps(payload), text=True, capture_output=True)
                 self.assertNotEqual(result.returncode, 0, args)
 
+    @unittest.skipIf(os.name == "nt", "Delegated Git runs in the Linux container")
+    def test_remote_program_fast_forward_never_executes_repository_hooks(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory).resolve()
+            repo = root / "repo"
+            subprocess.run(["git", "init", "-q", str(repo)], check=True)
+            subprocess.run(["git", "-C", str(repo), "config", "user.name", "Fixture"], check=True)
+            subprocess.run(["git", "-C", str(repo), "config", "user.email", "fixture@example.invalid"], check=True)
+            (repo / "tracked.txt").write_text("first\n", encoding="utf-8")
+            subprocess.run(["git", "-C", str(repo), "add", "tracked.txt"], check=True)
+            subprocess.run(["git", "-C", str(repo), "commit", "-qm", "first"], check=True)
+            first = subprocess.run(
+                ["git", "-C", str(repo), "rev-parse", "HEAD"],
+                check=True, capture_output=True, text=True,
+            ).stdout.strip()
+            (repo / "tracked.txt").write_text("second\n", encoding="utf-8")
+            subprocess.run(["git", "-C", str(repo), "commit", "-qam", "second"], check=True)
+            second = subprocess.run(
+                ["git", "-C", str(repo), "rev-parse", "HEAD"],
+                check=True, capture_output=True, text=True,
+            ).stdout.strip()
+
+            for hook_directory in (repo / ".git/hooks", repo / "tracked-hooks"):
+                with self.subTest(hook_directory=hook_directory):
+                    subprocess.run(["git", "-C", str(repo), "reset", "--hard", first], check=True)
+                    hook_directory.mkdir(parents=True, exist_ok=True)
+                    marker = root / f"hook-ran-{hook_directory.name}"
+                    hook = hook_directory / "post-merge"
+                    hook.write_text(f"#!/bin/sh\ntouch '{marker}'\n", encoding="utf-8")
+                    hook.chmod(0o755)
+                    if hook_directory.name == "tracked-hooks":
+                        subprocess.run(
+                            ["git", "-C", str(repo), "config", "core.hooksPath", str(hook_directory)],
+                            check=True,
+                        )
+                    else:
+                        subprocess.run(
+                            ["git", "-C", str(repo), "config", "--unset-all", "core.hooksPath"],
+                            check=False,
+                        )
+                    payload = {
+                        "root": str(root),
+                        "repository": str(repo),
+                        "action": "git",
+                        "arguments": ["merge", "--ff-only", second],
+                    }
+
+                    result = subprocess.run(
+                        [sys.executable, "-c", context.REMOTE_PROGRAM],
+                        input=json.dumps(payload), text=True, capture_output=True,
+                    )
+
+                    self.assertEqual(result.returncode, 0, result.stderr)
+                    self.assertEqual(json.loads(result.stdout)["returncode"], 0, result.stdout)
+                    self.assertFalse(marker.exists())
+
+            subprocess.run(["git", "-C", str(repo), "reset", "--hard", first], check=True)
+            configured_marker = root / "configured-hook-ran"
+            subprocess.run(
+                ["git", "-C", str(repo), "config", "hook.escape.command", f"touch '{configured_marker}'"],
+                check=True,
+            )
+            subprocess.run(
+                ["git", "-C", str(repo), "config", "--add", "hook.escape.event", "post-merge"],
+                check=True,
+            )
+            payload = {
+                "root": str(root),
+                "repository": str(repo),
+                "action": "git",
+                "arguments": ["merge", "--ff-only", second],
+            }
+
+            result = subprocess.run(
+                [sys.executable, "-c", context.REMOTE_PROGRAM],
+                input=json.dumps(payload), text=True, capture_output=True,
+            )
+
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(json.loads(result.stdout)["returncode"], 0, result.stdout)
+            self.assertFalse(configured_marker.exists())
+
+    @unittest.skipIf(os.name == "nt", "Delegated Git runs in the Linux container")
+    def test_remote_program_rejects_repository_command_configuration(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory).resolve()
+            repo = root / "repo"
+            subprocess.run(["git", "init", "-q", str(repo)], check=True)
+            marker = root / "command-ran"
+            command = f"touch '{marker}'"
+            payload = {"root": str(root), "repository": str(repo), "action": "git",
+                       "arguments": ["status", "--porcelain=v1"]}
+
+            for key in ("core.fsmonitor", "diff.fixture.textconv", "filter.fixture.process", "merge.fixture.driver"):
+                with self.subTest(key=key):
+                    subprocess.run(["git", "-C", str(repo), "config", key, command], check=True)
+                    result = subprocess.run(
+                        [sys.executable, "-c", context.REMOTE_PROGRAM],
+                        input=json.dumps(payload), text=True, capture_output=True,
+                    )
+                    self.assertNotEqual(result.returncode, 0)
+                    self.assertIn("Executable Git configuration", result.stderr)
+                    self.assertFalse(marker.exists())
+                    subprocess.run(["git", "-C", str(repo), "config", "--unset-all", key], check=True)
+
+    @unittest.skipIf(os.name == "nt", "Delegated Git runs in the Linux container")
+    def test_remote_program_ignores_inherited_git_configuration(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory).resolve()
+            repo = root / "repo"
+            subprocess.run(["git", "init", "-q", str(repo)], check=True)
+            marker = root / "inherited-command-ran"
+            monitor = root / "monitor.sh"
+            monitor.write_text(f"#!/bin/sh\ntouch '{marker}'\n", encoding="utf-8")
+            monitor.chmod(0o755)
+            alternate = root / "alternate.gitconfig"
+            alternate.write_text(f"[core]\n\tfsmonitor = {monitor}\n", encoding="utf-8")
+            payload = {"root": str(root), "repository": str(repo), "action": "git",
+                       "arguments": ["status", "--porcelain=v1"]}
+
+            for variable in ("GIT_CONFIG", "GIT_CONFIG_GLOBAL", "GIT_CONFIG_SYSTEM"):
+                with self.subTest(variable=variable), patch.dict(os.environ, {variable: str(alternate)}):
+                    result = subprocess.run(
+                        [sys.executable, "-c", context.REMOTE_PROGRAM],
+                        input=json.dumps(payload), text=True, capture_output=True,
+                    )
+                    self.assertEqual(result.returncode, 0, result.stderr)
+                    self.assertEqual(json.loads(result.stdout)["returncode"], 0, result.stdout)
+                    self.assertFalse(marker.exists())
+
+    @unittest.skipIf(os.name == "nt", "Delegated Git runs in the Linux container")
+    def test_remote_program_accepts_boolean_fsmonitor_configuration(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory).resolve()
+            repo = root / "repo"
+            subprocess.run(["git", "init", "-q", str(repo)], check=True)
+            payload = {"root": str(root), "repository": str(repo), "action": "git",
+                       "arguments": ["status", "--porcelain=v1"]}
+
+            for value in ("false", "true"):
+                with self.subTest(value=value):
+                    subprocess.run(["git", "-C", str(repo), "config", "core.fsmonitor", value], check=True)
+                    result = subprocess.run(
+                        [sys.executable, "-c", context.REMOTE_PROGRAM],
+                        input=json.dumps(payload), text=True, capture_output=True,
+                    )
+                    self.assertEqual(result.returncode, 0, result.stderr)
+                    self.assertEqual(json.loads(result.stdout)["returncode"], 0, result.stdout)
+
+    def test_delegated_network_fetch_never_opens_target_git_config_on_host(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            seed = root / "seed"
+            remote = root / "remote.git"
+            repository = root / "repo"
+            alternate = root / "alternate.git"
+            marker = root / "alternate-command-ran"
+            subprocess.run(["git", "init", "-q", "-b", "main", str(seed)], check=True)
+            subprocess.run(["git", "-C", str(seed), "config", "user.name", "Fixture"], check=True)
+            subprocess.run(["git", "-C", str(seed), "config", "user.email", "fixture@example.invalid"], check=True)
+            (seed / "tracked.txt").write_text("fixture\n", encoding="utf-8")
+            subprocess.run(["git", "-C", str(seed), "add", "tracked.txt"], check=True)
+            subprocess.run(["git", "-C", str(seed), "commit", "-qm", "fixture"], check=True)
+            subprocess.run(["git", "clone", "--bare", "-q", str(seed), str(remote)], check=True)
+            subprocess.run(["git", "clone", "-q", str(remote), str(repository)], check=True)
+            subprocess.run(["git", "init", "--bare", "-q", str(alternate)], check=True)
+            info = repository / ".git/objects/info"
+            info.mkdir(parents=True, exist_ok=True)
+            (info / "alternates").write_text(str(alternate / "objects") + "\n", encoding="utf-8")
+            command = root / "alternate-refs-command.sh"
+            command.write_text(f"#!/bin/sh\ntouch '{marker}'\n", encoding="utf-8")
+            command.chmod(0o755)
+            subprocess.run(
+                ["git", "-C", str(repository), "config", "core.alternateRefsCommand", str(command)],
+                check=True,
+            )
+
+            class Recorder:
+                def __init__(self):
+                    self.imported = False
+
+                def import_bundle(self, target, bundle, digest):
+                    self.imported = target == repository and bundle.is_file() and len(digest) == 64
+                    return subprocess.CompletedProcess(["bundle-import"], 0, "", "")
+
+            recorder = Recorder()
+            with patch.object(fleet, "EXECUTION_CONTEXTS", recorder):
+                result, attempts, _ = fleet.run_git_network(
+                    repository, "fetch", "--prune", trusted_remote=str(remote)
+                )
+
+            self.assertEqual(0, result.returncode, result.stderr)
+            self.assertEqual(1, attempts)
+            self.assertTrue(recorder.imported)
+            self.assertFalse(marker.exists())
+
+    @unittest.skipIf(os.name == "nt", "Delegated bundle import runs in the Linux container")
+    def test_delegated_network_fetch_uses_explicit_remote_and_ignores_git_routing_environment(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            seed = root / "seed"
+            remote = root / "remote.git"
+            repository = root / "repo"
+            subprocess.run(["git", "init", "-q", "-b", "main", str(seed)], check=True)
+            subprocess.run(["git", "-C", str(seed), "config", "user.name", "Fixture"], check=True)
+            subprocess.run(["git", "-C", str(seed), "config", "user.email", "fixture@example.invalid"], check=True)
+            (seed / "tracked.txt").write_text("fixture\n", encoding="utf-8")
+            subprocess.run(["git", "-C", str(seed), "add", "tracked.txt"], check=True)
+            subprocess.run(["git", "-C", str(seed), "commit", "-qm", "fixture"], check=True)
+            subprocess.run(["git", "clone", "--bare", "-q", str(seed), str(remote)], check=True)
+            subprocess.run(["git", "clone", "-q", str(remote), str(repository)], check=True)
+            unrelated = root / "unrelated"
+            subprocess.run(["git", "init", "--bare", "-q", str(unrelated)], check=True)
+
+            class Importer:
+                def import_bundle(self, target, bundle, digest):
+                    transferred = Path("/tmp") / f"hb-fetch-{os.urandom(16).hex()}.bundle"
+                    shutil.copy2(bundle, transferred)
+                    payload = {
+                        "root": str(root.resolve()),
+                        "repository": str(target.resolve()),
+                        "action": "bundle",
+                        "bundle": str(transferred),
+                        "sha256": digest,
+                    }
+                    process = subprocess.run(
+                        [sys.executable, "-c", context.REMOTE_PROGRAM],
+                        input=json.dumps(payload), text=True, capture_output=True,
+                    )
+                    if process.returncode:
+                        return process
+                    value = json.loads(process.stdout)
+                    return subprocess.CompletedProcess(
+                        ["bundle-import"], value["returncode"], value["stdout"], value["stderr"]
+                    )
+
+            with patch.object(fleet, "EXECUTION_CONTEXTS", Importer()), \
+                    patch.dict(os.environ, {
+                        "GIT_DIR": str(unrelated),
+                        "GIT_CONFIG_COUNT": "1",
+                        "GIT_CONFIG_KEY_0": "core.sshCommand",
+                        "GIT_CONFIG_VALUE_0": "touch marker",
+                    }):
+                result, attempts, _ = fleet.run_git_network(
+                    repository, "fetch", "--prune", trusted_remote=str(remote)
+                )
+
+            self.assertEqual(0, result.returncode, result.stderr)
+            self.assertEqual(1, attempts)
+            self.assertEqual(
+                subprocess.run(
+                    ["git", "-C", str(seed), "rev-parse", "HEAD"],
+                    check=True, capture_output=True, text=True,
+                ).stdout.strip(),
+                subprocess.run(
+                    ["git", "-C", str(repository), "rev-parse", "refs/remotes/origin/main"],
+                    check=True, capture_output=True, text=True,
+                ).stdout.strip(),
+            )
+
     def worker_payload(self, root, phase="propagation", mode="check-only"):
         repo = root / "repo with spaces"
         repo.mkdir()
@@ -334,9 +595,9 @@ class ExecutionContextTests(unittest.TestCase):
                 "--execution-contract", str(contract_path)])
             operations = []
             original_network = fleet.run_git_network
-            def network(repository, *arguments):
+            def network(repository, *arguments, **kwargs):
                 operations.append(arguments[0])
-                return original_network(repository, *arguments)
+                return original_network(repository, *arguments, **kwargs)
             def request(router, repository, action, arguments=()):
                 if arguments and arguments[0] == "merge":
                     self.assertEqual(operations.count("fetch"), 2)

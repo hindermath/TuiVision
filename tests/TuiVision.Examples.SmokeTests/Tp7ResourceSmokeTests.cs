@@ -20,66 +20,54 @@ public sealed class Tp7ResourceSmokeTests : ExampleTestBase
     [TestMethod]
     public void Tp7Resources_AppLoops_Generate_And_Load_Exact_Records()
     {
-        string root = CreateRoot();
-        try
-        {
-            Tp7ResourceGeneratorApp generator = new(DefaultBounds(), headless: true, allowedOutputDirectory: root);
-            generator.QueueEvents([TEvent.CreateCommand(
+        using TControlledOutputDirectory output = TControlledOutputDirectory.Create();
+        string root = output.RootPath;
+        Tp7ResourceGeneratorApp generator = new(DefaultBounds(), headless: true, outputDirectory: output);
+        generator.QueueEvents([TEvent.CreateCommand(
                 Tp7ResourceGeneratorApp.CmGenerate,
                 new Tp7ResourceGeneratorApp.GenerateRequest("tp7.tvr"))]);
-            AssertSmokeRunCompletes(() => generator.Run());
+        AssertSmokeRunCompletes(() => generator.Run());
 
-            Assert.IsFalse(generator.GenerationRejected);
-            Assert.IsNotNull(generator.GeneratedBytes);
-            Assert.IsTrue(File.Exists(Path.Combine(root, "tp7.tvr")));
-            AssertViewTreeProofFromAppLoop(generator.LastVisibleComponentKind, nameof(TDialog), "TP7 generator dialog");
-            Assert.AreEqual(nameof(TInputLine), generator.FocusedControlKind);
-            Assert.IsGreaterThanOrEqualTo(3, generator.VisibleControlCount);
-            Assert.AreEqual(100, generator.ProgressPercent);
-            AssertRenderedRegionContainsFromAppLoop(generator.Driver.BackBuffer, generator.LastVisibleRegion, "generated", "TP7 generator cells");
+        Assert.IsFalse(generator.GenerationRejected);
+        Assert.IsNotNull(generator.GeneratedBytes);
+        Assert.IsTrue(File.Exists(Path.Combine(root, "tp7.tvr")));
+        AssertViewTreeProofFromAppLoop(generator.LastVisibleComponentKind, nameof(TDialog), "TP7 generator dialog");
+        Assert.AreEqual(nameof(TInputLine), generator.FocusedControlKind);
+        Assert.IsGreaterThanOrEqualTo(3, generator.VisibleControlCount);
+        Assert.AreEqual(100, generator.ProgressPercent);
+        AssertRenderedRegionContainsFromAppLoop(generator.Driver.BackBuffer, generator.LastVisibleRegion, "generated", "TP7 generator cells");
 
-            Tp7ResourceDemoApp demo = new(DefaultBounds(), headless: true);
-            demo.QueueEvents([TEvent.CreateCommand(Tp7ResourceDemoApp.CmLoadResources, generator.GeneratedBytes)]);
-            AssertSmokeRunCompletes(() => demo.Run());
+        Tp7ResourceDemoApp demo = new(DefaultBounds(), headless: true);
+        demo.QueueEvents([TEvent.CreateCommand(Tp7ResourceDemoApp.CmLoadResources, generator.GeneratedBytes)]);
+        AssertSmokeRunCompletes(() => demo.Run());
 
-            Assert.IsTrue(demo.LoadSucceeded);
-            Assert.AreEqual("TP7 Resource Dialog", demo.DialogTitle);
-            Assert.AreEqual("~D~emo", demo.MenuLabel);
-            Assert.AreEqual("~F1~ Help", demo.StatusLabel);
-            AssertViewTreeProofFromAppLoop(demo.LastVisibleComponentKind, nameof(TDialog), "TP7 resource dialog");
-            Assert.AreEqual(nameof(TButton), demo.FocusedControlKind);
-            AssertRenderedRegionContainsFromAppLoop(demo.Driver.BackBuffer, demo.LastVisibleRegion, "TP7 Resource Dialog", "TP7 resource dialog cells");
-            AssertPrimaryAssertionUsedAppLoop();
-        }
-        finally
-        {
-            Directory.Delete(root, recursive: true);
-        }
+        Assert.IsTrue(demo.LoadSucceeded);
+        Assert.AreEqual("TP7 Resource Dialog", demo.DialogTitle);
+        Assert.AreEqual("~D~emo", demo.MenuLabel);
+        Assert.AreEqual("~F1~ Help", demo.StatusLabel);
+        AssertViewTreeProofFromAppLoop(demo.LastVisibleComponentKind, nameof(TDialog), "TP7 resource dialog");
+        Assert.AreEqual(nameof(TButton), demo.FocusedControlKind);
+        AssertRenderedRegionContainsFromAppLoop(demo.Driver.BackBuffer, demo.LastVisibleRegion, "TP7 Resource Dialog", "TP7 resource dialog cells");
+        AssertPrimaryAssertionUsedAppLoop();
     }
 
     /// <summary>Prüft die Generatorgrenze gegen Traversal. / Verifies the generator boundary against traversal.</summary>
     [TestMethod]
     public void Tp7ResourceGenerator_AppLoop_Rejects_Path_Outside_Owned_Root()
     {
-        string root = CreateRoot();
-        try
-        {
-            Tp7ResourceGeneratorApp generator = new(DefaultBounds(), headless: true, allowedOutputDirectory: root);
-            generator.QueueEvents([TEvent.CreateCommand(
+        using TControlledOutputDirectory output = TControlledOutputDirectory.Create();
+        string root = output.RootPath;
+        Tp7ResourceGeneratorApp generator = new(DefaultBounds(), headless: true, outputDirectory: output);
+        generator.QueueEvents([TEvent.CreateCommand(
                 Tp7ResourceGeneratorApp.CmGenerate,
                 new Tp7ResourceGeneratorApp.GenerateRequest("../escape.tvr"))]);
 
-            AssertSmokeRunCompletes(() => generator.Run());
+        AssertSmokeRunCompletes(() => generator.Run());
 
-            Assert.IsTrue(generator.GenerationRejected);
-            Assert.IsNull(generator.GeneratedPath);
-            Assert.IsFalse(File.Exists(Path.Combine(root, "..", "escape.tvr")));
-            AssertVisibleContainsFromAppLoop(generator.LastStatusMessage, "outside", "TP7 generator traversal status");
-        }
-        finally
-        {
-            Directory.Delete(root, recursive: true);
-        }
+        Assert.IsTrue(generator.GenerationRejected);
+        Assert.IsNull(generator.GeneratedPath);
+        Assert.IsFalse(File.Exists(Path.Combine(root, "..", "escape.tvr")));
+        AssertVisibleContainsFromAppLoop(generator.LastStatusMessage, "unsafe", "TP7 generator traversal status");
     }
 
     /// <summary>Prüft doppelte Keys, unbekannte Typen und ungültige Längen einzeln. / Verifies duplicate keys, unknown types, and invalid lengths separately.</summary>
@@ -132,29 +120,15 @@ public sealed class Tp7ResourceSmokeTests : ExampleTestBase
         AssertRenderedContainsFromAppLoop(generator.Driver.BackBuffer, "Help -> Description", "Resource Generator constrained Description");
     }
 
-    private static string CreateRoot()
-    {
-        string root = Path.Combine(Path.GetTempPath(), $"tuivision-tp7resources-{Guid.NewGuid():N}");
-        Directory.CreateDirectory(root);
-        return root;
-    }
-
     private static byte[] GenerateValidBytes()
     {
-        string root = CreateRoot();
-        try
-        {
-            Tp7ResourceGeneratorApp generator = new(new TRect(0, 0, 80, 25), headless: true, allowedOutputDirectory: root);
-            generator.QueueEvents([TEvent.CreateCommand(
+        using TControlledOutputDirectory output = TControlledOutputDirectory.Create();
+        Tp7ResourceGeneratorApp generator = new(new TRect(0, 0, 80, 25), headless: true, outputDirectory: output);
+        generator.QueueEvents([TEvent.CreateCommand(
                 Tp7ResourceGeneratorApp.CmGenerate,
                 new Tp7ResourceGeneratorApp.GenerateRequest("fixture.tvr"))]);
-            generator.Run();
-            return generator.GeneratedBytes ?? [];
-        }
-        finally
-        {
-            Directory.Delete(root, recursive: true);
-        }
+        generator.Run();
+        return generator.GeneratedBytes ?? [];
     }
 
     private static byte[] ReplaceAscii(byte[] source, string oldValue, string newValue)

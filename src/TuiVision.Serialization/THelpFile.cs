@@ -1,6 +1,8 @@
 // Copyright (c) 2026 Thorsten Hindermann / TuiVision Contributors.
 // Licensed under the MIT Licence. See LICENSE file in the project root for full licence information.
 
+using System.Text;
+
 namespace TuiVision.Serialization;
 
 /// <summary>
@@ -10,6 +12,8 @@ namespace TuiVision.Serialization;
 /// </summary>
 public sealed class THelpFile : ITStreamSerializable
 {
+    private const int MaxTopics = 10_000;
+    private const long MaxFileBytes = 64L * 1024 * 1024;
     private readonly List<THelpTopic> _topics = [];
 
     /// <summary>
@@ -86,6 +90,8 @@ public sealed class THelpFile : ITStreamSerializable
     /// <param name="writer">Der Ziel-Writer. / The destination writer.</param>
     public void SaveTo(TBinaryArchiveWriter writer)
     {
+        EnsureModelLimits(enforceArchiveSize: true);
+
         writer.WriteInt32(_topics.Count);
         foreach (THelpTopic topic in _topics)
         {
@@ -116,15 +122,13 @@ public sealed class THelpFile : ITStreamSerializable
     public static THelpFile LoadFrom(TBinaryArchiveReader reader)
     {
         THelpFile helpFile = new();
-        int topicCount = reader.ReadInt32();
-        if (topicCount < 0)
-        {
-            throw new InvalidDataException("Help-file topic count must be non-negative.");
-        }
+        int topicCount = reader.ReadBoundedCount(MaxTopics, "Help-file topic");
+        HashSet<int> contexts = [];
 
         for (int index = 0; index < topicCount; index++)
         {
-            helpFile.AddTopic(THelpTopic.LoadFrom(reader));
+            THelpTopic topic = THelpTopic.LoadFrom(reader);
+            AddLoadedTopic(helpFile, topic, contexts);
         }
 
         ValidateGraph(helpFile);
@@ -141,6 +145,11 @@ public sealed class THelpFile : ITStreamSerializable
     public static THelpFile Load(string path)
     {
         using FileStream stream = File.OpenRead(path);
+        if (stream.Length > MaxFileBytes)
+        {
+            throw new InvalidDataException($"Help file exceeds {MaxFileBytes} bytes.");
+        }
+
         using TBinaryArchiveReader reader = new(stream);
         THelpFile helpFile = LoadFrom(reader);
         reader.EnsureFullyConsumed();
@@ -164,6 +173,8 @@ public sealed class THelpFile : ITStreamSerializable
             ReadFromStream,
             (stream, helpFile) =>
             {
+                helpFile.EnsureModelLimits(enforceArchiveSize: false);
+
                 stream.WriteInt32(helpFile._topics.Count);
                 foreach (THelpTopic topic in helpFile._topics)
                 {
@@ -175,15 +186,13 @@ public sealed class THelpFile : ITStreamSerializable
     private static THelpFile ReadFromStream(ipstream stream)
     {
         THelpFile helpFile = new();
-        int topicCount = stream.ReadInt32();
-        if (topicCount < 0)
-        {
-            throw new InvalidDataException("Help-file topic count must be non-negative.");
-        }
+        int topicCount = stream.ReadBoundedCount(MaxTopics, "Help-file topic");
+        HashSet<int> contexts = [];
 
         for (int index = 0; index < topicCount; index++)
         {
-            helpFile.AddTopic(stream.ReadObject<THelpTopic>() ?? throw new InvalidDataException("Help topic payload is missing."));
+            THelpTopic topic = stream.ReadObject<THelpTopic>() ?? throw new InvalidDataException("Help topic payload is missing.");
+            AddLoadedTopic(helpFile, topic, contexts);
         }
 
         ValidateGraph(helpFile);
@@ -219,6 +228,75 @@ public sealed class THelpFile : ITStreamSerializable
                 }
             }
         }
+    }
+
+    private static void AddLoadedTopic(THelpFile helpFile, THelpTopic topic, HashSet<int> contexts)
+    {
+        if (!contexts.Add(topic.Context))
+        {
+            throw new InvalidDataException($"Help context '{topic.Context}' is duplicated.");
+        }
+
+        helpFile.AddTopic(topic);
+    }
+
+    private void EnsureModelLimits(bool enforceArchiveSize)
+    {
+        if (_topics.Count > MaxTopics)
+        {
+            throw new InvalidDataException($"Help-file topic count exceeds {MaxTopics}.");
+        }
+
+        long modelItems = _topics.Count;
+        long archiveBytes = sizeof(int);
+        foreach (THelpTopic topic in _topics)
+        {
+            modelItems += topic.Paragraphs.Count + topic.CrossReferences.Count;
+            if (modelItems > TBinaryArchiveReader.MaximumCollectionItems)
+            {
+                throw new InvalidDataException(
+                    $"Help model item count exceeds {TBinaryArchiveReader.MaximumCollectionItems}.");
+            }
+
+            if (!enforceArchiveSize)
+            {
+                continue;
+            }
+
+            archiveBytes += sizeof(int) + GetEncodedStringSize(topic.Title) + sizeof(int) + sizeof(int);
+            foreach (string paragraph in topic.Paragraphs)
+            {
+                archiveBytes += GetEncodedStringSize(paragraph);
+            }
+
+            foreach (THelpCrossReference reference in topic.CrossReferences)
+            {
+                archiveBytes += (3 * sizeof(int)) + GetEncodedStringSize(reference.Label);
+            }
+
+            if (archiveBytes > MaxFileBytes)
+            {
+                throw new InvalidDataException($"Help file exceeds {MaxFileBytes} bytes.");
+            }
+        }
+    }
+
+    private static long GetEncodedStringSize(string value)
+    {
+        int byteCount = Encoding.UTF8.GetByteCount(value);
+        if (byteCount > TBinaryArchiveReader.MaximumStringByteCount)
+        {
+            throw new InvalidDataException(
+                $"Encoded string exceeds {TBinaryArchiveReader.MaximumStringByteCount} bytes.");
+        }
+
+        int prefixBytes = 1;
+        for (int remaining = byteCount; remaining >= 0x80; remaining >>= 7)
+        {
+            prefixBytes++;
+        }
+
+        return prefixBytes + byteCount;
     }
 
     private static THelpTopic CreateFallback(int context)

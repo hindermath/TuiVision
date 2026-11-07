@@ -21,12 +21,12 @@ public sealed class TvEditApp : Wave3Application
     /// <summary>In den explizit erlaubten Test-Root speichern. / Save inside the explicitly allowed test root.</summary>
     public const ushort CmSaveOwned = 19003;
 
-    private readonly string? _allowedOutputDirectory;
+    private readonly TControlledOutputDirectory? _outputDirectory;
 
     /// <summary>Initialisiert die Editoranwendung. / Initializes the editor application.</summary>
-    public TvEditApp(TRect bounds, bool headless = false, string? allowedOutputDirectory = null) : base(bounds, headless)
+    public TvEditApp(TRect bounds, bool headless = false, TControlledOutputDirectory? outputDirectory = null) : base(bounds, headless)
     {
-        _allowedOutputDirectory = allowedOutputDirectory is null ? null : Path.GetFullPath(allowedOutputDirectory);
+        _outputDirectory = outputDirectory;
         TRect region = Wave3Runtime.MainRegion(Desktop!, 68, 17);
         Editor = new TFileEditor(new TRect(1, 1, Math.Max(2, region.Width - 1), Math.Max(2, region.Height - 2)));
         Editor.LoadText("TvEdit learner buffer\nReady for keyboard editing.", markClean: true);
@@ -114,24 +114,22 @@ public sealed class TvEditApp : Wave3Application
     private void SaveOwned(string? relativePath)
     {
         LastSaveRejected = true;
-        if (_allowedOutputDirectory is null || string.IsNullOrWhiteSpace(relativePath) || Path.IsPathRooted(relativePath))
+        if (_outputDirectory is null || string.IsNullOrWhiteSpace(relativePath) || Path.IsPathRooted(relativePath))
         {
             SetWave3Status("TvEdit", "save rejected: no owned target");
             return;
         }
 
-        string root = Path.TrimEndingDirectorySeparator(_allowedOutputDirectory);
-        string candidate = Path.GetFullPath(Path.Combine(root, relativePath));
-        string prefix = root + Path.DirectorySeparatorChar;
-        // Der Root-Praefix ist die Proof-Grenze: ein gueltiger Dateiname darf den test-eigenen Baum nie verlassen.
-        // The root prefix is the proof boundary: a valid file name must never leave the test-owned tree.
-        if (!candidate.StartsWith(prefix, StringComparison.Ordinal))
+        string candidate;
+        try
         {
-            SetWave3Status("TvEdit", "save rejected: outside owned root");
+            candidate = _outputDirectory.ResolveNewFile(relativePath);
+        }
+        catch (Exception exception) when (exception is ArgumentException or InvalidOperationException or IOException)
+        {
+            SetWave3Status("TvEdit", "save rejected: unsafe owned target");
             return;
         }
-
-        Directory.CreateDirectory(root);
         if (!Editor.SaveAs(candidate))
         {
             SetWave3Status("TvEdit", "save rejected: overwrite decision required");

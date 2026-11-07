@@ -78,7 +78,7 @@ public sealed record TMenuDescriptionRecord : ITStreamSerializable
     public static TMenuDescriptionRecord LoadFrom(TBinaryArchiveReader reader)
     {
         ArgumentNullException.ThrowIfNull(reader);
-        return Read(reader.ReadInt32, reader.ReadString, reader.ReadBoolean);
+        return Read(reader.ReadInt32, reader.ReadString, reader.ReadBoolean, reader.ReadBoundedCount);
     }
 
     /// <summary>Registriert Archiv- und Resource-Stream-Fabriken. / Registers archive and resource-stream factories.</summary>
@@ -103,6 +103,7 @@ public sealed record TMenuDescriptionRecord : ITStreamSerializable
         }
 
         Dictionary<string, TMenuItemDescriptionRecord> byId = new(StringComparer.Ordinal);
+        HashSet<string> parentIds = new(StringComparer.Ordinal);
         foreach (TMenuItemDescriptionRecord item in items)
         {
             if (string.IsNullOrWhiteSpace(item.Id) || !byId.TryAdd(item.Id, item))
@@ -113,6 +114,10 @@ public sealed record TMenuDescriptionRecord : ITStreamSerializable
             if (item.Order < 0 || string.IsNullOrWhiteSpace(item.Label) || item.HelpContext < 0)
             {
                 throw new InvalidDataException($"Menu item '{item.Id}' has invalid order, label, or help context.");
+            }
+            if (item.ParentId is not null)
+            {
+                parentIds.Add(item.ParentId);
             }
         }
 
@@ -134,7 +139,7 @@ public sealed record TMenuDescriptionRecord : ITStreamSerializable
 
         foreach (TMenuItemDescriptionRecord item in items)
         {
-            bool hasChildren = items.Any(candidate => string.Equals(candidate.ParentId, item.Id, StringComparison.Ordinal));
+            bool hasChildren = parentIds.Contains(item.Id);
             bool isSeparator = item.Label == "---";
             if ((!hasChildren && !isSeparator && item.CommandId == 0) || ((hasChildren || isSeparator) && item.CommandId != 0))
             {
@@ -157,7 +162,7 @@ public sealed record TMenuDescriptionRecord : ITStreamSerializable
     }
 
     private static TMenuDescriptionRecord LoadFromStream(ipstream stream) =>
-        Read(stream.ReadInt32, stream.ReadString, stream.ReadBoolean);
+        Read(stream.ReadInt32, stream.ReadString, stream.ReadBoolean, stream.ReadBoundedCount);
 
     private static void SaveToStream(opstream stream, TMenuDescriptionRecord record)
     {
@@ -170,10 +175,17 @@ public sealed record TMenuDescriptionRecord : ITStreamSerializable
         }
     }
 
-    private static TMenuDescriptionRecord Read(Func<int> readInt, Func<string> readString, Func<bool> readBoolean)
+    private static TMenuDescriptionRecord Read(
+        Func<int> readInt,
+        Func<string> readString,
+        Func<bool> readBoolean,
+        Func<int, string, int> readBoundedCount)
     {
         int version = readInt();
-        int count = ReadCount(readInt());
+        // Das gemeinsame Archivbudget verhindert, dass viele einzeln gueltige Menues
+        // zusammen Millionen Objekte erzeugen. / The shared archive budget prevents
+        // many individually valid menus from creating millions of objects together.
+        int count = readBoundedCount(MaxItems, "Menu item");
         List<TMenuItemDescriptionRecord> items = new(count);
         for (int index = 0; index < count; index++)
         {
@@ -210,15 +222,5 @@ public sealed record TMenuDescriptionRecord : ITStreamSerializable
         writeInt(item.CommandId);
         writeInt(item.HelpContext);
         writeBoolean(item.Disabled);
-    }
-
-    private static int ReadCount(int count)
-    {
-        if (count is < 0 or > MaxItems)
-        {
-            throw new InvalidDataException($"Invalid menu item count '{count}'.");
-        }
-
-        return count;
     }
 }

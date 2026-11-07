@@ -74,7 +74,7 @@ public sealed record TStatusLineDescriptionRecord : ITStreamSerializable
     public static TStatusLineDescriptionRecord LoadFrom(TBinaryArchiveReader reader)
     {
         ArgumentNullException.ThrowIfNull(reader);
-        return Read(reader.ReadInt32, reader.ReadString, reader.ReadBoolean);
+        return Read(reader.ReadInt32, reader.ReadString, reader.ReadBoolean, reader.ReadBoundedCount);
     }
 
     /// <summary>Registriert Archiv- und Resource-Stream-Fabriken. / Registers archive and resource-stream factories.</summary>
@@ -121,7 +121,7 @@ public sealed record TStatusLineDescriptionRecord : ITStreamSerializable
     }
 
     private static TStatusLineDescriptionRecord LoadFromStream(ipstream stream) =>
-        Read(stream.ReadInt32, stream.ReadString, stream.ReadBoolean);
+        Read(stream.ReadInt32, stream.ReadString, stream.ReadBoolean, stream.ReadBoundedCount);
 
     private static void SaveToStream(opstream stream, TStatusLineDescriptionRecord record)
     {
@@ -149,10 +149,14 @@ public sealed record TStatusLineDescriptionRecord : ITStreamSerializable
         }
     }
 
-    private static TStatusLineDescriptionRecord Read(Func<int> readInt, Func<string> readString, Func<bool> readBoolean)
+    private static TStatusLineDescriptionRecord Read(
+        Func<int> readInt,
+        Func<string> readString,
+        Func<bool> readBoolean,
+        Func<int, string, int> readBoundedCount)
     {
         int version = readInt();
-        int definitionCount = ReadCount(readInt(), "definition");
+        int definitionCount = readBoundedCount(MaxItems, "Status-line definition");
         List<TStatusDefinitionDescriptionRecord> definitions = new(definitionCount);
         int totalItems = 0;
         for (int index = 0; index < definitionCount; index++)
@@ -160,7 +164,7 @@ public sealed record TStatusLineDescriptionRecord : ITStreamSerializable
             int min = readInt();
             int max = readInt();
             int order = readInt();
-            int itemCount = ReadCount(readInt(), "item");
+            int itemCount = readBoundedCount(MaxItems, "Status-line item");
             totalItems += itemCount;
             if (totalItems > MaxItems)
             {
@@ -187,15 +191,5 @@ public sealed record TStatusLineDescriptionRecord : ITStreamSerializable
 
         Validate(version, definitions);
         return new TStatusLineDescriptionRecord(version, definitions);
-    }
-
-    private static int ReadCount(int count, string name)
-    {
-        if (count is < 0 or > MaxItems)
-        {
-            throw new InvalidDataException($"Invalid status-line {name} count '{count}'.");
-        }
-
-        return count;
     }
 }

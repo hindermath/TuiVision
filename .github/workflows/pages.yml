@@ -24,11 +24,12 @@ jobs:
 
     permissions:
       contents: read
-      pages: write
 
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: Setup .NET 10
         uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
@@ -42,20 +43,15 @@ jobs:
           cache: npm
           cache-dependency-path: tests/web-a11y/package-lock.json
 
-      - name: Setup GitHub Pages
-        if: github.event_name != 'pull_request'
-        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
-
-      - name: Install DocFX
+      - name: Restore pinned .NET tools
         shell: bash
-        run: dotnet tool install --global docfx
+        run: dotnet tool restore
 
       - name: Build DocFX site
         shell: bash
         run: |
           set -euo pipefail
-          export PATH="$PATH:$HOME/.dotnet/tools"
-          docfx docfx.json
+          dotnet tool run docfx -- docfx.json
 
       - name: Install web accessibility dependencies
         working-directory: tests/web-a11y
@@ -90,6 +86,9 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

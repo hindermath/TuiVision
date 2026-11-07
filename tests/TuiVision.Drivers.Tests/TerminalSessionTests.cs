@@ -217,6 +217,91 @@ public sealed class TerminalSessionTests
     }
 
     /// <summary>
+    /// Prueft die maximale Beobachtungslaenge und atomare Ablehnung bei Plus-eins.
+    ///
+    /// Verifies the maximum observation length and atomic rejection at plus one.
+    /// </summary>
+    [TestMethod]
+    public void Session_ObservationLengthBoundary_IsAtomic()
+    {
+        using TerminalSession session = new(1, 1);
+        string acceptedInput = new('A', TerminalSession.MaximumObservationCharacters);
+
+        TerminalEmulationResult accepted = session.Write(acceptedInput);
+        TConsoleBuffer before = session.VisibleBuffer;
+        TPoint cursorBefore = session.Cursor;
+        IReadOnlyList<TConsoleCell> historyBefore = session.History;
+        TerminalEmulationResult rejected = session.Write(
+            new string('B', TerminalSession.MaximumObservationCharacters + 1));
+
+        Assert.AreEqual(TerminalEmulationOutcome.Accepted, accepted.Outcome);
+        Assert.AreEqual(TerminalEmulationOutcome.Rejected, rejected.Outcome);
+        Assert.IsFalse(rejected.StateChanged);
+        Assert.AreEqual(cursorBefore, session.Cursor);
+        CollectionAssert.AreEqual(historyBefore.ToArray(), session.History.ToArray());
+        AssertBuffersEqual(before, session.VisibleBuffer);
+    }
+
+    /// <summary>
+    /// Prueft obere Dimensionsgrenzen bei Erstellung und Resize.
+    ///
+    /// Verifies upper dimension bounds during construction and resize.
+    /// </summary>
+    [TestMethod]
+    public void Session_MaximumDimensions_AcceptBoundaryAndRejectPlusOne()
+    {
+        using TerminalSession session = new(TerminalSession.MaximumWidth, TerminalSession.MaximumHeight);
+
+        Assert.AreEqual(TerminalSession.MaximumWidth, session.VisibleBuffer.Width);
+        Assert.AreEqual(TerminalSession.MaximumHeight, session.VisibleBuffer.Height);
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
+            new TerminalSession(TerminalSession.MaximumWidth + 1, TerminalSession.MaximumHeight));
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
+            session.Resize(TerminalSession.MaximumWidth, TerminalSession.MaximumHeight + 1));
+    }
+
+    /// <summary>
+    /// Prueft wiederholte Vollpufferbefehle gegen das atomare Arbeitsbudget.
+    ///
+    /// Verifies repeated full-buffer commands against the atomic work budget.
+    /// </summary>
+    [TestMethod]
+    public void Session_RepeatedFullResetBeyondWorkBudget_IsRejectedAtomically()
+    {
+        using TerminalSession session = new(TerminalSession.MaximumWidth, TerminalSession.MaximumHeight);
+        session.Write("A");
+        TPoint cursorBefore = session.Cursor;
+
+        TerminalEmulationResult rejected = session.Write(string.Concat(Enumerable.Repeat("\u001bc", 8)));
+
+        Assert.AreEqual(TerminalEmulationOutcome.Rejected, rejected.Outcome);
+        Assert.IsFalse(rejected.StateChanged);
+        Assert.AreEqual(cursorBefore, session.Cursor);
+        Assert.AreEqual('A', session.VisibleBuffer[0, 0].Glyph);
+    }
+
+    /// <summary>
+    /// Prueft die Scroll-Arbeitsgrenze mit gefuelltem FIFO-Verlauf.
+    ///
+    /// Verifies the scroll-work boundary with a filled FIFO history.
+    /// </summary>
+    [TestMethod]
+    public void Session_MaximumWidthScrollWork_AcceptsBoundaryAndRejectsPlusOne()
+    {
+        using TerminalSession session = new(TerminalSession.MaximumWidth, 1);
+
+        TerminalEmulationResult accepted = session.Write(new string('\n', 682));
+        IReadOnlyList<TConsoleCell> historyBefore = session.History;
+        TerminalEmulationResult rejected = session.Write(new string('\n', 683));
+
+        Assert.AreEqual(TerminalEmulationOutcome.Accepted, accepted.Outcome);
+        Assert.AreEqual(TerminalEmulationOutcome.Rejected, rejected.Outcome);
+        Assert.IsFalse(rejected.StateChanged);
+        CollectionAssert.AreEqual(historyBefore.ToArray(), session.History.ToArray());
+        Assert.AreEqual(TerminalEmulationOutcome.Accepted, session.Write("Z").Outcome);
+    }
+
+    /// <summary>
     /// Prüft BEL, Backspace, Tab, Carriage Return und Line Feed an festen Grenzen.
     ///
     /// Verifies BEL, backspace, tab, carriage return, and line feed at fixed boundaries.

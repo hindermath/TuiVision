@@ -73,6 +73,22 @@ the installed WinGet version, it uses `winget source update` as a compatible
 fallback. Package IDs are checked with `winget search --id <Id> --exact` before
 installation.*
 
+Eine alternative npm-Agent-Registry ist nur ein Auswahlmanifest fuer bekannte
+Tool-IDs und Required-/Optional-Scope. Ausfuehrbare Befehle, Argumente und
+Paketnamen werden aus der eingecheckten kanonischen Policy uebernommen;
+Abweichungen werden vor jeder Probe abgelehnt.
+Die npm-Fallbacks sind mit exakter Version und SRI-Integritaet gepinnt. Nur das
+von `npm pack` verifizierte lokale Archiv wird installiert. Git-basierte
+CLI-Werkzeuge verwenden eine vollstaendige Commit-ID.
+
+*An alternative npm-agent registry is a selection manifest only for known tool
+IDs and required/optional scope. Executables, arguments, and package names are
+taken from the checked-in canonical policy; deviations are rejected before any
+probe.*
+*npm fallbacks are pinned by exact version and SRI integrity. Only the local
+archive verified from `npm pack` is installed. Git-based CLI tools use a full
+commit ID.*
+
 ## Optionen / Options
 
 | Option | Bedeutung / Meaning |
@@ -81,7 +97,7 @@ installation.*
 | `-CompareOnly` | Nur Registry-Drift melden, nichts installieren oder upgraden |
 | `-Registry PATH` | Alternative Registry-Datei verwenden |
 | `-VSCodeRegistry PATH` | Alternative VS-Code-Extension-Registry verwenden |
-| `-NpmAgentRegistry PATH` | Alternative npm-Agent-CLI-Registry verwenden |
+| `-NpmAgentRegistry PATH` | Alternatives Auswahlmanifest fuer bekannte npm-Agent-CLI-IDs verwenden |
 | `-PowerShellModuleRegistry PATH` | Alternative PowerShell-Modul-Registry verwenden |
 | `-SkipUpgrade` | WinGet-Update und `winget upgrade --all` ueberspringen |
 | `-SkipVSCodeExtensions` | VS-Code-Extensions weder installieren noch vergleichen |

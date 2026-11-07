@@ -96,9 +96,8 @@ jobs:
           set -euo pipefail
 
           if [[ -f "docfx.json" ]]; then
-            dotnet tool update --global docfx || dotnet tool install --global docfx
-            export PATH="$PATH:$HOME/.dotnet/tools"
-            docfx docfx.json
+            dotnet tool restore
+            dotnet tool run docfx -- docfx.json
           else
             echo "::notice::docfx.json not found. Skipping docfx build."
           fi

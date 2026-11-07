@@ -15,6 +15,29 @@ namespace TuiVision.Controls.Tests;
 public sealed class TFileDialogTests
 {
     /// <summary>
+    /// Veröffentlicht gekürzte Datei- und Verzeichnislisten textorientiert.
+    ///
+    /// Publishes truncated file and directory lists as text-first evidence.
+    /// </summary>
+    [TestMethod]
+    public void TFileDialog_Reports_Truncated_Lists_Without_Rejecting_Navigation()
+    {
+        using EditorShellTestContext.TemporaryDirectory temp = EditorShellTestContext.CreateTemporaryDirectory();
+        for (int index = 0; index < TFileList.MaxVisibleEntries + 1; index++)
+        {
+            File.WriteAllText(Path.Combine(temp.Path, $"file-{index:D4}.txt"), "x");
+            Directory.CreateDirectory(Path.Combine(temp.Path, $"dir-{index:D4}"));
+        }
+
+        TFileDialog dialog = new(new TRect(0, 0, 50, 12), "Open", temp.Path, "*.txt", "bounded", TFileDialogMode.Open);
+
+        Assert.AreEqual(StandardDialogInteractionState.Active, dialog.FlowState.InteractionState);
+        CollectionAssert.IsSubsetOf(
+            new[] { "file-list-truncated", "directory-list-truncated" },
+            dialog.FlowState.ValidationMessages.Select(message => message.Code).ToArray());
+    }
+
+    /// <summary>
     /// Setzt die gemeinsame History vor jedem Test zurueck.
     ///
     /// Resets the shared history before each test.

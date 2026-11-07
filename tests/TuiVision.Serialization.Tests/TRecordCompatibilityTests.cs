@@ -62,6 +62,53 @@ public sealed class TRecordCompatibilityTests
     }
 
     /// <summary>
+    /// Prueft, dass eine extrem grosse deklarierte Laenge vor der Allokation abgewiesen wird.
+    ///
+    /// Verifies that an extremely large declared length is rejected before allocation.
+    /// </summary>
+    [TestMethod]
+    public void TRecordSerializer_Deserialize_IntMaxPayloadLengthThrowsInvalidDataException()
+    {
+        TRecordSerializer serializer = new(SerializationTestSupport.CreateArchiveRegistry());
+        byte[] envelope = CreateEnvelope("test-record", int.MaxValue, []);
+
+        AssertEx.Throws<InvalidDataException>(() => serializer.Deserialize(envelope));
+    }
+
+    /// <summary>
+    /// Prueft, dass bereits ein Byte ueber der Restlaenge abgewiesen wird.
+    ///
+    /// Verifies that even one byte beyond the remaining length is rejected.
+    /// </summary>
+    [TestMethod]
+    public void TRecordSerializer_Deserialize_PayloadLengthBeyondRemainingBytesThrowsInvalidDataException()
+    {
+        TRecordSerializer serializer = new(SerializationTestSupport.CreateArchiveRegistry());
+        byte[] envelope = CreateEnvelope("test-record", 2, [42]);
+
+        AssertEx.Throws<InvalidDataException>(() => serializer.Deserialize(envelope));
+    }
+
+    /// <summary>
+    /// Prueft, dass eine exakt passende Laenge weiterhin bis zur Registry verarbeitet wird.
+    ///
+    /// Verifies that an exactly matching length still reaches registry processing.
+    /// </summary>
+    [TestMethod]
+    public void TRecordSerializer_Deserialize_PayloadLengthEqualToRemainingBytesRemainsSupported()
+    {
+        TRecordRegistry registry = SerializationTestSupport.CreateArchiveRegistry();
+        TRecordSerializer serializer = new(registry);
+        SerializationTestSupport.TestRecord record = new(11, "bounded");
+        byte[] envelope = serializer.Serialize("test-record", record);
+
+        SerializationTestSupport.TestRecord restored =
+            serializer.Deserialize<SerializationTestSupport.TestRecord>(envelope);
+
+        Assert.AreEqual(record, restored);
+    }
+
+    /// <summary>
     /// Prueft einen End-to-End-Reload ueber benannte Ressourcen.
     ///
     /// Verifies an end-to-end reload through named resources.
@@ -99,5 +146,18 @@ public sealed class TRecordCompatibilityTests
             {
             }
         }
+    }
+
+    private static byte[] CreateEnvelope(string typeId, int payloadLength, byte[] payload)
+    {
+        using MemoryStream stream = new();
+        using (TBinaryArchiveWriter writer = new(stream, leaveOpen: true))
+        {
+            writer.WriteString(typeId);
+            writer.WriteInt32(payloadLength);
+            writer.WriteBytes(payload);
+        }
+
+        return stream.ToArray();
     }
 }
