@@ -28,6 +28,13 @@ public sealed class THelpCompilerOptions
     public int MaxLineCharacters { get; init; } = 16_384;
 
     /// <summary>
+    /// Die maximale Anzahl Quellzeilen vor der Aufteilung des Quelltexts.
+    ///
+    /// The maximum number of source lines before the source text is split.
+    /// </summary>
+    public int MaxSourceLines { get; init; } = 100_000;
+
+    /// <summary>
     /// Die maximale Anzahl Themen-Deklarationen.
     ///
     /// The maximum number of topic declarations.
@@ -41,12 +48,21 @@ public sealed class THelpCompilerOptions
     /// </summary>
     public int MaxExpandedModelItems { get; init; } = 100_000;
 
+    /// <summary>
+    /// Die maximale Anzahl zurueckgegebener Diagnosen.
+    ///
+    /// The maximum number of returned diagnostics.
+    /// </summary>
+    public int MaxDiagnostics { get; init; } = 1_000;
+
     internal void Validate()
     {
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(MaxSourceCharacters);
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(MaxLineCharacters);
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(MaxSourceLines);
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(MaxTopics);
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(MaxExpandedModelItems);
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(MaxDiagnostics);
     }
 }
 
@@ -242,8 +258,16 @@ public sealed class THelpSourceCompiler
 
     private THelpCompilationResult CompileDecoded(string source, string sourceName)
     {
+        // Das Zeilenbudget wird vor Split geprueft, damit eine dichte Folge kurzer
+        // Fehlerzeilen nicht zuerst ein grosses String-Array erzeugt. / Check the
+        // line budget before Split so dense short error lines cannot allocate a large string array first.
+        if (CountSourceLines(source) > _options.MaxSourceLines)
+        {
+            return Failure(Diagnostic("THC009", "Quelltext ueberschreitet die konfigurierte Zeilengrenze. / Source exceeds the configured line limit.", sourceName, 1, 1));
+        }
+
         string[] lines = source.Replace("\r\n", "\n", StringComparison.Ordinal).Replace('\r', '\n').Split('\n');
-        List<THelpCompilerDiagnostic> diagnostics = [];
+        DiagnosticCollector diagnostics = new(_options.MaxDiagnostics, sourceName);
         List<TopicBuilder> topics = [];
         Dictionary<string, int> symbols = new(StringComparer.Ordinal);
         HashSet<int> contexts = [];
@@ -257,44 +281,42 @@ public sealed class THelpSourceCompiler
             if (line.Length > _options.MaxLineCharacters)
             {
                 diagnostics.Add(Diagnostic("THC009", "Quellzeile ueberschreitet die konfigurierte Laengengrenze. / Source line exceeds the configured length limit.", sourceName, lineNumber, 1));
-                continue;
             }
-
-            if (line.StartsWith(".topic", StringComparison.Ordinal))
+            else if (line.StartsWith(".topic", StringComparison.Ordinal))
             {
                 if (topics.Count >= _options.MaxTopics)
                 {
                     diagnostics.Add(Diagnostic("THC009", "Zu viele Hilfethemen. / Too many help topics.", sourceName, lineNumber, 1));
-                    continue;
                 }
-
-                currentTopic = ParseTopic(line, sourceName, lineNumber, symbols, contexts, diagnostics, ref nextContext);
-                if (currentTopic is not null)
+                else
                 {
-                    topics.Add(currentTopic);
+                    currentTopic = ParseTopic(line, sourceName, lineNumber, symbols, contexts, diagnostics, ref nextContext);
+                    if (currentTopic is not null)
+                    {
+                        topics.Add(currentTopic);
+                    }
                 }
-
-                continue;
             }
-
-            if (string.IsNullOrWhiteSpace(line))
+            else if (string.IsNullOrWhiteSpace(line))
             {
-                continue;
             }
-
-            if (line.StartsWith(".", StringComparison.Ordinal))
+            else if (line.StartsWith(".", StringComparison.Ordinal))
             {
                 diagnostics.Add(Diagnostic("THC002", "Unbekannte Help-Source-Direktive. / Unknown help source directive.", sourceName, lineNumber, 1));
-                continue;
             }
-
-            if (currentTopic is null)
+            else if (currentTopic is null)
             {
                 diagnostics.Add(Diagnostic("THC002", "Text steht vor der ersten Topic-Deklaration. / Text appears before the first topic declaration.", sourceName, lineNumber, 1));
-                continue;
+            }
+            else
+            {
+                ParseParagraph(line, sourceName, lineNumber, currentTopic, diagnostics);
             }
 
-            ParseParagraph(line, sourceName, lineNumber, currentTopic, diagnostics);
+            if (diagnostics.LimitReached)
+            {
+                return Failure(diagnostics.Items);
+            }
         }
 
         if (topics.Count == 0 && diagnostics.Count == 0)
@@ -309,13 +331,17 @@ public sealed class THelpSourceCompiler
                 if (!symbols.ContainsKey(reference.TargetSymbol))
                 {
                     diagnostics.Add(Diagnostic("THC007", $"Unbekanntes Referenzziel '{reference.TargetSymbol}'. / Unknown reference target '{reference.TargetSymbol}'.", sourceName, reference.Line, reference.Column));
+                    if (diagnostics.LimitReached)
+                    {
+                        return Failure(diagnostics.Items);
+                    }
                 }
             }
         }
 
         if (diagnostics.Count > 0)
         {
-            return Failure(diagnostics);
+            return Failure(diagnostics.Items);
         }
 
         if (ExceedsExpandedModelLimit(topics, _options.MaxExpandedModelItems))
@@ -343,7 +369,7 @@ public sealed class THelpSourceCompiler
         int lineNumber,
         Dictionary<string, int> symbols,
         HashSet<int> contexts,
-        List<THelpCompilerDiagnostic> diagnostics,
+        DiagnosticCollector diagnostics,
         ref int nextContext)
     {
         if (line.Length == 6 || !char.IsWhiteSpace(line[6]))
@@ -368,6 +394,10 @@ public sealed class THelpSourceCompiler
             if (!IsValidSymbol(symbol))
             {
                 diagnostics.Add(Diagnostic("THC002", $"Ungueltiges Topic-Symbol '{symbol}'. / Invalid topic symbol '{symbol}'.", sourceName, lineNumber, Math.Max(1, line.IndexOf(rawItem, StringComparison.Ordinal) + 1)));
+                if (diagnostics.LimitReached)
+                {
+                    return null;
+                }
                 continue;
             }
 
@@ -378,6 +408,10 @@ public sealed class THelpSourceCompiler
                 if (!int.TryParse(numberText, System.Globalization.NumberStyles.None, System.Globalization.CultureInfo.InvariantCulture, out context) || context < 0)
                 {
                     diagnostics.Add(Diagnostic("THC003", $"Ungueltiger Kontextwert '{numberText}'. / Invalid context value '{numberText}'.", sourceName, lineNumber, 1));
+                    if (diagnostics.LimitReached)
+                    {
+                        return null;
+                    }
                     continue;
                 }
             }
@@ -389,12 +423,20 @@ public sealed class THelpSourceCompiler
             if (symbols.ContainsKey(symbol))
             {
                 diagnostics.Add(Diagnostic("THC004", $"Doppeltes Topic-Symbol '{symbol}'. / Duplicate topic symbol '{symbol}'.", sourceName, lineNumber, 1));
+                if (diagnostics.LimitReached)
+                {
+                    return null;
+                }
                 continue;
             }
 
             if (!contexts.Add(context))
             {
                 diagnostics.Add(Diagnostic("THC005", $"Doppelter Kontextwert '{context}'. / Duplicate context value '{context}'.", sourceName, lineNumber, 1));
+                if (diagnostics.LimitReached)
+                {
+                    return null;
+                }
                 continue;
             }
 
@@ -411,7 +453,7 @@ public sealed class THelpSourceCompiler
         string sourceName,
         int lineNumber,
         TopicBuilder topic,
-        List<THelpCompilerDiagnostic> diagnostics)
+        DiagnosticCollector diagnostics)
     {
         StringBuilder visible = new(line.Length);
         int index = 0;
@@ -420,6 +462,10 @@ public sealed class THelpSourceCompiler
             if (line[index] == '}')
             {
                 diagnostics.Add(Diagnostic("THC006", "Schliessende Klammer ohne Referenzbeginn. / Closing brace without a reference start.", sourceName, lineNumber, index + 1));
+                if (diagnostics.LimitReached)
+                {
+                    return;
+                }
                 index++;
                 continue;
             }
@@ -445,6 +491,10 @@ public sealed class THelpSourceCompiler
             if (label.Length == 0 || !IsValidSymbol(target))
             {
                 diagnostics.Add(Diagnostic("THC006", "Ungueltiger Querverweis. / Invalid cross reference.", sourceName, lineNumber, index + 1));
+                if (diagnostics.LimitReached)
+                {
+                    return;
+                }
                 index = close + 1;
                 continue;
             }
@@ -522,6 +572,28 @@ public sealed class THelpSourceCompiler
         return string.IsNullOrWhiteSpace(sourceName) ? fallback : sourceName;
     }
 
+    private static int CountSourceLines(string source)
+    {
+        int lines = 1;
+        for (int index = 0; index < source.Length; index++)
+        {
+            if (source[index] == '\r')
+            {
+                lines++;
+                if (index + 1 < source.Length && source[index + 1] == '\n')
+                {
+                    index++;
+                }
+            }
+            else if (source[index] == '\n')
+            {
+                lines++;
+            }
+        }
+
+        return lines;
+    }
+
     private static THelpCompilerDiagnostic Diagnostic(string code, string message, string sourceName, int line, int column)
     {
         return new THelpCompilerDiagnostic(THelpCompilerDiagnosticSeverity.Error, code, message, sourceName, line, column);
@@ -529,15 +601,62 @@ public sealed class THelpSourceCompiler
 
     private static THelpCompilationResult Failure(THelpCompilerDiagnostic diagnostic)
     {
-        return Failure([diagnostic]);
+        return new THelpCompilationResult(
+            helpFile: null,
+            new ReadOnlyDictionary<string, int>(new Dictionary<string, int>(StringComparer.Ordinal)),
+            [diagnostic]);
     }
 
-    private static THelpCompilationResult Failure(IEnumerable<THelpCompilerDiagnostic> diagnostics)
+    private static THelpCompilationResult Failure(List<THelpCompilerDiagnostic> diagnostics)
     {
         return new THelpCompilationResult(
             helpFile: null,
             new ReadOnlyDictionary<string, int>(new Dictionary<string, int>(StringComparer.Ordinal)),
-            diagnostics.ToArray());
+            diagnostics.AsReadOnly());
+    }
+
+    private sealed class DiagnosticCollector
+    {
+        private readonly int _maximum;
+        private readonly string _sourceName;
+
+        public DiagnosticCollector(int maximum, string sourceName)
+        {
+            _maximum = maximum;
+            _sourceName = sourceName;
+        }
+
+        public List<THelpCompilerDiagnostic> Items { get; } = [];
+
+        public int Count => Items.Count;
+
+        public bool LimitReached { get; private set; }
+
+        public void Add(THelpCompilerDiagnostic diagnostic)
+        {
+            if (LimitReached)
+            {
+                return;
+            }
+
+            if (Items.Count < _maximum)
+            {
+                Items.Add(diagnostic);
+                return;
+            }
+
+            // Erst der naechste Fehler beweist eine Kuerzung. Der letzte Platz
+            // beschreibt dann die Grenze, ohne die Liste ueber ihr Budget wachsen zu lassen.
+            // Only the next error proves truncation. The final slot then reports the
+            // limit without allowing the list to grow beyond its budget.
+            LimitReached = true;
+            Items[^1] = Diagnostic(
+                "THC009",
+                "Diagnosegrenze erreicht; weitere Fehler wurden nicht ausgewertet. / Diagnostic limit reached; additional errors were not evaluated.",
+                _sourceName,
+                diagnostic.Line,
+                diagnostic.Column);
+        }
     }
 
     private sealed class TopicBuilder

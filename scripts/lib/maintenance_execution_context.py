@@ -89,22 +89,47 @@ if (repo / ".git").is_symlink():
     raise SystemExit("Symlink Git directory rejected")
 
 def bounded_git(args):
+    # Geerbte Git-Konfiguration ist ausführbarer Zustand. Nur normale
+    # Prozessvariablen und die explizite Container-Vertrauensgrenze bleiben.
+    # Inherited Git configuration is executable state. Keep only ordinary
+    # process variables and the explicit container trust boundary.
+    environment = {key: value for key, value in os.environ.items() if not key.startswith("GIT_")}
+    environment.update({
+        "GIT_CONFIG_NOSYSTEM": "1",
+        "GIT_CONFIG_SYSTEM": "/dev/null",
+        "GIT_CONFIG_GLOBAL": "/dev/null",
+    })
+    inspection_base = ["git", "-c", "safe.directory=", "-c", "safe.directory=" + str(repo),
+                       "-C", str(repo)]
+    configured = subprocess.run(
+        [*inspection_base, "config", "--null", "--name-only", "--list"],
+        capture_output=True, text=True, env=environment,
+    )
+    if configured.returncode != 0:
+        raise SystemExit("Git configuration cannot be inspected")
+    command_config = re.compile(
+        r"(?:core\.(?:sshcommand|gitproxy|askpass|editor)|sequence\.editor|"
+        r"diff\.external|diff\..+\.(?:command|textconv)|filter\..+\.(?:clean|smudge|process)|"
+        r"merge\..+\.driver|credential(?:\..+)?\.helper|gpg\.(?:program|ssh\.program))",
+        re.IGNORECASE,
+    )
+    if any(command_config.fullmatch(key) for key in configured.stdout.split("\0") if key):
+        raise SystemExit("Executable Git configuration is not allowed in delegated repositories")
+    fsmonitor = subprocess.run(
+        [*inspection_base, "config", "--get", "core.fsmonitor"],
+        capture_output=True, text=True, env=environment,
+    )
+    if fsmonitor.returncode not in (0, 1):
+        raise SystemExit("Git fsmonitor configuration cannot be inspected")
+    if fsmonitor.returncode == 0 and fsmonitor.stdout.strip().casefold() not in ("true", "false"):
+        raise SystemExit("Executable Git configuration is not allowed in delegated repositories")
+
     # Lokale Hooks sind ausführbarer Verwaltungszustand und dürfen bei der
     # delegierten Wartung nicht die Schreibrechte des Containers erben.
     # Local hooks are executable administrative state and must not inherit the
     # delegated maintenance container's write authority.
     base = ["git", "-c", "safe.directory=", "-c", "safe.directory=" + str(repo),
             "-c", "core.hooksPath=/dev/null", "-C", str(repo)]
-    blocked = {
-        "GIT_DIR", "GIT_WORK_TREE", "GIT_COMMON_DIR", "GIT_INDEX_FILE",
-        "GIT_OBJECT_DIRECTORY", "GIT_ALTERNATE_OBJECT_DIRECTORIES", "GIT_NAMESPACE",
-        "GIT_CEILING_DIRECTORIES", "GIT_DISCOVERY_ACROSS_FILESYSTEM", "GIT_CONFIG_COUNT",
-    }
-    environment = {
-        key: value for key, value in os.environ.items()
-        if key not in blocked
-        and re.fullmatch(r"GIT_CONFIG_(?:KEY|VALUE)_\d+", key) is None
-    }
     configured = subprocess.run(
         [*base, "config", "--name-only", "--get-regexp", r"^hook\..*\.(command|event|enabled)$"],
         capture_output=True, text=True, env=environment,

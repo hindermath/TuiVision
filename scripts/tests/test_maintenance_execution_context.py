@@ -282,6 +282,73 @@ class ExecutionContextTests(unittest.TestCase):
             self.assertEqual(json.loads(result.stdout)["returncode"], 0, result.stdout)
             self.assertFalse(configured_marker.exists())
 
+    @unittest.skipIf(os.name == "nt", "Delegated Git runs in the Linux container")
+    def test_remote_program_rejects_repository_command_configuration(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory).resolve()
+            repo = root / "repo"
+            subprocess.run(["git", "init", "-q", str(repo)], check=True)
+            marker = root / "command-ran"
+            command = f"touch '{marker}'"
+            payload = {"root": str(root), "repository": str(repo), "action": "git",
+                       "arguments": ["status", "--porcelain=v1"]}
+
+            for key in ("core.fsmonitor", "diff.fixture.textconv", "filter.fixture.process", "merge.fixture.driver"):
+                with self.subTest(key=key):
+                    subprocess.run(["git", "-C", str(repo), "config", key, command], check=True)
+                    result = subprocess.run(
+                        [sys.executable, "-c", context.REMOTE_PROGRAM],
+                        input=json.dumps(payload), text=True, capture_output=True,
+                    )
+                    self.assertNotEqual(result.returncode, 0)
+                    self.assertIn("Executable Git configuration", result.stderr)
+                    self.assertFalse(marker.exists())
+                    subprocess.run(["git", "-C", str(repo), "config", "--unset-all", key], check=True)
+
+    @unittest.skipIf(os.name == "nt", "Delegated Git runs in the Linux container")
+    def test_remote_program_ignores_inherited_git_configuration(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory).resolve()
+            repo = root / "repo"
+            subprocess.run(["git", "init", "-q", str(repo)], check=True)
+            marker = root / "inherited-command-ran"
+            monitor = root / "monitor.sh"
+            monitor.write_text(f"#!/bin/sh\ntouch '{marker}'\n", encoding="utf-8")
+            monitor.chmod(0o755)
+            alternate = root / "alternate.gitconfig"
+            alternate.write_text(f"[core]\n\tfsmonitor = {monitor}\n", encoding="utf-8")
+            payload = {"root": str(root), "repository": str(repo), "action": "git",
+                       "arguments": ["status", "--porcelain=v1"]}
+
+            for variable in ("GIT_CONFIG", "GIT_CONFIG_GLOBAL", "GIT_CONFIG_SYSTEM"):
+                with self.subTest(variable=variable), patch.dict(os.environ, {variable: str(alternate)}):
+                    result = subprocess.run(
+                        [sys.executable, "-c", context.REMOTE_PROGRAM],
+                        input=json.dumps(payload), text=True, capture_output=True,
+                    )
+                    self.assertEqual(result.returncode, 0, result.stderr)
+                    self.assertEqual(json.loads(result.stdout)["returncode"], 0, result.stdout)
+                    self.assertFalse(marker.exists())
+
+    @unittest.skipIf(os.name == "nt", "Delegated Git runs in the Linux container")
+    def test_remote_program_accepts_boolean_fsmonitor_configuration(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory).resolve()
+            repo = root / "repo"
+            subprocess.run(["git", "init", "-q", str(repo)], check=True)
+            payload = {"root": str(root), "repository": str(repo), "action": "git",
+                       "arguments": ["status", "--porcelain=v1"]}
+
+            for value in ("false", "true"):
+                with self.subTest(value=value):
+                    subprocess.run(["git", "-C", str(repo), "config", "core.fsmonitor", value], check=True)
+                    result = subprocess.run(
+                        [sys.executable, "-c", context.REMOTE_PROGRAM],
+                        input=json.dumps(payload), text=True, capture_output=True,
+                    )
+                    self.assertEqual(result.returncode, 0, result.stderr)
+                    self.assertEqual(json.loads(result.stdout)["returncode"], 0, result.stdout)
+
     def test_delegated_network_fetch_never_opens_target_git_config_on_host(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

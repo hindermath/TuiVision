@@ -339,22 +339,11 @@ public sealed record TDialogDescriptionRecord : ITStreamSerializable
 
     private static int ReadStreamCount(ipstream stream, string name)
     {
-        int count = stream.ReadInt32();
-        if (count is < 0 or > MaxItems)
-        {
-            throw new InvalidDataException($"Invalid dialog {name} count '{count}'.");
-        }
-        return count;
+        return stream.ReadBoundedCount(MaxItems, $"Dialog {name}");
     }
 
     private static int ReadCount(TBinaryArchiveReader reader, string name)
     {
-        int count = reader.ReadInt32();
-        if (count < 0 || count > MaxItems)
-        {
-            throw new InvalidDataException($"Invalid {name} count '{count}'.");
-        }
-
-        return count;
+        return reader.ReadBoundedCount(MaxItems, $"Dialog {name}");
     }
 }
