@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "1.1",
+  "feature": "dependabot-20261109-pr-216",
+  "entries": [
+    {
+      "navigationImpact": "Existing maintenance and statistics entry points remain valid",
+      "canonicalSource": ".github/DEPENDENCY-MAINTENANCE.md",
+      "audiences": [
+        "Maintainers",
+        "AI agents"
+      ],
+      "risk": "Dependency compatibility requires technical checks; generated statistics are not product acceptance",
+      "homeSyncRequired": false,
+      "decision": "UpdateRequired",
+      "distributionClass": "sourceOnly",
+      "criticality": "Normal",
+      "readerPaths": [
+        ".github/DEPENDENCY-MAINTENANCE.md -> dependency PR -> technical checks"
+      ],
+      "languagePartners": [],
+      "platformAndExampleProof": "macOS Bash renderer preview/update/check; exact staged validation, secret scan and exact-head hosted platform checks",
+      "languageStrategy": "German first, equivalent English",
+      "reevaluationTrigger": "Changed dependency paths, manifest, runtime or update policy",
+      "owner": "Repository Maintainer",
+      "evidence": ".github/DEPENDENCY-MAINTENANCE.md",
+      "scope": "Dependency maintenance hindermath/TuiVision#216: Bump the nuget-minor-patch group with 1 update",
+      "documentClass": "ActiveSemantic",
+      "rationale": "DE: Aktualisierte Build-/Wartungsabhaengigkeit; vorhandene Bedienung und Produkt-APIs bleiben gueltig. EN: Updated build/maintenance dependency; existing user workflows and product APIs remain valid.",
+      "changeId": "CHG001",
+      "documents": [
+        ".github/DEPENDENCY-MAINTENANCE.md"
+      ]
+    },
+    {
+      "navigationImpact": "Existing maintenance and statistics entry points remain valid",
+      "canonicalSource": "docs/project-statistics.config.json",
+      "audiences": [
+        "Maintainers",
+        "AI agents"
+      ],
+      "risk": "Dependency compatibility requires technical checks; generated statistics are not product acceptance",
+      "homeSyncRequired": false,
+      "decision": "GeneratedUpdate",
+      "distributionClass": "sourceOnly",
+      "criticality": "Normal",
+      "readerPaths": [
+        ".github/DEPENDENCY-MAINTENANCE.md -> dependency PR -> technical checks"
+      ],
+      "languagePartners": [],
+      "platformAndExampleProof": "macOS Bash renderer preview/update/check; exact staged validation, secret scan and exact-head hosted platform checks",
+      "languageStrategy": "German first, equivalent English",
+      "reevaluationTrigger": "Changed dependency paths, manifest, runtime or update policy",
+      "owner": "Repository Maintainer",
+      "evidence": "docs/project-statistics.md",
+      "generatedSource": {
+        "renderer": "bash scripts/render-project-statistics.sh --repo .",
+        "path": "docs/project-statistics.config.json"
+      },
+      "scope": "Refresh committed Profile 2 evidence for Dependency maintenance hindermath/TuiVision#216: Bump the nuget-minor-patch group with 1 update",
+      "documentClass": "Generated",
+      "rationale": "DE: Nachweise aus dem aktuellen committen Quellstand neu erzeugen. EN: Regenerate evidence from the current committed source.",
+      "changeId": "CHG002",
+      "documents": [
+        "docs/project-statistics.md"
+      ]
+    },
+    {
+      "navigationImpact": "Existing maintenance and statistics entry points remain valid",
+      "canonicalSource": "docs/project-statistics/config.json",
+      "audiences": [
+        "Maintainers",
+        "AI agents"
+      ],
+      "risk": "Dependency compatibility requires technical checks; generated statistics are not product acceptance",
+      "homeSyncRequired": false,
+      "decision": "GeneratedUpdate",
+      "distributionClass": "sourceOnly",
+      "criticality": "Normal",
+      "readerPaths": [
+        ".github/DEPENDENCY-MAINTENANCE.md -> dependency PR -> technical checks"
+      ],
+      "languagePartners": [],
+      "platformAndExampleProof": "macOS Bash renderer preview/update/check; exact staged validation, secret scan and exact-head hosted platform checks",
+      "languageStrategy": "Bilingual report; language-neutral JSON snapshot",
+      "reevaluationTrigger": "Changed dependency paths, manifest, runtime or update policy",
+      "owner": "Repository Maintainer",
+      "evidence": "docs/project-statistics/report.md",
+      "generatedSource": {
+        "renderer": "pwsh -NoProfile -File .specify/presets/project-statistics-governance/scripts/project-statistics.ps1 -Action Update -Repo . -Config docs/project-statistics/config.json",
+        "path": "docs/project-statistics/config.json"
+      },
+      "scope": "Current statistics context for Dependency maintenance hindermath/TuiVision#216: Bump the nuget-minor-patch group with 1 update",
+      "documentClass": "Generated",
+      "rationale": "DE: Aktiven Messkontext aktuell und reproduzierbar halten; historische Receipts bleiben unveraendert. EN: Keep the active context current and reproducible; historical receipts are retained.",
+      "changeId": "CHG003",
+      "documents": [
+        "docs/project-statistics/report.md",
+        "docs/project-statistics/snapshot.json"
+      ]
+    }
+  ]
+}
