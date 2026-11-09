@@ -83,3 +83,18 @@ EN: Technical macOS checks use macos-15 because GitHub retired macos-14 on
 2 November 2026. Test coverage, permissions and SHA pins are retained.
 
 Quelle / Source: https://github.blog/changelog/2026-10-01-github-actions-macos-14-runner-image-retirement/
+
+## PR #216: technische Wartung / Technical maintenance
+
+DE: Die fuer diesen Abhaengigkeits-PR erforderlichen CI-/Test-Anpassungen
+erhalten Versionsbindung, Sicherheitspruefungen und Plattform-Gates. Die
+konkrete Reparatur und technische Evidence stehen im PR; keine Paketmigration
+aus einem anderen zurueckgestellten PR wird uebernommen. Owner: Repository-
+Maintainer. Source-only, kein Home-Sync. Bei Manifest-, Pin- oder Workflow-
+Aenderungen erneut pruefen.
+
+EN: CI/test repairs needed for this dependency PR retain version binding,
+security checks and platform gates. The PR records the specific repair and
+technical evidence; it does not adopt a migration from another deferred PR.
+Owner: repository maintainer. Source-only, no Home sync. Re-evaluate after
+manifest, pin or workflow changes.
