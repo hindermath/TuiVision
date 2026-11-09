@@ -12,7 +12,9 @@ class WorkflowSecurityBoundaryTests(unittest.TestCase):
     def test_docfx_is_restored_from_exact_local_tool_manifest(self) -> None:
         manifest = json.loads((REPOSITORY / ".config/dotnet-tools.json").read_text(encoding="utf-8"))
         docfx = manifest["tools"]["docfx"]
-        self.assertEqual("2.78.5", docfx["version"])
+        # DE: Freigegebener Manifest-Pin; Restore- und RollForward-Grenzen bleiben Pflicht.
+        # EN: Reviewed manifest pin; restore and rollForward boundaries remain mandatory.
+        self.assertEqual("2.81.0", docfx["version"])
         self.assertEqual(["docfx"], docfx["commands"])
         self.assertIs(False, docfx["rollForward"])
 
