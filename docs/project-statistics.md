@@ -1235,6 +1235,22 @@ the technical change; GeneratedUpdate for the existing statistics profiles.
 Existing references remain unchanged. Delivery volume is not a measurement
 of learning outcomes or AI time savings. Current head/platform checks are
 required before merge. Owner: repository maintainer; source-only, no Home sync.
+### 2026-11-09 - Dependabot PR #214 / Dependabot maintenance
+
+DE: Branch codex/dependabot-repair-20261109-tuivision--214; sichtbares Wartungsfenster 09.11.2026, keine
+Stoppuhrmessung. chore(deps): bump actions/setup-dotnet from 6.0.0 to 6.1.0 in the github-actions-minor-patch group. Dokumentationsentscheidung: NoUpdateRequired
+fuer die technische Aenderung; GeneratedUpdate fuer beide vorhandenen
+Statistikprofile. Bestehende Referenzwerte bleiben erhalten. Die beobachtete
+Liefermenge ist keine Messung von Lernleistung oder KI-Zeitersparnis.
+Aktuelle Head-/Plattform-Pruefungen sind vor dem Merge erforderlich.
+Owner: Repository-Maintainer; Source-only, kein Home-Sync.
+
+EN: Branch codex/dependabot-repair-20261109-tuivision--214; observable maintenance window 9 November 2026,
+not stopwatch time. chore(deps): bump actions/setup-dotnet from 6.0.0 to 6.1.0 in the github-actions-minor-patch group. Documentation impact: NoUpdateRequired for
+the technical change; GeneratedUpdate for the existing statistics profiles.
+Existing references remain unchanged. Delivery volume is not a measurement
+of learning outcomes or AI time savings. Current head/platform checks are
+required before merge. Owner: repository maintainer; source-only, no Home sync.
 ## Gesamtstatistik / Overall Statistics
 
 <!-- project-statistics-v2:begin -->
