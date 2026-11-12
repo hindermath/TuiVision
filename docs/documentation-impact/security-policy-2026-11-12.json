@@ -8,7 +8,9 @@
       "decision": "UpdateRequired",
       "rationale": "Owner-approved German-first and equivalent-English reporting policy; existing response targets retained.",
       "documents": [
-        "SECURITY.md"
+        "SECURITY.md",
+        "docs/security/secure-development/2026-09-12-rl-se-checklist-self-review-v044/rl-se-self-review.json",
+        "docs/security/secure-development/2026-09-12-rl-se-checklist-self-review-v044/security-policy-delta-2026-11-12.md"
       ],
       "owner": "Thorsten Hindermann",
       "audiences": [
