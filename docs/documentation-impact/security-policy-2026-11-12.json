@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "1.1",
+  "feature": "security-policy-2026-11-12",
+  "entries": [
+    {
+      "changeId": "CHG001",
+      "scope": "Confidential vulnerability reporting and project-specific security policy for TuiVision",
+      "decision": "UpdateRequired",
+      "rationale": "Owner-approved German-first and equivalent-English reporting policy; existing response targets retained.",
+      "documents": [
+        "SECURITY.md"
+      ],
+      "owner": "Thorsten Hindermann",
+      "audiences": [
+        "Vulnerability reporters",
+        "Repository users",
+        "Maintainers"
+      ],
+      "readerPaths": [
+        "GitHub Security -> Security policy -> private advisory -> coordinated disclosure"
+      ],
+      "canonicalSource": "SECURITY.md",
+      "navigationImpact": "GitHub discovers this policy; reporting links target this repository.",
+      "documentClass": "ActiveSemantic",
+      "languageStrategy": "Complete German first, equivalent English second; CEFR B2 and applicable WCAG 2.2 AA criteria.",
+      "languagePartners": [],
+      "platformAndExampleProof": "Bash and PowerShell documentation validation; exact reporting paragraphs, repository URLs, UTF-8, languages and headings. GitHub rendering checked at delivery; no new VoiceOver, NVDA or Braille acceptance claimed.",
+      "distributionClass": "sourceOnly",
+      "homeSyncRequired": false,
+      "evidence": "docs/documentation-impact/security-policy-2026-11-12.json",
+      "risk": "Reporting policy is no security certificate or new SLA. CodeQL configuration is separate and changes no AI Scan settings.",
+      "criticality": "Security",
+      "reevaluationTrigger": "Reporting route, project boundaries, supported branch, response process or GitHub rendering changes."
+    }
+  ]
+}
