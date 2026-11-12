@@ -4554,8 +4554,8 @@
     {
       "evidenceId": "EVD-016",
       "relativePath": "SECURITY.md",
-      "sha256": "351fc1345c7f1b096e48a3f8ceeb515927d61f62757fa3a257fb9aa187ad260e",
-      "observedAtUtc": "2026-08-30T10:00:00Z",
+      "sha256": "ab31abc25cf28cfaa7df21b2449f7cfbd060ec832be5be77afbb83098681e841",
+      "observedAtUtc": "2026-11-12T21:42:49Z",
       "evidenceType": "Audit",
       "directness": "Supporting",
       "freshness": "Current",
@@ -4572,7 +4572,7 @@
         "CL-06-10",
         "CL-06-11"
       ],
-      "result": "Deutsch: Current repository evidence was observed at SECURITY.md. English: Current repository evidence was observed at SECURITY.md.",
+      "result": "DE: Genehmigte Meldepolitik und bestehende Reaktionsgrenzen erhalten; Delta security-policy-delta-2026-11-12.md. Keine neue Kontrollfreigabe. EN: Approved reporting policy and existing response boundaries retained; see security-policy-delta-2026-11-12.md. No new control approval.",
       "proofBoundary": "Deutsch: The file supports only the named bounded claims and does not grant formal compliance approval. English: The file supports only the named bounded claims and does not grant formal compliance approval.",
       "reevaluationTrigger": "Deutsch: The file hash, product scope, policy, platform, or provider boundary changes. English: The file hash, product scope, policy, platform, or provider boundary changes."
     },
