@@ -121,6 +121,18 @@ locks. TuiVision's new historical input copies use shorter relative paths for
 Windows; their bytes and hashes remain unchanged. Existing technical checks
 remain mandatory.
 
+## Gesperrte Testabhaengigkeiten / Locked test dependencies
+
+DE: Der TuiVision-Maintenance-Test hatte im Projekt 4.3.3 fuer MSTest Adapter
+und Framework, waehrend das gelieferte Lockfile 4.5.2 bindet. Die beiden
+Projektverweise sind an das vorhandene Lockfile angeglichen. Der gesperrte
+Restore auf Linux, macOS und Windows bleibt die verbindliche CI-Pruefung.
+
+EN: The TuiVision maintenance test project referenced MSTest Adapter and
+Framework 4.3.3 while the delivered lockfile binds 4.5.2. Both project
+references now match the existing lockfile. Locked restore on Linux, macOS
+and Windows remains the required CI check.
+
 ## npm-Agent-Proben / npm agent probes
 
 DE: Die beiden kanonischen Wartungsskripte pruefen npm-Agent-Befehle und Argumente jetzt vor jeder Ausfuehrung gegen den Codevertrag. Eine abgelehnte Probe startet keine Installation. Die allgemeine Prozesshilfe bleibt fuer andere vorgesehene Pruefungen erhalten.

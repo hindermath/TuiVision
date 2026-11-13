@@ -1308,6 +1308,14 @@ EN: Distributed maintenance scripts bound npm agent probes before execution. Tin
 
 Documentation Impact: UpdateRequired; [Nachweis / evidence](maintenance/shared-security-rollout-2026-11-13.md).
 
+### 2026-11-13 — Nativer CI-Vertrag / Native CI contract
+
+DE: MSTest-Projektverweise wurden an das vorhandene Lockfile 4.5.2 angeglichen; gesperrter Restore bleibt Pflicht. Kein neuer Spec-Kit-Lauf.
+
+EN: MSTest project references now match the existing 4.5.2 lockfile; locked restore remains required. No new Spec Kit run.
+
+Documentation Impact: UpdateRequired; [Nachweis / evidence](maintenance/shared-security-rollout-2026-11-13.md).
+
 ## Gesamtstatistik / Overall Statistics
 
 <!-- project-statistics-v2:begin -->
