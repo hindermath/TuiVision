@@ -1027,7 +1027,13 @@ def _stage_b_environment_hash(
 ) -> str:
     for relative in (".specify/memory/constitution.md", "constitution.md"):
         candidate = repository / relative
-        if candidate.is_file() and not candidate.is_symlink():
+        # Stable worktrees can still contain hostile parent-directory links.
+        # Keep leaf-link rejection before resolving, then bind every read to
+        # the physical repository root; legitimate contained aliases stay valid.
+        if candidate.is_symlink():
+            continue
+        candidate = resolve_ci_contained_path(repository, pathlib.PurePosixPath(relative))
+        if candidate.is_file():
             return canonical_json_hash({
                 "repositoryId": repository_id,
                 "contextPath": relative,
@@ -1038,8 +1044,14 @@ def _stage_b_environment_hash(
         # constitution. Bind both exact package surfaces so that this narrow
         # equivalent-context fallback cannot weaken other repository profiles.
         context_paths = ("preset.yml", "README.md")
-        candidates = [repository / relative for relative in context_paths]
-        if all(candidate.is_file() and not candidate.is_symlink() for candidate in candidates):
+        lexical_candidates = [repository / relative for relative in context_paths]
+        candidates = [
+            resolve_ci_contained_path(repository, pathlib.PurePosixPath(relative))
+            for relative in context_paths
+        ]
+        if all(candidate.is_file() for candidate in candidates) and not any(
+            candidate.is_symlink() for candidate in lexical_candidates
+        ):
             return canonical_json_hash({
                 "repositoryId": repository_id,
                 "contextType": "PublicPresetEquivalent",
@@ -1060,7 +1072,7 @@ def _stage_b_local_repository_root(
     if manifest_target is None:
         return repository_root
     fleet_root = pathlib.Path(os.environ.get("HB_STAGE_B_FLEET_ROOT", str(pathlib.Path.home())))
-    return (fleet_root / validate_relative_path(manifest_target["path"])).resolve()
+    return resolve_ci_contained_path(fleet_root, validate_relative_path(manifest_target["path"]))
 
 
 def _stage_b_validate_local_repository(

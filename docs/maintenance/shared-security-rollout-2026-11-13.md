@@ -29,3 +29,9 @@ DE: Der Worktree bleibt waehrend der Pruefung unveraendert; Inhalte bleiben nich
 EN: The worktree stays unchanged during checks; its contents remain untrusted. Existing CLI resolver/registrar APIs restore the three existing Claude wrappers from the complete stack; the OpenCode namespace and model settings remain. CodeQL success is no finding-free claim and does not cover Bash, PowerShell or Assembly. No practical screen-reader/Braille acceptance or blanket WCAG conformance is claimed.
 
 Documentation Impact: UpdateRequired. Owner: Thorsten Hindermann. Audience: maintainers and security reviewers. Reader path: this record -> source and installed locks -> source PRs and native/CodeQL evidence. Canonical sources: published preset repositories and Level-0 managed-file manifest. Document class: active semantic/security evidence; German first, equivalent English; CEFR B2 and applicable WCAG 2.2 AA. Distribution: this repository only; no local Home sync. Re-evaluate after archive, version, permission or generated-surface drift.
+
+### Integrationsnachweis / Integration evidence
+
+Die aktuelle Paketpruefung verwendet einen neuen Installationsnachweis fuer den veroeffentlichten Stand; der alte v0.1.0-Nachweis bleibt unveraendert. Verteilte Wartungstests werden an ihre vorhandenen kanonischen Quellen angeglichen. Die Vorschau prueft Schreibfreiheit; der getrennte Schreibtest verwirft weiterhin Pfad-Ausbrueche.
+
+The current package proof uses a successor installation receipt for the published version; the historical v0.1.0 receipt is unchanged. Distributed maintenance tests follow their existing canonical sources. Preview checks that no writes occur; the separate writing test still rejects path escapes.
