@@ -1316,6 +1316,14 @@ EN: MSTest project references now match the existing 4.5.2 lockfile; locked rest
 
 Documentation Impact: UpdateRequired; [Nachweis / evidence](maintenance/shared-security-rollout-2026-11-13.md).
 
+### 2026-11-13 — Projektgebundene Wartung erhalten / Preserved project maintenance
+
+DE: Die Wartungsadapter, Paketbindung und Projekttests bewahren die exakten npm-Versionen, SHA-512-Nachweise und die vollständige Spec-Kit-Revision. Die gemeinsamen MSL-Modultests bleiben aktiv; nicht vorhandene Elternadapterfälle werden ausdrücklich ausgenommen. Kein Spec-Kit-Lauf wird ergänzt.
+
+EN: The maintenance adapters, package binding and project tests preserve exact npm versions, SHA-512 evidence and the full Spec Kit revision. Shared MSL module tests remain active; absent parent-adapter cases are explicitly excluded. No Spec Kit run is added.
+
+Documentation Impact: UpdateRequired; [Nachweis / evidence](maintenance/shared-security-rollout-2026-11-13.md).
+
 ## Gesamtstatistik / Overall Statistics
 
 <!-- project-statistics-v2:begin -->

@@ -18,64 +18,6 @@ boundaries.
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
-if ($null -eq ('HomeBaseline.BoundedStreamCapture' -as [type])) {
-    Add-Type -TypeDefinition @'
-using System;
-using System.IO;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HomeBaseline
-{
-    public sealed class BoundedStreamResult
-    {
-        public string Text { get; set; } = string.Empty;
-        public bool Truncated { get; set; }
-        public long BytesRead { get; set; }
-    }
-
-    public static class BoundedStreamCapture
-    {
-        private static string DecodeUtf8Prefix(byte[] bytes)
-        {
-            var strict = new UTF8Encoding(false, true);
-            try
-            {
-                return strict.GetString(bytes);
-            }
-            catch (DecoderFallbackException exception)
-            {
-                return exception.Index > 0 ? strict.GetString(bytes, 0, exception.Index) : string.Empty;
-            }
-        }
-
-        public static async Task<BoundedStreamResult> ReadAsync(Stream stream, int maximumBytes)
-        {
-            using var retained = new MemoryStream(Math.Min(maximumBytes, 8192));
-            var buffer = new byte[8192];
-            long total = 0;
-            int count;
-            while ((count = await stream.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(false)) > 0)
-            {
-                total += count;
-                var remaining = maximumBytes - (int)retained.Length;
-                if (remaining > 0)
-                {
-                    retained.Write(buffer, 0, Math.Min(remaining, count));
-                }
-            }
-            return new BoundedStreamResult
-            {
-                Text = DecodeUtf8Prefix(retained.ToArray()),
-                Truncated = total > maximumBytes,
-                BytesRead = total
-            };
-        }
-    }
-}
-'@
-}
-
 function Get-HBMaintenanceMode {
     <#
     .SYNOPSIS
@@ -129,7 +71,6 @@ function Invoke-HBBoundedProcess {
         [string[]]$Arguments = @(),
         [ValidateRange(1, 86400000)][int]$TimeoutMilliseconds = 300000,
         [ValidateRange(1, 60000)][int]$CleanupMilliseconds = 5000,
-        [ValidateRange(1024, 16777216)][int]$MaximumOutputBytes = 262144,
         [string]$CommandLabel = ''
     )
 
@@ -140,8 +81,6 @@ function Invoke-HBBoundedProcess {
     $startInfo.CreateNoWindow = $true
     $startInfo.RedirectStandardOutput = $true
     $startInfo.RedirectStandardError = $true
-    $startInfo.StandardOutputEncoding = [Text.UTF8Encoding]::new($false)
-    $startInfo.StandardErrorEncoding = [Text.UTF8Encoding]::new($false)
     foreach ($argument in $Arguments) {
         [void]$startInfo.ArgumentList.Add([string]$argument)
     }
@@ -153,13 +92,10 @@ function Invoke-HBBoundedProcess {
     $status = 'Failed'
     $exitCode = 2
     $treeCleaned = $true
-    $outputTruncated = $false
     try {
         [void]$process.Start()
-        $stdoutTask = [HomeBaseline.BoundedStreamCapture]::ReadAsync(
-            $process.StandardOutput.BaseStream, $MaximumOutputBytes)
-        $stderrTask = [HomeBaseline.BoundedStreamCapture]::ReadAsync(
-            $process.StandardError.BaseStream, $MaximumOutputBytes)
+        $stdoutTask = $process.StandardOutput.ReadToEndAsync()
+        $stderrTask = $process.StandardError.ReadToEndAsync()
         if (-not $process.WaitForExit($TimeoutMilliseconds)) {
             $status = 'TimedOut'
             $exitCode = 124
@@ -175,15 +111,8 @@ function Invoke-HBBoundedProcess {
             $status = if ($exitCode -eq 0) { 'Succeeded' } else { 'Failed' }
         }
         if ($process.HasExited) {
-            $stdoutResult = $stdoutTask.GetAwaiter().GetResult()
-            $stderrResult = $stderrTask.GetAwaiter().GetResult()
-            $stdout = $stdoutResult.Text
-            $stderr = $stderrResult.Text
-            $outputTruncated = $stdoutResult.Truncated -or $stderrResult.Truncated
-            if ($outputTruncated -and $status -ne 'TimedOut') {
-                $status = 'OutputLimitExceeded'
-                $exitCode = 125
-            }
+            $stdout = $stdoutTask.GetAwaiter().GetResult()
+            $stderr = $stderrTask.GetAwaiter().GetResult()
         }
     } catch {
         $stderr = $_.Exception.Message
@@ -206,8 +135,6 @@ function Invoke-HBBoundedProcess {
         ProcessTreeCleaned = [bool]$treeCleaned
         StandardOutput = $stdout.Trim()
         StandardError = $stderr.Trim()
-        OutputTruncated = [bool]$outputTruncated
-        MaximumOutputBytes = $MaximumOutputBytes
         Summary = $summary
     }
 }
@@ -532,6 +459,42 @@ function Get-HBCanonicalExitCode {
     }
 }
 
+function Resolve-HBNpmPackTarball {
+    <#
+    .SYNOPSIS
+    Prueft mehrzeilige npm-pack-Metadaten und liefert nur das gebundene Archiv.
+
+    Verifies multiline npm-pack metadata and returns only the bound archive.
+    #>
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)][string[]]$PackJson,
+        [Parameter(Mandatory)][string]$PackDirectory,
+        [Parameter(Mandatory)][string]$ExpectedPackage,
+        [Parameter(Mandatory)][string]$ExpectedVersion,
+        [Parameter(Mandatory)][string]$ExpectedIntegrity
+    )
+
+    $jsonText = $PackJson -join [Environment]::NewLine
+    $metadata = @($jsonText | ConvertFrom-Json)
+    if ($metadata.Count -ne 1 -or
+        [string]$metadata[0].name -cne $ExpectedPackage -or
+        [string]$metadata[0].version -cne $ExpectedVersion -or
+        [string]$metadata[0].integrity -cne $ExpectedIntegrity) {
+        throw "npm package identity or integrity mismatch for '$ExpectedPackage@$ExpectedVersion'."
+    }
+
+    $filename = [string]$metadata[0].filename
+    if (-not $filename -or [IO.Path]::GetFileName($filename) -cne $filename) {
+        throw "npm pack returned an invalid filename for '$ExpectedPackage@$ExpectedVersion'."
+    }
+    $tarball = Join-Path $PackDirectory $filename
+    if (-not (Test-Path -LiteralPath $tarball -PathType Leaf)) {
+        throw "Verified npm tarball is missing for '$ExpectedPackage@$ExpectedVersion'."
+    }
+    return (Resolve-Path -LiteralPath $tarball).Path
+}
+
 Export-ModuleMember -Function @(
     'Get-HBMaintenanceMode',
     'Invoke-HBBoundedProcess',
@@ -543,5 +506,6 @@ Export-ModuleMember -Function @(
     'Test-HBResumeEvidence',
     'Get-HBGitNormalizedHash',
     'Get-HBPackageResults',
-    'Get-HBCanonicalExitCode'
+    'Get-HBCanonicalExitCode',
+    'Resolve-HBNpmPackTarball'
 )

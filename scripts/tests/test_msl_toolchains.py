@@ -14,6 +14,7 @@ MODULE = ROOT / "scripts/lib/msl-toolchains.psm1"
 CLI = ROOT / "scripts/config/required-cli-tools-registry.json"
 BREW = ROOT / "scripts/config/brew-apps-registry.json"
 PWSH = shutil.which("pwsh")
+MSL_ONLY_SUPPORTED = "--msl-only" in (ROOT / "scripts/maintain-agentic-brew-apps.sh").read_text(encoding="utf-8")
 
 
 def run_ps(source: str, payload: object | None = None) -> dict:
@@ -295,6 +296,7 @@ $answer | ConvertTo-Json -Depth 3
 """)
         self.assertEqual(data["versions"], ["", "1.99.1", ""])
 
+    @unittest.skipUnless(MSL_ONLY_SUPPORTED, "TuiVision does not use the Level-0 MSL-only parent adapter")
     def test_parent_rejects_incomplete_or_false_green_msl_evidence(self):
         fixture = self.engine_fixture()
         fixture["platform"] = "Darwin"
@@ -376,6 +378,7 @@ $answer | ConvertTo-Json
                         self.assertEqual(result.stdout.split(os.pathsep)[0], managed)
                         self.assertEqual(result.stdout.split(os.pathsep).count(managed), 1)
 
+    @unittest.skipUnless(MSL_ONLY_SUPPORTED, "TuiVision does not use the Level-0 MSL-only Bash adapter")
     @unittest.skipIf(os.name == "nt", "Native Windows uses the PowerShell entrypoint")
     def test_msl_only_bash_delegates_before_unrelated_maintenance(self):
         with tempfile.TemporaryDirectory() as temporary:
@@ -392,6 +395,7 @@ $answer | ConvertTo-Json
             self.assertNotIn("npm", result.stdout)
             self.assertNotIn("vscode", result.stdout)
 
+    @unittest.skipUnless(MSL_ONLY_SUPPORTED, "TuiVision does not use the Level-0 MSL-only Bash adapter")
     @unittest.skipIf(os.name == "nt", "Native Windows already runs PowerShell")
     def test_missing_shared_engine_cannot_return_success(self):
         with tempfile.TemporaryDirectory() as temporary:

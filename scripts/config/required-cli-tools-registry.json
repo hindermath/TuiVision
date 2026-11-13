@@ -221,8 +221,10 @@
       "command": "specify",
       "args": ["--version"],
       "install": {
-        "manager": "uv",
-        "arguments": ["tool", "install", "specify-cli", "--from", "git+https://github.com/github/spec-kit.git@464d57fe30c72e9a88d279cc49834539ec989c03"]
+        "manager": "uv-git",
+        "package": "specify-cli",
+        "repository": "https://github.com/github/spec-kit.git",
+        "revision": "464d57fe30c72e9a88d279cc49834539ec989c03"
       },
       "purpose": "GitHub Spec Kit CLI for specification-driven development"
     },

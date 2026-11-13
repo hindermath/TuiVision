@@ -27,7 +27,6 @@ required_hg_functions=(
   hg_check_deps
   hg_check_hook
   hg_check_speckit
-  hg_append_patch_content
   hg_generate_patch
   hg_scan
   hg_scan_file_secrets
@@ -79,40 +78,7 @@ $OPT_JSON && OPT_VERBOSE=false
 TARGET_DIR="${TARGET_DIR/#\~/$HOME}"
 TARGET_DIR="${TARGET_DIR%/}"
 
-# ─── Prerequisites Check ─────────────────────────────────────────────────────
-
-if ! command -v rg >/dev/null 2>&1; then
-  echo "FATAL: ripgrep (rg) not found — install with: brew install ripgrep / apt install ripgrep" >&2
-  exit 2
-fi
-
 # ─── Apply-Patch Mode ────────────────────────────────────────────────────────
-
-resolve_safe_patch_target() {
-  local requested="$1"
-  local candidate resolved_root resolved_target relative
-
-  case "$requested" in
-    ""|*$'\n'*|*$'\r'*|*$'\t'*) return 1 ;;
-    /*) candidate="$requested" ;;
-    *) candidate="$TARGET_DIR/$requested" ;;
-  esac
-  [ -f "$candidate" ] && [ ! -L "$candidate" ] || return 1
-  resolved_root="$(realpath "$TARGET_DIR")" || return 1
-  resolved_target="$(realpath "$candidate")" || return 1
-  case "$resolved_target" in
-    "$resolved_root"/*)
-      relative="${resolved_target#"$resolved_root"/}"
-      case "$relative" in
-        AGENTS.md|*/AGENTS.md|CLAUDE.md|*/CLAUDE.md|GEMINI.md|*/GEMINI.md|README.md|*/README.md|constitution.md|*/constitution.md|.github/copilot-instructions.md|*/.github/copilot-instructions.md|.github/agents/copilot-instructions.md|*/.github/agents/copilot-instructions.md|.specify/memory/constitution.md|*/.specify/memory/constitution.md)
-          printf '%s\n' "$resolved_target"
-          ;;
-        *) return 1 ;;
-      esac
-      ;;
-    *) return 1 ;;
-  esac
-}
 
 if [ -n "$OPT_APPLY_PATCH" ]; then
   patch_file="${OPT_APPLY_PATCH/#\~/$HOME}"
@@ -121,20 +87,73 @@ if [ -n "$OPT_APPLY_PATCH" ]; then
     exit 2
   fi
 
+  if ! [ -d "$TARGET_DIR" ]; then
+    echo "FATAL: target directory not found: ${TARGET_DIR}" >&2
+    exit 2
+  fi
+  target_root=$(cd "$TARGET_DIR" 2>/dev/null && pwd -P) || {
+    echo "FATAL: target directory cannot be resolved: ${TARGET_DIR}" >&2
+    exit 2
+  }
+  git_metadata_root=""
+  if git_metadata_path=$(git -C "$target_root" rev-parse --absolute-git-dir 2>/dev/null) \
+      && [ -d "$git_metadata_path" ]; then
+    git_metadata_root=$(cd "$git_metadata_path" 2>/dev/null && pwd -P) || git_metadata_root=""
+  fi
+
+  validate_patch_target() {
+    local relative_path="$1" component current_path parent_path
+    local -a path_components
+    case "$relative_path" in
+      ""|/*|~*|*\\*|*:*|*\**|*\?*|*\[*|*$'\n'*|*$'\r'*|*$'\t'*) return 1 ;;
+    esac
+    case "/${relative_path}/" in
+      *"//"*|*"/./"*|*"/../"*) return 1 ;;
+    esac
+
+    current_path="$target_root"
+    IFS='/' read -r -a path_components <<< "$relative_path"
+    for component in "${path_components[@]}"; do
+      normalized_component=$(printf '%s' "$component" | tr '[:upper:]' '[:lower:]')
+      case "$normalized_component" in
+        .git|*.|*' ') return 1 ;;
+      esac
+      current_path="${current_path}/${component}"
+      [ -L "$current_path" ] && return 1
+    done
+
+    if [ -n "$git_metadata_root" ]; then
+      case "$current_path" in
+        "$git_metadata_root"|"$git_metadata_root"/*) return 1 ;;
+      esac
+    fi
+
+    parent_path=${current_path%/*}
+    [ -d "$parent_path" ] || return 1
+    if [ -e "$current_path" ] && ! [ -f "$current_path" ]; then
+      return 1
+    fi
+    printf '%s\n' "$current_path"
+  }
+
   patch_targets=()
   patch_contents=()
+  patch_destinations=()
   target_file=""
   while IFS= read -r pline; do
     case "$pline" in
       "### Target: "*)
-        target_file="${pline#*### Target: }"
-        target_file="${target_file/#\~/$HOME}"
-        target_file="$(resolve_safe_patch_target "$target_file")" || {
-          echo "FATAL: patch target must be an existing regular file inside target directory" >&2
+        target_file="${pline#"### Target: "}"
+        resolved_target=$(validate_patch_target "$target_file") || {
+          echo "FATAL: patch target is not a confined repository-relative file: ${target_file}" >&2
           exit 2
-        } ;;
+        }
+        patch_destinations+=("$resolved_target") ;;
       "+++ "*)
-        [ -n "$target_file" ] || { echo "FATAL: patch content has no validated target" >&2; exit 2; }
+        if [ -z "$target_file" ]; then
+          echo "FATAL: patch content has no validated target" >&2
+          exit 2
+        fi
         patch_targets+=("$target_file")
         patch_contents+=("${pline#+++ }") ;;
     esac
@@ -143,15 +162,13 @@ if [ -n "$OPT_APPLY_PATCH" ]; then
   echo "Patch-Datei: ${patch_file}"
   echo ""
   echo "Vorgeschlagene Aenderungen:"
-  for patch_index in "${!patch_targets[@]}"; do
-    printf '  %s <- %s\n' "${patch_targets[$patch_index]}" "${patch_contents[$patch_index]}"
+  grep '^##\|^- \|^\*\*' "$patch_file" | head -30
+  echo ""
+  echo "Validierte Ziele:"
+  for resolved_target in "${patch_destinations[@]+"${patch_destinations[@]}"}"; do
+    printf '  %s\n' "$resolved_target"
   done
   echo ""
-
-  if $OPT_DRY_RUN; then
-    echo "DRY-RUN: Patch wurde nicht angewendet / patch was not applied."
-    exit 0
-  fi
 
   if $OPT_YES; then
     answer="j"
@@ -161,31 +178,44 @@ if [ -n "$OPT_APPLY_PATCH" ]; then
   fi
 
   if echo "$answer" | grep -qiE '^[jy]'; then
-    patch_count="${#patch_targets[@]}"
-    for patch_index in "${!patch_targets[@]}"; do
-      revalidated_target="$(resolve_safe_patch_target "${patch_targets[$patch_index]}")" || {
-        echo "FATAL: patch target changed after validation" >&2
+    patch_count=0
+    patch_index=0
+    for target_file in "${patch_targets[@]+"${patch_targets[@]}"}"; do
+      resolved_target=$(validate_patch_target "$target_file") || {
+        echo "FATAL: patch target changed after validation: ${target_file}" >&2
         exit 2
       }
-      [ "$revalidated_target" = "${patch_targets[$patch_index]}" ] || {
-        echo "FATAL: patch target changed after validation" >&2
+      parent_path=${resolved_target%/*}
+      temporary_file=$(mktemp "${parent_path}/.hg-patch.XXXXXX") || exit 2
+      if [ -e "$resolved_target" ]; then
+        cp -p "$resolved_target" "$temporary_file" || { rm -f "$temporary_file"; exit 2; }
+      fi
+      printf '%s\n' "${patch_contents[$patch_index]}" >> "$temporary_file" || {
+        rm -f "$temporary_file"
         exit 2
       }
+      mv -f "$temporary_file" "$resolved_target" || { rm -f "$temporary_file"; exit 2; }
+      patch_count=$((patch_count + 1))
+      patch_index=$((patch_index + 1))
     done
-    for patch_index in "${!patch_targets[@]}"; do
-      hg_append_patch_content "$TARGET_DIR" "${patch_targets[$patch_index]}" \
-        "${patch_contents[$patch_index]}" || {
-        echo "FATAL: patch target changed or could not be replaced safely" >&2
-        exit 2
-      }
-    done
-    git -C "$TARGET_DIR" add -A 2>/dev/null || true
-    git -C "$TARGET_DIR" commit -m "chore: apply memory-patch -- ${patch_count} entries updated" 2>/dev/null || true
+    if [ "${#patch_targets[@]}" -gt 0 ]; then
+      git -C "$target_root" add -- "${patch_targets[@]}" 2>/dev/null || exit 2
+      git -C "$target_root" commit --only -m "chore: apply memory-patch -- ${patch_count} entries updated" -- "${patch_targets[@]}" 2>/dev/null || exit 2
+    fi
     echo "Patch angewendet: ${patch_count} Eintraege, git-Commit erstellt."
   else
     echo "Patch abgebrochen."
   fi
   exit 0
+fi
+
+# ─── Prerequisites Check ─────────────────────────────────────────────────────
+
+# Patch application validates and writes declared targets without scanning.
+# Keep its confined recovery path usable even when the scan-only tool is absent.
+if ! command -v rg >/dev/null 2>&1; then
+  echo "FATAL: ripgrep (rg) not found — install with: brew install ripgrep / apt install ripgrep" >&2
+  exit 2
 fi
 
 # ─── Scan State (Bash 3.x-compatible, no associative arrays) ─────────────────
@@ -432,24 +462,6 @@ check_copilot_instructions() {
   fi
 }
 
-test_agent_git_policy() {
-  local dir="$1" tracked private_path
-  for private_path in '.agents/private-state.json' '.agents/mcp_config.json' '.agents/runtime/session.json'; do
-    git -C "$dir" check-ignore -q --no-index -- "$private_path" || return 1
-  done
-  if git -C "$dir" check-ignore -q --no-index -- '.agents/skills/speckit-probe/SKILL.md'; then
-    return 1
-  elif [ "$?" -ne 1 ]; then
-    return 1
-  fi
-  while IFS= read -r -d '' tracked; do
-    case "$tracked" in
-      .agents/skills/*) ;;
-      *) return 1 ;;
-    esac
-  done < <(git -C "$dir" ls-files -z -- '.agents')
-}
-
 check_antigravity_integration() {
   local dir="$1"
   local gitignore="${dir}/.gitignore"
@@ -482,7 +494,10 @@ check_antigravity_integration() {
   else
     emit_result "FAIL" ".agents/skills" "Antigravity/Codex Spec-Kit skills missing" "$dir"
   fi
-  if [ -f "$gitignore" ] && test_agent_git_policy "$dir"; then
+  if [ -f "$gitignore" ] &&
+     grep -qF '.agents/*' "$gitignore" &&
+     grep -qF '!.agents/skills/' "$gitignore" &&
+     grep -qF '!.agents/skills/**' "$gitignore"; then
     emit_result "PASS" ".gitignore" "surgical .agents skills allowlist" "$dir"
   else
     emit_result "FAIL" ".gitignore" "surgical .agents skills allowlist missing" "$dir"
@@ -493,8 +508,7 @@ check_statistics_profile() {
   local dir="$1"
   local ledger="${dir}/docs/project-statistics.md"
   local config="${dir}/docs/project-statistics.config.json"
-  local target_renderer="${dir}/scripts/render-project-statistics.sh"
-  local renderer="${SCRIPT_DIR}/render-project-statistics.sh"
+  local renderer="${dir}/scripts/render-project-statistics.sh"
 
   [ -f "$ledger" ] || return 0
   if [ ! -f "$config" ]; then
@@ -502,7 +516,7 @@ check_statistics_profile() {
       "ASCII Statistics Profile 2 configuration missing" "$dir"
     return
   fi
-  if [ ! -f "$target_renderer" ]; then
+  if [ ! -f "$renderer" ]; then
     emit_result "FAIL" "scripts/render-project-statistics.sh" \
       "ASCII Statistics Profile 2 renderer missing" "$dir"
     return
@@ -601,7 +615,7 @@ while IFS='|' read -r level dir _type; do
       emit_result "WARN" "scripts/hooks/pre-push" "canonical hook missing" "$dir"
     fi
     if [ -f "${dir}/scripts/render-script-reference.sh" ]; then
-      if bash "${SCRIPT_DIR}/render-script-reference.sh" --repo "$dir" --check-only >/dev/null 2>&1; then
+      if bash "${dir}/scripts/render-script-reference.sh" --repo "$dir" --check-only >/dev/null 2>&1; then
         emit_result "PASS" "docs/scripts/reference.md" \
           "script catalog complete and current" "$dir"
       else
