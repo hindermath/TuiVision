@@ -68,3 +68,27 @@ boundary. The other 13 versions and all priorities remain. Current Level-0 bindi
 Manual false-positive closure applies only to explicitly approved IDs or three
 byte-bound signatures with a renewed dataflow review; deviations remain open.
 No general risk acceptance is inferred.
+
+## Paketgrenzen und bestehende Projektanpassungen / Package boundaries
+
+DE: Verbraucher behalten ihre Paketklasse. Ein in diesem Rollout zusätzlich
+kopierter Level-0-Orchestrierungsmarker wird aus den sieben bisherigen
+Verbraucherpaketen entfernt. Damit bleiben deren vorhandene zentrale
+Integrationstests korrekt der Level-0-Quelle zugeordnet; portable Unit- und
+Projektprüfungen bleiben aktiv. Die zwei bereits vollständigen Quellkopien
+behalten ihre projektspezifische Fleet-Inventur und deren ursprüngliche exakte
+Kardinalitätsprüfung. Neu versehentlich mitkopierte Tests einer nicht gelieferten
+Level-0-Editor-Guidance werden nicht als Projektanforderung eingeführt.
+AOC behält seine bereits gelieferte sichere Memory-Patch-Anbindung; zwei
+kanonische Ausnahmen verhindern deren Überschreiben. Keine Testausnahme
+ersetzt eine erforderliche technische Prüfung oder akzeptiert ein Risiko.
+
+EN: Consumers retain their package class. A Level-0 orchestration marker added
+by this rollout is removed from the seven existing consumer packages. Their
+existing central integration tests remain correctly assigned to the Level-0
+source; portable unit and project checks remain active. The two already complete
+source copies retain their project fleet inventory and original exact cardinality
+checks. Accidentally copied tests for undelivered Level-0 editor guidance do not
+become new project requirements. AOC retains its previously delivered secure
+memory-patch adapter; two canonical exceptions prevent overwriting it. No test
+exception replaces a required technical check or accepts risk.
