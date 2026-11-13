@@ -59,7 +59,7 @@ original observation. Current evidence:
 
 Der Audit bleibt unverändert ein historischer Nachweis. Seine 16 durch den
 Sicherheitsrollout geänderten Eingaben sind als byteidentische Git-Kopien mit
-Quellrevision und Hash im [Eingabemanifest](inputs-before-security-rollout-20261113/manifest.json)
+Quellrevision und Hash im [Eingabemanifest](../../rl-se-inputs-20261113/manifest.json)
 erhalten. Die Tests prüfen diese expliziten Kopien; geänderte Auditdaten,
 Bindungen oder Kopien scheitern weiterhin. Ein erfolgreiches Ergebnis ist keine
 aktuelle Sicherheitsbewertung der neuen Presets. Deren aktuelle Versionen,
@@ -70,7 +70,7 @@ Keine Kontrolldisposition oder menschliche Freigabe wurde geändert.
 
 The audit remains unchanged historical evidence. Its 16 inputs changed by the
 security rollout are preserved as byte-identical Git copies with source revision
-and hashes in the [input manifest](inputs-before-security-rollout-20261113/manifest.json).
+and hashes in the [input manifest](../../rl-se-inputs-20261113/manifest.json).
 Tests verify these explicit copies; changed audit data, bindings or copies still
 fail. A successful result is not a current security assessment of the new
 presets. Their current versions, sources, regression tests and CI belong to the

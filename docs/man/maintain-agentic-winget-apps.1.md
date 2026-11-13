@@ -27,7 +27,7 @@ primären oder begleitenden MSL-Probe autorisieren.
 *Compare and preview execute only version probes fixed in code policy.
 Registry data cannot authorize an executable or arguments for primary or
 companion MSL probes.*
-[Quellen und Nachweisgrenzen](../maintenance/msl-toolchains.md).
+[Quellen und Nachweisgrenzen](https://github.com/hindermath/home-baseline/blob/main/docs/maintenance/msl-toolchains.md).
 
 *Use `-MslOnly` for the six stable MSL toolchains and dependencies. Comparison
 and WhatIf do not change installations or the user PATH. Optional `-ResultFile`

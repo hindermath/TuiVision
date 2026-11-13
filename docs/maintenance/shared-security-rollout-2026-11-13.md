@@ -104,3 +104,19 @@ EN: The TuiVision CS1591 exception remains. The test project references canonica
 Microsoft.NET.Test.Sdk 18.11.0, matching the already delivered lockfile. Lockfile
 contents are neither recalculated nor unlocked; native CI keeps using
 `--locked-mode`.
+
+## Native Paketverträglichkeit / Native package compatibility
+
+DE: Verteilte Manpages verweisen auf die kanonischen öffentlichen
+Level-0-Dokumente. TinyPl0 behält seine bestehende Freigabegrenze für externe
+CLI-Registries. Der bereits vorhandene benannte absdd-CI-Einstieg prüft weiter
+getrennt Quellen- und Installations-Lock. TuiVisions neue historische
+Eingabekopien verwenden kürzere relative Pfade für Windows; Bytes und Hashes
+bleiben unverändert. Bestehende technische Prüfungen bleiben verbindlich.
+
+EN: Distributed manuals link canonical public Level-0 documentation. TinyPl0
+retains its existing authority boundary for external CLI registries. The
+existing named absdd CI entry point still checks separate source and installed
+locks. TuiVision's new historical input copies use shorter relative paths for
+Windows; their bytes and hashes remain unchanged. Existing technical checks
+remain mandatory.

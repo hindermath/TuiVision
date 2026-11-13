@@ -28,7 +28,7 @@ MSL- und Begleitproben.
 *Compare and preview may execute only version probes fixed in code policy. An
 alternate CLI registry cannot change a probe executable or its arguments,
 including primary and companion MSL probes.*
-[Quellen und Benutzerumgebung](../maintenance/msl-toolchains.md).
+[Quellen und Benutzerumgebung](https://github.com/hindermath/home-baseline/blob/main/docs/maintenance/msl-toolchains.md).
 
 *Use `--msl-only` for the six stable MSL toolchains and their dependencies.
 Comparison and preview do not change installations or profiles. Upstream,

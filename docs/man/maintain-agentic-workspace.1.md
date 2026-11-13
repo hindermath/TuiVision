@@ -88,7 +88,7 @@ Linux spelling is compared case-sensitively. macOS and native Linux path
 checks remain unchanged.*
 
 Nachweis / Evidence:
-[Windows-Podman-Mountpfade](../maintenance/windows-podman-mount-paths-2026-09-26.md).
+[Windows-Podman-Mountpfade](https://github.com/hindermath/home-baseline/blob/main/docs/maintenance/windows-podman-mount-paths-2026-09-26.md).
 
 Nach bestandener Vorprüfung gilt Git-Vertrauen nur für den jeweiligen
 Wartungsprozess und die exakt deklarierten Repository-Pfade. Eine leere

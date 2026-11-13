@@ -436,7 +436,7 @@ public sealed class RlSeSelfReviewEvidenceTests
     // copies; current product validation remains separate.
     private static string HistoricalEvidenceSha256(string relativePath, string expectedSha)
     {
-        const string snapshot = AuditDirectory + "/inputs-before-security-rollout-20261113";
+        const string snapshot = "docs/security/rl-se-inputs-20261113";
         using JsonDocument manifest = LoadStrictJson(snapshot + "/manifest.json");
         Require(manifest.RootElement.GetProperty("auditNormalizedSha256").GetString() ==
             RepositoryTextSha256(Path.Combine(RepositoryRoot(), AuditRelativePath)),
