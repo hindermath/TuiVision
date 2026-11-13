@@ -146,6 +146,14 @@ DE: Die eigenen Wartungsadapter und Tests bewahren exakte npm-Versionen mit SHA-
 
 EN: Its maintenance adapters and tests preserve exact npm versions with SHA-512 and the full Spec Kit Git revision. The Level 0 registry remains in use for other toolchain fields. Cases for the unsupported MSL-only parent adapter are identified explicitly; the shared MSL module tests still run. The canonical exception list is in Home Baseline PR 375.
 
+DE: Der Windows-Wartungsworkflow ruft die beiden vorhandenen Modulprüfungen
+für Registry und npm-Integrität auf. Ein aus Level 0 verteilter Modulname
+existiert in TuiVision nicht.
+
+EN: The Windows maintenance workflow runs the existing registry and npm
+integrity modules. A module name distributed from Level 0 does not exist
+in TuiVision.
+
 Documentation Impact: UpdateRequired. Owner: Thorsten Hindermann. Audience:
 maintainers and security reviewers. Canonical sources: project adapters and
 Home Baseline propagation manifest. Reader path: this record to project tests

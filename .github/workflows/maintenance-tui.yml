@@ -122,7 +122,8 @@ jobs:
           python -m unittest
           scripts.tests.test_maintenance_execution_context
           scripts.tests.test_maintenance_git_bundle
-          scripts.tests.test_windows_maintenance_hardening
+          scripts.tests.test_windows_maintenance_registry
+          scripts.tests.test_windows_npm_integrity
 
       - name: Validate Bash syntax
         if: runner.os != 'Windows'
