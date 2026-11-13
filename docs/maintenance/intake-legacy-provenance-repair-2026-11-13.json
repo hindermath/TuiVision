@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "authority": "Approved security-preset rollout; compatibility repair only",
+  "change": "Reclassify five earlier path relocations as GitBlob-backed LegacyAdoption. Preserve original receipt bytes, historical predecessors, target hashes and lifecycle. No review/specify/implementation starts.",
+  "bindings": [
+    {
+      "receipt": "specs/intake-authoring-receipts/15-post-wave6-example-portfolio-conformance-audit.json",
+      "beforeArchive": "specs/intake-authoring-receipts/history/security-rollout-20261113-before/15-post-wave6-example-portfolio-conformance-audit.json",
+      "beforeSha256": "ea8d1951a9f86274df13d917526cfb657178deadb3b6e37864f59c38fe7b67b2",
+      "afterSha256": "4d264fcf5f2fbcb1828cf3450cd158dbb7e08668d9bac1e0f1f5b8c5ed5428d8",
+      "historicalReceipt": "specs/intake-authoring-receipts/history/15-post-wave6-example-portfolio-conformance-audit.schema-1.1.json",
+      "historicalTarget": "requirements/intakes/history/lastenheft-15-post-wave6-example-portfolio-conformance-audit/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+      "priorTargetHash": "2ef3611ff653f6d66b4bdef2ac1275bfb34dd46ac081957f75d10e15f95c7b83",
+      "priorGitBlob": "447fd7759d05f275a6a08f3efc35da2e719a042d",
+      "receiptId": "296b0258-7d42-45bf-aa28-e269e9776a5d",
+      "intakeId": "87920239-1e36-4c94-8410-acd0069023df",
+      "target": {
+        "path": "requirements/intakes/active/Lastenheft_15_Post-Wave6-Example-Portfolio-Conformance-Audit.md",
+        "normalizedSha256": "f46be28ad27bb2dd5644390a7d50bed4912b514ce924e58bfd304135b33c0ad2"
+      },
+      "status": "ReadyForReview",
+      "provenanceMode": "LegacyAdoption"
+    },
+    {
+      "receipt": "specs/intake-authoring-receipts/constitution-change.json",
+      "beforeArchive": "specs/intake-authoring-receipts/history/security-rollout-20261113-before/constitution-change.json",
+      "beforeSha256": "fdab5ea3bbe5bccf72b8b3ef68ea7636c20acd388a1f639ec7563fdf32ffe4dd",
+      "afterSha256": "273e16b2d077e69639748a848fcb71bc92555bad58dff83b5f9165ab24b277eb",
+      "historicalReceipt": "specs/intake-authoring-receipts/history/constitution-change.schema-1.1.json",
+      "historicalTarget": "requirements/intakes/history/lastenheft-constitution-change/Lastenheft_Constitution_Change.md",
+      "priorTargetHash": "448884c87b2d3ae44792b77a73b91d61384039563a944d1857c2eb66cbc99381",
+      "priorGitBlob": "a5d9a3f1b7972f13ceca923f321fb549458ea75c",
+      "receiptId": "2e99a694-e1f1-44b3-a11b-79324c78c7e7",
+      "intakeId": "cd7f53e3-3a5d-4f14-b5a7-e2ceb0b63f1e",
+      "target": {
+        "path": "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+        "normalizedSha256": "b7dbf455ff4e84b336ffe3cca3ff184e1897860592d4f53fb52f1776e7eb9e91"
+      },
+      "status": "ReadyForReview",
+      "provenanceMode": "LegacyAdoption"
+    },
+    {
+      "receipt": "specs/intake-authoring-receipts/gsdb-spec-kit-intensivpruefung.json",
+      "beforeArchive": "specs/intake-authoring-receipts/history/security-rollout-20261113-before/gsdb-spec-kit-intensivpruefung.json",
+      "beforeSha256": "c2974b2e01287df85987be15714198bc5ea56d4b1382c08bf21646cc3fdbdc92",
+      "afterSha256": "0f48c5a7b7f6b8a23023b29da800435464ce993cb8ed4ee7ece54449a4c7aa33",
+      "historicalReceipt": "specs/intake-authoring-receipts/history/gsdb-spec-kit-intensivpruefung.schema-1.1.json",
+      "historicalTarget": "requirements/intakes/history/lastenheft-gsdb-spec-kit-intensivpruefung/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+      "priorTargetHash": "571eb13bc61ecd28d2e36be5a59ece0bdd3c2b3d14ddae7fe4b2386e6552c763",
+      "priorGitBlob": "31bc29d472edc659fd4f3ad32cea555871c1d5b1",
+      "receiptId": "abd25e48-b9e8-4a92-875e-579be5d22831",
+      "intakeId": "0bf2fb74-6bf7-464b-9084-a1ca33296684",
+      "target": {
+        "path": "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+        "normalizedSha256": "97d31e6eac5c2e5defeae1dd29bc5c97ddb8ba43b75106768dfe4b703c6d802d"
+      },
+      "status": "ReadyForReview",
+      "provenanceMode": "LegacyAdoption"
+    },
+    {
+      "receipt": "specs/intake-authoring-receipts/rl-se-checklist-selbstpruefung.json",
+      "beforeArchive": "specs/intake-authoring-receipts/history/security-rollout-20261113-before/rl-se-checklist-selbstpruefung.json",
+      "beforeSha256": "d1ffaf5192c699eaae7da1cd37a9f368e4462a2f814f5769188876bb2cf08a22",
+      "afterSha256": "6d2cf7f96af776dd5ab6d0d0263e09a7d9eedff4b4f658150ab53c774c72b80f",
+      "historicalReceipt": "specs/intake-authoring-receipts/history/rl-se-checklist-selbstpruefung.schema-1.1.json",
+      "historicalTarget": "requirements/intakes/history/lastenheft-rl-se-checklist-selbstpruefung/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+      "priorTargetHash": "0f8d1e60bf62d749e39d0a6b932115c1fa0b45d2f4ac6d83d8799372d98bedae",
+      "priorGitBlob": "f0d6cb3fd3f2904ae70ee66134947581b9bd5bc2",
+      "receiptId": "1cd89c9e-1548-4a08-a053-9ae8ddae7984",
+      "intakeId": "fd0e9555-64a4-487d-9cd2-f8291f849936",
+      "target": {
+        "path": "requirements/intakes/active/Lastenheft_RL-SE-Checklist-Selbstpruefung.md",
+        "normalizedSha256": "62fadb9f571f6c6e5fb81badd103f5ca5087c7219698fdec7be708196d6d6863"
+      },
+      "status": "ReadyForReview",
+      "provenanceMode": "LegacyAdoption"
+    },
+    {
+      "receipt": "specs/intake-authoring-receipts/sandbox-gestuetzte-secure-development-haertung.json",
+      "beforeArchive": "specs/intake-authoring-receipts/history/security-rollout-20261113-before/sandbox-gestuetzte-secure-development-haertung.json",
+      "beforeSha256": "d1832b6e27f552a0f1e921a7a3f0f0025be00629dfae75413f14451e88eb26f3",
+      "afterSha256": "d5dc10b1db61c132d1b7839f170bc53a1a98d7019bfcbf4c58a4a9f99f3124d8",
+      "historicalReceipt": "specs/intake-authoring-receipts/history/sandbox-gestuetzte-secure-development-haertung.schema-1.1.json",
+      "historicalTarget": "requirements/intakes/history/lastenheft-sandbox-gestuetzte-secure-development-haertung/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "priorTargetHash": "9ccdac18a9fe52b759a70e34764d611463f59d11ca24011cf1780be10228a512",
+      "priorGitBlob": "82dbb5ce6da77b872dce130b9a6fba87c3547aed",
+      "receiptId": "f904f58d-94b9-43f2-b7b1-f9f229edea7c",
+      "intakeId": "c1c35d3f-af1b-4716-8d6b-740ee26f96a2",
+      "target": {
+        "path": "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+        "normalizedSha256": "d1f6a20535f90b78d00f7f6974a32156d7c08eeb77ebad9961a41ffbe3f84858"
+      },
+      "status": "ReadyForReview",
+      "provenanceMode": "LegacyAdoption"
+    }
+  ]
+}

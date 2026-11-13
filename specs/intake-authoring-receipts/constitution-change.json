@@ -39,6 +39,27 @@
       "normalizedSha256": "448884c87b2d3ae44792b77a73b91d61384039563a944d1857c2eb66cbc99381",
       "gitBlob": "N/A",
       "proofBoundary": "Repository file and normalized SHA-256"
+    },
+    {
+      "sourceId": "SRC002",
+      "order": 2,
+      "kind": "File",
+      "label": "Historical predecessor receipt for the approved legacy path migration",
+      "location": "Repository",
+      "path": "specs/intake-authoring-receipts/history/constitution-change.schema-1.1.json",
+      "requestedUrl": "N/A",
+      "finalUrl": "N/A",
+      "retrievedAt": "N/A",
+      "httpStatus": "N/A",
+      "contentType": "N/A",
+      "contentLength": "N/A",
+      "etag": "N/A",
+      "lastModified": "N/A",
+      "redirectChain": [],
+      "rawSha256": "N/A",
+      "normalizedSha256": "c5d3932aa9dcf7f399143536968006b6f9803a45ab3d2254a70d32f9a1b5157b",
+      "gitBlob": "N/A",
+      "proofBoundary": "Repository file and normalized SHA-256"
     }
   ],
   "profile": "level2-lastenheft",
@@ -70,20 +91,20 @@
   "deliveryAuthority": "LocalImplementation",
   "authorityEvidence": "Default: this migration grants no remote delivery authority.",
   "promptState": "Enabled",
-  "provenanceMode": "Supersession",
+  "provenanceMode": "LegacyAdoption",
   "supersedes": {
-    "receiptPath": "specs/intake-authoring-receipts/history/constitution-change.schema-1.1.json",
-    "targetNormalizedSha256": "448884c87b2d3ae44792b77a73b91d61384039563a944d1857c2eb66cbc99381",
-    "archiveTargetPath": "requirements/intakes/history/lastenheft-constitution-change/Lastenheft_Constitution_Change.md",
-    "archiveReceiptPath": "specs/intake-authoring-receipts/history/constitution-change.schema-1.1.json"
+    "receiptPath": "N/A",
+    "targetNormalizedSha256": "N/A",
+    "archiveTargetPath": "N/A",
+    "archiveReceiptPath": "N/A"
   },
   "legacyAdoption": {
-    "evidenceType": "N/A",
-    "priorTargetNormalizedSha256": "N/A",
-    "priorGitBlob": "N/A"
+    "evidenceType": "GitBlob",
+    "priorTargetNormalizedSha256": "448884c87b2d3ae44792b77a73b91d61384039563a944d1857c2eb66cbc99381",
+    "priorGitBlob": "a5d9a3f1b7972f13ceca923f321fb549458ea75c"
   },
   "updateAuthorized": true,
-  "updateAuthorityEvidence": "User-approved migration preserves the existing intake identity and predecessor evidence.",
+  "updateAuthorityEvidence": "Approved security-preset rollout: technical provenance repair of the earlier approved path migration. Intake contents, identity, lifecycle and delivery authority remain unchanged.",
   "series": {
     "seriesId": "a73dda7c-163b-4530-97f2-fd9eea5e8986",
     "manifestPath": "requirements/intakes/series/tui-vision-delivery/manifest.json",

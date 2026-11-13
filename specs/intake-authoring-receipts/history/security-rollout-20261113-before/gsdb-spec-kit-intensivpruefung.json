@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "2.0",
+  "documentType": "IntakeReceipt",
+  "receiptId": "abd25e48-b9e8-4a92-875e-579be5d22831",
+  "intakeId": "0bf2fb74-6bf7-464b-9084-a1ca33296684",
+  "generator": {
+    "preset": "intake-authoring-governance",
+    "version": "0.2.1"
+  },
+  "createdAt": "2026-07-26T20:00:00Z",
+  "operation": {
+    "operationId": "b38a2f9b-1bc1-4152-87b5-5559829424ce",
+    "type": "Update",
+    "authorityEvidence": "User-approved two-PR Pflichtenheft and intake consolidation plan"
+  },
+  "status": "ReadyForReview",
+  "target": {
+    "path": "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+    "normalizedSha256": "97d31e6eac5c2e5defeae1dd29bc5c97ddb8ba43b75106768dfe4b703c6d802d"
+  },
+  "sources": [
+    {
+      "sourceId": "SRC001",
+      "order": 1,
+      "kind": "File",
+      "label": "Archived predecessor intake",
+      "location": "Repository",
+      "path": "requirements/intakes/history/lastenheft-gsdb-spec-kit-intensivpruefung/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+      "requestedUrl": "N/A",
+      "finalUrl": "N/A",
+      "retrievedAt": "N/A",
+      "httpStatus": "N/A",
+      "contentType": "N/A",
+      "contentLength": "N/A",
+      "etag": "N/A",
+      "lastModified": "N/A",
+      "redirectChain": [],
+      "rawSha256": "N/A",
+      "normalizedSha256": "571eb13bc61ecd28d2e36be5a59ece0bdd3c2b3d14ddae7fe4b2386e6552c763",
+      "gitBlob": "N/A",
+      "proofBoundary": "Repository file and normalized SHA-256"
+    }
+  ],
+  "profile": "level2-lastenheft",
+  "languagePolicy": "GermanFirstEnglishSecond",
+  "decisions": [
+    {
+      "id": "IAD001",
+      "status": "Answered",
+      "question": "Welcher Zielpfad ist nach der Konsolidierung verbindlich?",
+      "answer": "requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+      "evidence": "specs/requirements-reconciliation-20260726/migration-proposal.json"
+    },
+    {
+      "id": "IAD002",
+      "status": "Answered",
+      "question": "Welche Delivery Authority gilt?",
+      "answer": "LocalImplementation",
+      "evidence": "The migration grants no remote delivery authority."
+    }
+  ],
+  "openDecisionIds": [],
+  "questionCount": 0,
+  "agentSurface": {
+    "specifyCanonicalId": "speckit.specify",
+    "specifyInvocation": "$speckit-specify",
+    "autonomousCanonicalId": "speckit.autonomous",
+    "autonomousInvocation": "$speckit-autonomous"
+  },
+  "deliveryAuthority": "LocalImplementation",
+  "authorityEvidence": "Default: this migration grants no remote delivery authority.",
+  "promptState": "Enabled",
+  "provenanceMode": "Supersession",
+  "supersedes": {
+    "receiptPath": "specs/intake-authoring-receipts/history/gsdb-spec-kit-intensivpruefung.schema-1.1.json",
+    "targetNormalizedSha256": "571eb13bc61ecd28d2e36be5a59ece0bdd3c2b3d14ddae7fe4b2386e6552c763",
+    "archiveTargetPath": "requirements/intakes/history/lastenheft-gsdb-spec-kit-intensivpruefung/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md",
+    "archiveReceiptPath": "specs/intake-authoring-receipts/history/gsdb-spec-kit-intensivpruefung.schema-1.1.json"
+  },
+  "legacyAdoption": {
+    "evidenceType": "N/A",
+    "priorTargetNormalizedSha256": "N/A",
+    "priorGitBlob": "N/A"
+  },
+  "updateAuthorized": true,
+  "updateAuthorityEvidence": "User-approved migration preserves the existing intake identity and predecessor evidence.",
+  "series": {
+    "seriesId": "a73dda7c-163b-4530-97f2-fd9eea5e8986",
+    "manifestPath": "requirements/intakes/series/tui-vision-delivery/manifest.json",
+    "order": 7,
+    "role": "OrderedMember",
+    "supersedesIntakeIds": []
+  },
+  "nextAction": "$speckit-intake-review requirements/intakes/active/Lastenheft_GSDB-Spec-Kit-Intensivpruefung.md"
+}

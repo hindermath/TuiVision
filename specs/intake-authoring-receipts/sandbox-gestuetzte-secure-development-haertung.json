@@ -39,6 +39,27 @@
       "normalizedSha256": "9ccdac18a9fe52b759a70e34764d611463f59d11ca24011cf1780be10228a512",
       "gitBlob": "N/A",
       "proofBoundary": "Repository file and normalized SHA-256"
+    },
+    {
+      "sourceId": "SRC002",
+      "order": 2,
+      "kind": "File",
+      "label": "Historical predecessor receipt for the approved legacy path migration",
+      "location": "Repository",
+      "path": "specs/intake-authoring-receipts/history/sandbox-gestuetzte-secure-development-haertung.schema-1.1.json",
+      "requestedUrl": "N/A",
+      "finalUrl": "N/A",
+      "retrievedAt": "N/A",
+      "httpStatus": "N/A",
+      "contentType": "N/A",
+      "contentLength": "N/A",
+      "etag": "N/A",
+      "lastModified": "N/A",
+      "redirectChain": [],
+      "rawSha256": "N/A",
+      "normalizedSha256": "84bc2dbef7dfc3f7cb37489e1ba715e184fbf17a1cfd265963e445c1123e0fa7",
+      "gitBlob": "N/A",
+      "proofBoundary": "Repository file and normalized SHA-256"
     }
   ],
   "profile": "level2-lastenheft",
@@ -70,20 +91,20 @@
   "deliveryAuthority": "LocalImplementation",
   "authorityEvidence": "Default: this migration grants no remote delivery authority.",
   "promptState": "Enabled",
-  "provenanceMode": "Supersession",
+  "provenanceMode": "LegacyAdoption",
   "supersedes": {
-    "receiptPath": "specs/intake-authoring-receipts/history/sandbox-gestuetzte-secure-development-haertung.schema-1.1.json",
-    "targetNormalizedSha256": "9ccdac18a9fe52b759a70e34764d611463f59d11ca24011cf1780be10228a512",
-    "archiveTargetPath": "requirements/intakes/history/lastenheft-sandbox-gestuetzte-secure-development-haertung/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
-    "archiveReceiptPath": "specs/intake-authoring-receipts/history/sandbox-gestuetzte-secure-development-haertung.schema-1.1.json"
+    "receiptPath": "N/A",
+    "targetNormalizedSha256": "N/A",
+    "archiveTargetPath": "N/A",
+    "archiveReceiptPath": "N/A"
   },
   "legacyAdoption": {
-    "evidenceType": "N/A",
-    "priorTargetNormalizedSha256": "N/A",
-    "priorGitBlob": "N/A"
+    "evidenceType": "GitBlob",
+    "priorTargetNormalizedSha256": "9ccdac18a9fe52b759a70e34764d611463f59d11ca24011cf1780be10228a512",
+    "priorGitBlob": "82dbb5ce6da77b872dce130b9a6fba87c3547aed"
   },
   "updateAuthorized": true,
-  "updateAuthorityEvidence": "User-approved migration preserves the existing intake identity and predecessor evidence.",
+  "updateAuthorityEvidence": "Approved security-preset rollout: technical provenance repair of the earlier approved path migration. Intake contents, identity, lifecycle and delivery authority remain unchanged.",
   "series": {
     "seriesId": "a73dda7c-163b-4530-97f2-fd9eea5e8986",
     "manifestPath": "requirements/intakes/series/tui-vision-delivery/manifest.json",
