@@ -1,10 +1,10 @@
 # Nutzungsleitfaden: intake-authoring-governance
 
-<!-- current-package: 0.3.13 -->
+<!-- current-package: 0.3.14 -->
 
-Paketkennung: **v0.3.13**. [Vorbereitung und Veröffentlichungsgrenze](release-0.3.13-validation.md). Die Release-Seite und der externe Archivnachweis belegen die Veröffentlichung, nicht dieser Vorbereitungsstand. Frühere Versionsnachweise unten bleiben historisch.
+Paketkennung: **v0.3.14**. [Vorbereitung und Veröffentlichungsgrenze](release-0.3.14-validation.md). Die Release-Seite und der externe Archivnachweis belegen die Veröffentlichung, nicht dieser Vorbereitungsstand. Frühere Versionsnachweise unten bleiben historisch.
 
-<span lang="en">Package identity: v0.3.13. The release page and external archive evidence prove publication, not this preparation snapshot. Earlier version records below remain historical.</span>
+<span lang="en">Package identity: v0.3.14. The release page and external archive evidence prove publication, not this preparation snapshot. Earlier version records below remain historical.</span>
 
 [Release-Abschluss und Verbesserungsprofil / Publication closeout and improvement profile](release-0.3.9-validation.md).
 

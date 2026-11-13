@@ -265,6 +265,30 @@ try {
     $ReceiptBefore = Get-FileHash -LiteralPath $ReceiptPath
     Invoke-HBPair Receipt $ReceiptPath $Root 0 'historical standalone receipt / CRLF archive'
     if ($ReceiptBefore.Hash -cne (Get-FileHash -LiteralPath $ReceiptPath).Hash) { throw 'Historical receipt was modified' }
+    # Standalone completions are not members of the unrelated canonical series.
+    # The archive lookup must preserve the receipt and bind exact name/content.
+    $SavedManifest = $Manifest | ConvertTo-Json -Depth 20
+    $OtherArchive = 'requirements/archive/other.001-completed.md'
+    Write-HBText (Join-Path $Root $OtherArchive) '# Unrelated series member'
+    $Manifest.orderedTargets = @(@{path=$OtherArchive;normalizedSha256=Get-HBHash (Join-Path $Root $OtherArchive);status='Completed'})
+    $Manifest.roots = @($OtherArchive)
+    Write-HBText $ManifestPath ($Manifest | ConvertTo-Json -Depth 20)
+    Invoke-HBPair Receipt $ReceiptPath $Root 0 'standalone archive outside unrelated series'
+    if ($ReceiptBefore.Hash -cne (Get-FileHash -LiteralPath $ReceiptPath).Hash) { throw 'Standalone lookup modified its historical receipt' }
+    $Receipt.series.seriesId = $Manifest.seriesId
+    $Receipt.series.manifestPath = 'requirements/series.json'
+    $Receipt.series.order = 1
+    $Receipt.series.role = 'Primary'
+    Write-HBText $ReceiptPath ($Receipt | ConvertTo-Json -Depth 30)
+    Invoke-HBPair Receipt $ReceiptPath $Root 2 'series-bound receipt cannot use standalone discovery' 'target missing'
+    $Receipt.series.seriesId = 'N/A'; $Receipt.series.manifestPath = 'N/A'; $Receipt.series.order = 'N/A'; $Receipt.series.role = 'N/A'
+    Write-HBText $ReceiptPath ($Receipt | ConvertTo-Json -Depth 30)
+    $StandaloneDuplicate = 'requirements/archive/url-source.003-completed.md'
+    Copy-Item -LiteralPath (Join-Path $Root $ArchiveRelative) -Destination (Join-Path $Root $StandaloneDuplicate)
+    Invoke-HBPair Receipt $ReceiptPath $Root 2 'ambiguous standalone archives outside series' 'target missing'
+    Remove-Item -LiteralPath (Join-Path $Root $StandaloneDuplicate)
+    $Manifest = $SavedManifest | ConvertFrom-Json -AsHashtable -Depth 20
+    Write-HBText $ManifestPath ($Manifest | ConvertTo-Json -Depth 20)
     $OriginalSource = $Receipt.sources[0]
     $SourceArchiveRelative = 'requirements/archive/source.001-completed.md'
     Write-HBText (Join-Path $Root $SourceArchiveRelative) "# Source`n"

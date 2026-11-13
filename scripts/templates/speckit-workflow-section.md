@@ -41,7 +41,7 @@ Workspace-Familie ist:
 | `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.13` | `80` |
 
 Optional koennen `model-routing-governance` v0.2.9 mit Prioritaet `61`,
-`intake-authoring-governance` v0.3.13 mit Prioritaet `64`,
+`intake-authoring-governance` v0.3.14 mit Prioritaet `64`,
 `intake-review-governance` v0.2.9 mit Prioritaet `65` und
 `intake-sequencing-governance` v0.2.14 mit Prioritaet `66` zwischen Agent Parity
 und Preset 7 installiert werden. Alle vier bleiben ausserhalb der
@@ -196,7 +196,7 @@ zero-write values. A partial proof is not a full regression pass.
 | `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.13` | `80` |
 
 Optionally install `model-routing-governance` v0.2.9 at priority `61`,
-`intake-authoring-governance` v0.3.13 at priority `64`,
+`intake-authoring-governance` v0.3.14 at priority `64`,
 `intake-review-governance` v0.2.9 at priority `65`, and
 `intake-sequencing-governance` v0.2.14 at priority `66` between Agent Parity and
 Preset 7. All four remain outside the standard eight. Authoring creates one intake

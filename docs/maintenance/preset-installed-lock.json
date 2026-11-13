@@ -3,7 +3,7 @@
   "purpose": "Verified installation of the authorised fourteen security-policy patch releases; preset IDs and priorities retained; no Spec Kit execution or model call.",
   "baselineCommit": "a0217188166fb5eba61875891f0119bd340dda9f",
   "hashContract": "sha256-utf8-lf-bom-or-raw-v1",
-  "registrySha256": "a74495008d59d0ef4a6ec1f0ba7b55e75214634f293b0fee41e0740bf7e31349",
+  "registrySha256": "8b5620e039484622084869dc16d6cb877a874fba5ab57330625727d929fd38dd",
   "presets": [
     {
       "id": "security-governance",
@@ -78,15 +78,6 @@
       "contentSha256": "cfadc03d911d0e64cb20a7313e35c7d94c46f783fe072c33ffc6db7d460557c1"
     },
     {
-      "id": "intake-authoring-governance",
-      "version": "0.3.13",
-      "priority": 64,
-      "enabled": true,
-      "manifest_hash": "sha256:386d2358e5a51d3bdff529e1765c63c02565a70d60646f8bb9d53c99d61f9b91",
-      "fileCount": 70,
-      "contentSha256": "87b29908b1a271ced1c9cfb473f449195b0414e4226f16cd1d9aed86213a4b0f"
-    },
-    {
       "id": "intake-review-governance",
       "version": "0.2.9",
       "priority": 65,
@@ -130,6 +121,15 @@
       "manifest_hash": "sha256:5df28b92acb7d6182974efe4156de84a1197e332b41737865bb793c5c6bca212",
       "fileCount": 117,
       "contentSha256": "3368e7b85c3360158c7c22ea9857b1aada4d7bc2214c8da94c3bff7f656ee98a"
+    },
+    {
+      "id": "intake-authoring-governance",
+      "version": "0.3.14",
+      "priority": 64,
+      "enabled": true,
+      "manifest_hash": "sha256:e89f2f318dca50dcaa3261b16516dd1e8c54816f6ee8ba3cda4a350ea6fe447d",
+      "fileCount": 72,
+      "contentSha256": "a63dd143a2383d97207d23dfb0f0db4ef20d5595456483f2effb48d0ec3ce653"
     }
   ]
 }

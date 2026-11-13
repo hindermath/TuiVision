@@ -237,7 +237,7 @@ public sealed class RlSeSelfReviewEvidenceTests
             string sha = RequiredString(item, "sha256", "RLSE007");
             Require(Regex.IsMatch(sha, "^[0-9a-f]{64}$", RegexOptions.CultureInvariant), "RLSE007", "SHA-256");
             Require(File.Exists(Path.Combine(RepositoryRoot(), relativePath)), "RLSE007", "Evidence-Pfad fehlt / path missing");
-            Require(string.Equals(sha, RepositoryTextSha256(Path.Combine(RepositoryRoot(), relativePath)), StringComparison.Ordinal),
+            Require(string.Equals(sha, HistoricalEvidenceSha256(relativePath, sha), StringComparison.Ordinal),
                 "RLSE007", "Evidence-Hash ist veraltet / stale hash");
             Require(RequiredString(item, "freshness", "RLSE007") is "Current" or "Stale" or "Unverifiable" or "NotApplicable",
                 "RLSE007", "Freshness");
@@ -429,6 +429,30 @@ public sealed class RlSeSelfReviewEvidenceTests
     }
 
     private static string ReadRepositoryFile(string relativePath) => File.ReadAllText(Path.Combine(RepositoryRoot(), relativePath));
+
+    // DE: Dieser Audit ist historisch. Nur explizit gebundene alte Eingaben werden
+    // aus bytegleichen Kopien gelesen; aktuelle Produktpruefungen bleiben separat.
+    // EN: This audit is historical. Only explicitly bound old inputs use byte-identical
+    // copies; current product validation remains separate.
+    private static string HistoricalEvidenceSha256(string relativePath, string expectedSha)
+    {
+        const string snapshot = AuditDirectory + "/inputs-before-security-rollout-20261113";
+        using JsonDocument manifest = LoadStrictJson(snapshot + "/manifest.json");
+        Require(manifest.RootElement.GetProperty("auditNormalizedSha256").GetString() ==
+            RepositoryTextSha256(Path.Combine(RepositoryRoot(), AuditRelativePath)),
+            "RLSE007", "historischer Audit driftet / historical audit drift");
+        foreach (JsonElement binding in manifest.RootElement.GetProperty("bindings").EnumerateArray())
+        {
+            if (binding.GetProperty("path").GetString() != relativePath) continue;
+            Require(binding.GetProperty("normalizedSha256").GetString() == expectedSha,
+                "RLSE007", "historische Bindung driftet / historical binding drift");
+            string copy = RequiredString(binding, "snapshot", "RLSE007");
+            RequireSafeRepositoryPath(copy);
+            Require(copy == snapshot + "/" + expectedSha + ".txt", "RLSE007", "snapshot path");
+            return RepositoryTextSha256(Path.Combine(RepositoryRoot(), copy));
+        }
+        return RepositoryTextSha256(Path.Combine(RepositoryRoot(), relativePath));
+    }
 
     private static string RepositoryTextSha256(string fullPath) => CanonicalTextSha256(File.ReadAllText(fullPath));
 

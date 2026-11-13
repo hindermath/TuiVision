@@ -1,0 +1,705 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-11-13",
+  "description": "Canonical files propagated from Level-0 to existing Level-1 and Level-2 repositories.",
+  "exceptions": [
+    {
+      "repositoryPath": "RiderProjects/Show-CommandTui400",
+      "path": "scripts/invoke-psscriptanalyzer.ps1",
+      "reason": "Preserve the existing exact-rule and exact-variable treatment of two synthetic LH-01 session probes. Archived proof bytes stay unchanged; all other global-variable findings remain errors.",
+      "evidence": "https://github.com/hindermath/Show-CommandTui400/blob/418a5686cec94db635b59da6db3562d2a29e27da/scripts/invoke-psscriptanalyzer.ps1"
+    },
+    {
+      "repositoryPath": "RiderProjects/TuiVision",
+      "path": "scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/HomeBaseline.MaintenanceTui.csproj",
+      "reason": "TuiVision enforces CS1591 for its public API; the distributed maintenance application is operational tooling outside that API contract.",
+      "evidence": "https://github.com/hindermath/TuiVision/pull/133"
+    },
+    {
+      "repositoryPath": "RiderProjects/TuiVision",
+      "path": "scripts/lib/maintenance-tui/tests/HomeBaseline.MaintenanceTui.Tests/HomeBaseline.MaintenanceTui.Tests.csproj",
+      "reason": "TuiVision enforces CS1591 for its public API; the distributed maintenance tests are operational tooling outside that API contract.",
+      "evidence": "https://github.com/hindermath/TuiVision/pull/133"
+    },
+    {
+      "evidence": "https://github.com/hindermath/absdd-image-sandbox/blob/9ca5aec38f5005502ac2253b95d9485ac0383792/Dockerfile",
+      "repositoryPath": "container-images/absdd-image-sandbox",
+      "reason": "The sandbox registry retains the Swift version pinned by its Dockerfile; host latest-stable must not replace that image-bound Linux install target. Other registry fields follow the reviewed canonical update.",
+      "path": "scripts/config/required-cli-tools-registry.json"
+    }
+  ],
+  "files": [
+    {
+      "path": "scripts/templates/ci-budget-governance/private-governance-minimal-gate.yml",
+      "executable": false
+    },
+    {
+      "path": "scripts/templates/ci-budget-governance/private-governance-ruleset.json",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/msl-toolchains.psm1",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/invoke-msl-toolchains.ps1",
+      "executable": false
+    },
+    {
+      "path": "scripts/tests/test_msl_toolchains.py",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance_execution_context.py",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance_container_worker.py",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance_git_bundle.py",
+      "executable": false
+    },
+    {
+      "path": "scripts/tests/test_maintenance_git_bundle.py",
+      "executable": false
+    },
+    {
+      "path": "scripts/config/maintenance-execution-contexts.json",
+      "executable": false
+    },
+    {
+      "path": "scripts/tests/test_maintenance_execution_context.py",
+      "executable": false
+    },
+    {
+      "path": "scripts/maintain-agentic-workspace.sh",
+      "executable": true
+    },
+    {
+      "path": "scripts/maintain-agentic-workspace.ps1",
+      "executable": false
+    },
+    {
+      "path": "scripts/maintain-workspace-storage.sh",
+      "executable": true
+    },
+    {
+      "path": "scripts/maintain-workspace-storage.ps1",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/workspace_storage_maintenance.py",
+      "executable": true
+    },
+    {
+      "path": "scripts/config/workspace-storage-maintenance.json",
+      "executable": false
+    },
+    {
+      "path": "scripts/tests/test_workspace_storage_maintenance.py",
+      "executable": false
+    },
+    {
+      "path": "scripts/resolve-model-routing.sh",
+      "executable": true
+    },
+    {
+      "path": "scripts/resolve-model-routing.ps1",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/agentic_workspace_fleet.py",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/resolve-home-baseline-source.sh",
+      "executable": true
+    },
+    {
+      "path": "scripts/lib/resolve-home-baseline-source.ps1",
+      "executable": false
+    },
+    {
+      "path": "scripts/tests/test_maintenance_tui_wrappers.py",
+      "executable": false
+    },
+    {
+      "path": "scripts/tests/test_feature_020_documentation_architecture.py",
+      "executable": false
+    },
+    {
+      "path": "scripts/tests/test_spec_kit_agent_surface_parity.py",
+      "executable": false
+    },
+    {
+      "path": "scripts/tests/test_linux_maintenance_hardening.py",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/NuGet.config",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/Application/InterruptController.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/Application/InvocationRouter.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/Application/MaintenanceSelectionValidator.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/Application/MaintenanceTuiApplication.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/Contracts/InvocationContext.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/Contracts/MaintenanceEvent.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/Contracts/MaintenanceSelection.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/Contracts/RunResult.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/Contracts/UiBuildDescriptor.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/HomeBaseline.MaintenanceTui.csproj",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/Infrastructure/MaintenanceCommandBuilder.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/Infrastructure/MaintenanceEventReader.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/Infrastructure/MaintenanceProcessRunner.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/Infrastructure/RunResultReconciler.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/Infrastructure/TerminalContext.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/Infrastructure/UiBuildCache.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/Infrastructure/UiCachePublication.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/Presentation/CommandSummaryView.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/Presentation/EnhancedMaintenancePrompt.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/Presentation/LiveMaintenanceView.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/Presentation/MaintenanceStatusView.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/Presentation/MarkupText.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/Presentation/Messages.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/Presentation/PlainMaintenancePrompt.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/Program.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/src/HomeBaseline.MaintenanceTui/packages.lock.json",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/tests/HomeBaseline.MaintenanceTui.Tests/Console/AccessibilityTests.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/tests/HomeBaseline.MaintenanceTui.Tests/Console/ConfirmationTests.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/tests/HomeBaseline.MaintenanceTui.Tests/Console/InvocationRoutingTests.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/tests/HomeBaseline.MaintenanceTui.Tests/Console/LanguageTests.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/tests/HomeBaseline.MaintenanceTui.Tests/Console/MarkupEscapingTests.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/tests/HomeBaseline.MaintenanceTui.Tests/Console/SelectionTests.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/tests/HomeBaseline.MaintenanceTui.Tests/Console/TerminalCapabilityTests.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/tests/HomeBaseline.MaintenanceTui.Tests/Contracts/CommandBuilderTests.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/tests/HomeBaseline.MaintenanceTui.Tests/Contracts/EventReaderTests.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/tests/HomeBaseline.MaintenanceTui.Tests/Contracts/MaintenanceEventTests.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/tests/HomeBaseline.MaintenanceTui.Tests/Contracts/RunResultReconcilerTests.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/tests/HomeBaseline.MaintenanceTui.Tests/Contracts/UiBuildCacheTests.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/tests/HomeBaseline.MaintenanceTui.Tests/HomeBaseline.MaintenanceTui.Tests.csproj",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/tests/HomeBaseline.MaintenanceTui.Tests/Integration/CacheIntegrationTests.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/tests/HomeBaseline.MaintenanceTui.Tests/Integration/CancellationTests.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/tests/HomeBaseline.MaintenanceTui.Tests/Integration/FakeEngineTests.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/tests/HomeBaseline.MaintenanceTui.Tests/Integration/VerticalSliceTests.cs",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/maintenance-tui/tests/HomeBaseline.MaintenanceTui.Tests/packages.lock.json",
+      "executable": false
+    },
+    {
+      "path": ".github/workflows/maintenance-tui.yml",
+      "executable": false
+    },
+    {
+      "path": "docs/man/maintain-agentic-workspace.1.md",
+      "executable": false
+    },
+    {
+      "path": "docs/man/maintain-workspace-storage.1.md",
+      "executable": false
+    },
+    {
+      "path": "docs/man/resolve-model-routing.1.md",
+      "executable": false
+    },
+    {
+      "path": "docs/architecture/maintenance-tui.md",
+      "executable": false
+    },
+    {
+      "path": "docs/accessibility/maintenance-tui.md",
+      "executable": false
+    },
+    {
+      "path": "scripts/maintain-agentic-brew-apps.sh",
+      "executable": true
+    },
+    {
+      "path": "scripts/lib/linux-maintenance-hardening.py",
+      "executable": true
+    },
+    {
+      "path": "scripts/maintain-agentic-winget-apps.ps1",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/windows-maintenance-hardening.psm1",
+      "executable": false
+    },
+    {
+      "path": "scripts/maintain-powershell-modules.ps1",
+      "executable": false
+    },
+    {
+      "path": "scripts/invoke-psscriptanalyzer.ps1",
+      "executable": false
+    },
+    {
+      "path": "scripts/validate-documentation-impact.sh",
+      "executable": true
+    },
+    {
+      "path": "scripts/validate-documentation-impact.ps1",
+      "executable": false
+    },
+    {
+      "path": "scripts/test-documentation-impact.sh",
+      "executable": true
+    },
+    {
+      "path": "scripts/test-documentation-impact.ps1",
+      "executable": false
+    },
+    {
+      "path": "scripts/tests/documentation-impact/fixtures/valid.json",
+      "executable": false
+    },
+    {
+      "path": "scripts/tests/documentation-impact/fixtures/legacy-valid.json",
+      "executable": false
+    },
+    {
+      "path": "scripts/tests/documentation-impact/fixtures/missing-architecture-fields.json",
+      "executable": false
+    },
+    {
+      "path": "scripts/tests/documentation-impact/fixtures/invalid-distribution-class.json",
+      "executable": false
+    },
+    {
+      "path": "scripts/tests/documentation-impact/fixtures/invalid-home-sync-type.json",
+      "executable": false
+    },
+    {
+      "path": "scripts/tests/documentation-impact/fixtures/invalid-language-partners-type.json",
+      "executable": false
+    },
+    {
+      "path": "scripts/tests/documentation-impact/fixtures/missing-decision.json",
+      "executable": false
+    },
+    {
+      "path": "scripts/tests/documentation-impact/fixtures/duplicate-id.json",
+      "executable": false
+    },
+    {
+      "path": "scripts/tests/documentation-impact/fixtures/invalid-followup.json",
+      "executable": false
+    },
+    {
+      "path": "scripts/tests/documentation-impact/fixtures/unsafe-defer.json",
+      "executable": false
+    },
+    {
+      "path": "scripts/install-spec-kit-governance-presets.sh",
+      "executable": true
+    },
+    {
+      "path": "scripts/install-spec-kit-governance-presets.ps1",
+      "executable": false
+    },
+    {
+      "path": "scripts/render-project-statistics.sh",
+      "executable": true
+    },
+    {
+      "path": "scripts/render-project-statistics.ps1",
+      "executable": false
+    },
+    {
+      "path": "scripts/init-stats.sh",
+      "executable": true
+    },
+    {
+      "path": "scripts/init-stats.ps1",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/managed-file-hardening.psm1",
+      "executable": false
+    },
+    {
+      "path": "scripts/check-homogeneity.sh",
+      "executable": true
+    },
+    {
+      "path": "scripts/check-homogeneity.ps1",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/hg-a11y.ps1",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/hg-a11y.sh",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/hg-bilingual.ps1",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/hg-bilingual.sh",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/hg-deps.ps1",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/hg-deps.sh",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/hg-forgejo.ps1",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/hg-forgejo.sh",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/hg-git-scope.sh",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/hg-hook.ps1",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/hg-hook.sh",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/hg-patch.ps1",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/hg-patch.sh",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/hg-scan.ps1",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/hg-scan.sh",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/hg-secrets.ps1",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/hg-secrets.sh",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/hg-speckit.ps1",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/hg-speckit.sh",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/hg-stats.ps1",
+      "executable": false
+    },
+    {
+      "path": "scripts/lib/hg-stats.sh",
+      "executable": false
+    },
+    {
+      "path": "scripts/config/brew-apps-registry.json",
+      "executable": false
+    },
+    {
+      "path": "scripts/config/winget-apps-registry.json",
+      "executable": false
+    },
+    {
+      "path": "scripts/config/vscode-extensions-registry.json",
+      "executable": false
+    },
+    {
+      "path": "scripts/config/required-cli-tools-registry.json",
+      "executable": false
+    },
+    {
+      "path": "scripts/config/npm-agent-cli-registry.json",
+      "executable": false
+    },
+    {
+      "path": "scripts/config/powershell-modules-registry.json",
+      "executable": false
+    },
+    {
+      "path": "scripts/config/PSScriptAnalyzerSettings.psd1",
+      "executable": false
+    },
+    {
+      "path": "scripts/config/spec-kit-governance-presets.json",
+      "executable": false
+    },
+    {
+      "path": "scripts/config/spec-kit-intake-review-governance-presets.json",
+      "executable": false
+    },
+    {
+      "path": "scripts/config/spec-kit-intake-authoring-governance-presets.json",
+      "executable": false
+    },
+    {
+      "path": "scripts/config/spec-kit-intake-sequencing-governance-presets.json",
+      "executable": false
+    },
+    {
+      "path": "scripts/config/spec-kit-model-routing-governance-presets.json",
+      "executable": false
+    },
+    {
+      "path": "scripts/config/spec-kit-secure-development-assurance-governance-presets.json",
+      "executable": false
+    },
+    {
+      "path": "scripts/config/spec-kit-project-statistics-governance-presets.json",
+      "executable": false
+    },
+    {
+      "path": "scripts/config/spec-kit-preset-profiles.json",
+      "executable": false
+    },
+    {
+      "path": "scripts/config/project-statistics.schema.json",
+      "executable": false
+    },
+    {
+      "path": ".specify/templates/spec-template.md",
+      "executable": false
+    },
+    {
+      "path": ".specify/templates/plan-template.md",
+      "executable": false
+    },
+    {
+      "path": ".specify/templates/tasks-template.md",
+      "executable": false
+    },
+    {
+      "path": ".specify/templates/agent-file-template.md",
+      "executable": false
+    },
+    {
+      "path": "scripts/templates/speckit-workflow-section.md",
+      "executable": false
+    },
+    {
+      "path": "scripts/templates/AGENTS.md.tmpl",
+      "executable": false
+    },
+    {
+      "path": "scripts/templates/CLAUDE.md.tmpl",
+      "executable": false
+    },
+    {
+      "path": "scripts/templates/GEMINI.md.tmpl",
+      "executable": false
+    },
+    {
+      "path": "scripts/templates/copilot-instructions.tmpl",
+      "executable": false
+    },
+    {
+      "path": "scripts/templates/project-statistics.config.json.tmpl",
+      "executable": false
+    },
+    {
+      "path": ".github/workflows/powershell-analysis.yml",
+      "executable": false
+    },
+    {
+      "path": "docs/man/maintain-agentic-brew-apps.1.md",
+      "executable": false
+    },
+    {
+      "path": "docs/man/maintain-agentic-winget-apps.1.md",
+      "executable": false
+    },
+    {
+      "path": "docs/man/maintain-powershell-modules.1.md",
+      "executable": false
+    },
+    {
+      "path": "docs/man/invoke-psscriptanalyzer.1.md",
+      "executable": false
+    },
+    {
+      "path": "docs/man/install-spec-kit-governance-presets.1.md",
+      "executable": false
+    },
+    {
+      "path": "docs/man/render-project-statistics.1.md",
+      "executable": false
+    },
+    {
+      "path": "docs/man/validate-documentation-impact.1.md",
+      "executable": false
+    },
+    {
+      "path": "docs/documentation-governance.md",
+      "executable": false
+    },
+    {
+      "path": "scripts/adapters/new-harnesses.ps1",
+      "executable": false
+    },
+    {
+      "path": "scripts/adapters/discover-sdk.mjs",
+      "executable": false
+    },
+    {
+      "path": "scripts/adapters/selection-policy.json",
+      "executable": false
+    },
+    {
+      "path": "scripts/tests/test-model-routing-installation.ps1",
+      "executable": false
+    },
+    {
+      "path": "scripts/adapters/invoke-harness-with-result.ps1",
+      "executable": false
+    }
+  ]
+}

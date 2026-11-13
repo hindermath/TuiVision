@@ -1292,6 +1292,14 @@ Fourteen published patches are recorded through real source and installed bindin
 
 Documentation Impact: UpdateRequired; [Wartungsnachweis / maintenance evidence](maintenance/shared-security-rollout-2026-11-13.md).
 
+### 2026-11-13 — Intake Authoring 0.3.14 / Intake-Authoring-Folgekorrektur
+
+DE: Die geprüfte Patch-Version 0.3.14 ergänzt den Sicherheitsrollout; Quellen- und Installationsbindungen sowie kompatible Nachweise bleiben getrennt nachvollziehbar. Keine neue Produktfunktion oder menschliche Sicherheitsabnahme.
+
+EN: Verified patch 0.3.14 supplements the security rollout; source, installation and compatible evidence remain separately traceable. No new product feature or human security acceptance.
+
+Documentation Impact: UpdateRequired; [Nachweis / evidence](maintenance/shared-security-rollout-2026-11-13.md).
+
 ## Gesamtstatistik / Overall Statistics
 
 <!-- project-statistics-v2:begin -->

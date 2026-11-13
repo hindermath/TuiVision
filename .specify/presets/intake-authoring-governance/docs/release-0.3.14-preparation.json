@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "presetId": "intake-authoring-governance",
+  "packageVersion": "0.3.14",
+  "historicalPublicationVersion": "0.3.9",
+  "candidate_status": "Prepared",
+  "release_status": "NotEstablishedAtPreparation",
+  "sourceCommit": "385af5cee7b22dd43ca10749b494d2071e555970",
+  "previousReleaseVersion": "0.3.13",
+  "externalPublicationEvidence": "https://github.com/hindermath/spec-kit-preset-intake-authoring-governance/releases/tag/v0.3.14",
+  "runtimeChanged": true,
+  "generatorSchemaChanged": false,
+  "changeKind": "StandaloneArchiveResolutionCompatibility",
+  "authorizationReference": "Thorsten Hindermann, 2026-11-13: implement security baseline and publish current presets, including controlled Level-0/Home/Level-2 rollout; MergeAndSync with formal-review-only Admin-Bypass.",
+  "preparedAt": "2026-11-13T14:00:49.8288860+01:00",
+  "metadataCorrectionApproved": true,
+  "runtimeChangeApproved": true
+}

@@ -1,8 +1,8 @@
 # User guide: intake-authoring-governance
 
-<!-- current-package: 0.3.13 -->
+<!-- current-package: 0.3.14 -->
 
-Package identity: **v0.3.13**. [Preparation and publication boundary](release-0.3.13-validation.md). The release page, not this preparation snapshot, proves publication and the external archive hash. Earlier version records below remain historical.
+Package identity: **v0.3.14**. [Preparation and publication boundary](release-0.3.14-validation.md). The release page, not this preparation snapshot, proves publication and the external archive hash. Earlier version records below remain historical.
 
 [Release-Abschluss und Verbesserungsprofil / Publication closeout and improvement profile](release-0.3.9-validation.md).
 

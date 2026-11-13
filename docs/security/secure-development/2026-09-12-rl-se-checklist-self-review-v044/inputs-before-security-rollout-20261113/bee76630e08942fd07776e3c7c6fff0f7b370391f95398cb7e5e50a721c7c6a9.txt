@@ -1,0 +1,138 @@
+schema_version: "1.0"
+
+preset:
+  id: "autonomous-run-governance"
+  name: "Autonomous Run Governance"
+  version: "0.4.4"
+  description: "Adds permission-bounded autonomous delivery and an optional policy-driven intake-review gate before feature creation."
+  author: "Thorsten Hindermann"
+  repository: "https://github.com/hindermath/spec-kit-preset-autonomous-run-governance"
+  license: "MIT"
+
+requires:
+  speckit_version: ">=0.8.3"
+
+provides:
+  templates:
+    - type: "template"
+      name: "autonomous-run-governance-model-routing"
+      file: "model-routing.json"
+      description: "Agent-neutral command-to-role routing contract"
+
+    - type: "template"
+      name: "constitution-template"
+      file: "templates/constitution-addendum.md"
+      description: "Append autonomous delivery authority and safety governance"
+      strategy: "append"
+
+    - type: "template"
+      name: "spec-template"
+      file: "templates/spec-addendum.md"
+      description: "Append autonomous-run applicability and scope boundaries"
+      strategy: "append"
+
+    - type: "template"
+      name: "plan-template"
+      file: "templates/plan-addendum.md"
+      description: "Append convergence, evidence, validation, and closeout planning"
+      strategy: "append"
+
+    - type: "template"
+      name: "tasks-template"
+      file: "templates/tasks-addendum.md"
+      description: "Append dependency-ordered autonomous delivery tasks"
+      strategy: "append"
+
+    - type: "template"
+      name: "autonomous-run-agent-guidance-addendum-template"
+      file: "templates/agent-file-addendum.md"
+      description: "Standalone portable autonomous-run agent guidance addendum"
+
+    - type: "template"
+      name: "autonomous-runbook-template"
+      file: "templates/autonomous-runbook-template.md"
+      description: "Starter runbook for permission-bounded autonomous Spec Kit delivery"
+
+    - type: "template"
+      name: "autonomous-run-evidence-template"
+      file: "templates/autonomous-run-evidence-template.md"
+      description: "Starter evidence ledger for convergence, validation, and delivery"
+
+    - type: "template"
+      name: "autonomous-run-state-template"
+      file: "templates/autonomous-run-state-template.json"
+      description: "Machine-readable lifecycle checkpoint for stop and resume"
+
+    - type: "template"
+      name: "autonomous-runner-profiles-template"
+      file: "templates/autonomous-runner-profiles-template.json"
+      description: "Local fail-closed agent and model bindings for autonomous phases"
+
+    - type: "template"
+      name: "autonomous-run-gate-requirements-template"
+      file: "templates/autonomous-run-gate-requirements-template.json"
+      description: "Machine-readable acceptance gates declared before delivery"
+
+    - type: "template"
+      name: "autonomous-run-gate-evidence-template"
+      file: "templates/autonomous-run-gate-evidence-template.json"
+      description: "Machine-readable exact-head execution evidence for acceptance gates"
+
+    - type: "template"
+      name: "autonomous-phase-result-template"
+      file: "templates/autonomous-phase-result-template.json"
+      description: "Machine-readable semantic completion result for one routed phase"
+
+    - type: "template"
+      name: "autonomous-run-retrospective-template"
+      file: "templates/autonomous-run-retrospective-template.md"
+      description: "Starter retrospective for portable workflow learning"
+
+    - type: "template"
+      name: "autonomous-run-readiness-checklist-template"
+      file: "templates/autonomous-run-readiness-checklist-template.md"
+      description: "Readiness checklist for local, PR, and merge-and-sync modes"
+
+    - type: "template"
+      name: "autonomous-run-field-validation-summary"
+      file: "templates/field-validation-summary.md"
+      description: "Field validation summary for preset adoption and patch review"
+
+    - type: "command"
+      name: "speckit.autonomous"
+      file: "commands/speckit.autonomous.md"
+      description: "Execute a complete Spec Kit feature under explicit delivery authority"
+
+    - type: "command"
+      name: "speckit.autonomous-retrospective"
+      file: "commands/speckit.autonomous-retrospective.md"
+      description: "Extract and classify reusable learning from a completed autonomous run"
+
+    - type: "command"
+      name: "speckit.autonomous-status"
+      file: "commands/speckit.autonomous-status.md"
+      description: "Inspect an autonomous run without changing repository state"
+
+    - type: "command"
+      name: "speckit.autonomous-stop"
+      file: "commands/speckit.autonomous-stop.md"
+      description: "Gracefully pause an autonomous run at a safe boundary"
+
+    - type: "command"
+      name: "speckit.autonomous-resume"
+      file: "commands/speckit.autonomous-resume.md"
+      description: "Resume a paused or interrupted autonomous run after audit"
+
+tags:
+  - "autonomous"
+  - "governance"
+  - "spec-kit"
+  - "sdd"
+  - "evidence"
+  - "convergence"
+  - "permissions"
+  - "resume"
+  - "stop"
+  - "checkpoint"
+  - "closeout"
+  - "retrospective"

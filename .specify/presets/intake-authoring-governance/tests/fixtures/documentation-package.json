@@ -1,6 +1,6 @@
 {
   "id": "intake-authoring-governance",
-  "version": "0.3.13",
+  "version": "0.3.14",
   "priority": 64,
   "readers": [
     "docs/user-guide.md",

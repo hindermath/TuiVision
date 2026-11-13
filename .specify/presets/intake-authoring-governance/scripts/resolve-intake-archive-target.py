@@ -39,19 +39,43 @@ def resolve_target(receipt_path: Path, repo: Path, source_index: int | None = No
         fail("RIG018", "historical receipt has an incompatible series binding")
     expected = reference.get("normalizedSha256")
     matches = []
+    declared = set()
+    manifest_reference_present = False
     for target in manifest["orderedTargets"]:
         candidate = (repo / target["path"]).resolve()
+        # A declared member must satisfy its own manifest binding; discovery
+        # below must not bypass an incorrect hash or lifecycle in that binding.
+        declared.add(candidate)
         # DE: Name und Hash verhindern, dass ein fremdes Archivdokument als Nachfolger gilt.
         # EN: Name and hash prevent an unrelated archive document from becoming a successor.
         same_name = candidate.name == original_path.name or (
             candidate.name.startswith(original_path.stem + ".")
             and candidate.suffix == original_path.suffix
         )
+        manifest_reference_present = manifest_reference_present or same_name
         if (target["status"] == "Completed" and candidate.is_relative_to(archive)
                 and candidate.is_relative_to(repo) and same_name
                 and target["normalizedSha256"] == expected
                 and contract["normalized_sha256"](candidate) == expected):
             matches.append(target["path"])
+    if standalone and not manifest_reference_present:
+        # Standalone intake completions are deliberately absent from a series.
+        # Only find their unchanged bytes in the configured archive; keep the
+        # same physical containment, name and unique-match proof as for members.
+        for archived in archive.rglob("*"):
+            candidate = archived.resolve()
+            if (candidate in declared or not candidate.is_relative_to(archive)
+                    or not candidate.is_relative_to(repo)
+                    or contract["belongs_to_nested_repository"](candidate, repo)):
+                continue
+            if not candidate.is_file():
+                continue
+            same_name = candidate.name == original_path.name or (
+                candidate.name.startswith(original_path.stem + ".")
+                and candidate.suffix == original_path.suffix
+            )
+            if same_name and contract["normalized_sha256"](candidate) == expected:
+                matches.append(archived.relative_to(repo).as_posix())
     if len(matches) != 1:
         fail("RIG018", "missing receipt target requires exactly one completed archive successor")
     return matches[0]

@@ -4,8 +4,8 @@
   "baselineCommit": "a0217188166fb5eba61875891f0119bd340dda9f",
   "observedOn": "2026-11-13",
   "profile": "project-statistics-fourteen-governance-presets",
-  "matrixSourceCommit": "1e14f17038a34da9893d2a8e3224baef75d45b94",
-  "matrixSha256": "06bc1beaeeb71912cb1b116fc81a99b053024fc8a1282c9d89893c8ca4d6b0e5",
+  "matrixSourceCommit": "087f4b4c38deebeef51353d9624fc25583d8014a",
+  "matrixSha256": "c290329643069ae697242786695b00bd67a8218c8c70373da7bfe1bebd23bc27",
   "preset": {
     "id": "project-statistics-governance",
     "version": "0.1.4",
