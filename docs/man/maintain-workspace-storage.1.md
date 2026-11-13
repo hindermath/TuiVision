@@ -93,6 +93,18 @@ reported but never handled by generic deletion rules.*
   ermittelt und als existierender Unix-Socket verifiziert. TCP-Fallbacks und
   gespeicherte Hostpfade sind unzulässig.
 
+Für npm wird das tatsächlich konfigurierte Cache-Verzeichnis einschließlich
+`.npmrc` schreibfrei ermittelt. Es muss ein eigenes Verzeichnis innerhalb des
+verifizierten Home sein und darf nicht selbst ein Symlink sein. Genau dieser
+geprüfte Pfad wird für `verify` und `clean` an npm gebunden. Ist er nicht
+prüfbar, bleibt die npm-Wartung aus und der Bericht zeigt eine Warnung.
+
+*For npm, the effective cache directory, including `.npmrc` settings, is read
+without changing it. It must be a separate directory inside the verified home
+and must not itself be a symlink. The verified path is bound to both `verify`
+and `clean`. If it cannot be verified, npm maintenance is skipped and the
+report shows a warning.*
+
 Cargo-, Maven-, Gradle- und Swift-Dependency-Stores bleiben in Version 1
 unberührt.
 

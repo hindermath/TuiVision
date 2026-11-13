@@ -681,18 +681,32 @@ def handle_cache_providers(
 ) -> list[dict]:
     items: list[dict] = []
     npm = shutil.which("npm")
-    npm_cache = pathlib.Path(os.environ.get("npm_config_cache", home / ".npm"))
     npm_cache_safe = False
-    try:
-        npm_cache.resolve(strict=False).relative_to(home.resolve(strict=True))
-        npm_cache_safe = not npm_cache.is_symlink()
-    except ValueError:
-        npm_cache_safe = False
-    npm_size, _ = cache_path_metrics([npm_cache]) if npm_cache_safe else (0, 0)
+    resolved_cache: pathlib.Path | None = None
+    if npm:
+        # Read npm's effective configuration, including project/user .npmrc,
+        # without running project hooks or writing logs in preview modes.
+        cache_config = run_command(
+            [npm, "--logs-max=0", "--loglevel=silent", "--ignore-scripts=true",
+             "--ignore-extension=true", "config", "get", "cache"],
+            timeout=30,
+        )
+        cache_lines = cache_config.stdout.splitlines() if cache_config.returncode == 0 else []
+        if len(cache_lines) == 1 and cache_lines[0] == cache_lines[0].strip():
+            npm_cache = pathlib.Path(cache_lines[0])
+            if npm_cache.is_absolute():
+                try:
+                    resolved_cache = npm_cache.resolve(strict=False)
+                    resolved_home = home.resolve(strict=True)
+                    resolved_cache.relative_to(resolved_home)
+                    npm_cache_safe = resolved_cache != resolved_home and not npm_cache.is_symlink()
+                except (OSError, ValueError):
+                    npm_cache_safe = False
+    npm_size, _ = cache_path_metrics([resolved_cache]) if npm_cache_safe and resolved_cache else (0, 0)
     if npm and not npm_cache_safe:
         item = provider_item("npm", "cache-maintenance", 0, mode)
         item["status"] = "ProviderUnavailable"
-        item["evidence"] = "npm cache path is outside the verified home or is a symlink"
+        item["evidence"] = "npm cache configuration is unavailable or its path is not a separate, verified in-home directory"
         items.append(item)
     elif npm and npm_size:
         action = "cache-clean" if pressure_mode or profile == "deep" else "cache-verify"
@@ -703,7 +717,10 @@ def handle_cache_providers(
             # unrelated Node applications, so Windows remains conservative.
             npm_busy_names.add("node")
         if mode == "update" and not provider_is_busy(processes, npm_busy_names):
-            command = [npm, "cache", "clean", "--force"] if action == "cache-clean" else [npm, "cache", "verify"]
+            # Bind npm to the path we measured: config must not redirect the
+            # later destructive operation to a different cache directory.
+            command = [npm, "--cache", str(resolved_cache), "cache"]
+            command += ["clean", "--force"] if action == "cache-clean" else ["verify"]
             execute_provider(item, command)
         elif mode == "update":
             item["status"] = (

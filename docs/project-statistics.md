@@ -1324,6 +1324,19 @@ EN: The maintenance adapters, package binding and project tests preserve exact n
 
 Documentation Impact: UpdateRequired; [Nachweis / evidence](maintenance/shared-security-rollout-2026-11-13.md).
 
++### 2026-11-13 — npm-Cachepfad gebunden / Bound npm cache path
+
+DE: Die verteilte Speicherwartung liest den tatsächlich konfigurierten
+npm-Cachepfad, prüft ihn innerhalb des Home-Verzeichnisses und bindet genau
+diesen Pfad an verify und clean. Eine abweichende Projekt-.npmrc kann die
+spätere Bereinigung nicht mehr umleiten. Kein Spec-Kit-Lauf wird ergänzt.
+
+EN: Distributed storage maintenance reads npm's effective cache path, checks
+it inside home, and binds that exact path to verify and clean. A different
+project .npmrc path can no longer redirect the later cleanup. No Spec Kit run
+is added.
+
+Documentation Impact: UpdateRequired; [Nachweis / evidence](documentation-impact/npm-cache-boundary-2026-11-13.json).
 ## Gesamtstatistik / Overall Statistics
 
 <!-- project-statistics-v2:begin -->

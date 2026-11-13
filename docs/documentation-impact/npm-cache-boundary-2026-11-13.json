@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "1.1",
+  "feature": "npm-cache-boundary-2026-11-13",
+  "entries": [
+    {
+      "changeId": "CHG001",
+      "scope": "Bind shared storage maintenance to the verified effective npm cache path",
+      "decision": "UpdateRequired",
+      "rationale": "The Level-0 security fix is installed with its operator documentation and focused regression tests.",
+      "documents": [
+        "docs/man/maintain-workspace-storage.1.md",
+        "docs/project-statistics.md"
+      ],
+      "owner": "Thorsten Hindermann",
+      "audiences": ["Repository operators", "Maintainers", "Security reviewers"],
+      "readerPaths": ["Storage cleanup manpage", "Project statistics"],
+      "canonicalSource": "hindermath/home-baseline scripts/lib/workspace_storage_maintenance.py",
+      "navigationImpact": "The existing storage manpage remains the operator entry point.",
+      "documentClass": "ActiveSemantic",
+      "languageStrategy": "German first and equivalent English in the bilingual manpage and ledger.",
+      "languagePartners": [],
+      "platformAndExampleProof": "The focused npm boundary tests and owning storage test module pass locally; PR CI must confirm supported platforms.",
+      "distributionClass": "sourceOnly",
+      "homeSyncRequired": false,
+      "evidence": "scripts/tests/test_workspace_storage_maintenance.py",
+      "risk": "An .npmrc could redirect npm cleanup away from the cache path checked by storage maintenance.",
+      "criticality": "Security",
+      "reevaluationTrigger": "npm cache configuration precedence or storage provider dispatch changes."
+    }
+  ]
+}

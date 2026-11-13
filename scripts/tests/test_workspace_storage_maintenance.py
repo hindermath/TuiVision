@@ -74,6 +74,92 @@ def storage_wrapper_command(
 
 
 class WorkspaceStorageMaintenanceTests(unittest.TestCase):
+    def test_npm_cleanup_binds_the_verified_custom_cache_path(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            home = pathlib.Path(temporary) / "home"
+            cache = home / "custom-npm-cache"
+            cache.mkdir(parents=True)
+            (cache / "entry").write_text("cache data", encoding="utf-8")
+            for profile, action, suffix in (
+                ("deep", "cache-clean", ["clean", "--force"]),
+                ("safe", "cache-verify", ["verify"]),
+            ):
+                with (
+                    self.subTest(profile=profile),
+                    mock.patch.object(storage.shutil, "which", side_effect=lambda name: "npm" if name == "npm" else None),
+                    mock.patch.object(storage, "run_command", return_value=subprocess.CompletedProcess(
+                        ["npm", "config", "get", "cache"], 0, str(cache) + "\n", ""
+                    )),
+                    mock.patch.object(storage, "execute_provider") as execute,
+                ):
+                    items = storage.handle_cache_providers(
+                        home, mode="update", profile=profile, pressure_mode=False,
+                        retention_days=30, processes=set(),
+                    )
+                    self.assertEqual(action, items[0]["action"])
+                    self.assertEqual(
+                        ["npm", "--cache", str(cache.resolve()), "cache", *suffix],
+                        execute.call_args.args[1],
+                    )
+
+    def test_npm_cleanup_rejects_home_or_outside_as_cache_root(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            home = pathlib.Path(temporary) / "home"
+            home.mkdir()
+            (home / "personal-file").write_text("keep", encoding="utf-8")
+            outside = pathlib.Path(temporary) / "outside"
+            outside.mkdir()
+            (outside / "personal-file").write_text("keep", encoding="utf-8")
+            for candidate in (home, outside):
+                with (
+                    self.subTest(candidate=candidate),
+                    mock.patch.object(storage.shutil, "which", side_effect=lambda name: "npm" if name == "npm" else None),
+                    mock.patch.object(storage, "run_command", return_value=subprocess.CompletedProcess(
+                        ["npm", "config", "get", "cache"], 0, str(candidate) + "\n", ""
+                    )),
+                    mock.patch.object(storage, "execute_provider") as execute,
+                ):
+                    items = storage.handle_cache_providers(
+                        home, mode="update", profile="deep", pressure_mode=False,
+                        retention_days=30, processes=set(),
+                    )
+                    self.assertEqual("ProviderUnavailable", items[0]["status"])
+                    execute.assert_not_called()
+
+    @unittest.skipUnless(shutil.which("npm"), "npm is unavailable")
+    def test_npm_cleanup_uses_project_configured_cache_inside_home(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = pathlib.Path(temporary)
+            home = root / "home"
+            cache = home / "custom-npm-cache"
+            cache.mkdir(parents=True)
+            (cache / "entry").write_text("cache data", encoding="utf-8")
+            project = root / "project"
+            project.mkdir()
+            (project / "package.json").write_text("{}\n", encoding="utf-8")
+            (project / ".npmrc").write_text(f"cache={cache}\n", encoding="utf-8")
+            environment = {key: value for key, value in os.environ.items() if key.lower() != "npm_config_cache"}
+            environment["NPM_CONFIG_USERCONFIG"] = str(root / "empty-user.npmrc")
+            previous_directory = pathlib.Path.cwd()
+            try:
+                os.chdir(project)
+                with (
+                    mock.patch.dict(os.environ, environment, clear=True),
+                    mock.patch.object(storage.shutil, "which", side_effect=lambda name: "npm" if name == "npm" else None),
+                    mock.patch.object(storage, "execute_provider") as execute,
+                ):
+                    items = storage.handle_cache_providers(
+                        home, mode="update", profile="deep", pressure_mode=False,
+                        retention_days=30, processes=set(),
+                    )
+            finally:
+                os.chdir(previous_directory)
+            self.assertEqual("cache-clean", items[0]["action"])
+            self.assertEqual(
+                ["npm", "--cache", str(cache.resolve()), "cache", "clean", "--force"],
+                execute.call_args.args[1],
+            )
+
     def test_policy_classifies_curated_non_msl_adapters(self) -> None:
         policy = json.loads(POLICY_PATH.read_text(encoding="utf-8"))
         adapters = storage.policy_adapter_map(policy)
