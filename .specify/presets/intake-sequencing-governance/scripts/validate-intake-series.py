@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+from datetime import datetime, timezone
 import hashlib
 import json
 import re
@@ -77,8 +78,24 @@ def text(obj: dict, key: str, code: str) -> str:
 
 
 def relative_path(value: str) -> bool:
+    # Receipts are portable across hosts; a backslash is a separator on
+    # Windows even when PurePosixPath treats it as an ordinary character.
+    if "\\" in value or re.match(r"^[A-Za-z]:", value):
+        return False
     candidate = PurePosixPath(value)
     return not candidate.is_absolute() and ".." not in candidate.parts and value != "."
+
+
+def repository_file(path: Path, repo: Path, code: str) -> Path:
+    # Resolve symlinks before reading bytes; lexical relative paths alone do not
+    # keep target and receipt evidence inside the repository.
+    try:
+        resolved = path.resolve(strict=True)
+    except (OSError, RuntimeError):
+        fail(code, f"evidence missing: {path}")
+    if not resolved.is_relative_to(repo) or not resolved.is_file():
+        fail(code, f"evidence resolves outside repository or is not a file: {path}")
+    return resolved
 
 
 def valid_uuid(value: str) -> bool:
@@ -88,7 +105,7 @@ def valid_uuid(value: str) -> bool:
         return False
 
 
-def validate_manifest(path: Path, repo: Path) -> tuple[dict, dict]:
+def validate_manifest(path: Path, repo: Path, *, archived: bool = False) -> tuple[dict, dict]:
     data = load_json(path)
     if data.get("schemaVersion") != "1.0" or data.get("documentType") != "IntakeSeriesManifest":
         fail("ISG001", "manifest schema or document type is invalid")
@@ -135,16 +152,21 @@ def validate_manifest(path: Path, repo: Path) -> tuple[dict, dict]:
         expected_hash = text(target, "normalizedSha256", "ISG004")
         if not re.fullmatch(r"[0-9a-f]{64}", expected_hash):
             fail("ISG004", f"invalid target hash: {target_path}")
-        full_path = repo / target_path
-        if not full_path.is_file() or digest(full_path) != expected_hash:
-            fail("ISG004", f"target missing or hash drift: {target_path}")
+        if not archived:
+            full_path = repository_file(repo / target_path, repo, "ISG004")
+            if not full_path.is_file() or digest(full_path) != expected_hash:
+                fail("ISG004", f"target missing or hash drift: {target_path}")
         target_status = text(target, "status", "ISG009")
         if target_status not in TARGET_STATES:
             fail("ISG009", f"unknown target status: {target_status}")
         paths.append(target_path)
         target_states[target_path] = target_status
 
-    if not isinstance(roots, list) or len(roots) != len(set(roots)):
+    if status == "Completed" and any(state != "Completed" for state in target_states.values()):
+        fail("ISG009", "Completed series requires every target to be Completed")
+
+    if (not isinstance(roots, list) or any(not isinstance(root, str) for root in roots)
+            or len(roots) != len(set(roots))):
         fail("ISG008", "roots must be a unique string array")
     if any(not isinstance(root, str) or root not in paths for root in roots):
         fail("ISG008", "roots contain an unknown target")
@@ -240,6 +262,65 @@ def validate_manifest(path: Path, repo: Path) -> tuple[dict, dict]:
     return data, summary
 
 
+def validate_archived_predecessor(
+    supersedes: dict, repo: Path, series_id: str, seen_ids: set[str]
+) -> None:
+    while True:
+        if not isinstance(supersedes, dict):
+            fail("ISR006", "archived predecessor chain is invalid")
+        for field in ("receiptPath", "receiptNormalizedSha256", "manifestArchivePath", "manifestArchiveSha256"):
+            value = text(supersedes, field, "ISR006")
+            if field.endswith("Path") and not relative_path(value):
+                fail("ISR006", f"{field} must be repository-relative")
+            if field.endswith("Sha256") and not re.fullmatch(r"[0-9a-f]{64}", value):
+                fail("ISR006", f"{field} must be a SHA-256 value")
+        archive_paths = {}
+        for field in ("receiptPath", "manifestArchivePath"):
+            evidence_path = repository_file(repo / supersedes[field], repo, "ISR006")
+            hash_field = "receiptNormalizedSha256" if field == "receiptPath" else "manifestArchiveSha256"
+            if digest(evidence_path) != supersedes[hash_field]:
+                fail("ISR006", f"archive evidence drifted: {field}")
+            archive_paths[field] = evidence_path
+        try:
+            prior_receipt = load_json(archive_paths["receiptPath"])
+            prior_id = text(prior_receipt, "receiptId", "ISR006")
+            if (prior_receipt.get("schemaVersion") != "1.0"
+                    or prior_receipt.get("documentType") != "IntakeSeriesReceipt"
+                    or not valid_uuid(prior_id) or prior_id in seen_ids
+                    or prior_receipt.get("seriesId") != series_id):
+                fail("ISR006", "archived receipt identity is invalid")
+            seen_ids.add(prior_id)
+            operation = prior_receipt.get("operation")
+            if not isinstance(operation, dict):
+                fail("ISR006", "archived operation is missing")
+            operation_id = text(operation, "operationId", "ISR006")
+            if (not valid_uuid(operation_id)
+                    or text(operation, "type", "ISR006") not in {"Create", "Update", "LegacyAdoption"}):
+                fail("ISR006", "archived operation identity or type is invalid")
+            text(operation, "authorityEvidence", "ISR006")
+            if text(prior_receipt, "status", "ISR006") not in {"Ready", "NeedsClarification"}:
+                fail("ISR006", "archived receipt status is invalid")
+            if not isinstance(prior_receipt.get("supersedes"), dict):
+                fail("ISR006", "archived supersedes must be an object")
+            prior_evidence = prior_receipt.get("manifest")
+            if not isinstance(prior_evidence, dict):
+                fail("ISR006", "archived manifest evidence is missing")
+            prior_path = text(prior_evidence, "path", "ISR006")
+            if (not relative_path(prior_path)
+                    or text(prior_evidence, "normalizedSha256", "ISR006") != supersedes["manifestArchiveSha256"]):
+                fail("ISR006", "archived receipt does not bind its manifest")
+            # Historical targets may have moved; inspect the archived graph
+            # without requiring the prior live target bytes.
+            prior_manifest, _ = validate_manifest(archive_paths["manifestArchivePath"], repo, archived=True)
+        except ValidationError as exc:
+            fail("ISR006", f"archived predecessor is invalid: {exc}")
+        if prior_manifest.get("seriesId") != series_id:
+            fail("ISR006", "archived manifest belongs to another series")
+        if operation["type"] != "Update":
+            return
+        supersedes = prior_receipt.get("supersedes")
+
+
 def validate_receipt(path: Path, repo: Path) -> dict:
     data = load_json(path)
     if data.get("schemaVersion") != "1.0" or data.get("documentType") != "IntakeSeriesReceipt":
@@ -265,7 +346,7 @@ def validate_receipt(path: Path, repo: Path) -> dict:
     expected_hash = text(manifest, "normalizedSha256", "ISR004")
     if not relative_path(manifest_path) or not re.fullmatch(r"[0-9a-f]{64}", expected_hash):
         fail("ISR004", "manifest evidence is invalid")
-    full_manifest = repo / manifest_path
+    full_manifest = repository_file(repo / manifest_path, repo, "ISR004")
     if not full_manifest.is_file() or digest(full_manifest) != expected_hash:
         fail("ISR004", "manifest missing or hash drift")
     manifest_data, summary = validate_manifest(full_manifest, repo)
@@ -278,28 +359,37 @@ def validate_receipt(path: Path, repo: Path) -> dict:
     if not isinstance(supersedes, dict):
         fail("ISR006", "supersedes must be an object")
     if operation_type in {"Update", "Delete"}:
-        for field in ("receiptPath", "receiptNormalizedSha256", "manifestArchivePath", "manifestArchiveSha256"):
-            value = text(supersedes, field, "ISR006")
-            if field.endswith("Path") and not relative_path(value):
-                fail("ISR006", f"{field} must be repository-relative")
-            if field.endswith("Sha256") and not re.fullmatch(r"[0-9a-f]{64}", value):
-                fail("ISR006", f"{field} must be a SHA-256 value")
-        for field in ("receiptPath", "manifestArchivePath"):
-            evidence_path = repo / supersedes[field]
-            hash_field = "receiptNormalizedSha256" if field == "receiptPath" else "manifestArchiveSha256"
-            if not evidence_path.is_file() or digest(evidence_path) != supersedes[hash_field]:
-                fail("ISR006", f"archive evidence missing or drifted: {field}")
+        validate_archived_predecessor(supersedes, repo, series_id, {receipt_id})
     tombstone = data.get("tombstone")
     if operation_type == "Delete":
+        if status != "Deleted" or manifest_data.get("status") != "Deleted":
+            fail("ISR007", "Delete receipt and current manifest must both be Deleted")
         if not isinstance(tombstone, dict):
             fail("ISR007", "Delete requires tombstone evidence")
         tombstone_path = text(tombstone, "path", "ISR007")
         tombstone_hash = text(tombstone, "normalizedSha256", "ISR007")
         if not relative_path(tombstone_path) or not re.fullmatch(r"[0-9a-f]{64}", tombstone_hash):
             fail("ISR007", "tombstone evidence is invalid")
-        full_tombstone = repo / tombstone_path
+        full_tombstone = repository_file(repo / tombstone_path, repo, "ISR007")
         if not full_tombstone.is_file() or digest(full_tombstone) != tombstone_hash:
             fail("ISR007", "tombstone missing or hash drift")
+        tombstone_data = load_json(full_tombstone)
+        try:
+            deleted_at = datetime.fromisoformat(text(tombstone_data, "deletedAt", "ISR007").replace("Z", "+00:00"))
+        except ValueError:
+            fail("ISR007", "tombstone deletedAt must be an ISO-8601 time")
+        if (tombstone_data.get("schemaVersion") != "1.0"
+                or tombstone_data.get("documentType") != "IntakeSeriesTombstone"
+                or tombstone_data.get("seriesId") != series_id
+                or tombstone_data.get("archiveManifestPath") != supersedes["manifestArchivePath"]
+                or tombstone_data.get("archiveManifestSha256") != supersedes["manifestArchiveSha256"]
+                or tombstone_data.get("intakeDocumentsDeleted") is not False
+                or deleted_at.tzinfo is None or deleted_at.utcoffset() != timezone.utc.utcoffset(deleted_at)
+                or not isinstance(tombstone_data.get("authorityEvidence"), str)
+                or not tombstone_data["authorityEvidence"].strip()
+                or not isinstance(tombstone_data.get("reason"), str)
+                or not tombstone_data["reason"].strip()):
+            fail("ISR007", "tombstone is not bound to this deleted series and archive")
     return {"receiptId": receipt_id, **summary}
 
 

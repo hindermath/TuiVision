@@ -13,6 +13,7 @@ import pathlib
 import random
 import re
 import shutil
+import stat
 import subprocess
 import sys
 import tempfile
@@ -45,6 +46,7 @@ BLOCKING_STATES = {
     "BRANCH_MISMATCH",
     "MISSING_UPSTREAM",
     "UNAVAILABLE",
+    "HOST_GIT_TRANSPORT_BLOCKED",
 }
 
 
@@ -116,90 +118,19 @@ def is_transient_git_failure(detail: str) -> bool:
     )
 
 
-def delegated_network_environment() -> dict[str, str]:
-    """Keep host authentication while removing repository-routing overrides."""
-    blocked = {
-        "GIT_DIR", "GIT_WORK_TREE", "GIT_COMMON_DIR", "GIT_INDEX_FILE",
-        "GIT_OBJECT_DIRECTORY", "GIT_ALTERNATE_OBJECT_DIRECTORIES", "GIT_NAMESPACE",
-        "GIT_CEILING_DIRECTORIES", "GIT_DISCOVERY_ACROSS_FILESYSTEM", "GIT_CONFIG_COUNT",
-    }
-    return {
-        key: value for key, value in os.environ.items()
-        if key not in blocked
-        and re.fullmatch(r"GIT_CONFIG_(?:KEY|VALUE)_\d+", key) is None
-    }
-
-
 def run_git_network(
-    repository: pathlib.Path | None, *arguments: str, trusted_remote: str | None = None
+    repository: pathlib.Path | None, *arguments: str
 ) -> tuple[subprocess.CompletedProcess[str], int, int]:
+    if (
+        repository is not None
+        and EXECUTION_CONTEXTS is not None
+        and EXECUTION_CONTEXTS.mapping(repository)
+    ):
+        raise ContractError(
+            "Host Git network transport is blocked for sandbox-bound repositories"
+        )
     attempts = max(1, min(10, int(os.environ.get("HB_GIT_RETRY_ATTEMPTS", "3"))))
     timeout = max(5, min(3600, int(os.environ.get("HB_GIT_TIMEOUT_SECONDS", "300"))))
-    if trusted_remote is not None:
-        if repository is None or EXECUTION_CONTEXTS is None:
-            raise ContractError("delegated network operation requires an execution context")
-        allowed = {
-            ("fetch", "--prune"),
-            ("ls-remote", "--symref", "origin", "HEAD"),
-        }
-        if arguments not in allowed:
-            raise ContractError("delegated host network operation is outside the transfer contract")
-        result: subprocess.CompletedProcess[str] | None = None
-        started = time.monotonic()
-        for attempt in range(1, attempts + 1):
-            with tempfile.TemporaryDirectory(prefix="hb-git-network-") as temporary:
-                temporary_path = pathlib.Path(temporary)
-                environment = delegated_network_environment()
-                if arguments[0] == "ls-remote":
-                    command = [
-                        "git", "-c", "protocol.ext.allow=never", "ls-remote",
-                        "--symref", "--", trusted_remote, "HEAD",
-                    ]
-                    result = subprocess.run(
-                        command, text=True, capture_output=True, check=False,
-                        timeout=timeout, env=environment,
-                    )
-                else:
-                    mirror = temporary_path / "mirror.git"
-                    initialized = subprocess.run(
-                        ["git", "init", "--bare", "-q", str(mirror)],
-                        text=True, capture_output=True, check=False, timeout=30,
-                        env=environment,
-                    )
-                    if initialized.returncode:
-                        return initialized, attempt, int((time.monotonic() - started) * 1000)
-                    command = [
-                        "git", "-c", "core.hooksPath=/dev/null", "-c", "protocol.ext.allow=never",
-                        "-C", str(mirror), "fetch", "--prune", "--no-recurse-submodules", "--",
-                        trusted_remote, "+refs/heads/*:refs/heads/*",
-                    ]
-                    result = subprocess.run(
-                        command, text=True, capture_output=True, check=False,
-                        timeout=timeout, env=environment,
-                    )
-                    if result.returncode == 0:
-                        bundle = temporary_path / "fetch.bundle"
-                        bundled = subprocess.run(
-                            ["git", "-C", str(mirror), "bundle", "create", str(bundle), "--all"],
-                            text=True, capture_output=True, check=False, timeout=timeout,
-                            env=environment,
-                        )
-                        if bundled.returncode:
-                            return bundled, attempt, int((time.monotonic() - started) * 1000)
-                        bundle_hash = hashlib.sha256()
-                        with bundle.open("rb") as stream:
-                            for chunk in iter(lambda: stream.read(1024 * 1024), b""):
-                                bundle_hash.update(chunk)
-                        digest = bundle_hash.hexdigest()
-                        result = EXECUTION_CONTEXTS.import_bundle(repository, bundle, digest)
-                detail = (result.stderr or result.stdout).strip()
-                if result.returncode == 0 or attempt == attempts or not is_transient_git_failure(detail):
-                    return result, attempt, int((time.monotonic() - started) * 1000)
-                delay = min(3.0, 0.25 * (2 ** (attempt - 1)))
-                time.sleep(delay + random.uniform(0, delay / 4))
-        assert result is not None
-        return result, attempts, int((time.monotonic() - started) * 1000)
-
     command = ["git"]
     if repository is not None:
         command.extend(["-C", str(repository)])
@@ -281,7 +212,7 @@ def normalize_remote(remote: str) -> str:
 
 
 def validate_relative_path(raw: object) -> pathlib.PurePosixPath:
-    if not isinstance(raw, str) or not raw or "\\" in raw or raw.startswith("/"):
+    if not isinstance(raw, str) or not raw or "\\" in raw or ":" in raw or raw.startswith("/"):
         raise ContractError(f"unsafe HOME-relative path: {raw!r}")
     value = pathlib.PurePosixPath(raw)
     if any(part in {"", ".", ".."} for part in value.parts):
@@ -624,6 +555,156 @@ def _sync_stage_b_evidence_metadata(
         os.close(descriptor)
 
 
+def _path_component_is_untrusted_link(path: pathlib.Path) -> bool:
+    """Reject user-controlled links and every Windows reparse point."""
+    try:
+        metadata = os.lstat(path)
+    except FileNotFoundError:
+        return False
+    reparse = bool(
+        getattr(metadata, "st_file_attributes", 0)
+        & getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0)
+    )
+    linked = stat.S_ISLNK(metadata.st_mode) or reparse
+    if not linked:
+        return False
+    return os.name == "nt" or getattr(metadata, "st_uid", -1) != 0
+
+
+def _prepare_private_output_path(path: pathlib.Path) -> pathlib.Path:
+    """Create plain parents component-wise and reject linked output boundaries."""
+    absolute = path.absolute()
+    current = pathlib.Path(absolute.anchor)
+    for component in absolute.parts[1:-1]:
+        current /= component
+        if _path_component_is_untrusted_link(current):
+            raise ContractError(f"managed output path crosses an untrusted link: {absolute.name}")
+        if current.exists():
+            if not current.is_dir():
+                raise ContractError(f"managed output parent is not a directory: {absolute.name}")
+        else:
+            current.mkdir(mode=0o700)
+            if _path_component_is_untrusted_link(current) or not current.is_dir():
+                raise ContractError(f"managed output parent changed during creation: {absolute.name}")
+    if _path_component_is_untrusted_link(absolute):
+        raise ContractError(f"managed output leaf is an untrusted link: {absolute.name}")
+    if absolute.exists() and not absolute.is_file():
+        raise ContractError(f"managed output leaf is not a regular file: {absolute.name}")
+    return absolute
+
+
+def _open_private_parent_fd(path: pathlib.Path) -> tuple[pathlib.Path, int, str]:
+    """Open a POSIX output parent one component at a time without following user links."""
+    absolute = path.absolute()
+    if os.name == "nt":
+        raise ContractError("directory-relative output handles are unavailable on Windows")
+    flags = os.O_RDONLY | getattr(os, "O_DIRECTORY", 0) | getattr(os, "O_NOFOLLOW", 0)
+    descriptor = os.open(absolute.anchor, flags)
+    trusted_system_prefix = True
+    pending = list(absolute.parts[1:-1])
+    links_followed = 0
+    try:
+        while pending:
+            component = pending.pop(0)
+            try:
+                metadata = os.stat(component, dir_fd=descriptor, follow_symlinks=False)
+            except FileNotFoundError:
+                os.mkdir(component, mode=0o700, dir_fd=descriptor)
+                metadata = os.stat(component, dir_fd=descriptor, follow_symlinks=False)
+            if stat.S_ISLNK(metadata.st_mode):
+                if not trusted_system_prefix or getattr(metadata, "st_uid", -1) != 0:
+                    raise ContractError(f"managed output path crosses an untrusted link: {absolute.name}")
+                links_followed += 1
+                if links_followed > 16:
+                    raise ContractError(f"managed output path has too many links: {absolute.name}")
+                target = pathlib.Path(os.readlink(component, dir_fd=descriptor))
+                if target.is_absolute():
+                    os.close(descriptor)
+                    descriptor = os.open(target.anchor, flags)
+                    pending = list(target.parts[1:]) + pending
+                    trusted_system_prefix = True
+                else:
+                    pending = list(target.parts) + pending
+                continue
+            if not stat.S_ISDIR(metadata.st_mode):
+                raise ContractError(f"managed output parent is not a directory: {absolute.name}")
+            child = os.open(component, flags, dir_fd=descriptor)
+            os.close(descriptor)
+            descriptor = child
+            trusted_system_prefix = trusted_system_prefix and getattr(metadata, "st_uid", -1) == 0
+        try:
+            leaf = os.stat(absolute.name, dir_fd=descriptor, follow_symlinks=False)
+        except FileNotFoundError:
+            leaf = None
+        if leaf is not None and not stat.S_ISREG(leaf.st_mode):
+            raise ContractError(f"managed output leaf is not a regular file: {absolute.name}")
+        return absolute, descriptor, absolute.name
+    except Exception:
+        os.close(descriptor)
+        raise
+
+
+def _atomic_private_bytes(path: pathlib.Path, encoded: bytes, *, stage_b_acl: bool = False) -> str:
+    """Publish private bytes with an operation anchored to the validated parent."""
+    if os.name == "nt":
+        path = _prepare_private_output_path(path)
+        descriptor, temporary_name = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent)
+        temporary = pathlib.Path(temporary_name)
+        try:
+            if hasattr(os, "fchmod"):
+                os.fchmod(descriptor, 0o600)
+            if stage_b_acl:
+                # Windows fchmod does not establish an owner-only DACL. Apply
+                # the access boundary while the empty temporary file is still
+                # open and before any evidence byte is written.
+                _restrict_stage_b_evidence_permissions(temporary)
+            with os.fdopen(descriptor, "wb", closefd=True) as stream:
+                stream.write(encoded)
+                stream.flush()
+                os.fsync(stream.fileno())
+            path = _prepare_private_output_path(path)
+            os.replace(temporary, path)
+            _sync_stage_b_evidence_metadata(path)
+        finally:
+            temporary.unlink(missing_ok=True)
+        return normalized_file_sha256(path)
+
+    path, parent_fd, leaf = _open_private_parent_fd(path)
+    temporary = f".{leaf}.{uuid.uuid4().hex}.tmp"
+    temporary_created = False
+    try:
+        flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, "O_NOFOLLOW", 0)
+        descriptor = os.open(temporary, flags, 0o600, dir_fd=parent_fd)
+        temporary_created = True
+        with os.fdopen(descriptor, "wb", closefd=True) as stream:
+            stream.write(encoded)
+            stream.flush()
+            os.fsync(stream.fileno())
+        if stage_b_acl:
+            # The publication itself stays anchored to parent_fd. This call is
+            # retained for the platform ACL contract; on POSIX the descriptor
+            # was already created with the same owner-only mode.
+            _restrict_stage_b_evidence_permissions(path.parent / temporary)
+        os.replace(temporary, leaf, src_dir_fd=parent_fd, dst_dir_fd=parent_fd)
+        temporary_created = False
+        os.fsync(parent_fd)
+        read_fd = os.open(leaf, os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0), dir_fd=parent_fd)
+        try:
+            digest = hashlib.sha256()
+            while chunk := os.read(read_fd, 65536):
+                digest.update(chunk)
+            return digest.hexdigest()
+        finally:
+            os.close(read_fd)
+    finally:
+        if temporary_created:
+            try:
+                os.unlink(temporary, dir_fd=parent_fd)
+            except FileNotFoundError:
+                pass
+        os.close(parent_fd)
+
+
 def publish_stage_b_evidence(
     path: pathlib.Path, value: dict, schema_path: pathlib.Path, *, temporary_primary: bool = False
 ) -> str:
@@ -634,30 +715,10 @@ def publish_stage_b_evidence(
     decoded = encoded.decode("utf-8")
     if _redact_stage_b_text(decoded) != decoded:
         raise ContractError("Stage-B evidence contains restricted data")
-    path.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
-    # The caller supplies the evidence root; reject a direct symlink boundary
-    # without treating platform aliases such as macOS /var as attacker input.
-    if path.is_symlink() or path.parent.is_symlink():
-        raise ContractError("Stage-B evidence path crosses a symlink")
-    descriptor, temporary_name = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent)
-    temporary = pathlib.Path(temporary_name)
-    try:
-        os.fchmod(descriptor, 0o600)
-        with os.fdopen(descriptor, "wb", closefd=True) as stream:
-            stream.write(encoded)
-            stream.flush()
-            os.fsync(stream.fileno())
-        # Restrict the complete temporary file before it becomes visible at
-        # the final path. A DACL failure therefore leaves prior evidence intact.
-        _restrict_stage_b_evidence_permissions(temporary)
-        os.replace(temporary, path)
-        _sync_stage_b_evidence_metadata(path)
-    finally:
-        if temporary.exists():
-            temporary.unlink()
+    digest = _atomic_private_bytes(path, encoded, stage_b_acl=True)
     if temporary_primary and "primary" not in path.parts:
         raise ContractError("temporary Primary evidence must use the primary namespace")
-    return normalized_file_sha256(path)
+    return digest
 
 
 def validate_stage_b_provider_identity(
@@ -847,22 +908,26 @@ def execute_stage_b_action(args: argparse.Namespace) -> int:
         print("STAGE_B\tUSAGE\tunknown action", file=sys.stderr)
         return STAGE_B_EXIT_CODES["Usage"]
     try:
+        if action != "Preflight":
+            # These actions have accepted contracts but no operational executor
+            # yet. Block before interpreting action-specific inputs so every
+            # invocation has the same fail-closed outcome and cannot be mistaken
+            # for a partially implemented validation or delivery path.
+            fields = [
+                ("Run-ID / Run ID", args.run_id), ("Autoritaet / Authority", args.delivery_mode),
+                ("Welle / Wave", args.wave_id), ("Repository-ID", args.repository_id),
+                ("Profil / Profile", args.profile_id), ("Entscheidung / Decision", "Blocked"),
+                ("Status", "Blocked"),
+                ("Blocker", f"Stage-B action {action} is not implemented"),
+                ("Naechste Aktion / Next action", "Implement and validate the operational action before use"),
+            ]
+            for name, value in fields:
+                print(f"{name}: {value}")
+            return STAGE_B_EXIT_CODES["Blocked"]
         for value in (args.repository_id, args.profile_id):
             if value != "N/A":
                 validate_ci_input_component(value)
-        if action == "Preflight":
-            return execute_stage_b_preflight(args)
-        decision = "Preview" if args.dry_run and action in {"Deliver", "Resume"} else action
-        fields = [
-            ("Run-ID / Run ID", args.run_id), ("Autoritaet / Authority", args.delivery_mode),
-            ("Welle / Wave", args.wave_id), ("Repository-ID", args.repository_id),
-            ("Profil / Profile", args.profile_id), ("Entscheidung / Decision", decision),
-            ("Status", "Passed"), ("Blocker", "N/A"),
-            ("Naechste Aktion / Next action", "N/A"),
-        ]
-        for name, value in fields:
-            print(f"{name}: {value}")
-        return STAGE_B_EXIT_CODES["Success"]
+        return execute_stage_b_preflight(args)
     except KeyboardInterrupt:
         print("STAGE_B\tINTERRUPTED\tcontrolled stop", file=sys.stderr)
         return STAGE_B_EXIT_CODES["Interrupted"]
@@ -877,6 +942,7 @@ def execute_stage_b_action(args: argparse.Namespace) -> int:
 STAGE_B_RUN_ID = "954ff259-ffed-44a8-883f-28742b031a9b"
 STAGE_B_G3_REVIEWED_HEAD = "e1ff2a0b5146604b2a71a20576dbd4341d618121"
 STAGE_B_G3_MERGE_COMMIT = "b6a0d81760e9ef68a058e5d9578073b5e78b61b8"
+STAGE_B_PRIVATE_TECHNICAL_GATES_READY = False
 STAGE_B_WAVES = (
     "public-canaries", "public-products", "private-products",
     "private-governance-scaffold", "public-presets",
@@ -902,20 +968,7 @@ STAGE_B_ALLOWED_FORKS = {
 
 def _atomic_stage_b_json(path: pathlib.Path, value: dict) -> str:
     encoded = (json.dumps(value, ensure_ascii=False, sort_keys=True, indent=2) + "\n").encode()
-    path.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
-    descriptor, temporary_name = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent)
-    temporary = pathlib.Path(temporary_name)
-    try:
-        os.fchmod(descriptor, 0o600)
-        with os.fdopen(descriptor, "wb", closefd=True) as stream:
-            stream.write(encoded)
-            stream.flush()
-            os.fsync(stream.fileno())
-        os.replace(temporary, path)
-        os.chmod(path, 0o600)
-    finally:
-        temporary.unlink(missing_ok=True)
-    return normalized_file_sha256(path)
+    return _atomic_private_bytes(path, encoded)
 
 
 def _stage_b_git_object_sha(object_type: str, content: bytes) -> str:
@@ -1954,6 +2007,10 @@ class StageBRulesetTransaction:
         }
         if desired != exact:
             raise ContractError("private-governance desired ruleset is not exact")
+        if not STAGE_B_PRIVATE_TECHNICAL_GATES_READY:
+            raise CIGateBlocked(
+                "private-governance ruleset activation is blocked until executable technical gates are installed"
+            )
         before = self.provider.read_ruleset(repository_id, ruleset_id)
         before_hash = canonical_json_hash(before)
         desired_hash = canonical_json_hash(desired)
@@ -2932,13 +2989,8 @@ def resolve_default_branch_evidence(
             "remoteHeadAttempt": None,
         }, None, None
 
-    trusted_remote = (
-        target["remote"]
-        if EXECUTION_CONTEXTS is not None and EXECUTION_CONTEXTS.mapping(path)
-        else None
-    )
     remote, attempts, duration_ms = run_git_network(
-        path, "ls-remote", "--symref", "origin", "HEAD", trusted_remote=trusted_remote
+        path, "ls-remote", "--symref", "origin", "HEAD"
     )
     attempt = network_attempt("ls-remote", remote, attempts, duration_ms)
     if remote.returncode != 0:
@@ -3013,19 +3065,36 @@ def classify_repository(
     if origin.returncode != 0 or normalize_remote(origin.stdout) != normalize_remote(target["remote"]):
         return target_result(target, status="REMOTE_MISMATCH", result="Blocked",
                              findingCode="RemoteMismatch", nextAction="origin nur nach manueller Prüfung korrigieren / correct origin only after review.")
+    if delegated:
+        snapshot = EXECUTION_CONTEXTS.bundle_snapshot(path) if hasattr(EXECUTION_CONTEXTS, "bundle_snapshot") else None
+        if snapshot is None:
+            return target_result(target, status="HOST_GIT_TRANSPORT_BLOCKED", result="Blocked",
+                                 findingCode="HostGitTransportBlocked",
+                                 nextAction="Geprüften Bundle-Transport vorbereiten / prepare verified bundle transport.")
+        branch_name = snapshot["defaultBranch"]
+        expected = snapshot["refs"][f"refs/heads/{branch_name}"]
+        freshness = network_attempt("bundle-fetch", subprocess.CompletedProcess([], 0, "", ""), 1, 0)
+        tracking = run_git(path, "rev-parse", "--verify", f"refs/remotes/origin/{branch_name}", check=False)
+        if tracking.returncode or tracking.stdout.strip() != expected:
+            if EXECUTION_CONTEXTS.bundle_mode == "dry-run":
+                return target_result(target, status="BEHIND", action="WOULD_FETCH", result="Warning",
+                                     findingCode="RemoteSnapshotPending", freshnessAttempt=freshness,
+                                     nextAction="Bundle im Update- oder Check-Modus importieren / import bundle in update or check mode.")
+            return target_result(target, status="UNAVAILABLE", result="Failed", findingCode="BundleTrackingMismatch")
+        default_evidence = {"source": "VerifiedBundle", "symbolicRef": f"refs/heads/{branch_name}",
+                            "trackingRef": f"refs/remotes/origin/{branch_name}", "remoteCommit": expected,
+                            "trackingCommit": expected, "validatedAt": snapshot["createdAt"], "remoteHeadAttempt": None}
+        fetch_attempts = 1
+        default_error = None
+    else:
+        snapshot = None
 
-    local_symbolic = run_git(
-        path, "symbolic-ref", "--quiet", "refs/remotes/origin/HEAD", check=False
-    )
-    local_symbolic_ref = local_symbolic.stdout.strip() if local_symbolic.returncode == 0 else ""
-    fetch, fetch_attempts, fetch_duration = run_git_network(
-        path,
-        "fetch",
-        "--prune",
-        trusted_remote=target["remote"] if delegated else None,
-    )
-    freshness = network_attempt("fetch", fetch, fetch_attempts, fetch_duration)
-    if fetch.returncode != 0:
+    if not delegated:
+        local_symbolic = run_git(path, "symbolic-ref", "--quiet", "refs/remotes/origin/HEAD", check=False)
+        local_symbolic_ref = local_symbolic.stdout.strip() if local_symbolic.returncode == 0 else ""
+        fetch, fetch_attempts, fetch_duration = run_git_network(path, "fetch", "--prune")
+        freshness = network_attempt("fetch", fetch, fetch_attempts, fetch_duration)
+    if not delegated and fetch.returncode != 0:
         finding = "FetchTimedOut" if fetch.returncode == 124 else "FetchFailed"
         return target_result(
             target,
@@ -3037,9 +3106,8 @@ def classify_repository(
             nextAction="Remote-Zugriff wiederherstellen und erneut ausführen / restore access and retry.",
         )
 
-    default_evidence, _, default_error = resolve_default_branch_evidence(
-        target, path, local_symbolic_ref
-    )
+    if not delegated:
+        default_evidence, _, default_error = resolve_default_branch_evidence(target, path, local_symbolic_ref)
     if default_error:
         return target_result(
             target,
@@ -3084,7 +3152,7 @@ def classify_repository(
             for line in dirty.splitlines()
             if len(line) >= 4
         }
-        resume_accepted = bool(allowed_dirty_paths) and dirty_paths.issubset(allowed_dirty_paths)
+        resume_accepted = not delegated and bool(allowed_dirty_paths) and dirty_paths.issubset(allowed_dirty_paths)
     if dirty and not resume_accepted:
         return target_result(
             target,
@@ -3163,7 +3231,11 @@ def classify_repository(
                 defaultBranchEvidence=default_evidence,
                 nextAction="Update-Modus zum Fast-forward ausführen / run update to fast-forward."
             )
-        pull, pull_attempts, pull_duration = run_git_network(path, "pull", "--ff-only")
+        if delegated:
+            pull = run_git(path, "merge", "--ff-only", default_evidence["trackingCommit"], check=False)
+            pull_attempts, pull_duration = 1, 0
+        else:
+            pull, pull_attempts, pull_duration = run_git_network(path, "pull", "--ff-only")
         pull_evidence = network_attempt("pull", pull, pull_attempts, pull_duration)
         if pull.returncode != 0:
             return target_result(
@@ -3240,6 +3312,25 @@ def collection_result(target: dict, path: pathlib.Path, mode: str) -> dict:
                              findingCode="MissingCollection", nextAction="Update-Modus zum Erstellen der Collection ausführen / run update to create it.")
     path.mkdir(parents=True)
     return target_result(target, status="CREATED", action="CREATE")
+
+
+def target_path_crosses_boundary(root: pathlib.Path, candidate: pathlib.Path) -> bool:
+    """Reject a linked component or physical escape anywhere below HOME."""
+    canonical_root = root.resolve()
+    try:
+        relative = candidate.absolute().relative_to(root.absolute())
+    except ValueError:
+        return True
+    current = root.absolute()
+    for part in relative.parts:
+        current = current / part
+        if current.is_symlink():
+            return True
+    try:
+        candidate.resolve(strict=False).relative_to(canonical_root)
+    except ValueError:
+        return True
+    return False
 
 
 def derive_status(results: list[dict], mode: str) -> tuple[str, int]:
@@ -3509,6 +3600,11 @@ def execute_fleet(args: argparse.Namespace) -> int:
             try:
                 EXECUTION_CONTEXTS = ExecutionContexts(args.execution_contract, args.home_dir, manifest["targets"])
                 context_evidence = EXECUTION_CONTEXTS.preflight()
+                EXECUTION_CONTEXTS.prepare_bundles(manifest["targets"], run_id, args.mode)
+                context_evidence["bundleSnapshots"] = [
+                    {"targetId": value["targetId"], "runId": value["runId"], "defaultBranch": value["defaultBranch"],
+                     "refs": value["refs"], "createdAt": value["createdAt"], "bundleSha256": value["bundleSha256"]}
+                    for value in EXECUTION_CONTEXTS.bundle_snapshots.values()]
             except (ExecutionContextError, OSError, ValueError, subprocess.SubprocessError) as exc:
                 raise ContractError(f"SandboxPreflightBlocked: {exc}") from exc
     except ContractError as exc:
@@ -3533,6 +3629,20 @@ def execute_fleet(args: argparse.Namespace) -> int:
 
     home = args.home_dir.resolve()
     allowed_dirty_paths = {item.replace("\\", "/") for item in args.allowed_dirty_path}
+    blocked_collection_paths: list[pathlib.Path] = []
+    for target in manifest["targets"]:
+        if not target["active"] or target["kind"] != "collection":
+            continue
+        collection_path = home.joinpath(*validate_relative_path(target["path"]).parts)
+        if target_path_crosses_boundary(home, collection_path) or (
+            collection_path.exists() and not collection_path.is_dir()
+        ):
+            blocked_collection_paths.append(collection_path)
+    safe_evaluation_mode = (
+        "dry-run"
+        if args.mode == "update" and (EXECUTION_CONTEXTS or blocked_collection_paths)
+        else args.mode
+    )
     results: list[dict] = []
     if args.level0_dir is not None:
         level0 = args.level0_dir.resolve()
@@ -3548,7 +3658,7 @@ def execute_fleet(args: argparse.Namespace) -> int:
                 "defaultBranch": branch.stdout.strip(),
             }
             level0_result = classify_repository(
-                level0_target, level0, "dry-run" if EXECUTION_CONTEXTS and args.mode == "update" else args.mode, allowed_dirty_paths
+                level0_target, level0, safe_evaluation_mode, allowed_dirty_paths
             )
             results.append(level0_result)
             print(
@@ -3575,11 +3685,49 @@ def execute_fleet(args: argparse.Namespace) -> int:
             continue
         relative = validate_relative_path(target["path"])
         target_path = home.joinpath(*relative.parts)
-        evaluation_mode = "dry-run" if EXECUTION_CONTEXTS and args.mode == "update" else args.mode
+        blocked_ancestor = next(
+            (
+                collection
+                for collection in blocked_collection_paths
+                if target_path != collection and target_path.is_relative_to(collection)
+            ),
+            None,
+        )
+        if blocked_ancestor is not None:
+            result = target_result(
+                target,
+                status="PATH_CONFLICT",
+                result="Blocked",
+                findingCode="AncestorPathConflict",
+                mutationAllowed=False,
+                nextAction=(
+                    "Verlinkte oder konfliktbehaftete Collection manuell prüfen / "
+                    "inspect the linked or conflicting collection manually."
+                ),
+            )
+            result["executionContext"] = "host"
+            results.append(result)
+            print(f"TARGET\t{target['id']}\t{result['status']}\t{result['action']}\t{result['nextAction']}")
+            continue
+        if target_path_crosses_boundary(home, target_path):
+            result = target_result(
+                target,
+                status="PATH_CONFLICT",
+                result="Blocked",
+                findingCode="PathBoundaryConflict",
+                mutationAllowed=False,
+                nextAction=(
+                    "Verlinkte Pfadkomponente manuell prüfen / inspect the linked path component manually."
+                ),
+            )
+            result["executionContext"] = "host"
+            results.append(result)
+            print(f"TARGET\t{target['id']}\t{result['status']}\t{result['action']}\t{result['nextAction']}")
+            continue
         try:
-            result = (collection_result(target, target_path, evaluation_mode)
+            result = (collection_result(target, target_path, safe_evaluation_mode)
                       if target["kind"] == "collection"
-                      else classify_repository(target, target_path, evaluation_mode, allowed_dirty_paths))
+                      else classify_repository(target, target_path, safe_evaluation_mode, allowed_dirty_paths))
         except (ValueError, RuntimeError, OSError, subprocess.SubprocessError) as exc:
             if not EXECUTION_CONTEXTS:
                 raise
@@ -3618,7 +3766,11 @@ def execute_fleet(args: argparse.Namespace) -> int:
                 item.update(status="UPDATED", action="PULL", result="Pass", behind=0, findingCode="N/A", mutationAllowed=True, nextAction="N/A")
             try:
                 refreshed_context = EXECUTION_CONTEXTS.preflight()
-                if refreshed_context != context_evidence:
+                # Commit IDs are provenance only: documentation-only pulls do
+                # not invalidate an unchanged approved runtime package.
+                ignored = {"bundleSnapshots", "sourceRevision"}
+                if ({key: value for key, value in refreshed_context.items() if key not in ignored}
+                        != {key: value for key, value in context_evidence.items() if key not in ignored}):
                     raise ContractError("Execution binding changed after fetch/fast-forward")
             except (ValueError, RuntimeError, OSError, subprocess.SubprocessError):
                 # Pulling Level 0 can change the package underneath this
@@ -4110,8 +4262,23 @@ def execution_required(args):
     from maintenance_execution_context import validate_contract
     manifest = load_manifest(args.manifest)
     contract = validate_contract(json.loads(args.contract.read_text(encoding="utf-8")), check_expiry=False)
+    protected = {
+        item["path"].split("/", 1)[0]
+        for item in manifest["targets"]
+        if item["active"]
+        and item["path"].split("/", 1)[0]
+        in {"SecureCaseTrackerProjects", "SecureOrderDeskProjects", "SecureServiceHarvesterProjects"}
+    }
     roots = {item["host"] for item in contract["mounts"]}
-    print("1" if any(item["active"] and item["path"].split("/")[0] in roots for item in manifest["targets"]) else "0")
+    missing = protected - roots
+    if missing:
+        print(
+            "EXECUTION_REQUIRED\tFAILED\tprotected roots missing from contract: "
+            + ", ".join(sorted(missing)),
+            file=sys.stderr,
+        )
+        return 2
+    print("1" if protected else "0")
     return 0
 
 
@@ -4150,8 +4317,7 @@ def append_maintenance_event(args: argparse.Namespace) -> int:
             raise ContractError("event details must be an object")
         if args.sequence < 1:
             raise ContractError("event sequence must be positive")
-        event_stream = args.event_stream.resolve()
-        event_stream.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
+        event_stream = args.event_stream.absolute()
         payload = {
             "schemaVersion": 1,
             "runId": run_id,
@@ -4168,16 +4334,34 @@ def append_maintenance_event(args: argparse.Namespace) -> int:
         encoded = (
             json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + "\n"
         ).encode("utf-8")
-        descriptor = os.open(
-            event_stream,
-            os.O_APPEND | os.O_CREAT | os.O_WRONLY,
-            0o600,
-        )
+        flags = os.O_APPEND | os.O_CREAT | os.O_WRONLY | getattr(os, "O_NOFOLLOW", 0)
+        parent_fd = None
+        if os.name == "nt":
+            event_stream = _prepare_private_output_path(event_stream)
+            if not event_stream.exists():
+                # Publish the first record only after the owner-only DACL is on
+                # the temporary file; inherited parent ACLs never protect data.
+                _atomic_private_bytes(event_stream, encoded, stage_b_acl=True)
+                return 0
+            # Existing streams may predate the hardened writer or have had
+            # their ACL changed. Fail closed before appending another byte.
+            _restrict_stage_b_evidence_permissions(event_stream)
+            event_stream = _prepare_private_output_path(event_stream)
+            descriptor = os.open(event_stream, flags, 0o600)
+        else:
+            event_stream, parent_fd, leaf = _open_private_parent_fd(event_stream)
+            try:
+                descriptor = os.open(leaf, flags, 0o600, dir_fd=parent_fd)
+            except Exception:
+                os.close(parent_fd)
+                raise
         try:
             os.write(descriptor, encoded)
             os.fsync(descriptor)
         finally:
             os.close(descriptor)
+            if parent_fd is not None:
+                os.close(parent_fd)
         return 0
     except (ContractError, OSError, UnicodeError, ValueError, json.JSONDecodeError) as exc:
         print(f"EVENT\tFAILED\t{exc}", file=sys.stderr)
@@ -4264,8 +4448,10 @@ def _ci_gate_set_hash(
     )
 
 
-def _ci_head(repository: pathlib.Path, fixture_head: str | None = None) -> str:
-    sequence_file = os.environ.get("HB_CI_HEAD_SEQUENCE_FILE")
+def _ci_head(
+    repository: pathlib.Path, fixture_head: str | None = None, *, allow_test_override: bool = False
+) -> str:
+    sequence_file = os.environ.get("HB_CI_HEAD_SEQUENCE_FILE") if allow_test_override else None
     if sequence_file:
         sequence_path = pathlib.Path(sequence_file)
         values = sequence_path.read_text(encoding="utf-8").splitlines()
@@ -4277,6 +4463,8 @@ def _ci_head(repository: pathlib.Path, fixture_head: str | None = None) -> str:
             raise ContractError("injected HEAD is invalid")
         return head
     if fixture_head is not None:
+        if not allow_test_override:
+            raise ContractError("fixture HEAD is restricted to preview or explicit test mode")
         if not re.fullmatch(r"[0-9a-f]{40}|[0-9a-f]{64}", fixture_head):
             raise ContractError("fixture head must be a full lowercase Git object ID")
         return fixture_head
@@ -4310,18 +4498,19 @@ def _ci_evidence_path(
     return destination
 
 
-def _atomic_ci_json(path: pathlib.Path, value: dict) -> None:
+def _atomic_ci_json(path: pathlib.Path, value: dict, *, allow_test_only: bool = False) -> None:
     descriptor, temporary_name = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent)
     temporary = pathlib.Path(temporary_name)
     try:
-        os.fchmod(descriptor, 0o600)
+        if hasattr(os, "fchmod"):
+            os.fchmod(descriptor, 0o600)
         encoded = (json.dumps(value, ensure_ascii=False, separators=(",", ":")) + "\n").encode("utf-8")
         os.write(descriptor, encoded)
         os.fsync(descriptor)
         os.close(descriptor)
         descriptor = -1
         parsed = json.loads(temporary.read_text(encoding="utf-8"))
-        _validate_ci_gate_evidence(parsed)
+        _validate_ci_gate_evidence(parsed, allow_test_only=allow_test_only)
         os.replace(temporary, path)
         try:
             directory_descriptor = os.open(path.parent, os.O_RDONLY)
@@ -4337,13 +4526,14 @@ def _atomic_ci_json(path: pathlib.Path, value: dict) -> None:
         temporary.unlink(missing_ok=True)
 
 
-def _validate_ci_gate_evidence(value: dict) -> None:
+def _validate_ci_gate_evidence(value: dict, *, allow_test_only: bool = False) -> None:
     expected = {
         "schemaVersion", "repositoryId", "headCommit", "ciProfile", "gateSetHash",
         "platform", "generatedAt", "hookVersion", "status", "results",
     }
     _require_exact_keys(value, expected, "CI gate evidence")
-    if value["schemaVersion"] != "1.0" or value["status"] != "Passed":
+    allowed_statuses = {"Passed", "TestOnly"} if allow_test_only else {"Passed"}
+    if value["schemaVersion"] != "1.0" or value["status"] not in allowed_statuses:
         raise ContractError("only schema 1.0 Passed evidence may be published")
     validate_ci_input_component(value["repositoryId"])
     if not re.fullmatch(r"[0-9a-f]{40}|[0-9a-f]{64}", str(value["headCommit"])):
@@ -4408,9 +4598,30 @@ def execute_ci_gate(args: argparse.Namespace) -> int:
             item for item in contracts["profiles"]["profiles"]
             if item["profileId"] == assignment["profileId"]
         )
+        allow_test_override = args.dry_run or args.test_mode
+        if (args.fixture_head is not None or os.environ.get("HB_CI_HEAD_SEQUENCE_FILE")) and not allow_test_override:
+            raise ContractError("fixture identity overrides are forbidden for live CI evidence")
+        head_before = _ci_head(
+            repository, args.fixture_head, allow_test_override=allow_test_override
+        )
+        if args.changed_path and not allow_test_override:
+            raise ContractError("live changed paths must be derived from the tested HEAD")
+        if not allow_test_override:
+            status = run_git(
+                repository, "status", "--porcelain=v1", "--untracked-files=all", check=False
+            )
+            if status.returncode != 0 or status.stdout:
+                raise CIGateBlocked("live CI evidence requires an exact clean HEAD checkout")
         changed_paths = list(args.changed_path)
         if not changed_paths:
-            changed = run_git(repository, "diff", "--name-only", "HEAD", check=False)
+            changed = (
+                run_git(
+                    repository, "diff-tree", "--root", "--no-commit-id", "--name-only", "-r",
+                    head_before, check=False,
+                )
+                if not allow_test_override
+                else run_git(repository, "diff", "--name-only", "HEAD", check=False)
+            )
             if changed.returncode == 0:
                 changed_paths = [line for line in changed.stdout.splitlines() if line]
         gates, matched_contracts = _ci_selected_gates(contracts, profile, changed_paths)
@@ -4421,7 +4632,6 @@ def execute_ci_gate(args: argparse.Namespace) -> int:
         gate_hash = _ci_gate_set_hash(
             gate_set["gateSetId"], gate_set["version"], gates, matched_contracts
         )
-        head_before = _ci_head(repository, args.fixture_head)
         evidence_root = args.evidence_root or pathlib.Path(
             os.environ.get("HB_CI_EVIDENCE_ROOT", "~/.home-baseline/evidence/ci-gates")
         )
@@ -4482,7 +4692,15 @@ def execute_ci_gate(args: argparse.Namespace) -> int:
                     "durationMs": int((time.monotonic() - started) * 1000),
                 }
             )
-        head_after = _ci_head(repository, args.fixture_head)
+        head_after = _ci_head(
+            repository, args.fixture_head, allow_test_override=allow_test_override
+        )
+        if not allow_test_override:
+            status_after = run_git(
+                repository, "status", "--porcelain=v1", "--untracked-files=all", check=False
+            )
+            if status_after.returncode != 0 or status_after.stdout:
+                raise CIGateBlocked("worktree changed during live CI gate execution")
         reloaded = load_ci_budget_contracts(args.profiles, args.path_contracts, args.workflow_template)
         gates_after, matched_after = _ci_selected_gates(reloaded, profile, changed_paths)
         gate_set_after = next(
@@ -4503,10 +4721,10 @@ def execute_ci_gate(args: argparse.Namespace) -> int:
             "platform": _ci_platform(),
             "generatedAt": utc_now(),
             "hookVersion": "1.0.0",
-            "status": "Passed",
+            "status": "TestOnly" if args.test_mode else "Passed",
             "results": results,
         }
-        _atomic_ci_json(evidence_path, evidence)
+        _atomic_ci_json(evidence_path, evidence, allow_test_only=args.test_mode)
         _print_ci_gate_status(
             profile["displayName"], "LocalGate", "Passed", "None",
             "Review the evidence; server-side policy remains required.", gate_hash, gates, evidence_path,
@@ -4567,6 +4785,7 @@ def simulate_private_governance_policy(
         and triggers == ["pull_request"]
         and metadata("full-build") == "false"
         and metadata("path-dependent") == "true"
+        and metadata("technical-gates-ready") == "false"
         and job_ids == ["ci-minimal-gate"]
         and re.search(r"^name:\s*home-baseline/ci-minimal-gate\s*$", workflow_text, re.MULTILINE) is not None
         and re.search(r"^    name:\s*home-baseline/ci-minimal-gate\s*$", workflow_text, re.MULTILINE) is not None
@@ -4575,6 +4794,17 @@ def simulate_private_governance_policy(
         and re.search(r"^permissions:\s*$\n  contents:\s*read\s*$", workflow_text, re.MULTILINE) is not None
         and "uses:" not in workflow_text
         and "set -euo pipefail" in workflow_text
+        and re.search(
+            r"^      - name: Block activation until technical gates are installed\n"
+            r"        shell: bash\n"
+            r"        run: \|\n"
+            r"          set -euo pipefail\n"
+            r"          echo \"Technical build, security, dependency, product, documentation and governance gates are not installed\.\" >&2\n"
+            r"          exit 1\s*$",
+            workflow_text,
+            re.MULTILINE,
+        ) is not None
+        and re.search(r"^\s+(?:if|continue-on-error):", workflow_text, re.MULTILINE) is None
         and ".github/workflows/home-baseline-ci-minimal-gate.yml" in workflow_text
         and len(gate_ids) == len(set(gate_ids))
         and bool(gate_ids)
@@ -4620,6 +4850,7 @@ def simulate_private_governance_policy(
         "adminBypassNormalPath": False,
         "remoteConverged": False,
         "hookRequiredForServerEnforcement": False,
+        "activationBlocked": True,
     }
 
 
@@ -5122,6 +5353,7 @@ def build_parser() -> argparse.ArgumentParser:
     ci_gate.add_argument("--evidence-root", type=pathlib.Path)
     ci_gate.add_argument("--changed-path", action="append", default=[])
     ci_gate.add_argument("--fixture-head")
+    ci_gate.add_argument("--test-mode", action="store_true", help=argparse.SUPPRESS)
     ci_gate.add_argument("--dry-run", action="store_true")
     ci_gate.set_defaults(handler=execute_ci_gate)
     ci_plan = subparsers.add_parser("ci-budget-plan")

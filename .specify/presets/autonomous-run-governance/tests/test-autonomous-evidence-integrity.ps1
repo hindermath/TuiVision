@@ -53,6 +53,7 @@ try {
     & git -C $Repo init --quiet
     & git -C $Repo config user.name Fixture
     & git -C $Repo config user.email fixture@example.invalid
+    & git -C $Repo config core.autocrlf false
     [IO.File]::WriteAllText((Join-Path $Repo 'tracked.txt'), "baseline`n", [Text.UTF8Encoding]::new($false))
     & git -C $Repo add tracked.txt
     & git -C $Repo commit --quiet -m baseline
@@ -113,6 +114,61 @@ try {
     [IO.File]::WriteAllText((Join-Path $Repo 'tracked.txt'), "changed`n", [Text.UTF8Encoding]::new($false))
     & git -C $Repo reset --quiet
 
+    # Preserve historical EOF bytes, but require an exact path/raw index hash.
+    $EofPath = Join-Path $Repo 'historical-eof.txt'
+    foreach ($EofText in @("history`n`n", "history`r`n`r`n")) {
+        [IO.File]::WriteAllText($EofPath, $EofText, [Text.UTF8Encoding]::new($false))
+        $EofHash = Get-RawHash $EofPath
+        $EofAllowance = "historical-eof.txt=${EofHash}"
+        [void](Invoke-Expected { & pwsh -NoProfile -File $DeliveryPs -Repo $Repo -Intended historical-eof.txt -AllowHistoricalWhitespace $EofAllowance } 0 'PowerShell historical EOF worktree pass')
+        & git -C $Repo add historical-eof.txt
+        $EofBefore = (& git -C $Repo status --porcelain=v1 --untracked-files=all --ignored) -join "`n"
+        [void](Invoke-Expected { & pwsh -NoProfile -File $DeliveryPs -Repo $Repo -Staged -Intended historical-eof.txt -AllowHistoricalWhitespace $EofAllowance } 0 'PowerShell exact historical EOF staged pass')
+        [void](Invoke-Expected { & pwsh -NoProfile -File $DeliveryPs -Repo $Repo -Staged -Intended historical-eof.txt } 2 'PowerShell unapproved EOF rejection')
+        [void](Invoke-Expected { & pwsh -NoProfile -File $DeliveryPs -Repo $Repo -Staged -Intended historical-eof.txt -AllowHistoricalWhitespace "historical-eof.txt=$('0' * 64)" } 2 'PowerShell EOF hash mismatch rejection')
+        if ($HasBash) {
+            [void](Invoke-Expected { & bash $DeliverySh --repo $Repo --staged --intended historical-eof.txt --allow-historical-whitespace $EofAllowance } 0 'Bash exact historical EOF staged pass')
+            [void](Invoke-Expected { & bash $DeliverySh --repo $Repo --staged --intended historical-eof.txt } 2 'Bash unapproved EOF rejection')
+            [void](Invoke-Expected { & bash $DeliverySh --repo $Repo --staged --intended historical-eof.txt --allow-historical-whitespace "historical-eof.txt=$('0' * 64)" } 2 'Bash EOF hash mismatch rejection')
+        }
+        $EofAfter = (& git -C $Repo status --porcelain=v1 --untracked-files=all --ignored) -join "`n"
+        Assert-EvidenceTest ($EofBefore -ceq $EofAfter) 'EOF checks changed index/worktree'
+        [IO.File]::WriteAllText($EofPath, "unreviewed`n`n", [Text.UTF8Encoding]::new($false))
+        [void](Invoke-Expected { & pwsh -NoProfile -File $DeliveryPs -Repo $Repo -Staged -Intended historical-eof.txt -AllowHistoricalWhitespace $EofAllowance } 0 'EOF staged proof ignores changed worktree bytes')
+        & git -C $Repo add historical-eof.txt
+        [void](Invoke-Expected { & pwsh -NoProfile -File $DeliveryPs -Repo $Repo -Staged -Intended historical-eof.txt -AllowHistoricalWhitespace $EofAllowance } 2 'EOF changed index bytes rejected')
+        & git -C $Repo reset --quiet
+    }
+    [IO.File]::WriteAllText($EofPath, "history`n`n", [Text.UTF8Encoding]::new($false))
+    $EofAllowance = 'historical-eof.txt=' + (Get-RawHash $EofPath)
+    [IO.File]::WriteAllText((Join-Path $Repo 'other-eof.txt'), "other`n`n", [Text.UTF8Encoding]::new($false))
+    & git -C $Repo add historical-eof.txt other-eof.txt
+    if ($HasBash) {
+        [void](Invoke-Expected { & bash $DeliverySh --repo $Repo --staged --intended historical-eof.txt --intended other-eof.txt --allow-historical-whitespace $EofAllowance } 2 'Unrelated EOF not hidden by historical allowance')
+    }
+    & git -C $Repo reset --quiet
+    if (-not $IsWindows) {
+        $ColonPath = 'historical-eof.txt:unapproved'
+        [IO.File]::WriteAllText((Join-Path $Repo $ColonPath), "unreviewed`n`n", [Text.UTF8Encoding]::new($false))
+        & git -C $Repo add historical-eof.txt $ColonPath
+        $ColonCommand = "& '$DeliveryPs' -Repo '$Repo' -Staged -Intended @('historical-eof.txt','$ColonPath') -AllowHistoricalWhitespace '$EofAllowance'; exit `$LASTEXITCODE"
+        [void](Invoke-Expected { & pwsh -NoProfile -Command $ColonCommand } 2 'Colon path cannot inherit a prefix-file EOF allowance')
+        if ($HasBash) {
+            [void](Invoke-Expected { & bash $DeliverySh --repo $Repo --staged --intended historical-eof.txt --intended $ColonPath --allow-historical-whitespace $EofAllowance } 2 'Bash colon path cannot inherit a prefix-file EOF allowance')
+        }
+        & git -C $Repo reset --quiet
+        [IO.File]::WriteAllBytes((Join-Path $Repo $ColonPath), [Text.Encoding]::UTF8.GetBytes("unreviewed`r`n"))
+        & git -C $Repo -c core.autocrlf=false add historical-eof.txt $ColonPath
+        [void](Invoke-Expected { & pwsh -NoProfile -Command $ColonCommand } 2 'Colon path cannot inherit a prefix-file CRLF diagnostic')
+        if ($HasBash) {
+            [void](Invoke-Expected { & bash $DeliverySh --repo $Repo --staged --intended historical-eof.txt --intended $ColonPath --allow-historical-whitespace $EofAllowance } 2 'Bash colon path cannot inherit a prefix-file CRLF diagnostic')
+        }
+        & git -C $Repo reset --quiet
+        Remove-Item -LiteralPath (Join-Path $Repo $ColonPath)
+    }
+    [IO.File]::WriteAllText($EofPath, "history`n", [Text.UTF8Encoding]::new($false))
+    [void](Invoke-Expected { & pwsh -NoProfile -File $DeliveryPs -Repo $Repo -Intended historical-eof.txt -AllowHistoricalWhitespace $EofAllowance } 2 'EOF allowance not needed rejection')
+
     [IO.File]::WriteAllText((Join-Path $Repo 'conflict.txt'), "<<<<<<< HEAD`nvalue`n=======`nother`n>>>>>>> branch`n", [Text.UTF8Encoding]::new($false))
     & git -C $Repo add conflict.txt
     [void](Invoke-Expected { & pwsh -NoProfile -File $DeliveryPs -Repo $Repo -Staged -Intended conflict.txt } 2 'Staged conflict-marker rejection')
@@ -165,30 +221,49 @@ try {
         outcome = 'Completed'; expectedTasks = 4; completedTasks = 4; blockedReason = ''
         gatesSatisfied = $true; payloadPath = 'phase.payload.txt'; payloadSha256 = (Get-NormalizedHash $Payload)
     }
+    $PhaseContract = @{ ExpectedTasks = 4; ExpectedPayload = 'phase.payload.txt'; GateExitCode = 0 }
+    $PhaseBashContract = @('--expected-tasks', '4', '--expected-payload', 'phase.payload.txt', '--gate-exit-code', '0')
     Write-JsonFile $PhaseResult $Phase
-    [void](Invoke-Expected { & pwsh -NoProfile -File $PhasePs -Repo $Repo -Result $PhaseResult -PhaseId implement -ExitCode 0 } 0 'PowerShell phase pass')
-    if ($HasBash) { [void](Invoke-Expected { & bash $PhaseSh --repo $Repo --result $PhaseResult --phase-id implement --exit-code 0 } 0 'Bash phase pass') }
+    [void](Invoke-Expected { & pwsh -NoProfile -File $PhasePs -Repo $Repo -Result $PhaseResult -PhaseId implement -ExitCode 0 @PhaseContract } 0 'PowerShell phase pass')
+    if ($HasBash) { [void](Invoke-Expected { & bash $PhaseSh --repo $Repo --result $PhaseResult --phase-id implement --exit-code 0 @PhaseBashContract } 0 'Bash phase pass') }
+    [void](Invoke-Expected { & pwsh -NoProfile -File $PhasePs -Repo $Repo -Result $PhaseResult -PhaseId implement -AttemptId ([guid]::NewGuid().ToString()) -ExitCode 0 @PhaseContract } 3 'Replayed phase attempt rejection')
+    if ($HasBash) { [void](Invoke-Expected { & bash $PhaseSh --repo $Repo --result $PhaseResult --phase-id implement --attempt-id ([guid]::NewGuid().ToString()) --exit-code 0 @PhaseBashContract } 3 'Bash replayed phase attempt rejection') }
+    $Phase.expectedTasks = 0; $Phase.completedTasks = 0; Write-JsonFile $PhaseResult $Phase
+    [void](Invoke-Expected { & pwsh -NoProfile -File $PhasePs -Repo $Repo -Result $PhaseResult -PhaseId implement -ExitCode 0 @PhaseContract } 3 'Zero-task forged completion rejection')
+    $Phase.expectedTasks = 4; $Phase.completedTasks = 4; Write-JsonFile $PhaseResult $Phase
+    [void](Invoke-Expected { & pwsh -NoProfile -File $PhasePs -Repo $Repo -Result $PhaseResult -PhaseId implement -ExitCode 0 -ExpectedTasks 4 -ExpectedPayload phase.payload.txt -GateExitCode 1 } 3 'Independent gate failure rejection')
+    $Tasks = Join-Path $Repo 'phase-tasks.md'
+    [IO.File]::WriteAllText($Tasks, "- [x] One`n- [x] Two`n- [x] Three`n- [x] Four`n", [Text.UTF8Encoding]::new($false))
+    $Core = Join-Path $Scripts 'autonomous-evidence-core.py'
+    $AcceptedTaskHash = Get-NormalizedHash $Tasks
+    [void](Invoke-Expected { & python3 $Core task-contract --repo $Repo --task-manifest phase-tasks.md --expected-tasks 4 --accepted-hash $AcceptedTaskHash } 0 'Accepted task contract pass')
+    [void](Invoke-Expected { & python3 $Core task-contract --repo $Repo --task-manifest phase-tasks.md --expected-tasks 1 --accepted-hash $AcceptedTaskHash } 3 'Stale accepted task count rejection')
+    $InventoryHash = [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData(
+        [Text.Encoding]::UTF8.GetBytes("One`nTwo`nThree`nFour"))).ToLowerInvariant()
+    [void](Invoke-Expected { & pwsh -NoProfile -File $PhasePs -Repo $Repo -Result $PhaseResult -PhaseId implement -ExitCode 0 -TaskManifest phase-tasks.md -TaskInventorySha $InventoryHash @PhaseContract } 0 'Accepted task checklist pass')
+    [IO.File]::WriteAllText($Tasks, "- [x] One`n- [x] Two`n- [ ] Three`n- [x] Four`n", [Text.UTF8Encoding]::new($false))
+    [void](Invoke-Expected { & pwsh -NoProfile -File $PhasePs -Repo $Repo -Result $PhaseResult -PhaseId implement -ExitCode 0 -TaskManifest phase-tasks.md -TaskInventorySha $InventoryHash @PhaseContract } 3 'Incomplete accepted checklist rejection')
     $Phase.outcome = 'Blocked'; $Phase.completedTasks = 3; $Phase.blockedReason = 'fixture blocker'
     Write-JsonFile $PhaseResult $Phase
-    [void](Invoke-Expected { & pwsh -NoProfile -File $PhasePs -Repo $Repo -Result $PhaseResult -PhaseId implement -ExitCode 0 } 3 'PowerShell semantic block')
-    if ($HasBash) { [void](Invoke-Expected { & bash $PhaseSh --repo $Repo --result $PhaseResult --phase-id implement --exit-code 0 } 3 'Bash semantic block') }
+    [void](Invoke-Expected { & pwsh -NoProfile -File $PhasePs -Repo $Repo -Result $PhaseResult -PhaseId implement -ExitCode 0 @PhaseContract } 3 'PowerShell semantic block')
+    if ($HasBash) { [void](Invoke-Expected { & bash $PhaseSh --repo $Repo --result $PhaseResult --phase-id implement --exit-code 0 @PhaseBashContract } 3 'Bash semantic block') }
     $Phase.outcome = 'Completed'; $Phase.completedTasks = 4; $Phase.blockedReason = ''; $Phase.payloadSha256 = ('0' * 64)
     Write-JsonFile $PhaseResult $Phase
-    [void](Invoke-Expected { & pwsh -NoProfile -File $PhasePs -Repo $Repo -Result $PhaseResult -PhaseId implement -ExitCode 0 } 3 'Payload hash rejection')
+    [void](Invoke-Expected { & pwsh -NoProfile -File $PhasePs -Repo $Repo -Result $PhaseResult -PhaseId implement -ExitCode 0 @PhaseContract } 3 'Payload hash rejection')
     $Phase.payloadSha256 = (Get-NormalizedHash $Payload); Write-JsonFile $PhaseResult $Phase
-    [void](Invoke-Expected { & pwsh -NoProfile -File $PhasePs -Repo $Repo -Result $PhaseResult -PhaseId wrong-phase -ExitCode 0 } 3 'Wrong phase rejection')
-    [void](Invoke-Expected { & pwsh -NoProfile -File $PhasePs -Repo $Repo -Result $PhaseResult -PhaseId implement -ExitCode 1 } 3 'Non-zero process rejection')
+    [void](Invoke-Expected { & pwsh -NoProfile -File $PhasePs -Repo $Repo -Result $PhaseResult -PhaseId wrong-phase -ExitCode 0 @PhaseContract } 3 'Wrong phase rejection')
+    [void](Invoke-Expected { & pwsh -NoProfile -File $PhasePs -Repo $Repo -Result $PhaseResult -PhaseId implement -ExitCode 1 @PhaseContract } 3 'Non-zero process rejection')
     $MissingResult = Join-Path $Repo 'missing-result.json'
-    [void](Invoke-Expected { & pwsh -NoProfile -File $PhasePs -Repo $Repo -Result $MissingResult -PhaseId implement -ExitCode 0 } 2 'Missing result rejection')
+    [void](Invoke-Expected { & pwsh -NoProfile -File $PhasePs -Repo $Repo -Result $MissingResult -PhaseId implement -ExitCode 0 @PhaseContract } 2 'Missing result rejection')
     [IO.File]::WriteAllText($PhaseResult, '', [Text.UTF8Encoding]::new($false))
-    [void](Invoke-Expected { & pwsh -NoProfile -File $PhasePs -Repo $Repo -Result $PhaseResult -PhaseId implement -ExitCode 0 } 2 'Empty result rejection')
+    [void](Invoke-Expected { & pwsh -NoProfile -File $PhasePs -Repo $Repo -Result $PhaseResult -PhaseId implement -ExitCode 0 @PhaseContract } 2 'Empty result rejection')
     [IO.File]::WriteAllText($PhaseResult, '{not-json}', [Text.UTF8Encoding]::new($false))
-    [void](Invoke-Expected { & pwsh -NoProfile -File $PhasePs -Repo $Repo -Result $PhaseResult -PhaseId implement -ExitCode 0 } 2 'Malformed result rejection')
+    [void](Invoke-Expected { & pwsh -NoProfile -File $PhasePs -Repo $Repo -Result $PhaseResult -PhaseId implement -ExitCode 0 @PhaseContract } 2 'Malformed result rejection')
     [IO.File]::WriteAllText($PhaseResult, '{"schemaVersion":', [Text.UTF8Encoding]::new($false))
-    [void](Invoke-Expected { & pwsh -NoProfile -File $PhasePs -Repo $Repo -Result $PhaseResult -PhaseId implement -ExitCode 0 } 2 'Truncated result rejection')
+    [void](Invoke-Expected { & pwsh -NoProfile -File $PhasePs -Repo $Repo -Result $PhaseResult -PhaseId implement -ExitCode 0 @PhaseContract } 2 'Truncated result rejection')
     $PhaseText = ($Phase | ConvertTo-Json -Depth 10).Replace("`n", "`r`n")
     [IO.File]::WriteAllText($PhaseResult, $PhaseText, [Text.UTF8Encoding]::new($true))
-    [void](Invoke-Expected { & pwsh -NoProfile -File $PhasePs -Repo $Repo -Result $PhaseResult -PhaseId implement -ExitCode 0 } 0 'BOM and CRLF phase pass')
+    [void](Invoke-Expected { & pwsh -NoProfile -File $PhasePs -Repo $Repo -Result $PhaseResult -PhaseId implement -ExitCode 0 @PhaseContract } 0 'BOM and CRLF phase pass')
 
     $Requirements = Join-Path $Repo 'requirements.json'
     $RequirementData = [ordered]@{ schemaVersion = '1.0'; gates = @(
@@ -206,6 +281,15 @@ try {
     Write-JsonFile $PrePath $Pre
     [void](Invoke-Expected { & pwsh -NoProfile -File $GatePs -Requirements $Requirements -Evidence $PrePath -Head $Head } 0 'PowerShell PreMerge pass')
     if ($HasBash) { [void](Invoke-Expected { & bash $GateSh --requirements $Requirements --evidence $PrePath --head $Head } 0 'Bash PreMerge pass') }
+    $RequirementData.gates[0].requiredCommandTokens = @()
+    Write-JsonFile $Requirements $RequirementData
+    [void](Invoke-Expected { & pwsh -NoProfile -File $GatePs -Requirements $Requirements -Evidence $PrePath -Head $Head } 2 'Empty required command tokens rejection')
+    $RequirementData.gates[0].requiredCommandTokens = @('verify')
+    $RequirementData.gates[0].requiredRunnerOrPlatformTokens = @('')
+    Write-JsonFile $Requirements $RequirementData
+    [void](Invoke-Expected { & pwsh -NoProfile -File $GatePs -Requirements $Requirements -Evidence $PrePath -Head $Head } 2 'Blank required runner token rejection')
+    $RequirementData.gates[0].requiredRunnerOrPlatformTokens = @()
+    Write-JsonFile $Requirements $RequirementData
     $Pre.mergeCommit = $Head; Write-JsonFile $PrePath $Pre
     [void](Invoke-Expected { & pwsh -NoProfile -File $GatePs -Requirements $Requirements -Evidence $PrePath -Head $Head } 2 'Premature merge rejection')
     $Pre.mergeCommit = ''; Write-JsonFile $PrePath $Pre
@@ -219,7 +303,19 @@ try {
     Write-JsonFile $PostPath $Post
     [void](Invoke-Expected { & pwsh -NoProfile -File $GatePs -Requirements $Requirements -Evidence $PostPath -Head $Head -MergeCommit $Head } 0 'PowerShell PostMerge pass')
     if ($HasBash) { [void](Invoke-Expected { & bash $GateSh --requirements $Requirements --evidence $PostPath --head $Head --merge-commit $Head } 0 'Bash PostMerge pass') }
+    [void](Invoke-Expected { & pwsh -NoProfile -File $GatePs -Requirements $Requirements -Evidence $PostPath -Head $Head } 2 'Missing expected merge rejection')
+    if ($HasBash) { [void](Invoke-Expected { & bash $GateSh --requirements $Requirements --evidence $PostPath --head $Head } 2 'Bash missing expected merge rejection') }
     [void](Invoke-Expected { & pwsh -NoProfile -File $GatePs -Requirements $Requirements -Evidence $PostPath -Head $Head -MergeCommit ('0' * 40) } 2 'Merge commit mismatch rejection')
+    $Pre.requirementsSha256 = ('0' * 64); Write-JsonFile $PrePath $Pre
+    $Post.acceptedPreMergeSha256 = (Get-NormalizedHash $PrePath); Write-JsonFile $PostPath $Post
+    [void](Invoke-Expected { & pwsh -NoProfile -File $GatePs -Requirements $Requirements -Evidence $PostPath -Head $Head -MergeCommit $Head } 2 'PreMerge requirements revalidation')
+    $Pre.requirementsSha256 = (Get-NormalizedHash $Requirements); Write-JsonFile $PrePath $Pre
+    $Post = Get-Content -LiteralPath $PostPath -Raw | ConvertFrom-Json -AsHashtable
+    $Pre.entries[0].result = 'Failed'; Write-JsonFile $PrePath $Pre
+    $Post.acceptedPreMergeSha256 = (Get-NormalizedHash $PrePath); Write-JsonFile $PostPath $Post
+    [void](Invoke-Expected { & pwsh -NoProfile -File $GatePs -Requirements $Requirements -Evidence $PostPath -Head $Head -MergeCommit $Head } 2 'PreMerge gate revalidation')
+    $Pre.entries[0].result = 'Pass'; Write-JsonFile $PrePath $Pre
+    $Post.acceptedPreMergeSha256 = (Get-NormalizedHash $PrePath); Write-JsonFile $PostPath $Post
     $Post.acceptedPreMergeSha256 = ('f' * 64); Write-JsonFile $PostPath $Post
     [void](Invoke-Expected { & pwsh -NoProfile -File $GatePs -Requirements $Requirements -Evidence $PostPath -Head $Head -MergeCommit $Head } 2 'PreMerge hash rejection')
     $Post.acceptedPreMergeSha256 = (Get-NormalizedHash $PrePath); $Post.changedPaths = @('unexpected.txt'); Write-JsonFile $PostPath $Post
@@ -237,6 +333,52 @@ try {
     $HistoryOutput = Invoke-Expected { & pwsh -NoProfile -File $GatePs -Requirements $Requirements -Evidence $HistoricalPath -Head $Head -Historical } 0 'Historical audit pass'
     Assert-EvidenceTest (($HistoryOutput -join "`n") -match 'HistoricalOnly') 'Historical evidence appeared merge-authorizing'
 
+    # Real Git inventories must preserve names before any content check.
+    # Windows forbids control characters/quotes; Unicode remains native there.
+    $Names = @('ordinary.md', 'space name.md', "unicode-$([char]0x00fc).md")
+    if (-not $IsWindows) { $Names += @("tab`tname.md", "line`nbreak.md", "carriage`rreturn.md", 'quote"name.md') }
+    $CaseNumber = 0
+    foreach ($Name in $Names) {
+        $CaseNumber++
+        $PathRepo = Join-Path $Root "path-case-$CaseNumber"
+        [void](New-Item -ItemType Directory -Path $PathRepo)
+        & git -C $PathRepo init --quiet
+        & git -C $PathRepo config user.name Fixture
+        & git -C $PathRepo config user.email fixture@example.invalid
+        & git -C $PathRepo config core.autocrlf false
+        & git -C $PathRepo config core.quotePath true
+        $NamedFile = Join-Path $PathRepo $Name
+        [IO.File]::WriteAllText($NamedFile, "clean`n")
+        & git -C $PathRepo add -- $Name
+        & git -C $PathRepo commit --quiet -m baseline
+        [IO.File]::WriteAllText($NamedFile, "bad trailing space `n")
+        $BadOutput = Invoke-Expected { & pwsh -NoProfile -File $DeliveryPs -Repo $PathRepo } 2 "Worktree path content: case $CaseNumber"
+        Assert-EvidenceTest (($BadOutput -join ' ') -match 'AEI007') 'Unusual name must reach content validation'
+        if ($HasBash) { [void](Invoke-Expected { & bash $DeliverySh --repo $PathRepo } 2 "Bash Worktree path content: case $CaseNumber") }
+        & git -C $PathRepo add -- $Name
+        [void](Invoke-Expected { & pwsh -NoProfile -File $DeliveryPs -Repo $PathRepo -Staged -Intended $Name } 2 "Staged path content: case $CaseNumber")
+        if ($HasBash) { [void](Invoke-Expected { & bash $DeliverySh --repo $PathRepo --staged --intended $Name } 2 "Bash Staged path content: case $CaseNumber") }
+        [IO.File]::WriteAllText($NamedFile, "clean changed`n")
+        & git -C $PathRepo add -- $Name
+        $CleanOutput = Invoke-Expected { & pwsh -NoProfile -File $DeliveryPs -Repo $PathRepo -Staged -Intended $Name } 0 "Clean staged unusual name: case $CaseNumber"
+        $CleanReport = ($CleanOutput -join "`n") | ConvertFrom-Json
+        Assert-EvidenceTest ($CleanReport.checkedPaths -ccontains $Name) 'Staged inventory must retain the exact filename'
+        & git -C $PathRepo reset --quiet HEAD -- $Name
+        $CleanOutput = Invoke-Expected { & pwsh -NoProfile -File $DeliveryPs -Repo $PathRepo } 0 "Clean worktree unusual name: case $CaseNumber"
+        $CleanReport = ($CleanOutput -join "`n") | ConvertFrom-Json
+        Assert-EvidenceTest ($CleanReport.checkedPaths -ccontains $Name) 'Worktree inventory must retain the exact filename'
+        & git -C $PathRepo checkout -- $Name
+        & git -C $PathRepo rm --quiet -- $Name
+        & git -C $PathRepo commit --quiet -m remove
+        [IO.File]::WriteAllText($NamedFile, "bad untracked space `n")
+        [void](Invoke-Expected { & pwsh -NoProfile -File $DeliveryPs -Repo $PathRepo -Intended $Name } 2 "Untracked path content: case $CaseNumber")
+        if ($HasBash) { [void](Invoke-Expected { & bash $DeliverySh --repo $PathRepo --intended $Name } 2 "Bash untracked path content: case $CaseNumber") }
+        [IO.File]::WriteAllText($NamedFile, "clean untracked`n")
+        $CleanOutput = Invoke-Expected { & pwsh -NoProfile -File $DeliveryPs -Repo $PathRepo -Intended $Name } 0 "Clean untracked unusual name: case $CaseNumber"
+        $CleanReport = ($CleanOutput -join "`n") | ConvertFrom-Json
+        Assert-EvidenceTest ($CleanReport.intendedUntrackedPaths -ccontains $Name) 'Untracked inventory must retain the exact filename'
+    }
+    Write-Output "PASS: $CaseNumber native Git-filename cases across Worktree, Staged and intended untracked content checks"
     Write-Output 'PASS: delivery-set, semantic phase-result, lifecycle evidence, historical mode, and cross-shell parity'
 } finally {
     Remove-Item -LiteralPath $Root -Recurse -Force -ErrorAction SilentlyContinue

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "presetId": "cross-platform-governance",
+  "packageVersion": "0.2.6",
+  "historicalPublicationVersion": "0.2.4",
+  "candidate_status": "Prepared",
+  "release_status": "NotEstablishedAtPreparation",
+  "sourceCommit": "c5cfeddb3bb0fbf90a724f63dfeabe90538f1c72",
+  "previousReleaseVersion": "0.2.5",
+  "externalPublicationEvidence": "https://github.com/hindermath/spec-kit-preset-cross-platform-governance/releases/tag/v0.2.6",
+  "runtimeChanged": false,
+  "generatorSchemaChanged": false,
+  "changeKind": "SecurityPolicyDocumentation",
+  "authorizationReference": "Thorsten Hindermann, 2026-11-13: implement security baseline and publish current presets, including controlled Level-0/Home/Level-2 rollout; MergeAndSync with formal-review-only Admin-Bypass.",
+  "preparedAt": "2026-11-13T08:24:34.5874590+00:00"
+}

@@ -48,6 +48,9 @@ SECRET_PATTERNS = (
     re.compile(r"\bAIza[0-9A-Za-z_-]{20,}\b"),
 )
 SHA256_PATTERN = re.compile(r"^[0-9a-f]{64}$")
+MAX_SWIFTLY_ARCHIVE_MEMBERS = 4096
+MAX_SWIFTLY_ARCHIVE_EXPANDED_BYTES = 1024 * 1024 * 1024
+MAX_SWIFTLY_BINARY_BYTES = 256 * 1024 * 1024
 
 
 class ContractError(RuntimeError):
@@ -317,6 +320,42 @@ def classify_toolchain_result(path: Path) -> tuple[dict | None, str | None]:
     expected_exit = 2 if value["overallStatus"] == "FAILED" else 1 if value["overallStatus"] == "PARTIAL" else 0
     if value["exitCode"] != expected_exit:
         return None, "ResultSchemaMismatch"
+    if "mslToolchains" in value:
+        msl = value["mslToolchains"]
+        expected_ids = {"dotnet", "go", "java", "python", "rust", "swift"}
+        # Legacy reports remain valid; new version evidence must not permit a
+        # successful parent result with missing, duplicate or unresolved MSLs.
+        if not isinstance(msl, list):
+            return None, "ResultSchemaMismatch"
+        if value["overallStatus"] == "FAILED" and not msl:
+            return value, None
+        if len(msl) != 6 or any(not isinstance(item, dict) for item in msl):
+            return None, "ResultSchemaMismatch"
+        if any(not isinstance(item.get("toolchainId"), str) for item in msl):
+            return None, "ResultSchemaMismatch"
+        if {item.get("toolchainId") for item in msl} != expected_ids:
+            return None, "ResultSchemaMismatch"
+        statuses = {"Current", "Unknown", "Missing", "PathMismatch", "SourceBehind",
+                    "UpdateAvailable", "Planned", "Failed", "DeferredAdminRequired"}
+        for item in msl:
+            if not isinstance(item.get("status"), str) or item["status"] not in statuses or any(
+                not isinstance(item.get(key), str)
+                for key in ("activeVersion", "installedVersion", "sourceVersion",
+                            "latestStableVersion", "checkedAt", "sourceUrl", "executable", "nextAction")
+            ):
+                return None, "ResultSchemaMismatch"
+            if item["status"] != "Current":
+                if not {item["toolchainId"], "msl:" + item["toolchainId"]} & set(value["remainingRequired"]):
+                    return None, "ResultSchemaMismatch"
+            else:
+                versions = []
+                for key in ("activeVersion", "latestStableVersion"):
+                    if len(item[key]) > 32 or not re.fullmatch(r"\d+(?:\.\d+){0,3}", item[key]):
+                        return None, "ResultSchemaMismatch"
+                    parts = tuple(map(int, item[key].split(".")))
+                    versions.append(parts + (0,) * (4 - len(parts)))
+                if versions[0] < versions[1]:
+                    return None, "ResultSchemaMismatch"
     return value, None
 
 
@@ -388,7 +427,11 @@ def resolve_swift_contract(
     swift_version = linux.get("swiftVersion")
     if not isinstance(swiftly_version, str) or not re.fullmatch(r"\d+\.\d+\.\d+", swiftly_version):
         raise ContractError("swiftlyVersion must be a stable semantic version")
-    if not isinstance(swift_version, str) or not re.fullmatch(r"\d+\.\d+\.\d+", swift_version):
+    stable_policy = swift_version == "latest-stable" and any(
+        isinstance(item, dict) and item.get("id") == "swift" and item.get("provider") == "swift"
+        for item in registry.get("mslToolchains", [])
+    )
+    if not stable_policy and (not isinstance(swift_version, str) or not re.fullmatch(r"\d+\.\d+\.\d+", swift_version)):
         raise ContractError("swiftVersion must be a stable semantic version")
 
     distribution, version = parse_os_release(os_release_path)
@@ -478,11 +521,23 @@ def extract_swiftly(archive: Path, output: Path) -> tuple[dict, int]:
     """Extract only the regular swiftly binary without trusting archive paths."""
     try:
         with tarfile.open(archive, mode="r:gz") as bundle:
-            matches = [
-                member
-                for member in bundle.getmembers()
-                if member.isfile() and Path(member.name).name == "swiftly"
-            ]
+            matches = []
+            member_count = 0
+            expanded_bytes = 0
+            for member in bundle:
+                member_count += 1
+                if member_count > MAX_SWIFTLY_ARCHIVE_MEMBERS:
+                    raise ContractError("swiftly archive contains too many members")
+                if member.size < 0:
+                    raise ContractError("swiftly archive contains an invalid member size")
+                if member.isfile():
+                    expanded_bytes += member.size
+                    if expanded_bytes > MAX_SWIFTLY_ARCHIVE_EXPANDED_BYTES:
+                        raise ContractError("swiftly archive expanded size exceeds the limit")
+                    if Path(member.name).name == "swiftly":
+                        if member.size > MAX_SWIFTLY_BINARY_BYTES:
+                            raise ContractError("swiftly binary exceeds the expanded size limit")
+                        matches.append(member)
             if len(matches) != 1:
                 raise ContractError(
                     "swiftly archive must contain exactly one regular swiftly binary"
@@ -493,9 +548,15 @@ def extract_swiftly(archive: Path, output: Path) -> tuple[dict, int]:
             output.parent.mkdir(parents=True, exist_ok=True)
             temporary = output.with_name(f".{output.name}.{uuid.uuid4().hex}.tmp")
             try:
-                with temporary.open("wb") as target:
+                copied = 0
+                with temporary.open("xb") as target:
                     while block := source.read(1024 * 1024):
+                        copied += len(block)
+                        if copied > MAX_SWIFTLY_BINARY_BYTES or copied > matches[0].size:
+                            raise ContractError("swiftly binary stream exceeds its declared size or limit")
                         target.write(block)
+                if copied != matches[0].size:
+                    raise ContractError("swiftly binary stream is truncated")
                 temporary.chmod(0o755)
                 os.replace(temporary, output)
             finally:

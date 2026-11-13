@@ -29,6 +29,32 @@
 .PARAMETER DiscoveryFixture
     Nur fuer deterministische Tests: JSON-Modellinventar statt Provideraufruf.
 
+.PARAMETER SdkModulePath
+    DE: Absoluter Einstiegspunkt des bereits installierten Claude-/Copilot-SDKs.
+    EN: Absolute entry point of an already installed Claude/Copilot SDK.
+
+.PARAMETER OpenCodeServerUrl
+    DE: Bereits gestarteter lokaler OpenCode-Server; nur HTTP-Loopback erlaubt.
+    EN: Already running local OpenCode server; HTTP loopback only.
+
+.PARAMETER OpenCodeProvider
+    DE: Ausdruecklich gewaehlter verbundener OpenCode-Provider.
+    EN: Explicitly selected connected OpenCode provider.
+
+.PARAMETER TrustOpenCodeLoopbackEndpoint
+    DE: Gibt die Uebertragung des optionalen Server-Passworts an den ausdruecklich
+    gewaehlten HTTP-Loopback-Endpunkt fuer diesen Aufruf frei. Keine Serveridentitaet.
+    EN: Allows sending the optional server password to the explicitly selected
+    HTTP loopback endpoint for this invocation. This does not authenticate it.
+
+.PARAMETER FrontierModel
+    DE: Optionale exakte Auswahl aus der Discovery fuer die drei anspruchsvollen Rollen.
+    EN: Optional exact discovered model for the three demanding roles.
+
+.PARAMETER FastModel
+    DE: Optionale exakte Auswahl aus der Discovery fuer schnelle Aufgaben.
+    EN: Optional exact discovered model for fast tasks.
+
 .EXAMPLE
     pwsh -NoProfile -File scripts/resolve-model-routing.ps1 -Action Status -Harness Codex
 
@@ -47,6 +73,12 @@ param(
     [string] $ConfigPath = '',
     [string] $RoutingRoot = '',
     [string] $DiscoveryFixture = '',
+    [string] $SdkModulePath = '',
+    [string] $OpenCodeServerUrl = '',
+    [string] $OpenCodeProvider = '',
+    [switch] $TrustOpenCodeLoopbackEndpoint,
+    [string] $FrontierModel = '',
+    [string] $FastModel = '',
 
     [ValidateSet('Text', 'Json')]
     [string] $OutputFormat = 'Text'
@@ -58,10 +90,13 @@ $ErrorActionPreference = 'Stop'
 $script:Harnesses = [ordered]@{
     Codex = [ordered]@{ executable = 'codex'; discoveryMode = 'Enumerate' }
     Antigravity = [ordered]@{ executable = 'agy'; discoveryMode = 'EnumerateNames' }
-    Claude = [ordered]@{ executable = 'claude'; discoveryMode = 'ValidateCandidate' }
-    Copilot = [ordered]@{ executable = 'copilot'; discoveryMode = 'ValidateCandidate' }
-    OpenCode = [ordered]@{ executable = 'opencode'; discoveryMode = 'ConfiguredOnly' }
+    Claude = [ordered]@{ executable = 'claude'; discoveryMode = 'Enumerate' }
+    Copilot = [ordered]@{ executable = 'copilot'; discoveryMode = 'Enumerate' }
+    OpenCode = [ordered]@{ executable = 'opencode'; discoveryMode = 'Enumerate' }
 }
+
+# DE/EN: Load the additive adapters only; legacy discovery/selection/rendering stays intact.
+. (Join-Path $PSScriptRoot 'adapters/new-harnesses.ps1')
 
 function Assert-MRCondition {
     param([Parameter(Mandatory)][bool] $Condition, [Parameter(Mandatory)][string] $Message)
@@ -232,11 +267,15 @@ function Get-MRModels {
     if (-not [string]::IsNullOrWhiteSpace($Fixture)) {
         $fixtureData = Read-MRJson ([IO.Path]::GetFullPath($Fixture))
         Assert-MRCondition ($fixtureData.models -is [object[]]) 'DiscoveryFixture.models muss ein Array sein.'
+        if ($Family -in @('Claude', 'Copilot', 'OpenCode')) {
+            return @(ConvertTo-MRDiscoveredModel $Family $fixtureData)
+        }
         return @($fixtureData.models)
     }
     switch ($Family) {
         'Codex' { return @(Invoke-MRCodexDiscovery) }
         'Antigravity' { return @(Invoke-MRAntigravityDiscovery) }
+        { $_ -in @('Claude', 'Copilot', 'OpenCode') } { return @(Invoke-MRNewDiscovery $Family) }
         default { return @() }
     }
 }
@@ -247,7 +286,15 @@ function Test-MRReasoning {
 }
 
 function Select-MRModels {
-    param([Parameter(Mandatory)][string] $Family, [Parameter(Mandatory)][object[]] $Models)
+    param(
+        [Parameter(Mandatory)][string] $Family,
+        [Parameter(Mandatory)][object[]] $Models,
+        [string] $EffectiveFrontierModel = '',
+        [string] $EffectiveFastModel = ''
+    )
+    if ($Family -in @('Claude', 'Copilot', 'OpenCode')) {
+        return Select-MRDiscoveredModel $Family $Models $EffectiveFrontierModel $EffectiveFastModel
+    }
     Assert-MRCondition ($Models.Count -gt 0) "Keine Modelle fuer $Family erkannt."
     if ($Family -eq 'Codex') {
         $frontier = @($Models | Where-Object { [bool] $_.isDefault })
@@ -263,7 +310,13 @@ function Select-MRModels {
     } elseif ($Family -eq 'Antigravity') {
         $frontier = @($Models | Where-Object { [string] $_.model -match '^claude-opus-.+-thinking$' })
         if ($frontier.Count -ne 1) {
+            $frontier = @($Models | Where-Object { [string] $_.model -match '^claude-opus-.+-high$' })
+        }
+        if ($frontier.Count -ne 1) {
             $frontier = @($Models | Where-Object { [string] $_.model -match '^gemini-.+-pro-high$' })
+        }
+        if ($frontier.Count -ne 1) {
+            $frontier = @($Models | Where-Object { [string] $_.model -match '^gemini-.+-argon-high$' })
         }
         $fast = @($Models | Where-Object { [string] $_.model -match '^gemini-.+-flash-medium$' } | Select-Object -First 1)
         Assert-MRCondition ($frontier.Count -eq 1) 'Antigravity Frontier-Zuordnung ist nicht eindeutig.'
@@ -279,6 +332,45 @@ function Select-MRModels {
     return [ordered]@{ frontier = $frontierModel; fast = $fastModel; frontierEffort = 'high'; fastEffort = $fastEffort }
 }
 
+function Get-MRStoredSelection {
+    param([Parameter(Mandatory)][string] $Family, [Parameter(Mandatory)][string] $Path)
+    if (-not (Test-Path -LiteralPath $Path -PathType Leaf)) { return $null }
+    $existing = Read-MRJson $Path
+    if ([string] $existing.schemaVersion -cne '2.0' -or
+        $existing.harness -isnot [hashtable] -or
+        [string] $existing.harness.family -cne $Family) { return $null }
+    Assert-MRCondition ($existing.profiles -is [hashtable]) "$Family stored profile set is missing or invalid."
+    $prefix = $Family.ToLowerInvariant()
+    $expected = [ordered]@{
+        "${prefix}-frontier-auto" = 'frontier-reasoning'
+        "${prefix}-implementation-auto" = 'long-running-implementation'
+        "${prefix}-review-auto" = 'coding-review'
+        "${prefix}-fast-auto" = 'fast-mechanical'
+    }
+    $profiles = [Collections.Generic.List[hashtable]]::new()
+    foreach ($entry in $expected.GetEnumerator()) {
+        Assert-MRCondition ($existing.profiles.ContainsKey($entry.Key) -and
+            $existing.profiles[$entry.Key] -is [hashtable]) "$Family stored profile '$($entry.Key)' is missing or invalid."
+        $storedProfile = [hashtable] $existing.profiles[$entry.Key]
+        Assert-MRCondition ([string] $storedProfile.routingRole -ceq [string] $entry.Value -and
+            [string] $storedProfile.agentFamily -ceq $Family -and
+            -not [string]::IsNullOrWhiteSpace([string] $storedProfile.model) -and
+            -not [string]::IsNullOrWhiteSpace([string] $storedProfile.reasoningEffort)) "$Family stored profile '$($entry.Key)' is inconsistent."
+        $profiles.Add($storedProfile)
+    }
+    $frontierProfiles = @($profiles | Where-Object { [string] $_.routingRole -cne 'fast-mechanical' })
+    $frontierModels = @($frontierProfiles | ForEach-Object { [string] $_.model } | Sort-Object -Unique -CaseSensitive)
+    $frontierEfforts = @($frontierProfiles | ForEach-Object { [string] $_.reasoningEffort } | Sort-Object -Unique -CaseSensitive)
+    Assert-MRCondition ($frontierModels.Count -eq 1 -and $frontierEfforts.Count -eq 1) "$Family stored frontier profiles disagree."
+    $fastProfile = [hashtable] @($profiles | Where-Object { [string] $_.routingRole -ceq 'fast-mechanical' })[0]
+    return [ordered]@{
+        frontier = $frontierModels[0]
+        frontierEffort = $frontierEfforts[0]
+        fast = [string] $fastProfile.model
+        fastEffort = [string] $fastProfile.reasoningEffort
+    }
+}
+
 function New-MRProfile {
     param(
         [Parameter(Mandatory)][string] $Family,
@@ -286,6 +378,7 @@ function New-MRProfile {
         [Parameter(Mandatory)][hashtable] $Model,
         [Parameter(Mandatory)][string] $Effort
     )
+    if ($Family -in @('Claude', 'Copilot', 'OpenCode')) { return New-MRAdapterProfile $Family $Role $Model $Effort }
     $executable = [string] $script:Harnesses[$Family].executable
     if ($Family -eq 'Codex') {
         $preflightArguments = @('exec', '--ephemeral', '--model', '{model}', '--config', 'model_reasoning_effort="{reasoningEffort}"', '--sandbox', 'read-only', '--cd', '{worktree}', 'Reply exactly MODEL_READY without using tools.')
@@ -349,15 +442,42 @@ $ConfigPath = [IO.Path]::GetFullPath($ConfigPath)
 $resolvedHarness = Resolve-MRHarness $Harness $ConfigPath
 $adapter = $script:Harnesses[$resolvedHarness]
 $executable = [string] $adapter.executable
-Assert-MRCondition ($null -ne (Get-Command $executable -ErrorAction SilentlyContinue)) "Harness executable fehlt: $executable"
-$version = Get-MRCommandVersion $executable
-$models = @(Get-MRModels $resolvedHarness $DiscoveryFixture)
+$isNewHarness = $resolvedHarness -in @('Claude', 'Copilot', 'OpenCode')
+$version = 'Unknown'
+if (-not $isNewHarness) {
+    Assert-MRCondition ($null -ne (Get-Command $executable -ErrorAction SilentlyContinue)) "Harness executable fehlt: $executable"
+    $version = Get-MRCommandVersion $executable
+}
+# Preserve the legacy error path; new adapter failures return the documented Blocked result.
+if (-not $isNewHarness) { $models = @(Get-MRModels $resolvedHarness $DiscoveryFixture) } else { $models = @() }
 $mode = [string] $adapter.discoveryMode
 $catalogHash = Get-MRCatalogHash $RoutingRoot
 
 try {
-    $selection = Select-MRModels $resolvedHarness $models
+    if ($isNewHarness) {
+        Assert-MRCondition ($null -ne (Get-Command $executable -ErrorAction SilentlyContinue)) "Harness executable fehlt: $executable"
+        $version = Get-MRCommandVersion $executable
+        if (-not $DiscoveryFixture) { Test-MRNewCli $resolvedHarness }
+        $models = @(Get-MRModels $resolvedHarness $DiscoveryFixture)
+    }
+    Assert-MRCondition ($isNewHarness -or (-not $FrontierModel -and -not $FastModel)) 'Exact model overrides apply only to Claude, Copilot and OpenCode.'
+    $storedSelection = if ($isNewHarness) { Get-MRStoredSelection $resolvedHarness $ConfigPath } else { $null }
+    $usesStoredFrontier = $isNewHarness -and -not $FrontierModel -and $null -ne $storedSelection
+    $usesStoredFast = $isNewHarness -and -not $FastModel -and $null -ne $storedSelection
+    $effectiveFrontierModel = if ($FrontierModel) { $FrontierModel } elseif ($usesStoredFrontier) { [string] $storedSelection.frontier } else { '' }
+    $effectiveFastModel = if ($FastModel) { $FastModel } elseif ($usesStoredFast) { [string] $storedSelection.fast } else { '' }
+    $selection = Select-MRModels $resolvedHarness $models $effectiveFrontierModel $effectiveFastModel
+    if ($usesStoredFrontier) {
+        Assert-MRCondition ([string] $selection.frontierEffort -ceq [string] $storedSelection.frontierEffort) "$resolvedHarness stored frontier reasoning effort is no longer supported."
+    }
+    if ($usesStoredFast) {
+        Assert-MRCondition ([string] $selection.fastEffort -ceq [string] $storedSelection.fastEffort) "$resolvedHarness stored fast reasoning effort is no longer supported."
+    }
     $candidate = New-MRConfig $resolvedHarness $version $mode $selection $catalogHash
+    if ($isNewHarness) {
+        $candidate.generatedBy = 'model-routing-governance/0.2.0'
+        $candidate.selectionPolicySha256 = (Get-FileHash -LiteralPath (Join-Path $PSScriptRoot 'adapters/selection-policy.json') -Algorithm SHA256).Hash.ToLowerInvariant()
+    }
     $status = if (Test-Path -LiteralPath $ConfigPath -PathType Leaf) {
         $existing = Read-MRJson $ConfigPath
         if ([string] $existing.schemaVersion -ne '2.0') {
@@ -377,11 +497,17 @@ try {
                 catalogSha256 = [string] $candidate.catalogSha256
                 profiles = $candidate.profiles
             } | ConvertTo-Json -Depth 30 -Compress
+            if ($isNewHarness) {
+                $existingHash = if ($existing.ContainsKey('selectionPolicySha256')) { [string] $existing.selectionPolicySha256 } else { '' }
+                $existingComparable += $existingHash
+                $candidateComparable += [string] $candidate.selectionPolicySha256
+            }
             if ($existingComparable -ceq $candidateComparable) { 'Aligned' } else { 'RefreshRequired' }
         }
     } else { 'RefreshRequired' }
     if ($Action -eq 'Refresh') {
-        if ($PSCmdlet.ShouldProcess($ConfigPath, "Write local $resolvedHarness model routing profile")) {
+        $skipAlignedNewHarnessWrite = $isNewHarness -and $status -eq 'Aligned'
+        if (-not $skipAlignedNewHarnessWrite -and $PSCmdlet.ShouldProcess($ConfigPath, "Write local $resolvedHarness model routing profile")) {
             Write-MRJsonAtomic $ConfigPath $candidate
             $status = 'Aligned'
         }

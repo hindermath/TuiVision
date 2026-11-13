@@ -1,12 +1,91 @@
 # Cross-Platform Governance Preset
 
-Version: `0.2.2`
-Status: published, standard governance preset
+<!-- current-package: 0.2.6 -->
+
+Paketkennung: **v0.2.6**. [Vorbereitung und Veröffentlichungsgrenze](docs/release-0.2.6-validation.md). Die Release-Seite und der externe Archivnachweis belegen die Veröffentlichung, nicht dieser Vorbereitungsstand. Frühere Versionsnachweise unten bleiben historisch.
+
+<span lang="en">Package identity: v0.2.6. The release page and external archive evidence prove publication, not this preparation snapshot. Earlier version records below remain historical.</span>
+
+[Release-Abschluss und Verbesserungsprofil / Publication closeout and improvement profile](docs/release-0.2.4-validation.md).
+
+Der unten verlinkte Basispaket-Nachweis bleibt historisch; dieses Paket nimmt die Quellenkorrekturen als neue Version auf.
+
+<span lang="en">The linked base-package evidence remains historical; this package includes the source corrections as a new version.</span>
+
+**Leserpfad / Reader path:** [Deutsch: Einstieg, Begriffe und Fehlerhilfe](docs/user-guide.md) · [English: start, terms and troubleshooting](docs/user-guide.EN.md).
+
+Historisches Basispaket **v0.2.4**. Der [Release-Stand](https://github.com/hindermath/spec-kit-preset-cross-platform-governance/releases) wird getrennt geprüft; ein Commit auf main ist noch keine Veröffentlichung oder Installation.
+
+*Historical base package v0.2.4. The release page records actual publication separately; a main-branch commit is not publication or installation.*
+
+
+Patch **0.2.4** liefert die verbesserte zweisprachige Einstiegs- und
+Kompositionsdokumentation. Verhalten und Berechtigungsgrenzen bleiben erhalten.
+[Release-Nachweis / Release record](docs/release-0.2.4-validation.md).
+
+*Patch 0.2.4 packages the improved bilingual getting-started and composition
+guide. Behavior and authority boundaries remain unchanged.*
+
+Version: `0.2.5`
+Status: Veröffentlichung über die Release-Seite prüfen / verify publication on the release page
 Priority: `50`
 Requires: Spec-Kit `>=0.8.0` (uses the `wrap` and `append` composition
 strategies introduced in `0.8.x`).
 
 ## Zweck / Purpose
+
+### Einstieg und Arbeitsweise / Getting Started and Workflow
+
+Installiere im initialisierten Zielprojekt. Das [Manifest](preset.yml)
+ergänzt Specify/Plan/Tasks mit `wrap` und Dokumentvorlagen/Constitution mit
+`append`. Es erzeugt weder automatisch eine zweite Skriptvariante noch
+Manpages, Hilfe oder native Testergebnisse. Nenne relevante Starter und
+Zielpfade ausdrücklich; das separate Agent-Guidance-Addendum wird nicht durch
+seine Registrierung zum Nachweis synchroner Agenten-Dateien.
+
+*Install in an initialized target project. The [manifest](preset.yml) wraps
+Specify/Plan/Tasks and appends to document templates/constitution. It does not
+automatically produce a second script variant, man pages, help or native test
+results. Explicitly name starters and output paths; registering the separate
+agent-guidance addendum does not prove synchronized agent files.*
+
+Beispiel für `check-example.sh` und `check-example.ps1`: Plane mit
+`script-parity-checklist-template` eine Checkliste unter
+`docs/cross-platform/check-example.md`, mit `man-page-template` die
+`docs/man/check-example.1` und mit `powershell-help-template` die Hilfe im
+PowerShell-Skript. Specify benennt Plattformen und Verhalten, Plan die
+Paritätsfälle, Tasks die Implementierung, Hilfe und nativen Tests.
+
+*For check-example.sh/check-example.ps1, use `script-parity-checklist-template`
+for `docs/cross-platform/check-example.md`, `man-page-template` for
+`docs/man/check-example.1`, and `powershell-help-template` for script help.
+Specify names platforms and behavior, Plan parity scenarios, Tasks
+implementation, documentation and native tests. Outputs are examples only.*
+
+Vorhandene Evidence gezielt aktualisieren. Eine Syntaxprüfung ist kein
+nativer Plattformnachweis; unverfügbare Plattformen als nicht geprüft
+ausweisen. `N/A` braucht Begründung, `Open` Owner und Folgeaktion. Eine
+leere Checkliste belegt keine Parität.
+
+*Update existing evidence deliberately. Syntax parsing is not native platform
+proof; report unavailable platforms as untested. Justify N/A and assign an
+owner/follow-up to Open. An empty checklist does not prove parity.*
+
+Kleinere Prioritätszahlen haben höhere Auflösungspriorität, nicht frühere
+Testausführung. `append` ergänzt, `wrap` verschachtelt; `replace` und lokale
+Overrides können gleichnamige Inhalte verdrängen. Prüfe individuelle
+Kombinationen über `specify preset resolve plan-template` und die erzeugten
+Agentenflächen; Priorität ersetzt keine Tests oder Freigaben.
+
+*Lower numbers mean higher resolution precedence, not earlier execution.
+Append adds, wrap nests; replace and local overrides can hide same-name
+content. Inspect custom combinations through plan-template resolution and
+generated agent surfaces. Priority replaces neither testing nor approval.*
+
+Leserpfad / Reader path: [Installation](#installation--installation) →
+[Evidenzvorlagen / Evidence Templates](#evidenzvorlagen--evidence-templates) →
+[Prüfung / Verification](#prüfung--verification) →
+[Fehlersuche / Troubleshooting](#fehlersuche--troubleshooting).
 
 Dieses Standard-Preset stellt sicher, dass scriptförmige Werkzeuge
 plattformübergreifend gedacht, dokumentiert und geprüft werden. Bash ist die
@@ -85,9 +164,7 @@ platforms and supported shells, and clear documentation locations.*
 ### Veröffentlichter Tag / Published Tag
 
 ```bash
-specify preset add \
-  --from https://github.com/hindermath/spec-kit-preset-cross-platform-governance/archive/refs/tags/v0.2.2.zip \
-  --priority 50
+specify preset add --from https://github.com/hindermath/spec-kit-preset-cross-platform-governance/archive/refs/tags/v0.2.6.zip --priority 50
 specify preset info cross-platform-governance
 ```
 
@@ -102,18 +179,18 @@ specify preset info cross-platform-governance
 
 | Priority | Preset |
 |---:|---|
-| 10 | `security-governance` |
-| 20 | `architecture-governance` |
-| 30 | `isaqb-architecture-governance` |
-| 40 | `a11y-governance` |
-| 50 | `cross-platform-governance` |
-| 60 | `agent-parity-governance` |
+| 10 | [security-governance](https://github.com/hindermath/spec-kit-preset-security-governance) |
+| 20 | [architecture-governance](https://github.com/hindermath/spec-kit-preset-architecture-governance) |
+| 30 | [isaqb-architecture-governance](https://github.com/hindermath/spec-kit-preset-isaqb-architecture-governance) |
+| 40 | [a11y-governance](https://github.com/hindermath/spec-kit-preset-a11y-governance) |
+| 50 | [cross-platform-governance](https://github.com/hindermath/spec-kit-preset-cross-platform-governance) |
+| 60 | [agent-parity-governance](https://github.com/hindermath/spec-kit-preset-agent-parity-governance) |
 
-Dieses Preset liegt nach A11Y, damit CLI-Ausgaben, Hilfetexte und
-Dokumentation zugleich barrierefrei und plattformübergreifend gedacht werden.
+Priorität 50 kombiniert dieses Preset mit A11Y in der empfohlenen
+Komposition; sie definiert keine zeitliche Ausführung der Tests.
 
-*This preset runs after A11Y so CLI output, help text, and documentation are
-considered both accessible and cross-platform.*
+*Priority 50 combines this preset with A11Y in the recommended composition;
+it does not define a chronological test schedule.*
 
 ## Quellkapitel / Source Chapter
 
@@ -160,7 +237,7 @@ Standard-Evidence-Orte / Default evidence locations:
 ```bash
 specify preset list
 specify preset info cross-platform-governance
-specify preset resolve
+specify preset resolve script-parity-checklist-template
 specify check
 ```
 

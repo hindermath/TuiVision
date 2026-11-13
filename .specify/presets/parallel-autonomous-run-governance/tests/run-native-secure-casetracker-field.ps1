@@ -1,20 +1,19 @@
 #Requires -Version 7.0
 <#
 .SYNOPSIS
-    Bereitet den nativen Secure-CaseTracker-Feldtest vor und fuehrt ihn aus.
+    Liest den historischen Secure-CaseTracker-Feldtest ohne Neustart.
 
 .DESCRIPTION
-    DE: Erzeugt eine reproduzierbare Pipeline-Kampagne fuer Units 00 bis 03 in
-    sechs MSL-Sprachrepositories. Die 24 autonomen Worker laufen mit maximal
-    drei gleichzeitigen Prozessen nativ auf dem Entwicklungs-Mac. Das Skript
-    dokumentiert die ausdruecklichen Entwicklungs-Overrides fuer native
-    Ausfuehrung und GitHub-Billing-Startfehler.
+    DE: Bewahrt den historischen Feldtest fuer Units 00 bis 03 in sechs
+    MSL-Sprachrepositories. Die fruehere Freigabe fuer native Agentenstarts
+    und Admin-Merge gilt nicht fuer neue Laeufe. Status, Stop und Validate
+    bleiben fuer vorhandene Artefakte verfuegbar. -WhatIf stoppt jede
+    schreibende Aktion vor dem Coordinator.
 
-    EN: Creates a reproducible pipeline campaign for Units 00 through 03 in six
-    MSL language repositories. The 24 autonomous workers run with at most three
-    concurrent processes natively on the development Mac. The script records
-    the explicit development overrides for native execution and GitHub billing
-    startup failures.
+    EN: Preserves the historical field record for Units 00 through 03 in six
+    MSL language repositories. Prior native agent and admin-merge exceptions
+    do not authorize new runs. Status, Stop and Validate remain available for
+    existing artifacts. -WhatIf stops state-changing actions before dispatch.
 
 .PARAMETER Action
     Prepare, Validate, Start, Status, Stop, Resume oder Consolidate.
@@ -26,21 +25,13 @@
     Lokales, nicht versioniertes Verzeichnis fuer Manifest, Runner und Zustand.
 
 .PARAMETER Merge
-    Fuehrt bei Consolidate die geordnete PR-Zusammenfuehrung mit dem
-    autorisierten Admin-Bypass aus und synchronisiert danach alle main-Branches.
+    Historischer Parameter; Consolidate ist fuer diesen Feldtest gesperrt.
 
 .PARAMETER Force
-    Ersetzt bei Prepare vorhandene Kampagnenartefakte. Laufzeitdaten und
-    Repository-Branches werden nicht geloescht.
+    Historischer Parameter; Prepare ist fuer diesen Feldtest gesperrt.
 
 .EXAMPLE
-    pwsh -NoProfile -File tests/run-native-secure-casetracker-field.ps1 -Action Prepare
-
-.EXAMPLE
-    pwsh -NoProfile -File tests/run-native-secure-casetracker-field.ps1 -Action Start
-
-.EXAMPLE
-    pwsh -NoProfile -File tests/run-native-secure-casetracker-field.ps1 -Action Consolidate -Merge
+    pwsh -NoProfile -File tests/run-native-secure-casetracker-field.ps1 -Action Status
 #>
 [CmdletBinding(SupportsShouldProcess)]
 param(
@@ -187,10 +178,7 @@ function New-FieldCampaign {
         runnerProfile = 'native-codex-field'
         requireAutonomousPreset = $true
         operatorInstructions = @'
-Repository owner Thorsten Hindermann explicitly authorized this development field worker to run natively on the macOS development host, overriding the intake's Container-First gate only for this campaign. Record the native execution override in feature evidence.
-The worker has PublishPR authority: perform the complete installed speckit.autonomous run for the assigned Unit, run every applicable local quality gate, commit, push, and create the pull request. Do not merge and do not use admin bypass.
-For this campaign only, a GitHub Actions job that is rejected before its first step with the exact account-payment or spending-limit annotation may be recorded as an external provider N/A. It is not passing technical evidence. Local and agent-side build, test, security, accessibility, documentation, state, and evidence gates remain mandatory. Any technical CI failure, actionable review, missing evidence, or differently unavailable check remains blocking.
-Do not include secrets or personal data. Do not start any later Unit; the campaign schedules it separately after the validated handoff.
+Historical field record only. This manifest is not authorization to launch native agents, bypass Container-First, override CI, push, or merge. Use the current approved sandbox workflow and fresh scope-specific authority for any new campaign.
 '@
         workers = @($workers)
         consolidation = [ordered]@{
@@ -203,28 +191,16 @@ Do not include secrets or personal data. Do not start any later Unit; the campai
 }
 
 function New-FieldRunnerProfiles {
-    return [ordered]@{
-        schemaVersion = '1.0'
-        profiles = [ordered]@{
-            'native-codex-field' = [ordered]@{
-                executable = 'codex'
-                arguments = @(
-                    'exec',
-                    '--ephemeral',
-                    '--cd', '{worktree}',
-                    '--add-dir', '{resultDirectory}',
-                    '--sandbox', 'danger-full-access',
-                    '{prompt}'
-                )
-            }
-        }
-        mergeProfiles = [ordered]@{
-            'github-owner-development' = [ordered]@{
-                executable = 'gh'
-                arguments = @('pr', 'merge', '{prUrl}', '--merge', '--delete-branch', '--admin')
-            }
-        }
+    throw 'Historical native runner and admin merge profiles are retired. Use an approved sandbox and current coordinator profile.'
+}
+
+if ($Action -in @('Prepare', 'Start', 'Resume', 'Consolidate')) {
+    if ($WhatIfPreference) {
+        [void]$PSCmdlet.ShouldProcess($OutputRoot, "Historical field action '$Action' is retired")
+        Write-Output "Preview: $Action is blocked for this historical native field wrapper."
+        exit 0
     }
+    throw "Historical native field action '$Action' is retired. Use an approved sandbox and current coordinator workflow."
 }
 
 Assert-FieldCondition $IsMacOS 'Der ausdruecklich freigegebene native Feldtest darf nur auf macOS laufen.'
@@ -249,6 +225,14 @@ if ($Action -eq 'Prepare') {
 
 Assert-FieldCondition (Test-Path -LiteralPath $manifestPath -PathType Leaf) "Manifest fehlt. Zuerst -Action Prepare ausfuehren: $manifestPath"
 Assert-FieldCondition (Test-Path -LiteralPath $runnerPath -PathType Leaf) "Runner-Konfiguration fehlt: $runnerPath"
+
+# A preview stops before repository preflight and child dispatch. The child
+# coordinator and post-merge Git sync have effects this wrapper cannot undo.
+if ($Action -in @('Start', 'Stop', 'Resume', 'Consolidate') -and
+    -not $PSCmdlet.ShouldProcess($OutputRoot, "Run Secure CaseTracker field action '$Action'")) {
+    Write-Output "Preview: $Action would invoke the field coordinator."
+    exit 0
+}
 
 if ($Action -in @('Validate', 'Start')) {
     Test-FieldRepositories

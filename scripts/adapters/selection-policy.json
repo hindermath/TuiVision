@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "2.0",
+  "selectionOrder": "capability-filter-then-first-nonempty-tier",
+  "ambiguityPolicy": "block-and-request-exact-discovered-id",
+  "roles": {
+    "frontier": [
+      { "name": "claude-opus-alias", "pattern": "^opus$" },
+      { "name": "claude-opus", "pattern": "^claude-opus-[0-9][a-z0-9.-]*$" },
+      { "name": "gpt-full", "pattern": "^gpt-(?!.*(?:mini|nano))[0-9][a-z0-9.-]*$" },
+      { "name": "openai-reasoning", "pattern": "^o[0-9][a-z0-9.-]*$" },
+      { "name": "gemini-pro", "pattern": "^gemini-[0-9][a-z0-9.-]*-pro(?:-[a-z0-9.-]+)?$" },
+      { "name": "claude-sonnet-alias", "pattern": "^sonnet$" },
+      { "name": "claude-sonnet", "pattern": "^claude-sonnet-[0-9][a-z0-9.-]*$" },
+      { "name": "unique-capable-model", "pattern": ".+" }
+    ],
+    "fast": [
+      { "name": "claude-haiku-alias", "pattern": "^haiku$" },
+      { "name": "claude-haiku", "pattern": "^claude-haiku-[0-9][a-z0-9.-]*$" },
+      { "name": "gpt-mini-nano", "pattern": "^gpt-[0-9][a-z0-9.-]*-(?:mini|nano)(?:-[a-z0-9.-]+)?$" },
+      { "name": "gemini-flash", "pattern": "^gemini-[0-9][a-z0-9.-]*-flash(?:-[a-z0-9.-]+)?$" },
+      { "name": "claude-sonnet-alias", "pattern": "^sonnet$" },
+      { "name": "claude-sonnet", "pattern": "^claude-sonnet-[0-9][a-z0-9.-]*$" },
+      { "name": "reuse-frontier" }
+    ]
+  }
+}

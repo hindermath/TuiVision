@@ -1,0 +1,14 @@
+{
+  "release_status": "NotEstablishedAtPreparation",
+  "candidate_status": "Prepared",
+  "packageVersion": "0.1.3",
+  "presetId": "project-statistics-governance",
+  "externalPublicationEvidence": "https://github.com/hindermath/spec-kit-preset-project-statistics-governance/releases/tag/v0.1.3",
+  "documentationPr": "https://github.com/hindermath/spec-kit-preset-project-statistics-governance/pull/9",
+  "schemaVersion": 1,
+  "historicalPublicationVersion": "0.1.2",
+  "runtimeChanged": false,
+  "generatorSchemaChanged": false,
+  "preparedAt": "2026-10-24T12:50:05.0116770+00:00",
+  "sourceCommit": "c7376dac19abbea10c757633f161fb18692b4768"
+}

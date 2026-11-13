@@ -237,6 +237,16 @@ function Test-RepositoryPresetMatrix {
         if (-not (Test-Path $manifestPath -PathType Leaf)) {
             throw "${id}: preset.yml fehlt / missing"
         }
+        # DE: Registry und tatsaechliches Manifest muessen dieselbe Identitaet binden.
+        # EN: Registry and installed manifest must bind the same identity.
+        $manifestText = (Get-Content $manifestPath -Raw).Replace("`r`n", "`n")
+        foreach ($pair in @(@('id', $id), @('version', $expectedVersion))) {
+            $pattern = '(?m)^  ' + $pair[0] + ': [''"]?([^''"\s]+)[''"]? *$'
+            $matchesFound = [regex]::Matches($manifestText, $pattern)
+            if ($matchesFound.Count -ne 1 -or $matchesFound[0].Groups[1].Value -cne $pair[1]) {
+                throw "${id}: preset.yml $($pair[0]) drift"
+            }
+        }
     }
 
     Write-Host "  OK: $($expectedItems.Count) Presets entsprechen exakt der Matrix / presets exactly match the matrix"
@@ -246,7 +256,7 @@ if ($CheckOnly -and ($Force -or $WhatIfPreference)) {
     throw '-CheckOnly ist nicht mit -Force oder -WhatIf kombinierbar / cannot be combined'
 }
 
-if (-not (Get-Command specify -ErrorAction SilentlyContinue)) {
+if (-not $CheckOnly -and -not (Get-Command specify -ErrorAction SilentlyContinue)) {
     throw 'specify CLI nicht gefunden / specify CLI not found'
 }
 

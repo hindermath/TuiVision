@@ -3,6 +3,7 @@
   "campaignId": "00000000-0000-0000-0000-000000000000",
   "workerId": "worker-01",
   "runId": "00000000-0000-0000-0000-000000000001",
+  "attemptId": "replace-with-current-execution-attempt-id",
   "status": "Completed",
   "headSha": "replace-with-full-git-sha",
   "autonomousStatePath": "specs/NNN-feature/autonomous-run-state.json",

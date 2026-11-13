@@ -1,0 +1,13 @@
+{
+  "id": "parallel-autonomous-run-governance",
+  "version": "0.2.13",
+  "priority": 80,
+  "readers": [
+    "docs/user-guide.md",
+    "docs/user-guide.EN.md",
+    "docs/documentation-closeout.md"
+  ],
+  "sourceBaseCommit": "8d5f9b46105740d9efe45461fb6e4c04487dcf5d",
+  "preserveHistoricalEvidence": true,
+  "publicationEvidenceVersion": "0.2.8"
+}

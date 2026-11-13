@@ -39,7 +39,18 @@ def required_text(obj, key, label):
 
 def relative(value):
     p = PurePosixPath(value)
-    return not p.is_absolute() and ".." not in p.parts
+    return not p.is_absolute() and ".." not in p.parts and "\\" not in value
+
+def confined_file(value):
+    if not relative(value):
+        raise ValueError("path must be repository-relative")
+    try:
+        path = (repo / value).resolve(strict=True)
+    except (OSError, RuntimeError) as exc:
+        raise ValueError(f"file missing: {value}") from exc
+    if not path.is_relative_to(repo) or not path.is_file():
+        raise ValueError(f"file resolves outside repository: {value}")
+    return path
 
 def normalized(path):
     raw = path.read_bytes()
@@ -97,13 +108,13 @@ for i, target in enumerate(targets):
     target_paths.add(path_text)
     target_roles[path_text] = role
     if not re.fullmatch(r"[0-9a-f]{64}", digest): errors.append(f"{label}.normalizedSha256 is invalid")
-    target_path = repo / path_text
-    if not target_path.is_file(): errors.append(f"target missing: {path_text}")
+    try:
+        target_path = confined_file(path_text)
+        actual = hashlib.sha256(normalized(target_path)).hexdigest()
+    except ValueError as exc:
+        errors.append(f"target {path_text}: {exc}")
     else:
-        try: actual = hashlib.sha256(normalized(target_path)).hexdigest()
-        except ValueError as exc: errors.append(f"target {path_text}: {exc}")
-        else:
-            if actual != digest: errors.append(f"target hash drift: {path_text}")
+        if actual != digest: errors.append(f"target hash drift: {path_text}")
 
 request_evidence = data.get("requestEvidence")
 request_binding_required = mode == "Series" or request_evidence is not None
@@ -117,20 +128,17 @@ if request_binding_required:
             graph_error("IRG001", "requestEvidence.path must be repository-relative")
         if not re.fullmatch(r"[0-9a-f]{64}", request_digest):
             graph_error("IRG001", "requestEvidence.normalizedSha256 is invalid")
-        request_path = repo / request_path_text
         request_data = None
-        if not request_path.is_file():
-            graph_error("IRG001", f"request missing: {request_path_text}")
-        else:
-            try:
+        try:
+                request_path = confined_file(request_path_text)
                 request_bytes = normalized(request_path)
                 actual_request_digest = hashlib.sha256(request_bytes).hexdigest()
                 request_data = json.loads(request_bytes.decode("utf-8"))
-            except (ValueError, json.JSONDecodeError) as exc:
-                graph_error("IRG001", f"invalid request: {exc}")
-            else:
-                if actual_request_digest != request_digest:
-                    graph_error("IRG001", "request hash drift")
+        except (ValueError, json.JSONDecodeError) as exc:
+            graph_error("IRG001", f"invalid request: {exc}")
+        else:
+            if actual_request_digest != request_digest:
+                graph_error("IRG001", "request hash drift")
         if request_data is not None:
             if not isinstance(request_data, dict):
                 graph_error("IRG002", "request root must be an object")
@@ -261,18 +269,53 @@ exceptions = data.get("operatorExceptions")
 if not isinstance(questions, list): errors.append("questions must be an array"); questions = []
 if not isinstance(risks, list): errors.append("acceptedRisks must be an array"); risks = []
 if not isinstance(exceptions, list): errors.append("operatorExceptions must be an array"); exceptions = []
-open_questions = [q for q in questions if isinstance(q, dict) and q.get("status") != "Answered"]
-if status in accepted and open_questions: errors.append("accepted status cannot have unanswered questions")
+for i, question in enumerate(questions):
+    label = f"questions[{i}]"
+    if not isinstance(question, dict):
+        errors.append(f"{label} must be an object")
+        continue
+    for field in ("id", "owner", "question"):
+        required_text(question, field, label)
+    question_status = required_text(question, "status", label)
+    if status in accepted and question_status != "Answered":
+        errors.append("accepted status cannot have unanswered questions")
+    if question_status == "Answered":
+        for field in ("answer", "evidence"):
+            required_text(question, field, label)
 if status in accepted and (severity_counts["Critical"] or severity_counts["High"]):
     errors.append("Critical or High findings block an accepted status")
 if status == "Ready" and risks: errors.append("Ready cannot contain accepted risks")
 if status == "ReadyWithAcceptedRisks" and not risks: errors.append("ReadyWithAcceptedRisks needs acceptedRisks")
+residual_findings = {}
+if status in accepted:
+    for finding in findings:
+        if not isinstance(finding, dict):
+            continue
+        disposition = finding.get("disposition")
+        if disposition not in ("Resolved", "Remediated", "AcceptedRisk"):
+            errors.append("accepted status cannot retain an open finding")
+        if disposition == "AcceptedRisk":
+            residual_id = required_text(finding, "id", "residual finding")
+            residual_findings[residual_id] = finding.get("severity")
+    if status == "Ready" and residual_findings:
+        errors.append("Ready cannot retain residual findings")
+risk_ids = set()
 for i, risk in enumerate(risks):
     label = f"acceptedRisks[{i}]"
+    if not isinstance(risk, dict):
+        errors.append(f"{label} must be an object")
+        continue
     if required_text(risk, "severity", label) not in ("Medium", "Low"): errors.append(f"{label}.severity must be Medium or Low")
     for field in ("findingId", "owner", "rationale", "acceptedAt", "evidence", "reevaluationTrigger"):
         required_text(risk, field, label)
     if risk.get("acceptedByType") != "Human": errors.append(f"{label}.acceptedByType must be Human")
+    if status in accepted:
+        risk_id = required_text(risk, "findingId", label)
+        if risk_id in risk_ids or residual_findings.get(risk_id) != risk.get("severity"):
+            errors.append(f"{label} must uniquely match a residual finding and severity")
+        risk_ids.add(risk_id)
+if status in accepted and set(residual_findings) != risk_ids:
+    errors.append("every residual finding requires matching human risk acceptance")
 for i, exception in enumerate(exceptions):
     label = f"operatorExceptions[{i}]"
     for field in ("exceptionId", "author", "reason", "date", "expiry"):
@@ -291,7 +334,9 @@ if not isinstance(coverage, dict): errors.append("coverage must be an object"); 
 individual = coverage.get("individual", [])
 series = coverage.get("series", [])
 workers = coverage.get("workers", [])
-if not isinstance(individual, list) or set(individual) != target_paths:
+if (not isinstance(individual, list) or
+    any(not isinstance(path, str) for path in individual) or
+    len(individual) != len(target_paths) or set(individual) != target_paths):
     errors.append("coverage.individual must contain every target path exactly once")
 if mode == "Series" and (not isinstance(series, list) or not series): errors.append("Series mode requires series coverage")
 if mode == "Campaign":

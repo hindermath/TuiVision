@@ -28,3 +28,15 @@ named targets. Preserve unrelated work.
 
 Finish with changed targets, resolved and remaining findings, new outcome, and
 the next exact action.
+
+## Nutzungshilfe / Reader help
+
+DE: Einen bestehenden Arbeitsauftrag fachlich prüfen, ohne ihn still zu reparieren. Diese Command-Erklärung ändert keine Berechtigungen oder Voraussetzungen.
+Die bestehenden technischen Feldnamen und Statuswerte nicht übersetzen oder
+nur zum Bestehen eines Tests verändern. Einführung, Begriffe, Beispiel,
+Ergebnis und Fehlerhilfe stehen im [deutschen Leserpfad](https://github.com/hindermath/spec-kit-preset-intake-review-governance/blob/main/docs/user-guide.md).
+
+EN: Assess an existing work request without silently repairing it. This command explanation changes no authority or prerequisites.
+Keep technical field names and states unchanged; never alter them just to pass.
+See the [English reader path](https://github.com/hindermath/spec-kit-preset-intake-review-governance/blob/main/docs/user-guide.EN.md)
+for introduction, terms, example, result and troubleshooting.

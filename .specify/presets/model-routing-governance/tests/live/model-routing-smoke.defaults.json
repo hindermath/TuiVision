@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "1.0",
+  "testId": "model-routing-live-smoke",
+  "sdk": {
+    "claude": {
+      "package": "@anthropic-ai/claude-agent-sdk",
+      "version": "0.3.318",
+      "entry": "node_modules/@anthropic-ai/claude-agent-sdk/sdk.mjs"
+    },
+    "copilot": {
+      "package": "@github/copilot-sdk",
+      "version": "1.0.28",
+      "entry": "node_modules/@github/copilot-sdk/dist/index.js"
+    }
+  },
+  "attemptBudgetSeconds": 120,
+  "verificationTimeoutSeconds": 30,
+  "maxRetriesUpperBound": 3,
+  "harnesses": [
+    {
+      "label": "agy",
+      "family": "Antigravity"
+    },
+    {
+      "label": "Claude",
+      "family": "Claude",
+      "frontierModel": "opus",
+      "fastModel": "haiku"
+    },
+    {
+      "label": "Codex",
+      "family": "Codex"
+    },
+    {
+      "label": "Copilot",
+      "family": "Copilot",
+      "frontierModel": "claude-opus-5.5",
+      "fastModel": "claude-haiku-5.5"
+    },
+    {
+      "label": "OpenCode",
+      "family": "OpenCode",
+      "provider": "openai",
+      "frontierModel": "openai/gpt-6.1-terra",
+      "fastModel": "openai/gpt-6-luna"
+    }
+  ],
+  "task": {
+    "framework": "net10.0",
+    "expectedOutput": "MODEL_ROUTING_OK",
+    "prompt": "Erstelle im aktuellen Verzeichnis eine einfache .NET-10-C#-Konsolen-App ohne externe Pakete. Die Anwendung muss exakt MODEL_ROUTING_OK ausgeben. Führe sie aus und prüfe Exitcode und Ausgabe. Ändere nichts außerhalb des aktuellen Verzeichnisses. Verwende keine Netzwerkzugriffe für Anwendung oder Pakete. Melde abschließend ausschließlich dieses JSON-Objekt mit den passenden booleschen Werten: {\"created\":true,\"executed\":true,\"verified\":true}"
+  },
+  "triggerPaths": [
+    "scripts/resolve-model-routing.ps1",
+    "scripts/resolve-model-routing.sh",
+    "scripts/execution-policy.psm1",
+    "scripts/adapters/*",
+    "tests/live/*"
+  ],
+  "removedChildEnvironment": [
+    "ANTHROPIC_API_KEY",
+    "OPENAI_API_KEY",
+    "AZURE_OPENAI_API_KEY",
+    "GH_TOKEN",
+    "GITHUB_TOKEN"
+  ]
+}

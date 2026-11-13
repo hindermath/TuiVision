@@ -1,6 +1,62 @@
 # Intake Review Governance Preset
 
-Aktuelle Version / Current version: **0.2.3**. Dieser Patch schliesst physische
+<!-- current-package: 0.2.9 -->
+
+Paketkennung: **v0.2.9**. [Vorbereitung und Veröffentlichungsgrenze](docs/release-0.2.9-validation.md). Die Release-Seite und der externe Archivnachweis belegen die Veröffentlichung, nicht dieser Vorbereitungsstand. Frühere Versionsnachweise unten bleiben historisch.
+
+<span lang="en">Package identity: v0.2.9. The release page and external archive evidence prove publication, not this preparation snapshot. Earlier version records below remain historical.</span>
+
+[Release-Abschluss und Verbesserungsprofil / Publication closeout and improvement profile](docs/release-0.2.6-validation.md).
+
+Der unten verlinkte Basispaket-Nachweis bleibt historisch; dieses Paket nimmt die Quellenkorrekturen als neue Version auf.
+
+<span lang="en">The linked base-package evidence remains historical; this package includes the source corrections as a new version.</span>
+
+**Leserpfad / Reader path:** [Deutsch: Einstieg, Begriffe und Fehlerhilfe](docs/user-guide.md) · [English: start, terms and troubleshooting](docs/user-guide.EN.md).
+
+Historisches Basispaket **v0.2.6**. Der [Release-Stand](https://github.com/hindermath/spec-kit-preset-intake-review-governance/releases) wird getrennt geprüft; ein Commit auf main ist noch keine Veröffentlichung oder Installation.
+
+*Historical base package v0.2.6. The release page records actual publication separately; a main-branch commit is not publication or installation.*
+
+
+Patch **0.2.6** liefert die verbesserte zweisprachige Einstiegs- und
+Kompositionsdokumentation. Verhalten und Berechtigungsgrenzen bleiben erhalten.
+[Release-Nachweis / Release record](docs/release-0.2.6-validation.md).
+
+*Patch 0.2.6 packages the improved bilingual getting-started and composition
+guide. Behavior and authority boundaries remain unchanged.*
+
+Paketversion / Package version: **0.2.8**. Laufende `Active`-Serien mit
+mindestens einem `Active`-Mitglied bleiben ohne weiteren `Eligible`-Kandidaten
+gueltig; `eligibleCandidate` ist dann `N/A`. `Ready` verlangt weiterhin genau
+einen Kandidaten. Mehrfachkandidaten, Hash-, Pfad- und Abhaengigkeitsfehler
+bleiben gesperrt. Schema, Commands und Prioritaet bleiben gleich.
+
+Running Active series with an Active member may have no additional Eligible
+candidate. The candidate remains N/A; this grants no execution authority.
+Ready still requires exactly one candidate, and all integrity checks remain.
+Documentation target combination (not a new field-test claim): Authoring 0.3.10, Review 0.2.7, Sequencing 0.2.11.
+
+Fuer die Python-basierten Pruefungen eine gepflegte Python-Version verwenden.
+macOS-System-Python 3.9 kann gueltige UTC-Zeitstempel mit sieben Nachkommastellen
+abweisen. Die Release-Pruefung verwendet lokal Python 3.14 und in Intake-CI 3.12.
+*Use a maintained Python runtime for Python-backed validation. macOS system
+Python 3.9 can reject valid UTC timestamps with seven fractional digits.
+Release validation uses Python 3.14 locally and 3.12 in Intake CI.*
+Each preset remains independently installable; historical evidence is preserved.
+
+Gemeinsame Konfigurationsvalidatoren akzeptieren auch die bereits etablierte,
+leere `Idle`-Serie. `Idle` darf keine Ziele, Wurzeln oder Abhaengigkeiten
+enthalten; DirectoryStrict verlangt zusaetzlich ein leeres aktives Inventar.
+Indizes eigenstaendiger verschachtelter Git-Repositories sind keine Duplikate
+des uebergeordneten Projekts. Gewoehnliche doppelte Indizes bleiben gesperrt.
+
+*The shared validators also accept established empty Idle series, without
+targets, roots or dependencies. DirectoryStrict additionally requires an
+empty active inventory. Nested Git checkouts own their index; ordinary
+duplicate indexes still fail. This aligns all three Intake presets.*
+
+Version **0.2.3** schliesst physische
 Collection-Aliase und unbekannte Lifecycle-Zustaende aus. Authoring prueft auch
 bestehende Receipt-Ziele und Quellen vor dem Lesen gegen die Repository-Grenze.
 
@@ -18,12 +74,64 @@ validated acyclic dependency edges. Single and Campaign schema 1.0 results
 remain compatible. Recommended priority: `65`, between Agent Parity (`60`) and
 Autonomous Run Governance (`70`). Spec Kit `>=0.8.3` is required.
 
-Version `0.2.0` also reviews a project-declared learner contract. It verifies
+Version `0.2.6` also reviews a project-declared learner contract. It verifies
 audience and prior knowledge, first-use explanations, language and readability,
 and text-first dependencies, status, decisions, and next actions without
 making those project choices itself.
 
 ## Commands
+
+### Einstieg und Ergebnisdateien / Getting Started and Result Files
+
+Voraussetzung: initialisiertes Zielprojekt, Spec Kit `>=0.8.3`, eindeutige
+Intake-/Serien-/Kampagnenziele und relevante Policy. Das [Manifest](preset.yml)
+liefert eigene Commands und Policy-, Request-, Result-, Report-, Checklisten-
+und Runbook-Starter. Installation erstellt keinen fertigen Review und
+aktiviert keinen projektweiten Pflicht-Gate ohne dessen Policy.
+
+*Prerequisites: initialized target project, Spec Kit >=0.8.3, explicit
+single/series/campaign targets and policy. The [manifest](preset.yml) supplies
+standalone commands and policy, request, result, report, checklist/runbook
+starters. Installation creates no completed review or policy activation.*
+
+„Read-only Review“ schützt die Intake-Zieldateien: Die Review-Anweisungen
+verlangen Result und Report außerhalb dieser Ziele. Status und Validatoren
+prüfen lesend. Repair benötigt Änderungsautorität und vollständigen Re-Review.
+Ein Starter ist noch kein Review-Ergebnis.
+
+*Read-only review protects intake targets: review instructions require result
+and report outside those targets. Status/validators inspect without writes.
+Repair needs mutation authority and full re-review. A starter is not a result.*
+
+Beispiel in der Agentenoberfläche / Example agent invocation:
+
+```text
+DE: $speckit-intake-review Pruefe intakes/order-import-validation.md im
+Modus Single. Veraendere den Intake nicht; benenne Result-/Report-Pfade.
+EN: $speckit-intake-review Review intakes/order-import-validation.md in
+Single mode. Preserve the intake; report result and report paths.
+```
+
+Findings behandeln, notwendige Reparatur separat beauftragen, danach mit
+`$speckit-intake-review-status` die Frische prüfen. `ReadyWithAcceptedRisks`
+braucht menschliche Risikoannahme; auch `Ready` startet keine Folgephase.
+Drift klären, statt Result-Hashes zum Bestehen umzuschreiben.
+
+*Address findings, separately authorize repair, then check freshness with
+intake-review-status. ReadyWithAcceptedRisks needs human risk acceptance;
+even Ready starts no next phase. Resolve drift, never forge result hashes.*
+
+Priorität 65 startet keinen Review nach Authoring. Kleinere Zahlen haben
+höhere Auflösungspriorität; Presets/Overrides können gleichnamige Starter
+ersetzen. Eigene Reihenfolgen separat prüfen; Hashbindung, Frische und
+Policy-Gates bleiben fachliche Bedingungen.
+
+*Priority 65 does not execute review after authoring. Lower numbers have higher
+precedence; presets/overrides can replace same-name starters. Check custom
+orderings separately; hashes, freshness and policy gates remain requirements.*
+
+Leserpfad / Reader path: [Install](#install) → [Commands](#commands) →
+[Safety](#safety) → [Completed Series](#abgeschlossene-serien--completed-series).
 
 - `$speckit-intake-review`: read-only semantic review for a single intake,
   ordered series, or parallel campaign.
@@ -34,9 +142,9 @@ making those project choices itself.
 ## Install
 
 ```bash
-specify preset add --from https://github.com/hindermath/spec-kit-preset-intake-review-governance/archive/refs/tags/v0.2.3.zip --priority 65
+specify preset add --from https://github.com/hindermath/spec-kit-preset-intake-review-governance/archive/refs/tags/v0.2.9.zip --priority 65
 specify preset list
-specify preset resolve
+specify preset resolve intake-review-policy-template
 ```
 
 Installing the preset does not silently change the standard eight-preset

@@ -1,0 +1,13 @@
+{
+  "id": "intake-review-governance",
+  "version": "0.2.9",
+  "priority": 65,
+  "readers": [
+    "docs/user-guide.md",
+    "docs/user-guide.EN.md",
+    "docs/documentation-closeout.md"
+  ],
+  "sourceBaseCommit": "bbf63e79becf11bfd6002352b493c12700d970ec",
+  "preserveHistoricalEvidence": true,
+  "publicationEvidenceVersion": "0.2.6"
+}

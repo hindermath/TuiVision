@@ -60,6 +60,10 @@ if ($Mode -eq 'Preflight') {
         state = [string] $worker.state
         isDraft = [bool] $worker.isDraft
         headSha = [string] $worker.headSha
+        headRepository = [string] $worker.headRepository
+        headRefName = [string] $worker.headRefName
+        baseRepository = [string] $worker.baseRepository
+        prNumber = [int] $worker.prNumber
         mergeable = [bool] $worker.mergeable
         reviewDecision = $worker.reviewDecision
         unresolvedCurrentThreads = [int] $worker.unresolvedCurrentThreads

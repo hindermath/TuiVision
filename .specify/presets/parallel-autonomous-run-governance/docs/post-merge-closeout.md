@@ -35,6 +35,8 @@ terminal.
 `postMergeActions` duerfen ausschliesslich aus dem akzeptierten
 Kampagnenmanifest stammen. Ein Worker-Handoff darf keine ausfuehrbaren
 Post-Merge-Kommandos einschleusen.
+Bei `AlternativeSolutions` laufen nur Aktionen des ausgewaehlten und
+nachweislich gemergten Workers. Aktionen anderer Kandidaten erhalten `Skipped`.
 
 Jede Aktion nennt:
 
@@ -77,6 +79,8 @@ unsicher markiert.
 handoff must never inject executable post-merge commands. Each action has a
 stable ID, worker, `Synchronize`, `PostMerge`, or `Validate` phase, and a local
 idempotent profile.
+For `AlternativeSolutions`, only actions of the selected, verified merged
+worker run. Actions for other candidates are recorded as `Skipped`.
 
 ### Idempotency
 

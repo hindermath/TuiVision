@@ -53,6 +53,15 @@ validate_relative_path() {
   esac
 }
 
+resolve_confined_file() {
+  local path="$1" root="$2" label="$3" physical_root physical_path
+  [[ -f "$path" ]] || die "$label fehlt: $path"
+  physical_root="$(realpath "$root")" || die "$label-Wurzel kann nicht aufgeloest werden: $root"
+  physical_path="$(realpath "$path")" || die "$label kann nicht aufgeloest werden: $path"
+  [[ "$physical_path" == "$physical_root/"* ]] || die "$label verlaesst das Repository: $path"
+  printf '%s\n' "$physical_path"
+}
+
 normalized_sha256() {
   local file="$1"
   # Native jq.exe kann normalisierte LF beim Ausgeben wieder in CRLF umwandeln.
@@ -114,7 +123,7 @@ validate_security_dependency() {
 
 validate_review_metadata() {
   local file="$1"
-  local owner reviewer reviewed_at review_due residual_risk trigger today
+  local owner reviewer reviewed_at review_due residual_risk trigger today parsed_due
   owner="$(require_json_text "$file" '.review.owner' 'review.owner')"
   reviewer="$(require_json_text "$file" '.review.reviewer' 'review.reviewer')"
   reviewed_at="$(require_json_text "$file" '.review.reviewedAt' 'review.reviewedAt')"
@@ -125,6 +134,14 @@ validate_review_metadata() {
   [[ "$reviewed_at" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}([.][0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$ ]] ||
     die "review.reviewedAt ist kein ISO-8601-Zeitpunkt: $file"
   [[ "$review_due" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]] || die "review.reviewDue ist kein ISO-Datum: $file"
+  if [[ "$(uname -s)" == Darwin ]]; then
+    parsed_due="$(date -u -j -f '%Y-%m-%d' "$review_due" '+%Y-%m-%d' 2>/dev/null)" ||
+      die "review.reviewDue ist kein ISO-Datum: $file"
+  else
+    parsed_due="$(date -u -d "$review_due" '+%Y-%m-%d' 2>/dev/null)" ||
+      die "review.reviewDue ist kein ISO-Datum: $file"
+  fi
+  [[ "$parsed_due" == "$review_due" ]] || die "review.reviewDue ist kein ISO-Datum: $file"
   today="$(date -u +%Y-%m-%d)"
   [[ "$review_due" > "$today" || "$review_due" == "$today" ]] || die "Review ist abgelaufen ($review_due): $file"
 }
@@ -132,9 +149,17 @@ validate_review_metadata() {
 validate_assessments() {
   local file="$1"
   "${SDA_JQ[@]}" -e '.assessments | type == "array" and length > 0' "$file" >/dev/null || die "Assessments fehlen: $file"
+  "${SDA_JQ[@]}" -e 'all(.assessments[];
+    type == "object" and (.id | type == "string") and
+    (.applicability | type == "string") and
+    (.implementation | type == "string") and (.evidence | type == "string"))' "$file" >/dev/null ||
+    die "Assessment-Felder sind ungueltig: $file"
   local duplicate_ids
   duplicate_ids="$("${SDA_JQ[@]}" -r '.assessments[].id // empty' "$file" | LC_ALL=C sort | uniq -d)"
   [[ -z "$duplicate_ids" ]] || die "Doppelte Assessment-ID in $file: $duplicate_ids"
+  local rows
+  rows="$("${SDA_JQ[@]}" -r '.assessments[] | [(.id // ""),(.applicability // ""),(.implementation // ""),(.evidence // "")] | @tsv' "$file")" ||
+    die "Assessment-Zeilen koennen nicht gelesen werden: $file"
   while IFS=$'\t' read -r id applicability implementation evidence; do
     [[ -n "$id" ]] || die "Assessment-ID fehlt: $file"
     require_value "$applicability" 'Applicable N/A Open' "assessments[$id].applicability"
@@ -143,7 +168,7 @@ validate_assessments() {
       *) die "Unzulässiger Umsetzungswert '$implementation' in $file." ;;
     esac
     [[ -n "$evidence" ]] || die "Evidence fehlt für Assessment $id: $file"
-  done < <("${SDA_JQ[@]}" -r '.assessments[] | [(.id // ""),(.applicability // ""),(.implementation // ""),(.evidence // "")] | @tsv' "$file")
+  done <<< "$rows"
 
   "${SDA_JQ[@]}" -e '[.assessments[] | select(.applicability == "N/A") | select((.reason // "") == "" or (.reevaluationTrigger // "") == "")] | length == 0' "$file" >/dev/null ||
     die "N/A benötigt Begründung und Re-Evaluation-Trigger: $file"
@@ -153,6 +178,7 @@ validate_assessments() {
 
 validate_accepted_risks() {
   local file="$1"
+  local reviewed_at review_due parsed_due parsed_review_date today zone
   "${SDA_JQ[@]}" -e 'if has("acceptedRisks") then (.acceptedRisks | type == "array") else true end' "$file" >/dev/null ||
     die "acceptedRisks muss ein JSON-Array sein: $file"
   # Wie IsNullOrWhiteSpace in PowerShell: kein Typ-Coercing und dieselben Unicode-Leerzeichen.
@@ -161,15 +187,89 @@ validate_accepted_risks() {
     (.id? // null) | if type == "string" then
       test("[^\u0009-\u000d\u0020\u0085\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000]")
     else false end)' "$file" >/dev/null || die "acceptedRisks.id fehlt oder ist leer: $file"
-  "${SDA_JQ[@]}" -e '[(.acceptedRisks // [])[] | select((.owner // "") == "" or (.reviewer // "") == "" or (.reviewedAt // "") == "" or (.reviewDue // "") == "" or (.residualRisk // "") == "" or (.reevaluationTrigger // "") == "")] | length == 0' "$file" >/dev/null ||
-    die "Akzeptierte Risiken benötigen Owner, Reviewer, Reviewdatum, Restrisiko und Wiedervorlage: $file"
+  "${SDA_JQ[@]}" -e 'all((.acceptedRisks // [])[]; . as $risk |
+    all(["owner", "reviewer", "reviewedAt", "reviewDue", "scope", "rationale", "residualRisk", "reevaluationTrigger"][];
+      ($risk[.] | type) == "string" and
+      ($risk[.] | test("[^\u0009-\u000d\u0020\u0085\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000]"))))' "$file" >/dev/null ||
+    die "Akzeptierte Risiken benötigen Owner, Reviewer, Reviewdatum, Scope, Begründung, Restrisiko und Wiedervorlage: $file"
+  while IFS=$'\t' read -r reviewed_at review_due; do
+    [[ "$reviewed_at" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}([.][0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$ ]] ||
+      die "acceptedRisks.reviewedAt ist kein ISO-8601-Zeitpunkt: $file"
+    if [[ "$(uname -s)" == Darwin ]]; then
+      parsed_review_date="$(date -u -j -f '%Y-%m-%d' "${reviewed_at:0:10}" '+%Y-%m-%d' 2>/dev/null)" ||
+        die "acceptedRisks.reviewedAt ist kein gueltiger Kalendertag: $file"
+    else
+      parsed_review_date="$(date -u -d "${reviewed_at:0:10}" '+%Y-%m-%d' 2>/dev/null)" ||
+        die "acceptedRisks.reviewedAt ist kein gueltiger Kalendertag: $file"
+    fi
+    [[ "$parsed_review_date" == "${reviewed_at:0:10}" ]] &&
+      (( 10#${reviewed_at:11:2} <= 23 && 10#${reviewed_at:14:2} <= 59 &&
+        10#${reviewed_at:17:2} <= 59 )) ||
+      die "acceptedRisks.reviewedAt ist kein gueltiger Zeitpunkt: $file"
+    if [[ "$reviewed_at" != *Z ]]; then
+      zone="${reviewed_at: -6}"
+      (( 10#${zone:1:2} <= 14 && 10#${zone:4:2} <= 59 &&
+        (10#${zone:1:2} < 14 || 10#${zone:4:2} == 0) )) ||
+        die "acceptedRisks.reviewedAt hat einen ungueltigen UTC-Offset: $file"
+    fi
+    if [[ "$(uname -s)" == Darwin ]]; then
+      review_day_epoch="$(date -u -j -f '%Y-%m-%dT%H:%M:%S' "${parsed_review_date}T00:00:00" '+%s')" ||
+        die "acceptedRisks.reviewedAt ist kein gueltiger Zeitpunkt: $file"
+    else
+      review_day_epoch="$(date -u -d "$parsed_review_date" '+%s')" ||
+        die "acceptedRisks.reviewedAt ist kein gueltiger Zeitpunkt: $file"
+    fi
+    review_offset=0
+    if [[ "$reviewed_at" != *Z ]]; then
+      review_offset=$((10#${zone:1:2} * 3600 + 10#${zone:4:2} * 60))
+      if [[ "${zone:0:1}" == - ]]; then
+        review_offset=$((-review_offset))
+      fi
+    fi
+    review_epoch=$((review_day_epoch + 10#${reviewed_at:11:2} * 3600 +
+      10#${reviewed_at:14:2} * 60 + 10#${reviewed_at:17:2} - review_offset))
+    now_stamp="$(date -u '+%s %N')"
+    now_epoch="${now_stamp%% *}"
+    (( review_epoch <= now_epoch )) ||
+      die "acceptedRisks.reviewedAt liegt in der Zukunft: $file"
+    if (( review_epoch == now_epoch )) &&
+      [[ "$reviewed_at" =~ \.([0-9]+)(Z|[+-][0-9]{2}:[0-9]{2})$ ]]; then
+      review_fraction="${BASH_REMATCH[1]}"
+      now_fraction="${now_stamp#* }"
+      [[ "$now_fraction" =~ ^[0-9]{9}$ ]] ||
+        die "acceptedRisks.reviewedAt kann nicht sub-sekundengenau geprueft werden: $file"
+      while (( ${#review_fraction} < ${#now_fraction} )); do review_fraction="${review_fraction}0"; done
+      while (( ${#now_fraction} < ${#review_fraction} )); do now_fraction="${now_fraction}0"; done
+      if [[ "$review_fraction" > "$now_fraction" ]]; then
+        die "acceptedRisks.reviewedAt liegt in der Zukunft: $file"
+      fi
+    fi
+    [[ "$review_due" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]] || die "acceptedRisks.reviewDue ist kein ISO-Datum: $file"
+    if [[ "$(uname -s)" == Darwin ]]; then
+      parsed_due="$(date -u -j -f '%Y-%m-%d' "$review_due" '+%Y-%m-%d' 2>/dev/null)" ||
+        die "acceptedRisks.reviewDue ist kein ISO-Datum: $file"
+    else
+      parsed_due="$(date -u -d "$review_due" '+%Y-%m-%d' 2>/dev/null)" ||
+        die "acceptedRisks.reviewDue ist kein ISO-Datum: $file"
+    fi
+    [[ "$parsed_due" == "$review_due" ]] || die "acceptedRisks.reviewDue ist kein ISO-Datum: $file"
+    today="$(date -u +%Y-%m-%d)"
+    [[ "$review_due" > "$today" || "$review_due" == "$today" ]] ||
+      die "Akzeptiertes Risiko ist abgelaufen ($review_due): $file"
+  done < <("${SDA_JQ[@]}" -r '(.acceptedRisks // [])[] | [.reviewedAt, .reviewDue] | @tsv' "$file")
 }
 
 validate_claim_boundary() {
   local file="$1"
-  if "${SDA_JQ[@]}" -r '.. | strings' "$file" |
-      grep -Eiq '(^|[^[:alnum:]])(c5[ -]?(compliant|certified|conformant|ready)|c5[- ]?(konform|zertifiziert|testatbereit)|iso[ /-]?[0-9]+[ -]?(compliant|certified|konform|zertifiziert)|testatbereit|attestation[- ]ready)([^[:alnum:]]|$)'; then
+  local pattern='(^|[^a-z0-9])(c5[ -]?(compliant|certified|conformant|ready)|c5[- ]?(konform|zertifiziert|testatbereit)|iso[ /-]?[0-9]+[ -]?(compliant|certified|konform|zertifiziert)|testatbereit|attestation[- ]ready)([^a-z0-9]|$)'
+  # Let jq inspect decoded JSON values and keys in one process. A grep pipe can
+  # close early and make jq fail with SIGPIPE under pipefail after a real match.
+  if "${SDA_JQ[@]}" -e --arg pattern "$pattern" \
+      'any(((.. | strings), (.. | objects | keys[])); test($pattern; "i"))' "$file" >/dev/null; then
     die "Unzulässige Zertifizierungs-, Konformitäts- oder Testatbehauptung: $file"
+  else
+    local status=$?
+    [[ $status -eq 1 ]] || die "Claim-Prüfung fehlgeschlagen: $file"
   fi
 }
 
@@ -202,9 +302,42 @@ validate_gate_file() {
   if [[ "$outcome" == 'ReadyWithAcceptedRisks' ]]; then
     "${SDA_JQ[@]}" -e '.acceptedRisks | type == "array" and length > 0' "$file" >/dev/null ||
       die "ReadyWithAcceptedRisks benötigt mindestens ein akzeptiertes Risiko: $file"
+    "${SDA_JQ[@]}" -e '. as $doc |
+      all([.assessments[] | select(.applicability == "Open" or (.applicability == "Applicable" and .implementation != "Fulfilled")) | .id][];
+        . as $id | any($doc.acceptedRisks[]; (.assessmentIds? | type) == "array" and (.assessmentIds | index($id)) != null))' "$file" >/dev/null ||
+      die "ReadyWithAcceptedRisks benötigt ein zugeordnetes Risiko für jeden offenen Pflichtpunkt: $file"
   fi
   "${SDA_JQ[@]}" -e --arg boundary "$EXTERNAL_COMPARISON_BOUNDARY" '.externalComparisonBoundary == $boundary' "$file" >/dev/null ||
     die "Externe Vergleichsgrenze fehlt: $file"
+}
+
+validate_active_metadata() {
+  local full_path="$1" relative="$2" prefix="$3" expected="$4" heading="${5:-}" embedded_baseline="${6:-}"
+  # Only active metadata counts as a match; duplicate fields anywhere fail closed.
+  # Nur aktive Metadaten gelten als Treffer; doppelte Felder bleiben unzulaessig.
+  "${SDA_JQ[@]}" -jRs 'sub("^\uFEFF"; "") | gsub("\r\n?"; "\n")' "$full_path" |
+    awk -v prefix="$prefix" -v expected="$expected" -v heading="$heading" -v embedded_baseline="$embedded_baseline" '
+      { sub(/\r$/, "") }
+      heading != "" {
+        if ($0 ~ /^## /) { active = ($0 == heading); if (active) sections++; table = 0; ended = 0 }
+        if (active && $0 ~ /^\|/ && !ended) table = 1
+        if (active && $0 != heading && $0 !~ /^\|/ && (table || $0 !~ /^[[:space:]]*$/)) ended = 1
+        if (index($0, prefix) == 1 && split($0, cells, "[|]") == 4) {
+          count++; if (active && table && !ended && $0 == expected) matched++
+        }
+        next
+      }
+      !started && /^#+ / { headings++; if (headings > 1) closed = 1 }
+      !started && headings && $0 !~ /^#+ / && $0 !~ /^[[:space:]]*$/ && $0 !~ /^>/ && $0 !~ /^\*\*[^*]+:\*\*/ { closed = 1 }
+      !started && !closed && /^\*\*[^*]+:\*\*/ { started = 1; active = 1 }
+      started && $0 !~ /^\*\*[^*]+:\*\*/ { active = 0 }
+      # Embedded checklist blocks own their baseline, separately from the compendium header.
+      embedded_baseline && !active && /^\*\*Dokument-ID \/ Document ID:\*\* CL-(0[1-9]|1[0-2])$/ { embedded = 1; embedded_count = 0 }
+      $0 !~ /^\*\*[^*]+:\*\*/ { embedded = 0 }
+      embedded && index($0, prefix) == 1 { embedded_count++; if (embedded_count > 1) invalid = 1; next }
+      index($0, prefix) == 1 { count++; if (active && $0 == expected) matched++ }
+      END { exit !(count == 1 && matched == 1 && !invalid && (heading == "" || sections == 1)) }
+    ' || die "Aktive Metadaten fehlen, weichen ab oder sind doppelt: $relative ($prefix)"
 }
 
 validate_document_version() {
@@ -213,9 +346,12 @@ validate_document_version() {
   local version="$3"
   local kind="$4"
   case "$kind" in
-    guideline) grep -Fq "| Versionsnummer | $version |" "$full_path" || die "Richtlinienversion stimmt nicht: $relative" ;;
-    compendium) grep -Fq "**Dokumentversion / Document version:** $version" "$full_path" || die "Sammelbandversion stimmt nicht: $relative" ;;
-    *) grep -Fq "**Version / Version:** $version" "$full_path" || die "Dokumentversion stimmt nicht: $relative" ;;
+    guideline)
+      validate_active_metadata "$full_path" "$relative" '| Versionsnummer |' "| Versionsnummer | $version |" '## Dokumenten-Metadaten'
+      validate_active_metadata "$full_path" "$relative" '| Version |' "| Version | $version |" '## Document Metadata'
+      ;;
+    compendium) validate_active_metadata "$full_path" "$relative" '**Dokumentversion / Document version:**' "**Dokumentversion / Document version:** $version" ;;
+    *) validate_active_metadata "$full_path" "$relative" '**Version / Version:**' "**Version / Version:** $version" ;;
   esac
 }
 
@@ -228,8 +364,7 @@ validate_baseline_contract() {
   expected_manifest_hash="$(require_json_text "$baseline_file" '.baselineBinding.manifestNormalizedSha256' 'baselineBinding.manifestNormalizedSha256')"
   validate_relative_path "$manifest_path" 'baselineBinding.manifestPath'
   [[ "$expected_manifest_hash" =~ ^[0-9a-f]{64}$ ]] || die 'baselineBinding.manifestNormalizedSha256 ist ungültig.'
-  manifest_file="$PWD/$manifest_path"
-  [[ -f "$manifest_file" ]] || die "Baseline-Manifest fehlt: $manifest_path"
+  manifest_file="$(resolve_confined_file "$PWD/$manifest_path" "$PWD" 'Baseline-Manifest')"
   "${SDA_JQ[@]}" -e . "$manifest_file" >/dev/null || die "Baseline-Manifest ist kein gültiges JSON: $manifest_path"
   "${SDA_JQ[@]}" -e '.schemaVersion == 1 and (.checklists | type == "array" and length == 12)' "$manifest_file" >/dev/null ||
     die "Baseline-Manifest benötigt Schema 1 und genau zwölf Checklisten: $manifest_path"
@@ -264,8 +399,7 @@ validate_baseline_contract() {
     bound_hash="$("${SDA_JQ[@]}" -r --arg path "$relative" '.baselineBinding.documentBindings[] | select(.path == $path) | .normalizedSha256 // empty' "$baseline_file")"
     [[ "$bound_version" == "$version" ]] || die "Versionsbindung stimmt nicht: $relative"
     [[ "$bound_hash" =~ ^[0-9a-f]{64}$ ]] || die "Hashbindung ist ungültig: $relative"
-    full_path="$(dirname "$manifest_file")/$relative"
-    [[ -f "$full_path" ]] || die "Kontrolliertes Dokument fehlt: $relative"
+    full_path="$(resolve_confined_file "$(dirname "$manifest_file")/$relative" "$(dirname "$manifest_file")" 'Kontrolliertes Dokument')"
     actual_hash="$(normalized_sha256 "$full_path")"
     [[ "$actual_hash" == "$bound_hash" ]] || die "Dokument-Hashdrift: $relative"
     validate_document_version "$full_path" "$relative" "$version" "$kind"
@@ -284,8 +418,8 @@ validate_baseline_contract() {
   TEMP_FILES+=("$ids_file" "$compendium_ids_file")
   while IFS=$'\t' read -r id relative _version; do
     local checklist_file
-    checklist_file="$(dirname "$manifest_file")/$relative"
-    grep -Fq "**Dokument-ID / Document ID:** $id" "$checklist_file" || die "Dokument-ID stimmt nicht: $relative"
+    checklist_file="$(resolve_confined_file "$(dirname "$manifest_file")/$relative" "$(dirname "$manifest_file")" 'Checkliste')"
+    validate_active_metadata "$checklist_file" "$relative" '**Dokument-ID / Document ID:**' "**Dokument-ID / Document ID:** $id"
     grep -Eo '^#### CL-[0-9]{2}-[0-9]{2}:' "$checklist_file" | sed 's/^#### //; s/:$//' >> "$ids_file"
   done < <("${SDA_JQ[@]}" -r '.checklists[] | [.id,.path,.version] | @tsv' "$manifest_file")
   local item_count actual_item_count
@@ -296,25 +430,29 @@ validate_baseline_contract() {
   grep -Fxq 'CL-02-13' "$ids_file" || die 'Der projektgeführte Prüfpunkt CL-02-13 Cloud-Compliance-Assurance fehlt.'
   local compendium_path
   compendium_path="$("${SDA_JQ[@]}" -r '.compendium.path' "$manifest_file")"
-  grep -Eo '^#### CL-[0-9]{2}-[0-9]{2}:' "$(dirname "$manifest_file")/$compendium_path" | sed 's/^#### //; s/:$//' > "$compendium_ids_file"
+  local compendium_file
+  compendium_file="$(resolve_confined_file "$(dirname "$manifest_file")/$compendium_path" "$(dirname "$manifest_file")" 'Sammelband')"
+  grep -Eo '^#### CL-[0-9]{2}-[0-9]{2}:' "$compendium_file" | sed 's/^#### //; s/:$//' > "$compendium_ids_file"
   [[ "$(LC_ALL=C sort "$ids_file")" == "$(LC_ALL=C sort "$compendium_ids_file")" ]] || die 'Sammelbanddrift gegenüber den zwölf Einzelchecklisten.'
-  grep -Fq "**Baseline-Version / Baseline version:** $baseline_version" "$(dirname "$manifest_file")/$compendium_path" ||
-    die 'Baseline-Version im Sammelband stimmt nicht.'
+  validate_active_metadata "$compendium_file" "$compendium_path" '**Baseline-Version / Baseline version:**' "**Baseline-Version / Baseline version:** $baseline_version" '' 'embedded-baseline'
   rm -f "$ids_file" "$compendium_ids_file"
 
   while IFS= read -r relative; do
     validate_relative_path "$relative" 'Verwalteter Referenzpfad'
-    [[ -f "$(dirname "$manifest_file")/$relative" ]] || die "Verwaltete Referenz fehlt: $relative"
+    resolve_confined_file "$(dirname "$manifest_file")/$relative" "$(dirname "$manifest_file")" 'Verwaltete Referenz' >/dev/null
   done < <("${SDA_JQ[@]}" -r '(.managedBinaryFiles + .managedReferenceFiles)[]' "$manifest_file")
 }
 
 validate_image_impact() {
   local file="$1"
-  "${SDA_JQ[@]}" -e '.imageChecks | has("build") and has("compose") and has("toolchain") and has("ociDigest") and has("sbom") and has("secrets") and has("mounts") and has("network") and has("ci")' "$file" >/dev/null ||
+  "${SDA_JQ[@]}" -e '.imageChecks | type == "object" and has("build") and has("compose") and has("toolchain") and has("ociDigest") and has("sbom") and has("secrets") and has("mounts") and has("network") and has("ci") and all(.[]; type == "string")' "$file" >/dev/null ||
     die 'Image-Impact-Nachweise sind unvollständig.'
+  local rows
+  rows="$("${SDA_JQ[@]}" -r '.imageChecks | to_entries[] | [.key, (.value | gsub(" "; "-"))] | @tsv' "$file")" ||
+    die 'Image-Impact-Zeilen koennen nicht gelesen werden.'
   while IFS=$'\t' read -r key value; do
     require_value "$value" 'Fulfilled Partly-Fulfilled Not-Fulfilled Not-Assessed N/A' "imageChecks.$key"
-  done < <("${SDA_JQ[@]}" -r '.imageChecks | to_entries[] | [.key, (.value | gsub(" "; "-"))] | @tsv' "$file")
+  done <<< "$rows"
   if [[ "$("${SDA_JQ[@]}" -r '.outcome' "$file")" == 'Ready' ]]; then
     "${SDA_JQ[@]}" -e '[.imageChecks[] | select(. != "Fulfilled" and . != "N/A")] | length == 0' "$file" >/dev/null ||
       die 'Ready ist bei offenen Image-Impact-Prüfungen unzulässig.'
@@ -323,12 +461,17 @@ validate_image_impact() {
 
 validate_closure() {
   local file="$1"
-  "${SDA_JQ[@]}" -e '.humanDecisions | has("technicalValidation") and has("pilotAuthorization") and has("projectAcceptance") and has("generalRelease")' "$file" >/dev/null ||
+  "${SDA_JQ[@]}" -e '(if has("nextAction") and .nextAction != null then .nextAction else "" end) | (type == "string" and (explode | all(. >= 32 and (. <= 126 or . >= 160) and . != 8232 and . != 8233)))' "$file" >/dev/null ||
+    die 'nextAction enthält Steuerzeichen oder ist kein Text.'
+  "${SDA_JQ[@]}" -e '.humanDecisions | type == "object" and has("technicalValidation") and has("pilotAuthorization") and has("projectAcceptance") and has("generalRelease") and all(.[]; type == "object" and (.status | type == "string") and (.authority | type == "string") and (.evidence | type == "string"))' "$file" >/dev/null ||
     die 'Getrennte Entscheidungsgrenzen fehlen.'
+  local rows
+  rows="$("${SDA_JQ[@]}" -r '.humanDecisions | to_entries[] | [.key, (.value.status | gsub(" "; "-")), (.value.authority // ""), (.value.evidence // "")] | @tsv' "$file")" ||
+    die 'Entscheidungsgrenzen koennen nicht gelesen werden.'
   while IFS=$'\t' read -r key status authority evidence; do
     require_value "$status" 'Fulfilled Open Blocked Not-Assessed' "humanDecisions.$key.status"
     [[ -n "$authority" && -n "$evidence" ]] || die "Entscheidungsgrenze ist unvollständig: $key"
-  done < <("${SDA_JQ[@]}" -r '.humanDecisions | to_entries[] | [.key, (.value.status | gsub(" "; "-")), (.value.authority // ""), (.value.evidence // "")] | @tsv' "$file")
+  done <<< "$rows"
   local technical
   technical="$("${SDA_JQ[@]}" -r '.humanDecisions.technicalValidation.status' "$file")"
   for decision in pilotAuthorization projectAcceptance generalRelease; do
@@ -346,15 +489,24 @@ validate_context() {
   [[ -f "$context_dir/evidence-matrix.md" ]] || die 'evidence-matrix.md fehlt.'
   validate_gate_file "$context_dir/baseline.json" baseline
   validate_baseline_contract "$context_dir/baseline.json"
+  local expected_id expected_mode
+  expected_id="$(require_json_text "$context_dir/baseline.json" '.contextId' 'contextId')"
+  expected_mode="$(require_json_text "$context_dir/baseline.json" '.mode' 'mode')"
   local delta_count=0 delta_file
   while IFS= read -r delta_file; do
     validate_gate_file "$delta_file" delta
+    [[ "$(require_json_text "$delta_file" '.contextId' 'contextId')" == "$expected_id" ]] || die "Kontext-ID-Drift: $delta_file"
+    [[ "$(require_json_text "$delta_file" '.mode' 'mode')" == "$expected_mode" ]] || die "Betriebsart-Drift: $delta_file"
     delta_count=$((delta_count + 1))
   done < <(find "$context_dir/deltas" -maxdepth 1 -type f -name '*.json' 2>/dev/null | LC_ALL=C sort)
   (( delta_count > 0 )) || die 'Mindestens eine Delta-Evidence fehlt.'
   validate_gate_file "$context_dir/closure.json" closure
+  [[ "$(require_json_text "$context_dir/closure.json" '.contextId' 'contextId')" == "$expected_id" ]] || die 'Kontext-ID-Drift: closure.json'
+  [[ "$(require_json_text "$context_dir/closure.json" '.mode' 'mode')" == "$expected_mode" ]] || die 'Betriebsart-Drift: closure.json'
   validate_closure "$context_dir/closure.json"
   validate_gate_file "$context_dir/image-impact.json" image-impact
+  [[ "$(require_json_text "$context_dir/image-impact.json" '.contextId' 'contextId')" == "$expected_id" ]] || die 'Kontext-ID-Drift: image-impact.json'
+  [[ "$(require_json_text "$context_dir/image-impact.json" '.mode' 'mode')" == "$expected_mode" ]] || die 'Betriebsart-Drift: image-impact.json'
   validate_image_impact "$context_dir/image-impact.json"
 }
 
@@ -378,6 +530,7 @@ print_status() {
     $0=="ReadyWithAcceptedRisks" && result=="Ready" {result="ReadyWithAcceptedRisks"}
     END {print result}
   ')"
+  STATUS_OVERALL="$overall"
   next_action="$("${SDA_JQ[@]}" -r '.nextAction // empty' "$context_dir/closure.json")"
   [[ -n "$next_action" ]] || next_action='No further technical action recorded.'
   printf 'Context: %s\n' "$context_dir"
@@ -408,10 +561,13 @@ readonly -a SDA_JQ
 
 action="${1:-status}"
 case "$action" in
-  status)
+  status|ready)
     context_dir="$(resolve_context "${2:-}")"
     validate_context "$context_dir"
     print_status "$context_dir"
+    if [[ "$action" == ready && "$STATUS_OVERALL" != Ready && "$STATUS_OVERALL" != ReadyWithAcceptedRisks ]]; then
+      die "Assurance-Evidence ist nicht bereit: $STATUS_OVERALL"
+    fi
     ;;
   review)
     [[ $# -eq 4 ]] || die 'Syntax: review <baseline|delta|closure|image-impact> <context-id> <training|mixed|development>'

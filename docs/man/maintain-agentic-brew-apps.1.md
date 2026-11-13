@@ -14,6 +14,27 @@ bash scripts/maintain-agentic-brew-apps.sh [--dry-run] [--compare-only] [--allow
 
 ## Beschreibung / Description
 
+`--msl-only` begrenzt die Wartung auf die sechs stabilen MSL-Toolchains und
+deren Manager-/Paketabhaengigkeiten. Vergleich (`--compare-only`) und Vorschau
+(`--dry-run`) bleiben ohne Installations- und Profilveraenderungen. Hersteller-,
+Paket- und aktive CLI-Versionen werden getrennt geprueft; offene MSL-Befunde
+verhindern einen vollstaendigen Erfolg auch im normalen Lauf.
+
+Registry-Vergleich und Vorschau dürfen ausschließlich die im Code fest
+freigegebenen Versionsproben ausführen. Eine alternative CLI-Registry kann
+weder Programm noch Argumente einer Probe ändern; dies gilt auch für primäre
+MSL- und Begleitproben.
+
+*Compare and preview may execute only version probes fixed in code policy. An
+alternate CLI registry cannot change a probe executable or its arguments,
+including primary and companion MSL probes.*
+[Quellen und Benutzerumgebung](../maintenance/msl-toolchains.md).
+
+*Use `--msl-only` for the six stable MSL toolchains and their dependencies.
+Comparison and preview do not change installations or profiles. Upstream,
+package and active CLI versions are checked separately. MSL findings prevent
+complete success in full maintenance as well.*
+
 Bash ab Version 5 ist unter macOS und Linux ein Pflichtprogramm. Homebrew
 installiert und aktualisiert die Formel `bash`; ohne Homebrew verwendet Linux
 das apt-Paket `bash`. Die CLI-Probe prueft die tatsaechlich ueber PATH aufgeloeste
@@ -61,8 +82,12 @@ Auf Systemen mit Homebrew fuehrt ein normaler Lauf `brew update`,
 werden zusaetzlich Required-Casks gepflegt. Formulae mit `ensureLinked: true`
 werden nach dem Upgrade idempotent verlinkt; `--compare-only` meldet einen
 abweichend aufgeloesten Befehl als `LINK-DRIFT`, ohne ihn zu veraendern.
-Fehlt `agy` auf Linux, wird der offizielle Installer nur nach erfolgreicher
-SHA-256-Pruefung gegen die Required-CLI-Registry ausgefuehrt.
+Fehlt `specify`, akzeptiert die Wartung ausschließlich den in der Code-Policy
+freigegebenen vollständigen Spec-Kit-Commit und den daraus konstruierten
+`uv`-Aufruf. Fehlt `agy` auf Linux, wird der offizielle Installer nur ausgeführt,
+wenn URL, Interpreter und SHA-256 sowohl zur Registry als auch zur unabhängigen
+Code-Policy passen. Eine alternative CLI-Registry kann diese Freigaben nicht
+ersetzen.
 Registry-Schleifen verwenden geordnete Snapshots und eigene Dateideskriptoren.
 Ein Unterprozess, der stdin bis EOF liest, kann deshalb keine spaeteren
 Eintraege verschlucken. CLI-Funktionsproben laufen in einer eigenen
@@ -77,10 +102,14 @@ leeren, unvollstaendigen, syntaktisch fehlerhaften, nicht als UTF-8 lesbaren
 und schemafremden Ergebnissen. Sie geben dabei weder Stacktraces noch private
 Dateipfade aus.
 
-Auf Ubuntu 22.04/24.04 (`x86_64`/`aarch64`) kann fehlendes oder abweichendes
-Swift ueber den gepinnten offiziellen Vertrag Swiftly `1.1.2` / Swift `6.3.3`
-installiert werden. URL und SHA-256 werden vor dem sicheren Extrahieren
-validiert. Swiftly veraendert mit `--no-modify-profile` kein Shell-Profil; seine
+Auf Ubuntu 22.04/24.04 (`x86_64`/`aarch64`) kann Swiftly ueber den gepinnten
+offiziellen Bootstrap-Vertrag `1.1.2` bereitgestellt werden. Die Swift-Version
+folgt dem gemeinsamen stabilen Release-Snapshot. URL und SHA-256 werden vor dem sicheren Extrahieren
+validiert. Die
+Archivextraktion begrenzt unabhängig vom Download-Hash die Mitgliederzahl, die
+gesamte deklarierte Entpackgröße sowie die deklarierte und tatsächlich gelesene
+Größe des `swiftly`-Programms. Bei Überschreitung bleibt das bisherige Ziel
+unverändert und die temporäre Datei wird entfernt. Swiftly veraendert mit `--no-modify-profile` kein Shell-Profil; seine
 erzeugte Umgebung wird nur im aktuellen Prozess aktiviert. Eventuelle
 Systemnacharbeit laeuft ausschließlich mit aktueller
 `--allow-admin-prompts`-Freigabe.
@@ -106,8 +135,11 @@ module maintainer. On systems with Homebrew, a normal run executes `brew update`
 installs missing required formulae. On macOS it also maintains required casks.
 Formulae marked with `ensureLinked: true` are linked idempotently after the
 upgrade; `--compare-only` reports command-resolution drift without changing it.
-When `agy` is missing on Linux, the official installer runs only after its
-SHA-256 digest matches the required CLI registry.
+When `specify` is missing, maintenance accepts only the full Spec Kit commit
+approved in code policy and constructs that exact `uv` invocation. When `agy`
+is missing on Linux, URL, interpreter, and SHA-256 must match both the registry
+and the independent code policy. An alternate CLI registry cannot replace
+these approvals.
 Registry loops use ordered snapshots and dedicated file descriptors, so a child
 that reads stdin to EOF cannot consume later entries. CLI probes run in their
 own process group, stop after five seconds, and distinguish `Missing`,
@@ -119,9 +151,9 @@ evidence. Consumers distinguish missing, empty, truncated, malformed,
 non-UTF-8, and schema-mismatched results without exposing stack traces or
 private file paths.
 
-On Ubuntu 22.04/24.04 (`x86_64`/`aarch64`), missing or mismatched Swift can be
-installed through the pinned official Swiftly `1.1.2` / Swift `6.3.3`
-contract. URL and SHA-256 are validated before safe extraction. Swiftly runs
+On Ubuntu 22.04/24.04 (`x86_64`/`aarch64`), Swiftly can be provisioned through
+the pinned official `1.1.2` bootstrap contract. The Swift language version
+follows the shared stable release snapshot. URL and SHA-256 are validated before safe extraction. Extraction independently caps member count, total declared expanded bytes, and both declared and copied `swiftly` bytes; limit failures preserve the prior target and remove temporary output. Swiftly runs
 with `--no-modify-profile`; its generated environment is activated only in the
 current process. System post-install work requires current
 `--allow-admin-prompts` authority.
@@ -145,22 +177,54 @@ sources. The Homebrew registry contains top-level packages
 (`brew leaves --installed-on-request`) and macOS casks, not transitive
 dependencies. `xquartz` is intentionally excluded.*
 
-Alternative CLI- und npm-Agent-Registries sind nur Auswahlmanifeste fuer
-bekannte Tool-IDs und Required-/Optional-Scope. Befehle, Argumente, Pakete und
-Installationsmetadaten stammen immer aus der eingecheckten kanonischen Policy;
-abweichende oder unbekannte Definitionen werden vor jeder Probe abgelehnt.
-Die npm-Fallbacks werden mit exakter Version und SRI-Integritaet gepinnt. Das
-Skript prueft das von `npm pack` gemeldete Paket und installiert ausschliesslich
-das verifizierte lokale Archiv. Git-basierte CLI-Werkzeuge verwenden eine
-vollstaendige Commit-ID statt eines beweglichen Branches oder Tags.
+## Dokumentwerkzeuge (Document tools)
 
-*Alternative CLI and npm-agent registries are selection manifests only for
-known tool IDs and required/optional scope. Commands, arguments, packages, and
-installation metadata always come from the checked-in canonical policy;
-changed or unknown definitions are rejected before any probe.*
-*npm fallbacks are pinned by exact version and SRI integrity. The script checks
-the package reported by `npm pack` and installs only the verified local archive.
-Git-based CLI tools use a full commit ID instead of a moving branch or tag.*
+Pandoc und Typst CLI sind Pflichtwerkzeuge. Nach der Paketpflege werden
+`pandoc --version` und `typst --version` geprueft. Homebrew installiert
+`pandoc` und `typst`; Linux ohne Homebrew verwendet apt fuer Pandoc und bei
+fehlendem Typst den [offiziellen Cargo-Build](https://github.com/typst/typst#installation)
+mit `cargo install --locked typst-cli`. Dafuer muss eine kompatible
+Rust-Toolchain vorhanden sein (die Releases Typst 0.15.1 und Tinymist 0.15.8
+benoetigen Rust 1.92). Der Cargo-Installationspfad wird nur im
+Wartungsprozess an PATH angehaengt; Shell-Profile werden nicht geaendert.
+Ein Buildfehler oder eine weiterhin fehlende CLI bleibt ein Pflichtbefund.
+Vorhandene Cargo-Installationen werden nicht automatisch neu gebaut.
+
+Die Community-Erweiterung Tinymist Typst (`myriad-dreamin.tinymist`) ist in
+VS Code Pflicht und verwaltet ihren Language Server selbst. Das separate
+Systempaket `tinymist` bleibt optional, etwa fuer andere Editoren. Es wird
+nur mit `--include-optional` nachinstalliert: ueber Homebrew oder auf Linux
+ohne Homebrew mit `cargo install --locked tinymist-cli`. Eine fehlende optionale
+CLI blockiert den Pflichtstatus nicht. Vorschau und Vergleich installieren
+keine Dokumentwerkzeuge.
+
+*Pandoc and Typst CLI are required and checked with `--version` after package
+maintenance. Homebrew provides both; Linux without Homebrew uses apt for
+Pandoc and the official `cargo install --locked typst-cli` build when Typst
+is missing. A compatible Rust toolchain is required (Typst 0.15.1 and Tinymist
+0.15.8 require Rust 1.92). The Cargo installation
+path is appended only within the maintenance process; shell profiles stay
+unchanged. Build failures or a still-missing CLI remain required findings.
+Existing Cargo installations are not automatically rebuilt. The community
+Tinymist Typst extension (`myriad-dreamin.tinymist`) is required in VS Code
+and manages its own language server. Standalone `tinymist` remains optional
+and is installed only with `--include-optional`, through Homebrew or a locked
+Cargo build on Linux without Homebrew. Its absence does not block required
+status. Preview and comparison do not install document tools.*
+
+PDF-Smoke-Test in einem temporaeren Verzeichnis / PDF smoke test in a temporary
+directory:
+
+```bash
+pandoc input.md --standalone --to typst --output input.typ
+typst compile input.typ output.pdf
+```
+
+Die erzeugte PDF-Datei belegt die Konvertierung und Kompilierung. Die
+Barrierefreiheit der Ausgabe benoetigt eine eigene inhaltliche Pruefung.
+
+*The generated PDF proves conversion and compilation. Output accessibility
+requires a separate semantic review.*
 
 ## Optionen / Options
 
@@ -168,10 +232,11 @@ Git-based CLI tools use a full commit ID instead of a moving branch or tag.*
 |---|---|
 | `--dry-run` | Paketmanager-Aktionen anzeigen, nicht ausfuehren |
 | `--compare-only` | Registry-Drift nach Required/Optional getrennt melden, nichts installieren oder upgraden |
+| `--msl-only` | Nur sechs stabile MSL-Toolchains samt Abhaengigkeiten pflegen / only six stable MSL toolchains and dependencies |
 | `--registry PATH` | Alternative Registry-Datei verwenden |
-| `--cli-registry PATH` | Alternatives Auswahlmanifest fuer bekannte Required-CLI-IDs verwenden |
+| `--cli-registry PATH` | Alternative Required-CLI-Registry verwenden |
 | `--vscode-registry PATH` | Alternative VS-Code-Extension-Registry verwenden |
-| `--npm-agent-registry PATH` | Alternatives Auswahlmanifest fuer bekannte npm-Agent-CLI-IDs verwenden |
+| `--npm-agent-registry PATH` | Alternative npm-Agent-CLI-Registry verwenden |
 | `--powershell-module-registry PATH` | Alternative PowerShell-Modul-Registry verwenden |
 | `--skip-upgrade` | `brew update`/`brew upgrade` bzw. apt-Update/Upgrade ueberspringen |
 | `--skip-vscode-extensions` | VS-Code-Extensions weder installieren noch vergleichen |
@@ -197,6 +262,8 @@ bash scripts/maintain-agentic-brew-apps.sh --allow-admin-prompts
 | `2` | Parameter-, Registry- oder Betriebsvertrag ist ungueltig / Invalid input or operational contract |
 
 ## Abschlusskriterien / Closeout Criteria
+
+- `pandoc --version` und `typst --version` funktionieren; `myriad-dreamin.tinymist` ist installiert. / Both document CLIs work and the required Typst extension is installed.
 
 - `gitleaks version` funktioniert.
 - `syft version` und `specify --version` funktionieren.

@@ -1,12 +1,95 @@
 # Architecture Governance Preset
 
-Version: `0.5.2`
-Status: published, standard governance preset
+<!-- current-package: 0.6.6 -->
+
+Paketkennung: **v0.6.6**. [Vorbereitung und Veröffentlichungsgrenze](docs/release-0.6.6-validation.md). Die Release-Seite und der externe Archivnachweis belegen die Veröffentlichung, nicht dieser Vorbereitungsstand. Frühere Versionsnachweise unten bleiben historisch.
+
+<span lang="en">Package identity: v0.6.6. The release page and external archive evidence prove publication, not this preparation snapshot. Earlier version records below remain historical.</span>
+
+[Release-Abschluss und Verbesserungsprofil / Publication closeout and improvement profile](docs/release-0.6.4-validation.md).
+
+Der unten verlinkte Basispaket-Nachweis bleibt historisch; dieses Paket nimmt die Quellenkorrekturen als neue Version auf.
+
+<span lang="en">The linked base-package evidence remains historical; this package includes the source corrections as a new version.</span>
+
+**Leserpfad / Reader path:** [Deutsch: Einstieg, Begriffe und Fehlerhilfe](docs/user-guide.md) · [English: start, terms and troubleshooting](docs/user-guide.EN.md).
+
+Historisches Basispaket **v0.6.4**. Der [Release-Stand](https://github.com/hindermath/spec-kit-preset-architecture-governance/releases) wird getrennt geprüft; ein Commit auf main ist noch keine Veröffentlichung oder Installation.
+
+*Historical base package v0.6.4. The release page records actual publication separately; a main-branch commit is not publication or installation.*
+
+
+Patch **0.6.4** liefert die verbesserte zweisprachige Einstiegs- und
+Kompositionsdokumentation. Verhalten und Berechtigungsgrenzen bleiben erhalten.
+[Release-Nachweis / Release record](docs/release-0.6.4-validation.md).
+
+*Patch 0.6.4 packages the improved bilingual getting-started and composition
+guide. Behavior and authority boundaries remain unchanged.*
+
+Version: `0.6.5`
+Status: Veröffentlichung über die Release-Seite prüfen / verify publication on the release page
 Priority: `20`
 Requires: Spec-Kit `>=0.8.0` (uses the `wrap` and `append` composition
 strategies introduced in `0.8.x`).
 
 ## Zweck / Purpose
+
+### Einstieg und Arbeitsweise / Getting Started and Workflow
+
+Nach Installation im initialisierten Zielprojekt ergänzt das
+[Manifest](preset.yml) Specify/Plan/Tasks durch `wrap` und ihre Vorlagen
+sowie die Constitution durch `append`. Diese Anweisungen erzeugen nicht
+automatisch Threat Models oder abgeschlossene Reviews. Eigenständige Starter
+und das Agent-Guidance-Addendum müssen gezielt verwendet werden; Installation
+allein belegt keine Übernahme in alle Agenten-Dateien.
+
+*In an initialized target project, the [manifest](preset.yml) wraps
+Specify/Plan/Tasks and appends guidance to their templates and the
+constitution. Instructions do not automatically produce threat models or
+completed reviews. Use standalone starters and the agent-guidance addendum
+deliberately; installation alone proves no inclusion in every agent file.*
+
+Beispiel für eine neue externe Integration: Nenne `threat-model-template`
+und `adr-template`, plane `docs/security/threat-model.md` und einen S-ADR
+unter `docs/security/adr/`. Beschreibe Datenfluss, Trust Boundaries
+(Vertrauensgrenzen), Bedrohungen, Alternativen und Gegenmaßnahmen. Tasks
+benennt verbleibende Dokumentations-, Implementierungs- und Review-Arbeit
+sowie konkrete Tests. Bestehende Evidence aktualisieren statt verdoppeln.
+
+*For a new external integration, explicitly select `threat-model-template`
+and `adr-template`; plan `docs/security/threat-model.md` and a security ADR
+under `docs/security/adr/`. Describe data flow, trust boundaries, threats,
+alternatives and mitigations. Tasks names remaining documentation,
+implementation, review and testing. Update existing evidence instead of
+duplicating it. These are suggested outputs, not completed assessments.*
+
+Cloud-Starter nur bei passendem Scope wählen. Anwendbarkeit kommt aus dem
+projektgeführten Security-Nachweis; hier keine zweite Rechtsentscheidung
+treffen. `Applicable` ist keine bestandene Prüfung; `N/A` braucht Grund und
+Trigger, `Open` Owner und Folgeaktion. Leere Starter sind keine Evidence.
+
+*Select cloud starters only for relevant scope. Project-owned Security
+evidence owns regulatory applicability; do not invent a competing legal
+decision here. Applicable is not passed; N/A needs rationale and trigger,
+Open an owner and follow-up. Empty starters are not evidence.*
+
+Kleinere Prioritätszahl bedeutet höhere Auflösungspriorität, nicht frühere
+Ausführung oder Abnahme. `append` ergänzt, `wrap` verschachtelt; `replace`
+oder lokale Overrides können andere gleichnamige Beiträge verdrängen.
+Individuelle Reihenfolgen und Drittanbieter-Kombinationen separat prüfen:
+`specify preset resolve plan-template` zeigt die Vorlagenkette; erzeugte
+Agentenflächen zeigen die tatsächlich eingebundenen Command-Anweisungen.
+
+*Lower numbers mean higher resolution precedence, not earlier execution or
+acceptance. Append adds, wrap nests; replace or local overrides can hide
+same-name contributions. Check custom orderings and third-party combinations
+separately using plan-template resolution and generated agent instructions.*
+
+Leserpfad / Reader path:
+[Installation](#installation--installation) →
+[Evidenzvorlagen / Evidence Templates](#evidenzvorlagen--evidence-templates) →
+[Prüfung / Verification](#prüfung--verification) →
+[Fehlersuche / Troubleshooting](#fehlersuche--troubleshooting).
 
 Dieses Standard-Preset bringt sichere Softwarearchitektur, Threat Modeling,
 Zero Trust, Security Architecture Decision Records und Cloud-Assurance-Fragen
@@ -89,10 +172,16 @@ integrations, and operating model.*
 
 ### Veröffentlichter Tag / Published Tag
 
+v0.6.2 bindet die einzeilige Installation an das exakte aktuelle Tag-ZIP.
+Architektur- und regulatorische Inhalte bleiben gegenueber v0.6.1 unveraendert.
+Historische Tags und Archive bleiben erhalten; Release und Integration sind
+getrennte Nachweise. Siehe [Patch-Nachweis](docs/release-0.6.2-validation.md).
+*v0.6.2 binds the one-line installation command to its exact tag archive.
+Architecture and regulatory contents are unchanged from v0.6.1. Historical
+tags and archives remain immutable; release and integration are separate.*
+
 ```bash
-specify preset add \
-  --from https://github.com/hindermath/spec-kit-preset-architecture-governance/archive/refs/tags/v0.5.2.zip \
-  --priority 20
+specify preset add --from https://github.com/hindermath/spec-kit-preset-architecture-governance/archive/refs/tags/v0.6.6.zip --priority 20
 specify preset info architecture-governance
 ```
 
@@ -107,12 +196,12 @@ specify preset info architecture-governance
 
 | Priority | Preset |
 |---:|---|
-| 10 | `security-governance` |
-| 20 | `architecture-governance` |
-| 30 | `isaqb-architecture-governance` |
-| 40 | `a11y-governance` |
-| 50 | `cross-platform-governance` |
-| 60 | `agent-parity-governance` |
+| 10 | [security-governance](https://github.com/hindermath/spec-kit-preset-security-governance) |
+| 20 | [architecture-governance](https://github.com/hindermath/spec-kit-preset-architecture-governance) |
+| 30 | [isaqb-architecture-governance](https://github.com/hindermath/spec-kit-preset-isaqb-architecture-governance) |
+| 40 | [a11y-governance](https://github.com/hindermath/spec-kit-preset-a11y-governance) |
+| 50 | [cross-platform-governance](https://github.com/hindermath/spec-kit-preset-cross-platform-governance) |
+| 60 | [agent-parity-governance](https://github.com/hindermath/spec-kit-preset-agent-parity-governance) |
 
 `architecture-governance` behandelt sichere Architektur.
 `isaqb-architecture-governance` behandelt allgemeine Softwarearchitektur. Wenn
@@ -166,6 +255,7 @@ presets when both concerns are relevant.*
 - `samm-assessment-template`
 - `cloud-autonomy-applicability-template`
 - `cloud-compliance-assurance-template`
+- `c3a-criteria-catalog` (BSI v1.0, 30 groups, source hash)
 
 Default evidence location: `docs/security/`. S-ADRs default to
 `docs/security/adr/` as one file per decision.
@@ -175,7 +265,7 @@ Default evidence location: `docs/security/`. S-ADRs default to
 ```bash
 specify preset list
 specify preset info architecture-governance
-specify preset resolve
+specify preset resolve threat-model-template
 specify check
 ```
 
@@ -214,6 +304,46 @@ Schulden dokumentiert werden müssen.
 *Also use `isaqb-architecture-governance` when goals, context, building
 blocks, runtime view, deployment view, ADRs, risks, or technical debt must be
 documented.*
+
+## Version 0.6.0 / Version 0.6.0
+
+C5 Typ 1 beschreibt den bewerteten Zeitpunkt, nicht die Wirksamkeit ueber einen
+Zeitraum. Typ 2 braucht Pruefzeitraum und Wirksamkeitsbewertung. Unbekannte
+Reporttypen bleiben `Unknown` mit offener Evidence-Luecke. Kriterienversion,
+Scope, Ausnahmen und Kundenverantwortung werden getrennt erfasst.
+
+*C5 Type 1 is point-in-time assurance, not sustained operating effectiveness.
+Type 2 needs the audit period and effectiveness assessment. Unknown types
+remain Unknown with a tracked gap. Record report version, scope, exceptions
+and customer-side responsibilities separately.*
+
+C3A erhaelt alle 30 Gruppen aus dem BSI-Katalog v1.0 mit exakten C-/AC-/SI-
+Kennungen. Die Themenabschnitte bleiben Einstiegspunkte; sie ersetzen keine
+kriterienbezogene Evidence. Jede Gruppe bleibt sichtbar, auch bei `N/A` oder
+`Open`. Ein C5-Bericht erfuellt nicht automatisch C3A-Kriterien.
+
+*C3A now includes all 30 groups and exact C/AC/SI identifiers from BSI v1.0.
+The thematic summaries link to criterion-level evidence rather than replacing
+it. N/A requires rationale; Open requires owner, action and reevaluation.
+C5 assurance is not automatic C3A satisfaction. The preset performs no audit.*
+
+Bestehende Evidence bleibt historisch unveraendert. Bei neuer oder wesentlich
+geaenderter Cloud-Bewertung wird ein neuer, verlinkter Nachweis erstellt;
+fehlende neue Felder sind offene Luecken, kein nachtraegliches Bestehen.
+Fuer reine Ausbildungs-/Entwicklungsinfrastruktur ist weiterhin begruendetes
+`N/A` moeglich. Version, Quelle und Review-Scope bleiben sichtbar.
+
+*Preserve historical evidence. Create a linked current assessment for a new or
+materially changed cloud scope; missing fields are gaps, not retroactive passes.
+Justified N/A remains available, including education/development-only scopes.*
+
+Quelle, Varianten und bekannte Quell-Unstimmigkeiten:
+[C3A/C5 evidence contract](docs/c3a-c5-evidence-contract.md).
+Lokale strukturelle Regression: `python3 tests/test-cloud-contract.py`.
+Die Tests pruefen Vorlagen/Grenzen, nicht die Wahrheit eines Provider-Testats.
+
+*See the linked contract for provenance and source anomalies. Structural
+tests check shipped templates and boundaries, not provider-report validity.*
 
 ## Version 0.5.2 / Version 0.5.2
 
@@ -257,3 +387,43 @@ run.*
 ## License
 
 MIT. See `LICENSE`.
+
+## Datenschutz und regulatorische Architektur / Privacy and regulatory architecture
+
+DE: Die projektspezifische Anwendbarkeit von DS-GVO, KI-VO, CRA, NIS2 und
+DORA wird durch Security-Evidence gefuehrt; hier keine zweite Rechtsentscheidung
+erfinden. Bei installiertem Security-Preset dessen Detailvorlagen nutzen,
+sonst gleichwertige projektgefuehrte Nachweise verlinken. Beispielprogramm,
+Entwicklungswerkzeuge und Organisation getrennt betrachten; AI-SBOM: N/A
+und Ausbildungszweck sind keine allgemeine regulatorische Ausnahme.
+Privacy by Design/Default: Datenminimierung, Zweck, Empfaenger, Regionen,
+Speicherbegrenzung, Loeschung und Betroffenenrechte in Datenfluessen abbilden.
+KI-Tool-/Produktgrenzen, Prompt-, Logging- und Telemetriepfade pruefen.
+NIS2-/DORA-relevante Dienstleisterabhaengigkeit, getestete Wiederherstellung,
+Verfuegbarkeit, Konzentrationsrisiko und Exit-Faehigkeit rollenbezogen planen.
+C3A/C5-Nachweise ersetzen keinen Datenschutz-, NIS2- oder DORA-Nachweis.
+EN: Project Security evidence owns GDPR, AI Act, CRA, NIS2 and DORA
+applicability; do not create a competing legal decision. Use Security detail
+templates when installed, otherwise equivalent project-owned records.
+Assess sample product, development tools and organisation separately;
+AI-SBOM: N/A and education are not blanket regulatory exemptions.
+Map privacy by design/default, minimisation, purpose, recipients, regions,
+retention, deletion and subject rights to data flows. Review AI/tool boundaries
+and prompt/log/telemetry paths. Plan role-specific supplier dependencies,
+tested recovery, availability, concentration risk and exit capability for
+NIS2/DORA-related scope. C3A/C5 evidence does not replace regulatory evidence.
+
+- Applicability record / exact scope / owner / review date:
+- Personal-data inventory / synthetic-data decision:
+- Data flow / purpose / trust boundary / receiver / region:
+- Retention / deletion / defaults / subject-rights interface:
+- AI/tool usage boundary / prompt and logging safeguards:
+- Supplier dependency / tested recovery / exit / concentration risk:
+- Legal Open finding / qualified reviewer / next action / due date:
+
+DE: v0.6.1 praezisiert bestehende Architekturvorlagen ohne neue Template-IDs,
+Commands oder Schemas. Rechtliche Rollen bleiben beim projektgefuehrten
+Security-Nachweis. EN: v0.6.1 clarifies existing architecture records without
+new template IDs, commands or schemas; Security owns applicability.
+
+[Quellenbindung, Grenzen und Pruefung / Sources, boundaries and checks](docs/regulatory-architecture-contract.md).

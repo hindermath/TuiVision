@@ -14,6 +14,7 @@ $ErrorActionPreference = 'Stop'
 
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $CheckScript = Join-Path $ScriptDir 'check-homogeneity.ps1'
+Import-Module (Join-Path $ScriptDir 'lib/managed-file-hardening.psm1') -Force
 
 # ─── Prerequisites ───────────────────────────────────────────────────────────
 
@@ -51,16 +52,13 @@ function Write-StatsEntry {
     $entry     = "| $timestamp | $Score% | $bar |"
 
     $dir = Split-Path $StatsFile -Parent
-    if (-not (Test-Path -LiteralPath $dir)) {
-        [IO.Directory]::CreateDirectory($dir) | Out-Null
-    }
-
-    if (Test-Path -LiteralPath $StatsFile) {
-        Add-Content -LiteralPath $StatsFile -Value $entry
+    $relative = Split-Path $StatsFile -Leaf
+    $existing = if (Test-Path -LiteralPath $StatsFile) {
+        (Read-HBManagedText -Root $dir -RelativePath $relative).TrimEnd("`r", "`n") + "`n"
     } else {
-        $StatsHeader | Set-Content -LiteralPath $StatsFile
-        Add-Content -LiteralPath $StatsFile -Value $entry
+        $StatsHeader.TrimEnd("`r", "`n") + "`n"
     }
+    Write-HBManagedTextAtomic -Root $dir -RelativePath $relative -Content ($existing + $entry + "`n")
     Write-Host "✓ STATS.md updated at $StatsFile"
 }
 
@@ -76,16 +74,49 @@ function Get-ScoreFor {
     }
 }
 
+function Assert-NoLinkComponents {
+    param([Parameter(Mandatory)][string]$Path)
+
+    $absolute = [IO.Path]::GetFullPath($Path)
+    $root = [IO.Path]::GetPathRoot($absolute)
+    $current = $root
+    $relative = [IO.Path]::GetRelativePath($root, $absolute)
+    foreach ($component in @($relative -split '[\\/]' | Where-Object { $_ -and $_ -ne '.' })) {
+        if ($component -eq '..') { throw "Target path contains traversal: $Path" }
+        $current = Join-Path $current $component
+        $item = Get-Item -LiteralPath $current -Force -ErrorAction SilentlyContinue
+        if ($item -and ($item.LinkType -or
+            ($item.Attributes -band [IO.FileAttributes]::ReparsePoint))) {
+            if ($IsWindows) { throw "Target path contains a link or reparse point: $Path" }
+            $owner = @(& stat -f '%u' $current 2>$null)
+            if ($LASTEXITCODE -ne 0) { $owner = @(& stat -c '%u' $current 2>$null) }
+            if ($LASTEXITCODE -ne 0 -or @($owner).Count -ne 1 -or [string]$owner[0] -cne '0') {
+                throw "Target path contains an untrusted symbolic link: $Path"
+            }
+        }
+    }
+}
+
 function Resolve-TargetDir {
     param([string]$InputPath)
 
     if (Test-Path -LiteralPath $InputPath -PathType Container) {
-        return (Resolve-Path -LiteralPath $InputPath).Path
+        Assert-NoLinkComponents -Path $InputPath
+        $item = Get-Item -LiteralPath $InputPath -Force
+        if ($item.LinkType -or ($item.Attributes -band [IO.FileAttributes]::ReparsePoint)) {
+            throw "Target directory must not be a link or reparse point: $InputPath"
+        }
+        return $item.FullName
     }
 
     $homeCandidate = Join-Path $HomeDir $InputPath
     if (Test-Path -LiteralPath $homeCandidate -PathType Container) {
-        return (Resolve-Path -LiteralPath $homeCandidate).Path
+        Assert-NoLinkComponents -Path $homeCandidate
+        $item = Get-Item -LiteralPath $homeCandidate -Force
+        if ($item.LinkType -or ($item.Attributes -band [IO.FileAttributes]::ReparsePoint)) {
+            throw "Target directory must not be a link or reparse point: $homeCandidate"
+        }
+        return $item.FullName
     }
 
     return $null

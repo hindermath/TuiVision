@@ -3,7 +3,7 @@ schema_version: "1.0"
 preset:
   id: "cross-platform-governance"
   name: "Cross-Platform Governance"
-  version: "0.2.2"
+  version: "0.2.6"
   description: "Adds Bash + PowerShell parity, read-only check parity, root-path and scoped native-override review, Unix man-pages, bilingual comment-based help, Verb-Noun Cmdlet discipline, and audit-ready Spec-Kit run evidence to Spec Kit-managed scripting projects."
   author: "Thorsten Hindermann"
   repository: "https://github.com/hindermath/spec-kit-preset-cross-platform-governance"

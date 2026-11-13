@@ -35,6 +35,7 @@ param(
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
+Import-Module (Join-Path $PSScriptRoot 'lib/managed-file-hardening.psm1') -Force
 
 $script:BeginMarker = '<!-- project-statistics-v2:begin -->'
 $script:EndMarker = '<!-- project-statistics-v2:end -->'
@@ -1181,8 +1182,10 @@ try {
     $repository = (Invoke-GitCapture -Repository $repository -Arguments @(
             'rev-parse', '--show-toplevel'
         )).StdOut.Trim()
-    $ledger = Join-Path $repository 'docs/project-statistics.md'
-    $configFile = Join-Path $repository 'docs/project-statistics.config.json'
+    $ledgerRelative = 'docs/project-statistics.md'
+    $configRelative = 'docs/project-statistics.config.json'
+    $ledger = Get-HBManagedPath -Root $repository -RelativePath $ledgerRelative
+    $configFile = Get-HBManagedPath -Root $repository -RelativePath $configRelative
     if (-not (Test-Path -LiteralPath $ledger -PathType Leaf)) {
         throw "Statistics ledger not found: $ledger"
     }
@@ -1200,7 +1203,7 @@ try {
     $generated = ConvertTo-GeneratedBlock -Configuration $configuration -Snapshot $snapshot `
         -History $history -SourceRevision $sourceRevision
     Assert-GeneratedBlock -Block $generated
-    $existing = Get-Content -LiteralPath $ledger -Raw -Encoding UTF8
+    $existing = Read-HBManagedText -Root $repository -RelativePath $ledgerRelative
     $updated = Get-UpdatedLedger -Existing $existing -Generated $generated
     Assert-LedgerContract -LedgerText $updated
     $changed = (ConvertTo-NormalizedText $existing) -cne $updated
@@ -1251,7 +1254,7 @@ try {
     }
 
     if ($PSCmdlet.ShouldProcess($ledger, 'Render ASCII Statistics Profile 2')) {
-        [IO.File]::WriteAllText($ledger, $updated, [Text.UTF8Encoding]::new($false))
+        Write-HBManagedTextAtomic -Root $repository -RelativePath $ledgerRelative -Content $updated
     }
     Write-Status -Status 'UPDATED' -Repository $repository -Ledger $ledger `
         -SourceRevision $sourceRevision -Changed $true `

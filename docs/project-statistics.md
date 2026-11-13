@@ -1284,6 +1284,14 @@ Documentation Impact: UpdateRequired; see the evidence path above.
 No product logic changed; CodeQL under Tools is configured separately after
 delivery. No AI Scan activation or new practical accessibility acceptance.
 
+### 2026-11-13 — Gemeinsame Preset-Sicherheitswartung / Shared preset security maintenance
+
+Vierzehn veroeffentlichte Patch-Releases sind ueber echte Quellen- und Installationsbindungen uebernommen. Gemeinsame Workflow-Rechte sind explizit begrenzt; Produktlogik und Lifecycle bleiben unveraendert. Offene CodeQL-Belegluecken bleiben offen, ohne automatische Alert-Verwerfung.
+
+Fourteen published patches are recorded through real source and installed bindings. Shared workflow permissions are explicitly restricted; product logic and lifecycle remain unchanged. Open CodeQL evidence gaps remain open without automatic alert dismissal.
+
+Documentation Impact: UpdateRequired; [Wartungsnachweis / maintenance evidence](maintenance/shared-security-rollout-2026-11-13.md).
+
 ## Gesamtstatistik / Overall Statistics
 
 <!-- project-statistics-v2:begin -->

@@ -88,3 +88,15 @@ and decision counts, delivery authority, validation results, and exactly one
 next action. For one `ReadyForReview` target, use
 `$speckit-intake-review <target>`. For a series, use the generated schema-1.1
 Series request. Report the command without executing it.
+
+## Nutzungshilfe / Reader help
+
+DE: Einen klar begrenzten Arbeitsauftrag mit Herkunft und Änderungsrechten vorbereiten. Diese Command-Erklärung ändert keine Berechtigungen oder Voraussetzungen.
+Die bestehenden technischen Feldnamen und Statuswerte nicht übersetzen oder
+nur zum Bestehen eines Tests verändern. Einführung, Begriffe, Beispiel,
+Ergebnis und Fehlerhilfe stehen im [deutschen Leserpfad](https://github.com/hindermath/spec-kit-preset-intake-authoring-governance/blob/main/docs/user-guide.md).
+
+EN: Prepare a bounded work request with provenance and change authority. This command explanation changes no authority or prerequisites.
+Keep technical field names and states unchanged; never alter them just to pass.
+See the [English reader path](https://github.com/hindermath/spec-kit-preset-intake-authoring-governance/blob/main/docs/user-guide.EN.md)
+for introduction, terms, example, result and troubleshooting.

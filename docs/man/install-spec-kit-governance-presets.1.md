@@ -102,3 +102,10 @@ specify preset resolve spec-template
 
 *After installation, verify with `specify preset list`, at least one
 `specify preset info`, and a relevant `specify preset resolve` check.*
+
+DE: Der reine Check-Modus benötigt keine Spec-Kit-CLI. Er prüft neben der
+Registry auch ID und Version im kanonischen `preset.yml`. Installation
+benötigt weiterhin `specify`.
+
+EN: Check-only needs no Spec Kit CLI. It verifies ID and version in canonical
+preset.yml as well as registry metadata. Installation still needs specify.

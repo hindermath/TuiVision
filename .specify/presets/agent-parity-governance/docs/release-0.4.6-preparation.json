@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "presetId": "agent-parity-governance",
+  "packageVersion": "0.4.6",
+  "historicalPublicationVersion": "0.4.4",
+  "candidate_status": "Prepared",
+  "release_status": "NotEstablishedAtPreparation",
+  "sourceCommit": "05d52c07b194515a776bba1191ebd906fffe3ff3",
+  "previousReleaseVersion": "0.4.5",
+  "externalPublicationEvidence": "https://github.com/hindermath/spec-kit-preset-agent-parity-governance/releases/tag/v0.4.6",
+  "runtimeChanged": false,
+  "generatorSchemaChanged": false,
+  "changeKind": "SecurityPolicyDocumentation",
+  "authorizationReference": "Thorsten Hindermann, 2026-11-13: implement security baseline and publish current presets, including controlled Level-0/Home/Level-2 rollout; MergeAndSync with formal-review-only Admin-Bypass.",
+  "preparedAt": "2026-11-13T08:24:34.2397380+00:00"
+}

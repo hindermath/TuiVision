@@ -25,6 +25,7 @@
 | VEX | [Applicable / N/A / Open] | Known vulnerability in shipped or evaluated component | Affected/not affected/mitigated/under investigation statement | | [OK / Open / N/A] | |
 | SLSA | [Applicable / N/A / Open] | CI/CD-built or published artefact | Provenance, attestation, build integrity notes | | [OK / Open / N/A] | |
 | OpenSSF Scorecard | [Applicable / N/A / Open] | Public OSS or high-impact external dependency | Scorecard output and reviewed findings | | [OK / Open / N/A] | |
+| GDPR | [Applicable / N/A / Open] | Personal data in product, tooling or organisation | Role, processing, legal basis, safeguards and DPIA threshold evidence | | [OK / Open / N/A] | |
 | CRA | [Applicable / N/A / Open] | EU-market product with digital elements, vulnerability handling, conformity scope | Applicability decision, technical documentation, SBOM/vulnerability evidence | | [OK / Open / N/A] | |
 | NIS2 | [Applicable / N/A / Open] | Essential/important entity, regulated customer/supply chain, sector obligation | Risk-management, incident, supply-chain and governance evidence | | [OK / Open / N/A] | |
 | EU AI Act | [Applicable / N/A / Open] | AI runtime/product component or regulated AI system | AI classification, documentation/logging, AI-SBOM cross-reference | | [OK / Open / N/A] | |
@@ -48,3 +49,15 @@
 - Supply-chain evidence:
 - Regulatory applicability:
 - Architecture C3A/C5 record:
+
+## Nutzungshilfe / Reader help
+
+DE: Sichere Entwicklung planen und begründen, ohne eine bestandene Sicherheitsprüfung vorzutäuschen. Diese Vorlage ist ein auszufüllender Starter, kein bestandener Nachweis. Vorhandene passende Evidence weiterverwenden.
+Die bestehenden technischen Feldnamen und Statuswerte nicht übersetzen oder
+nur zum Bestehen eines Tests verändern. Einführung, Begriffe, Beispiel,
+Ergebnis und Fehlerhilfe stehen im [deutschen Leserpfad](https://github.com/hindermath/spec-kit-preset-security-governance/blob/main/docs/user-guide.md).
+
+EN: Plan and explain secure development without claiming a passed security assessment. This template is a starter to complete, not passed evidence. Reuse suitable existing evidence.
+Keep technical field names and states unchanged; never alter them just to pass.
+See the [English reader path](https://github.com/hindermath/spec-kit-preset-security-governance/blob/main/docs/user-guide.EN.md)
+for introduction, terms, example, result and troubleshooting.

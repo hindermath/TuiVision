@@ -176,29 +176,65 @@ class WorkspaceStorageMaintenanceTests(unittest.TestCase):
             self.assertEqual(["build"], [item["path"] for item in candidates])
             self.assertEqual("cmake-out-of-source", candidates[0]["adapter"])
 
-    def test_direct_remove_translates_operating_system_failure(self) -> None:
+    def test_cmake_update_removes_verified_tree_without_executing_build_rules(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             repository = pathlib.Path(temporary) / "repo"
             initialize_repository(repository)
             (repository / ".gitignore").write_text("build/\n", encoding="utf-8")
-            run("git", "add", ".gitignore", cwd=repository)
+            (repository / "CMakeLists.txt").write_text("cmake_minimum_required(VERSION 3.20)\n", encoding="utf-8")
+            run("git", "add", ".gitignore", "CMakeLists.txt", cwd=repository)
             run("git", "commit", "-qm", "fixture", cwd=repository)
             build = repository / "build"
             build.mkdir()
-            candidate = storage.candidate_record(repository, build, "fixture", 7, True)
+            (build / "CMakeCache.txt").write_text(
+                f"CMAKE_HOME_DIRECTORY:INTERNAL={repository}\n",
+                encoding="utf-8",
+            )
+            (build / "build.ninja").write_text("rule malicious\n  command = touch ../outside\n", encoding="utf-8")
+            (build / "output.o").write_bytes(b"generated")
+            adapter = {"buildDirectoryPatterns": ["build"]}
+            commands: list[list[str]] = []
+            original_run_command = storage.run_command
 
-            with mock.patch.object(storage.shutil, "rmtree", side_effect=PermissionError("fixture")), \
-                    self.assertRaisesRegex(storage.StorageContractError, "candidate removal failed: build"):
-                storage.remove_candidate(repository, candidate)
+            def record_build_commands(command: list[str], **kwargs: object) -> subprocess.CompletedProcess[str]:
+                if command and command[0] in {"cmake", "make", "ninja"}:
+                    commands.append(command.copy())
+                return original_run_command(command, **kwargs)
 
+            with mock.patch.object(storage, "run_command", side_effect=record_build_commands):
+                candidates, freed, status = storage.handle_cmake(
+                    repository,
+                    adapter,
+                    mode="update",
+                    retention_days=7,
+                    pressure_mode=True,
+                    dirty=False,
+                    busy=False,
+                )
+
+            self.assertEqual([], commands)
+            self.assertFalse(build.exists())
+            self.assertFalse((repository / "outside").exists())
+            self.assertGreater(freed, 0)
+            self.assertEqual("Passed", status)
+            self.assertEqual("RemoveVerifiedBuildTree", candidates[0]["action"])
+            self.assertEqual("Removed", candidates[0]["status"])
+
+    def test_cc65_cleanup_has_no_make_authorization_path(self) -> None:
+        source = pathlib.Path(storage.__file__).read_text(encoding="utf-8")
+        self.assertNotIn("validate_cc65_make_preview", source)
+        self.assertNotIn("make_preview", source)
+        self.assertNotIn("zap", POLICY_PATH.read_text(encoding="utf-8").casefold())
+
+    @unittest.skipUnless(os.name != "nt" and shutil.which("make"), "GNU Make fixture requires a POSIX runner")
     def test_cc65_inventory_and_blocked_update_modes_never_evaluate_makefiles(self) -> None:
         cases = (
-            ("safe", "check-only", False, False, "DirectRemove", "Planned"),
-            ("safe", "dry-run", False, False, "DirectRemove", "Planned"),
-            ("deep", "check-only", False, False, "DirectRemove", "Planned"),
-            ("deep", "dry-run", False, False, "DirectRemove", "Planned"),
-            ("safe", "update", True, False, "DirectRemove", "SkippedDirtyOrBusy"),
-            ("deep", "update", False, True, "DirectRemove", "SkippedDirtyOrBusy"),
+            ("safe", "check-only", False, False, "RemoveVerifiedGeneratedTree", "Planned"),
+            ("safe", "dry-run", False, False, "RemoveVerifiedGeneratedTree", "Planned"),
+            ("deep", "check-only", False, False, "RemoveVerifiedGeneratedTree", "Planned"),
+            ("deep", "dry-run", False, False, "RemoveVerifiedGeneratedTree", "Planned"),
+            ("safe", "update", True, False, "RemoveVerifiedGeneratedTree", "SkippedDirtyOrBusy"),
+            ("deep", "update", False, True, "RemoveVerifiedGeneratedTree", "SkippedDirtyOrBusy"),
         )
         for profile, mode, dirty, busy, action, expected_status in cases:
             with self.subTest(profile=profile, mode=mode, dirty=dirty, busy=busy), \
@@ -250,16 +286,19 @@ class WorkspaceStorageMaintenanceTests(unittest.TestCase):
                 self.assertEqual("Warning" if mode == "update" else "Passed", result_status)
                 self.assertTrue((repository / "wrk").exists())
 
-    def test_cc65_authorized_update_removes_only_candidates_without_running_make(self) -> None:
-        for profile, make_directory in (("safe", "src"), ("deep", ".")):
+    @unittest.skipUnless(os.name != "nt" and shutil.which("make"), "GNU Make fixture requires a POSIX runner")
+    def test_cc65_authorized_update_directly_removes_verified_tree(self) -> None:
+        for profile, make_directory, recipe in (
+            ("safe", "src", "rm -rf ../wrk; touch ../outside"),
+            ("deep", ".", "rm -rf wrk/../../../outside"),
+        ):
             with self.subTest(profile=profile), tempfile.TemporaryDirectory() as temporary:
                 repository = pathlib.Path(temporary) / "cc65"
                 initialize_repository(repository)
-                marker = pathlib.Path(temporary) / "make-ran"
                 (repository / ".gitignore").write_text("wrk/\n", encoding="utf-8")
                 (repository / "src").mkdir()
                 (repository / make_directory / "Makefile").write_text(
-                    f'SIDE_EFFECT := $(shell touch "{marker}")\n.PHONY: clean\nclean:\n\ttouch "{marker}"\n',
+                    f".PHONY: clean\nclean:\n\t{recipe}\n",
                     encoding="utf-8",
                 )
                 tracked_makefile = "Makefile" if make_directory == "." else "src/Makefile"
@@ -277,58 +316,89 @@ class WorkspaceStorageMaintenanceTests(unittest.TestCase):
                     "protectedEvidencePatterns": [],
                 }
 
+                commands: list[list[str]] = []
+                original_run_command = storage.run_command
+
+                def reject_build_commands(command: list[str], **kwargs: object) -> subprocess.CompletedProcess[str]:
+                    if command and command[0] in {"make", "cmake"}:
+                        commands.append(command.copy())
+                    return original_run_command(command, **kwargs)
+
+                with mock.patch.object(storage, "run_command", side_effect=reject_build_commands):
+                    candidates, _, freed, status, warnings = storage.handle_cc65(
+                        repository,
+                        adapter,
+                        mode="update",
+                        profile=profile,
+                        retention_days=7,
+                        pressure_mode=True,
+                        dirty=False,
+                        busy=False,
+                    )
+
+                self.assertFalse(repository.joinpath("wrk").exists())
+                self.assertFalse(repository.joinpath("outside").exists())
+                self.assertEqual([], commands)
+                self.assertGreater(freed, 0)
+                self.assertEqual("Passed", status)
+                self.assertEqual([], warnings)
+                self.assertEqual("RemoveVerifiedGeneratedTree", candidates[0]["action"])
+                self.assertEqual("Removed", candidates[0]["status"])
+
+    @unittest.skipUnless(os.name != "nt" and shutil.which("make"), "GNU Make fixture requires a POSIX runner")
+    def test_cc65_deep_ignores_repository_make_logic(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            repository = pathlib.Path(temporary) / "cc65"
+            initialize_repository(repository)
+            (repository / ".gitignore").write_text("wrk/\n", encoding="utf-8")
+            (repository / "src").mkdir()
+            (repository / "Makefile").write_text(
+                ".PHONY: clean\nclean:\n\trm -rf unexpected\n",
+                encoding="utf-8",
+            )
+            (repository / "src/Makefile").write_text(
+                ".PHONY: clean\nclean:\n\trm -rf ../wrk\n",
+                encoding="utf-8",
+            )
+            run("git", "add", ".gitignore", "Makefile", "src/Makefile", cwd=repository)
+            run("git", "commit", "-qm", "fixture", cwd=repository)
+            (repository / "wrk").mkdir()
+            (repository / "wrk/output.o").write_bytes(b"generated")
+            adapter = {
+                "safeGroups": [{
+                    "id": "host-tools",
+                    "makeDirectory": "src",
+                    "target": "clean",
+                    "paths": ["wrk"],
+                }],
+                "protectedEvidencePatterns": [],
+            }
+            make_commands: list[list[str]] = []
+            original_run_command = storage.run_command
+
+            def record_make_commands(command: list[str], **kwargs: object) -> subprocess.CompletedProcess[str]:
+                if command and command[0] == "make":
+                    make_commands.append(command.copy())
+                return original_run_command(command, **kwargs)
+
+            with mock.patch.object(storage, "run_command", side_effect=record_make_commands):
                 candidates, _, freed, status, warnings = storage.handle_cc65(
                     repository,
                     adapter,
                     mode="update",
-                    profile=profile,
+                    profile="deep",
                     retention_days=7,
                     pressure_mode=True,
                     dirty=False,
                     busy=False,
                 )
 
-                self.assertFalse(repository.joinpath("wrk").exists())
-                self.assertGreater(freed, 0)
-                self.assertEqual("Passed", status)
-                self.assertEqual([], warnings)
-                self.assertEqual("DirectRemove", candidates[0]["action"])
-                self.assertEqual("Removed", candidates[0]["status"])
-                self.assertFalse(marker.exists())
-
-    def test_cmake_update_removes_verified_tree_without_running_generated_clean_rules(self) -> None:
-        with tempfile.TemporaryDirectory() as temporary:
-            repository = pathlib.Path(temporary) / "repo"
-            initialize_repository(repository)
-            marker = pathlib.Path(temporary) / "cmake-clean-ran"
-            (repository / ".gitignore").write_text("build/\n", encoding="utf-8")
-            (repository / "CMakeLists.txt").write_text("cmake_minimum_required(VERSION 3.20)\n", encoding="utf-8")
-            run("git", "add", ".gitignore", "CMakeLists.txt", cwd=repository)
-            run("git", "commit", "-qm", "fixture", cwd=repository)
-            build = repository / "build"
-            build.mkdir()
-            (build / "CMakeCache.txt").write_text(
-                f"CMAKE_HOME_DIRECTORY:INTERNAL={repository}\n", encoding="utf-8"
-            )
-            (build / "Makefile").write_text(
-                f'.PHONY: clean\nclean:\n\ttouch "{marker}"\n', encoding="utf-8"
-            )
-
-            candidates, freed, status = storage.handle_cmake(
-                repository,
-                {"buildDirectoryPatterns": ["build"]},
-                mode="update",
-                retention_days=7,
-                pressure_mode=True,
-                dirty=False,
-                busy=False,
-            )
-
-            self.assertFalse(build.exists())
-            self.assertFalse(marker.exists())
+            self.assertEqual([], make_commands)
+            self.assertFalse(repository.joinpath("wrk").exists())
             self.assertGreater(freed, 0)
             self.assertEqual("Passed", status)
-            self.assertEqual("DirectRemove", candidates[0]["action"])
+            self.assertEqual([], warnings)
+            self.assertEqual("RemoveVerifiedGeneratedTree", candidates[0]["action"])
             self.assertEqual("Removed", candidates[0]["status"])
 
     def test_container_contract_prunes_only_dangling_images(self) -> None:

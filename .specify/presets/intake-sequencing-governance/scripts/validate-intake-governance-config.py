@@ -224,7 +224,13 @@ def validate_series_manifest(
         )
         if incomplete:
             fail("RIG017", f"Completed series contains non-completed targets: {incomplete}")
-    elif len(eligible) != 1:
+    # DE: Ein laufendes Mitglied braucht keinen weiteren auswaehlbaren Kandidaten.
+    # EN: A running member needs no additional eligible candidate.
+    elif len(eligible) != 1 and not (
+        series_status == "Active"
+        and not eligible
+        and "Active" in target_statuses.values()
+    ):
         fail("RIG017", f"exactly one Eligible target is required, found {len(eligible)}")
 
     dependencies = manifest.get("dependencies", [])

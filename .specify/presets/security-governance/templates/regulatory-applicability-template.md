@@ -8,7 +8,7 @@
 - Run date:
 - Evidence owner:
 - Reviewer:
-- Standards / criteria checked: ISO 27001/27002 secure development controls, NIST SSDF, CWE Top 25, OWASP ASVS, SBOM, AI-SBOM, VEX, SLSA, OpenSSF Scorecard, CRA, NIS2, EU AI Act, DORA
+- Standards / criteria checked: ISO 27001/27002 secure development controls, NIST SSDF, CWE Top 25, OWASP ASVS, SBOM, AI-SBOM, VEX, SLSA, OpenSSF Scorecard, GDPR, CRA, NIS2, EU AI Act, DORA
 - Decision: [Applicable / N/A / Open]
 - Evidence path:
 - N/A rationale, if not applicable:
@@ -46,6 +46,7 @@
 
 | Regulation | Decision | Rationale | Evidence path | Follow-up |
 | --- | --- | --- | --- | --- |
+| GDPR / Regulation (EU) 2016/679 | [Applicable / N/A / Open] | | | |
 | NIS2 / Directive (EU) 2022/2555 | [Applicable / N/A / Open] | | | |
 | EU Cyber Resilience Act (CRA) | [Applicable / N/A / Open] | | | |
 | EU AI Act | [Applicable / N/A / Open] | | | |
@@ -93,13 +94,37 @@
 
 ## Default for Private Training Projects
 
-For private training, learning, or reference projects, record `N/A` when the
-project is not operated as a regulated service, not placed on the market as a
-regulated product, not delivered to a regulated customer, and not part of a
-regulated supply chain. Keep the rationale explicit; do not omit the check.
+For training, learning or reference projects, assess the product, development
+tooling and operating organisation separately. No general education exemption
+exists. Record N/A only with a scoped rationale and reevaluation trigger.
 
 ## Follow-Up Tasks
 
 - [ ] Close open regulatory applicability questions.
 - [ ] Link any applicable regulation to the detailed evidence document.
 - [ ] Revisit this record before release, customer handover, public hosting, or material architecture change.
+
+## Scope and role mapping
+
+| Regulation | Sample product | Development tooling | Organisation | Direct duties | Contractual duties | Dated source / owner / evidence |
+| --- | --- | --- | --- | --- | --- | --- |
+| GDPR | Open | Open | Open | | | |
+| AI Act | Open | Open | Open | | | |
+| CRA | Open | Open | Open | | | |
+| NIS2 | Open | Open | Open | | | |
+| DORA | Open | Open | Open | | | |
+
+Do not assign all financial-entity duties to an ordinary ICT supplier.
+Check NIS2 national transposition and DORA equivalence per obligation.
+
+## Nutzungshilfe / Reader help
+
+DE: Sichere Entwicklung planen und begründen, ohne eine bestandene Sicherheitsprüfung vorzutäuschen. Diese Vorlage ist ein auszufüllender Starter, kein bestandener Nachweis. Vorhandene passende Evidence weiterverwenden.
+Die bestehenden technischen Feldnamen und Statuswerte nicht übersetzen oder
+nur zum Bestehen eines Tests verändern. Einführung, Begriffe, Beispiel,
+Ergebnis und Fehlerhilfe stehen im [deutschen Leserpfad](https://github.com/hindermath/spec-kit-preset-security-governance/blob/main/docs/user-guide.md).
+
+EN: Plan and explain secure development without claiming a passed security assessment. This template is a starter to complete, not passed evidence. Reuse suitable existing evidence.
+Keep technical field names and states unchanged; never alter them just to pass.
+See the [English reader path](https://github.com/hindermath/spec-kit-preset-security-governance/blob/main/docs/user-guide.EN.md)
+for introduction, terms, example, result and troubleshooting.

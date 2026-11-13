@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "presetId": "model-routing-governance",
+  "packageVersion": "0.2.5",
+  "historicalPublicationVersion": "0.1.6",
+  "previousReleaseVersion": "0.2.4",
+  "candidate_status": "Prepared",
+  "release_status": "NotEstablishedAtPreparation",
+  "runtimeChanged": false,
+  "generatorSchemaChanged": false,
+  "changeKind": "DocumentationCorrection",
+  "authorizationReference": "User request 2026-11-05: correct README publication contradiction, publish one patch and update github/spec-kit#5240; no Home sync or rollout.",
+  "preparedAt": "2026-11-05T10:30:55.1891240+00:00",
+  "sourceCommit": "10b56ad8f63203c3a833c25af9051b9f9c519400",
+  "externalPublicationEvidence": "https://github.com/hindermath/spec-kit-preset-model-routing-governance/releases/tag/v0.2.5"
+}

@@ -22,11 +22,16 @@ function Resolve-HBForgejoBaseUrl {
         default { throw "Not a Forgejo platform: $Platform" }
     }
 
-    if (-not $resolvedUrl.StartsWith('https://')) {
-        throw 'The Forgejo base URL must use HTTPS.'
-    }
-    if ($resolvedUrl -match '[@?#"\\\s]') {
-        throw 'The Forgejo base URL must not contain credentials, query, fragments, quotes, backslashes, or spaces.'
+    $uri = $null
+    if (-not [uri]::TryCreate($resolvedUrl, [System.UriKind]::Absolute, [ref]$uri) `
+        -or $uri.Scheme -cne 'https' `
+        -or -not $uri.Host `
+        -or $uri.UserInfo `
+        -or $uri.Query `
+        -or $uri.Fragment `
+        -or $uri.AbsolutePath -notin @('', '/') `
+        -or $resolvedUrl -match '[\x00-\x20\x7f"\\]') {
+        throw 'The Forgejo base URL must be one HTTPS origin without credentials, path, or control characters.'
     }
     $resolvedUrl.TrimEnd('/')
 }
@@ -160,6 +165,29 @@ function New-HBForgejoRepository {
     $repository = $repoResponse.Content | ConvertFrom-Json
     if (-not $repository.name -or -not $repository.clone_url -or -not $repository.html_url) {
         throw 'Incomplete Forgejo repository response.'
+    }
+    $baseUri = [uri]$BaseUrl
+    $cloneUri = [uri]$repository.clone_url
+    $htmlUri = [uri]$repository.html_url
+    $expectedPath = "/$owner/$RepositoryName"
+    $repositoryOwner = if ($repository.owner) { [string]$repository.owner.login } else { '' }
+    if ($baseUri.Scheme -ne 'https' `
+        -or $repositoryOwner -cne $owner `
+        -or [string]$repository.name -cne $RepositoryName `
+        -or $repository.private -ne $true `
+        -or $cloneUri.Scheme -ne 'https' `
+        -or $cloneUri.Authority -cne $baseUri.Authority `
+        -or $cloneUri.UserInfo `
+        -or $cloneUri.Query `
+        -or $cloneUri.Fragment `
+        -or $cloneUri.AbsolutePath.TrimEnd('/') -cne "${expectedPath}.git" `
+        -or $htmlUri.Scheme -ne 'https' `
+        -or $htmlUri.Authority -cne $baseUri.Authority `
+        -or $htmlUri.UserInfo `
+        -or $htmlUri.Query `
+        -or $htmlUri.Fragment `
+        -or $htmlUri.AbsolutePath.TrimEnd('/') -cne $expectedPath) {
+        throw 'Forgejo repository does not match the private authenticated target.'
     }
     Approve-HBForgejoCredential -BaseUrl $BaseUrl -AuthenticationData $credential
 

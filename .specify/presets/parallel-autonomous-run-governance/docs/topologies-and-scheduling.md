@@ -96,6 +96,9 @@ einen deklarierten Handoff des Produzenten an den Konsumenten. Handoff-Pfad und
 SHA-256 werden validiert. `baseWorkerId` darf nur einen direkten Vorgaenger im
 selben Repository nennen; der Nachfolger basiert auf dessen validiertem
 exaktem Head und nicht auf einem beweglichen Branchnamen.
+Handoff-Dateien muessen regulaere Dateien unterhalb des Worktrees sein; Symlinks
+und Reparse Points sowie Dateien ueber 8 MiB werden abgewiesen. Der Koordinator
+prueft den Hash erneut und gibt dem Nachfolger eine verifizierte Kopie.
 
 ### Parallelitaetsgrenze
 
@@ -129,6 +132,9 @@ Every DAG edge requires exactly one declared producer-to-consumer handoff.
 Validate path and SHA-256. `baseWorkerId` may name only a direct predecessor in
 the same repository; the descendant starts from its validated exact head, not
 a moving branch name.
+Handoffs must be regular files inside the worktree. Symlinks, reparse points,
+and files over 8 MiB are rejected. The coordinator rechecks the hash and gives
+the descendant a verified copy.
 
 ### Concurrency limit
 

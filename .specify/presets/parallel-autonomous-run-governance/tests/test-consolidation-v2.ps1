@@ -12,6 +12,7 @@ $fixtureProvider = Join-Path $PSScriptRoot 'fixture-provider.ps1'
 $fixturePostMerge = Join-Path $PSScriptRoot 'fixture-post-merge.ps1'
 $tempRoot = Join-Path ([IO.Path]::GetTempPath()) "parallel-autonomous-v2-tests-$([guid]::NewGuid())"
 [void](New-Item -ItemType Directory -Path $tempRoot)
+$env:PAR_TEST_FIXTURE_ROOT = $tempRoot
 
 function Assert-Test {
     param([bool] $Condition, [string] $Message)
@@ -84,6 +85,8 @@ function New-TestCase {
         [Parameter(Mandatory)][string] $Name,
         [int] $WorkerCount = 1,
         [switch] $SharedRepository,
+        [switch] $Stacked,
+        [switch] $Alternative,
         [string[]] $RunnerProfiles = @(),
         [int] $SyncFailures = 0
     )
@@ -105,6 +108,17 @@ function New-TestCase {
         $runnerProfile = if ($index -lt $RunnerProfiles.Count) { $RunnerProfiles[$index] } else { $null }
         $workers.Add((New-TestWorker "worker-$('{0:D2}' -f $index)" $repository $runnerProfile))
     }
+    if ($Stacked) {
+        Assert-Test $SharedRepository 'Stacked fixture requires one shared repository'
+        for ($index = 1; $index -lt $workers.Count; $index++) {
+            $workers[$index].baseWorkerId = [string] $workers[$index - 1].workerId
+            $workers[$index].dependsOn = @([string] $workers[$index - 1].workerId)
+            $workers[$index - 1].handoffs = @([ordered]@{
+                consumerWorkerId = [string] $workers[$index].workerId
+                path = "handoff-$($workers[$index - 1].workerId)-$($workers[$index].workerId).json"
+            })
+        }
+    }
 
     $providerStatePath = Join-Path $caseRoot 'provider-state.json'
     $postMergeStatePath = Join-Path $caseRoot 'post-merge-state.json'
@@ -117,7 +131,7 @@ function New-TestCase {
         schemaVersion = '1.1'
         campaignId = [guid]::NewGuid().ToString()
         name = $Name
-        topology = 'ReplicatedTargets'
+        topology = if ($Alternative) { 'AlternativeSolutions' } else { 'ReplicatedTargets' }
         deliveryMode = 'MergeAndSync'
         maxConcurrency = 3
         runnerProfile = 'fixture-default'
@@ -127,7 +141,7 @@ function New-TestCase {
         consolidation = [ordered]@{
             allReadyBarrier = $true
             mergeOrder = @($workers | ForEach-Object workerId)
-            humanSelectionRequired = $false
+            humanSelectionRequired = [bool]$Alternative
             mergeProfile = 'fixture-provider'
         }
         postMergeActions = @(
@@ -156,6 +170,7 @@ function New-TestCase {
         '-CampaignId', '{campaignId}',
         '-WorkerId', '{workerId}',
         '-RunId', '{runId}',
+        '-AttemptId', '{attemptId}',
         '-Worktree', '{worktree}',
         '-ResultFile', '{resultFile}',
         '-Mode', 'ReadyForMerge',
@@ -226,16 +241,27 @@ function New-TestCase {
             }
         }
     }
+    if ($Alternative) {
+        $campaign.postMergeActions += [ordered]@{
+            actionId = 'validate-unselected'; workerId = 'worker-01'; phase = 'Validate'; profile = 'fixture-post-merge'
+        }
+    }
     Write-TestJson $manifestPath $campaign
     Write-TestJson $runnerPath $runnerConfig
     Write-TestJson $providerStatePath ([ordered]@{ schemaVersion = '1.1'; workers = [ordered]@{} })
-    Write-TestJson $postMergeStatePath ([ordered]@{
+    $postMergeFixture = [ordered]@{
         actions = [ordered]@{
             'sync-main' = [ordered]@{ attemptCount = 0; failuresRemaining = $SyncFailures; succeeded = $false }
             closeout = [ordered]@{ attemptCount = 0; failuresRemaining = 0; succeeded = $false }
             'validate-main' = [ordered]@{ attemptCount = 0; failuresRemaining = 0; succeeded = $false }
         }
-    })
+    }
+    if ($Alternative) {
+        $postMergeFixture.actions['validate-unselected'] = [ordered]@{
+            attemptCount = 0; failuresRemaining = 0; succeeded = $false
+        }
+    }
+    Write-TestJson $postMergeStatePath $postMergeFixture
 
     & pwsh -NoProfile -File $coordinator -Action Validate -Manifest $manifestPath -RunnerConfig $runnerPath | Out-Null
     Assert-Test ($LASTEXITCODE -eq 0) "$Name validation failed"
@@ -243,7 +269,8 @@ function New-TestCase {
         -State $statePath -RuntimeRoot $runtimePath | Out-Null
     Assert-Test ($LASTEXITCODE -eq 0) "$Name start failed"
     $campaignState = Get-Content -LiteralPath $statePath -Raw | ConvertFrom-Json -AsHashtable
-    Assert-Test ([string] $campaignState.status -eq 'ReadyForConsolidation') "$Name did not reach ReadyForConsolidation"
+    $expectedStatus = if ($Alternative) { 'AwaitingSelection' } else { 'ReadyForConsolidation' }
+    Assert-Test ([string] $campaignState.status -eq $expectedStatus) "$Name did not reach $expectedStatus"
     $providerState = Get-Content -LiteralPath $providerStatePath -Raw | ConvertFrom-Json -AsHashtable
     foreach ($workerState in $campaignState.workers) {
         $worker = @($campaign.workers | Where-Object workerId -eq $workerState.workerId)[0]
@@ -252,12 +279,18 @@ function New-TestCase {
             state = 'Open'
             isDraft = $false
             headSha = [string] $workerState.headSha
+            headRepository = [string] $worker.repository
+            headRefName = [string] $worker.branch
+            baseRepository = [string] $worker.repository
+            prNumber = [int] ([regex]::Match([string] $worker.workerId, '\d+$').Value) + 1
             mergeable = $true
             reviewDecision = $null
             unresolvedCurrentThreads = 0
             checkPolicySatisfied = $true
             technicalFailures = @()
-            baseRefName = 'main'
+            baseRefName = if ($worker.baseWorkerId) {
+                [string] (@($campaign.workers | Where-Object workerId -eq $worker.baseWorkerId)[0]).branch
+            } else { 'main' }
             mergeCommitSha = $null
             mergeFailuresRemaining = 0
             mergeDelayMilliseconds = 0
@@ -282,14 +315,15 @@ function New-TestCase {
 }
 
 function Invoke-TestConsolidate {
-    param([Parameter(Mandatory)][hashtable] $Case, [switch] $ExpectFailure)
+    param([Parameter(Mandatory)][hashtable] $Case, [switch] $ExpectFailure, [string] $SelectedWorker = '')
 
-    & pwsh -NoProfile -File $coordinator -Action Consolidate -Manifest $Case.Manifest `
-        -RunnerConfig $Case.Runner -State $Case.State -RuntimeRoot $Case.Runtime -Merge 2>$null | Out-Null
+    $selectionArgs = if ($SelectedWorker) { @('-SelectedWorker', $SelectedWorker) } else { @() }
+    $consolidationOutput = @(& pwsh -NoProfile -File $coordinator -Action Consolidate -Manifest $Case.Manifest `
+        -RunnerConfig $Case.Runner -State $Case.State -RuntimeRoot $Case.Runtime -Merge @selectionArgs 2>&1)
     if ($ExpectFailure) {
         Assert-Test ($LASTEXITCODE -ne 0) "$($Case.Name) unexpectedly consolidated"
     } else {
-        Assert-Test ($LASTEXITCODE -eq 0) "$($Case.Name) consolidation failed"
+        Assert-Test ($LASTEXITCODE -eq 0) "$($Case.Name) consolidation failed: $($consolidationOutput -join ' ')"
     }
 }
 
@@ -297,7 +331,7 @@ function Invoke-TestResume {
     param([Parameter(Mandatory)][hashtable] $Case)
 
     & pwsh -NoProfile -File $coordinator -Action Resume -Manifest $Case.Manifest `
-        -RunnerConfig $Case.Runner -State $Case.State -RuntimeRoot $Case.Runtime 2>$null | Out-Null
+        -RunnerConfig $Case.Runner -State $Case.State -RuntimeRoot $Case.Runtime -Merge 2>$null | Out-Null
     Assert-Test ($LASTEXITCODE -eq 0) "$($Case.Name) resume failed"
 }
 
@@ -320,8 +354,68 @@ function Update-ProviderWorker {
 }
 
 try {
+    $coordinatorAst = [System.Management.Automation.Language.Parser]::ParseFile(
+        $coordinator, [ref] $null, [ref] $null)
+    foreach ($name in @('Assert-PARCondition', 'Assert-PARSchemaVersion', 'Read-PARJson',
+            'Invoke-PARGit', 'Get-PARSha256', 'Test-PARUuid', 'Resolve-PARPhysicalPath',
+            'Resolve-PARRepository', 'Get-PARRemoteRepositoryIdentity',
+            'Get-PARExpectedPrIdentity', 'ConvertTo-PARArgumentList', 'Invoke-PARProcessAsync',
+            'Invoke-PARProfileCommand', 'Invoke-PARProviderPreflight',
+            'Confirm-PARAutonomousState', 'Confirm-PARWorkerExecutionEvidence',
+            'Confirm-PARPublicationWorkerState')) {
+        $definition = @($coordinatorAst.FindAll({ param($node)
+            $node -is [System.Management.Automation.Language.FunctionDefinitionAst]
+        }, $true) | Where-Object Name -eq $name)[0]
+        . ([scriptblock]::Create($definition.Extent.Text))
+    }
+    $remoteRepo = Initialize-TestRepository 'remote-identity'
+    [void](Invoke-TestGit $remoteRepo @('remote', 'add', 'origin', 'https://GitHub.com/Owner/Repo.git'))
+    Assert-Test ((Get-PARRemoteRepositoryIdentity $remoteRepo) -ceq 'github.com/owner/repo') `
+        'HTTPS origin was not canonicalized to its repository identity'
+    $identityWorker = [ordered]@{ workerId = 'identity'; repository = $remoteRepo;
+        branch = 'parallel/identity'; baseRef = 'origin/main'; baseWorkerId = $null }
+    $identity = Get-PARExpectedPrIdentity @{ workers = @($identityWorker) } $identityWorker $tempRoot 'GitHub'
+    Assert-Test ($identity.baseRefName -ceq 'main' -and
+        $identity.headRepository -ceq 'github.com/owner/repo') `
+        'origin/main was not bound to GitHub base branch main'
+    [void](Invoke-TestGit $remoteRepo @('remote', 'set-url', 'origin', 'git@GitHub.com:Owner/Repo.git'))
+    Assert-Test ((Get-PARRemoteRepositoryIdentity $remoteRepo) -ceq 'github.com/owner/repo') `
+        'SSH origin was not canonicalized to its repository identity'
+
     $mixed = New-TestCase 'mixed-runner-fallback' -WorkerCount 3 `
         -RunnerProfiles @('fixture-codex', 'fixture-claude')
+    $script:SupportedSchemaVersions = @('1.0', '1.1', '1.2')
+    $publicationProfile = [ordered]@{
+        provider = 'Local Fixture'
+        preflight = (Read-TestState $mixed.Runner).mergeProfiles['fixture-provider'].preflight
+    }
+    $publicationWorker = $mixed.Campaign.workers[0]
+    $publicationWorkerState = (Read-TestState $mixed.State).workers[0]
+    $publication = Invoke-PARProviderPreflight $mixed.Campaign $publicationProfile `
+        $publicationWorker $publicationWorkerState (Split-Path -Parent $mixed.Manifest) $mixed.Runtime `
+        -PublicationOnly
+    Assert-Test ($publication.state -eq 'Open') 'Read-only publication preflight rejected a valid PR'
+    $publishCampaign = Read-TestState $mixed.Manifest
+    $publishCampaign.deliveryMode = 'PublishPR'
+    $publishCampaign.publicationProfile = 'fixture-publication'
+    $publishProfiles = Read-TestState $mixed.Runner
+    $publishProfiles.publicationProfiles = @{ 'fixture-publication' = $publicationProfile }
+    Confirm-PARPublicationWorkerState $publishCampaign $publishProfiles $publicationWorker `
+        $publicationWorkerState (Split-Path -Parent $mixed.Manifest) $mixed.Runtime
+    Assert-Test ($publicationWorkerState.status -eq 'ReadyForMerge' -and
+        $publicationWorkerState.providerState -eq 'Open') `
+        'Published worker result was not bound to an open provider PR'
+    Update-ProviderWorker $mixed 'worker-00' { param($worker) $worker.headRepository = '/foreign/repository' }
+    $foreignPublicationRejected = $false
+    try {
+        Confirm-PARPublicationWorkerState $publishCampaign $publishProfiles $publicationWorker `
+            $publicationWorkerState (Split-Path -Parent $mixed.Manifest) $mixed.Runtime
+    } catch { $foreignPublicationRejected = $true }
+    Assert-Test $foreignPublicationRejected 'Read-only publication preflight accepted a foreign PR'
+    Update-ProviderWorker $mixed 'worker-00' {
+        param($worker)
+        $worker.headRepository = [string] $publicationWorker.repository
+    }
     Invoke-TestConsolidate $mixed
     $mixedState = Read-TestState $mixed.State
     Assert-Test ($mixedState.status -eq 'Completed') 'Mixed runner campaign did not complete'
@@ -338,6 +432,22 @@ try {
     Assert-Test (-not $statusJson.Contains('SENSITIVE-RUNNER-DATA-MUST-NOT-LEAK')) 'JSON status leaked runner configuration'
     Assert-Test ($statusText.Contains('Agent-Standard/nicht deklariert')) 'Text status omitted undeclared model marker'
     Assert-Test (-not $statusText.Contains('SENSITIVE-RUNNER-DATA-MUST-NOT-LEAK')) 'Text status leaked runner configuration'
+    $receiptTamper = Read-TestState $mixed.State
+    $receiptTamper.postMergeActions[0].receiptSha256 = '0' * 64
+    Write-TestJson $mixed.State $receiptTamper
+    Invoke-TestConsolidate $mixed -ExpectFailure
+    Assert-Test ((Read-TestState $mixed.State).status -ne 'Completed') `
+        'Forged successful post-merge action completed the campaign'
+
+    $alternative = New-TestCase 'selected-alternative-actions' -WorkerCount 2 -Alternative
+    Invoke-TestConsolidate $alternative -SelectedWorker 'worker-00'
+    $alternativeState = Read-TestState $alternative.State
+    $alternativeActions = Read-TestState $alternative.PostMergeState
+    Assert-Test ($alternativeState.status -eq 'Completed') 'Selected alternative did not complete'
+    Assert-Test ((@($alternativeState.postMergeActions | Where-Object actionId -eq 'validate-unselected')[0]).status -eq 'Skipped') `
+        'Unselected alternative action was not skipped'
+    Assert-Test ([int] $alternativeActions.actions['validate-unselected'].attemptCount -eq 0) `
+        'Unselected alternative post-merge action executed'
 
     $headDrift = New-TestCase 'head-drift'
     Update-ProviderWorker $headDrift 'worker-00' { param($worker) $worker.headSha = '0000000000000000000000000000000000000000' }
@@ -348,6 +458,40 @@ try {
     Assert-Test ($LASTEXITCODE -ne 0) 'Consolidation without merge hid NeedsRevalidation'
     Assert-Test ((Read-TestState $headDrift.State).status -eq 'NeedsRevalidation') `
         'Consolidation without merge overwrote NeedsRevalidation'
+
+    $foreignPr = New-TestCase 'foreign-pr-identity'
+    Update-ProviderWorker $foreignPr 'worker-00' {
+        param($worker)
+        $worker.headRepository = '/foreign/repository'
+    }
+    Invoke-TestConsolidate $foreignPr -ExpectFailure
+    Assert-Test ((Read-TestState $foreignPr.State).status -eq 'NeedsRevalidation') `
+        'Foreign PR head repository did not require revalidation'
+
+    $forgedResult = New-TestCase 'forged-worker-result'
+    $forgedCheckpoint = Read-TestState $forgedResult.State
+    $forgedCheckpoint.workers[0].resultSha256 = '0' * 64
+    Write-TestJson $forgedResult.State $forgedCheckpoint
+    Invoke-TestConsolidate $forgedResult -ExpectFailure
+    Assert-Test ((Read-TestState $forgedResult.State).status -eq 'ReadyForConsolidation') `
+        'Forged worker result reached provider merge preflight'
+    $forgedCheckpoint.status = 'PausedByUser'
+    Write-TestJson $forgedResult.State $forgedCheckpoint
+    & pwsh -NoProfile -File $coordinator -Action Start -Manifest $forgedResult.Manifest `
+        -RunnerConfig $forgedResult.Runner -State $forgedResult.State `
+        -RuntimeRoot $forgedResult.Runtime 2>$null | Out-Null
+    Assert-Test ($LASTEXITCODE -ne 0 -and
+        (Read-TestState $forgedResult.State).status -eq 'PausedByUser') `
+        'Start skipped a forged completed worker checkpoint'
+
+    $wrongBase = New-TestCase 'wrong-pr-base'
+    Update-ProviderWorker $wrongBase 'worker-00' {
+        param($worker)
+        $worker.baseRefName = 'unexpected-base'
+    }
+    Invoke-TestConsolidate $wrongBase -ExpectFailure
+    Assert-Test ((Read-TestState $wrongBase.State).status -eq 'NeedsRevalidation') `
+        'PR targeting another base branch did not require revalidation'
 
     $openReview = New-TestCase 'open-review'
     Update-ProviderWorker $openReview 'worker-00' { param($worker) $worker.unresolvedCurrentThreads = 1 }
@@ -397,6 +541,14 @@ try {
     Assert-Test (@($rejectedActionFixture.actions.Values | Where-Object attemptCount -ne 0).Count -eq 0) `
         'Post-merge state drift started an undeclared action'
 
+    $forgedSelection = New-TestCase 'forged-selection'
+    $forgedSelectionState = Read-TestState $forgedSelection.State
+    $forgedSelectionState.selectedWorkerId = 'worker-00'
+    Write-TestJson $forgedSelection.State $forgedSelectionState
+    Invoke-TestConsolidate $forgedSelection -ExpectFailure
+    Assert-Test ((Read-TestState $forgedSelection.ProviderState).workers['worker-00'].state -eq 'Open') `
+        'Non-alternative selection reached provider merge'
+
     $partial = New-TestCase 'partial-merge-resume' -WorkerCount 2
     Update-ProviderWorker $partial 'worker-01' { param($worker) $worker.mergeFailuresRemaining = 1 }
     Invoke-TestConsolidate $partial -ExpectFailure
@@ -442,7 +594,8 @@ try {
         '-Manifest', $concurrentResume.Manifest,
         '-RunnerConfig', $concurrentResume.Runner,
         '-State', $concurrentResume.State,
-        '-RuntimeRoot', $concurrentResume.Runtime
+        '-RuntimeRoot', $concurrentResume.Runtime,
+        '-Merge'
     ) -PassThru
     $resumeLock = Join-Path $concurrentResume.Runtime 'campaign.lock'
     $deadline = [DateTime]::UtcNow.AddSeconds(10)
@@ -453,22 +606,14 @@ try {
     Assert-Test $resumeLockObserved 'Consolidation resume fixture did not acquire the campaign lock'
     & pwsh -NoProfile -File $coordinator -Action Resume -Manifest $concurrentResume.Manifest `
         -RunnerConfig $concurrentResume.Runner -State $concurrentResume.State `
-        -RuntimeRoot $concurrentResume.Runtime 2>$null | Out-Null
+        -RuntimeRoot $concurrentResume.Runtime -Merge 2>$null | Out-Null
     Assert-Test ($LASTEXITCODE -ne 0) 'Concurrent consolidation resume bypassed the campaign lock'
     $firstResume.WaitForExit()
     Assert-Test ($firstResume.ExitCode -eq 0) 'First locked consolidation resume failed'
     Assert-Test ((Read-TestState $concurrentResume.State).status -eq 'Completed') `
         'Concurrent consolidation resume lock changed the completed state'
 
-    $stacked = New-TestCase 'stacked-base-revalidation' -WorkerCount 3 -SharedRepository
-    Update-ProviderWorker $stacked 'worker-01' {
-        param($worker)
-        $worker.baseRefName = 'parallel/v2/stacked/worker-00'
-    }
-    Update-ProviderWorker $stacked 'worker-02' {
-        param($worker)
-        $worker.baseRefName = 'parallel/v2/stacked/worker-01'
-    }
+    $stacked = New-TestCase 'stacked-base-revalidation' -WorkerCount 3 -SharedRepository -Stacked
     Invoke-TestConsolidate $stacked
     $stackedProviderState = Read-TestState $stacked.ProviderState
     Assert-Test ([int] $stackedProviderState.workers['worker-02'].preflightCount -ge 4) `

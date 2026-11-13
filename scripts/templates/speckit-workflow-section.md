@@ -1,5 +1,12 @@
 ## Spec-kit-Workflow
 
+DE: Die Versionsangaben beschreiben den zentralen Release-Sollstand. Diese
+Quellenpflege aktualisiert keine installierten Presets oder Home Runtime.
+Rollout und Community-Einreichung brauchen getrennte Auftraege.
+EN: Version references describe the central release target, not installation
+state. Source binding updates install no presets and sync no Home Runtime.
+Rollout and community submission require separate requests.
+
 Neue Features in diesem Workspace werden nach dem **Specification-Driven Development (SDD)**-Workflow entwickelt.
 Der Workflow verwendet das `speckit`-CLI-Tool (GitHub Copilot Skill).
 
@@ -24,19 +31,19 @@ Workspace-Familie ist:
 
 | Preset-ID | Name | Version | Priorität |
 |---|---|---:|---:|
-| `security-governance` | Security Governance | `v0.6.2` | `10` |
-| `architecture-governance` | Architecture Governance | `v0.5.2` | `20` |
-| `isaqb-architecture-governance` | iSAQB Architecture Governance | `v0.2.2` | `30` |
-| `a11y-governance` | A11Y Governance | `v0.4.3` | `40` |
-| `cross-platform-governance` | Cross-Platform Governance | `v0.2.2` | `50` |
-| `agent-parity-governance` | Agent Parity Governance | `v0.4.2` | `60` |
-| `autonomous-run-governance` | Autonomous Run Governance | `v0.4.4` | `70` |
-| `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.6` | `80` |
+| `security-governance` | Security Governance | `v0.7.5` | `10` |
+| `architecture-governance` | Architecture Governance | `v0.6.6` | `20` |
+| `isaqb-architecture-governance` | iSAQB Architecture Governance | `v0.2.6` | `30` |
+| `a11y-governance` | A11Y Governance | `v0.4.7` | `40` |
+| `cross-platform-governance` | Cross-Platform Governance | `v0.2.6` | `50` |
+| `agent-parity-governance` | Agent Parity Governance | `v0.4.6` | `60` |
+| `autonomous-run-governance` | Autonomous Run Governance | `v0.4.12` | `70` |
+| `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.13` | `80` |
 
-Optional koennen `model-routing-governance` v0.1.4 mit Prioritaet `61`,
-`intake-authoring-governance` v0.3.4 mit Prioritaet `64`,
-`intake-review-governance` v0.2.3 mit Prioritaet `65` und
-`intake-sequencing-governance` v0.2.6 mit Prioritaet `66` zwischen Agent Parity
+Optional koennen `model-routing-governance` v0.2.9 mit Prioritaet `61`,
+`intake-authoring-governance` v0.3.13 mit Prioritaet `64`,
+`intake-review-governance` v0.2.9 mit Prioritaet `65` und
+`intake-sequencing-governance` v0.2.14 mit Prioritaet `66` zwischen Agent Parity
 und Preset 7 installiert werden. Alle vier bleiben ausserhalb der
 Standard-Achtermatrix.
 Authoring erzeugt aus ausdruecklich benannten geordneten UTF-8-Quellen genau
@@ -131,7 +138,7 @@ begründete Ausnahme dokumentiert ist. Nach Installation oder Update prüfen:
 `specify preset info <id>` und bei Template-Fragen `specify preset resolve
 <template>`. `.specify/presets/` wird committed, `.specify/presets/.cache/`
 nicht. Alle acht Presets erzeugen oder verlangen audit-ready Spec-Kit-Run-Evidenz mit `Applicable` / `N/A` / `Open`, Begruendung, Evidenzpfad, Reviewer, Restrisiko und Follow-up.
-`parallel-autonomous-run-governance` v0.2.6 ist eigenstaendig veroeffentlicht;
+`parallel-autonomous-run-governance` v0.2.13 ist eigenstaendig veroeffentlicht;
 v0.2.2 wurde mit `github/spec-kit#3591` fuer den Community-Katalog eingereicht.
 Bei jeder Preset-Version oder Prioritätsänderung zuerst die zentrale Matrix
 aktualisieren und danach README-Tabellen, Constitution, Agenten-Dateien und
@@ -179,19 +186,19 @@ zero-write values. A partial proof is not a full regression pass.
 
 | Preset ID | Name | Version | Priority |
 |---|---|---:|---:|
-| `security-governance` | Security Governance | `v0.6.2` | `10` |
-| `architecture-governance` | Architecture Governance | `v0.5.2` | `20` |
-| `isaqb-architecture-governance` | iSAQB Architecture Governance | `v0.2.2` | `30` |
-| `a11y-governance` | A11Y Governance | `v0.4.3` | `40` |
-| `cross-platform-governance` | Cross-Platform Governance | `v0.2.2` | `50` |
-| `agent-parity-governance` | Agent Parity Governance | `v0.4.2` | `60` |
-| `autonomous-run-governance` | Autonomous Run Governance | `v0.4.4` | `70` |
-| `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.6` | `80` |
+| `security-governance` | Security Governance | `v0.7.5` | `10` |
+| `architecture-governance` | Architecture Governance | `v0.6.6` | `20` |
+| `isaqb-architecture-governance` | iSAQB Architecture Governance | `v0.2.6` | `30` |
+| `a11y-governance` | A11Y Governance | `v0.4.7` | `40` |
+| `cross-platform-governance` | Cross-Platform Governance | `v0.2.6` | `50` |
+| `agent-parity-governance` | Agent Parity Governance | `v0.4.6` | `60` |
+| `autonomous-run-governance` | Autonomous Run Governance | `v0.4.12` | `70` |
+| `parallel-autonomous-run-governance` | Parallel Autonomous Run Governance | `v0.2.13` | `80` |
 
-Optionally install `model-routing-governance` v0.1.4 at priority `61`,
-`intake-authoring-governance` v0.3.4 at priority `64`,
-`intake-review-governance` v0.2.3 at priority `65`, and
-`intake-sequencing-governance` v0.2.6 at priority `66` between Agent Parity and
+Optionally install `model-routing-governance` v0.2.9 at priority `61`,
+`intake-authoring-governance` v0.3.13 at priority `64`,
+`intake-review-governance` v0.2.9 at priority `65`, and
+`intake-sequencing-governance` v0.2.14 at priority `66` between Agent Parity and
 Preset 7. All four remain outside the standard eight. Authoring creates one intake
 and receipt from explicit ordered UTF-8 sources without starting a downstream
 command. Review evaluates that intake independently. Sequencing manages order,
@@ -276,7 +283,7 @@ update, verify with `install-spec-kit-governance-presets.* --check-only` /
 `-CheckOnly`, `specify preset list`, `specify preset info <id>`, and for template questions
 `specify preset resolve <template>`. Commit `.specify/presets/`, but not
 `.specify/presets/.cache/`. All eight presets produce or require audit-ready Spec-Kit run evidence with `Applicable` / `N/A` / `Open`, rationale, evidence path, reviewer, residual risk, and follow-up.
-`parallel-autonomous-run-governance` v0.2.6 is published independently;
+`parallel-autonomous-run-governance` v0.2.13 is published independently;
 v0.2.2 was submitted to the community catalog as `github/spec-kit#3591`.
 For every preset version or priority change, update the central matrix first,
 then review README tables, constitution, agent guidance files, and templates
@@ -315,3 +322,23 @@ checks. Add final merge/sync proof in chat and existing closeout evidence, witho
 commits solely for self-referential counts or IDs. Preserve local rules/templates
 across Spec Kit updates.*
 <!-- END spec-kit-diagrams-completion -->
+
+## Governance-Jahrespruefung und Lieferstufen / Annual governance review and delivery stages
+
+DE: Die urspruenglichen sechs Governance-Presets plus Secure Development
+Assurance werden am 3. Oktober jaehrlich geprueft; naechster Termin
+2027-10-03, 10:00 Europe/Berlin. Anlasspruefungen verschieben den Termin nicht.
+Die Automation liest und berichtet nur; Aenderungen brauchen einen Auftrag.
+Lieferung: A Home Baseline/betroffene Home Runtime, B zwei je Vorhaben benannte
+public Level-2-Piloten, C restliche betroffene public Level-2-Verbraucher erst
+nach separatem Auftrag, D restliche betroffene Flotte nach erneutem Auftrag.
+Aktuelle Piloten: Show-CommandTui400 und TinyCalc. Keine implizite Flotten-,
+Werkzeuginstallations-, Produktlauf- oder Community-Autoritaet. Admin-Bypass
+nur nach erfolgreich abgeschlossenen technischen Checks des exakten Heads.
+EN: Review the original six governance presets plus Secure Development
+Assurance annually on 3 October; next due 2027-10-03 at 10:00 Europe/Berlin.
+Event reviews do not reset the date. Automation only reads and reports.
+Deliver central/runtime first, then two named public Level-2 pilots. Remaining
+public Level-2 consumers require a separate request; the remaining affected
+fleet requires another request. No implicit tool, product or community authority.
+See docs/maintenance/governance-review-and-rollout.md in the Level-0 source.

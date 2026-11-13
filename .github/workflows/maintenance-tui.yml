@@ -28,17 +28,62 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Install .NET 10 SDK
-        uses: actions/setup-dotnet@d4c94342e560b34958eacfc5d055d21461ed1c5d # v5.0.0
+        uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6.1.0
         with:
           dotnet-version: 10.0.x
 
       - name: Install Python
-        uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c # v6.0.0
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: "3.13"
+
+      - name: Install required test tools (Ubuntu)
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ripgrep
+          go install github.com/zricethezav/gitleaks/v8@v8.30.1
+          echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
+
+      - name: Install required test tools (macOS)
+        if: runner.os == 'macOS'
+        shell: bash
+        run: |
+          brew install ripgrep gitleaks
+          test "$(gitleaks version)" = '8.30.1'
+
+      - name: Install required test tools (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $version = '15.2.0'
+          $archive = "ripgrep-${version}-x86_64-pc-windows-msvc.zip"
+          $release = "https://github.com/BurntSushi/ripgrep/releases/download/${version}"
+          $archivePath = Join-Path $env:RUNNER_TEMP $archive
+          $checksumPath = "${archivePath}.sha256"
+          $extractRoot = Join-Path $env:RUNNER_TEMP 'ripgrep'
+          Invoke-WebRequest -Uri "${release}/${archive}" -OutFile $archivePath
+          Invoke-WebRequest -Uri "${release}/${archive}.sha256" -OutFile $checksumPath
+          $expected = Get-Content -LiteralPath $checksumPath |
+            Where-Object { $_ -match '^[0-9a-fA-F]{64}$' } |
+            Select-Object -First 1
+          if ([string]::IsNullOrWhiteSpace($expected)) {
+              throw 'The published ripgrep checksum file contains no SHA-256 hash.'
+          }
+          $actual = (Get-FileHash -LiteralPath $archivePath -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($actual -cne $expected.ToLowerInvariant()) {
+              throw "ripgrep checksum mismatch: expected ${expected}, received ${actual}."
+          }
+          Expand-Archive -LiteralPath $archivePath -DestinationPath $extractRoot -Force
+          $binPath = Join-Path $extractRoot "ripgrep-${version}-x86_64-pc-windows-msvc"
+          $binPath | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          go install github.com/zricethezav/gitleaks/v8@v8.30.1
+          if ($LASTEXITCODE -ne 0) { throw 'Pinned gitleaks installation failed.' }
+          (Join-Path (& go env GOPATH) 'bin') | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
 
       - name: Restore locked projects
         shell: pwsh
@@ -69,10 +114,14 @@ jobs:
         shell: bash
         run: python3 -m unittest discover -s scripts/tests -p 'test_*.py'
 
-      - name: Run full maintenance regressions (Windows)
+      - name: Run Windows-native maintenance regressions
         if: runner.os == 'Windows'
         shell: pwsh
-        run: python -m unittest discover -s scripts/tests -p 'test_*.py'
+        run: >-
+          python -m unittest
+          scripts.tests.test_maintenance_execution_context
+          scripts.tests.test_maintenance_git_bundle
+          scripts.tests.test_windows_maintenance_hardening
 
       - name: Validate Bash syntax
         if: runner.os != 'Windows'

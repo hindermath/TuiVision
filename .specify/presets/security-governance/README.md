@@ -1,12 +1,104 @@
 # Security Governance Preset
 
-Version: `0.6.2`
-Status: published, standard governance preset
+<!-- current-package: 0.7.5 -->
+
+Paketkennung: **v0.7.5**. [Vorbereitung und Veröffentlichungsgrenze](docs/release-0.7.5-validation.md). Die Release-Seite und der externe Archivnachweis belegen die Veröffentlichung, nicht dieser Vorbereitungsstand. Frühere Versionsnachweise unten bleiben historisch.
+
+<span lang="en">Package identity: v0.7.5. The release page and external archive evidence prove publication, not this preparation snapshot. Earlier version records below remain historical.</span>
+
+[Release-Abschluss und Verbesserungsprofil / Publication closeout and improvement profile](docs/release-0.7.3-validation.md).
+
+Der unten verlinkte Basispaket-Nachweis bleibt historisch; dieses Paket nimmt die Quellenkorrekturen als neue Version auf.
+
+<span lang="en">The linked base-package evidence remains historical; this package includes the source corrections as a new version.</span>
+
+**Leserpfad / Reader path:** [Deutsch: Einstieg, Begriffe und Fehlerhilfe](docs/user-guide.md) · [English: start, terms and troubleshooting](docs/user-guide.EN.md).
+
+Historisches Basispaket **v0.7.3**. Der [Release-Stand](https://github.com/hindermath/spec-kit-preset-security-governance/releases) wird getrennt geprüft; ein Commit auf main ist noch keine Veröffentlichung oder Installation.
+
+*Historical base package v0.7.3. The release page records actual publication separately; a main-branch commit is not publication or installation.*
+
+
+Patch **0.7.3** liefert die verbesserte zweisprachige Einstiegs- und
+Kompositionsdokumentation. Verhalten und Berechtigungsgrenzen bleiben erhalten.
+[Release-Nachweis / Release record](docs/release-0.7.3-validation.md).
+
+*Patch 0.7.3 packages the improved bilingual getting-started and composition
+guide. Behavior and authority boundaries remain unchanged.*
+
+Version: `0.7.4`
+Status: Veröffentlichung über die Release-Seite prüfen / verify publication on the release page
 Priority: `10`
 Requires: Spec-Kit `>=0.8.0` (uses the `wrap` and `append` composition
 strategies introduced in `0.8.x`).
 
 ## Zweck / Purpose
+
+### Einstieg und Arbeitsweise / Getting Started and Workflow
+
+Beginne im initialisierten Ziel-Repository mit Installation und Prüfung.
+Danach beschreibe das Feature und seine Risiken. Das [Manifest](preset.yml)
+bindet Architektur-unabhängige Security-Anweisungen über `wrap` an
+Specify/Plan/Tasks und über `append` an deren Dokumentvorlagen und Constitution.
+Dies ergänzt Anweisungen, führt aber keine Scanner oder Reviews aus.
+Eigenständige Evidence-Starter und das Agent-Guidance-Addendum werden nur
+bereitgestellt; ihre Registrierung belegt weder Verwendung noch ausgefüllte
+Nachweise. Nenne Starter und konkrete Zielpfade ausdrücklich.
+
+*Start in an initialized target repository with installation and verification,
+then describe the feature and risks. The [manifest](preset.yml) wraps
+Specify/Plan/Tasks and appends security guidance to their document templates
+and the constitution. This integrates instructions, not scanner or review
+execution. Standalone evidence starters and the agent-guidance addendum are
+available separately; registration proves neither use nor completed evidence.
+Explicitly name relevant starters and output paths.*
+
+Beispiel: Für eine neue HTTP-API verwende `standard-applicability-template`
+als Einstieg, `asvs-verification-template` für den vereinbarten Prüf-Scope
+und `security-checklist-template` für sprachbezogene Prüfungen. Plane
+`docs/security/asvs-verification.md` und konkrete Test-/Review-Tasks.
+Regulatorische Fragen werden getrennt im
+`regulatory-applicability-template` erfasst, nicht aus einem ASVS-Ergebnis
+abgeleitet. Das ist ein Ablaufvorschlag, kein bestandenes Assessment.
+
+*Example: for a new HTTP API, start with `standard-applicability-template`,
+use `asvs-verification-template` for the agreed verification scope and
+`security-checklist-template` for language-specific review. Plan
+`docs/security/asvs-verification.md` and concrete test/review tasks. Record
+regulatory questions separately through `regulatory-applicability-template`;
+an ASVS result does not decide them. This is a workflow example, not a pass.*
+
+Specify nennt Scope und Anwendbarkeit; Plan benennt Nachweise und Prüfungen;
+Tasks benennt verbleibende Arbeit und konkrete Evidence-Dateien. Erst die
+beauftragte Umsetzung und Prüfung erzeugt belastbare Ergebnisse. Bestehende
+Evidence sichten und gezielt aktualisieren. `Applicable` bedeutet nicht
+„bestanden“; `N/A` braucht Begründung, `Open` Owner und Folgeaktion.
+
+*Specify records scope/applicability, Plan names evidence/verification, and
+Tasks identifies remaining work and evidence files. Authorized execution and
+review produce actual results. Inspect and update existing evidence rather
+than duplicating it. Applicable is not passed; justify N/A and assign an owner
+and follow-up to Open.*
+
+Priorität ist Auflösungsrang, keine Ausführungsreihenfolge: kleinere Zahl
+bedeutet höhere Priorität. `append` ergänzt, `wrap` verschachtelt und
+`replace` kann gleichnamige Beiträge verdrängen; Projekt-Overrides können
+Preset-Inhalte ersetzen. Eigene Reihenfolgen und Drittanbieter-Kombinationen
+sind nicht pauschal geprüft. Prüfe die Kompositionskette mit
+`specify preset resolve plan-template` und die erzeugten Agentenflächen.
+`specify check` prüft Werkzeuge, nicht die Wahrheit der Security-Evidence.
+
+*Priority is resolution precedence, not execution order: lower numbers win
+precedence. Append adds, wrap nests, and replace can hide same-name layers;
+project overrides can replace preset content. Custom ordering and third-party
+combinations are not universally tested. Inspect plan-template resolution and
+generated agent instructions. Specify check checks tools, not security evidence.*
+
+Leserpfad / Reader path:
+[Installation](#installation--installation) →
+[Evidenzvorlagen / Evidence Templates](#evidenzvorlagen--evidence-templates) →
+[Prüfung / Verification](#prüfung--verification) →
+[Fehlersuche / Troubleshooting](#fehlersuche--troubleshooting).
 
 Dieses Standard-Preset bringt sichere Code-Erzeugung, Secure-SDLC-Nachweise,
 MSL-Governance, Supply-Chain-Transparenz und regulatorische
@@ -95,10 +187,17 @@ role.*
 
 ### Veröffentlichter Tag / Published Tag
 
+v0.7.1 bindet den Installationsbefehl direkt auswertbar auf einer Zeile an
+das aktuelle Tag-ZIP. Der regulatorische Inhalt bleibt gegenueber v0.7.0
+unveraendert. Historische Tags und Archive bleiben unveraendert;
+Release- und Integrationsnachweise sind getrennt. Siehe
+[Patch-Nachweis](docs/release-0.7.1-validation.md).
+*v0.7.1 binds the one-line installation command to its exact tag archive.
+Regulatory content is unchanged from v0.7.0. Historical tags and archives
+remain immutable; release and consumer integration evidence remain separate.*
+
 ```bash
-specify preset add \
-  --from https://github.com/hindermath/spec-kit-preset-security-governance/archive/refs/tags/v0.6.2.zip \
-  --priority 10
+specify preset add --from https://github.com/hindermath/spec-kit-preset-security-governance/archive/refs/tags/v0.7.5.zip --priority 10
 specify preset info security-governance
 ```
 
@@ -115,16 +214,17 @@ Dieses Preset ist die erste Stufe der normalen Governance-Matrix:
 
 | Priority | Preset |
 |---:|---|
-| 10 | `security-governance` |
-| 20 | `architecture-governance` |
-| 30 | `isaqb-architecture-governance` |
-| 40 | `a11y-governance` |
-| 50 | `cross-platform-governance` |
-| 60 | `agent-parity-governance` |
+| 10 | [security-governance](https://github.com/hindermath/spec-kit-preset-security-governance) |
+| 20 | [architecture-governance](https://github.com/hindermath/spec-kit-preset-architecture-governance) |
+| 30 | [isaqb-architecture-governance](https://github.com/hindermath/spec-kit-preset-isaqb-architecture-governance) |
+| 40 | [a11y-governance](https://github.com/hindermath/spec-kit-preset-a11y-governance) |
+| 50 | [cross-platform-governance](https://github.com/hindermath/spec-kit-preset-cross-platform-governance) |
+| 60 | [agent-parity-governance](https://github.com/hindermath/spec-kit-preset-agent-parity-governance) |
 
-*Install this preset first in the standard governance matrix. Later presets
-can add architecture, accessibility, cross-platform, and agent-parity rules
-without weakening the security baseline.*
+*Priority 10 gives this preset high resolution precedence in the recommended
+composition, not an execution schedule. Other presets can add architecture,
+accessibility, cross-platform and parity guidance; inspect the effective
+composition to ensure security requirements remain present.*
 
 ## Quellkapitel / Source Chapters
 
@@ -147,6 +247,7 @@ without weakening the security baseline.*
 - `OpenSSF Scorecard`
 - `EU CRA` (Regulation (EU) 2024/2847)
 - `NIS2`, `EU AI Act`, and `DORA` as applicability screening topics
+- `GDPR` / DS-GVO with independent privacy and DPIA-threshold evidence
 
 MSL-Best-Practices entstehen aus zwei Regeln: `XI` steuert die Sprachwahl,
 `XII` steuert die sichere Nutzung der gewählten Sprache. Eine MSL ist deshalb
@@ -179,6 +280,10 @@ dependency review.*
 - `supply-chain-evidence-template`
 - `cra-applicability-template`
 - `regulatory-applicability-template`
+- `gdpr-applicability-template`
+- `ai-act-applicability-template`
+- `nis2-applicability-template`
+- `dora-applicability-template`
 
 Default evidence location: `docs/security/`. MSL justification may live in the
 feature spec, local constitution, or another governance document, but should
@@ -186,25 +291,23 @@ be referenced from planning artifacts.
 
 ## AI-SBOM und Regulatorik / AI-SBOM and Regulation
 
-- AI used only as development tooling is documented as `N/A` with a short
-  toolchain rationale.
+- AI-SBOM for the released product may be `N/A` when AI is only development
+  tooling; GDPR and AI Act tool-operation screening remain independent.
 - AI models, AI services, training or embedding datasets, inference
   infrastructure, or AI runtime components in the released or operated system
   trigger AI-SBOM evidence.
 - NIS2, CRA, EU AI Act, DORA, sector-specific rules, and customer or
   supply-chain obligations are screened through
   `regulatory-applicability-template`.
-- Private training, learning, and reference projects default to `N/A` when no
-  regulated service, regulated customer, EU-market product, AI runtime or
-  product component, financial-sector ICT dependency, or regulated
-  supply-chain role exists.
+- Training/reference projects require separately justified decisions for
+  product, development tooling and operating organisation; no blanket N/A.
 
 ## Prüfung / Verification
 
 ```bash
 specify preset list
 specify preset info security-governance
-specify preset resolve
+specify preset resolve regulatory-applicability-template
 specify check
 ```
 
@@ -218,8 +321,9 @@ locations or explicitly plans their creation.*
 
 ### Security wirkt doppelt / Security Appears Twice
 
-Prüfe mit `specify preset resolve`, ob das Preset mehrfach installiert wurde
-oder ob lokale Templates denselben Abschnitt bereits enthalten.
+Prüfe mit `specify preset list` den Installationsbestand und mit
+`specify preset resolve plan-template` die Kompositionskette. Prüfe zusätzlich,
+ob lokale Templates denselben Abschnitt bereits enthalten.
 
 ### N/A ist unklar / N/A Is Unclear
 
@@ -275,3 +379,35 @@ run.*
 ## License
 
 MIT. See `LICENSE`.
+
+## Regulatorischer Evidence-Vertrag / Regulatory evidence contract
+
+DE: DS-GVO, KI-VO, CRA, NIS2 und DORA getrennt fuer Beispielprogramm,
+Entwicklungswerkzeuge und nutzende Organisation pruefen. Rechtliche Rollen,
+Land, datierte Rechtsquelle und Anwendungszeitpunkt nennen; direkte Pflichten
+von vertraglichen Kunden-/Lieferkettenanforderungen trennen. Unbekannt bleibt
+Open mit Owner, Aktion und Frist. N/A braucht Begruendung und Trigger.
+AI-SBOM: N/A entscheidet nicht ueber DS-GVO oder KI-VO. Ausbildung ist keine
+allgemeine Ausnahme. Security fuehrt die Anwendbarkeit; Architecture
+referenziert diese Entscheidung fuer Datenfluesse, Schutz und Resilienz.
+Technische Pruefung ist keine Rechtsfreigabe. Historische Evidence erhalten.
+EN: Assess GDPR, AI Act, CRA, NIS2 and DORA separately for the sample product,
+development tooling and operating organisation. Record roles, jurisdiction,
+dated legal source and application date; separate direct and contractual
+duties. Unknown remains Open with owner, action and due date; N/A needs
+rationale and trigger. AI-SBOM: N/A does not decide GDPR/AI Act applicability.
+Education is not a blanket exemption. Security owns applicability;
+Architecture links decisions to data flows, safeguards and resilience.
+Technical validation grants no legal approval; preserve historical evidence.
+
+Use regulatory-applicability-template as the index and link
+gdpr-applicability-template, ai-act-applicability-template,
+cra-applicability-template, nis2-applicability-template and
+dora-applicability-template where relevant. An unfilled record is not evidence.
+
+DE: v0.7.0 liefert vier neue portable Vorlagen fuer Datenschutz, KI-VO,
+NIS2 und DORA und praezisiert CRA. Bestehende Schnittstellen bleiben erhalten.
+EN: v0.7.0 adds four portable records and precise CRA screening without
+changing existing commands or granting compliance approval.
+
+[Quellen, Grenzen und Tests / Sources, boundaries and tests](docs/regulatory-evidence-contract.md).

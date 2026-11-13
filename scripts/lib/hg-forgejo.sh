@@ -13,6 +13,28 @@ HB_FORGEJO_CLONE_URL=""
 HB_FORGEJO_HTML_URL=""
 HB_FORGEJO_REPOSITORY_CREATED=0
 
+hb_forgejo_validate_base_url() {
+  local base_url="$1"
+  python3 -c '
+import sys
+from urllib.parse import urlsplit
+
+raw = sys.argv[1]
+if any(ord(char) < 32 or ord(char) == 127 for char in raw) or any(char in raw for char in "\"\\ "):
+    raise SystemExit(2)
+parsed = urlsplit(raw)
+if (parsed.scheme != "https" or not parsed.hostname or parsed.username is not None
+        or parsed.password is not None or parsed.query or parsed.fragment
+        or parsed.path not in ("", "/")):
+    raise SystemExit(2)
+print(raw.rstrip("/"))
+' "$base_url" || {
+    echo "Fehler: Die Forgejo-Basis-URL muss ein einzelner HTTPS-Origin ohne Zugangsdaten, Pfad oder Steuerzeichen sein." >&2
+    echo "Error: The Forgejo base URL must be one HTTPS origin without credentials, path, or control characters." >&2
+    return 2
+  }
+}
+
 hb_forgejo_resolve_base_url() {
   local platform="$1"
   local configured_url="${2:-}"
@@ -42,24 +64,7 @@ hb_forgejo_resolve_base_url() {
       ;;
   esac
 
-  case "$resolved_url" in
-    https://*) ;;
-    *)
-      echo "Fehler: Die Forgejo-Basis-URL muss HTTPS verwenden." >&2
-      echo "Error: The Forgejo base URL must use HTTPS." >&2
-      return 2
-      ;;
-  esac
-
-  case "$resolved_url" in
-    *'@'*|*'?'*|*'#'*|*'"'*|*'\'*|*' '*)
-      echo "Fehler: Die Forgejo-Basis-URL darf keine Zugangsdaten, Query, Fragmente oder Leerzeichen enthalten." >&2
-      echo "Error: The Forgejo base URL must not contain credentials, query, fragments, or spaces." >&2
-      return 2
-      ;;
-  esac
-
-  printf '%s\n' "${resolved_url%/}"
+  hb_forgejo_validate_base_url "$resolved_url"
 }
 
 hb_forgejo_require_tools() {
@@ -82,6 +87,12 @@ hb_forgejo_get_credential() {
   local line=""
   local restore_xtrace=0
 
+  # Credential state is process-global for compatibility with existing callers.
+  # Clear it before every fallible lookup so a previous host's token can never
+  # survive into a later request.
+  HB_FORGEJO_USERNAME=""
+  HB_FORGEJO_TOKEN=""
+
   helper="$(git config --get-all credential.helper 2>/dev/null || true)"
   if [ -z "$helper" ]; then
     echo "Fehler: Kein sicherer Git-Credential-Helper ist konfiguriert." >&2
@@ -100,8 +111,6 @@ hb_forgejo_get_credential() {
     return 2
   fi
 
-  HB_FORGEJO_USERNAME=""
-  HB_FORGEJO_TOKEN=""
   while IFS= read -r line; do
     case "$line" in
       username=*) HB_FORGEJO_USERNAME="${line#username=}" ;;
@@ -111,6 +120,8 @@ hb_forgejo_get_credential() {
   unset credential_output
 
   if [ -z "$HB_FORGEJO_USERNAME" ] || [ -z "$HB_FORGEJO_TOKEN" ]; then
+    HB_FORGEJO_USERNAME=""
+    HB_FORGEJO_TOKEN=""
     [ "$restore_xtrace" -eq 1 ] && set -x
     echo "Fehler: Benutzername oder Token fehlt im Git-Credential-Helper." >&2
     echo "Error: Username or token is missing from the Git credential helper." >&2
@@ -139,21 +150,34 @@ hb_forgejo_api_request() {
   local json_body="${4:-}"
   local response_file=""
   local data_file=""
+  local header_file=""
   local restore_xtrace=0
   local status=""
   local -a curl_args=()
 
+  base_url="$(hb_forgejo_validate_base_url "$base_url")" || return 2
   response_file="$(mktemp "${TMPDIR:-/tmp}/hb-forgejo-response.XXXXXX")"
   data_file="$(mktemp "${TMPDIR:-/tmp}/hb-forgejo-data.XXXXXX")"
-  chmod 600 "$response_file" "$data_file"
+  header_file="$(mktemp "${TMPDIR:-/tmp}/hb-forgejo-header.XXXXXX")"
+  chmod 600 "$response_file" "$data_file" "$header_file"
   printf '%s' "$json_body" > "$data_file"
+  if [[ "$HB_FORGEJO_TOKEN" == *$'\n'* || "$HB_FORGEJO_TOKEN" == *$'\r'* ]]; then
+    rm -f "$response_file" "$data_file" "$header_file"
+    echo "Error: Forgejo credential contains an invalid line break." >&2
+    return 2
+  fi
+  printf 'Authorization: token %s\n' "$HB_FORGEJO_TOKEN" > "$header_file"
 
   curl_args=(
     --silent
     --show-error
     --output "$response_file"
     --write-out '%{http_code}'
-    --config -
+    --url "$base_url$path"
+    --request "$method"
+    --header 'Accept: application/json'
+    --header 'Content-Type: application/json'
+    --header "@$header_file"
   )
   if [ -n "$json_body" ]; then
     curl_args+=(--data-binary "@$data_file")
@@ -162,15 +186,9 @@ hb_forgejo_api_request() {
   case "$-" in
     *x*) restore_xtrace=1; set +x ;;
   esac
-  if ! status="$({
-    printf 'url = "%s%s"\n' "$base_url" "$path"
-    printf 'request = "%s"\n' "$method"
-    printf 'header = "Accept: application/json"\n'
-    printf 'header = "Content-Type: application/json"\n'
-    printf 'header = "Authorization: token %s"\n' "$HB_FORGEJO_TOKEN"
-  } | curl "${curl_args[@]}")"; then
+  if ! status="$(curl "${curl_args[@]}")"; then
     [ "$restore_xtrace" -eq 1 ] && set -x
-    rm -f "$response_file" "$data_file"
+    rm -f "$response_file" "$data_file" "$header_file"
     echo "Fehler: Forgejo-API ist nicht erreichbar: $base_url" >&2
     echo "Error: Forgejo API is not reachable: $base_url" >&2
     return 2
@@ -179,7 +197,7 @@ hb_forgejo_api_request() {
 
   HB_FORGEJO_HTTP_STATUS="$status"
   HB_FORGEJO_HTTP_BODY="$(<"$response_file")"
-  rm -f "$response_file" "$data_file"
+  rm -f "$response_file" "$data_file" "$header_file"
 }
 
 hb_forgejo_json_field() {
@@ -217,10 +235,11 @@ hb_forgejo_create_or_get_repository() {
   local encoded_repo=""
   local create_body=""
 
-  hb_forgejo_require_tools
-  hb_forgejo_get_credential "$base_url"
+  hb_forgejo_require_tools || return 2
+  base_url="$(hb_forgejo_validate_base_url "$base_url")" || return 2
+  hb_forgejo_get_credential "$base_url" || return 2
 
-  hb_forgejo_api_request GET "$base_url" /api/v1/user
+  hb_forgejo_api_request GET "$base_url" /api/v1/user || return 2
   if [ "$HB_FORGEJO_HTTP_STATUS" != "200" ]; then
     hb_forgejo_report_http_error "Anmeldung pruefen" "$HB_FORGEJO_HTTP_STATUS"
     return 2
@@ -233,12 +252,12 @@ hb_forgejo_create_or_get_repository() {
 
   encoded_owner="$(hb_forgejo_urlencode "$HB_FORGEJO_REPOSITORY_OWNER")"
   encoded_repo="$(hb_forgejo_urlencode "$repository_name")"
-  hb_forgejo_api_request GET "$base_url" "/api/v1/repos/$encoded_owner/$encoded_repo"
+  hb_forgejo_api_request GET "$base_url" "/api/v1/repos/$encoded_owner/$encoded_repo" || return 2
   if [ "$HB_FORGEJO_HTTP_STATUS" = "200" ]; then
     HB_FORGEJO_REPOSITORY_CREATED=0
   elif [ "$HB_FORGEJO_HTTP_STATUS" = "404" ]; then
     create_body="$(python3 -c 'import json,sys; print(json.dumps({"name":sys.argv[1],"description":sys.argv[2],"private":True,"auto_init":False,"default_branch":"main"}, ensure_ascii=False))' "$repository_name" "$description")"
-    hb_forgejo_api_request POST "$base_url" /api/v1/user/repos "$create_body"
+    hb_forgejo_api_request POST "$base_url" /api/v1/user/repos "$create_body" || return 2
     if [ "$HB_FORGEJO_HTTP_STATUS" != "201" ]; then
       hb_forgejo_report_http_error "Repository erstellen" "$HB_FORGEJO_HTTP_STATUS"
       return 2
@@ -249,13 +268,50 @@ hb_forgejo_create_or_get_repository() {
     return 2
   fi
 
-  HB_FORGEJO_REPOSITORY_NAME="$(printf '%s' "$HB_FORGEJO_HTTP_BODY" | hb_forgejo_json_field name)"
-  HB_FORGEJO_CLONE_URL="$(printf '%s' "$HB_FORGEJO_HTTP_BODY" | hb_forgejo_json_field clone_url)"
-  HB_FORGEJO_HTML_URL="$(printf '%s' "$HB_FORGEJO_HTTP_BODY" | hb_forgejo_json_field html_url)"
-  if [ -z "$HB_FORGEJO_REPOSITORY_NAME" ] || [ -z "$HB_FORGEJO_CLONE_URL" ] || [ -z "$HB_FORGEJO_HTML_URL" ]; then
-    echo "Fehler: Unvollstaendige Forgejo-Repository-Antwort." >&2
+  local validated_repository=""
+  if ! validated_repository="$(printf '%s' "$HB_FORGEJO_HTTP_BODY" | python3 -c '
+import json, sys
+from urllib.parse import urlsplit
+
+base, expected_owner, expected_name = sys.argv[1:4]
+data = json.load(sys.stdin)
+base_url = urlsplit(base)
+clone = str(data.get("clone_url") or "")
+html = str(data.get("html_url") or "")
+owner = str((data.get("owner") or {}).get("login") or "")
+name = str(data.get("name") or "")
+private = data.get("private") is True
+clone_url = urlsplit(clone)
+html_url = urlsplit(html)
+expected_path = f"/{expected_owner}/{expected_name}"
+valid = (
+    base_url.scheme == "https"
+    and owner == expected_owner
+    and name == expected_name
+    and private
+    and clone_url.scheme == "https"
+    and clone_url.netloc == base_url.netloc
+    and not clone_url.username
+    and not clone_url.password
+    and not clone_url.query
+    and not clone_url.fragment
+    and clone_url.path.rstrip("/") == expected_path + ".git"
+    and html_url.scheme == "https"
+    and html_url.netloc == base_url.netloc
+    and not html_url.username
+    and not html_url.password
+    and not html_url.query
+    and not html_url.fragment
+    and html_url.path.rstrip("/") == expected_path
+)
+if not valid:
+    raise SystemExit(2)
+print(name, clone, html, sep="\t")
+' "$base_url" "$HB_FORGEJO_REPOSITORY_OWNER" "$repository_name")"; then
+    echo "Fehler: Forgejo-Repository stimmt nicht mit privatem authentifiziertem Ziel ueberein." >&2
     return 2
   fi
+  IFS=$'\t' read -r HB_FORGEJO_REPOSITORY_NAME HB_FORGEJO_CLONE_URL HB_FORGEJO_HTML_URL <<< "$validated_repository"
 
   hb_forgejo_approve_credential "$base_url"
 }
@@ -267,11 +323,12 @@ hb_forgejo_delete_repository() {
   local encoded_owner=""
   local encoded_repo=""
 
-  hb_forgejo_require_tools
-  hb_forgejo_get_credential "$base_url"
+  hb_forgejo_require_tools || return 2
+  base_url="$(hb_forgejo_validate_base_url "$base_url")" || return 2
+  hb_forgejo_get_credential "$base_url" || return 2
   encoded_owner="$(hb_forgejo_urlencode "$owner")"
   encoded_repo="$(hb_forgejo_urlencode "$repository_name")"
-  hb_forgejo_api_request DELETE "$base_url" "/api/v1/repos/$encoded_owner/$encoded_repo"
+  hb_forgejo_api_request DELETE "$base_url" "/api/v1/repos/$encoded_owner/$encoded_repo" || return 2
   if [ "$HB_FORGEJO_HTTP_STATUS" != "204" ]; then
     hb_forgejo_report_http_error "Repository loeschen" "$HB_FORGEJO_HTTP_STATUS"
     return 2

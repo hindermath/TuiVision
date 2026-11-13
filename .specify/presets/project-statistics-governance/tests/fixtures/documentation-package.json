@@ -1,0 +1,13 @@
+{
+  "id": "project-statistics-governance",
+  "version": "0.1.4",
+  "priority": 90,
+  "readers": [
+    "docs/user-guide.md",
+    "docs/user-guide.EN.md",
+    "docs/documentation-closeout.md"
+  ],
+  "sourceBaseCommit": "fe3d94a7beaee379293d37295bf9644db3d39851",
+  "preserveHistoricalEvidence": true,
+  "publicationEvidenceVersion": "0.1.2"
+}

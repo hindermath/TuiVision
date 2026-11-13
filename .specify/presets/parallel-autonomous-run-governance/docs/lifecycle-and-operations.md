@@ -104,6 +104,9 @@ Resume prueft Manifest-Hash, Repositories, Worktrees, Branches, Berechtigung,
 Runner-Profile, Worker-Results, autonome States, Handoffs und die letzte
 belastbare Operation. Verifizierte Ergebnisse werden wiederverwendet. Nur
 unbewiesene oder unvollstaendige Operationen werden wiederholt.
+Wenn Resume eine `MergeAndSync`-Konsolidierung fortsetzt, muss der Aufruf
+`-Merge` ausdruecklich enthalten. Das gilt auch nach einer Unterbrechung;
+ein wartender `ReadyForConsolidation`-Zustand erteilt keine Merge-Freigabe.
 
 Ein akzeptierter Start oder Resume darf den Stop-Sidecar entfernen. Status
 allein darf ihn nicht veraendern.
@@ -134,3 +137,6 @@ runner profiles, worker results, autonomous states, handoffs, and the last
 trustworthy operation. It reuses verified results and retries only unproven or
 incomplete operations. Only an accepted start or resume may clear the stop
 sidecar.
+Resuming a `MergeAndSync` consolidation requires an explicit `-Merge` on that
+call, including after interruption. `ReadyForConsolidation` is not merge
+authorization.

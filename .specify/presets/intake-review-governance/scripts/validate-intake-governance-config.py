@@ -108,6 +108,18 @@ def intake_name_matches(name: str, pattern: str) -> bool:
     return name.startswith(prefix) and name.endswith(suffix) and len(name) > len(prefix) + len(suffix)
 
 
+def belongs_to_nested_repository(path: Path, repo: Path) -> bool:
+    """Return true when a candidate belongs to a nested Git checkout."""
+    current = path.parent
+    while current != repo:
+        if (current / ".git").exists():
+            return True
+        if current == current.parent:
+            break
+        current = current.parent
+    return False
+
+
 def validate_series_manifest(
     path: Path,
     repo: Path,
@@ -119,12 +131,11 @@ def validate_series_manifest(
 ) -> dict:
     manifest = load_json(path)
     targets = manifest.get("orderedTargets")
-    if not isinstance(targets, list) or not targets:
-        fail("RIG014", "series manifest must contain non-empty orderedTargets")
+    if not isinstance(targets, list):
+        fail("RIG014", "series manifest must contain orderedTargets")
     series_status = required_text(manifest, "status", "RIG017")
     if series_status not in {"Draft", "NeedsClarification", "Ready", "Active", "Idle", "Completed", "Deleted"}:
         fail("RIG017", "unsupported series status")
-
     active_paths = (
         {
             item.relative_to(repo).as_posix()
@@ -134,6 +145,21 @@ def validate_series_manifest(
         if active_dir.is_dir()
         else set()
     )
+    if series_status == "Idle":
+        if inventory_mode == "DirectoryStrict" and active_paths:
+            fail("RIG013", "Idle DirectoryStrict series requires an empty active inventory")
+        if targets or manifest.get("roots") != [] or manifest.get("dependencies") != []:
+            fail("RIG017", "Idle requires zero targets, roots, and dependencies")
+        return {
+            "activeIntakeCount": len(active_paths),
+            "activeSeriesTargetCount": 0,
+            "seriesTargetCount": 0,
+            "eligibleCandidate": "N/A",
+            "dependencyCount": 0,
+        }
+    if not targets:
+        fail("RIG014", "series manifest must contain non-empty orderedTargets")
+
     active_targets: set[str] = set()
     target_paths: list[str] = []
     target_statuses: dict[str, str] = {}
@@ -198,7 +224,13 @@ def validate_series_manifest(
         )
         if incomplete:
             fail("RIG017", f"Completed series contains non-completed targets: {incomplete}")
-    elif len(eligible) != 1:
+    # DE: Ein laufendes Mitglied braucht keinen weiteren auswaehlbaren Kandidaten.
+    # EN: A running member needs no additional eligible candidate.
+    elif len(eligible) != 1 and not (
+        series_status == "Active"
+        and not eligible
+        and "Active" in target_statuses.values()
+    ):
         fail("RIG017", f"exactly one Eligible target is required, found {len(eligible)}")
 
     dependencies = manifest.get("dependencies", [])
@@ -371,6 +403,7 @@ def validate_config(data: dict, repo: Path) -> dict:
             if ".git" not in item.parts
             and "history" not in item.parts
             and "archive" not in item.parts
+            and not belongs_to_nested_repository(item, repo)
         ]
         if canonical_candidates != [repo / roles["requirements-index"]]:
             fail("RIG013", f"exactly one current canonical index is required: {canonical_candidates}")

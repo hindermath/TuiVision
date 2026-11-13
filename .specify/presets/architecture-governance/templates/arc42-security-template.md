@@ -118,3 +118,48 @@
 - ASVS verification (with Level):
 - Zero Trust applicability note:
 - SAMM assessment entry:
+
+## Datenschutz und regulatorische Architektur / Privacy and regulatory architecture
+
+DE: Die projektspezifische Anwendbarkeit von DS-GVO, KI-VO, CRA, NIS2 und
+DORA wird durch Security-Evidence gefuehrt; hier keine zweite Rechtsentscheidung
+erfinden. Bei installiertem Security-Preset dessen Detailvorlagen nutzen,
+sonst gleichwertige projektgefuehrte Nachweise verlinken. Beispielprogramm,
+Entwicklungswerkzeuge und Organisation getrennt betrachten; AI-SBOM: N/A
+und Ausbildungszweck sind keine allgemeine regulatorische Ausnahme.
+Privacy by Design/Default: Datenminimierung, Zweck, Empfaenger, Regionen,
+Speicherbegrenzung, Loeschung und Betroffenenrechte in Datenfluessen abbilden.
+KI-Tool-/Produktgrenzen, Prompt-, Logging- und Telemetriepfade pruefen.
+NIS2-/DORA-relevante Dienstleisterabhaengigkeit, getestete Wiederherstellung,
+Verfuegbarkeit, Konzentrationsrisiko und Exit-Faehigkeit rollenbezogen planen.
+C3A/C5-Nachweise ersetzen keinen Datenschutz-, NIS2- oder DORA-Nachweis.
+EN: Project Security evidence owns GDPR, AI Act, CRA, NIS2 and DORA
+applicability; do not create a competing legal decision. Use Security detail
+templates when installed, otherwise equivalent project-owned records.
+Assess sample product, development tools and organisation separately;
+AI-SBOM: N/A and education are not blanket regulatory exemptions.
+Map privacy by design/default, minimisation, purpose, recipients, regions,
+retention, deletion and subject rights to data flows. Review AI/tool boundaries
+and prompt/log/telemetry paths. Plan role-specific supplier dependencies,
+tested recovery, availability, concentration risk and exit capability for
+NIS2/DORA-related scope. C3A/C5 evidence does not replace regulatory evidence.
+
+- Applicability record / exact scope / owner / review date:
+- Personal-data inventory / synthetic-data decision:
+- Data flow / purpose / trust boundary / receiver / region:
+- Retention / deletion / defaults / subject-rights interface:
+- AI/tool usage boundary / prompt and logging safeguards:
+- Supplier dependency / tested recovery / exit / concentration risk:
+- Legal Open finding / qualified reviewer / next action / due date:
+
+## Nutzungshilfe / Reader help
+
+DE: Sicherheitsentscheidungen zur Systemstruktur nachvollziehbar machen, getrennt von der codebezogenen Security-Prüfung. Diese Vorlage ist ein auszufüllender Starter, kein bestandener Nachweis. Vorhandene passende Evidence weiterverwenden.
+Die bestehenden technischen Feldnamen und Statuswerte nicht übersetzen oder
+nur zum Bestehen eines Tests verändern. Einführung, Begriffe, Beispiel,
+Ergebnis und Fehlerhilfe stehen im [deutschen Leserpfad](https://github.com/hindermath/spec-kit-preset-architecture-governance/blob/main/docs/user-guide.md).
+
+EN: Make system-structure security decisions traceable, separately from code-level security verification. This template is a starter to complete, not passed evidence. Reuse suitable existing evidence.
+Keep technical field names and states unchanged; never alter them just to pass.
+See the [English reader path](https://github.com/hindermath/spec-kit-preset-architecture-governance/blob/main/docs/user-guide.EN.md)
+for introduction, terms, example, result and troubleshooting.

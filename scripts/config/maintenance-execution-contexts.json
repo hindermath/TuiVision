@@ -1,9 +1,14 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 3,
   "container": "absdd-image-sandbox_ade_1",
   "user": "adedev",
   "source": "/opt/home-baseline",
-  "approvalPath": "container-images/absdd-image-sandbox/docs/security/sandbox-freigabe.md",
+  "approvalPath": "home-baseline-source/docs/maintenance/secure-trader-owner-approval-2026-11-08.md",
+  "approvalSha256": "a93c2a820b5f2bcb5800b8c923e47ed2b61cae7d299c2863a3f80370604294a9",
+  "approvalBindingSha256": "e6d4901347979181a908a1fefa05ce5db509127c13b25410817102a3acb9ffe2",
+  "approvedImage": "sha256:5f530d888485537c160bddf9330f56844d99e98518d97e2d842bb27a76a1391d",
+  "approvedSourceSha256": "d18fc9005b6dda4023676c8fb22a032b6a4423cee187bc47924728aed322f5e0",
+  "approvalTrustState": "OwnerApproved",
   "expiresOn": "2026-12-31",
   "mounts": [
     {"host": "SecureCaseTrackerProjects", "container": "/secure-case-tracker-projects"},

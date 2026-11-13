@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "presetId": "parallel-autonomous-run-governance",
+  "packageVersion": "0.2.13",
+  "historicalPublicationVersion": "0.2.8",
+  "candidate_status": "Prepared",
+  "release_status": "NotEstablishedAtPreparation",
+  "sourceCommit": "dd1cf28e2fb3a7716e127010c93f4eeffb8420d3",
+  "previousReleaseVersion": "0.2.12",
+  "externalPublicationEvidence": "https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance/releases/tag/v0.2.13",
+  "runtimeChanged": false,
+  "generatorSchemaChanged": false,
+  "changeKind": "SecurityPolicyDocumentation",
+  "authorizationReference": "Thorsten Hindermann, 2026-11-13: implement security baseline and publish current presets, including controlled Level-0/Home/Level-2 rollout; MergeAndSync with formal-review-only Admin-Bypass.",
+  "preparedAt": "2026-11-13T08:24:34.8688870+00:00"
+}

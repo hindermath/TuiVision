@@ -412,10 +412,7 @@ def remove_candidate(repository: pathlib.Path, candidate: dict) -> int:
         raise StorageContractError(f"candidate lost ignored/untracked proof: {candidate['path']}")
     size_before = directory_metrics(path)[0]
     if path.is_dir() and not path.is_symlink():
-        try:
-            shutil.rmtree(path)
-        except OSError as exc:
-            raise StorageContractError(f"candidate removal failed: {candidate['path']}") from exc
+        shutil.rmtree(path)
     else:
         raise StorageContractError(f"candidate is not a safe directory: {candidate['path']}")
     candidate["status"] = "Removed"
@@ -461,31 +458,6 @@ def handle_cc65(
     freed = 0
     status = "Passed"
     warnings: list[str] = []
-    if profile == "deep":
-        all_paths = [path for group in adapter["safeGroups"] for path in group["paths"]]
-        existing = [repository / path for path in all_paths if (repository / path).exists()]
-        for path in existing:
-            if not git_path_is_ignored_and_untracked(repository, path):
-                raise StorageContractError(f"cc65 deep candidate is not ignored and untracked: {path}")
-            candidates.append(candidate_record(repository, path, "cc65-root-clean", retention_days, True))
-        if not existing:
-            return candidates, protected, 0, status, warnings
-        for candidate in candidates:
-            candidate["action"] = "DirectRemove"
-        if mode != "update":
-            return candidates, protected, 0, status, warnings
-        if dirty or busy:
-            for candidate in candidates:
-                candidate["status"] = "SkippedDirtyOrBusy"
-            return candidates, protected, 0, "Warning", warnings
-        # Repository-Buildlogik ist ausführbarer Inhalt. Entfernt werden nur
-        # die bereits eingegrenzten und unmittelbar erneut geprüften Bäume.
-        # Repository build logic is executable content. Remove only the trees
-        # that were already bounded and are revalidated immediately.
-        for candidate in candidates:
-            if candidate["eligible"]:
-                freed += remove_candidate(repository, candidate)
-        return candidates, protected, freed, status, warnings
 
     effective_pressure = pressure_mode or profile == "deep"
     for group in adapter.get("safeGroups", []):
@@ -504,7 +476,7 @@ def handle_cc65(
             continue
         for candidate in group_candidates:
             if candidate["eligible"]:
-                candidate["action"] = "DirectRemove"
+                candidate["action"] = "RemoveVerifiedGeneratedTree"
         if mode != "update":
             continue
         if dirty or busy:
@@ -583,13 +555,14 @@ def handle_cmake(
     for candidate in candidates:
         if not candidate["eligible"]:
             continue
-        candidate["action"] = "DirectRemove"
+        candidate["action"] = "RemoveVerifiedBuildTree"
         if mode != "update":
             continue
         if dirty or busy:
             candidate["status"] = "SkippedDirtyOrBusy"
             status = "Warning"
             continue
+        build = contained_path(repository / candidate["path"], repository, "CMake build tree")
         freed += remove_candidate(repository, candidate)
     return candidates, freed, status
 

@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 1,
+  "presetId": "project-statistics-governance",
+  "version": "0.1.2",
+  "repository": "https://github.com/hindermath/spec-kit-preset-project-statistics-governance",
+  "candidate_status": "HistoricalCandidate",
+  "release_status": "Published",
+  "tag": "v0.1.2",
+  "tagCommit": "454554bafda574c1153e6be319c30e9787ac3867",
+  "verifiedAt": "2026-10-24T10:55:51.0769380+00:00",
+  "release": {
+    "id": 422326326,
+    "url": "https://github.com/hindermath/spec-kit-preset-project-statistics-governance/releases/tag/v0.1.2",
+    "publishedAt": "2026-10-23T21:29:33.0000000+00:00",
+    "preRelease": false,
+    "draft": false
+  },
+  "archive": {
+    "sha256": "6cc233b56033b4b7dc0abd831666a6f3b0f5b70b0c9b9a395c8dc78c9549bb95",
+    "url": "https://github.com/hindermath/spec-kit-preset-project-statistics-governance/archive/refs/tags/v0.1.2.zip",
+    "status": "Verified",
+    "verifiedAt": "2026-10-24T10:55:51.0769380+00:00",
+    "bytes": 142435
+  },
+  "evidenceComplete": true,
+  "historicalDocumentSha256": "4460a1ef17242ec82930e1eaa6c07a9665048cae42c2b01fba6ee72c9c8878dd",
+  "comparison": {
+    "fromTag": "v0.1.0",
+    "toTag": "v0.1.2",
+    "toCommit": "454554bafda574c1153e6be319c30e9787ac3867",
+    "url": "https://github.com/hindermath/spec-kit-preset-project-statistics-governance/compare/7e824ca8de11212aefdc5b05d7d05637f5343dab...454554bafda574c1153e6be319c30e9787ac3867",
+    "fromCommit": "7e824ca8de11212aefdc5b05d7d05637f5343dab"
+  },
+  "improvements": [
+    {
+      "introducedIn": "v0.1.1",
+      "type": "FieldEvidence",
+      "sourcePaths": [
+        "docs/field-tests/v0.1.0/report.md",
+        "docs/field-tests/v0.1.0/manifest.json",
+        "docs/delivery.md"
+      ],
+      "problem": {
+        "de": "Der ursprüngliche Paketstand enthielt noch nicht die spätere zusammengeführte Feldtestdokumentation.",
+        "en": "The original package did not yet contain the later consolidated field-test documentation."
+      },
+      "description": {
+        "de": "Native Linux-/Windows-Feldnachweise für v0.1.0 und LF/CRLF/BOM-Varianten wurden gesammelt; sie sind historische Evidence für genau diesen Scope.",
+        "en": "Native Linux/Windows field evidence for v0.1.0 and LF/CRLF/BOM variants was consolidated; it remains historical evidence for that exact scope."
+      },
+      "benefit": {
+        "de": "Anwendende können Messgrenzen und Plattformnachweise nachlesen; dies beweist keinen neuen Feldtest für 0.1.2. Die Messmethodik bleibt unverändert.",
+        "en": "Users can inspect measurement limits and platform evidence; this does not prove a new field test for 0.1.2. Measurement methodology is unchanged."
+      },
+      "commit": "5effc8a87d73b88949601951ae0933372c90ed34"
+    },
+    {
+      "introducedIn": "v0.1.2",
+      "type": "DocumentationUsability",
+      "sourcePaths": [
+        "README.md",
+        "tests/test-release-documentation.ps1"
+      ],
+      "problem": {
+        "de": "Archivprüfung und Paketversion mussten klar vom historischen Messformat getrennt werden.",
+        "en": "Archive verification and package version needed clearer separation from the historical measurement format."
+      },
+      "description": {
+        "de": "Kopierbare Download-/SHA-256-Schritte erklären die externe Prüfung. Paket 0.1.2 ändert nicht automatisch das historische Formatfeld im Snapshot.",
+        "en": "Copyable download/SHA-256 steps explain external verification. Package 0.1.2 does not automatically change the historical snapshot format field."
+      },
+      "benefit": {
+        "de": "Die Prüfung bleibt nachvollziehbar, ohne einen selbstreferenziellen ZIP-Hash oder gemessene KI-Produktivität zu behaupten.",
+        "en": "Verification is inspectable without implying a self-referential ZIP hash or measured AI productivity."
+      },
+      "commit": "454554bafda574c1153e6be319c30e9787ac3867"
+    },
+    {
+      "introducedIn": "v0.1.2",
+      "type": "DocumentationUsability",
+      "sourcePaths": [
+        "docs/user-guide.md",
+        "docs/user-guide.EN.md",
+        "tests/test-documentation-closeout.ps1"
+      ],
+      "problem": {
+        "de": "Ein kurzer README-Einstieg erklärte die vollständigen Leserpfade und Grenzen noch nicht gleichwertig.",
+        "en": "The short README entry did not yet explain the complete reader journey and limits equally."
+      },
+      "description": {
+        "de": "Deutsch-/Englisch-Leitfäden, Command-/Vorlagen-Erklärungen und Dokumentationsregressionen wurden ergänzt. Frühere Einstiegsverbesserungen und der letzte Patch werden getrennt ausgewiesen.",
+        "en": "German/English guides, command/template explanations and documentation regressions were added. Earlier entry-point improvements and the final patch are reported separately."
+      },
+      "benefit": {
+        "de": "Lernende finden Voraussetzungen, Beispiel, Ergebnis und Fehlerhilfe. Neue Textklarheit ist keine neue Runtime-Funktion oder menschliche Abnahme.",
+        "en": "Learners can find prerequisites, an example, its result and troubleshooting. Clearer text is not a new runtime feature or human acceptance."
+      },
+      "commit": "454554bafda574c1153e6be319c30e9787ac3867"
+    }
+  ],
+  "historicalValidation": {
+    "checks": [
+      {
+        "name": "Documentation (windows-2022)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-project-statistics-governance/actions/runs/39992121986/job/120546218793",
+        "startedAt": "2026-10-23T17:05:07Z",
+        "completedAt": "2026-10-23T17:05:21Z",
+        "head": "3b048577eee5c723f60bbd1a084415330d0fcdf0"
+      },
+      {
+        "name": "Documentation (ubuntu-24.04)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-project-statistics-governance/actions/runs/39992121986/job/120546218709",
+        "startedAt": "2026-10-23T17:05:07Z",
+        "completedAt": "2026-10-23T17:05:22Z",
+        "head": "3b048577eee5c723f60bbd1a084415330d0fcdf0"
+      },
+      {
+        "name": "Documentation (macos-15)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-project-statistics-governance/actions/runs/39992121986/job/120546218399",
+        "startedAt": "2026-10-23T17:05:07Z",
+        "completedAt": "2026-10-23T17:05:18Z",
+        "head": "3b048577eee5c723f60bbd1a084415330d0fcdf0"
+      },
+      {
+        "name": "Reader paths (ubuntu-24.04)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-project-statistics-governance/actions/runs/39992121104/job/120546217544",
+        "startedAt": "2026-10-23T17:05:10Z",
+        "completedAt": "2026-10-23T17:05:17Z",
+        "head": "3b048577eee5c723f60bbd1a084415330d0fcdf0"
+      },
+      {
+        "name": "Reader paths (windows-2022)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-project-statistics-governance/actions/runs/39992121104/job/120546217318",
+        "startedAt": "2026-10-23T17:05:07Z",
+        "completedAt": "2026-10-23T17:05:19Z",
+        "head": "3b048577eee5c723f60bbd1a084415330d0fcdf0"
+      },
+      {
+        "name": "Reader paths (macos-15)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-project-statistics-governance/actions/runs/39992121104/job/120546217206",
+        "startedAt": "2026-10-23T17:06:52Z",
+        "completedAt": "2026-10-23T17:06:58Z",
+        "head": "3b048577eee5c723f60bbd1a084415330d0fcdf0"
+      },
+      {
+        "name": "native-ubuntu-24.04",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-project-statistics-governance/actions/runs/39992121068/job/120546217147",
+        "startedAt": "2026-10-23T17:05:09Z",
+        "completedAt": "2026-10-23T17:06:18Z",
+        "head": "3b048577eee5c723f60bbd1a084415330d0fcdf0"
+      },
+      {
+        "name": "native-windows-2022",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-project-statistics-governance/actions/runs/39992121068/job/120546216964",
+        "startedAt": "2026-10-23T17:05:04Z",
+        "completedAt": "2026-10-23T17:06:43Z",
+        "head": "3b048577eee5c723f60bbd1a084415330d0fcdf0"
+      },
+      {
+        "name": "native-macos-14",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-project-statistics-governance/actions/runs/39992121068/job/120546216759",
+        "startedAt": "2026-10-23T17:05:06Z",
+        "completedAt": "2026-10-23T17:06:30Z",
+        "head": "3b048577eee5c723f60bbd1a084415330d0fcdf0"
+      }
+    ],
+    "pr": "https://github.com/hindermath/spec-kit-preset-project-statistics-governance/pull/8",
+    "mergeCommit": "454554bafda574c1153e6be319c30e9787ac3867",
+    "reviewedHead": "3b048577eee5c723f60bbd1a084415330d0fcdf0"
+  },
+  "newDocumentationReview": "Pending exact-head human review; no merge or publication authority.",
+  "boundary": "Documentation source only; no new package, runtime behavior, approval, installation, catalog update or cancelled dynamic routing."
+}

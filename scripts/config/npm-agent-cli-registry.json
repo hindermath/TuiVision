@@ -14,8 +14,6 @@
       "scope": "required",
       "platforms": ["Darwin", "Linux", "Windows"],
       "package": "@openai/codex",
-      "version": "0.167.0",
-      "integrity": "sha512-1FSQgbTIKAdTub5Ln6z36NT4eXDmBRkinfigzycbgn9yLZdJ3UdkQZqr0N7jnl8/D1xxT/Pz3Fl2l7S2dmRaFA==",
       "command": "codex",
       "args": ["--version"],
       "purpose": "OpenAI Codex command-line agent"
@@ -25,8 +23,6 @@
       "scope": "required",
       "platforms": ["Darwin", "Linux", "Windows"],
       "package": "@anthropic-ai/claude-code",
-      "version": "2.1.319",
-      "integrity": "sha512-XoyAxGXBmNsb9ahz0xLAtyz/I6b1j+4lyLpucyTQIq4FcKUxrMDM2AzA2sHipHoN1DdMJINQQrLZxRZRq7FqBA==",
       "command": "claude",
       "args": ["--version"],
       "purpose": "Anthropic Claude Code command-line agent"
@@ -36,8 +32,6 @@
       "scope": "required",
       "platforms": ["Darwin", "Linux", "Windows"],
       "package": "@github/copilot",
-      "version": "1.0.107",
-      "integrity": "sha512-/ZNZTjIblK+8UznLp+wCu27DwhFgIveF5QvPNi0YmRIVaIx1UMzXmApZNuVcOsbdthCAHCVRnPz+J1Hq3wYotw==",
       "command": "copilot",
       "args": ["--version"],
       "purpose": "Standalone GitHub Copilot command-line agent"

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0",
+  "presetId": "secure-development-assurance-governance",
+  "defaultRole": "frontier-reasoning",
+  "commands": {
+    "speckit.secure-development-status": "fast-mechanical",
+    "speckit.secure-development-review": "frontier-reasoning"
+  },
+  "fallbackPolicy": "fail-closed"
+}

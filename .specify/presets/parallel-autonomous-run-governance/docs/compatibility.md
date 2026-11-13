@@ -1,22 +1,38 @@
 # Versionierung und Kompatibilitaet / Versioning and Compatibility
 
+<!-- current-package: 0.2.13 -->
+
+DE: Dokumentations-Zielpaar: Autonomous 0.4.7 und Parallel 0.2.9; Mindestversionen und historische Feldtests unten bleiben unverändert. Die neue Paketvorbereitung steht im versionsgebundenen Nachweis.
+
+EN: Documentation target pair: Autonomous 0.4.7 and Parallel 0.2.9; minimum versions and historical field tests below remain unchanged. See the version-bound preparation record for the new package.
+
+DE: Paket 0.2.8 ist inzwischen regulär veröffentlicht; [historischer Release-Abschluss](release-0.2.8-validation.md). Die unten datierten Tabellen bewahren den historischen Prüfstand vor Veröffentlichung. Mindestversion, Beispielkombination und tatsächlich geprüfte Kombination bleiben getrennt; dieser Nachlauf behauptet keinen neuen Kombinationstest.
+
+EN: Package 0.2.8 is now a regular published release; see the linked closeout. The dated tables below preserve the historical pre-publication assessment. Minimum, example and actually tested combinations stay distinct; this follow-up claims no new combination test.
+
+[Deutsch: Leserpfad](user-guide.md) · [English: reader path](user-guide.EN.md)
+
 [Handbuch / Manual](README.md)
 
 ## Deutsch
 
 ### Drei getrennte Versionsebenen
 
-| Ebene | Aktueller Wert | Bedeutung |
+| Ebene | Prüfstand 2026-10-23 | Bedeutung |
 |---|---|---|
-| Preset-Release | `v0.2.6` | Veroeffentlichtes Preset-Paket |
+| Bei Prüfungsbeginn veröffentlicht | `v0.2.7` | Historischer Release-Snapshot; aktuellen Stand auf der Release-Seite prüfen |
+| Quellkandidat | `v0.2.8` | Aktueller Dokumentationskandidat, keine Veröffentlichungsbehauptung |
 | `preset.yml`-Schema | `schema_version: "1.0"` | Spec-Kit-Presetmanifest |
 | Kampagnenvertrag | `schemaVersion: "1.2"` | Manifest mit optionalem Intake-Review; State/Runner/Results bleiben 1.1 |
 
 ### Preset-7-Abhaengigkeit
 
 Regulaere Kampagnen benoetigen
-`autonomous-run-governance >=0.2.2` in jedem Worker-Repository. Die gemeinsam
-getestete aktuelle Kombination ist Preset 7 `v0.3.6` mit Preset 8 `v0.2.6`.
+`autonomous-run-governance >=0.2.2` in jedem Worker-Repository. Der bisher
+dokumentierte historische Prüfstand nennt Autonomous `v0.3.6` mit Parallel
+`v0.2.6`. Die neue Dokumentations-Zielkombination ist Autonomous `v0.4.6`
+mit Parallel `v0.2.8`. Das behauptet keinen neuen Live-Kampagnentest;
+tatsächliche Fixture-/Plattformnachweise stehen getrennt im PR.
 
 ### Upgrade auf `v0.2.6`
 
@@ -60,17 +76,20 @@ Schema 1.0/1.1 und Kampagnen ohne aktive Pflicht bleiben kompatibel.
 
 ### Three version layers
 
-| Layer | Current value | Meaning |
+| Layer | Review snapshot 2026-10-23 | Meaning |
 |---|---|---|
-| Preset release | `v0.2.6` | Published preset package |
+| Published at review start | `v0.2.7` | Historical release snapshot; check releases for current state |
+| Source candidate | `v0.2.8` | Documentation candidate, not a publication claim |
 | `preset.yml` schema | `schema_version: "1.0"` | Spec Kit preset manifest |
 | Campaign contract | `schemaVersion: "1.2"` | Optional intake review in manifests; state/runners/results remain 1.1 |
 
 ### Preset 7 dependency
 
 Regular campaigns require `autonomous-run-governance >=0.2.2` in every worker
-repository. The currently tested pair is Preset 7 `v0.3.6` with Preset 8
-`v0.2.6`.
+repository. The previously documented historical pair is Autonomous `v0.3.6`
+with Parallel `v0.2.6`. The new documentation target is Autonomous `v0.4.6`
+with Parallel `v0.2.8`, not a newly claimed live campaign. Actual fixture/platform
+evidence is recorded separately in the PR.
 
 ### Upgrade to `v0.2.6`
 

@@ -65,24 +65,68 @@ stats_header() {
 EOF
 }
 
+assert_no_link_components() {
+  local path="$1" current remaining component owner
+  if [[ "$path" = /* ]]; then
+    current="/"
+    remaining="${path#/}"
+  else
+    current="$PWD"
+    remaining="$path"
+  fi
+  while IFS= read -r component; do
+    case "$component" in
+      ""|.) continue ;;
+      ..) return 1 ;;
+    esac
+    current="${current%/}/$component"
+    if [ -L "$current" ]; then
+      owner="$(stat -f '%u' "$current" 2>/dev/null || stat -c '%u' "$current" 2>/dev/null || true)"
+      [ "$owner" = "0" ] || return 1
+    fi
+  done < <(printf '%s\n' "$remaining" | tr '/' '\n')
+}
+
 # ─── Write Stats Entry ────────────────────────────────────────────────────────
 
 write_stats_entry() {
   local stats_file="$1"
   local score="$2"
-  local timestamp
+  local timestamp parent temporary existing_mode=""
+  parent="$(dirname -- "$stats_file")"
+  if ! assert_no_link_components "$parent" \
+      || [ ! -d "$parent" ] || [ -L "$parent" ] || [ -L "$stats_file" ]; then
+    echo "ERROR: STATS.md target must be a regular non-linked path: $stats_file" >&2
+    return 1
+  fi
+  if [ -e "$stats_file" ] && [ ! -f "$stats_file" ]; then
+    echo "ERROR: STATS.md target is not a regular file: $stats_file" >&2
+    return 1
+  fi
   timestamp=$(date '+%Y-%m-%d %H:%M')
   local bar
   bar=$(make_bar "$score")
   local entry="| ${timestamp} | ${score}% | ${bar} |"
 
+  temporary="$(mktemp "${parent}/.STATS.md.XXXXXX")" || return 1
+  trap 'rm -f -- "$temporary"' RETURN
   if [ -f "$stats_file" ]; then
-    printf '%s\n' "$entry" >> "$stats_file"
+    cat -- "$stats_file" > "$temporary"
+    case "$(uname -s)" in
+      Darwin|FreeBSD) existing_mode="$(stat -f '%Lp' "$stats_file" 2>/dev/null || true)" ;;
+      *) existing_mode="$(stat -c '%a' "$stats_file" 2>/dev/null || true)" ;;
+    esac
   else
-    mkdir -p "$(dirname "$stats_file")"
-    stats_header > "$stats_file"
-    printf '%s\n' "$entry" >> "$stats_file"
+    stats_header > "$temporary"
   fi
+  printf '%s\n' "$entry" >> "$temporary"
+  [ -z "$existing_mode" ] || chmod "$existing_mode" "$temporary"
+  if [ -L "$parent" ] || [ -L "$stats_file" ]; then
+    echo "ERROR: STATS.md target changed to a linked path: $stats_file" >&2
+    return 1
+  fi
+  mv -f -- "$temporary" "$stats_file"
+  trap - RETURN
   echo "✓ STATS.md updated at ${stats_file}"
 }
 
@@ -100,12 +144,13 @@ get_score_for() {
 resolve_target_dir() {
   local input="$1"
 
-  if [ -d "$input" ]; then
+  if assert_no_link_components "$input" && [ -d "$input" ] && [ ! -L "$input" ]; then
     printf '%s' "${input%/}"
     return 0
   fi
 
-  if [ -d "${HOME}/${input}" ]; then
+  if assert_no_link_components "${HOME}/${input}" \
+      && [ -d "${HOME}/${input}" ] && [ ! -L "${HOME}/${input}" ]; then
     printf '%s' "${HOME}/${input}"
     return 0
   fi

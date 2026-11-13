@@ -28,3 +28,15 @@ actions from the reviewed manifest.
 
 *DE: Bereits verifizierte Merges nicht wiederholen. Extern gemergte exakte
 Heads duerfen uebernommen werden; Drift bleibt blockierend.*
+
+## Nutzungshilfe / Reader help
+
+DE: Mehrere autorisierte Feature-Läufe mit getrennten Arbeitskopien koordinieren. Diese Command-Erklärung ändert keine Berechtigungen oder Voraussetzungen.
+Die bestehenden technischen Feldnamen und Statuswerte nicht übersetzen oder
+nur zum Bestehen eines Tests verändern. Einführung, Begriffe, Beispiel,
+Ergebnis und Fehlerhilfe stehen im [deutschen Leserpfad](https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance/blob/main/docs/user-guide.md).
+
+EN: Coordinate multiple authorized feature runs with isolated working copies. This command explanation changes no authority or prerequisites.
+Keep technical field names and states unchanged; never alter them just to pass.
+See the [English reader path](https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance/blob/main/docs/user-guide.EN.md)
+for introduction, terms, example, result and troubleshooting.

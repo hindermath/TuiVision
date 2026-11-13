@@ -1,0 +1,13 @@
+{
+  "id": "agent-parity-governance",
+  "version": "0.4.6",
+  "priority": 60,
+  "readers": [
+    "docs/user-guide.md",
+    "docs/user-guide.EN.md",
+    "docs/documentation-closeout.md"
+  ],
+  "sourceBaseCommit": "a11fb0f4cd40f00dff27cc6b36d614477bd2129e",
+  "preserveHistoricalEvidence": true,
+  "publicationEvidenceVersion": "0.4.4"
+}

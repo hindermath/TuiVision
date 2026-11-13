@@ -77,6 +77,12 @@ function Test-IntakeAuthoringReceipt {
         return $Text.Replace("`r`n", "`n").Replace("`r", "`n")
     }
 
+    function Resolve-HBContainedFile([string]$Path) {
+        $resolved = & python3 (Join-Path $PSScriptRoot 'resolve-intake-repository-file.py') --repo $RepoRoot --file $Path
+        if ($LASTEXITCODE -ne 0) { throw 'path resolves outside the repository or is missing' }
+        return [string](($resolved | ConvertFrom-Json).path)
+    }
+
     function Get-HBNormalizedHash([string]$Path) {
         $Utf8 = [Text.UTF8Encoding]::new($false, $true)
         $Bytes = $Utf8.GetBytes((Get-HBNormalizedText $Path))
@@ -94,6 +100,13 @@ function Test-IntakeAuthoringReceipt {
     }
 
     function Get-HBGitBlobNormalizedHash([string]$ObjectId) {
+        $SizeOutput = @(& git -C $RepoRoot cat-file -s $ObjectId 2>$null)
+        $BlobSize = [long]0
+        if ($LASTEXITCODE -ne 0 -or
+            -not [long]::TryParse(($SizeOutput -join '').Trim(), [ref]$BlobSize) -or
+            $BlobSize -lt 0 -or $BlobSize -gt 8388608) {
+            throw 'legacy Git blob is missing or exceeds 8 MiB limit'
+        }
         $StartInfo = [Diagnostics.ProcessStartInfo]::new()
         $StartInfo.FileName = 'git'
         $StartInfo.UseShellExecute = $false
@@ -173,6 +186,24 @@ function Test-IntakeAuthoringReceipt {
         return $false
     }
 
+    function Test-HBParsedSecret($Value) {
+        if ($Value -is [string]) { return (Test-HBSecret $Value) }
+        if ($Value -is [System.Collections.IDictionary]) {
+            foreach ($Key in $Value.Keys) {
+                if ((Test-HBSecret ([string]$Key)) -or (Test-HBParsedSecret $Value[$Key])) { return $true }
+            }
+        } elseif ($Value -is [pscustomobject]) {
+            foreach ($Property in $Value.PSObject.Properties) {
+                if ((Test-HBSecret $Property.Name) -or (Test-HBParsedSecret $Property.Value)) { return $true }
+            }
+        } elseif ($Value -is [System.Collections.IEnumerable]) {
+            foreach ($Item in $Value) {
+                if (Test-HBParsedSecret $Item) { return $true }
+            }
+        }
+        return $false
+    }
+
     if (-not (Test-Path -LiteralPath $Receipt -PathType Leaf)) {
         throw "Receipt file not found: $Receipt"
     }
@@ -180,9 +211,10 @@ function Test-IntakeAuthoringReceipt {
         $ReceiptText = Get-HBNormalizedText $Receipt
         $Data = $ReceiptText | ConvertFrom-Json
     } catch {
-        throw "Invalid receipt: $($_.Exception.Message)"
+        [Console]::Error.WriteLine("ERROR: Invalid receipt: $($_.Exception.Message)")
+        return 2
     }
-    if (Test-HBSecret $ReceiptText) {
+    if ((Test-HBSecret $ReceiptText) -or (Test-HBParsedSecret $Data)) {
         $Errors.Add('receipt contains a credential or private key pattern')
     }
 
@@ -229,10 +261,17 @@ function Test-IntakeAuthoringReceipt {
     } elseif ($SchemaVersion -eq '1.1') {
         @('0.1.1')
     } elseif ($SchemaVersion -eq '2.0') {
-        @('0.2.0', '0.2.1', '0.3.0', '0.3.1', '0.3.2', '0.3.4')
+        @('0.2.0', '0.2.1', '0.3.0', '0.3.1', '0.3.2', '0.3.3', '0.3.4', '0.3.5', '0.3.6', '0.3.7', '0.3.8', '0.3.9', '0.3.10', '0.3.11', '0.3.12')
     } else {
         @()
     })
+    # DE: Eigene Schema-2-Vorlagen bleiben nach Patch-Releases gueltig.
+    # EN: Keep this release's schema-2 templates valid after patch releases.
+    $PresetMetadata = Join-Path (Split-Path -Parent $PSScriptRoot) 'preset.yml'
+    if ($SchemaVersion -eq '2.0' -and (Test-Path -LiteralPath $PresetMetadata -PathType Leaf)) {
+        $VersionMatch = [regex]::Match((Get-Content -LiteralPath $PresetMetadata -Raw), '(?m)^\s+version:\s*"?([0-9]+\.[0-9]+\.[0-9]+)"?\s*$')
+        if ($VersionMatch.Success) { $AcceptedGenerators += $VersionMatch.Groups[1].Value }
+    }
     if ($AcceptedGenerators.Count -gt 0 -and $GeneratorVersion -notin $AcceptedGenerators) {
         $Errors.Add("generator.version is not accepted for schema $SchemaVersion")
     }
@@ -603,6 +642,59 @@ function Test-IntakeAuthoringReceipt {
                         if ($ArchivePath -eq 'N/A' -or -not (Test-HBRelativePath $ArchivePath) -or
                             -not (Test-Path -LiteralPath (Join-Path $RepoRoot $ArchivePath) -PathType Leaf)) {
                             $Errors.Add("archived supersession evidence missing or invalid: $ArchivePath")
+                        }
+                    }
+                    if ((Test-HBRelativePath $OldReceipt) -and (Test-HBRelativePath $ArchiveTarget) -and
+                        (Test-HBRelativePath $ArchiveReceipt) -and
+                        (Test-Path -LiteralPath (Join-Path $RepoRoot $OldReceipt) -PathType Leaf) -and
+                        (Test-Path -LiteralPath (Join-Path $RepoRoot $ArchiveTarget) -PathType Leaf) -and
+                        (Test-Path -LiteralPath (Join-Path $RepoRoot $ArchiveReceipt) -PathType Leaf)) {
+                        try {
+                            $priorPath = Resolve-HBContainedFile (Join-Path $RepoRoot $OldReceipt)
+                            $archivedTargetPath = Resolve-HBContainedFile (Join-Path $RepoRoot $ArchiveTarget)
+                            $archivedReceiptPath = Resolve-HBContainedFile (Join-Path $RepoRoot $ArchiveReceipt)
+                            $currentTargetPath = Join-Path $RepoRoot $TargetPathText
+                            $sameReceipt = & python3 -c 'import os,sys; print(int(os.path.samefile(sys.argv[1],sys.argv[2])))' $archivedReceiptPath $priorPath
+                            if ($LASTEXITCODE -ne 0) { throw 'cannot compare archived receipt identity' }
+                            $targetArchiveAliasesCurrent = $false
+                            if (Test-Path -LiteralPath $currentTargetPath -PathType Leaf) {
+                                $sameTarget = & python3 -c 'import os,sys; print(int(os.path.samefile(sys.argv[1],sys.argv[2])))' $archivedTargetPath $currentTargetPath
+                                if ($LASTEXITCODE -ne 0) { throw 'cannot compare archived target identity' }
+                                $targetArchiveAliasesCurrent = $sameTarget -eq '1'
+                            }
+                            if ($sameReceipt -eq '1' -or $targetArchiveAliasesCurrent) {
+                                throw 'supersession archive must be separate from active evidence'
+                            }
+                            $prior = Get-HBNormalizedText $priorPath | ConvertFrom-Json
+                            $priorTarget = Get-HBProperty $prior 'target'
+                            $priorSchema = Get-HBProperty $prior 'schemaVersion'
+                            $priorId = Get-HBProperty $prior 'receiptId'
+                            $parsedPriorId = [Guid]::Empty
+                            if ($priorId -isnot [string] -or -not [Guid]::TryParse($priorId, [ref]$parsedPriorId) -or
+                                $parsedPriorId -eq [Guid]::Empty) {
+                                throw 'archived predecessor has no valid receiptId'
+                            }
+                            if ($parsedPriorId -eq $Guid) { throw 'archived predecessor cannot be the current receipt' }
+                            $priorIntakeId = [Guid]::Empty
+                            $currentIntakeId = [Guid]::Empty
+                            $intakeIdsMatch = [Guid]::TryParse([string](Get-HBProperty $prior 'intakeId'), [ref]$priorIntakeId) -and
+                                [Guid]::TryParse([string](Get-HBProperty $Data 'intakeId'), [ref]$currentIntakeId) -and
+                                $priorIntakeId -eq $currentIntakeId
+                            if ($priorSchema -cnotin @('1.0', '1.1', '2.0') -or
+                                (Get-HBProperty $prior 'status') -cnotin @('ReadyForReview', 'NeedsClarification') -or
+                                (Get-HBProperty $priorTarget 'path') -cne $TargetPathText -or
+                                (Get-HBProperty $priorTarget 'normalizedSha256') -cne $OldTargetHash -or
+                                ($priorSchema -ceq '2.0' -and
+                                    ((Get-HBProperty $prior 'documentType') -cne 'IntakeReceipt' -or
+                                     -not $intakeIdsMatch -or
+                                     (Get-HBProperty (Get-HBProperty $prior 'operation') 'type') -cnotin @('Create', 'Update'))) -or
+                                (Get-FileHash -LiteralPath $priorPath -Algorithm SHA256).Hash -cne
+                                    (Get-FileHash -LiteralPath $archivedReceiptPath -Algorithm SHA256).Hash -or
+                                (Get-HBNormalizedHash $archivedTargetPath) -cne $OldTargetHash) {
+                                throw 'archived predecessor does not match intake identity and target hash'
+                            }
+                        } catch {
+                            $Errors.Add("supersession predecessor is not bound: $($_.Exception.Message)")
                         }
                     }
                 }

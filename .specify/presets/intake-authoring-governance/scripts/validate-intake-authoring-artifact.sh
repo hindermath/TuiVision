@@ -18,10 +18,15 @@ while [ "$#" -gt 0 ]; do
 done
 [ -n "$artifact" ] || { printf 'ERROR: --artifact is required\n' >&2; exit 2; }
 
-python3 - "$artifact" "$repo" <<'PY'
+bash_executable="$(command -v bash)"
+if command -v cygpath >/dev/null 2>&1; then
+  bash_executable="$(cygpath -w "$bash_executable")"
+fi
+python3 - "$artifact" "$repo" "$(cd "$(dirname "$0")" && pwd)" "$bash_executable" <<'PY'
 import hashlib
 import json
 import re
+import subprocess
 import sys
 import uuid
 from datetime import datetime
@@ -29,6 +34,7 @@ from pathlib import Path, PurePosixPath
 
 artifact_path = Path(sys.argv[1])
 repo = Path(sys.argv[2]).resolve()
+script_dir = Path(sys.argv[3])
 errors = []
 
 def text(obj, key, label):
@@ -40,7 +46,7 @@ def text(obj, key, label):
 
 def relative(value):
     path = PurePosixPath(value)
-    return not path.is_absolute() and ".." not in path.parts
+    return not path.is_absolute() and ".." not in path.parts and "\\" not in value
 
 def normalized(path):
     raw = path.read_bytes()
@@ -79,11 +85,16 @@ def check_relative_file(value, label, expected_hash=None, must_be_absent=False):
         return
     path = repo / value
     if must_be_absent:
-        if path.exists():
+        if path.exists() or path.is_symlink():
             errors.append(f"{label} must no longer exist")
         return
-    if not path.is_file():
+    try:
+        path = path.resolve(strict=True)
+    except (OSError, RuntimeError):
         errors.append(f"{label} is missing: {value}")
+        return
+    if not path.is_relative_to(repo) or not path.is_file():
+        errors.append(f"{label} resolves outside repository or is missing: {value}")
         return
     if expected_hash is not None:
         check_hash(expected_hash, f"{label} hash")
@@ -169,6 +180,39 @@ if document_type == "IntakeSeries":
         member_hash = text(member, "normalizedSha256", label)
         check_relative_file(path, f"{label}.path", member_hash)
         check_relative_file(receipt, f"{label}.receiptPath")
+        if status == "ReadyForReview" and relative(receipt):
+            try:
+                receipt_file = (repo / receipt).resolve(strict=True)
+                if not receipt_file.is_relative_to(repo):
+                    raise ValueError("member receipt resolves outside repository")
+                receipt_validation = subprocess.run(
+                    [sys.argv[4], str(script_dir / "validate-intake-authoring-receipt.sh"),
+                     "--receipt", str(receipt_file), "--repo", str(repo)],
+                    capture_output=True, text=True, check=False,
+                )
+                if receipt_validation.returncode != 0:
+                    detail = (receipt_validation.stderr or receipt_validation.stdout).strip()
+                    raise ValueError("member receipt failed full validation: " + detail[:500])
+                member_receipt = json.loads(normalized(receipt_file).decode("utf-8"))
+                member_target = member_receipt.get("target", {})
+                member_series = member_receipt.get("series", {})
+                manifest_relative = artifact_path.resolve(strict=True).relative_to(repo).as_posix()
+                if (member_receipt.get("schemaVersion") != "2.0"
+                        or member_receipt.get("documentType") != "IntakeReceipt"
+                        or member_receipt.get("status") != "ReadyForReview"
+                        or member_receipt.get("intakeId") != intake_id
+                        or not isinstance(member_target, dict)
+                        or member_target.get("path") != path
+                        or member_target.get("normalizedSha256") != member_hash
+                        or not isinstance(member_series, dict)
+                        or member_series.get("seriesId") != series_id
+                        or member_series.get("manifestPath") != manifest_relative
+                        or type(member_series.get("order")) is not int
+                        or member_series.get("order") != member.get("order")
+                        or member_series.get("role") != member.get("role")):
+                    raise ValueError("member receipt does not match series member")
+            except (OSError, RuntimeError, UnicodeDecodeError, ValueError, AttributeError) as exc:
+                errors.append(f"{label}.receiptPath is not bound to this member: {exc}")
         text(member, "title", label)
         text(member, "role", label)
         order = member.get("order")
@@ -287,6 +331,63 @@ elif document_type == "IntakeOperation":
             errors.append("Completed operation requires explicit approval")
         if intended != validated or intended != published:
             errors.append("Completed operation requires intended, validated, and published targets to match")
+        if operation_type in ("Create", "Update", "CreateSeries", "UpdateSeries") and not published:
+            errors.append("Completed create/update operation requires published targets")
+        # The proposal is the approved target contract, not the operation's self-reported arrays.
+        try:
+            resolved_proposal = (repo / proposal_path).resolve(strict=True)
+            if not resolved_proposal.is_relative_to(repo) or not resolved_proposal.is_file():
+                raise ValueError("proposal resolves outside repository")
+            proposal = json.loads(resolved_proposal.read_text(encoding="utf-8-sig"))
+            rows = proposal.get("targets") if isinstance(proposal, dict) else None
+            if (rows is None and isinstance(proposal, dict)
+                    and proposal.get("documentType") == "LearningPackageProposal"
+                    and data.get("publicationScope") == "ReusableDraftPackageOnly"):
+                # Historical portable draft proposals use orderedMembers with the same
+                # path, digest and receipt binding as current target records.
+                rows = proposal.get("orderedMembers")
+            if not isinstance(rows, list) or not all(isinstance(row, dict) for row in rows):
+                raise ValueError("proposal target records are missing")
+            proposed_paths = [row.get("path") for row in rows]
+            if not all(isinstance(path, str) for path in proposed_paths):
+                raise ValueError("proposal.targets paths must be strings")
+            if proposed_paths != published or len(set(proposed_paths)) != len(proposed_paths):
+                raise ValueError("published targets do not match approved proposal")
+            for index, row in enumerate(rows):
+                label = f"proposal.targets[{index}]"
+                target_path = row.get("path")
+                target_hash = row.get("normalizedSha256")
+                receipt_path = row.get("receiptPath")
+                if not all(isinstance(value, str) and relative(value)
+                           for value in (target_path, receipt_path)):
+                    raise ValueError(f"{label} paths must be repository-relative")
+                if not isinstance(target_hash, str) or not re.fullmatch(r"[0-9a-f]{64}", target_hash):
+                    raise ValueError(f"{label}.normalizedSha256 must be a lowercase SHA-256")
+                check_relative_file(target_path, f"{label}.path", target_hash)
+                receipt_file = (repo / receipt_path).resolve(strict=True)
+                if not receipt_file.is_relative_to(repo) or not receipt_file.is_file():
+                    raise ValueError(f"{label}.receiptPath resolves outside repository")
+                receipt = json.loads(receipt_file.read_text(encoding="utf-8-sig"))
+                if not isinstance(receipt, dict):
+                    raise ValueError(f"{label}.receiptPath must contain an object")
+                receipt_validation = subprocess.run(
+                    [sys.argv[4], str(script_dir / "validate-intake-authoring-receipt.sh"),
+                     "--receipt", str(receipt_file), "--repo", str(repo)],
+                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False,
+                )
+                if receipt_validation.returncode != 0:
+                    raise ValueError(f"{label}.receiptPath failed full validation")
+                receipt_target = receipt.get("target", {}) if isinstance(receipt, dict) else {}
+                receipt_operation = receipt.get("operation", {}) if isinstance(receipt, dict) else {}
+                if (receipt.get("documentType") != "IntakeReceipt" or
+                        not isinstance(receipt_target, dict) or
+                        receipt_target.get("path") != target_path or
+                        receipt_target.get("normalizedSha256") != target_hash or
+                        not isinstance(receipt_operation, dict) or
+                        uuid.UUID(receipt_operation.get("operationId")) != uuid.UUID(data.get("operationId"))):
+                    raise ValueError(f"{label}.receiptPath is not bound to this operation and target")
+        except (OSError, RuntimeError, UnicodeDecodeError, ValueError, TypeError, AttributeError) as exc:
+            errors.append(f"Completed operation lacks approved published evidence: {exc}")
     text(data, "rollbackBoundary", "operation")
     failure = data.get("failure")
     if not isinstance(failure, dict):

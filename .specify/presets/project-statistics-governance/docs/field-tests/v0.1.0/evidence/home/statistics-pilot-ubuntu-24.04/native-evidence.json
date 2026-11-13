@@ -1,0 +1,88 @@
+{
+  "workflowCommit": "708e06cf17e09752c99ad5a99261e37cf3d6a8d8",
+  "pilotCommit": "af78a4accdaea059728a53e6b113d543e35fb030",
+  "measurementCommit": "e1d6d36e444cc252a0321572e70da8874de81fe3",
+  "runner": "ubuntu-24.04",
+  "platform": "Ubuntu 24.04.5 LTS",
+  "powerShell": "7.6.5",
+  "suiteExitCode": 0,
+  "assertions": 67,
+  "suiteCommand": "pwsh -NoProfile -File .specify/presets/project-statistics-governance/tests/test-project-statistics.ps1",
+  "statusCommands": [
+    "bash project-statistics.sh status --repo PILOT --config docs/project-statistics-pilot/config.json --json",
+    "pwsh -NoProfile -File project-statistics.ps1 -Action Status -Repo PILOT -Config docs/project-statistics-pilot/config.json -Json"
+  ],
+  "suiteSha256": "6c3f215e53b7724f6c37d8422d10d51043c3cc2c4afb0d0af0cd73757b4e7d1a",
+  "suiteLogSha256": "0b8fec349f21465227a8d9de3c875161354f78e518789b16fdbd4ba865357b05",
+  "workflowSha256": "33009bf50204933f3528197c804f154f15c5f8b0db4957141db00a4b752d3b5d",
+  "payloadHashes": {
+    "docs/project-statistics-pilot/config.json": "5dd852e65b76795bc0272362c38d0eda78273dec2005679ec62e495bc0e86427",
+    "docs/project-statistics-pilot/report.md": "2d94357c130dce0fa3f08fbc5a2d3979a6570ece0922ff33c61b890ea5c6db45",
+    "docs/project-statistics-pilot/snapshot.json": "1c0b65b54c7c42a2be9ecb99268532ccf647e583cbde4c631e5f359ceb992584",
+    "docs/project-statistics-pilot/README.md": "19968b647a128e83613603987a38eb410812dff296c601621ab5ac2e17c1ec9b",
+    "docs/project-statistics.md": "6c734f907c2d230994ae8f40ebdaaef552077f4419fa9db37e479c483184b43f",
+    "docs/project-statistics.config.json": "b98169acc91ccf24b0ca1b32358c5f7180dd7af128e79d42022028e095d08bd1"
+  },
+  "decisions": [
+    {
+      "variant": "LF-no-BOM",
+      "shell": "Bash",
+      "exitCode": 0,
+      "decisionSha256": "bd95c76386de281b7c76ffc4f82d8dfe56c225e50799b42e112bd8fe347ef0d6",
+      "checkedContentChanges": 0
+    },
+    {
+      "variant": "LF-no-BOM",
+      "shell": "PowerShell",
+      "exitCode": 0,
+      "decisionSha256": "bd95c76386de281b7c76ffc4f82d8dfe56c225e50799b42e112bd8fe347ef0d6",
+      "checkedContentChanges": 0
+    },
+    {
+      "variant": "CRLF-no-BOM",
+      "shell": "Bash",
+      "exitCode": 0,
+      "decisionSha256": "bd95c76386de281b7c76ffc4f82d8dfe56c225e50799b42e112bd8fe347ef0d6",
+      "checkedContentChanges": 0
+    },
+    {
+      "variant": "CRLF-no-BOM",
+      "shell": "PowerShell",
+      "exitCode": 0,
+      "decisionSha256": "bd95c76386de281b7c76ffc4f82d8dfe56c225e50799b42e112bd8fe347ef0d6",
+      "checkedContentChanges": 0
+    },
+    {
+      "variant": "LF-BOM",
+      "shell": "Bash",
+      "exitCode": 0,
+      "decisionSha256": "bd95c76386de281b7c76ffc4f82d8dfe56c225e50799b42e112bd8fe347ef0d6",
+      "checkedContentChanges": 0
+    },
+    {
+      "variant": "LF-BOM",
+      "shell": "PowerShell",
+      "exitCode": 0,
+      "decisionSha256": "bd95c76386de281b7c76ffc4f82d8dfe56c225e50799b42e112bd8fe347ef0d6",
+      "checkedContentChanges": 0
+    },
+    {
+      "variant": "CRLF-BOM",
+      "shell": "Bash",
+      "exitCode": 0,
+      "decisionSha256": "bd95c76386de281b7c76ffc4f82d8dfe56c225e50799b42e112bd8fe347ef0d6",
+      "checkedContentChanges": 0
+    },
+    {
+      "variant": "CRLF-BOM",
+      "shell": "PowerShell",
+      "exitCode": 0,
+      "decisionSha256": "bd95c76386de281b7c76ffc4f82d8dfe56c225e50799b42e112bd8fe347ef0d6",
+      "checkedContentChanges": 0
+    }
+  ],
+  "rawBlobChecks": 6,
+  "sourceAndRestoredPilotContentChanges": 0,
+  "fixtureWritesExpected": true,
+  "fullIoTrace": false
+}

@@ -9,7 +9,8 @@ public sealed record ProcessExecutionResult(
     string StandardOutput,
     string StandardError,
     AtomicRunReport? Report = null,
-    MaintenanceEvent? CompletionEvent = null);
+    MaintenanceEvent? CompletionEvent = null,
+    bool OutputTruncated = false);
 
 public interface IMaintenanceProcessRunner
 {
@@ -20,6 +21,11 @@ public interface IMaintenanceProcessRunner
 
 public sealed class MaintenanceProcessRunner : IMaintenanceProcessRunner
 {
+    private const int MaximumProcessStreamBytes = 262_144;
+    private const int MaximumRetainedEvents = 1_024;
+    private const int MaximumEventChunkBytes = 65_536;
+    private const long MaximumEventStreamBytes = 4_194_304;
+    private const int MaximumReportBytes = 1_048_576;
     private readonly Action<MaintenanceEvent>? _eventSink;
     private readonly Action<EventReaderState>? _degradationSink;
 
@@ -45,6 +51,8 @@ public sealed class MaintenanceProcessRunner : IMaintenanceProcessRunner
             UseShellExecute = false,
             RedirectStandardOutput = true,
             RedirectStandardError = true,
+            StandardOutputEncoding = System.Text.Encoding.UTF8,
+            StandardErrorEncoding = System.Text.Encoding.UTF8,
         };
         foreach (var argument in invocation.Arguments)
         {
@@ -57,8 +65,8 @@ public sealed class MaintenanceProcessRunner : IMaintenanceProcessRunner
             throw new InvalidOperationException("Maintenance process did not start.");
         }
 
-        var stdout = process.StandardOutput.ReadToEndAsync();
-        var stderr = process.StandardError.ReadToEndAsync();
+        var stdout = ReadBoundedAsync(process.StandardOutput.BaseStream, MaximumProcessStreamBytes);
+        var stderr = ReadBoundedAsync(process.StandardError.BaseStream, MaximumProcessStreamBytes);
         var eventTask = ReadEventsUntilExitAsync(process, invocation, CancellationToken.None);
         try
         {
@@ -80,12 +88,15 @@ public sealed class MaintenanceProcessRunner : IMaintenanceProcessRunner
                 cancelledEvent,
                 invocation.ReportPath,
                 invocation.RunId);
+            var cancelledStdout = await stdout;
+            var cancelledStderr = await stderr;
             return new ProcessExecutionResult(
                 130,
-                await stdout,
-                await stderr,
+                cancelledStdout.Text,
+                cancelledStderr.Text,
                 cancelledReport,
-                cancelledEvent);
+                cancelledEvent,
+                cancelledStdout.Truncated || cancelledStderr.Truncated);
         }
 
         var events = await eventTask;
@@ -95,12 +106,15 @@ public sealed class MaintenanceProcessRunner : IMaintenanceProcessRunner
             completionEvent,
             invocation.ReportPath,
             invocation.RunId);
+        var capturedStdout = await stdout;
+        var capturedStderr = await stderr;
         return new ProcessExecutionResult(
             process.ExitCode,
-            await stdout,
-            await stderr,
+            capturedStdout.Text,
+            capturedStderr.Text,
             report,
-            completionEvent);
+            completionEvent,
+            capturedStdout.Truncated || capturedStderr.Truncated);
     }
 
     private async Task<IReadOnlyList<MaintenanceEvent>> ReadEventsUntilExitAsync(
@@ -110,28 +124,33 @@ public sealed class MaintenanceProcessRunner : IMaintenanceProcessRunner
     {
         var events = new List<MaintenanceEvent>();
         var reader = new MaintenanceEventReader(invocation.RunId);
+        var decoder = new System.Text.UTF8Encoding(false, true).GetDecoder();
         long offset = 0;
         while (!process.HasExited)
         {
-            ReadNewContent(invocation.EventStreamPath, reader, events, ref offset);
+            ReadNewContent(invocation.EventStreamPath, reader, decoder, events, ref offset);
             await Task.Delay(LiveDelay, cancellationToken);
         }
 
-        ReadNewContent(invocation.EventStreamPath, reader, events, ref offset);
+        while (ReadNewContent(invocation.EventStreamPath, reader, decoder, events, ref offset))
+        {
+            // Drain the already bounded event stream after process exit.
+        }
         return events;
     }
 
     private static readonly TimeSpan LiveDelay = TimeSpan.FromMilliseconds(100);
 
-    private void ReadNewContent(
+    private bool ReadNewContent(
         string path,
         MaintenanceEventReader reader,
+        System.Text.Decoder decoder,
         List<MaintenanceEvent> events,
         ref long offset)
     {
         if (!File.Exists(path))
         {
-            return;
+            return false;
         }
 
         using var stream = new FileStream(
@@ -141,17 +160,43 @@ public sealed class MaintenanceProcessRunner : IMaintenanceProcessRunner
             FileShare.ReadWrite | FileShare.Delete);
         if (stream.Length <= offset)
         {
-            return;
+            return false;
+        }
+
+        if (stream.Length > MaximumEventStreamBytes)
+        {
+            offset = stream.Length;
+            reader.DegradeForOverflow();
+            _degradationSink?.Invoke(reader.State);
+            return false;
         }
 
         stream.Position = offset;
-        using var textReader = new StreamReader(stream);
-        var content = textReader.ReadToEnd();
-        offset = stream.Position;
+        var remaining = (int)Math.Min(MaximumEventChunkBytes, stream.Length - offset);
+        var buffer = new byte[remaining];
+        var read = stream.Read(buffer, 0, buffer.Length);
+        offset += read;
+        string content;
+        try
+        {
+            var characters = new char[read];
+            var characterCount = decoder.GetChars(buffer, 0, read, characters, 0, flush: false);
+            content = new string(characters, 0, characterCount);
+        }
+        catch (System.Text.DecoderFallbackException)
+        {
+            reader.DegradeForOverflow();
+            _degradationSink?.Invoke(reader.State);
+            return false;
+        }
         var previousMode = reader.State.PresentationMode;
         foreach (var maintenanceEvent in reader.Feed(content))
         {
             events.Add(maintenanceEvent);
+            if (events.Count > MaximumRetainedEvents)
+            {
+                events.RemoveAt(0);
+            }
             _eventSink?.Invoke(maintenanceEvent);
         }
         if (previousMode != EventPresentationMode.Degraded &&
@@ -159,6 +204,7 @@ public sealed class MaintenanceProcessRunner : IMaintenanceProcessRunner
         {
             _degradationSink?.Invoke(reader.State);
         }
+        return stream.Length > offset;
     }
 
     private static AtomicRunReport? ReadReport(
@@ -188,7 +234,20 @@ public sealed class MaintenanceProcessRunner : IMaintenanceProcessRunner
 
         try
         {
-            using var document = JsonDocument.Parse(File.ReadAllText(reportPath));
+            using var reportStream = new FileStream(reportPath, FileMode.Open, FileAccess.Read, FileShare.Read);
+            if (reportStream.Length > MaximumReportBytes)
+            {
+                return null;
+            }
+            var reportBytes = new byte[(int)reportStream.Length];
+            var reportOffset = 0;
+            while (reportOffset < reportBytes.Length)
+            {
+                var count = reportStream.Read(reportBytes, reportOffset, reportBytes.Length - reportOffset);
+                if (count == 0) break;
+                reportOffset += count;
+            }
+            using var document = JsonDocument.Parse(reportBytes.AsMemory(0, reportOffset));
             var root = document.RootElement;
             if (!root.TryGetProperty("runId", out var runProperty) ||
                 !Guid.TryParse(runProperty.GetString(), out var runId) ||
@@ -222,6 +281,39 @@ public sealed class MaintenanceProcessRunner : IMaintenanceProcessRunner
         {
             return null;
         }
+    }
+
+    private sealed record BoundedText(string Text, bool Truncated);
+
+    private static async Task<BoundedText> ReadBoundedAsync(Stream stream, int maximumBytes)
+    {
+        using var retained = new MemoryStream(Math.Min(maximumBytes, 8192));
+        var buffer = new byte[8192];
+        long total = 0;
+        int count;
+        while ((count = await stream.ReadAsync(buffer.AsMemory())) > 0)
+        {
+            total += count;
+            var remaining = maximumBytes - (int)retained.Length;
+            if (remaining > 0)
+            {
+                retained.Write(buffer, 0, Math.Min(remaining, count));
+            }
+        }
+        var retainedBytes = retained.ToArray();
+        var strictUtf8 = new System.Text.UTF8Encoding(false, true);
+        string text;
+        try
+        {
+            text = strictUtf8.GetString(retainedBytes);
+        }
+        catch (System.Text.DecoderFallbackException exception)
+        {
+            text = exception.Index > 0
+                ? strictUtf8.GetString(retainedBytes, 0, exception.Index)
+                : string.Empty;
+        }
+        return new BoundedText(text, total > maximumBytes);
     }
 
     private static bool PathsEqual(string left, string right)

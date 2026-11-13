@@ -5,6 +5,9 @@ param()
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
+# Offline fixture runs must not require or start an installed Codex CLI.
+function global:codex { $global:LASTEXITCODE = 0; 'fixture-cli 1.0' }
+
 $root = Split-Path -Parent $PSScriptRoot
 $scriptPath = Join-Path $root 'scripts/resolve-model-routing.ps1'
 $fixture = Join-Path $PSScriptRoot 'fixtures/codex-models.json'
@@ -24,5 +27,6 @@ try {
     if ($LASTEXITCODE -ne 3) { throw 'Ambiguous fixture did not fail closed.' }
     Write-Output 'PASS: model-routing discovery, refresh, status, and ambiguity fixtures'
 } finally {
+    Remove-Item Function:\global:codex -ErrorAction SilentlyContinue
     Remove-Item -LiteralPath $temporary -Recurse -Force -ErrorAction SilentlyContinue
 }

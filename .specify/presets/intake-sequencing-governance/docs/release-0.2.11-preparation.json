@@ -1,0 +1,16 @@
+{
+  "release_status": "NotEstablishedAtPreparation",
+  "candidate_status": "Prepared",
+  "packageVersion": "0.2.11",
+  "presetId": "intake-sequencing-governance",
+  "externalPublicationEvidence": "https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/releases/tag/v0.2.11",
+  "documentationPr": "https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/pull/16",
+  "schemaVersion": 1,
+  "historicalPublicationVersion": "0.2.10",
+  "runtimeChanged": true,
+  "metadataCorrectionApproved": true,
+  "authorizationReference": "Owner approval 2026-10-24: bounded generator version and prior-receipt compatibility correction, without schema, authority or routing changes.",
+  "generatorSchemaChanged": false,
+  "preparedAt": "2026-10-24T12:50:04.9964230+00:00",
+  "sourceCommit": "5750955aae7576a64a237ab75dc8a121b5b699d2"
+}

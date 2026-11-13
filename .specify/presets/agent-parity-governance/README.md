@@ -1,30 +1,112 @@
 # Agent Parity Governance Preset
 
-Version: `0.4.2`
-Status: published, standard governance preset
+<!-- current-package: 0.4.6 -->
+
+Paketkennung: **v0.4.6**. [Vorbereitung und Veröffentlichungsgrenze](docs/release-0.4.6-validation.md). Die Release-Seite und der externe Archivnachweis belegen die Veröffentlichung, nicht dieser Vorbereitungsstand. Frühere Versionsnachweise unten bleiben historisch.
+
+<span lang="en">Package identity: v0.4.6. The release page and external archive evidence prove publication, not this preparation snapshot. Earlier version records below remain historical.</span>
+
+[Release-Abschluss und Verbesserungsprofil / Publication closeout and improvement profile](docs/release-0.4.4-validation.md).
+
+Der unten verlinkte Basispaket-Nachweis bleibt historisch; dieses Paket nimmt die Quellenkorrekturen als neue Version auf.
+
+<span lang="en">The linked base-package evidence remains historical; this package includes the source corrections as a new version.</span>
+
+**Leserpfad / Reader path:** [Deutsch: Einstieg, Begriffe und Fehlerhilfe](docs/user-guide.md) · [English: start, terms and troubleshooting](docs/user-guide.EN.md).
+
+Historisches Basispaket **v0.4.4**. Der [Release-Stand](https://github.com/hindermath/spec-kit-preset-agent-parity-governance/releases) wird getrennt geprüft; ein Commit auf main ist noch keine Veröffentlichung oder Installation.
+
+*Historical base package v0.4.4. The release page records actual publication separately; a main-branch commit is not publication or installation.*
+
+
+Patch **0.4.4** liefert die verbesserte zweisprachige Einstiegs- und
+Kompositionsdokumentation. Verhalten und Berechtigungsgrenzen bleiben erhalten.
+[Release-Nachweis / Release record](docs/release-0.4.4-validation.md).
+
+*Patch 0.4.4 packages the improved bilingual getting-started and composition
+guide. Behavior and authority boundaries remain unchanged.*
+
+Version: `0.4.5`
+Status: Veröffentlichung über die Release-Seite prüfen / verify publication on the release page
 Priority: `60`
 Requires: Spec-Kit `>=0.8.0` (uses the `wrap` and `append` composition
 strategies introduced in `0.8.x`).
 
-Version `0.4.2` behandelt einen projektspezifischen Lernenden- und
+Seit Version `0.4.1` behandelt das Preset einen projektspezifischen Lernenden- und
 Barrierefreiheitsvertrag als gemeinsame Regel. Zielgruppe, Vorwissen,
 Sprachreihenfolge, Lesbarkeit, Begriffserklärungen und textorientierte
 Informationswege müssen auf allen gepflegten Agenten- und Template-Flächen
 semantisch gleich bleiben.
 
-*Version `0.4.2` treats a project-specific learner and accessibility contract
+*Since version `0.4.1`, the preset treats a project-specific learner and accessibility contract
 as shared guidance. Audience, prior knowledge, language order, readability,
 term explanations, and text-first information paths must remain semantically
 equivalent across maintained agent and template surfaces.*
 
 ## Zweck / Purpose
 
-Dieses Standard-Preset verhindert stillen Drift zwischen KI-Agenten-Dateien.
+### Einstieg und Arbeitsweise / Getting Started and Workflow
+
+Nach Installation im initialisierten Zielprojekt ergänzt das
+[Manifest](preset.yml) Specify/Plan/Tasks mit `wrap` sowie ihre
+Dokumentvorlagen und Constitution mit `append`. Es synchronisiert dadurch
+keine vorhandenen Guidance-Dateien automatisch und startet keine Agenten.
+Die eigenständige Checkliste und das Agent-Guidance-Addendum müssen bewusst
+verwendet werden; ein registrierter Starter ist noch kein Nachweis.
+
+*After installation in an initialized target project, the [manifest](preset.yml)
+wraps Specify/Plan/Tasks and appends to their templates and constitution.
+This does not automatically synchronize existing guidance files or launch
+agents. Use the standalone checklist and guidance addendum deliberately;
+a registered starter is not evidence.*
+
+Beispiel: Eine gemeinsame Logging-Regel ändert sich. Benenne in Specify alle
+vom Projekt gepflegten Agenten-Dateien. Plane atomare Updates und mit
+`agent-parity-checklist-template` den Nachweis
+`docs/agent-governance/logging-parity.md`. Tasks nennt alle betroffenen
+Dateien, Template-/Constitution-Prüfung und semantischen Vergleich. Halte
+beabsichtigte Unterschiede fest; lege keine ungenutzten Agenten-Dateien nur
+für dieses Beispiel an. Keine konkreten Modellnamen in Feature-Anforderungen.
+
+*Example: a shared logging rule changes. Name all project-maintained agent
+files in Specify. Plan atomic updates and use `agent-parity-checklist-template`
+for `docs/agent-governance/logging-parity.md`. Tasks names affected files,
+template/constitution checks and semantic comparison. Record intentional
+differences; do not create unused agent files just for this example. Keep
+concrete model names out of feature requirements.*
+
+Vorhandene Evidence aktualisieren. `Applicable` bedeutet nicht „abgenommen“;
+`N/A` braucht Grund, `Open` Owner und Folgeaktion. Zeichenidentität allein
+belegt keine fachliche Parität. Konkrete Modellbindung bleibt bei
+[Model Routing Governance](https://github.com/hindermath/spec-kit-preset-model-routing-governance),
+nicht bei einem automatisch gestarteten Agenten.
+
+*Update existing evidence. Applicable is not accepted; justify N/A and assign
+an owner/follow-up to Open. Byte equality alone does not establish semantic
+parity. Concrete local model binding belongs to the linked Model Routing
+preset; parity installation starts no agent.*
+
+Priorität ist Auflösungsrang: kleinere Zahlen haben höhere Priorität.
+`append` ergänzt, `wrap` verschachtelt; `replace` und Projekt-Overrides können
+gleichnamige Beiträge verdrängen. Individuelle Reihenfolgen sind nicht
+pauschal geprüft. Prüfe `specify preset resolve plan-template` und die
+erzeugten Agentenflächen, statt aus Priorität auf Ausführung zu schließen.
+
+*Priority is resolution precedence: lower numbers have higher precedence.
+Append adds, wrap nests; replace and project overrides can hide same-name
+contributions. Custom orderings are not universally tested. Inspect
+plan-template resolution and generated agent surfaces, not an assumed schedule.*
+
+Leserpfad / Reader path: [Installation](#installation--installation) →
+[Regeln / Rules](#regeln--rules) → [Prüfung / Verification](#prüfung--verification) →
+[Fehlersuche / Troubleshooting](#fehlersuche--troubleshooting).
+
+Dieses Standard-Preset unterstützt die Prüfung auf Drift zwischen KI-Agenten-Dateien.
 Gemeinsame Regeln sollen atomar auf allen gepflegten Agent-Flächen landen,
 absichtliche Abweichungen sollen dokumentiert sein, und Modell-Routing soll
 agentenneutral bleiben.
 
-*This standard preset prevents silent drift between AI-agent guidance files.
+*This standard preset supports checking drift between AI-agent guidance files.
 Shared rules should land atomically on every maintained agent surface,
 intentional deviations should be documented, and model routing should remain
 agent-neutral.*
@@ -101,9 +183,7 @@ shared and which are intentionally agent-specific.*
 ### Veröffentlichter Tag / Published Tag
 
 ```bash
-specify preset add \
-  --from https://github.com/hindermath/spec-kit-preset-agent-parity-governance/archive/refs/tags/v0.4.2.zip \
-  --priority 60
+specify preset add --from https://github.com/hindermath/spec-kit-preset-agent-parity-governance/archive/refs/tags/v0.4.6.zip --priority 60
 specify preset info agent-parity-governance
 ```
 
@@ -118,18 +198,18 @@ specify preset info agent-parity-governance
 
 | Priority | Preset |
 |---:|---|
-| 10 | `security-governance` |
-| 20 | `architecture-governance` |
-| 30 | `isaqb-architecture-governance` |
-| 40 | `a11y-governance` |
-| 50 | `cross-platform-governance` |
-| 60 | `agent-parity-governance` |
+| 10 | [security-governance](https://github.com/hindermath/spec-kit-preset-security-governance) |
+| 20 | [architecture-governance](https://github.com/hindermath/spec-kit-preset-architecture-governance) |
+| 30 | [isaqb-architecture-governance](https://github.com/hindermath/spec-kit-preset-isaqb-architecture-governance) |
+| 40 | [a11y-governance](https://github.com/hindermath/spec-kit-preset-a11y-governance) |
+| 50 | [cross-platform-governance](https://github.com/hindermath/spec-kit-preset-cross-platform-governance) |
+| 60 | [agent-parity-governance](https://github.com/hindermath/spec-kit-preset-agent-parity-governance) |
 
-Dieses Preset kommt nach den fachlichen Governance-Presets, damit deren
-gemeinsame Regeln auf allen Agent-Flächen synchron gehalten werden.
+Priorität 60 ist die empfohlene Kompositionsposition nach den fachlichen
+Governance-Presets, kein automatisch ausgeführter Synchronisationsschritt.
 
-*This preset runs after the domain governance presets so their shared rules
-can be synchronized across all maintained agent surfaces.*
+*Priority 60 is the recommended composition position after domain governance
+presets, not an automatically executed synchronization step.*
 
 ## Quellkapitel / Source Chapter
 
@@ -158,6 +238,16 @@ Agentenmix.
 instruction files. The preset does not require a specific vendor or agent mix.*
 
 ## Modell-Routing / Model Routing
+
+Die folgende Übersicht erklärt typische Rollen. Maßgeblich bleibt der
+konkrete Command-Vertrag; ein fachliches Intake- oder Assurance-Review kann
+deshalb frontier-reasoning verlangen statt coding-review. Installation prüft
+oder synchronisiert keine bestehenden Agenten-Dateien automatisch.
+
+*The list explains typical roles. Actual command contracts remain authoritative:
+semantic intake/assurance review may require frontier-reasoning rather than
+coding-review. Installation does not automatically verify or synchronize
+existing agent files.*
 
 - `frontier-reasoning` für semantische Intake-Entscheidungen sowie Specify,
   Clarify, Plan, Tasks und Analyze.
@@ -201,7 +291,7 @@ neben den geänderten Guidance-Dateien.
 ```bash
 specify preset list
 specify preset info agent-parity-governance
-specify preset resolve
+specify preset resolve agent-parity-checklist-template
 specify check
 ```
 

@@ -1,17 +1,93 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-09-13",
-  "description": "Required CLI command checks for the learning-series MSL toolchains, SBOM tooling, GitHub Spec Kit, and required agent CLI surfaces.",
+  "updated": "2026-10-18",
+  "description": "CLI command checks for the learning-series MSL toolchains, document tools, SBOM tooling, GitHub Spec Kit, and required agent CLI surfaces.",
   "policy": {
     "defaultScope": "required",
-    "specKitInstallCommand": "uv tool install specify-cli --from git+https://github.com/github/spec-kit.git",
+    "specKitInstallCommand": "uv tool install specify-cli --from git+https://github.com/github/spec-kit.git@464d57fe30c72e9a88d279cc49834539ec989c03",
     "npmAgentRegistry": "scripts/config/npm-agent-cli-registry.json",
     "agentCliPolicy": "codex, claude, the standalone GitHub Copilot CLI, and Google Antigravity CLI are required cross-platform CLI surfaces. Google Antigravity replaces Gemini CLI. macOS uses Homebrew, Windows uses WinGet, and Linux uses the checksum-verified official vendor installer. npm fallback installations are maintained through npm-agent-cli-registry.json.",
     "hostingAccountPolicy": "Learners need an account on the selected institutional Git hosting system. A GitHub account is required only for the direct GitHub profile or optional GitHub Copilot sign-in.",
     "forgejoClientPolicy": "No additional Forgejo client CLI is required. Bootstrap automation uses normal git, HTTPS credentials from a secure Git credential helper, and the Forgejo REST API.",
     "linuxWithoutBrew": "Linux without Homebrew uses distro packages where available. Swift uses the pinned, checksum-verified official Swiftly contract on Ubuntu 22.04/24.04 x86_64/aarch64. .NET and Syft may require external package sources; GitHub Spec Kit uses uv. Antigravity CLI uses its checksum-verified official vendor installer."
   },
+  "mslToolchains": [
+    {
+      "id": "dotnet", "provider": "dotnet",
+      "releaseUri": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json",
+      "command": "dotnet", "args": ["--version"], "companions": [],
+      "versionPattern": "(?m)^(?<version>[0-9]+\\.[0-9]+\\.[0-9]+)\\s*$",
+      "aptPackage": "dotnet-sdk-{major}.{minor}"
+    },
+    {
+      "id": "go", "provider": "go", "releaseUri": "https://go.dev/dl/?mode=json",
+      "command": "go", "args": ["version"], "companions": [],
+      "versionPattern": "go version go(?<version>[0-9]+\\.[0-9]+(?:\\.[0-9]+)?)",
+      "aptPackage": "golang-go"
+    },
+    {
+      "id": "java", "provider": "java", "releaseUri": "https://api.adoptium.net/v3/info/available_releases",
+      "command": "java", "args": ["-version"],
+      "companions": [{"command": "javac", "args": ["-version"], "sameVersion": true}],
+      "versionPattern": "(?:version \"|javac )(?<version>[0-9]+(?:\\.[0-9]+){0,3})",
+      "aptPackage": "openjdk-{major}-jdk"
+    },
+    {
+      "id": "python", "provider": "python",
+      "releaseUri": "https://www.python.org/api/v2/downloads/release/?is_published=true&pre_release=false",
+      "command": "python3", "args": ["--version"], "companions": [],
+      "versionPattern": "Python (?<version>[0-9]+\\.[0-9]+\\.[0-9]+)",
+      "aptPackage": "python{major}.{minor}"
+    },
+    {
+      "id": "rust", "provider": "rust", "releaseUri": "https://static.rust-lang.org/dist/channel-rust-stable.toml",
+      "command": "rustc", "args": ["--version"],
+      "companions": [{"command": "cargo", "args": ["--version"], "minimumPrimaryMinor": true}],
+      "versionPattern": "(?:rustc|cargo) (?<version>[0-9]+\\.[0-9]+\\.[0-9]+)",
+      "aptPackage": "rustc"
+    },
+    {
+      "id": "swift", "provider": "swift", "releaseUri": "https://www.swift.org/api/v1/install/releases.json",
+      "command": "swift", "args": ["--version"], "companions": [],
+      "versionPattern": "Swift version (?<version>[0-9]+\\.[0-9]+(?:\\.[0-9]+)?)",
+      "aptPackage": "swiftly"
+    }
+  ],
   "tools": [
+    {
+      "id": "pandoc",
+      "scope": "required",
+      "platforms": ["Darwin", "Linux", "Windows"],
+      "command": "pandoc",
+      "args": ["--version"],
+      "purpose": "Documentation conversion; package managers provide Pandoc on every supported platform"
+    },
+    {
+      "id": "typst",
+      "scope": "required",
+      "platforms": ["Darwin", "Linux", "Windows"],
+      "command": "typst",
+      "args": ["--version"],
+      "install": {
+        "manager": "cargo",
+        "platforms": ["Linux"],
+        "arguments": ["install", "--locked", "typst-cli"]
+      },
+      "purpose": "Local document typesetting and PDF compilation; Linux without Homebrew uses the official locked Cargo build when the CLI is missing"
+    },
+    {
+      "id": "tinymist",
+      "scope": "optional",
+      "platforms": ["Darwin", "Linux", "Windows"],
+      "command": "tinymist",
+      "args": ["--version"],
+      "install": {
+        "manager": "cargo",
+        "platforms": ["Linux"],
+        "arguments": ["install", "--locked", "tinymist-cli"]
+      },
+      "purpose": "Optional standalone Typst language server; the required Tinymist VS Code extension manages its own server"
+    },
     {
       "id": "bash",
       "scope": "required",
@@ -22,6 +98,7 @@
     },
     {
       "id": "dotnet",
+      "mslToolchain": "dotnet",
       "scope": "required",
       "platforms": ["Darwin", "Linux", "Windows"],
       "command": "dotnet",
@@ -30,6 +107,7 @@
     },
     {
       "id": "go",
+      "mslToolchain": "go",
       "scope": "required",
       "platforms": ["Darwin", "Linux", "Windows"],
       "command": "go",
@@ -38,6 +116,7 @@
     },
     {
       "id": "java",
+      "mslToolchain": "java",
       "scope": "required",
       "platforms": ["Darwin", "Linux", "Windows"],
       "command": "java",
@@ -46,6 +125,7 @@
     },
     {
       "id": "javac",
+      "mslToolchain": "java",
       "scope": "required",
       "platforms": ["Darwin", "Linux", "Windows"],
       "command": "javac",
@@ -54,6 +134,7 @@
     },
     {
       "id": "python3",
+      "mslToolchain": "python",
       "scope": "required",
       "platforms": ["Darwin", "Linux"],
       "command": "python3",
@@ -62,6 +143,7 @@
     },
     {
       "id": "python",
+      "mslToolchain": "python",
       "scope": "required",
       "platforms": ["Windows"],
       "command": "python",
@@ -70,6 +152,7 @@
     },
     {
       "id": "cargo",
+      "mslToolchain": "rust",
       "scope": "required",
       "platforms": ["Darwin", "Linux", "Windows"],
       "command": "cargo",
@@ -78,6 +161,7 @@
     },
     {
       "id": "rustc",
+      "mslToolchain": "rust",
       "scope": "required",
       "platforms": ["Darwin", "Linux", "Windows"],
       "command": "rustc",
@@ -86,6 +170,7 @@
     },
     {
       "id": "swift",
+      "mslToolchain": "swift",
       "scope": "required",
       "platforms": ["Darwin", "Linux", "Windows"],
       "command": "swift",
@@ -94,7 +179,7 @@
         "manager": "swiftly",
         "linux": {
           "swiftlyVersion": "1.1.2",
-          "swiftVersion": "6.3.3",
+          "swiftVersion": "latest-stable",
           "profiles": {
             "ubuntu:22.04": "ubuntu2204",
             "ubuntu:24.04": "ubuntu2404"
@@ -111,7 +196,7 @@
           }
         }
       },
-      "purpose": "Swift MSL CLI toolchain; macOS uses the Apple toolchain, Windows uses WinGet Swift.Toolchain, and supported Ubuntu Linux profiles use the pinned official Swiftly contract"
+      "purpose": "Latest stable Swift CLI through Swiftly on macOS/Linux; Windows uses WinGet Swift.Toolchain. Apple development tools remain separate."
     },
     {
       "id": "syft",
@@ -136,10 +221,8 @@
       "command": "specify",
       "args": ["--version"],
       "install": {
-        "manager": "uv-git",
-        "package": "specify-cli",
-        "repository": "https://github.com/github/spec-kit.git",
-        "revision": "f3d6fb762c8e6718bf2dedcba38cc5dc93f65645"
+        "manager": "uv",
+        "arguments": ["tool", "install", "specify-cli", "--from", "git+https://github.com/github/spec-kit.git@464d57fe30c72e9a88d279cc49834539ec989c03"]
       },
       "purpose": "GitHub Spec Kit CLI for specification-driven development"
     },

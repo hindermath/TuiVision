@@ -39,6 +39,28 @@ function Save-Json([object]$Value, [string]$Path) {
     $Value | ConvertTo-Json -Depth 30 | Set-Content -LiteralPath $Path -Encoding utf8NoBOM
 }
 
+function Resolve-FieldPhysicalPath([string]$Path) {
+    $full = [IO.Path]::GetFullPath($Path)
+    $root = [IO.Path]::GetPathRoot($full)
+    $current = $root
+    foreach ($segment in $full.Substring($root.Length).Split([char[]]@('/', '\'), [StringSplitOptions]::RemoveEmptyEntries)) {
+        $current = [IO.Path]::Combine($current, $segment)
+        $entry = Get-Item -LiteralPath $current -Force -ErrorAction Stop
+        if (($entry.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0) {
+            $resolved = $entry.ResolveLinkTarget($true)
+            if ($null -eq $resolved) { throw "Cannot resolve field symlink: $current" }
+            $current = $resolved.FullName
+        }
+    }
+    return [IO.Path]::GetFullPath($current)
+}
+
+function Assert-FieldContained([string]$Path, [string]$Root, [string]$Label) {
+    $prefix = $Root.TrimEnd([IO.Path]::DirectorySeparatorChar) + [IO.Path]::DirectorySeparatorChar
+    $comparison = if ($IsWindows) { [StringComparison]::OrdinalIgnoreCase } else { [StringComparison]::Ordinal }
+    if (-not $Path.StartsWith($prefix, $comparison)) { throw "$Label verlaesst den erlaubten Bereich: $Path" }
+}
+
 function Invoke-FieldValidation([int]$ExpectedExit, [string]$ExpectedText) {
     $Output = & pwsh -NoProfile -File $Coordinator -Action Validate `
         -Manifest (Join-Path $TempRoot 'campaign.json') `
@@ -61,9 +83,16 @@ try {
         $RunnerProfile.Value | Add-Member -NotePropertyName agentFamily -NotePropertyValue 'codex' -Force
     }
     $RuntimeWorktrees = Join-Path (Split-Path -Parent (Split-Path -Parent $EvidenceRoot)) 'runtime/worktrees'
+    $RuntimePhysical = Resolve-FieldPhysicalPath $RuntimeWorktrees
     foreach ($Worker in $Campaign.workers) {
-        $Language = ([string]$Worker.workerId -split '-unit-')[0]
+        $workerId = [string]$Worker.workerId
+        if ($workerId -cnotmatch '^([A-Za-z0-9][A-Za-z0-9-]*)-unit-[0-9]{2}$') {
+            throw "Unsicherer workerId im Feldbeleg: $workerId"
+        }
+        $Language = $Matches[1]
         $Worker.repository = Join-Path $RuntimeWorktrees "${Language}-unit-03"
+        $repositoryPhysical = Resolve-FieldPhysicalPath ([string]$Worker.repository)
+        Assert-FieldContained $repositoryPhysical $RuntimePhysical 'Worker-Repository'
     }
 
     $Targets = [ordered]@{}
@@ -71,10 +100,21 @@ try {
     $WorkerCoverage = @()
     $Edges = @()
     foreach ($Worker in $Campaign.workers) {
-        $FeatureInputPath = Join-Path ([string]$Worker.repository) ([string]$Worker.featureInput)
-        $TargetPath = "review-targets/$([string]$Worker.featureInput)"
+        $featureInput = [string]$Worker.featureInput
+        if ([string]::IsNullOrWhiteSpace($featureInput) -or [IO.Path]::IsPathRooted($featureInput) -or
+            $featureInput -match '\\' -or @($featureInput -split '/' | Where-Object { $_ -in @('.', '..') }).Count) {
+            throw "Unsicherer featureInput im Feldbeleg: $featureInput"
+        }
+        $repositoryPhysical = Resolve-FieldPhysicalPath ([string]$Worker.repository)
+        $FeatureInputPath = Resolve-FieldPhysicalPath (Join-Path $repositoryPhysical $featureInput)
+        Assert-FieldContained $FeatureInputPath $repositoryPhysical 'featureInput'
+        if (-not [IO.File]::Exists($FeatureInputPath)) { throw "featureInput fehlt: $FeatureInputPath" }
+        $TargetPath = "review-targets/$featureInput"
+        $destination = [IO.Path]::GetFullPath((Join-Path $TempRoot $TargetPath))
+        Assert-FieldContained $destination ([IO.Path]::GetFullPath($TempRoot)) 'Review-Ziel'
         if (-not $Targets.Contains($TargetPath)) {
-            Copy-Item -LiteralPath $FeatureInputPath -Destination (Join-Path $TempRoot $TargetPath)
+            [void](New-Item -ItemType Directory -Path (Split-Path -Parent $destination) -Force)
+            Copy-Item -LiteralPath $FeatureInputPath -Destination $destination
             $Targets[$TargetPath] = [ordered]@{
                 path = $TargetPath; role = 'UniqueCampaignIntake'
                 normalizedSha256 = Get-NormalizedHash $FeatureInputPath; gitBlob = 'N/A'

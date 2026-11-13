@@ -113,3 +113,15 @@ $ErrorActionPreference = 'Stop'
 - Validate parameters with `[ValidateSet]`, `[ValidateRange]`,
   `[ValidatePattern]`, or `[ValidateNotNullOrEmpty]`.
 - Never use `Invoke-Expression` on untrusted input.
+
+## Nutzungshilfe / Reader help
+
+DE: Dieselbe fachliche Funktion auf benannten Plattformen prüfen, ohne nicht ausgeführte Tests zu behaupten. Diese Vorlage ist ein auszufüllender Starter, kein bestandener Nachweis. Vorhandene passende Evidence weiterverwenden.
+Die bestehenden technischen Feldnamen und Statuswerte nicht übersetzen oder
+nur zum Bestehen eines Tests verändern. Einführung, Begriffe, Beispiel,
+Ergebnis und Fehlerhilfe stehen im [deutschen Leserpfad](https://github.com/hindermath/spec-kit-preset-cross-platform-governance/blob/main/docs/user-guide.md).
+
+EN: Check the same functional behaviour on named platforms without claiming unperformed tests. This template is a starter to complete, not passed evidence. Reuse suitable existing evidence.
+Keep technical field names and states unchanged; never alter them just to pass.
+See the [English reader path](https://github.com/hindermath/spec-kit-preset-cross-platform-governance/blob/main/docs/user-guide.EN.md)
+for introduction, terms, example, result and troubleshooting.

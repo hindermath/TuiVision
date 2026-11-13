@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "presetId": "model-routing-governance",
+  "packageVersion": "0.2.2",
+  "historicalPublicationVersion": "0.1.6",
+  "previousReleaseVersion": "0.2.1",
+  "candidate_status": "Prepared",
+  "release_status": "NotEstablishedAtPreparation",
+  "runtimeChanged": true,
+  "generatorSchemaChanged": false,
+  "changeKind": "HarnessResultTransport",
+  "authorizationReference": "User-authorized release and named-repository installation; PR review found that new harnesses lacked the autonomous runner result-file handoff. The adapter persists validated JSON-only stdout for all new harnesses, including read-only roles.",
+  "preparedAt": "2026-11-03T21:05:00+00:00",
+  "sourceCommit": "6cf0c98d80f3f68d73ac8148dbbb4d29fe614f95",
+  "externalPublicationEvidence": "https://github.com/hindermath/spec-kit-preset-model-routing-governance/releases/tag/v0.2.2"
+}

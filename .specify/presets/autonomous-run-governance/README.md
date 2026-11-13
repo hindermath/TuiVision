@@ -1,9 +1,67 @@
 # Autonomous Run Governance
 
+[Git-Dateiinventar / Git path inventory](docs/git-path-inventory.md)
+
+[Model-Routing-Ausfuehrung / Model-routing execution](docs/model-routing-execution.md)
+
+<!-- current-package: 0.4.12 -->
+
+Paketkennung: **v0.4.12**. [Vorbereitung und Veröffentlichungsgrenze](docs/release-0.4.12-validation.md). Die Release-Seite und der externe Archivnachweis belegen die Veröffentlichung, nicht dieser Vorbereitungsstand. Frühere Versionsnachweise unten bleiben historisch.
+
+<span lang="en">Package identity: v0.4.12. The release page and external archive evidence prove publication, not this preparation snapshot. Earlier version records below remain historical.</span>
+
+[Release-Abschluss und Verbesserungsprofil / Publication closeout and improvement profile](docs/release-0.4.6-validation.md).
+
+Der unten verlinkte Basispaket-Nachweis bleibt historisch; dieses Paket nimmt die Quellenkorrekturen als neue Version auf.
+
+<span lang="en">The linked base-package evidence remains historical; this package includes the source corrections as a new version.</span>
+
+**Leserpfad / Reader path:** [Deutsch: Einstieg, Begriffe und Fehlerhilfe](docs/user-guide.md) · [English: start, terms and troubleshooting](docs/user-guide.EN.md).
+
+Historisches Basispaket **v0.4.6**. Der [Release-Stand](https://github.com/hindermath/spec-kit-preset-autonomous-run-governance/releases) wird getrennt geprüft; ein Commit auf main ist noch keine Veröffentlichung oder Installation.
+
+*Historical base package v0.4.6. The release page records actual publication separately; a main-branch commit is not publication or installation.*
+
+
+Patch **0.4.6** liefert die verbesserte zweisprachige Einstiegs- und
+Kompositionsdokumentation. Verhalten und Berechtigungsgrenzen bleiben erhalten.
+[Release-Nachweis / Release record](docs/release-0.4.6-validation.md).
+
+*Patch 0.4.6 packages the improved bilingual getting-started and composition
+guide. Behavior and authority boundaries remain unchanged.*
+
 Permission-bounded, evidence-first governance for one explicitly delegated
 autonomous Spec Kit run.
 
-Version `0.4.4` | Priority `70` | Spec Kit `>=0.8.3`
+Version `0.4.10` | Priority `70` | Spec Kit `>=0.8.3`
+
+Version 0.4.10 prueft Git-Dateiinventare NUL-sicher. Dadurch bleiben auch
+versionierte Pfade mit Zeilenumbruechen oder anderen ungewoehnlichen Zeichen
+Teil der Evidence-Pruefung, statt unbemerkt aus dem Inventar zu fallen.
+
+*Version 0.4.10 parses Git path inventories with NUL delimiters. Tracked paths
+containing newlines or other unusual characters therefore remain part of the
+evidence check instead of silently disappearing from the inventory.*
+
+Version 0.4.9 bindet den normalen Phasenrunner an die rollenbezogene
+Ausfuehrungspolicy aus Model Routing Governance v0.2.4. Lesende Fast-Profile
+behalten ihre Schreibsperre; native agy-Ergebnisse speichert der Host nach
+strikter JSON-Pruefung.
+
+*Version 0.4.9 binds the normal phase runner to the role-aware execution policy
+from Model Routing Governance v0.2.4. Read-only fast profiles retain their write
+boundary; the host persists native agy results after strict JSON validation.*
+
+Version 0.4.8 erhaelt historische Leerzeilen am Dateiende nur mit derselben
+ausdruecklichen Pfad-/Rohhashbindung wie historische Leerzeichen. Im Staged-
+Modus gelten weiterhin die exakten Indexbytes und nur neu hinzugefuegte
+Dateien. Andere EOF-Befunde, Hashdrift, Konfliktmarker und unnoetige Ausnahmen
+bleiben blockierend. Keine Archivdatei wird umgeschrieben.
+
+*Version 0.4.8 preserves historical blank-at-EOF only under the same explicit
+path/raw-hash approval as trailing spaces. Staged mode still requires exact
+index bytes and newly added files. Other EOF errors, hash drift, conflict markers
+and unnecessary exemptions remain blocking. No archive file is rewritten.*
 
 Version 0.4.4 prueft im Staged-Modus Pfade, regulaere Dateitypen und Bytes direkt
 im Git-Index. Umbenennungen werden als geloeschter Quellpfad plus hinzugefuegter
@@ -62,6 +120,39 @@ silently assume Spec Kit experience.
 
 ## Deutsch
 
+### Vorlagen und Komposition / Templates and Composition
+
+Das [Manifest](preset.yml) liefert eigene autonome Commands, Run-State- und
+Readiness-Vorlagen und ergänzt Constitution/Spec/Plan/Tasks per `append`.
+Installation füllt keinen Run-State aus und startet keinen Lauf. Nenne
+Feature, Scope, aktuelle Autorität und genau einen Delivery-Modus; Vorlagen
+sind Hilfsmittel, keine abgeschlossenen Gates.
+
+*The [manifest](preset.yml) provides autonomous commands, state/readiness
+templates and append contributions to constitution/spec/plan/tasks.
+Installation fills no state and starts no run. Name feature, scope, current
+authority and one delivery mode. Templates are aids, not passed gates.*
+
+Feature-Nummern und Aufrufe unten sind Beispiele. Verwende das tatsächlich
+freigegebene Feature und die Syntax deiner Integration. Bei fehlendem Profil,
+veralteter Evidence oder unklarer Autorität zuerst den Blocker behandeln.
+Status/Readiness ist der sichere Einstieg, nicht ein ungeprüfter Start.
+
+*Feature numbers/invocations below are examples. Use the authorized feature
+and your integration's syntax. Resolve missing profiles, stale evidence or
+unclear authority first. Start with status/readiness, not an unchecked run.*
+
+Kleinere Prioritätszahlen haben höhere Auflösungspriorität. `append` ergänzt,
+`wrap` verschachtelt; `replace` oder Overrides können gleichnamige Beiträge
+verdrängen. Eigene Reihenfolgen separat prüfen. Priorität ersetzt keine
+Phasen-Gates, stärkste deklarierte Routing-Rolle oder Remote-Autorität.
+Prüfe `specify preset resolve plan-template` und erzeugte Agentenflächen.
+
+*Lower numbers mean higher precedence. Append adds, wrap nests; replace or
+overrides can hide same-name contributions. Check custom orderings separately.
+Priority replaces neither phase gates, strongest-role routing nor remote
+authority. Inspect plan-template resolution and generated agent surfaces.*
+
 ### Wofuer ist dieses Preset gedacht?
 
 Dieses Preset fuehrt **einen** Spec-Kit-Feature-Lauf kontrolliert von der
@@ -119,9 +210,7 @@ have succeeded.
 1. Preset installieren:
 
    ```bash
-   specify preset add \
-     --from https://github.com/hindermath/spec-kit-preset-autonomous-run-governance/archive/refs/tags/v0.4.4.zip \
-     --priority 70
+   specify preset add --from https://github.com/hindermath/spec-kit-preset-autonomous-run-governance/archive/refs/tags/v0.4.12.zip --priority 70
    ```
 
 2. Installation pruefen:
@@ -194,9 +283,7 @@ bypass, secret, or provider-administration authority.
 1. Install the preset:
 
    ```bash
-   specify preset add \
-     --from https://github.com/hindermath/spec-kit-preset-autonomous-run-governance/archive/refs/tags/v0.4.4.zip \
-     --priority 70
+   specify preset add --from https://github.com/hindermath/spec-kit-preset-autonomous-run-governance/archive/refs/tags/v0.4.12.zip --priority 70
    ```
 
 2. Verify the installation:

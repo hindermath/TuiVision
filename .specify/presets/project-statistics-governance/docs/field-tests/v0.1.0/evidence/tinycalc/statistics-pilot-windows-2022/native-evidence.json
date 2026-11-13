@@ -1,0 +1,60 @@
+{
+  "workflowCommit": "712d125c0ebfdcef59cbf1584e7e2884469f5f0e",
+  "pilotCommit": "712d125c0ebfdcef59cbf1584e7e2884469f5f0e",
+  "measurementCommit": "fac1335c592b40c82a055acad7d111dc5c9f2af9",
+  "runner": "windows-2022",
+  "platform": "Microsoft Windows 10.0.20348",
+  "powerShell": "7.6.5",
+  "suiteExitCode": 0,
+  "assertions": 61,
+  "suiteCommand": "pwsh -NoProfile -File .specify/presets/project-statistics-governance/tests/test-project-statistics.ps1",
+  "statusCommands": [
+    "bash project-statistics.sh status --repo PILOT --config docs/project-statistics-pilot/config.json --json",
+    "pwsh -NoProfile -File project-statistics.ps1 -Action Status -Repo PILOT -Config docs/project-statistics-pilot/config.json -Json"
+  ],
+  "suiteSha256": "6c3f215e53b7724f6c37d8422d10d51043c3cc2c4afb0d0af0cd73757b4e7d1a",
+  "suiteLogSha256": "8a7dceae88c68f717d7f7b1185381433fa29eb774b96e8a65cb657fd1dee2e0c",
+  "workflowSha256": "87a12fe81cb4d11c1e12bddf45febc76e93b382c8e371231f175905111611c2d",
+  "payloadHashes": {
+    "docs/project-statistics-pilot/config.json": "34e979ce0fb394a2ef10099cd193ef9e7221f43bb072b124cbafcf6cfc531e3f",
+    "docs/project-statistics-pilot/report.md": "fac066eaff4b280eb534ef429f6b378cff66e33886d7df0063ed79cfef1048c7",
+    "docs/project-statistics-pilot/snapshot.json": "32b0a7c816c737a6d1767b397c715bfd041e6bf5ab11ffcd30062b1965229806",
+    "docs/project-statistics-pilot/README.md": "8e2194bb694e2eb90089b217167090058ef5fe831b18bb65d9be8bbc8d108a03",
+    "docs/project-statistics.md": "cc88718f472529bc8572c9d6ea51c31cb8dc461d7a9c444c4ad371772f5e77b8",
+    "docs/project-statistics.config.json": "55e2dcae65671f20cb2ab9f3fa01ae116e75f7ed45d9861351c2576e72f6dcb8"
+  },
+  "decisions": [
+    {
+      "variant": "LF-no-BOM",
+      "shell": "PowerShell",
+      "exitCode": 0,
+      "decisionSha256": "d5780b391d0514f7d52411c4e46007750c3e45eeaaf104e71ef826f3fd5074fe",
+      "checkedContentChanges": 0
+    },
+    {
+      "variant": "CRLF-no-BOM",
+      "shell": "PowerShell",
+      "exitCode": 0,
+      "decisionSha256": "d5780b391d0514f7d52411c4e46007750c3e45eeaaf104e71ef826f3fd5074fe",
+      "checkedContentChanges": 0
+    },
+    {
+      "variant": "LF-BOM",
+      "shell": "PowerShell",
+      "exitCode": 0,
+      "decisionSha256": "d5780b391d0514f7d52411c4e46007750c3e45eeaaf104e71ef826f3fd5074fe",
+      "checkedContentChanges": 0
+    },
+    {
+      "variant": "CRLF-BOM",
+      "shell": "PowerShell",
+      "exitCode": 0,
+      "decisionSha256": "d5780b391d0514f7d52411c4e46007750c3e45eeaaf104e71ef826f3fd5074fe",
+      "checkedContentChanges": 0
+    }
+  ],
+  "rawBlobChecks": 6,
+  "sourceAndRestoredPilotContentChanges": 0,
+  "fixtureWritesExpected": true,
+  "fullIoTrace": false
+}

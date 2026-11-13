@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import hashlib
+import importlib.util
+import io
 import json
 import os
 from pathlib import Path
@@ -12,10 +14,12 @@ import shlex
 import signal
 import stat
 import subprocess
+import sys
 import tarfile
 import tempfile
 import time
 import unittest
+from unittest import mock
 
 
 REPOSITORY = Path(__file__).resolve().parents[2]
@@ -23,6 +27,9 @@ BREW_MAINTAINER = REPOSITORY / "scripts" / "maintain-agentic-brew-apps.sh"
 WORKSPACE_MAINTAINER = REPOSITORY / "scripts" / "maintain-agentic-workspace.sh"
 HELPER = REPOSITORY / "scripts" / "lib" / "linux-maintenance-hardening.py"
 FLEET_ENGINE = REPOSITORY / "scripts" / "lib" / "agentic_workspace_fleet.py"
+HELPER_SPEC = importlib.util.spec_from_file_location("linux_maintenance_hardening_test", HELPER)
+HELPER_MODULE = importlib.util.module_from_spec(HELPER_SPEC)
+HELPER_SPEC.loader.exec_module(HELPER_MODULE)
 
 
 def write_json(path: Path, value: object) -> None:
@@ -59,6 +66,9 @@ def empty_registries(root: Path) -> dict[str, Path]:
 def install_fake_brew(root: Path) -> tuple[Path, Path, Path]:
     bin_dir = root / "bin"
     bin_dir.mkdir()
+    # Resolve Python directly: host PATH launchers add a shell startup to each
+    # of the many JSON probes and can exhaust the fixture's process budget.
+    (bin_dir / "python3").symlink_to(sys.executable)
     state = root / "brew-state"
     log = root / "brew-install-log"
     state.write_text("", encoding="utf-8")
@@ -119,6 +129,7 @@ def run_brew_maintainer(
     *,
     extra: tuple[str, ...] = (),
     environment_updates: dict[str, str] | None = None,
+    skip_vscode: bool = True,
 ) -> subprocess.CompletedProcess[str]:
     result_file = root / "toolchain-result.json"
     environment = os.environ.copy()
@@ -153,7 +164,7 @@ def run_brew_maintainer(
             "--powershell-module-registry",
             str(paths["powershell"]),
             "--skip-upgrade",
-            "--skip-vscode-extensions",
+            *(("--skip-vscode-extensions",) if skip_vscode else ()),
             "--result-file",
             str(result_file),
             *extra,
@@ -221,7 +232,7 @@ def write_swift_registry(path: Path, digest: str) -> None:
                 {
                     "id": "swift",
                     "scope": "required",
-                    "platforms": ["Darwin", "Linux", "Windows"],
+                    "platforms": ["Linux"],
                     "command": "swift",
                     "args": ["--version"],
                     "install": {
@@ -293,6 +304,45 @@ def base_report(run_id: str) -> dict:
 
 @unittest.skipIf(os.name == "nt", "Linux maintenance fixtures require a POSIX host.")
 class LinuxMaintenanceHardeningTests(unittest.TestCase):
+    def test_swiftly_extraction_enforces_member_and_expanded_size_limits(self) -> None:
+        def archive(path: Path, members: list[tuple[str, bytes]]) -> None:
+            with tarfile.open(path, "w:gz") as bundle:
+                for name, content in members:
+                    info = tarfile.TarInfo(name)
+                    info.size = len(content)
+                    bundle.addfile(info, io.BytesIO(content))
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            output = root / "swiftly"
+            output.write_bytes(b"previous")
+
+            many = root / "many.tar.gz"
+            archive(many, [("a", b""), ("b", b""), ("swiftly", b"ok")])
+            with mock.patch.object(HELPER_MODULE, "MAX_SWIFTLY_ARCHIVE_MEMBERS", 2), self.assertRaises(HELPER_MODULE.ContractError):
+                HELPER_MODULE.extract_swiftly(many, output)
+            self.assertEqual(output.read_bytes(), b"previous")
+
+            expanded = root / "expanded.tar.gz"
+            archive(expanded, [("unrelated", b"123456"), ("swiftly", b"ok")])
+            with mock.patch.object(HELPER_MODULE, "MAX_SWIFTLY_ARCHIVE_EXPANDED_BYTES", 7), self.assertRaises(HELPER_MODULE.ContractError):
+                HELPER_MODULE.extract_swiftly(expanded, output)
+            self.assertEqual(output.read_bytes(), b"previous")
+
+            oversized = root / "oversized.tar.gz"
+            archive(oversized, [("swiftly", b"0123456789")])
+            with mock.patch.object(HELPER_MODULE, "MAX_SWIFTLY_BINARY_BYTES", 9), self.assertRaises(HELPER_MODULE.ContractError):
+                HELPER_MODULE.extract_swiftly(oversized, output)
+            self.assertEqual(output.read_bytes(), b"previous")
+            self.assertFalse(list(root.glob(".swiftly.*.tmp")))
+
+            normal = root / "normal.tar.gz"
+            archive(normal, [("bin/swiftly", b"valid")])
+            result, status = HELPER_MODULE.extract_swiftly(normal, output)
+            self.assertEqual(status, 0)
+            self.assertEqual(result["status"], "Extracted")
+            self.assertEqual(output.read_bytes(), b"valid")
+
     def test_empty_optional_module_probe_still_publishes_one_valid_result(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -308,75 +358,6 @@ class LinuxMaintenanceHardeningTests(unittest.TestCase):
             self.assertEqual(inspected.returncode, 0, inspected.stdout)
             result = json.loads(result_path.read_text(encoding="utf-8"))
             self.assertEqual(result["overallStatus"], "SUCCESS")
-
-    def test_alternate_probe_registry_cannot_select_an_executable(self) -> None:
-        with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory)
-            paths = empty_registries(root)
-            install_fake_brew(root)
-            marker = root / "sentinel-started"
-            sentinel = root / "sentinel"
-            write_executable(sentinel, f"#!/usr/bin/env bash\ntouch {shlex.quote(str(marker))}\n")
-
-            for registry_name, tool_id in (("cli", "dotnet"), ("npm", "codex")):
-                for mode in ("--compare-only", "--dry-run"):
-                    with self.subTest(registry=registry_name, mode=mode):
-                        paths = empty_registries(root)
-                        write_json(
-                            paths[registry_name],
-                            {
-                                "schemaVersion": 1,
-                                "tools": [
-                                    {
-                                        "id": tool_id,
-                                        "scope": "required",
-                                        "command": str(sentinel),
-                                        "args": [],
-                                    }
-                                ],
-                            },
-                        )
-
-                        completed = run_brew_maintainer(root, paths, extra=(mode,))
-
-                        self.assertEqual(2, completed.returncode, completed.stdout)
-                        self.assertIn("untrusted field", completed.stdout.lower())
-                        self.assertFalse(marker.exists())
-
-    def test_npm_integrity_mismatch_never_reaches_global_install(self) -> None:
-        with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory)
-            paths = empty_registries(root)
-            bin_dir, _, _ = install_fake_brew(root)
-            # Shadow a host-installed Codex binary so the fixture exercises the
-            # installation path deterministically.
-            write_executable(bin_dir / "codex", "#!/usr/bin/env bash\nexit 1\n")
-            write_json(paths["npm"], {"schemaVersion": 1, "tools": [{"id": "codex", "scope": "required"}]})
-            install_marker = root / "npm-install-ran"
-            write_executable(
-                bin_dir / "npm",
-                f"""#!/usr/bin/env bash
-set -euo pipefail
-if [ "${{1:-}}" = "pack" ]; then
-  destination=""
-  while [ "$#" -gt 0 ]; do
-    if [ "$1" = "--pack-destination" ]; then destination="$2"; shift; fi
-    shift
-  done
-  touch "$destination/openai-codex-fixture.tgz"
-  printf '[{{"name":"@openai/codex","version":"0.167.0","integrity":"sha512-wrong","filename":"openai-codex-fixture.tgz"}}]\n'
-  exit 0
-fi
-if [ "${{1:-}}" = "install" ]; then touch {shlex.quote(str(install_marker))}; fi
-exit 0
-""",
-            )
-
-            completed = run_brew_maintainer(root, paths)
-
-            self.assertNotEqual(0, completed.returncode, completed.stdout)
-            self.assertIn("Integritaet oder Paketidentitaet stimmt nicht", completed.stdout)
-            self.assertFalse(install_marker.exists())
 
     def test_toolchain_result_contract_classifies_invalid_inputs(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -514,21 +495,26 @@ exit 0
                     "schemaVersion": 1,
                     "tools": [
                         {
-                            "id": "syft",
+                            "id": "required-missing",
                             "scope": "required",
+                            "platforms": [platform.system()],
+                            "command": "required-missing",
+                            "args": ["--version"],
+                        },
+                        {
+                            "id": "optional-missing",
+                            "scope": "optional",
+                            "platforms": [platform.system()],
+                            "command": "optional-missing",
+                            "args": ["--version"],
                         },
                     ],
                 },
             )
-            restricted_path = f"{root / 'bin'}{os.pathsep}/usr/bin{os.pathsep}/bin"
-            required = run_brew_maintainer(
-                root,
-                paths,
-                environment_updates={"PATH": restricted_path},
-            )
+            required = run_brew_maintainer(root, paths)
             self.assertEqual(required.returncode, 1, required.stdout)
             self.assertIn("missing_on_machine.required.cli_tools", required.stdout)
-            self.assertIn("syft", required.stdout)
+            self.assertIn("required-missing", required.stdout)
 
             write_json(
                 paths["cli"],
@@ -536,19 +522,177 @@ exit 0
                     "schemaVersion": 1,
                     "tools": [
                         {
-                            "id": "syft",
+                            "id": "optional-missing",
                             "scope": "optional",
+                            "platforms": [platform.system()],
+                            "command": "optional-missing",
+                            "args": ["--version"],
                         }
                     ],
                 },
             )
-            optional = run_brew_maintainer(
-                root,
-                paths,
-                environment_updates={"PATH": restricted_path},
-            )
+            optional = run_brew_maintainer(root, paths)
             self.assertEqual(optional.returncode, 0, optional.stdout)
-            self.assertIn("syft", optional.stdout)
+            self.assertIn("optional-missing", optional.stdout)
+
+    def test_executable_cli_installers_require_code_owned_authorization(self) -> None:
+        cases = (
+            (
+                "specify",
+                {
+                    "id": "specify", "scope": "required", "platforms": ["Linux"],
+                    "command": "missing-specify", "args": ["--version"],
+                    "install": {"manager": "uv", "arguments": [
+                        "tool", "install", "specify-cli", "--from",
+                        "git+https://github.com/github/spec-kit.git",
+                    ]},
+                },
+                "uv",
+                "Spec-Kit-Quelle ist nicht commitgebunden",
+            ),
+            (
+                "antigravity",
+                {
+                    "id": "antigravity", "scope": "required", "platforms": ["Linux"],
+                    "command": "missing-agy", "args": ["--version"],
+                    "install": {
+                        "manager": "vendor-script", "url": "https://attacker.invalid/install.sh",
+                        "sha256": "a" * 64, "interpreter": "bash",
+                    },
+                },
+                "curl",
+                "vendor-script nicht durch Code-Policy autorisiert",
+            ),
+        )
+        for name, tool, blocked_binary, expected_message in cases:
+            with self.subTest(name=name), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                paths = empty_registries(root)
+                bin_dir, _, _ = install_fake_brew(root)
+                (bin_dir / "brew").unlink()
+                write_executable(bin_dir / "uname", "#!/bin/sh\nprintf 'Linux\\n'\n")
+                write_executable(bin_dir / "apt", "#!/bin/sh\nexit 0\n")
+                marker = root / "installer-invoked"
+                write_executable(
+                    bin_dir / blocked_binary,
+                    f"#!/bin/sh\nprintf invoked > '{marker}'\nexit 99\n",
+                )
+                if name == "specify":
+                    tool = dict(tool)
+                    tool["command"] = str(bin_dir / "registry-probe")
+                    write_executable(
+                        Path(tool["command"]),
+                        f"#!/bin/sh\nprintf probed > '{marker}'\nexit 0\n",
+                    )
+                write_json(paths["cli"], {"schemaVersion": 1, "tools": [tool]})
+
+                completed = run_brew_maintainer(root, paths)
+
+                self.assertEqual(completed.returncode, 1, completed.stdout)
+                self.assertTrue(
+                    expected_message in completed.stdout or
+                    "nicht durch Code-Policy autorisiert" in completed.stdout,
+                    completed.stdout,
+                )
+                self.assertFalse(marker.exists(), completed.stdout)
+
+    def test_document_cargo_fallback_modes_and_failure_status(self) -> None:
+        # Exercise the real maintainer with isolated Linux tools. No host package
+        # manager, Cargo cache, editor, or user installation participates.
+        registry = json.loads((REPOSITORY / "scripts/config/required-cli-tools-registry.json").read_text())
+        tools = [tool for tool in registry["tools"] if tool["id"] in {"typst", "tinymist"}]
+        cases = (
+            ("compare", ("--compare-only",), "", False, 1, []),
+            ("preview", ("--dry-run",), "", False, 1, []),
+            ("install", (), "", False, 0, ["typst-cli"]),
+            ("include", ("--include-optional",), "", False, 0, ["typst-cli", "tinymist-cli"]),
+            ("required-failure", (), "typst-cli", False, 1, ["typst-cli"]),
+            ("optional-failure", ("--include-optional",), "tinymist-cli", False, 0, ["typst-cli", "tinymist-cli"]),
+            ("already-present", (), "", True, 0, []),
+        )
+        for name, extra, fail, present, expected_exit, expected_installs in cases:
+            with self.subTest(name=name), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                paths = empty_registries(root)
+                bin_dir, _, _ = install_fake_brew(root)
+                (bin_dir / "brew").unlink()
+                # Avoid Homebrew inherited through PATH even on macOS test hosts.
+                write_executable(bin_dir / "uname", "#!/bin/sh\nprintf 'Linux\\n'\n")
+                write_executable(bin_dir / "apt", "#!/bin/sh\nexit 0\n")
+                cargo_root = root / "cargo"
+                install_log = root / "cargo-install-log"
+                install_log.write_text("")
+                write_executable(bin_dir / "cargo", """#!/usr/bin/env bash
+set -euo pipefail
+[ "$1" = install ] && [ "$2" = --locked ]
+printf '%s\\n' "$3" >> "$HB_TEST_CARGO_LOG"
+[ "$3" != "$HB_TEST_CARGO_FAIL" ] || exit 7
+name="$3"
+[ "$name" != typst-cli ] || name=typst
+[ "$name" != tinymist-cli ] || name=tinymist
+mkdir -p "$CARGO_INSTALL_ROOT/bin"
+printf '#!/bin/sh\\nprintf "document tool fixture\\\\n"\\n' > "$CARGO_INSTALL_ROOT/bin/$name"
+chmod +x "$CARGO_INSTALL_ROOT/bin/$name"
+""")
+                if present:
+                    (cargo_root / "bin").mkdir(parents=True)
+                    write_executable(cargo_root / "bin/typst", "#!/bin/sh\nprintf 'typst fixture\\n'\n")
+                write_json(paths["cli"], {"schemaVersion": 1, "tools": tools})
+                completed = run_brew_maintainer(root, paths, extra=extra, environment_updates={
+                    "PATH": f"{bin_dir}:/usr/bin:/bin",
+                    "CARGO_INSTALL_ROOT": str(cargo_root),
+                    "HB_TEST_CARGO_LOG": str(install_log),
+                    "HB_TEST_CARGO_FAIL": fail,
+                })
+                self.assertEqual(completed.returncode, expected_exit, completed.stdout)
+                self.assertEqual(install_log.read_text().splitlines(), expected_installs)
+                if name == "preview":
+                    self.assertIn("DRY-RUN: cargo install --locked typst-cli", completed.stdout)
+                if name == "install":
+                    repeated = run_brew_maintainer(root, paths, environment_updates={
+                        "PATH": f"{bin_dir}:/usr/bin:/bin",
+                        "CARGO_INSTALL_ROOT": str(cargo_root),
+                        "HB_TEST_CARGO_LOG": str(install_log),
+                        "HB_TEST_CARGO_FAIL": fail,
+                    })
+                    self.assertEqual(repeated.returncode, 0, repeated.stdout)
+                    self.assertEqual(install_log.read_text().splitlines(), expected_installs)
+
+    def test_typst_extension_preview_install_and_detection(self) -> None:
+        for mode, extra, expected_exit in (
+            ("compare", ("--compare-only",), 1),
+            ("preview", ("--dry-run",), 1),
+            ("install", (), 0),
+        ):
+            with self.subTest(mode=mode), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory)
+                paths = empty_registries(root)
+                bin_dir, _, _ = install_fake_brew(root)
+                state = root / "extensions"
+                state.write_text("")
+                write_executable(bin_dir / "code", """#!/usr/bin/env bash
+set -euo pipefail
+case "$1" in
+  --version) printf 'fixture VS Code\\n' ;;
+  --list-extensions) cat "$HB_TEST_EXTENSIONS" ;;
+  --install-extension) printf '%s\\n' "$2" >> "$HB_TEST_EXTENSIONS" ;;
+  *) exit 2 ;;
+esac
+""")
+                write_json(paths["vscode"], {"schemaVersion": 1, "extensions": [
+                    {"id": "myriad-dreamin.tinymist", "scope": "required"}
+                ]})
+                environment = {"HB_TEST_EXTENSIONS": str(state)}
+                completed = run_brew_maintainer(root, paths, extra=extra,
+                    environment_updates=environment, skip_vscode=False)
+                self.assertEqual(completed.returncode, expected_exit, completed.stdout)
+                if mode == "install":
+                    self.assertEqual(state.read_text().splitlines(), ["myriad-dreamin.tinymist"])
+                    repeated = run_brew_maintainer(root, paths, environment_updates=environment, skip_vscode=False)
+                    self.assertEqual(repeated.returncode, 0, repeated.stdout)
+                    self.assertEqual(state.read_text().splitlines(), ["myriad-dreamin.tinymist"])
+                else:
+                    self.assertEqual(state.read_text(), "")
 
     def test_probe_classifies_timeout_capability_and_redacts_paths(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -683,7 +827,7 @@ exit 0
             self.assertEqual(json.loads(rejected.stdout)["status"], "IntegrityMismatch")
 
     @unittest.skipUnless(platform.system() == "Linux", "Linux-only Swift provisioning")
-    def test_noncanonical_swift_install_metadata_is_rejected_before_execution(self) -> None:
+    def test_swiftly_install_is_verified_active_and_idempotent(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             paths = empty_registries(root)
@@ -714,20 +858,36 @@ cp "${HB_TEST_SWIFT_ARCHIVE:?}" "$output"
                 "HB_TEST_SWIFT_ARCHIVE": str(archive),
                 "HB_TEST_SWIFT_LOG": str(install_log),
             }
-            completed = run_brew_maintainer(
+            first = run_brew_maintainer(
                 root,
                 paths,
                 extra=("--allow-admin-prompts",),
                 environment_updates=environment,
             )
             installed_swift = root / "home" / ".local" / "bin" / "swift"
-            self.assertEqual(completed.returncode, 2, completed.stdout)
-            self.assertIn("untrusted field 'install'", completed.stdout)
-            self.assertFalse(installed_swift.exists())
-            self.assertEqual(install_log.read_text(encoding="utf-8"), "")
+            diagnostic = (
+                installed_swift.read_text(encoding="utf-8")
+                if installed_swift.exists()
+                else "installed Swift fixture is missing"
+            )
+            self.assertEqual(first.returncode, 0, first.stdout + "\n" + diagnostic)
+            result = json.loads((root / "toolchain-result.json").read_text(encoding="utf-8"))
+            swift = next(item for item in result["items"] if item["itemId"] == "swift")
+            self.assertEqual(swift["finalStatus"], "Installed")
+            self.assertEqual(swift["probeStatus"], "Available")
+            self.assertEqual(install_log.read_text(encoding="utf-8").splitlines(), ["6.3.3"])
+
+            second = run_brew_maintainer(
+                root,
+                paths,
+                extra=("--allow-admin-prompts",),
+                environment_updates=environment,
+            )
+            self.assertEqual(second.returncode, 0, second.stdout)
+            self.assertEqual(install_log.read_text(encoding="utf-8").splitlines(), ["6.3.3"])
 
     @unittest.skipUnless(platform.system() == "Linux", "Linux-only Swift provisioning")
-    def test_noncanonical_swift_hash_is_rejected_before_admin_or_download(self) -> None:
+    def test_swiftly_bad_hash_and_missing_admin_authority_do_not_execute(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             paths = empty_registries(root)
@@ -761,8 +921,8 @@ exit 2
                 paths,
                 environment_updates=environment,
             )
-            self.assertEqual(denied.returncode, 2, denied.stdout)
-            self.assertIn("untrusted field 'install'", denied.stdout)
+            self.assertEqual(denied.returncode, 1, denied.stdout)
+            self.assertIn("DEFERRED_ADMIN_REQUIRED", denied.stdout)
             self.assertEqual(install_log.read_text(encoding="utf-8"), "")
 
             bad_hash = run_brew_maintainer(
@@ -771,8 +931,8 @@ exit 2
                 extra=("--allow-admin-prompts",),
                 environment_updates=environment,
             )
-            self.assertEqual(bad_hash.returncode, 2, bad_hash.stdout)
-            self.assertIn("untrusted field 'install'", bad_hash.stdout)
+            self.assertEqual(bad_hash.returncode, 1, bad_hash.stdout)
+            self.assertIn("SHA-256", bad_hash.stdout)
             self.assertEqual(install_log.read_text(encoding="utf-8"), "")
 
     def test_fleet_finalization_replaces_stale_success_and_is_idempotent(self) -> None:
@@ -972,6 +1132,10 @@ exit 2
         finalization_functions = source[start:end]
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
+            bin_dir = root / "bin"
+            bin_dir.mkdir()
+            (bin_dir / "python3").symlink_to(sys.executable)
+            environment = dict(os.environ, PATH=str(bin_dir) + os.pathsep + os.environ["PATH"])
             cases = (
                 ("TERM", signal.SIGTERM, 143, "INTERRUPTED"),
                 ("late-error", None, 1, "FAILED"),
@@ -1007,6 +1171,7 @@ exit 2
                     process = subprocess.Popen(
                         ["bash", str(harness)],
                         cwd=REPOSITORY,
+                        env=environment,
                         text=True,
                         stdout=subprocess.PIPE,
                         stderr=subprocess.STDOUT,

@@ -1,22 +1,102 @@
 # A11Y Governance Preset
 
-Version: `0.4.3`
-Status: published, standard governance preset
+<!-- current-package: 0.4.7 -->
+
+Paketkennung: **v0.4.7**. [Vorbereitung und Veröffentlichungsgrenze](docs/release-0.4.7-validation.md). Die Release-Seite und der externe Archivnachweis belegen die Veröffentlichung, nicht dieser Vorbereitungsstand. Frühere Versionsnachweise unten bleiben historisch.
+
+<span lang="en">Package identity: v0.4.7. The release page and external archive evidence prove publication, not this preparation snapshot. Earlier version records below remain historical.</span>
+
+[Release-Abschluss und Verbesserungsprofil / Publication closeout and improvement profile](docs/release-0.4.5-validation.md).
+
+Der unten verlinkte Basispaket-Nachweis bleibt historisch; dieses Paket nimmt die Quellenkorrekturen als neue Version auf.
+
+<span lang="en">The linked base-package evidence remains historical; this package includes the source corrections as a new version.</span>
+
+**Leserpfad / Reader path:** [Deutsch: Einstieg, Begriffe und Fehlerhilfe](docs/user-guide.md) · [English: start, terms and troubleshooting](docs/user-guide.EN.md).
+
+Historisches Basispaket **v0.4.5**. Der [Release-Stand](https://github.com/hindermath/spec-kit-preset-a11y-governance/releases) wird getrennt geprüft; ein Commit auf main ist noch keine Veröffentlichung oder Installation.
+
+*Historical base package v0.4.5. The release page records actual publication separately; a main-branch commit is not publication or installation.*
+
+
+Patch **0.4.5** liefert die verbesserte zweisprachige Einstiegs- und
+Kompositionsdokumentation. Verhalten und Berechtigungsgrenzen bleiben erhalten.
+[Release-Nachweis / Release record](docs/release-0.4.5-validation.md).
+
+*Patch 0.4.5 packages the improved bilingual getting-started and composition
+guide. Behavior and authority boundaries remain unchanged.*
+
+Version: `0.4.6`
+Status: Veröffentlichung über die Release-Seite prüfen / verify publication on the release page
 Priority: `40`
 Requires: Spec-Kit `>=0.8.0` (uses the `wrap` and `append` composition
 strategies introduced in `0.8.x`).
 
-Version `0.4.3` ergänzt einen portablen Zielgruppenvertrag: Das Projekt
+Version `0.4.2` ergänzt einen portablen Zielgruppenvertrag: Das Projekt
 deklariert Zielgruppe und Vorwissen. Lernmaterial erklärt Fach- und
 Spec-Kit-Begriffe beim ersten Auftreten und stellt Abhängigkeiten, Status,
 Entscheidungen und nächste Schritte immer auch als geordneten Text bereit.
 
-*Version `0.4.3` adds a portable audience contract: the project declares its
+*Version `0.4.2` adds a portable audience contract: the project declares its
 audience and assumed prior knowledge. Learning material explains domain and
 Spec Kit terms on first use and always provides dependencies, status,
 decisions, and next actions as ordered text.*
 
 ## Zweck / Purpose
+
+### Einstieg und Arbeitsweise / Getting Started and Workflow
+
+Nach Installation im initialisierten Zielprojekt bindet das
+[Manifest](preset.yml) `wrap`-Anweisungen für Specify/Plan/Tasks und
+`append`-Ergänzungen ihrer Dokumentvorlagen und Constitution ein. Es startet
+keinen Screenreader, Scanner oder Übersetzungsreview. Separate Starter und
+das Agent-Guidance-Addendum sind Hilfsmittel, keine automatisch ausgefüllten
+Nachweise oder Garantie der Übernahme in jede Agenten-Datei.
+
+*After installation in an initialized target project, the [manifest](preset.yml)
+integrates wrap instructions for Specify/Plan/Tasks and append contributions
+for their templates and constitution. It starts no screen reader, scanner or
+translation review. Separate starters and the agent-guidance addendum are
+aids, not completed evidence or guaranteed inclusion in every agent file.*
+
+Beispiel für einen CLI-Statusbefehl: Wähle `cli-a11y-review-template` und
+`bilingual-content-check-template`. Plane konkrete Prüfungen für Textausgabe,
+Tastatur-/Hilfsmittelnutzung, Sprache und verständliche Statusbezeichnungen;
+halte Ergebnisse etwa in `docs/accessibility/cli-status-review.md` fest.
+Specify benennt Zielgruppe und Anforderungen, Plan die Prüfmethoden, Tasks
+die verbleibenden Schritte und Nachweisdateien. Tests und fachliche Abnahme
+müssen tatsächlich erfolgen; Beispielpfade belegen keinen Erfolg.
+
+*For a CLI status command, select `cli-a11y-review-template` and
+`bilingual-content-check-template`. Plan text output, keyboard/assistive
+technology, language and clear status-label checks; record results, for
+example, in `docs/accessibility/cli-status-review.md`. Specify defines audience
+and requirements, Plan the methods, Tasks remaining steps and evidence files.
+Actual tests and acceptance are still necessary; example paths prove no pass.*
+
+Bestehende Evidence wiederverwenden und auf Aktualität prüfen. `Applicable`
+ist keine WCAG-Abnahme; `N/A` braucht Begründung und Trigger, `Open` Owner
+und Folgeaktion. Ein grüner technischer Check ersetzt keine Hilfsmittelprüfung.
+
+*Reuse existing evidence after checking freshness. Applicable is not WCAG
+acceptance; justify N/A and its trigger, assign an owner and follow-up to Open.
+A successful technical check does not replace assistive-technology testing.*
+
+Priorität ist keine zeitliche Testreihenfolge: kleinere Zahlen bedeuten höhere
+Auflösungspriorität. `append` ergänzt und `wrap` verschachtelt; gleichnamige
+`replace`-Beiträge oder Projekt-Overrides können Inhalte verdrängen. Eigene
+Reihenfolgen nicht als pauschal geprüft behandeln. Kontrolliere
+`specify preset resolve plan-template` und erzeugte Agentenflächen.
+
+*Priority is not a test schedule: lower numbers mean higher precedence.
+Append adds and wrap nests; same-name replace layers or project overrides may
+hide content. Custom orderings are not universally tested. Inspect
+plan-template resolution and generated agent surfaces.*
+
+Leserpfad / Reader path: [Installation](#installation--install) →
+[Evidenzvorlagen / Evidence Templates](#evidenzvorlagen--evidence-templates) →
+[Prüfung / Verification](#prüfung--verification) →
+[Fehlersuche / Troubleshooting](#fehlersuche--troubleshooting).
 
 Dieses Standard-Preset bringt Barrierefreiheit, DE-first/EN-second
 Auslieferung, CEFR-B2-Lesbarkeit und didaktische Inline-Kommentarprüfung in
@@ -43,15 +123,20 @@ Dieses Preset eignet sich, wenn:
 
 - ein Projekt nutzerseitige CLI-, Dokumentations-, HTML-, UI- oder
   Template-Artefakte erzeugt;
-- Lernende, Fachinformatiker*innen, KDM oder KITSM mit verständlichen
-  DE-first/EN-second Materialien arbeiten sollen;
+- Lernende aller vier IHK-IT-Berufe mit verständlichen DE-first/EN-second
+  Materialien arbeiten sollen: Fachinformatiker*innen aller vier Fachrichtungen,
+  IT-System-Elektroniker*innen, Kaufleute für Digitalisierungsmanagement
+  (KDM) und Kaufleute für IT-System-Management (KITSM);
 - WCAG 2.2 Level AA und CEFR B2 früh in Spec, Plan und Tasks sichtbar sein
   sollen;
 - nicht-triviale Logik didaktische Kommentare braucht, damit Wartung und
   Ausbildung nicht am Codeverständnis scheitern.
 
 *Use this preset for user-facing CLI, documentation, HTML, UI, or template
-artifacts; for DE-first/EN-second learning material; when WCAG 2.2 Level AA
+artifacts; for all four IHK IT occupations, including all four IT-specialist
+tracks, IT systems electronics technicians, digitalisation management and
+IT systems management specialists; for DE-first/EN-second learning material;
+when WCAG 2.2 Level AA
 and CEFR B2 should be visible early in specs, plans, and tasks; and when
 non-trivial logic needs didactic comments for maintainability and learning.*
 
@@ -98,9 +183,7 @@ location, and known target audiences, artifact types, and language level.*
 ### Veröffentlichter Tag / Published Tag
 
 ```bash
-specify preset add \
-  --from https://github.com/hindermath/spec-kit-preset-a11y-governance/archive/refs/tags/v0.4.3.zip \
-  --priority 40
+specify preset add --from https://github.com/hindermath/spec-kit-preset-a11y-governance/archive/refs/tags/v0.4.7.zip --priority 40
 specify preset info a11y-governance
 ```
 
@@ -115,20 +198,18 @@ specify preset info a11y-governance
 
 | Priority | Preset |
 |---:|---|
-| 10 | `security-governance` |
-| 20 | `architecture-governance` |
-| 30 | `isaqb-architecture-governance` |
-| 40 | `a11y-governance` |
-| 50 | `cross-platform-governance` |
-| 60 | `agent-parity-governance` |
+| 10 | [security-governance](https://github.com/hindermath/spec-kit-preset-security-governance) |
+| 20 | [architecture-governance](https://github.com/hindermath/spec-kit-preset-architecture-governance) |
+| 30 | [isaqb-architecture-governance](https://github.com/hindermath/spec-kit-preset-isaqb-architecture-governance) |
+| 40 | [a11y-governance](https://github.com/hindermath/spec-kit-preset-a11y-governance) |
+| 50 | [cross-platform-governance](https://github.com/hindermath/spec-kit-preset-cross-platform-governance) |
+| 60 | [agent-parity-governance](https://github.com/hindermath/spec-kit-preset-agent-parity-governance) |
 
-Dieses Preset liegt nach Security und Architektur, damit nutzerseitige
-Artefakte, Dokumentation, Templates und Lernmaterialien in der gleichen
-Spec-Kit-Komposition geprüft werden.
+Priorität 40 ordnet dieses Preset in die empfohlene Komposition mit Security
+und Architektur ein; sie startet keine zeitlich nachgelagerte Prüfung.
 
-*This preset runs after security and architecture so user-facing artifacts,
-documentation, templates, and learning material are checked in the same
-Spec-Kit composition.*
+*Priority 40 places accessibility alongside security and architecture in the
+recommended composition; it does not schedule or execute a later review.*
 
 ## Quellkapitel / Source Chapters
 
@@ -182,7 +263,7 @@ Default evidence location: `docs/accessibility/`.
 ```bash
 specify preset list
 specify preset info a11y-governance
-specify preset resolve
+specify preset resolve cli-a11y-review-template
 specify check
 ```
 

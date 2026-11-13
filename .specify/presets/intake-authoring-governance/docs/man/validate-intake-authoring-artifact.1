@@ -1,4 +1,4 @@
-.TH VALIDATE-INTAKE-AUTHORING-ARTIFACT 1 "July 2026" "intake-authoring-governance 0.3.4"
+.TH VALIDATE-INTAKE-AUTHORING-ARTIFACT 1 "September 2026" "intake-authoring-governance 0.3.5"
 .SH NAME
 validate-intake-authoring-artifact \- validate intake series, operations, and tombstones
 .SH SYNOPSIS
@@ -6,6 +6,9 @@ validate-intake-authoring-artifact \- validate intake series, operations, and to
 --artifact FILE [--repo PATH]
 .SH DESCRIPTION
 Validates one IntakeSeries, IntakeOperation, or IntakeTombstone JSON artifact.
+For a Completed Create/Update operation, the approved proposal must enumerate
+each published target with path, normalizedSha256, and receiptPath. The
+validator checks the published content and matching operation receipt.
 Series validation covers explicit approval, member hashes, order, roots,
 acyclic edges, coverage, and review handoff. Operation validation rejects
 partial publication. Tombstone validation proves removal of active paths and

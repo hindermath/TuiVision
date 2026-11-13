@@ -17,11 +17,21 @@ import argparse
 import os
 import sys
 import stat
-import uuid
 
 
 class ExecutionContextError(ValueError):
     """A missing or changed boundary blocks execution."""
+
+
+PROTECTED_WORKSPACE_ROOTS = {
+    "SecureCaseTrackerProjects",
+    "SecureOrderDeskProjects",
+    "SecureServiceHarvesterProjects",
+}
+
+OWNER_APPROVAL_TRUST_STATE_PENDING = "PendingOwnerApproval"
+OWNER_APPROVAL_TRUST_STATE_ACTIVE = "OwnerApproved"
+EXECUTION_CONTRACT_PATH = "scripts/config/maintenance-execution-contexts.json"
 
 
 def relative_path(value: str) -> pathlib.PurePosixPath:
@@ -34,13 +44,28 @@ def relative_path(value: str) -> pathlib.PurePosixPath:
 
 
 def validate_contract(data: dict, today: datetime.date | None = None, *, check_expiry: bool = True) -> dict:
-    expected = {"schemaVersion", "container", "user", "source", "approvalPath", "expiresOn", "mounts"}
-    if not isinstance(data, dict) or set(data) != expected or type(data["schemaVersion"]) is not int or data["schemaVersion"] != 1:
+    if isinstance(data, dict) and type(data.get("schemaVersion")) is int and data["schemaVersion"] == 2:
+        raise ExecutionContextError("Schema 2 muss explizit auf Schema 3 migriert werden / Schema 2 requires explicit migration to schema 3; no automatic approval")
+    expected = {
+        "schemaVersion", "container", "user", "source", "approvalPath",
+        "approvalSha256", "approvalBindingSha256", "approvedImage",
+        "approvedSourceSha256", "approvalTrustState", "expiresOn", "mounts",
+    }
+    if not isinstance(data, dict) or set(data) != expected or type(data["schemaVersion"]) is not int or data["schemaVersion"] != 3:
         raise ExecutionContextError("Invalid execution context contract")
     for key in ("container", "user"):
         if not isinstance(data[key], str) or not re.fullmatch(r"[a-zA-Z0-9][a-zA-Z0-9_.-]*", data[key]):
             raise ExecutionContextError(f"Invalid {key}")
     relative_path(data["approvalPath"])
+    for key in ("approvalSha256", "approvalBindingSha256", "approvedSourceSha256"):
+        if not isinstance(data[key], str) or not re.fullmatch(r"[0-9a-f]{64}", data[key]):
+            raise ExecutionContextError(f"Invalid {key}")
+    if data["approvalTrustState"] not in (
+        OWNER_APPROVAL_TRUST_STATE_PENDING, OWNER_APPROVAL_TRUST_STATE_ACTIVE,
+    ):
+        raise ExecutionContextError("Invalid owner approval trust state")
+    if not isinstance(data["approvedImage"], str) or not re.fullmatch(r"sha256:[0-9a-f]{64}", data["approvedImage"]):
+        raise ExecutionContextError("Invalid approved image")
     if not isinstance(data["expiresOn"], str) or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", data["expiresOn"]):
         raise ExecutionContextError("Invalid approval expiry")
     try:
@@ -70,13 +95,52 @@ def validate_contract(data: dict, today: datetime.date | None = None, *, check_e
     if not isinstance(data["source"], str) or not data["source"].startswith("/"):
         raise ExecutionContextError("Invalid source path")
     relative_path(data["source"][1:])
+    if data["approvalBindingSha256"] != approval_binding_sha256(data):
+        raise ExecutionContextError("Owner approval binding does not match the execution contract")
     return data
+
+
+def approval_binding_sha256(data: dict) -> str:
+    """Detect drift; owner identity is established by decision/review, not hashing."""
+    bound = {
+        key: data[key]
+        for key in (
+            "container", "user", "source", "approvalPath", "approvalSha256",
+            "approvedImage", "approvedSourceSha256", "approvalTrustState",
+            "expiresOn", "mounts",
+        )
+    }
+    return hashlib.sha256(
+        json.dumps(bound, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    ).hexdigest()
+
+
+def verify_owner_approval(
+    data: dict, approval: pathlib.Path, observed_image: str, source_sha256: str,
+) -> str:
+    """Check documented approval and exact scope, without claiming authentication."""
+    validate_contract(data)
+    if data["approvalTrustState"] != OWNER_APPROVAL_TRUST_STATE_ACTIVE:
+        raise ExecutionContextError("Owner-Freigabe fehlt / Explicit documented owner approval is pending")
+    if approval.resolve() != approval or not approval.is_file():
+        raise ExecutionContextError("Owner approval evidence missing or symlinked")
+    approval_sha256 = hashlib.sha256(approval.read_bytes()).hexdigest()
+    if approval_sha256 != data["approvalSha256"]:
+        raise ExecutionContextError("Owner approval evidence digest does not match the bounded contract")
+    normalized_image = observed_image
+    if re.fullmatch(r"[0-9a-f]{64}", normalized_image):
+        normalized_image = "sha256:" + normalized_image
+    if normalized_image != data["approvedImage"]:
+        raise ExecutionContextError("Sandbox image is not covered by the owner approval")
+    if source_sha256 != data["approvedSourceSha256"]:
+        raise ExecutionContextError("Paketdrift / Source package is not covered by the owner approval")
+    return approval_sha256
 
 
 # This small, fixed program runs *inside* Podman. Arguments are JSON, never
 # shell fragments. Resolve every path component there before touching Git.
 REMOTE_PROGRAM = r'''
-import hashlib, json, os, pathlib, re, subprocess, sys
+import json, pathlib, re, subprocess, sys
 p = json.load(sys.stdin)
 root = pathlib.Path(p["root"])
 repo = pathlib.Path(p["repository"])
@@ -87,66 +151,6 @@ if any(char in str(repo) for char in ("*", "\n", "\r")):
     raise SystemExit("Wildcard or control character in Git target")
 if (repo / ".git").is_symlink():
     raise SystemExit("Symlink Git directory rejected")
-
-def bounded_git(args):
-    # Geerbte Git-Konfiguration ist ausführbarer Zustand. Nur normale
-    # Prozessvariablen und die explizite Container-Vertrauensgrenze bleiben.
-    # Inherited Git configuration is executable state. Keep only ordinary
-    # process variables and the explicit container trust boundary.
-    environment = {key: value for key, value in os.environ.items() if not key.startswith("GIT_")}
-    environment.update({
-        "GIT_CONFIG_NOSYSTEM": "1",
-        "GIT_CONFIG_SYSTEM": "/dev/null",
-        "GIT_CONFIG_GLOBAL": "/dev/null",
-    })
-    inspection_base = ["git", "-c", "safe.directory=", "-c", "safe.directory=" + str(repo),
-                       "-C", str(repo)]
-    configured = subprocess.run(
-        [*inspection_base, "config", "--null", "--name-only", "--list"],
-        capture_output=True, text=True, env=environment,
-    )
-    if configured.returncode != 0:
-        raise SystemExit("Git configuration cannot be inspected")
-    command_config = re.compile(
-        r"(?:core\.(?:sshcommand|gitproxy|askpass|editor)|sequence\.editor|"
-        r"diff\.external|diff\..+\.(?:command|textconv)|filter\..+\.(?:clean|smudge|process)|"
-        r"merge\..+\.driver|credential(?:\..+)?\.helper|gpg\.(?:program|ssh\.program))",
-        re.IGNORECASE,
-    )
-    if any(command_config.fullmatch(key) for key in configured.stdout.split("\0") if key):
-        raise SystemExit("Executable Git configuration is not allowed in delegated repositories")
-    fsmonitor = subprocess.run(
-        [*inspection_base, "config", "--get", "core.fsmonitor"],
-        capture_output=True, text=True, env=environment,
-    )
-    if fsmonitor.returncode not in (0, 1):
-        raise SystemExit("Git fsmonitor configuration cannot be inspected")
-    if fsmonitor.returncode == 0 and fsmonitor.stdout.strip().casefold() not in ("true", "false"):
-        raise SystemExit("Executable Git configuration is not allowed in delegated repositories")
-
-    # Lokale Hooks sind ausführbarer Verwaltungszustand und dürfen bei der
-    # delegierten Wartung nicht die Schreibrechte des Containers erben.
-    # Local hooks are executable administrative state and must not inherit the
-    # delegated maintenance container's write authority.
-    base = ["git", "-c", "safe.directory=", "-c", "safe.directory=" + str(repo),
-            "-c", "core.hooksPath=/dev/null", "-C", str(repo)]
-    configured = subprocess.run(
-        [*base, "config", "--name-only", "--get-regexp", r"^hook\..*\.(command|event|enabled)$"],
-        capture_output=True, text=True, env=environment,
-    )
-    if configured.returncode not in (0, 1):
-        raise SystemExit("Git hook configuration cannot be inspected")
-    disabled = []
-    for key in configured.stdout.splitlines():
-        match = re.fullmatch(r"hook\.(.+)\.(?:command|event|enabled)", key, re.IGNORECASE)
-        if not match or any(char in match.group(1) for char in ("\0", "\n", "\r", "=")):
-            raise SystemExit("Unsafe Git hook configuration")
-        disabled.extend(["-c", "hook." + match.group(1) + ".enabled=false"])
-    return subprocess.run(
-        [*base[:-2], *disabled, *base[-2:], *args],
-        capture_output=True, text=True, env=environment,
-    )
-
 if p["action"] == "probe":
     print(json.dumps({"exists":repo.exists(), "directory":repo.is_dir(),
                       "git":(repo / ".git").is_dir()}))
@@ -168,29 +172,10 @@ elif p["action"] == "git":
         raise SystemExit("Only bounded fast-forward merge is allowed")
     # Reset inherited trust (including '*') and trust only this validated repo.
     # Command-scope configuration survives recreation without writing .gitconfig.
-    result = bounded_git(args)
-    print(json.dumps({"returncode":result.returncode,"stdout":result.stdout,"stderr":result.stderr}))
-elif p["action"] == "bundle":
-    if not (repo / ".git").is_dir():
-        raise SystemExit("Missing declared Git repository")
-    bundle = pathlib.Path(p["bundle"])
-    if bundle.parent != pathlib.Path("/tmp") or not re.fullmatch(r"hb-fetch-[0-9a-f]{32}\.bundle", bundle.name):
-        raise SystemExit("Invalid transfer bundle path")
-    if bundle.is_symlink() or not bundle.is_file():
-        raise SystemExit("Missing regular transfer bundle")
-    try:
-        bundle_hash = hashlib.sha256()
-        with bundle.open("rb") as stream:
-            for chunk in iter(lambda: stream.read(1024 * 1024), b""):
-                bundle_hash.update(chunk)
-        if bundle_hash.hexdigest() != p["sha256"]:
-            raise SystemExit("Transfer bundle digest mismatch")
-        result = bounded_git([
-            "fetch", "--prune", "--no-recurse-submodules", "--", str(bundle),
-            "+refs/heads/*:refs/remotes/origin/*",
-        ])
-    finally:
-        bundle.unlink(missing_ok=True)
+    result = subprocess.run(["git", "-c", "core.hooksPath=/dev/null", "-c", "core.fsmonitor=false",
+                             "-c", "submodule.recurse=false", "-c", "protocol.allow=never",
+                             "-c", "credential.helper=", "-c", "safe.directory=", "-c", "safe.directory=" + str(repo),
+                             "-C", str(repo), *args], capture_output=True, text=True)
     print(json.dumps({"returncode":result.returncode,"stdout":result.stdout,"stderr":result.stderr}))
 else:
     raise SystemExit("Unknown maintenance action")
@@ -213,12 +198,35 @@ result["log"] = log.getvalue()
 print(json.dumps(result))
 '''
 
+BUNDLE_PROGRAM = r'''
+import hashlib, json, pathlib, sys
+p = json.loads(sys.stdin.buffer.readline(1048576))
+root, repository = pathlib.Path(p["root"]), pathlib.Path(p["repository"])
+if root.resolve() != root or repository.resolve() != repository:
+    raise SystemExit("Unsafe repository path")
+repository.relative_to(root)
+source = pathlib.Path(p["source"])
+if source.resolve() != source:
+    raise SystemExit("Unsafe source path")
+for relative, expected in p["bindings"].items():
+    path = source / relative
+    if path.resolve() != path or hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest() != expected:
+        raise SystemExit("Bundle worker source binding mismatch")
+sys.path.insert(0, str(source / "scripts/lib"))
+from maintenance_git_bundle import receive
+print(json.dumps(receive(p, sys.stdin.buffer)))
+'''
+
 
 SOURCE_PROGRAM = r'''
 import hashlib, json, os, pathlib, shutil, sys
 p = json.load(sys.stdin)
 source = pathlib.Path(p["source"])
-if source.resolve() != source or not source.is_dir() or os.access(source, os.W_OK):
+if source.resolve() != source:
+    raise SystemExit("Unsafe reference source path")
+if not source.is_dir():
+    raise SystemExit("Missing reference source")
+if os.access(source, os.W_OK):
     raise SystemExit("Canonical source must be immutable to the sandbox user")
 if not all(shutil.which(t) for t in ("git", "bash", "pwsh", "python3")):
     raise SystemExit("Missing maintenance tool")
@@ -233,14 +241,22 @@ print("ready")
 
 
 def source_bindings(source: pathlib.Path) -> dict:
-    """Bind only declared package members, including the declaration itself."""
+    """Bind declared members and declaration; approval metadata is checked separately."""
     manifest = "scripts/config/agentic-toolchain-maintenance-files.json"
     package = json.loads((source / manifest).read_text(encoding="utf-8"))
     paths = {manifest, *(entry["path"] for entry in package["files"])}
     paths.update({"scripts/lib/maintenance_execution_context.py",
+                  "scripts/lib/maintenance_git_bundle.py",
+                  "scripts/config/agentic-workspace-fleet.json",
                   "scripts/lib/maintenance_container_worker.py",
+                  "scripts/lib/secure-development-hardening.sh",
+                  "scripts/register-level2-repository.sh",
+                  "scripts/propagate-agentic-toolchain-maintenance.sh",
                   "scripts/config/maintenance-execution-contexts.json"})
     bindings = {}
+    # Including the approval's own package digest would create a hash cycle.
+    # This is the only exclusion, even if the manifest declares the contract.
+    paths.discard(EXECUTION_CONTRACT_PATH)
     source = source.resolve()
     for relative in sorted(paths):
         relative_path(relative)
@@ -251,6 +267,10 @@ def source_bindings(source: pathlib.Path) -> dict:
         # across Windows CRLF and the Linux image without ignoring other bytes.
         bindings[relative] = hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
     return bindings
+
+
+def source_binding_sha256(bindings: dict) -> str:
+    return hashlib.sha256(json.dumps(bindings, sort_keys=True, separators=(",", ":")).encode("utf-8")).hexdigest()
 
 
 def filter_registry(router, registry):
@@ -287,6 +307,9 @@ def run_phase(args):
     if {entry["registry"]["path"] for entry in entries} != expected:
         raise ExecutionContextError("Registry does not cover every delegated target")
     bindings = source_bindings(args.source)
+    if source_binding_sha256(bindings) != evidence["sourceSha256"]:
+        raise ExecutionContextError("Source package changed after phase preflight")
+    router.inspect()
     payload = {"source": router.data["source"], "mode": mode, "phase": args.phase,
                "entries": entries, "bindings": bindings, "runId": report["runId"],
                "defaultPresetProfile": registry.get("defaultPresetProfile", "standard-eight-governance-presets"),
@@ -345,13 +368,106 @@ def main():
         return 2
 
 
+def mount_source_matches(source: str, expected: pathlib.PurePath) -> bool:
+    """Accept only the exact host path or its Windows Podman /mnt/<drive> spelling."""
+    if not isinstance(source, str) or not source or any(ord(char) < 32 for char in source):
+        return False
+    if sys.platform == "win32":
+        expected = pathlib.PureWindowsPath(expected)
+        if not expected.is_absolute() or ".." in expected.parts:
+            return False
+        if source.startswith("/"):
+            # Podman's Linux VM reports the Windows bind source via its drive
+            # mount. Do not suffix-match, case-fold Linux paths or accept UNC,
+            # traversal, alternate mount roots or sibling workspace prefixes.
+            if not re.fullmatch(r"[A-Za-z]:", expected.drive):
+                return False
+            return source == "/mnt/" + expected.drive[0].lower() + expected.as_posix()[2:]
+        observed = pathlib.PureWindowsPath(source)
+        return observed.is_absolute() and ".." not in observed.parts and observed == expected
+    return pathlib.Path(source).absolute() == expected
+
+
 class ExecutionContexts:
     def __init__(self, contract: pathlib.Path, home: pathlib.Path, targets: list[dict]):
         self.data = validate_contract(json.loads(contract.read_text(encoding="utf-8")))
         self.home = home.absolute()
-        self.targets = {item["path"] for item in targets if item.get("active") and item.get("kind") == "git-repository"}
+        active_targets = {item["path"] for item in targets if item.get("active")}
+        self.targets = {
+            item["path"]
+            for item in targets
+            if item.get("active") and item.get("kind") == "git-repository"
+        }
+        required_roots = {
+            pathlib.PurePosixPath(path).parts[0]
+            for path in active_targets
+            if pathlib.PurePosixPath(path).parts
+            and pathlib.PurePosixPath(path).parts[0] in PROTECTED_WORKSPACE_ROOTS
+        }
+        mounted_roots = {item["host"] for item in self.data["mounts"]}
+        missing_roots = required_roots - mounted_roots
+        if missing_roots:
+            raise ExecutionContextError(
+                "Protected workspace roots missing from sandbox contract: "
+                + ", ".join(sorted(missing_roots))
+            )
         self.container_id = None
         self.image = None
+        self.bundle_snapshots = {}
+        self.bundle_mode = None
+
+    def prepare_bundles(self, targets: list[dict], run_id: str, mode: str):
+        """Download every snapshot before importing; never open host target repos."""
+        from maintenance_git_bundle import download, transport_workspace
+        if mode not in ("dry-run", "check-only", "update"):
+            raise ExecutionContextError("Invalid bundle mode")
+        self.bundle_snapshots = {}
+        self.bundle_mode = None
+        self.preflight()
+        selected = [target for target in targets if target.get("active") and
+                    target.get("kind") == "git-repository" and self.mapping(self.home / target["path"])]
+        canonical_file = pathlib.Path(__file__).resolve().parents[2] / "scripts/config/agentic-workspace-fleet.json"
+        canonical = {item["path"]: item for item in json.loads(canonical_file.read_text())["targets"]
+                     if item.get("active") and item.get("kind") == "git-repository"
+                     and pathlib.PurePosixPath(item["path"]).parts[0] in PROTECTED_WORKSPACE_ROOTS}
+        if len(canonical) != 21 or {item["path"] for item in selected} != set(canonical):
+            raise ExecutionContextError("Bundle transport requires the complete canonical 21-target fleet")
+        for target in selected:
+            if any(target.get(key) != canonical[target["path"]].get(key) for key in ("id", "remote", "defaultBranch")):
+                raise ExecutionContextError("Bundle target does not match the immutable canonical fleet")
+        pending = []
+        # A failed download leaves every target's refs and worktree unchanged.
+        with transport_workspace() as temporary:
+            for target in selected:
+                workspace = pathlib.Path(temporary) / target["id"]
+                workspace.mkdir(mode=0o700)
+                bundle, snapshot = download(target, run_id, workspace)
+                pending.append((target, bundle, snapshot))
+                if sum(entry[1].stat().st_size for entry in pending) > 2 * 1024 * 1024 * 1024:
+                    raise ExecutionContextError("Bundle run exceeds 2 GiB limit")
+            evidence = self.preflight()
+            bindings = source_bindings(pathlib.Path(__file__).resolve().parents[2])
+            if source_binding_sha256(bindings) != evidence["sourceSha256"]:
+                raise ExecutionContextError("Bundle source changed after preflight")
+            for target, bundle, snapshot in pending:
+                self.inspect()
+                root, repository = self.mapping(self.home / target["path"])
+                payload = {"source": self.data["source"], "bindings": bindings,
+                           "root": root, "repository": repository, "target": target,
+                           "snapshot": snapshot, "runId": run_id, "dryRun": mode == "dry-run"}
+                body = json.dumps(payload).encode("utf-8") + b"\n" + bundle.read_bytes()
+                response = subprocess.run(["podman", "exec", "-i", self.container_id, "python3", "-c", BUNDLE_PROGRAM],
+                                          input=body, capture_output=True, timeout=300)
+                if response.returncode:
+                    raise ExecutionContextError("Sandbox bundle verification/import failed for " + target["id"])
+                result = json.loads(response.stdout)
+                if result.get("status") != ("Verified" if mode == "dry-run" else "Imported"):
+                    raise ExecutionContextError("Unexpected bundle worker response")
+                self.bundle_snapshots[target["path"]] = snapshot
+        self.bundle_mode = mode
+
+    def bundle_snapshot(self, repository: pathlib.Path) -> dict | None:
+        return self.bundle_snapshots.get(repository.relative_to(self.home).as_posix())
 
     def mapping(self, repository: pathlib.Path) -> tuple[str, str] | None:
         try:
@@ -368,6 +484,7 @@ class ExecutionContexts:
         return None
 
     def inspect(self) -> dict:
+        validate_contract(self.data)
         try:
             process = subprocess.run(["podman", "inspect", self.container_id or self.data["container"]],
                                      capture_output=True, text=True, timeout=30, check=True)
@@ -379,39 +496,72 @@ class ExecutionContexts:
             raise ExecutionContextError("Sandbox unavailable; no host fallback") from exc
         if not info.get("State", {}).get("Running") or info.get("Config", {}).get("User") != self.data["user"]:
             raise ExecutionContextError("Sandbox stopped or unexpected user")
+        if self.data["user"] in ("root", "0") or self.data["user"].split(":", 1)[0] in ("root", "0"):
+            raise ExecutionContextError("Sandbox user must be non-root")
+        host_config = info.get("HostConfig", {})
+        options = host_config.get("SecurityOpt") or []
+        dropped = set(host_config.get("CapDrop") or [])
+        # Accept ALL or the complete Podman default capability drop set, but
+        # never additional capabilities or a privileged execution context.
+        default_caps = {"CAP_CHOWN", "CAP_DAC_OVERRIDE", "CAP_FOWNER", "CAP_FSETID",
+                        "CAP_KILL", "CAP_NET_BIND_SERVICE", "CAP_SETFCAP", "CAP_SETGID",
+                        "CAP_SETPCAP", "CAP_SETUID", "CAP_SYS_CHROOT"}
+        if ("no-new-privileges" not in options or host_config.get("Privileged")
+                or host_config.get("CapAdd") or not ("ALL" in dropped or default_caps <= dropped)):
+            raise ExecutionContextError("Sandbox requires no-new-privileges and bounded dropped capabilities")
         if self.container_id and (info["Id"] != self.container_id or info["Image"] != self.image):
             raise ExecutionContextError("Sandbox identity changed during run")
+        for mount in info.get("Mounts", []):
+            destination = mount.get("Destination", "")
+            if destination == self.data["source"] or self.data["source"].startswith(destination.rstrip("/") + "/"):
+                if mount.get("RW"):
+                    raise ExecutionContextError("Reference source mount must be read-only")
         for mapping in self.data["mounts"]:
             matches = [m for m in info.get("Mounts", []) if m.get("Destination") == mapping["container"]]
             if len(matches) != 1 or matches[0].get("Type") != "bind" or not matches[0].get("RW"):
                 raise ExecutionContextError("Missing writable workspace mount")
-            if pathlib.Path(matches[0]["Source"]).absolute() != self.home / mapping["host"]:
+            if not mount_source_matches(matches[0]["Source"], self.home / mapping["host"]):
                 raise ExecutionContextError("Workspace mount source mismatch")
         return info
 
     def preflight(self, source: pathlib.Path | None = None) -> dict:
         validate_contract(self.data)
-        # Owner evidence is read on the control plane; this grants no new role.
+        # Pending remains pending even when every technical test succeeds.
+        if self.data["approvalTrustState"] != OWNER_APPROVAL_TRUST_STATE_ACTIVE:
+            raise ExecutionContextError("Owner-Freigabe fehlt / Explicit documented owner approval is pending")
         approval = self.home.joinpath(*relative_path(self.data["approvalPath"]).parts)
-        if approval.resolve() != approval or not approval.is_file():
-            raise ExecutionContextError("Owner approval evidence missing or symlinked")
-        evidence = approval.read_text(encoding="utf-8")
-        expiry_label = datetime.date.fromisoformat(self.data["expiresOn"]).strftime("%d.%m.%Y")
-        if expiry_label not in evidence or "Owner" not in evidence:
-            raise ExecutionContextError("Owner approval evidence does not match the bounded contract")
         info = self.inspect()
         self.container_id, self.image = info["Id"], info["Image"]
-        bindings = source_bindings(source or pathlib.Path(__file__).resolve().parents[2])
+        source_root = (source or pathlib.Path(__file__).resolve().parents[2]).resolve()
+        try:
+            revision = subprocess.run(
+                ["git", "-C", str(source_root), "rev-parse", "HEAD"],
+                capture_output=True, text=True, timeout=10, check=True,
+            ).stdout.strip()
+        except (OSError, subprocess.SubprocessError) as exc:
+            raise ExecutionContextError("Approved source revision cannot be verified") from exc
+        bindings = source_bindings(source_root)
+        package_sha256 = source_binding_sha256(bindings)
+        approval_sha256 = verify_owner_approval(
+            self.data, approval, str(info.get("Image") or ""), package_sha256
+        )
         result = subprocess.run(
             ["podman", "exec", "-i", self.container_id, "python3", "-c", SOURCE_PROGRAM],
             input=json.dumps({"source": self.data["source"], "bindings": bindings}),
             text=True, capture_output=True, timeout=60)
         if result.returncode:
-            raise ExecutionContextError("Sandbox source binding or required tools invalid; publish and pin the reviewed package before maintenance")
+            detail = result.stderr.strip()
+            known = ("Missing reference source", "Unsafe reference source path",
+                     "Canonical source must be immutable to the sandbox user", "Missing maintenance tool",
+                     "Missing or writable source:", "Source binding mismatch:")
+            reason = next((message for message in known if detail.startswith(message)), "Reference source unavailable or invalid")
+            raise ExecutionContextError("Sandbox reference preflight blocked: " + reason)
         return {"context": "container", "containerId": self.container_id, "image": self.image,
                 "expiresOn": self.data["expiresOn"], "approvalPath": self.data["approvalPath"],
-                "approvalSha256": hashlib.sha256(evidence.encode("utf-8")).hexdigest(),
-                "sourceSha256": hashlib.sha256(json.dumps(bindings, sort_keys=True).encode()).hexdigest()}
+                "approvalSha256": approval_sha256,
+                "approvalBindingSha256": self.data["approvalBindingSha256"],
+                "sourceRevision": revision,
+                "sourceSha256": package_sha256}
 
     def request(self, repository: pathlib.Path, action: str, arguments: tuple[str, ...] = ()) -> dict:
         mapping = self.mapping(repository)
@@ -419,6 +569,9 @@ class ExecutionContexts:
             raise ExecutionContextError("Target is not delegated")
         if self.container_id is None:
             raise ExecutionContextError("Sandbox preflight required")
+        validate_contract(self.data)
+        if self.data["approvalTrustState"] != OWNER_APPROVAL_TRUST_STATE_ACTIVE:
+            raise ExecutionContextError("Owner approval is no longer active")
         self.inspect()
         process = subprocess.run(
             ["podman", "exec", "-i", self.container_id, "python3", "-c", REMOTE_PROGRAM],
@@ -435,41 +588,6 @@ class ExecutionContexts:
         result = self.request(repository, "git", arguments)
         return subprocess.CompletedProcess(["podman", "exec", "git", *arguments],
                                            result["returncode"], result["stdout"], result["stderr"])
-
-    def import_bundle(
-        self, repository: pathlib.Path, bundle: pathlib.Path, sha256: str
-    ) -> subprocess.CompletedProcess:
-        mapping = self.mapping(repository)
-        if mapping is None or self.container_id is None:
-            raise ExecutionContextError("Sandbox preflight required for bundle import")
-        if not re.fullmatch(r"[0-9a-f]{64}", sha256):
-            raise ExecutionContextError("Invalid transfer bundle digest")
-        self.inspect()
-        remote_bundle = f"/tmp/hb-fetch-{uuid.uuid4().hex}.bundle"
-        copied = subprocess.run(
-            ["podman", "cp", str(bundle), f"{self.container_id}:{remote_bundle}"],
-            capture_output=True, text=True, timeout=120,
-        )
-        if copied.returncode:
-            return copied
-        process = subprocess.run(
-            ["podman", "exec", "-i", self.container_id, "python3", "-c", REMOTE_PROGRAM],
-            input=json.dumps({
-                "root": mapping[0], "repository": mapping[1], "action": "bundle",
-                "bundle": remote_bundle, "sha256": sha256,
-            }),
-            text=True, capture_output=True, timeout=900,
-        )
-        if process.returncode:
-            return process
-        try:
-            result = json.loads(process.stdout)
-        except ValueError as exc:
-            raise ExecutionContextError("Malformed container response") from exc
-        return subprocess.CompletedProcess(
-            ["podman", "exec", "git", "fetch", "<verified-bundle>"],
-            result["returncode"], result["stdout"], result["stderr"],
-        )
 
 
 if __name__ == "__main__":

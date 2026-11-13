@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "presetId": "intake-authoring-governance",
+  "packageVersion": "0.3.12",
+  "historicalPublicationVersion": "0.3.9",
+  "candidate_status": "Prepared",
+  "release_status": "NotEstablishedAtPreparation",
+  "sourceCommit": "df2bd9aaceb01033b4a1a44e50cd499af41966af",
+  "previousReleaseVersion": "0.3.11",
+  "externalPublicationEvidence": "https://github.com/hindermath/spec-kit-preset-intake-authoring-governance/releases/tag/v0.3.12",
+  "runtimeChanged": true,
+  "metadataCorrectionApproved": true,
+  "runtimeChangeApproved": true,
+  "changeKind": "SecurityHardening",
+  "authorizationReference": "Thorsten Hindermann, 2026-11-08: preserve legitimate historical preset workflows during MergeAndSync security rollout; fix source compatibility.",
+  "generatorSchemaChanged": false,
+  "preparedAt": "2026-11-08T01:10:54.826851+00:00"
+}

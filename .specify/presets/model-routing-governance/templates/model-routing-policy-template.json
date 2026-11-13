@@ -13,8 +13,8 @@
   "adapters": {
     "Codex": "Enumerate",
     "Antigravity": "EnumerateNames",
-    "Claude": "ValidateCandidate",
-    "Copilot": "ValidateCandidate",
-    "OpenCode": "ConfiguredOnly"
+    "Claude": "Enumerate",
+    "Copilot": "Enumerate",
+    "OpenCode": "Enumerate"
   }
 }

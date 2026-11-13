@@ -1,0 +1,13 @@
+{
+  "id": "secure-development-assurance-governance",
+  "version": "0.1.10",
+  "priority": 15,
+  "readers": [
+    "docs/user-guide.md",
+    "docs/user-guide.EN.md",
+    "docs/documentation-closeout.md"
+  ],
+  "sourceBaseCommit": "9559c827b9baf14ccb9e0b96c558d55cd76661dc",
+  "preserveHistoricalEvidence": true,
+  "publicationEvidenceVersion": "0.1.7"
+}

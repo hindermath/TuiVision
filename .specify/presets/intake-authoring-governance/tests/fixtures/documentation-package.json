@@ -1,0 +1,13 @@
+{
+  "id": "intake-authoring-governance",
+  "version": "0.3.13",
+  "priority": 64,
+  "readers": [
+    "docs/user-guide.md",
+    "docs/user-guide.EN.md",
+    "docs/documentation-closeout.md"
+  ],
+  "sourceBaseCommit": "267e5ebe7ed738d7cc6ef7f83275f82ca54ac441",
+  "preserveHistoricalEvidence": true,
+  "publicationEvidenceVersion": "0.3.9"
+}

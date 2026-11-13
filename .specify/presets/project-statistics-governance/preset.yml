@@ -2,7 +2,7 @@ schema_version: "1.0"
 preset:
   id: "project-statistics-governance"
   name: "Project Statistics Governance"
-  version: "0.1.0"
+  version: "0.1.4"
   description: "Reproducible Git-bound project transparency with offline measurements, explicit write authority and opt-in reference estimates; no AI productivity claims."
   author: "Thorsten Hindermann"
   repository: "https://github.com/hindermath/spec-kit-preset-project-statistics-governance"

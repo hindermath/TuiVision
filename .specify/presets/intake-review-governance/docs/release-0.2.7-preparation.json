@@ -1,0 +1,14 @@
+{
+  "release_status": "NotEstablishedAtPreparation",
+  "candidate_status": "Prepared",
+  "packageVersion": "0.2.7",
+  "presetId": "intake-review-governance",
+  "externalPublicationEvidence": "https://github.com/hindermath/spec-kit-preset-intake-review-governance/releases/tag/v0.2.7",
+  "documentationPr": "https://github.com/hindermath/spec-kit-preset-intake-review-governance/pull/14",
+  "schemaVersion": 1,
+  "historicalPublicationVersion": "0.2.6",
+  "runtimeChanged": false,
+  "generatorSchemaChanged": false,
+  "preparedAt": "2026-10-24T12:50:04.9922560+00:00",
+  "sourceCommit": "4f3abbf9a1c74a386b8810e55ca83d87b45eb1fd"
+}

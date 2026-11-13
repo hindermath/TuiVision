@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "presetId": "intake-sequencing-governance",
+  "packageVersion": "0.2.14",
+  "historicalPublicationVersion": "0.2.10",
+  "candidate_status": "Prepared",
+  "release_status": "NotEstablishedAtPreparation",
+  "sourceCommit": "7700d8021ff5081b349bc6a851dbcbf4561ec8be",
+  "previousReleaseVersion": "0.2.13",
+  "externalPublicationEvidence": "https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/releases/tag/v0.2.14",
+  "runtimeChanged": false,
+  "generatorSchemaChanged": false,
+  "changeKind": "SecurityPolicyDocumentation",
+  "authorizationReference": "Thorsten Hindermann, 2026-11-13: implement security baseline and publish current presets, including controlled Level-0/Home/Level-2 rollout; MergeAndSync with formal-review-only Admin-Bypass.",
+  "preparedAt": "2026-11-13T08:24:34.7368540+00:00"
+}

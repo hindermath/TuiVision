@@ -16,3 +16,13 @@ foreach ($File in Get-ChildItem (Join-Path $Root 'templates') -Filter '*.json' -
 }
 if ($Count -eq 0) { throw 'No JSON templates verified' }
 Write-Output "PASS: ${Count} shipped JSON templates parse and bind release ${Version}"
+
+# DE: Der Community-Validator muss die getaggte Installationszeile direkt lesen koennen.
+# EN: The community validator must parse the tagged installation line directly.
+$ArchiveUrl = "https://github.com/hindermath/spec-kit-preset-intake-authoring-governance/archive/refs/tags/v${Version}.zip"
+$InstallLine = "specify preset add --from ${ArchiveUrl} --priority 64"
+$Readme = Get-Content (Join-Path $Root 'README.md') -Raw
+if ($Readme -notmatch ('(?m)^' + [regex]::Escape($InstallLine) + '\r?$')) {
+    throw 'README must contain a single-line install command for the exact release archive and priority 64'
+}
+Write-Output "PASS: README has a directly parseable install command for release ${Version}"

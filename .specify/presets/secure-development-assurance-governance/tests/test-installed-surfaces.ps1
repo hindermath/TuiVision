@@ -79,6 +79,24 @@ try {
     $null = Invoke-SDAInstalledCommand git @('init', '--quiet')
     $sourceArguments = if ($ArchiveUrl) { @('--from', $ArchiveUrl) } else { @('--dev', $presetRoot) }
     $null = Invoke-SDAInstalledCommand specify (@('preset', 'add') + $sourceArguments + @('--priority', '15'))
+    $resolvedRouting = Invoke-SDAInstalledCommand specify @('preset', 'resolve', 'secure-development-assurance-governance-model-routing')
+    # DE/EN: resolve reports the selected source as text, not JSON content.
+    if (-not $resolvedRouting.Contains('secure-development-assurance-governance-model-routing')) {
+        throw "Routing template did not resolve to Assurance: $resolvedRouting"
+    }
+    $installedRoutingPath = Join-Path $temporaryRoot '.specify/presets/secure-development-assurance-governance/model-routing.json'
+    $installedRoutingText = [IO.File]::ReadAllText($installedRoutingPath)
+    $installedRouting = $installedRoutingText | ConvertFrom-Json -AsHashtable
+    if ($installedRouting.schemaVersion -ne '1.0' -or
+        $installedRouting.presetId -ne 'secure-development-assurance-governance' -or
+        $installedRouting.defaultRole -ne 'frontier-reasoning' -or
+        $installedRouting.fallbackPolicy -ne 'fail-closed' -or
+        $installedRouting.commands.Count -ne 2 -or
+        $installedRouting.commands['speckit.secure-development-status'] -ne 'fast-mechanical' -or
+        $installedRouting.commands['speckit.secure-development-review'] -ne 'frontier-reasoning') {
+        throw 'Installed routing contract changed.'
+    }
+    'PASS: installed schema-1.0 routing contract and template resolution'
     $surfacePatterns = @(
         '.agents/skills/speckit-secure-development-{0}/SKILL.md',
         '.claude/skills/speckit-secure-development-{0}/SKILL.md',
