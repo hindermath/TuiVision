@@ -92,3 +92,15 @@ checks. Accidentally copied tests for undelivered Level-0 editor guidance do not
 become new project requirements. AOC retains its previously delivered secure
 memory-patch adapter; two canonical exceptions prevent overwriting it. No test
 exception replaces a required technical check or accepts risk.
+
+## TuiVision: gebundene Testabhängigkeit / Locked test dependency
+
+DE: Die TuiVision-CS1591-Ausnahme bleibt bestehen. Die Testprojekt-Referenz
+auf Microsoft.NET.Test.Sdk folgt der kanonischen Version 18.11.0, passend zum
+bereits gelieferten Lockfile. Der Lockfile-Inhalt wird nicht neu berechnet oder
+entsperrt; native CI führt weiterhin einen Restore mit `--locked-mode` aus.
+
+EN: The TuiVision CS1591 exception remains. The test project references canonical
+Microsoft.NET.Test.Sdk 18.11.0, matching the already delivered lockfile. Lockfile
+contents are neither recalculated nor unlocked; native CI keeps using
+`--locked-mode`.
