@@ -46,7 +46,8 @@ Optionen / Options:
   --vscode-registry PATH
                         Alternative VS-Code-Extension-Registry
   --npm-agent-registry PATH
-                        Alternative npm-Agent-CLI-Registry
+                        Alternative npm-Agent-CLI-Registry; nur freigegebene
+                        Versionsabfragen / only approved version probes
   --powershell-module-registry PATH
                         Alternative PowerShell-Modul-Registry
   --skip-upgrade        brew/apt update+upgrade ueberspringen / skip
@@ -727,6 +728,16 @@ probe_cli_tool() {
   local probe_output probe_exit expected_swift arg
   local -a args=()
 
+  # DE: Auch npm-Proben muessen vor jeder Ausfuehrung den Code-Vertrag erfuellen.
+  # EN: npm probes must also satisfy the code-owned contract before any execution.
+  if ! validate_cli_probe_contract "$tool_id" "$command_name" "$args_json"; then
+    CURRENT_PROBE_JSON=""
+    CURRENT_PROBE_STATUS="CapabilityBlocked"
+    CURRENT_PROBE_EVIDENCE="Probe ist nicht durch die Code-Policy autorisiert."
+    CURRENT_PROBE_NEXT_ACTION="Registry an den kanonischen Probevertrag angleichen."
+    return 2
+  fi
+
   while IFS= read -r arg; do
     args+=("$arg")
   done < <(json_array_items "$args_json")
@@ -1053,6 +1064,13 @@ install_npm_agent_tools() {
     [ -n "$id" ] || continue
     validate_item_id "$id"
     validate_item_id "$package_name"
+    # DE: Eine abgelehnte Probe darf keine Installation ausloesen.
+    # EN: Denial must not fall through to npm installation as a missing-tool result.
+    if ! validate_cli_probe_contract "$id" "$command_name" "$args_json"; then
+      log "SKIP npm agent probe: $id (nicht durch Code-Policy autorisiert)"
+      mark_failed_attempt npm-cli "$id"
+      continue
+    fi
     if cli_tool_available "$id" "$command_name" "$args_json"; then
       log "OK npm agent cli: $id"
     elif [ "$DRY_RUN" -eq 1 ] || command -v npm >/dev/null 2>&1; then
@@ -1124,7 +1142,13 @@ compare_npm_agent_scope() {
     [ -n "$id" ] || continue
     attempted=false
     was_attempted npm-cli "$id" && attempted=true
-    if cli_tool_available "$id" "$command_name" "$args_json"; then
+    if ! validate_cli_probe_contract "$id" "$command_name" "$args_json"; then
+      CURRENT_PROBE_STATUS="CapabilityBlocked"
+      CURRENT_PROBE_EVIDENCE="Probe ist nicht durch die Code-Policy autorisiert."
+      CURRENT_PROBE_NEXT_ACTION="npm-Registry an den kanonischen Probevertrag angleichen."
+      missing="${missing}${id}"$'\n'
+      final_status="Failed"
+    elif cli_tool_available "$id" "$command_name" "$args_json"; then
       final_status="Present"
       [ "$attempted" = true ] && final_status="Installed"
     else

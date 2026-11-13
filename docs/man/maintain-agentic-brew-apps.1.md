@@ -236,7 +236,7 @@ requires a separate semantic review.*
 | `--registry PATH` | Alternative Registry-Datei verwenden |
 | `--cli-registry PATH` | Alternative Required-CLI-Registry verwenden |
 | `--vscode-registry PATH` | Alternative VS-Code-Extension-Registry verwenden |
-| `--npm-agent-registry PATH` | Alternative npm-Agent-CLI-Registry verwenden |
+| `--npm-agent-registry PATH` | Alternative npm-Agent-CLI-Registry verwenden; Proben bleiben auf die im Code freigegebenen Befehle und Argumente begrenzt / use an alternate npm agent registry; probes remain limited to code-approved commands and arguments |
 | `--powershell-module-registry PATH` | Alternative PowerShell-Modul-Registry verwenden |
 | `--skip-upgrade` | `brew update`/`brew upgrade` bzw. apt-Update/Upgrade ueberspringen |
 | `--skip-vscode-extensions` | VS-Code-Extensions weder installieren noch vergleichen |

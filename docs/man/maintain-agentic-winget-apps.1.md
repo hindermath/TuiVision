@@ -144,7 +144,7 @@ requires a separate semantic review.*
 | `-CompareOnly` | Nur Registry-Drift melden, nichts installieren oder upgraden |
 | `-Registry PATH` | Alternative Registry-Datei verwenden |
 | `-VSCodeRegistry PATH` | Alternative VS-Code-Extension-Registry verwenden |
-| `-NpmAgentRegistry PATH` | Alternative npm-Agent-CLI-Registry verwenden |
+| `-NpmAgentRegistry PATH` | Alternative npm-Agent-CLI-Registry verwenden; Proben bleiben auf die im Code freigegebenen Befehle und Argumente begrenzt / use an alternate npm agent registry; probes remain limited to code-approved commands and arguments |
 | `-PowerShellModuleRegistry PATH` | Alternative PowerShell-Modul-Registry verwenden |
 | `-SkipUpgrade` | WinGet-Update und `winget upgrade --all` ueberspringen |
 | `-SkipVSCodeExtensions` | VS-Code-Extensions weder installieren noch vergleichen |

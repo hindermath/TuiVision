@@ -1300,6 +1300,14 @@ EN: Verified patch 0.3.14 supplements the security rollout; source, installation
 
 Documentation Impact: UpdateRequired; [Nachweis / evidence](maintenance/shared-security-rollout-2026-11-13.md).
 
+### 2026-11-13 — npm-Agent-Proben begrenzt / Bound npm agent probes
+
+DE: Die verteilten Wartungsskripte begrenzen npm-Agent-Proben vor der Ausfuehrung. TinyPl0 behaelt seine ausdrueckliche Freigabe fuer alternative Registries. Es wird kein Spec-Kit-Lauf hinzugezaehlt.
+
+EN: Distributed maintenance scripts bound npm agent probes before execution. TinyPl0 retains its explicit opt-in for alternate registries. No Spec Kit run is added.
+
+Documentation Impact: UpdateRequired; [Nachweis / evidence](maintenance/shared-security-rollout-2026-11-13.md).
+
 ## Gesamtstatistik / Overall Statistics
 
 <!-- project-statistics-v2:begin -->

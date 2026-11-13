@@ -26,7 +26,9 @@
     Alternative VS Code extensions registry JSON path.
 
 .PARAMETER NpmAgentRegistry
-    Alternative npm agent CLI registry JSON path.
+    Alternative npm-Agent-Registry. Nur freigegebene Versionsabfragen werden ausgefuehrt.
+
+    Alternative npm agent registry. Only approved version probes are executed.
 
 .PARAMETER PowerShellModuleRegistry
     Alternative PowerShell module registry JSON path.
@@ -133,9 +135,13 @@ function Assert-HBCLIProbeContract {
         throw "CLI-Probe ist nicht durch die Code-Policy autorisiert: ${id}"
     }
     $approved = $approvedCliProbes[$id]
-    $arguments = if ($Tool.PSObject.Properties.Name -contains 'args') {
-        @($Tool.args | ForEach-Object { [string]$_ })
-    } else { @() }
+    # DE: Ein Argument bleibt ein Array; ein String wuerde nur sein erstes Zeichen vergleichen.
+    # EN: Keep a single argument as an array; string indexing would compare its first character.
+    $arguments = @(
+        if ($Tool.PSObject.Properties.Name -contains 'args') {
+            $Tool.args | ForEach-Object { [string]$_ }
+        }
+    )
     if ([string]$Tool.command -cne [string]$approved.Command -or
         $arguments.Count -ne $approved.Arguments.Count) {
         throw "CLI-Probe ist nicht durch die Code-Policy autorisiert: ${id}"
@@ -575,6 +581,9 @@ function Get-HBNpmAgentTools {
 function Test-HBNpmAgentTool {
     param([Parameter(Mandatory)] $Tool)
 
+    # DE: Gleiche Autoritaetsgrenze wie bei CLI-Proben; Ablehnung ist kein Installationsauftrag.
+    # EN: Match CLI probe authority; rejection must not become installation fallback.
+    Assert-HBCLIProbeContract -Tool $Tool
     $command = Get-Command $Tool.command -ErrorAction SilentlyContinue
     if (-not $command) { return $false }
 

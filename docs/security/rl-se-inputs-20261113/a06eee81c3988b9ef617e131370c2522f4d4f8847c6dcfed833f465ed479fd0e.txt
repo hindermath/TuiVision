@@ -1,0 +1,53 @@
+schema_version: "1.0"
+
+preset:
+  id: "model-routing-governance"
+  name: "Model Routing Governance"
+  version: "0.1.4"
+  description: "Discovers harness-local models and maps provider-neutral Spec Kit roles to validated local runner profiles without storing credentials or machine-specific availability in Git."
+  author: "Thorsten Hindermann"
+  repository: "https://github.com/hindermath/spec-kit-preset-model-routing-governance"
+  license: "MIT"
+
+requires:
+  speckit_version: ">=0.8.3"
+
+provides:
+  templates:
+    - type: "template"
+      name: "model-routing-governance-model-routing"
+      file: "model-routing.json"
+      description: "Command-to-role declarations for model-routing operations"
+
+    - type: "template"
+      name: "model-routing-agent-guidance-addendum-template"
+      file: "templates/agent-file-addendum.md"
+      description: "Provider-neutral model discovery and selection guidance"
+
+    - type: "template"
+      name: "model-routing-policy-template"
+      file: "templates/model-routing-policy-template.json"
+      description: "Portable adapter and fail-closed selection policy"
+
+    - type: "template"
+      name: "model-routing-profiles-template"
+      file: "templates/model-routing-profiles-template.json"
+      description: "Local non-versioned runner profile example"
+
+    - type: "command"
+      name: "speckit.model-routing-status"
+      file: "commands/speckit.model-routing-status.md"
+      description: "Inspect harness, model, role, and profile status without changing files"
+
+    - type: "command"
+      name: "speckit.model-routing-refresh"
+      file: "commands/speckit.model-routing-refresh.md"
+      description: "Refresh a local fail-closed model-to-role binding"
+
+tags:
+  - "model-routing"
+  - "agents"
+  - "governance"
+  - "provider-neutral"
+  - "cross-platform"
+  - "spec-kit"

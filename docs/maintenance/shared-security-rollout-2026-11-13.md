@@ -120,3 +120,11 @@ existing named absdd CI entry point still checks separate source and installed
 locks. TuiVision's new historical input copies use shorter relative paths for
 Windows; their bytes and hashes remain unchanged. Existing technical checks
 remain mandatory.
+
+## npm-Agent-Proben / npm agent probes
+
+DE: Die beiden kanonischen Wartungsskripte pruefen npm-Agent-Befehle und Argumente jetzt vor jeder Ausfuehrung gegen den Codevertrag. Eine abgelehnte Probe startet keine Installation. Die allgemeine Prozesshilfe bleibt fuer andere vorgesehene Pruefungen erhalten.
+
+EN: Both canonical maintenance scripts now check npm agent commands and arguments against the code contract before execution. A rejected probe cannot start an installation. The general process helper remains available for other intended checks.
+
+Die Quellgrenze und ihre Negativtests / The source boundary and negative tests: [Level-0-Nachweis / Level 0 record](https://github.com/hindermath/home-baseline/blob/main/docs/maintenance/npm-agent-probe-authorization-2026-11-13.md). Andere Registry-Felder bleiben getrennt zu pruefen / Other registry fields remain a separate review area.
