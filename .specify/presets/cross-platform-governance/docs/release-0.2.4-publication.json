@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "presetId": "cross-platform-governance",
+  "version": "0.2.4",
+  "repository": "https://github.com/hindermath/spec-kit-preset-cross-platform-governance",
+  "candidate_status": "HistoricalCandidate",
+  "release_status": "Published",
+  "tag": "v0.2.4",
+  "tagCommit": "14e830b7625b47dbc712989502f8c5ca0e3bbf57",
+  "verifiedAt": "2026-10-24T10:55:31.6781890+00:00",
+  "release": {
+    "id": 422326291,
+    "url": "https://github.com/hindermath/spec-kit-preset-cross-platform-governance/releases/tag/v0.2.4",
+    "publishedAt": "2026-10-23T21:29:30.0000000+00:00",
+    "preRelease": false,
+    "draft": false
+  },
+  "archive": {
+    "sha256": "0dfa8cfaeb317f1847462c48a3a1d83389e668256abd6f508ee6d89e452d5456",
+    "url": "https://github.com/hindermath/spec-kit-preset-cross-platform-governance/archive/refs/tags/v0.2.4.zip",
+    "status": "Verified",
+    "verifiedAt": "2026-10-24T10:55:31.6781890+00:00",
+    "bytes": 43056
+  },
+  "evidenceComplete": true,
+  "historicalDocumentSha256": "12fd54e7004d7cd1b509f39ad7976a765015e092b61ebb1de062d0e422c921a7",
+  "comparison": {
+    "fromTag": "v0.2.2",
+    "toTag": "v0.2.4",
+    "toCommit": "14e830b7625b47dbc712989502f8c5ca0e3bbf57",
+    "url": "https://github.com/hindermath/spec-kit-preset-cross-platform-governance/compare/a4aa280b417cb37afd64795294f3fcd67c9e546b...14e830b7625b47dbc712989502f8c5ca0e3bbf57",
+    "fromCommit": "a4aa280b417cb37afd64795294f3fcd67c9e546b"
+  },
+  "improvements": [
+    {
+      "introducedIn": "v0.2.3",
+      "type": "DocumentationUsability",
+      "sourcePaths": [
+        "README.md"
+      ],
+      "problem": {
+        "de": "Shell-Parität und tatsächlich native Plattformnachweise waren leicht zu verwechseln.",
+        "en": "Shell parity and actual native platform evidence were easy to confuse."
+      },
+      "description": {
+        "de": "Die Anleitung wurde präzisiert; 0.2.4 ergänzt gleichwertige Leserpfade, Beispielhilfe und CRLF-tolerante Dokumentationsprüfungen.",
+        "en": "Guidance was clarified; 0.2.4 adds equivalent reader paths, example help and CRLF-tolerant documentation tests."
+      },
+      "benefit": {
+        "de": "Bash-/PowerShell-Parität wird nicht als Nachweis einer ungeprüften Plattform ausgegeben.",
+        "en": "Bash/PowerShell parity is not presented as proof of an untested platform."
+      },
+      "commit": "3837a6010c78b15e51b843fc7d20679adea23f5a"
+    },
+    {
+      "introducedIn": "v0.2.4",
+      "type": "DocumentationUsability",
+      "sourcePaths": [
+        "docs/user-guide.md",
+        "docs/user-guide.EN.md",
+        "tests/test-documentation-closeout.ps1"
+      ],
+      "problem": {
+        "de": "Ein kurzer README-Einstieg erklärte die vollständigen Leserpfade und Grenzen noch nicht gleichwertig.",
+        "en": "The short README entry did not yet explain the complete reader journey and limits equally."
+      },
+      "description": {
+        "de": "Deutsch-/Englisch-Leitfäden, Command-/Vorlagen-Erklärungen und Dokumentationsregressionen wurden ergänzt. Frühere Einstiegsverbesserungen und der letzte Patch werden getrennt ausgewiesen.",
+        "en": "German/English guides, command/template explanations and documentation regressions were added. Earlier entry-point improvements and the final patch are reported separately."
+      },
+      "benefit": {
+        "de": "Lernende finden Voraussetzungen, Beispiel, Ergebnis und Fehlerhilfe. Neue Textklarheit ist keine neue Runtime-Funktion oder menschliche Abnahme.",
+        "en": "Learners can find prerequisites, an example, its result and troubleshooting. Clearer text is not a new runtime feature or human acceptance."
+      },
+      "commit": "14e830b7625b47dbc712989502f8c5ca0e3bbf57"
+    }
+  ],
+  "historicalValidation": {
+    "checks": [
+      {
+        "name": "Reader paths (macos-15)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-cross-platform-governance/actions/runs/39992124387/job/120546226156",
+        "startedAt": "2026-10-23T17:07:11Z",
+        "completedAt": "2026-10-23T17:07:21Z",
+        "head": "1f468cb560bfbf08c36a5bc3e6286315e315a14c"
+      },
+      {
+        "name": "Reader paths (windows-2022)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-cross-platform-governance/actions/runs/39992124387/job/120546225965",
+        "startedAt": "2026-10-23T17:05:11Z",
+        "completedAt": "2026-10-23T17:05:23Z",
+        "head": "1f468cb560bfbf08c36a5bc3e6286315e315a14c"
+      },
+      {
+        "name": "Reader paths (ubuntu-24.04)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-cross-platform-governance/actions/runs/39992124387/job/120546225854",
+        "startedAt": "2026-10-23T17:05:07Z",
+        "completedAt": "2026-10-23T17:05:19Z",
+        "head": "1f468cb560bfbf08c36a5bc3e6286315e315a14c"
+      }
+    ],
+    "pr": "https://github.com/hindermath/spec-kit-preset-cross-platform-governance/pull/6",
+    "mergeCommit": "14e830b7625b47dbc712989502f8c5ca0e3bbf57",
+    "reviewedHead": "1f468cb560bfbf08c36a5bc3e6286315e315a14c"
+  },
+  "newDocumentationReview": "Pending exact-head human review; no merge or publication authority.",
+  "boundary": "Documentation source only; no new package, runtime behavior, approval, installation, catalog update or cancelled dynamic routing."
+}

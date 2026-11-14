@@ -4,8 +4,17 @@ on:
   push:
   pull_request:
 
+# DE: Nur lesender Checkout; unbenannte Token-Rechte bleiben gesperrt.
+# EN: Read-only checkout; unspecified token permissions remain disabled.
+permissions:
+  contents: read
+
 jobs:
   gitleaks:
+    # DE/EN: Preserve existing PR review comments without repository content writes.
+    permissions:
+      contents: read
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository

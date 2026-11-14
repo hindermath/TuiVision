@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "presetId": "model-routing-governance",
+  "packageVersion": "0.2.1",
+  "historicalPublicationVersion": "0.1.6",
+  "previousReleaseVersion": "0.2.0",
+  "candidate_status": "Prepared",
+  "release_status": "NotEstablishedAtPreparation",
+  "runtimeChanged": false,
+  "generatorSchemaChanged": false,
+  "changeKind": "PowerShellTestCompatibility",
+  "authorizationReference": "User-authorized release and installation; strict consumer analysis found two test-local automatic-variable assignments. Narrow compatibility fix, no runtime behavior change.",
+  "preparedAt": "2026-11-03T20:13:56.2669080+00:00",
+  "sourceCommit": "9735fe0012c41ea5241674b749c1d4f166848e8c",
+  "externalPublicationEvidence": "https://github.com/hindermath/spec-kit-preset-model-routing-governance/releases/tag/v0.2.1"
+}

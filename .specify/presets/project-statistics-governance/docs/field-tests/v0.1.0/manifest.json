@@ -1,0 +1,493 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-09-18",
+  "presetVersion": "0.1.0",
+  "sourceCommit": "7e824ca8de11212aefdc5b05d7d05637f5343dab",
+  "archiveSha256": "d8ad7d5eef920f50b629121b64ba8123c22ec4f6dadd14da5cd826d1c50f420a",
+  "technicalRecommendation": "ReleaseAccepted",
+  "humanAcceptance": "Accepted",
+  "humanAcceptanceRecord": {
+    "date": "2026-09-18",
+    "reviewer": "hindermath",
+    "acceptedReportHead": "abe5a8761ae4fe6445b782a14e9570a75bd5c29b",
+    "decisionUrl": "https://github.com/hindermath/spec-kit-preset-project-statistics-governance/pull/3#issuecomment-5733063715",
+    "source": "Explicit owner approval in Codex conversation, transcribed by Codex; not an independent GitHub review",
+    "deliveryAuthorized": true
+  },
+  "scope": "Three-repository technical field test; not stable promotion, community submission or productivity measurement",
+  "projects": [
+    {
+      "id": "home",
+      "repository": "hindermath/home-baseline",
+      "pr": 301,
+      "runId": 35337035206,
+      "reviewedHead": "fab6c48591ac08d8deb5e9e9cf69772ceef78c1d",
+      "mergeCommit": "72f8d37af007c2364f0edfeb57d1811dfea8c1b4",
+      "workflowCommit": "708e06cf17e09752c99ad5a99261e37cf3d6a8d8",
+      "nativePilotCommit": "af78a4accdaea059728a53e6b113d543e35fb030",
+      "nativeMeasurement": "e1d6d36e444cc252a0321572e70da8874de81fe3",
+      "deliveryMeasurement": "e2767650c263ea0076ec37709e7a2c94d70045ff",
+      "asOf": "2026-09-18",
+      "totalTextFiles": 3236,
+      "totalTextLines": 696778,
+      "activeDays": 111,
+      "configSha256": "5dd852e65b76795bc0272362c38d0eda78273dec2005679ec62e495bc0e86427",
+      "snapshotSha256": "1728809b0b988d68bb7362fd10a8e806b9f1c700fed0da42d5d7c8bd136c8563",
+      "reportSha256": "4ede4b80b23b2df6056bf81e6de18b602bcfaac04f63299dfc97aaf000d61330",
+      "platforms": [
+        {
+          "runner": "ubuntu-24.04",
+          "powerShell": "7.6.5",
+          "assertions": 67,
+          "encodingCases": 8,
+          "rawBlobCases": 6,
+          "exitCode": 0,
+          "nativeEvidenceSha256": "3fc1da5596f596bf176e74d9212630979f2c93cf9d55a2b119aad4a49b8b52a5",
+          "suiteLogSha256": "0b8fec349f21465227a8d9de3c875161354f78e518789b16fdbd4ba865357b05",
+          "deliveryStatus": "CURRENT",
+          "reproducible": true,
+          "checkedContentChanges": 0
+        },
+        {
+          "runner": "windows-2022",
+          "powerShell": "7.6.5",
+          "assertions": 61,
+          "encodingCases": 4,
+          "rawBlobCases": 6,
+          "exitCode": 0,
+          "nativeEvidenceSha256": "8288efe5cc07bedc6d803ae25f5f232ef1caa0ca7daebe1a91978411972785f9",
+          "suiteLogSha256": "8a7dceae88c68f717d7f7b1185381433fa29eb774b96e8a65cb657fd1dee2e0c",
+          "deliveryStatus": "CURRENT",
+          "reproducible": true,
+          "checkedContentChanges": 0
+        }
+      ]
+    },
+    {
+      "id": "tinycalc",
+      "repository": "hindermath/TinyCalc",
+      "pr": 86,
+      "runId": 35343235438,
+      "reviewedHead": "cee985a101c75b5034c20b4f72ab6801384a6e69",
+      "mergeCommit": "d372cc95d768b2486884f2caddaf2b496f6d629d",
+      "workflowCommit": "712d125c0ebfdcef59cbf1584e7e2884469f5f0e",
+      "nativePilotCommit": "712d125c0ebfdcef59cbf1584e7e2884469f5f0e",
+      "nativeMeasurement": "fac1335c592b40c82a055acad7d111dc5c9f2af9",
+      "deliveryMeasurement": "fac1335c592b40c82a055acad7d111dc5c9f2af9",
+      "asOf": "2026-09-18",
+      "totalTextFiles": 1374,
+      "totalTextLines": 215686,
+      "activeDays": 80,
+      "configSha256": "34e979ce0fb394a2ef10099cd193ef9e7221f43bb072b124cbafcf6cfc531e3f",
+      "snapshotSha256": "32b0a7c816c737a6d1767b397c715bfd041e6bf5ab11ffcd30062b1965229806",
+      "reportSha256": "fac066eaff4b280eb534ef429f6b378cff66e33886d7df0063ed79cfef1048c7",
+      "platforms": [
+        {
+          "runner": "ubuntu-24.04",
+          "powerShell": "7.6.5",
+          "assertions": 67,
+          "encodingCases": 8,
+          "rawBlobCases": 6,
+          "exitCode": 0,
+          "nativeEvidenceSha256": "9cacb60ef1d1e257117f62d86c88e0a1967c052dca459bccb6692169276a50d7",
+          "suiteLogSha256": "0b8fec349f21465227a8d9de3c875161354f78e518789b16fdbd4ba865357b05",
+          "deliveryStatus": "CURRENT",
+          "reproducible": true,
+          "checkedContentChanges": 0
+        },
+        {
+          "runner": "windows-2022",
+          "powerShell": "7.6.5",
+          "assertions": 61,
+          "encodingCases": 4,
+          "rawBlobCases": 6,
+          "exitCode": 0,
+          "nativeEvidenceSha256": "1add4e959a160da45133331ac8062691e3b414dbd96c3bf7a6511780a7ed260a",
+          "suiteLogSha256": "8a7dceae88c68f717d7f7b1185381433fa29eb774b96e8a65cb657fd1dee2e0c",
+          "deliveryStatus": "CURRENT",
+          "reproducible": true,
+          "checkedContentChanges": 0
+        }
+      ]
+    },
+    {
+      "id": "sandbox",
+      "repository": "hindermath/absdd-image-sandbox",
+      "pr": 73,
+      "runId": 35348466728,
+      "reviewedHead": "4a02ca2368c83d02bf5b601ee7fb581ec7dab87a",
+      "mergeCommit": "41eb4b30b3cdc3d1ac477d4328a39447fc7320b6",
+      "workflowCommit": "9686ef03cfcbb4374512d308cc09e5b481580309",
+      "nativePilotCommit": "9686ef03cfcbb4374512d308cc09e5b481580309",
+      "nativeMeasurement": "95b12394f3584721ba0c1a60be4d3c489bcec586",
+      "deliveryMeasurement": "95b12394f3584721ba0c1a60be4d3c489bcec586",
+      "asOf": "2026-09-18",
+      "totalTextFiles": 1308,
+      "totalTextLines": 233683,
+      "activeDays": 70,
+      "configSha256": "bb44cc715e7ec8e926ed7c0c49bd5da35f5b9502a3e1b20c4364d17b2dd63f2e",
+      "snapshotSha256": "2529e84047988f419c2a870b5bef369b53e26f2bf57edc98434f2e638ad80e26",
+      "reportSha256": "bf3770d1a4212858e3412d1f213fa44739ad9cc081f9c33266279bd1c0db2dd8",
+      "platforms": [
+        {
+          "runner": "ubuntu-24.04",
+          "powerShell": "7.6.5",
+          "assertions": 67,
+          "encodingCases": 8,
+          "rawBlobCases": 6,
+          "exitCode": 0,
+          "nativeEvidenceSha256": "830247fb86ccb06f7a9ca42726661bee8a59643f7cab7fb45fbb81a3ff42a956",
+          "suiteLogSha256": "0b8fec349f21465227a8d9de3c875161354f78e518789b16fdbd4ba865357b05",
+          "deliveryStatus": "CURRENT",
+          "reproducible": true,
+          "checkedContentChanges": 0
+        },
+        {
+          "runner": "windows-2022",
+          "powerShell": "7.6.6",
+          "assertions": 61,
+          "encodingCases": 4,
+          "rawBlobCases": 6,
+          "exitCode": 0,
+          "nativeEvidenceSha256": "6f24c3fb9595855acff1c5b2f947a10a2f199adc2110dccf3ace177dc8fe6a36",
+          "suiteLogSha256": "b8e6226beac180442cc0a460a46d6962df53646213912272d76601187aad4139",
+          "deliveryStatus": "CURRENT",
+          "reproducible": true,
+          "checkedContentChanges": 0
+        }
+      ]
+    }
+  ],
+  "archivedFiles": [
+    {
+      "path": "evidence/home/statistics-pilot-ubuntu-24.04/CRLF-BOM-Bash.json",
+      "sha256": "bd95c76386de281b7c76ffc4f82d8dfe56c225e50799b42e112bd8fe347ef0d6",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/home/statistics-pilot-ubuntu-24.04/CRLF-BOM-PowerShell.json",
+      "sha256": "bd95c76386de281b7c76ffc4f82d8dfe56c225e50799b42e112bd8fe347ef0d6",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/home/statistics-pilot-ubuntu-24.04/CRLF-no-BOM-Bash.json",
+      "sha256": "bd95c76386de281b7c76ffc4f82d8dfe56c225e50799b42e112bd8fe347ef0d6",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/home/statistics-pilot-ubuntu-24.04/CRLF-no-BOM-PowerShell.json",
+      "sha256": "bd95c76386de281b7c76ffc4f82d8dfe56c225e50799b42e112bd8fe347ef0d6",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/home/statistics-pilot-ubuntu-24.04/delivery-Bash-decision.json",
+      "sha256": "8475d21a0f32699d3eebbccfd02ef455cdca3d48defcc0e84eb73ab593fb1fea",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/home/statistics-pilot-ubuntu-24.04/delivery-Bash-evidence.json",
+      "sha256": "2e41546828b580eb4b511ddb790f9b9404372a00228f16443fc270d9049bf192",
+      "bytes": 299
+    },
+    {
+      "path": "evidence/home/statistics-pilot-ubuntu-24.04/delivery-PowerShell-decision.json",
+      "sha256": "8475d21a0f32699d3eebbccfd02ef455cdca3d48defcc0e84eb73ab593fb1fea",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/home/statistics-pilot-ubuntu-24.04/delivery-PowerShell-evidence.json",
+      "sha256": "63dc005ca2bbcd16686b4250e6a71d39fefbab7168feed95127ef02f5023cb5c",
+      "bytes": 305
+    },
+    {
+      "path": "evidence/home/statistics-pilot-ubuntu-24.04/fixtures.log",
+      "sha256": "0b8fec349f21465227a8d9de3c875161354f78e518789b16fdbd4ba865357b05",
+      "bytes": 53
+    },
+    {
+      "path": "evidence/home/statistics-pilot-ubuntu-24.04/LF-BOM-Bash.json",
+      "sha256": "bd95c76386de281b7c76ffc4f82d8dfe56c225e50799b42e112bd8fe347ef0d6",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/home/statistics-pilot-ubuntu-24.04/LF-BOM-PowerShell.json",
+      "sha256": "bd95c76386de281b7c76ffc4f82d8dfe56c225e50799b42e112bd8fe347ef0d6",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/home/statistics-pilot-ubuntu-24.04/LF-no-BOM-Bash.json",
+      "sha256": "bd95c76386de281b7c76ffc4f82d8dfe56c225e50799b42e112bd8fe347ef0d6",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/home/statistics-pilot-ubuntu-24.04/LF-no-BOM-PowerShell.json",
+      "sha256": "bd95c76386de281b7c76ffc4f82d8dfe56c225e50799b42e112bd8fe347ef0d6",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/home/statistics-pilot-ubuntu-24.04/native-evidence.json",
+      "sha256": "3fc1da5596f596bf176e74d9212630979f2c93cf9d55a2b119aad4a49b8b52a5",
+      "bytes": 3549
+    },
+    {
+      "path": "evidence/home/statistics-pilot-windows-2022/CRLF-BOM-PowerShell.json",
+      "sha256": "e7e5b52c20717ddf7405998ca48ddaff09da4fdc94f1303c39ae6cc9cdd372bb",
+      "bytes": 185
+    },
+    {
+      "path": "evidence/home/statistics-pilot-windows-2022/CRLF-no-BOM-PowerShell.json",
+      "sha256": "e7e5b52c20717ddf7405998ca48ddaff09da4fdc94f1303c39ae6cc9cdd372bb",
+      "bytes": 185
+    },
+    {
+      "path": "evidence/home/statistics-pilot-windows-2022/delivery-PowerShell-decision.json",
+      "sha256": "1cfc7883532d901cb8ec5cc3f7cc8a14268a777ee93bda177b850b03d95f4bb2",
+      "bytes": 185
+    },
+    {
+      "path": "evidence/home/statistics-pilot-windows-2022/delivery-PowerShell-evidence.json",
+      "sha256": "29bdeac01d4980d182ad4871b292fbc44fbb9c66f66f8551dd88fe82ef2891f4",
+      "bytes": 313
+    },
+    {
+      "path": "evidence/home/statistics-pilot-windows-2022/fixtures.log",
+      "sha256": "8a7dceae88c68f717d7f7b1185381433fa29eb774b96e8a65cb657fd1dee2e0c",
+      "bytes": 57
+    },
+    {
+      "path": "evidence/home/statistics-pilot-windows-2022/LF-BOM-PowerShell.json",
+      "sha256": "e7e5b52c20717ddf7405998ca48ddaff09da4fdc94f1303c39ae6cc9cdd372bb",
+      "bytes": 185
+    },
+    {
+      "path": "evidence/home/statistics-pilot-windows-2022/LF-no-BOM-PowerShell.json",
+      "sha256": "e7e5b52c20717ddf7405998ca48ddaff09da4fdc94f1303c39ae6cc9cdd372bb",
+      "bytes": 185
+    },
+    {
+      "path": "evidence/home/statistics-pilot-windows-2022/native-evidence.json",
+      "sha256": "8288efe5cc07bedc6d803ae25f5f232ef1caa0ca7daebe1a91978411972785f9",
+      "bytes": 2773
+    },
+    {
+      "path": "evidence/sandbox/statistics-pilot-ubuntu-24.04/CRLF-BOM-Bash.json",
+      "sha256": "9bc7d1fe069cc51861957d6b67fd7cf501e2a491007cb00659345b631309a8eb",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/sandbox/statistics-pilot-ubuntu-24.04/CRLF-BOM-PowerShell.json",
+      "sha256": "9bc7d1fe069cc51861957d6b67fd7cf501e2a491007cb00659345b631309a8eb",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/sandbox/statistics-pilot-ubuntu-24.04/CRLF-no-BOM-Bash.json",
+      "sha256": "9bc7d1fe069cc51861957d6b67fd7cf501e2a491007cb00659345b631309a8eb",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/sandbox/statistics-pilot-ubuntu-24.04/CRLF-no-BOM-PowerShell.json",
+      "sha256": "9bc7d1fe069cc51861957d6b67fd7cf501e2a491007cb00659345b631309a8eb",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/sandbox/statistics-pilot-ubuntu-24.04/delivery-Bash-decision.json",
+      "sha256": "9bc7d1fe069cc51861957d6b67fd7cf501e2a491007cb00659345b631309a8eb",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/sandbox/statistics-pilot-ubuntu-24.04/delivery-Bash-evidence.json",
+      "sha256": "fc7d8d975a3bc8350bbbe6fd7594cdf601d1792498895d3680c9a5aec897a5f7",
+      "bytes": 299
+    },
+    {
+      "path": "evidence/sandbox/statistics-pilot-ubuntu-24.04/delivery-PowerShell-decision.json",
+      "sha256": "9bc7d1fe069cc51861957d6b67fd7cf501e2a491007cb00659345b631309a8eb",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/sandbox/statistics-pilot-ubuntu-24.04/delivery-PowerShell-evidence.json",
+      "sha256": "acc55ba805f1e7ec418c0a79355d02e99e20bbc71a134f48d959991a890d962d",
+      "bytes": 305
+    },
+    {
+      "path": "evidence/sandbox/statistics-pilot-ubuntu-24.04/fixtures.log",
+      "sha256": "0b8fec349f21465227a8d9de3c875161354f78e518789b16fdbd4ba865357b05",
+      "bytes": 53
+    },
+    {
+      "path": "evidence/sandbox/statistics-pilot-ubuntu-24.04/LF-BOM-Bash.json",
+      "sha256": "9bc7d1fe069cc51861957d6b67fd7cf501e2a491007cb00659345b631309a8eb",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/sandbox/statistics-pilot-ubuntu-24.04/LF-BOM-PowerShell.json",
+      "sha256": "9bc7d1fe069cc51861957d6b67fd7cf501e2a491007cb00659345b631309a8eb",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/sandbox/statistics-pilot-ubuntu-24.04/LF-no-BOM-Bash.json",
+      "sha256": "9bc7d1fe069cc51861957d6b67fd7cf501e2a491007cb00659345b631309a8eb",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/sandbox/statistics-pilot-ubuntu-24.04/LF-no-BOM-PowerShell.json",
+      "sha256": "9bc7d1fe069cc51861957d6b67fd7cf501e2a491007cb00659345b631309a8eb",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/sandbox/statistics-pilot-ubuntu-24.04/native-evidence.json",
+      "sha256": "830247fb86ccb06f7a9ca42726661bee8a59643f7cab7fb45fbb81a3ff42a956",
+      "bytes": 3549
+    },
+    {
+      "path": "evidence/sandbox/statistics-pilot-windows-2022/CRLF-BOM-PowerShell.json",
+      "sha256": "ad2a1fbff24da2e2a813fab50780b17b7c612ead9d714a2d74089434ecc95f77",
+      "bytes": 185
+    },
+    {
+      "path": "evidence/sandbox/statistics-pilot-windows-2022/CRLF-no-BOM-PowerShell.json",
+      "sha256": "ad2a1fbff24da2e2a813fab50780b17b7c612ead9d714a2d74089434ecc95f77",
+      "bytes": 185
+    },
+    {
+      "path": "evidence/sandbox/statistics-pilot-windows-2022/delivery-PowerShell-decision.json",
+      "sha256": "ad2a1fbff24da2e2a813fab50780b17b7c612ead9d714a2d74089434ecc95f77",
+      "bytes": 185
+    },
+    {
+      "path": "evidence/sandbox/statistics-pilot-windows-2022/delivery-PowerShell-evidence.json",
+      "sha256": "87018db6b6724daed18e63ca045afddf5c7e65d92989140e3f526a3eddce4a99",
+      "bytes": 313
+    },
+    {
+      "path": "evidence/sandbox/statistics-pilot-windows-2022/fixtures.log",
+      "sha256": "b8e6226beac180442cc0a460a46d6962df53646213912272d76601187aad4139",
+      "bytes": 57
+    },
+    {
+      "path": "evidence/sandbox/statistics-pilot-windows-2022/LF-BOM-PowerShell.json",
+      "sha256": "ad2a1fbff24da2e2a813fab50780b17b7c612ead9d714a2d74089434ecc95f77",
+      "bytes": 185
+    },
+    {
+      "path": "evidence/sandbox/statistics-pilot-windows-2022/LF-no-BOM-PowerShell.json",
+      "sha256": "ad2a1fbff24da2e2a813fab50780b17b7c612ead9d714a2d74089434ecc95f77",
+      "bytes": 185
+    },
+    {
+      "path": "evidence/sandbox/statistics-pilot-windows-2022/native-evidence.json",
+      "sha256": "6f24c3fb9595855acff1c5b2f947a10a2f199adc2110dccf3ace177dc8fe6a36",
+      "bytes": 2773
+    },
+    {
+      "path": "evidence/tinycalc/statistics-pilot-ubuntu-24.04/CRLF-BOM-Bash.json",
+      "sha256": "6da6ab31dfdc1065e475b736307a092cdf358ee17c5f80fa711cd8c8ad1b64c2",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/tinycalc/statistics-pilot-ubuntu-24.04/CRLF-BOM-PowerShell.json",
+      "sha256": "6da6ab31dfdc1065e475b736307a092cdf358ee17c5f80fa711cd8c8ad1b64c2",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/tinycalc/statistics-pilot-ubuntu-24.04/CRLF-no-BOM-Bash.json",
+      "sha256": "6da6ab31dfdc1065e475b736307a092cdf358ee17c5f80fa711cd8c8ad1b64c2",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/tinycalc/statistics-pilot-ubuntu-24.04/CRLF-no-BOM-PowerShell.json",
+      "sha256": "6da6ab31dfdc1065e475b736307a092cdf358ee17c5f80fa711cd8c8ad1b64c2",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/tinycalc/statistics-pilot-ubuntu-24.04/delivery-Bash-decision.json",
+      "sha256": "6da6ab31dfdc1065e475b736307a092cdf358ee17c5f80fa711cd8c8ad1b64c2",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/tinycalc/statistics-pilot-ubuntu-24.04/delivery-Bash-evidence.json",
+      "sha256": "77a0bc3eea22838d08960d32d3d2469b311d4a206c3c61faf2004c28d6d11c06",
+      "bytes": 299
+    },
+    {
+      "path": "evidence/tinycalc/statistics-pilot-ubuntu-24.04/delivery-PowerShell-decision.json",
+      "sha256": "6da6ab31dfdc1065e475b736307a092cdf358ee17c5f80fa711cd8c8ad1b64c2",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/tinycalc/statistics-pilot-ubuntu-24.04/delivery-PowerShell-evidence.json",
+      "sha256": "afac5085aaf7fbf74f3ee636587aab8e145212134a089f2539ed1768bf4cb34b",
+      "bytes": 305
+    },
+    {
+      "path": "evidence/tinycalc/statistics-pilot-ubuntu-24.04/fixtures.log",
+      "sha256": "0b8fec349f21465227a8d9de3c875161354f78e518789b16fdbd4ba865357b05",
+      "bytes": 53
+    },
+    {
+      "path": "evidence/tinycalc/statistics-pilot-ubuntu-24.04/LF-BOM-Bash.json",
+      "sha256": "6da6ab31dfdc1065e475b736307a092cdf358ee17c5f80fa711cd8c8ad1b64c2",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/tinycalc/statistics-pilot-ubuntu-24.04/LF-BOM-PowerShell.json",
+      "sha256": "6da6ab31dfdc1065e475b736307a092cdf358ee17c5f80fa711cd8c8ad1b64c2",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/tinycalc/statistics-pilot-ubuntu-24.04/LF-no-BOM-Bash.json",
+      "sha256": "6da6ab31dfdc1065e475b736307a092cdf358ee17c5f80fa711cd8c8ad1b64c2",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/tinycalc/statistics-pilot-ubuntu-24.04/LF-no-BOM-PowerShell.json",
+      "sha256": "6da6ab31dfdc1065e475b736307a092cdf358ee17c5f80fa711cd8c8ad1b64c2",
+      "bytes": 177
+    },
+    {
+      "path": "evidence/tinycalc/statistics-pilot-ubuntu-24.04/native-evidence.json",
+      "sha256": "9cacb60ef1d1e257117f62d86c88e0a1967c052dca459bccb6692169276a50d7",
+      "bytes": 3549
+    },
+    {
+      "path": "evidence/tinycalc/statistics-pilot-windows-2022/CRLF-BOM-PowerShell.json",
+      "sha256": "d5780b391d0514f7d52411c4e46007750c3e45eeaaf104e71ef826f3fd5074fe",
+      "bytes": 185
+    },
+    {
+      "path": "evidence/tinycalc/statistics-pilot-windows-2022/CRLF-no-BOM-PowerShell.json",
+      "sha256": "d5780b391d0514f7d52411c4e46007750c3e45eeaaf104e71ef826f3fd5074fe",
+      "bytes": 185
+    },
+    {
+      "path": "evidence/tinycalc/statistics-pilot-windows-2022/delivery-PowerShell-decision.json",
+      "sha256": "d5780b391d0514f7d52411c4e46007750c3e45eeaaf104e71ef826f3fd5074fe",
+      "bytes": 185
+    },
+    {
+      "path": "evidence/tinycalc/statistics-pilot-windows-2022/delivery-PowerShell-evidence.json",
+      "sha256": "a284c32684b1f5464a90c1964d2bb8fafda94c6b08ef6c9895045f4056482bcc",
+      "bytes": 313
+    },
+    {
+      "path": "evidence/tinycalc/statistics-pilot-windows-2022/fixtures.log",
+      "sha256": "8a7dceae88c68f717d7f7b1185381433fa29eb774b96e8a65cb657fd1dee2e0c",
+      "bytes": 57
+    },
+    {
+      "path": "evidence/tinycalc/statistics-pilot-windows-2022/LF-BOM-PowerShell.json",
+      "sha256": "d5780b391d0514f7d52411c4e46007750c3e45eeaaf104e71ef826f3fd5074fe",
+      "bytes": 185
+    },
+    {
+      "path": "evidence/tinycalc/statistics-pilot-windows-2022/LF-no-BOM-PowerShell.json",
+      "sha256": "d5780b391d0514f7d52411c4e46007750c3e45eeaaf104e71ef826f3fd5074fe",
+      "bytes": 185
+    },
+    {
+      "path": "evidence/tinycalc/statistics-pilot-windows-2022/native-evidence.json",
+      "sha256": "1add4e959a160da45133331ac8062691e3b414dbd96c3bf7a6511780a7ed260a",
+      "bytes": 2773
+    }
+  ]
+}

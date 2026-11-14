@@ -1,0 +1,14 @@
+{
+  "release_status": "NotEstablishedAtPreparation",
+  "candidate_status": "Prepared",
+  "packageVersion": "0.2.9",
+  "presetId": "parallel-autonomous-run-governance",
+  "externalPublicationEvidence": "https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance/releases/tag/v0.2.9",
+  "documentationPr": "https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance/pull/15",
+  "schemaVersion": 1,
+  "historicalPublicationVersion": "0.2.8",
+  "runtimeChanged": false,
+  "generatorSchemaChanged": false,
+  "preparedAt": "2026-10-24T12:50:05.0066510+00:00",
+  "sourceCommit": "12a4923f550a27ba03971118cbc855c51e3f2981"
+}

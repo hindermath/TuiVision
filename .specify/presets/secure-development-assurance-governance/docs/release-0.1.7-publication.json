@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 1,
+  "presetId": "secure-development-assurance-governance",
+  "version": "0.1.7",
+  "repository": "https://github.com/hindermath/spec-kit-preset-secure-development-assurance-governance",
+  "candidate_status": "HistoricalCandidate",
+  "release_status": "Published",
+  "tag": "v0.1.7",
+  "tagCommit": "0f47996be3b613b3ab26206b606f68e3acb44c30",
+  "verifiedAt": "2026-10-24T10:55:20.8876630+00:00",
+  "release": {
+    "id": 422333926,
+    "url": "https://github.com/hindermath/spec-kit-preset-secure-development-assurance-governance/releases/tag/v0.1.7",
+    "publishedAt": "2026-10-23T21:41:13.0000000+00:00",
+    "preRelease": false,
+    "draft": false
+  },
+  "archive": {
+    "sha256": "0b1352fad73970c6bc12d77bc4b687dde8db36a02ee1f73ed97289bb16134b35",
+    "url": "https://github.com/hindermath/spec-kit-preset-secure-development-assurance-governance/archive/refs/tags/v0.1.7.zip",
+    "status": "Verified",
+    "verifiedAt": "2026-10-24T10:55:20.8876630+00:00",
+    "bytes": 108099
+  },
+  "evidenceComplete": true,
+  "historicalDocumentSha256": "23a39f944c89525040ee4d21cb0e06a5fdfb63f9b1eca018af36777bc09d0857",
+  "comparison": {
+    "fromTag": "v0.1.3",
+    "toTag": "v0.1.7",
+    "toCommit": "0f47996be3b613b3ab26206b606f68e3acb44c30",
+    "url": "https://github.com/hindermath/spec-kit-preset-secure-development-assurance-governance/compare/0d03aa9ebe8f74a26e331815bca5609fb48d7a14...0f47996be3b613b3ab26206b606f68e3acb44c30",
+    "fromCommit": "0d03aa9ebe8f74a26e331815bca5609fb48d7a14"
+  },
+  "improvements": [
+    {
+      "introducedIn": "v0.1.5",
+      "type": "ValidatorRuntime",
+      "sourcePaths": [
+        "scripts/validate-secure-development-assurance.ps1",
+        "scripts/validate-secure-development-assurance.sh",
+        "tests/test-secure-development-assurance.ps1"
+      ],
+      "problem": {
+        "de": "Aktive Dokumentmetadaten mussten von historischen oder rein erzählenden Angaben unterschieden werden.",
+        "en": "Active document metadata needed to be distinguished from historical or narrative text."
+      },
+      "description": {
+        "de": "Aktive Versions-/Quellenbindungen werden strenger geprüft. Unpassende aktuelle Metadaten blockieren; historische Aussagen bleiben begrenzt.",
+        "en": "Active version/source bindings are checked more strictly. Mismatched current metadata blocks; historical statements retain their scope."
+      },
+      "benefit": {
+        "de": "Veraltete aktuelle Evidence wird nicht versehentlich als passend behandelt.",
+        "en": "Stale active evidence is not accidentally accepted."
+      },
+      "commit": "55be0314488f1aeedc396f652cb247f9e5678817"
+    },
+    {
+      "introducedIn": "v0.1.7",
+      "type": "Integration",
+      "sourcePaths": [
+        "model-routing.json",
+        "preset.yml",
+        "tests/test-stable-routing.ps1"
+      ],
+      "problem": {
+        "de": "Die zwei Assurance-Commands hatten keinen ausdrücklich registrierten stabilen Routing-Vertrag.",
+        "en": "The two Assurance commands lacked an explicitly registered stable routing contract."
+      },
+      "description": {
+        "de": "Schema 1.0 bindet Status an fast-mechanical und Review an frontier-reasoning, mit fail-closed und isolierten Kompositionstests. Die Vorbereitung 0.1.6 in PR #9 erhielt keinen eigenen Tag; sie ist in 0.1.7 enthalten.",
+        "en": "Schema 1.0 binds status to fast-mechanical and review to frontier-reasoning, with fail-closed behavior and isolated composition tests. The 0.1.6 preparation in PR #9 received no separate tag; it is included in 0.1.7."
+      },
+      "benefit": {
+        "de": "Agentenarbeit kann den stabilen gemeinsamen Vertrag auflösen; direkte Validatoren bleiben modellfrei und erteilen keine menschliche Freigabe.",
+        "en": "Agent work can resolve the shared stable contract; direct validators remain model-free and grant no human approval."
+      },
+      "commit": "0f47996be3b613b3ab26206b606f68e3acb44c30"
+    },
+    {
+      "introducedIn": "v0.1.7",
+      "type": "DocumentationUsability",
+      "sourcePaths": [
+        "docs/user-guide.md",
+        "docs/user-guide.EN.md",
+        "tests/test-documentation-closeout.ps1"
+      ],
+      "problem": {
+        "de": "Ein kurzer README-Einstieg erklärte die vollständigen Leserpfade und Grenzen noch nicht gleichwertig.",
+        "en": "The short README entry did not yet explain the complete reader journey and limits equally."
+      },
+      "description": {
+        "de": "Deutsch-/Englisch-Leitfäden, Command-/Vorlagen-Erklärungen und Dokumentationsregressionen wurden ergänzt. Frühere Einstiegsverbesserungen und der letzte Patch werden getrennt ausgewiesen.",
+        "en": "German/English guides, command/template explanations and documentation regressions were added. Earlier entry-point improvements and the final patch are reported separately."
+      },
+      "benefit": {
+        "de": "Lernende finden Voraussetzungen, Beispiel, Ergebnis und Fehlerhilfe. Neue Textklarheit ist keine neue Runtime-Funktion oder menschliche Abnahme.",
+        "en": "Learners can find prerequisites, an example, its result and troubleshooting. Clearer text is not a new runtime feature or human acceptance."
+      },
+      "commit": "0f47996be3b613b3ab26206b606f68e3acb44c30"
+    }
+  ],
+  "historicalValidation": {
+    "checks": [
+      {
+        "name": "Documentation (ubuntu-24.04)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-secure-development-assurance-governance/actions/runs/39992118068/job/120546204237",
+        "startedAt": "2026-10-23T17:04:56Z",
+        "completedAt": "2026-10-23T17:05:07Z",
+        "head": "85f589a607490f6238ba4bfecaac6b47ce2e02e4"
+      },
+      {
+        "name": "Documentation (macos-15)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-secure-development-assurance-governance/actions/runs/39992118068/job/120546204057",
+        "startedAt": "2026-10-23T17:07:40Z",
+        "completedAt": "2026-10-23T17:07:47Z",
+        "head": "85f589a607490f6238ba4bfecaac6b47ce2e02e4"
+      },
+      {
+        "name": "Stable routing (ubuntu-24.04)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-secure-development-assurance-governance/actions/runs/39992118084/job/120546203894",
+        "startedAt": "2026-10-23T17:04:56Z",
+        "completedAt": "2026-10-23T17:05:20Z",
+        "head": "85f589a607490f6238ba4bfecaac6b47ce2e02e4"
+      },
+      {
+        "name": "Reader paths (macos-15)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-secure-development-assurance-governance/actions/runs/39992118077/job/120546203880",
+        "startedAt": "2026-10-23T17:07:51Z",
+        "completedAt": "2026-10-23T17:08:00Z",
+        "head": "85f589a607490f6238ba4bfecaac6b47ce2e02e4"
+      },
+      {
+        "name": "Stable routing (macos-15)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-secure-development-assurance-governance/actions/runs/39992118084/job/120546203796",
+        "startedAt": "2026-10-23T17:07:20Z",
+        "completedAt": "2026-10-23T17:07:38Z",
+        "head": "85f589a607490f6238ba4bfecaac6b47ce2e02e4"
+      },
+      {
+        "name": "Reader paths (windows-2022)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-secure-development-assurance-governance/actions/runs/39992118077/job/120546203780",
+        "startedAt": "2026-10-23T17:04:56Z",
+        "completedAt": "2026-10-23T17:05:10Z",
+        "head": "85f589a607490f6238ba4bfecaac6b47ce2e02e4"
+      },
+      {
+        "name": "Documentation (windows-2022)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-secure-development-assurance-governance/actions/runs/39992118068/job/120546203706",
+        "startedAt": "2026-10-23T17:04:56Z",
+        "completedAt": "2026-10-23T17:05:11Z",
+        "head": "85f589a607490f6238ba4bfecaac6b47ce2e02e4"
+      },
+      {
+        "name": "Reader paths (ubuntu-24.04)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-secure-development-assurance-governance/actions/runs/39992118077/job/120546203541",
+        "startedAt": "2026-10-23T17:04:57Z",
+        "completedAt": "2026-10-23T17:05:07Z",
+        "head": "85f589a607490f6238ba4bfecaac6b47ce2e02e4"
+      },
+      {
+        "name": "Assurance contracts (macos-14)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-secure-development-assurance-governance/actions/runs/39992118051/job/120546203540",
+        "startedAt": "2026-10-23T17:05:08Z",
+        "completedAt": "2026-10-23T17:08:59Z",
+        "head": "85f589a607490f6238ba4bfecaac6b47ce2e02e4"
+      },
+      {
+        "name": "Assurance contracts (ubuntu-22.04)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-secure-development-assurance-governance/actions/runs/39992118051/job/120546203534",
+        "startedAt": "2026-10-23T17:04:56Z",
+        "completedAt": "2026-10-23T17:11:35Z",
+        "head": "85f589a607490f6238ba4bfecaac6b47ce2e02e4"
+      },
+      {
+        "name": "Stable routing (windows-2022)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-secure-development-assurance-governance/actions/runs/39992118084/job/120546203505",
+        "startedAt": "2026-10-23T17:04:56Z",
+        "completedAt": "2026-10-23T17:05:20Z",
+        "head": "85f589a607490f6238ba4bfecaac6b47ce2e02e4"
+      },
+      {
+        "name": "Assurance contracts (windows-2022)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-secure-development-assurance-governance/actions/runs/39992118051/job/120546203138",
+        "startedAt": "2026-10-23T17:04:56Z",
+        "completedAt": "2026-10-23T17:20:19Z",
+        "head": "85f589a607490f6238ba4bfecaac6b47ce2e02e4"
+      }
+    ],
+    "pr": "https://github.com/hindermath/spec-kit-preset-secure-development-assurance-governance/pull/11",
+    "mergeCommit": "0f47996be3b613b3ab26206b606f68e3acb44c30",
+    "reviewedHead": "85f589a607490f6238ba4bfecaac6b47ce2e02e4"
+  },
+  "newDocumentationReview": "Pending exact-head human review; no merge or publication authority.",
+  "boundary": "Documentation source only; no new package, runtime behavior, approval, installation, catalog update or cancelled dynamic routing."
+}

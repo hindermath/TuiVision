@@ -116,6 +116,74 @@ try {
     $Base = New-BaseConfig
     Invoke-Fixture (Write-JsonFixture 'de.json' $Base) 0 '"outcome": "Aligned"'
 
+    $NestedRepository = Join-Path $Root 'nested-repository'
+    New-Item -ItemType Directory -Path (Join-Path $NestedRepository '.git') -Force |
+        Out-Null
+    Set-Content -LiteralPath (Join-Path $NestedRepository 'Pflichtenheft.md') `
+        -Value '# Nested repository index' -Encoding utf8NoBOM
+    Invoke-Fixture (Write-JsonFixture 'nested-repository.json' $Base) 0 '"outcome": "Aligned"'
+
+    $NestedDirectory = Join-Path $Root 'ordinary-directory'
+    New-Item -ItemType Directory -Path $NestedDirectory -Force | Out-Null
+    Set-Content -LiteralPath (Join-Path $NestedDirectory 'Pflichtenheft.md') `
+        -Value '# Invalid duplicate index' -Encoding utf8NoBOM
+    Invoke-Fixture (Write-JsonFixture 'nested-duplicate.json' $Base) 2 'RIG013'
+    Remove-Item -LiteralPath $NestedDirectory -Recurse -Force
+
+    # DE: Der Einzelprozess bleibt von Ready bis zum laufenden Zustand gueltig.
+    # EN: The single-member process remains valid from Ready to the running state.
+    $LifecyclePath = Join-Path $Root 'requirements/intakes/series/manifest.json'
+    $Lifecycle = $Manifest.Clone()
+    $Lifecycle.orderedTargets = @($Manifest.orderedTargets[0].Clone())
+    $Lifecycle.status = 'Ready'
+    $Lifecycle | ConvertTo-Json -Depth 12 | Set-Content $LifecyclePath -Encoding utf8NoBOM
+    Invoke-Fixture (Write-JsonFixture 'ready-eligible.json' $Base) 0 '"eligibleCandidate": "requirements/intakes/active/Lastenheft_Beispiel.md"'
+    $Lifecycle.status = 'Active'
+    $Lifecycle.orderedTargets[0].status = 'Active'
+    $Lifecycle | ConvertTo-Json -Depth 12 | Set-Content $LifecyclePath -Encoding utf8NoBOM
+    Invoke-Fixture (Write-JsonFixture 'active-no-eligible.json' $Base) 0 '"eligibleCandidate": "N/A"'
+    # DE: Dasselbe Mitglied wird abgeschlossen, archiviert und danach als Fixture zurueckgesetzt.
+    # EN: Complete and archive the same member, then restore the isolated fixture.
+    $ArchivedLifecycleTarget = Join-Path $Root 'requirements/intakes/archive/Lastenheft_Beispiel.md'
+    Move-Item -LiteralPath $Target -Destination $ArchivedLifecycleTarget
+    $Lifecycle.status = 'Completed'
+    $Lifecycle.orderedTargets[0].status = 'Completed'
+    $Lifecycle.orderedTargets[0].path = 'requirements/intakes/archive/Lastenheft_Beispiel.md'
+    $Lifecycle.roots = @($Lifecycle.orderedTargets[0].path)
+    $Lifecycle | ConvertTo-Json -Depth 12 | Set-Content $LifecyclePath -Encoding utf8NoBOM
+    Invoke-Fixture (Write-JsonFixture 'single-lifecycle-completed.json' $Base) 0 '"eligibleCandidate": "N/A"'
+    Move-Item -LiteralPath $ArchivedLifecycleTarget -Destination $Target
+    $Lifecycle.orderedTargets[0].path = $Manifest.orderedTargets[0].path
+    $Lifecycle.roots = @($Lifecycle.orderedTargets[0].path)
+    foreach ($SeriesState in @('Ready', 'Active')) {
+        foreach ($MemberState in @('Active', 'Pending', 'Blocked')) {
+            if ($SeriesState -eq 'Active' -and $MemberState -eq 'Active') { continue }
+            $Lifecycle.status = $SeriesState
+            $Lifecycle.orderedTargets[0].status = $MemberState
+            $Lifecycle | ConvertTo-Json -Depth 12 | Set-Content $LifecyclePath -Encoding utf8NoBOM
+            Invoke-Fixture (Write-JsonFixture "no-eligible-${SeriesState}-${MemberState}.json" $Base) 2 'RIG017'
+        }
+    }
+    # DE: Auch ohne Kandidaten muessen Hash, Datei und Abhaengigkeiten stimmen.
+    # EN: Hash, file and dependencies must remain valid even without a candidate.
+    $Lifecycle.status = 'Active'
+    $Lifecycle.orderedTargets[0].status = 'Active'
+    $Lifecycle.orderedTargets[0].normalizedSha256 = '0' * 64
+    $Lifecycle | ConvertTo-Json -Depth 12 | Set-Content $LifecyclePath -Encoding utf8NoBOM
+    Invoke-Fixture (Write-JsonFixture 'active-hash-drift.json' $Base) 2 'RIG015'
+    $Lifecycle.orderedTargets[0].normalizedSha256 = Get-NormalizedSha256 $Target
+    $Lifecycle.dependencies = @(@{ from = $Lifecycle.orderedTargets[0].path; to = $Lifecycle.orderedTargets[0].path })
+    $Lifecycle | ConvertTo-Json -Depth 12 | Set-Content $LifecyclePath -Encoding utf8NoBOM
+    Invoke-Fixture (Write-JsonFixture 'active-invalid-dependency.json' $Base) 2 'RIG016'
+    $Lifecycle.dependencies = @()
+    $Lifecycle.orderedTargets[0].path = 'requirements/intakes/active/Lastenheft_Missing.md'
+    $Lifecycle | ConvertTo-Json -Depth 12 | Set-Content $LifecyclePath -Encoding utf8NoBOM
+    Invoke-Fixture (Write-JsonFixture 'active-missing-file.json' $Base) 2 'RIG014'
+    $Lifecycle.orderedTargets[0].path = '../outside.md'
+    $Lifecycle | ConvertTo-Json -Depth 12 | Set-Content $LifecyclePath -Encoding utf8NoBOM
+    Invoke-Fixture (Write-JsonFixture 'active-path-escape.json' $Base) 2 'RIG004'
+    $Manifest | ConvertTo-Json -Depth 12 | Set-Content $LifecyclePath -Encoding utf8NoBOM
+
     $Bilingual = New-BaseConfig -Language 'de-DE' -NamingProfile 'de'
     Invoke-Fixture (Write-JsonFixture 'bilingual.json' $Bilingual) 0 '"documentationLanguage": "de-DE"'
 
@@ -133,6 +201,34 @@ try {
     Remove-Item -LiteralPath $HistoricalInFlatLayout
 
     $ManifestPath = Join-Path $Root 'requirements/intakes/series/manifest.json'
+    $SavedManifest = Get-Content -Raw -LiteralPath $ManifestPath
+    $IdleManifest = @{
+        schemaVersion = '1.0'
+        documentType = 'IntakeSeriesManifest'
+        status = 'Idle'
+        orderedTargets = @()
+        roots = @()
+        dependencies = @()
+    }
+    $IdleManifest | ConvertTo-Json -Depth 12 |
+        Set-Content -LiteralPath $ManifestPath -Encoding utf8NoBOM
+    Invoke-Fixture (Write-JsonFixture 'idle-series.json' $ManifestInventory) 0 '"eligibleCandidate": "N/A"'
+    Invoke-Fixture (Write-JsonFixture 'idle-with-standalone.json' $ManifestInventory) 0 '"activeIntakeCount": 1'
+    Invoke-Fixture (Write-JsonFixture 'idle-strict-with-standalone.json' $Base) 2 'RIG013'
+
+    $InvalidIdleManifest = $IdleManifest.Clone()
+    $InvalidIdleManifest.orderedTargets = @($Manifest.orderedTargets[0])
+    $InvalidIdleManifest.roots = @('requirements/intakes/active/Lastenheft_Beispiel.md')
+    $InvalidIdleManifest | ConvertTo-Json -Depth 12 |
+        Set-Content -LiteralPath $ManifestPath -Encoding utf8NoBOM
+    Invoke-Fixture (Write-JsonFixture 'idle-with-target.json' $ManifestInventory) 2 'RIG017'
+
+    $InvalidEmptyManifest = $IdleManifest.Clone()
+    $InvalidEmptyManifest.status = 'Ready'
+    $InvalidEmptyManifest | ConvertTo-Json -Depth 12 |
+        Set-Content -LiteralPath $ManifestPath -Encoding utf8NoBOM
+    Invoke-Fixture (Write-JsonFixture 'ready-without-target.json' $ManifestInventory) 2 'RIG014'
+
     $CompletedTarget = Join-Path $Root 'requirements/intakes/archive/Lastenheft_Abgeschlossen.md'
     Set-Content -LiteralPath $CompletedTarget -Value '# Abgeschlossen' -Encoding utf8NoBOM
     $CompletedManifest = @{
@@ -235,8 +331,7 @@ try {
         Set-Content -LiteralPath $ManifestPath -Encoding utf8NoBOM
     Invoke-Fixture (Write-JsonFixture 'completed-with-pending.json' $ManifestInventory) 2 `
         'Completed series contains non-completed targets'
-    $Manifest | ConvertTo-Json -Depth 12 |
-        Set-Content -LiteralPath $ManifestPath -Encoding utf8NoBOM
+    Set-Content -LiteralPath $ManifestPath -Value $SavedManifest -Encoding utf8NoBOM
 
     $Schema1 = $Base.Clone()
     $Schema1.schemaVersion = '1.0'
@@ -261,7 +356,6 @@ try {
     $Duplicate.collections.archive = $Duplicate.collections.active
     Invoke-Fixture (Write-JsonFixture 'duplicate.json' $Duplicate) 2 'RIG007'
 
-    $SavedManifest = Get-Content -Raw -LiteralPath $ManifestPath
     Set-Content -LiteralPath $ManifestPath -Value '{}' -Encoding utf8NoBOM
     Invoke-Fixture (Write-JsonFixture 'empty-manifest.json' $Base) 2 'RIG014'
     Set-Content -LiteralPath $ManifestPath -Value $SavedManifest -Encoding utf8NoBOM
@@ -287,6 +381,12 @@ try {
     $MultipleEligible.orderedTargets[1].normalizedSha256 = Get-NormalizedSha256 $Second
     $MultipleEligible | ConvertTo-Json -Depth 12 | Set-Content -LiteralPath $ManifestPath -Encoding utf8NoBOM
     Invoke-Fixture (Write-JsonFixture 'multiple-eligible.json' $Base) 2 'RIG017'
+
+    $ActiveAndEligible = $MultipleEligible.Clone()
+    $ActiveAndEligible.orderedTargets = @($MultipleEligible.orderedTargets[0].Clone(), $MultipleEligible.orderedTargets[1].Clone())
+    $ActiveAndEligible.orderedTargets[0].status = 'Active'
+    $ActiveAndEligible | ConvertTo-Json -Depth 12 | Set-Content $ManifestPath -Encoding utf8NoBOM
+    Invoke-Fixture (Write-JsonFixture 'active-and-eligible.json' $Base) 0 '"eligibleCandidate": "requirements/intakes/active/Lastenheft_Zweites.md"'
 
     # DE: Echte englische Dateinamen und beide Zeilenenden pruefen denselben Vertrag.
     # EN: Real English filenames and both line endings exercise the same contract.

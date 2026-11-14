@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "presetId": "agent-parity-governance",
+  "version": "0.4.4",
+  "repository": "https://github.com/hindermath/spec-kit-preset-agent-parity-governance",
+  "candidate_status": "HistoricalCandidate",
+  "release_status": "Published",
+  "tag": "v0.4.4",
+  "tagCommit": "ca4e9116a68472b336450d8f03a52e0264f5beb6",
+  "verifiedAt": "2026-10-24T10:55:34.1270730+00:00",
+  "release": {
+    "id": 422326433,
+    "url": "https://github.com/hindermath/spec-kit-preset-agent-parity-governance/releases/tag/v0.4.4",
+    "publishedAt": "2026-10-23T21:29:43.0000000+00:00",
+    "preRelease": false,
+    "draft": false
+  },
+  "archive": {
+    "sha256": "2c752eea241b359c0dce808c95cf750bd0116fe2470e2bce6edfb1aff1a8d020",
+    "url": "https://github.com/hindermath/spec-kit-preset-agent-parity-governance/archive/refs/tags/v0.4.4.zip",
+    "status": "Verified",
+    "verifiedAt": "2026-10-24T10:55:34.1270730+00:00",
+    "bytes": 39950
+  },
+  "evidenceComplete": true,
+  "historicalDocumentSha256": "f784f84ff1da3285ed088d322d8e3b114ec64cb240d790e48137e1e65771ae74",
+  "comparison": {
+    "fromTag": "v0.4.2",
+    "toTag": "v0.4.4",
+    "toCommit": "ca4e9116a68472b336450d8f03a52e0264f5beb6",
+    "url": "https://github.com/hindermath/spec-kit-preset-agent-parity-governance/compare/fe9e8e175c2974ca95a700cb70dfa82fc6b24cb0...ca4e9116a68472b336450d8f03a52e0264f5beb6",
+    "fromCommit": "fe9e8e175c2974ca95a700cb70dfa82fc6b24cb0"
+  },
+  "improvements": [
+    {
+      "introducedIn": "v0.4.3",
+      "type": "DocumentationUsability",
+      "sourcePaths": [
+        "README.md"
+      ],
+      "problem": {
+        "de": "Gemeinsame Guidance und agentenspezifische Metadaten brauchten klarere Anwendungshinweise.",
+        "en": "Shared guidance and agent-specific metadata needed clearer usage guidance."
+      },
+      "description": {
+        "de": "Anwendung und Komposition werden verständlicher; 0.4.4 ergänzt DE-/EN-Leserpfade und entsprechende Dokumentationsregression.",
+        "en": "Usage and composition become clearer; 0.4.4 adds DE/EN reader paths and matching documentation regression."
+      },
+      "benefit": {
+        "de": "Eine gleiche Vertragsgrundlage wird von unterschiedlicher Agenten-Darstellung getrennt; Installation startet keine Arbeit.",
+        "en": "A shared contract is distinguished from different agent presentation; installation starts no work."
+      },
+      "commit": "a11fb0f4cd40f00dff27cc6b36d614477bd2129e"
+    },
+    {
+      "introducedIn": "v0.4.4",
+      "type": "DocumentationUsability",
+      "sourcePaths": [
+        "docs/user-guide.md",
+        "docs/user-guide.EN.md",
+        "tests/test-documentation-closeout.ps1"
+      ],
+      "problem": {
+        "de": "Ein kurzer README-Einstieg erklärte die vollständigen Leserpfade und Grenzen noch nicht gleichwertig.",
+        "en": "The short README entry did not yet explain the complete reader journey and limits equally."
+      },
+      "description": {
+        "de": "Deutsch-/Englisch-Leitfäden, Command-/Vorlagen-Erklärungen und Dokumentationsregressionen wurden ergänzt. Frühere Einstiegsverbesserungen und der letzte Patch werden getrennt ausgewiesen.",
+        "en": "German/English guides, command/template explanations and documentation regressions were added. Earlier entry-point improvements and the final patch are reported separately."
+      },
+      "benefit": {
+        "de": "Lernende finden Voraussetzungen, Beispiel, Ergebnis und Fehlerhilfe. Neue Textklarheit ist keine neue Runtime-Funktion oder menschliche Abnahme.",
+        "en": "Learners can find prerequisites, an example, its result and troubleshooting. Clearer text is not a new runtime feature or human acceptance."
+      },
+      "commit": "ca4e9116a68472b336450d8f03a52e0264f5beb6"
+    }
+  ],
+  "historicalValidation": {
+    "checks": [
+      {
+        "name": "Reader paths (windows-2022)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-agent-parity-governance/actions/runs/39992122376/job/120546219625",
+        "startedAt": "2026-10-23T17:05:09Z",
+        "completedAt": "2026-10-23T17:05:21Z",
+        "head": "17e774522d4d08545b35c58377f1ef35e37b0a97"
+      },
+      {
+        "name": "Reader paths (macos-15)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-agent-parity-governance/actions/runs/39992122376/job/120546219496",
+        "startedAt": "2026-10-23T17:07:29Z",
+        "completedAt": "2026-10-23T17:07:37Z",
+        "head": "17e774522d4d08545b35c58377f1ef35e37b0a97"
+      },
+      {
+        "name": "Reader paths (ubuntu-24.04)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-agent-parity-governance/actions/runs/39992122376/job/120546219281",
+        "startedAt": "2026-10-23T17:05:10Z",
+        "completedAt": "2026-10-23T17:05:22Z",
+        "head": "17e774522d4d08545b35c58377f1ef35e37b0a97"
+      }
+    ],
+    "pr": "https://github.com/hindermath/spec-kit-preset-agent-parity-governance/pull/7",
+    "mergeCommit": "ca4e9116a68472b336450d8f03a52e0264f5beb6",
+    "reviewedHead": "17e774522d4d08545b35c58377f1ef35e37b0a97"
+  },
+  "newDocumentationReview": "Pending exact-head human review; no merge or publication authority.",
+  "boundary": "Documentation source only; no new package, runtime behavior, approval, installation, catalog update or cancelled dynamic routing."
+}

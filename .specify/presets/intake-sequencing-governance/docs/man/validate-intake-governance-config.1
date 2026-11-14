@@ -37,3 +37,16 @@ counts active series members. RIG017 reports lifecycle mismatches, without write
 Collection roots must resolve to distinct locations inside the repository. Active
 targets cannot resolve into the archive. Unknown series and target states return
 RIG017; aliased roots return RIG007 and repository escapes return RIG004.
+
+.SH LAUFENDE SERIEN / RUNNING SERIES
+DE: Ready verlangt genau ein Eligible-Mitglied. Active erlaubt zusaetzlich null
+Eligible-Mitglieder, wenn mindestens ein Mitglied Active ist. Ohne aktives
+Mitglied bleibt null ungueltig; mehrere Eligible bleiben immer ungueltig.
+EN: Ready requires exactly one Eligible member. Active also permits zero
+Eligible members when at least one member is Active. Without an Active member,
+zero remains invalid; multiple Eligible members remain invalid in all cases.
+.PP
+DE: Ohne Kandidaten bleibt eligibleCandidate N/A. Schema, Berechtigungen,
+Abhaengigkeits-, Pfad-, Hash- und Archivpruefungen bleiben unveraendert.
+EN: With no candidate, eligibleCandidate remains N/A. Schema, authority,
+dependency, path, hash and archive checks remain unchanged.

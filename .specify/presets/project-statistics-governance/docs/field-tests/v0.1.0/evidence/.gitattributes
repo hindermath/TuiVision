@@ -1,0 +1,2 @@
+# Preserve original CI bytes, including CRLF, for manifest SHA-256 verification.
+* -text whitespace=trailing-space,space-before-tab,cr-at-eol

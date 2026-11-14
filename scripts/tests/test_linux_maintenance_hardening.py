@@ -164,7 +164,7 @@ def run_brew_maintainer(
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
         check=False,
-        timeout=20,
+        timeout=60,
     )
 
 

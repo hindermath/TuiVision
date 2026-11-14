@@ -685,7 +685,10 @@ if [ "$CI_GATE" -eq 1 ]; then
     --workflow-template "${HB_CI_WORKFLOW_TEMPLATE:-${SOURCE_ROOT}/scripts/templates/ci-budget-governance/private-governance-minimal-gate.yml}"
   )
   [ -n "${HB_CI_REPOSITORY_ID:-}" ] && ci_arguments+=(--repository-id "$HB_CI_REPOSITORY_ID")
-  [ -n "${HB_CI_FIXTURE_HEAD:-}" ] && ci_arguments+=(--fixture-head "$HB_CI_FIXTURE_HEAD")
+  if [ -n "${HB_CI_FIXTURE_HEAD:-}" ]; then
+    [ "$DRY_RUN" -eq 1 ] || die "HB_CI_FIXTURE_HEAD ist nur in der CI-Vorschau erlaubt / is preview-only"
+    ci_arguments+=(--fixture-head "$HB_CI_FIXTURE_HEAD")
+  fi
   [ -n "${HB_CI_EVIDENCE_ROOT:-}" ] && ci_arguments+=(--evidence-root "$HB_CI_EVIDENCE_ROOT")
   [ "$DRY_RUN" -eq 1 ] && ci_arguments+=(--dry-run)
   exec python3 "$FLEET_ENGINE" "${ci_arguments[@]}"
@@ -782,7 +785,9 @@ PRESET_WORKTREE_STATE_DIR="${STATE_DIR}/preset-validation-worktrees"
 LOCK_DIR="${STATE_DIR}/locks/agentic-workspace-maintenance.lock"
 LOG_DIR="${STATE_DIR}/logs"
 REPORT_DIR="${STATE_DIR}/reports"
+umask 077
 mkdir -p -- "$(dirname -- "$LOCK_DIR")" "$LOG_DIR" "$REPORT_DIR"
+chmod 700 "$(dirname -- "$LOCK_DIR")" "$LOG_DIR" "$REPORT_DIR"
 if ! mkdir -- "$LOCK_DIR" 2>/dev/null; then
   holder="$(cat "$LOCK_DIR/pid" 2>/dev/null || printf 'unbekannt / unknown')"
   die "Wartung laeuft bereits (PID ${holder}) / maintenance already running"
@@ -793,6 +798,9 @@ trap 'handle_signal INT 130' INT
 trap 'handle_signal TERM 143' TERM
 
 LOG_FILE="${LOG_DIR}/agentic-workspace-$(date +%Y%m%d-%H%M%S).log"
+(set -o noclobber; : > "$LOG_FILE") \
+  || die "Logdatei existiert bereits oder ist unsicher / log file already exists or is unsafe"
+chmod 600 "$LOG_FILE"
 RUN_ID="${REQUESTED_RUN_ID:-$(python3 -c 'import uuid; print(uuid.uuid4())')}"
 python3 -c 'import sys, uuid; uuid.UUID(sys.argv[1])' "$RUN_ID" \
   || die "Run-ID ist keine gültige UUID / run ID is not a valid UUID"
@@ -802,16 +810,13 @@ if [ -n "$EVENT_STREAM" ]; then
 import pathlib
 import sys
 
-home = pathlib.Path(sys.argv[1]).resolve()
-path = pathlib.Path(sys.argv[2]).resolve()
-allowed = (home / ".home-baseline" / "events").resolve()
+home = pathlib.Path(sys.argv[1]).absolute()
+path = pathlib.Path(sys.argv[2]).absolute()
+allowed = (home / ".home-baseline" / "events").absolute()
 path.relative_to(allowed)
 print(path)
 PY
   )" || die "Event-Pfad liegt außerhalb des privaten Evidence-Verzeichnisses / event path is outside private evidence"
-  mkdir -p -- "$(dirname -- "$EVENT_STREAM")"
-  (umask 077; : > "$EVENT_STREAM")
-  chmod 600 "$EVENT_STREAM"
 fi
 REPORT_FILE="${REPORT_DIR}/agentic-workspace-${RUN_ID}.json"
 TOOLCHAIN_RESULT_FILE="${REPORT_DIR}/agentic-toolchain-${RUN_ID}.json"

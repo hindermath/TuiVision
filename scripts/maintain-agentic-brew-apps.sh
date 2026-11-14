@@ -995,6 +995,17 @@ install_cli_tools() {
   done 3< "$snapshot"
 }
 
+validate_npm_agent_probe_contract() {
+  local tool_id="$1" command_name="$2" args_json="$3"
+  # DE: Der unveraenderliche Paketvertrag erteilt keine Prozessautoritaet.
+  # EN: Immutable package metadata does not authorize process execution.
+  case "$tool_id" in
+    codex|claude|copilot) ;;
+    *) return 1 ;;
+  esac
+  [ "$command_name" = "$tool_id" ] && [ "$args_json" = '["--version"]' ]
+}
+
 install_npm_agent_tools() {
   local scope id package_name package_version package_integrity command_name args_json snapshot
   local package_spec pack_dir pack_json pack_metadata tarball pack_status
@@ -1006,6 +1017,11 @@ install_npm_agent_tools() {
     [ -n "$id" ] || continue
     validate_item_id "$id"
     validate_item_id "$package_name"
+    if ! validate_npm_agent_probe_contract "$id" "$command_name" "$args_json"; then
+      log "SKIP npm agent probe: $id (nicht durch Code-Policy autorisiert)"
+      mark_failed_attempt npm-cli "$id"
+      continue
+    fi
     if cli_tool_available "$id" "$command_name" "$args_json"; then
       log "OK npm agent cli: $id"
     elif [ "$DRY_RUN" -eq 1 ] || command -v npm >/dev/null 2>&1; then
@@ -1123,7 +1139,13 @@ compare_npm_agent_scope() {
     [ -n "$id" ] || continue
     attempted=false
     was_attempted npm-cli "$id" && attempted=true
-    if cli_tool_available "$id" "$command_name" "$args_json"; then
+    if ! validate_npm_agent_probe_contract "$id" "$command_name" "$args_json"; then
+      CURRENT_PROBE_STATUS="CapabilityBlocked"
+      CURRENT_PROBE_EVIDENCE="Probe ist nicht durch die Code-Policy autorisiert."
+      CURRENT_PROBE_NEXT_ACTION="npm-Registry an den kanonischen Probevertrag angleichen."
+      missing="${missing}${id}"$'\n'
+      final_status="Failed"
+    elif cli_tool_available "$id" "$command_name" "$args_json"; then
       final_status="Present"
       [ "$attempted" = true ] && final_status="Installed"
     else

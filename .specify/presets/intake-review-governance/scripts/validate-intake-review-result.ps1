@@ -31,7 +31,10 @@ function Test-IntakeReviewResult {
         return $Property.Value
     }
     function Get-Text([object]$Object, [string]$Name, [string]$Label) {
-        $Value = Get-Prop $Object $Name
+        # Inspect the raw property value: a singleton JSON array is not text.
+        $Property = if ($null -ne $Object) { $Object.PSObject.Properties[$Name] } else { $null }
+        $Value = $null
+        if ($null -ne $Property) { $Value = $Property.Value }
         if ($Value -is [DateTime]) {
             return $Value.ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ss.FFFFFFFZ', [Globalization.CultureInfo]::InvariantCulture)
         }
@@ -64,6 +67,32 @@ function Test-IntakeReviewResult {
         $Hash = [Security.Cryptography.SHA256]::HashData((Get-NormalizedBytes $Path))
         return [Convert]::ToHexString($Hash).ToLowerInvariant()
     }
+    function Resolve-PhysicalReviewPath([string]$Path) {
+        $full = [IO.Path]::GetFullPath($Path)
+        $root = [IO.Path]::GetPathRoot($full)
+        $current = $root
+        foreach ($segment in $full.Substring($root.Length).Split([char[]]@('/', '\'), [StringSplitOptions]::RemoveEmptyEntries)) {
+            $current = [IO.Path]::Combine($current, $segment)
+            $entry = Get-Item -LiteralPath $current -Force -ErrorAction Stop
+            if (($entry.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0) {
+                $resolved = $entry.ResolveLinkTarget($true)
+                if ($null -eq $resolved) { throw "Cannot resolve symlink: $current" }
+                $current = $resolved.FullName
+            }
+        }
+        return [IO.Path]::GetFullPath($current)
+    }
+    function Resolve-ReviewEvidencePath([string]$Relative) {
+        if (-not (Test-Relative $Relative)) { throw 'path must be repository-relative' }
+        $root = Resolve-PhysicalReviewPath ([IO.Path]::GetFullPath($Repo))
+        $path = Resolve-PhysicalReviewPath (Join-Path $root $Relative)
+        $comparison = if ($IsWindows) { [StringComparison]::OrdinalIgnoreCase } else { [StringComparison]::Ordinal }
+        $prefix = $root.TrimEnd([IO.Path]::DirectorySeparatorChar) + [IO.Path]::DirectorySeparatorChar
+        if (-not $path.StartsWith($prefix, $comparison) -or -not [IO.File]::Exists($path)) {
+            throw "file resolves outside repository or is missing: $Relative"
+        }
+        return $path
+    }
 
     if (-not (Test-Path -LiteralPath $Result -PathType Leaf)) { throw "Result file not found: $Result" }
     $Data = Get-Content -LiteralPath $Result -Raw -Encoding UTF8 | ConvertFrom-Json
@@ -73,13 +102,13 @@ function Test-IntakeReviewResult {
     $Guid = [Guid]::Empty
     if (-not [Guid]::TryParse($ReviewId, [ref]$Guid) -or $Guid -eq [Guid]::Empty) { $Errors.Add('reviewId must be a non-zero UUID') }
     $Mode = Get-Text $Data 'mode' 'result'
-    if ($Mode -notin @('Single', 'Series', 'Campaign')) { $Errors.Add('mode is invalid') }
-    if ($Mode -eq 'Series' -and $SchemaVersion -ne '1.1') {
+    if ($Mode -cnotin @('Single', 'Series', 'Campaign')) { $Errors.Add('mode is invalid') }
+    if ($Mode -ceq 'Series' -and $SchemaVersion -cne '1.1') {
         Add-GraphError 'IRG001' 'Series result schemaVersion must be 1.1'
     }
     $Status = Get-Text $Data 'status' 'result'
     $Accepted = @('Ready', 'ReadyWithAcceptedRisks')
-    if ($Status -notin ($Accepted + @('NeedsClarification', 'NeedsRemediation', 'Rejected'))) { $Errors.Add('status is invalid') }
+    if ($Status -cnotin ($Accepted + @('NeedsClarification', 'NeedsRemediation', 'Rejected'))) { $Errors.Add('status is invalid') }
     [void](Get-Text $Data 'policy' 'result')
     $ReviewedAt = Get-Text $Data 'reviewedAt' 'result'
     $Timestamp = [DateTimeOffset]::MinValue
@@ -98,11 +127,12 @@ function Test-IntakeReviewResult {
         if (-not (Test-Relative $Path) -or -not $TargetPaths.Add($Path)) { $Errors.Add("${Label}.path must be unique and repository-relative") }
         $TargetRoles[$Path] = $Role
         if ($Digest -notmatch '^[0-9a-f]{64}$') { $Errors.Add("${Label}.normalizedSha256 is invalid") }
-        $TargetPath = Join-Path ([IO.Path]::GetFullPath($Repo)) $Path
-        if (-not (Test-Path -LiteralPath $TargetPath -PathType Leaf)) { $Errors.Add("target missing: $Path") }
-        else {
-            try { $Actual = Get-NormalizedHash $TargetPath } catch { $Errors.Add("target ${Path}: $($_.Exception.Message)"); $Actual = '' }
-            if ($Actual -and $Actual -ne $Digest) { $Errors.Add("target hash drift: $Path") }
+        try {
+            $TargetPath = Resolve-ReviewEvidencePath $Path
+            $Actual = Get-NormalizedHash $TargetPath
+            if ($Actual -ne $Digest) { $Errors.Add("target hash drift: $Path") }
+        } catch {
+            $Errors.Add("target ${Path}: $($_.Exception.Message)")
         }
     }
 
@@ -121,27 +151,21 @@ function Test-IntakeReviewResult {
             if ($RequestDigest -notmatch '^[0-9a-f]{64}$') {
                 Add-GraphError 'IRG001' 'requestEvidence.normalizedSha256 is invalid'
             }
-            $RequestPath = Join-Path ([IO.Path]::GetFullPath($Repo)) $RequestPathText
             $RequestData = $null
             $ActualRequestDigest = ''
-            if (-not (Test-Path -LiteralPath $RequestPath -PathType Leaf)) {
-                Add-GraphError 'IRG001' "request missing: $RequestPathText"
-            }
-            else {
-                try {
+            try {
+                    $RequestPath = Resolve-ReviewEvidencePath $RequestPathText
                     $RequestBytes = Get-NormalizedBytes $RequestPath
                     $ActualRequestDigest = [Convert]::ToHexString(
                         [Security.Cryptography.SHA256]::HashData($RequestBytes)
                     ).ToLowerInvariant()
                     $RequestText = [Text.UTF8Encoding]::new($false, $true).GetString($RequestBytes)
                     $RequestData = $RequestText | ConvertFrom-Json
-                }
-                catch {
-                    Add-GraphError 'IRG001' "invalid request: $($_.Exception.Message)"
-                }
-                if ($ActualRequestDigest -and $ActualRequestDigest -ne $RequestDigest) {
-                    Add-GraphError 'IRG001' 'request hash drift'
-                }
+            } catch {
+                Add-GraphError 'IRG001' "invalid request: $($_.Exception.Message)"
+            }
+            if ($ActualRequestDigest -and $ActualRequestDigest -ne $RequestDigest) {
+                Add-GraphError 'IRG001' 'request hash drift'
             }
 
             if ($null -ne $RequestData) {
@@ -310,28 +334,83 @@ function Test-IntakeReviewResult {
 
     $Counts = @{ Critical = 0; High = 0; Medium = 0; Low = 0 }
     $FindingIds = [Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
-    $Findings = @(Get-Prop $Data 'findings')
+    $ResidualFindings = [Collections.Generic.Dictionary[string, string]]::new([StringComparer]::Ordinal)
+    $FindingsRaw = $Data.PSObject.Properties['findings']
+    if ($null -eq $FindingsRaw -or $FindingsRaw.Value -isnot [Array]) {
+        $Errors.Add('findings must be an array')
+        $Findings = @()
+    } else {
+        $Findings = @($FindingsRaw.Value)
+    }
     for ($Index = 0; $Index -lt $Findings.Count; $Index++) {
         $Finding = $Findings[$Index]; $Label = "findings[$Index]"
         $Id = Get-Text $Finding 'id' $Label
-        if ($Id -notmatch '^IR[0-9]{3,}$' -or -not $FindingIds.Add($Id)) { $Errors.Add("${Label}.id must be a unique IR### identifier") }
+        if ($Id -cnotmatch '^IR[0-9]{3,}$' -or -not $FindingIds.Add($Id)) { $Errors.Add("${Label}.id must be a unique IR### identifier") }
         $Severity = Get-Text $Finding 'severity' $Label
-        if (-not $Counts.ContainsKey($Severity)) { $Errors.Add("${Label}.severity is invalid") } else { $Counts[$Severity]++ }
+        if ($Severity -cnotin @('Critical', 'High', 'Medium', 'Low')) { $Errors.Add("${Label}.severity is invalid") } else { $Counts[$Severity]++ }
         foreach ($Field in @('category', 'target', 'disposition', 'owner', 'evidence', 'reevaluationTrigger')) { [void](Get-Text $Finding $Field $Label) }
+        if ($Status -cin $Accepted) {
+            $Disposition = Get-Text $Finding 'disposition' $Label
+            if ($Disposition -cnotin @('Resolved', 'Remediated', 'AcceptedRisk')) {
+                $Errors.Add('accepted status cannot retain an open finding')
+            }
+            if ($Disposition -ceq 'AcceptedRisk' -and -not $ResidualFindings.ContainsKey($Id)) {
+                $ResidualFindings.Add($Id, $Severity)
+            }
+        }
     }
 
-    $Questions = @(Get-Prop $Data 'questions')
-    $Risks = @(Get-Prop $Data 'acceptedRisks')
+    $QuestionsProperty = $Data.PSObject.Properties['questions']
+    $QuestionsRaw = $null
+    if ($QuestionsProperty) { $QuestionsRaw = $QuestionsProperty.Value }
+    if ($QuestionsRaw -isnot [Array]) {
+        $Errors.Add('questions must be an array')
+        $Questions = @()
+    } else {
+        $Questions = @($QuestionsRaw)
+    }
+    $RisksRaw = $Data.PSObject.Properties['acceptedRisks']
+    if ($null -eq $RisksRaw -or $RisksRaw.Value -isnot [Array]) {
+        $Errors.Add('acceptedRisks must be an array')
+        $Risks = @()
+    } else {
+        $Risks = @($RisksRaw.Value)
+    }
     $Exceptions = @(Get-Prop $Data 'operatorExceptions')
-    if ($Status -in $Accepted -and @($Questions | Where-Object { (Get-Prop $_ 'status') -ne 'Answered' }).Count) { $Errors.Add('accepted status cannot have unanswered questions') }
+    for ($Index = 0; $Index -lt $Questions.Count; $Index++) {
+        $Question = $Questions[$Index]; $Label = "questions[$Index]"
+        if ($Question -isnot [pscustomobject]) {
+            $Errors.Add("${Label} must be an object")
+            continue
+        }
+        foreach ($Field in @('id', 'owner', 'question')) { [void](Get-Text $Question $Field $Label) }
+        $QuestionStatus = Get-Text $Question 'status' $Label
+        if ($Status -cin $Accepted -and $QuestionStatus -cne 'Answered') { $Errors.Add('accepted status cannot have unanswered questions') }
+        if ($QuestionStatus -ceq 'Answered') {
+            foreach ($Field in @('answer', 'evidence')) { [void](Get-Text $Question $Field $Label) }
+        }
+    }
     if ($Status -in $Accepted -and ($Counts.Critical -gt 0 -or $Counts.High -gt 0)) { $Errors.Add('Critical or High findings block an accepted status') }
     if ($Status -eq 'Ready' -and $Risks.Count) { $Errors.Add('Ready cannot contain accepted risks') }
     if ($Status -eq 'ReadyWithAcceptedRisks' -and $Risks.Count -eq 0) { $Errors.Add('ReadyWithAcceptedRisks needs acceptedRisks') }
+    if ($Status -ceq 'Ready' -and $ResidualFindings.Count) { $Errors.Add('Ready cannot retain residual findings') }
+    $RiskIds = [Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
     for ($Index = 0; $Index -lt $Risks.Count; $Index++) {
         $Risk = $Risks[$Index]; $Label = "acceptedRisks[$Index]"
-        if ((Get-Text $Risk 'severity' $Label) -notin @('Medium', 'Low')) { $Errors.Add("${Label}.severity must be Medium or Low") }
+        if ((Get-Text $Risk 'severity' $Label) -cnotin @('Medium', 'Low')) { $Errors.Add("${Label}.severity must be Medium or Low") }
         foreach ($Field in @('findingId', 'owner', 'rationale', 'acceptedAt', 'evidence', 'reevaluationTrigger')) { [void](Get-Text $Risk $Field $Label) }
-        if ((Get-Prop $Risk 'acceptedByType') -ne 'Human') { $Errors.Add("${Label}.acceptedByType must be Human") }
+        if ((Get-Prop $Risk 'acceptedByType') -cne 'Human') { $Errors.Add("${Label}.acceptedByType must be Human") }
+        if ($Status -cin $Accepted) {
+            $RiskId = Get-Text $Risk 'findingId' $Label
+            $RiskSeverity = Get-Text $Risk 'severity' $Label
+            if (-not $RiskIds.Add($RiskId) -or -not $ResidualFindings.ContainsKey($RiskId) -or
+                ($ResidualFindings.ContainsKey($RiskId) -and $ResidualFindings[$RiskId] -cne $RiskSeverity)) {
+                $Errors.Add("${Label} must uniquely match a residual finding and severity")
+            }
+        }
+    }
+    if ($Status -cin $Accepted -and $ResidualFindings.Count -ne $RiskIds.Count) {
+        $Errors.Add('every residual finding requires matching human risk acceptance')
     }
     for ($Index = 0; $Index -lt $Exceptions.Count; $Index++) {
         $Exception = $Exceptions[$Index]; $Label = "operatorExceptions[$Index]"
@@ -349,7 +428,13 @@ function Test-IntakeReviewResult {
 
     $Coverage = Get-Prop $Data 'coverage'
     $Individual = @(Get-Prop $Coverage 'individual')
-    if ($Individual.Count -ne $TargetPaths.Count -or @($Individual | Where-Object { -not $TargetPaths.Contains([string]$_) }).Count) { $Errors.Add('coverage.individual must contain every target path exactly once') }
+    $IndividualSeen = [Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+    $IndividualValid = $Individual.Count -eq $TargetPaths.Count
+    foreach ($Path in $Individual) {
+        if ($Path -isnot [string] -or -not $TargetPaths.Contains([string]$Path) -or
+            -not $IndividualSeen.Add([string]$Path)) { $IndividualValid = $false }
+    }
+    if (-not $IndividualValid) { $Errors.Add('coverage.individual must contain every target path exactly once') }
     if ($Mode -eq 'Series' -and @(Get-Prop $Coverage 'series').Count -eq 0) { $Errors.Add('Series mode requires series coverage') }
     if ($Mode -eq 'Campaign') {
         $Workers = @(Get-Prop $Coverage 'workers')

@@ -1,6 +1,19 @@
 # Field Validation Summary
 
-Version: `0.3.4`
+Version: `0.3.5`
+
+## Patch-Pruefgrenze / Patch Validation Boundary
+
+Die neue Regression prueft vollstaendige Receipts aus der ausgelieferten
+Vorlage, bekannte Generatoren einschliesslich 0.3.4 und die Ablehnung
+unbekannter Versionen sowie falscher Schema-Zuordnungen. Native Ergebnisse
+werden am exakten Release-PR-Head gebunden. Die untenstehenden Feld- und
+Kompositionsnachweise sind historisch und behaupten keinen neuen Flottenlauf.
+
+The new regression validates complete receipts from the shipped template,
+known generators including 0.3.4, unknown-version rejection, and invalid schema
+bindings. Native results bind the exact release PR head. Field and composition
+evidence below is historical and does not claim a new fleet run.
 
 ## Package Validation / Paketvalidierung
 
@@ -53,3 +66,15 @@ truthfully be known before the release tag exists.
 
 Publication requires no open Critical or High finding. An external Community
 Catalog merge is not a local completion condition.
+
+## Nutzungshilfe / Reader help
+
+DE: Einen klar begrenzten Arbeitsauftrag mit Herkunft und Änderungsrechten vorbereiten. Diese Vorlage ist ein auszufüllender Starter, kein bestandener Nachweis. Vorhandene passende Evidence weiterverwenden.
+Die bestehenden technischen Feldnamen und Statuswerte nicht übersetzen oder
+nur zum Bestehen eines Tests verändern. Einführung, Begriffe, Beispiel,
+Ergebnis und Fehlerhilfe stehen im [deutschen Leserpfad](https://github.com/hindermath/spec-kit-preset-intake-authoring-governance/blob/main/docs/user-guide.md).
+
+EN: Prepare a bounded work request with provenance and change authority. This template is a starter to complete, not passed evidence. Reuse suitable existing evidence.
+Keep technical field names and states unchanged; never alter them just to pass.
+See the [English reader path](https://github.com/hindermath/spec-kit-preset-intake-authoring-governance/blob/main/docs/user-guide.EN.md)
+for introduction, terms, example, result and troubleshooting.

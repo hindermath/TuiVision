@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "presetId": "intake-review-governance",
+  "packageVersion": "0.2.9",
+  "historicalPublicationVersion": "0.2.6",
+  "candidate_status": "Prepared",
+  "release_status": "NotEstablishedAtPreparation",
+  "sourceCommit": "efbc5f835e619c8e26044f8cbc93f8faf5f3686b",
+  "previousReleaseVersion": "0.2.8",
+  "externalPublicationEvidence": "https://github.com/hindermath/spec-kit-preset-intake-review-governance/releases/tag/v0.2.9",
+  "runtimeChanged": false,
+  "generatorSchemaChanged": false,
+  "changeKind": "SecurityPolicyDocumentation",
+  "authorizationReference": "Thorsten Hindermann, 2026-11-13: implement security baseline and publish current presets, including controlled Level-0/Home/Level-2 rollout; MergeAndSync with formal-review-only Admin-Bypass.",
+  "preparedAt": "2026-11-13T08:24:34.7028350+00:00"
+}

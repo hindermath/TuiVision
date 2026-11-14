@@ -130,6 +130,7 @@ validate_repository_matrix() {
 
   python3 - "$repo" "$config" <<'PY'
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -176,6 +177,13 @@ for preset_id, item in expected.items():
         errors.append(f"{preset_id}: nicht aktiv / not enabled")
     if not (repo / ".specify" / "presets" / preset_id / "preset.yml").is_file():
         errors.append(f"{preset_id}: preset.yml fehlt / missing")
+    else:
+        # Registry metadata alone cannot establish the installed manifest identity.
+        manifest = (repo / ".specify" / "presets" / preset_id / "preset.yml").read_text(encoding="utf-8")
+        for key, value in (("id", preset_id), ("version", expected_version)):
+            matches = re.findall(r"(?m)^  " + key + r": ['\"]?([^'\"\s]+)['\"]? *$", manifest)
+            if matches != [value]:
+                errors.append(f"{preset_id}: preset.yml {key} drift")
 
 if errors:
     raise SystemExit("\n".join(errors))
@@ -330,7 +338,9 @@ if $OPT_CHECK_ONLY && { $OPT_FORCE || $OPT_DRY_RUN; }; then
   die "--check-only ist nicht mit --force oder --dry-run kombinierbar"
 fi
 
-command -v specify >/dev/null 2>&1 || die "specify CLI nicht gefunden"
+if ! $OPT_CHECK_ONLY; then
+  command -v specify >/dev/null 2>&1 || die "specify CLI nicht gefunden"
+fi
 [ -f "$OPT_CONFIG" ] || die "Preset-Konfiguration nicht gefunden: $OPT_CONFIG"
 validate_preset_matrix "$OPT_CONFIG"
 validate_legacy_matrix_parity

@@ -1,0 +1,39 @@
+name: Stable routing contract
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  routing:
+    name: Stable routing (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-15, ubuntu-24.04, windows-2022]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          path: assurance
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: hindermath/spec-kit-preset-model-routing-governance
+          ref: accae165176dc948b95a22fb68650c7db62c4079 # v0.1.5
+          path: model-routing
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: hindermath/spec-kit-preset-autonomous-run-governance
+          ref: 8026572a37f967d2603f8a942d5bfd1ccbf2dca2 # v0.4.5
+          path: autonomous
+      - name: Validate stable composition without inference
+        shell: pwsh
+        working-directory: assurance
+        run: |
+          pwsh -NoProfile -File tests/test-stable-routing.ps1 -ModelRoutingRoot ../model-routing -AutonomousRoot ../autonomous
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          git diff --exit-code
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          if (@(git status --porcelain --untracked-files=all).Count) { throw 'Routing tests changed checkout' }

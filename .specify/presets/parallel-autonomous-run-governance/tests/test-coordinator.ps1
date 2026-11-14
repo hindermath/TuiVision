@@ -10,6 +10,7 @@ $coordinator = Join-Path $presetRoot 'scripts/orchestrate-parallel-autonomous-ru
 $fixtureWorker = Join-Path $PSScriptRoot 'fixture-worker.ps1'
 $tempRoot = Join-Path ([IO.Path]::GetTempPath()) "parallel-autonomous-tests-$([guid]::NewGuid())"
 [void](New-Item -ItemType Directory -Path $tempRoot)
+$env:PAR_TEST_FIXTURE_ROOT = $tempRoot
 
 function Assert-Test {
     param([bool] $Condition, [string] $Message)
@@ -120,6 +121,7 @@ try {
                     '-CampaignId', '{campaignId}',
                     '-WorkerId', '{workerId}',
                     '-RunId', '{runId}',
+                    '-AttemptId', '{attemptId}',
                     '-Worktree', '{worktree}',
                     '-ResultFile', '{resultFile}',
                     '-Mode', 'Completed',
@@ -134,6 +136,7 @@ try {
                     '-CampaignId', '{campaignId}',
                     '-WorkerId', '{workerId}',
                     '-RunId', '{runId}',
+                    '-AttemptId', '{attemptId}',
                     '-Worktree', '{worktree}',
                     '-ResultFile', '{resultFile}',
                     '-Mode', 'ReadyForMerge',
@@ -148,6 +151,7 @@ try {
                     '-CampaignId', '{campaignId}',
                     '-WorkerId', '{workerId}',
                     '-RunId', '{runId}',
+                    '-AttemptId', '{attemptId}',
                     '-Worktree', '{worktree}',
                     '-ResultFile', '{resultFile}',
                     '-Mode', 'Completed',
@@ -165,12 +169,32 @@ try {
     }
     Write-Data $script:runnerConfig $runnerData
 
+    $outsideHandoff = Join-Path $tempRoot 'outside-handoff.json'
+    '{"fixture":"external"}' | Set-Content -LiteralPath $outsideHandoff -Encoding utf8NoBOM
+    $runnerData.profiles['symlink-handoff'] = [ordered]@{
+        executable = 'pwsh'
+        arguments = @($runnerData.profiles.fixture.arguments) + @('-HandoffSymlinkOutside', $outsideHandoff)
+    }
+    $runnerData.profiles['stale-result'] = [ordered]@{
+        executable = 'pwsh'
+        arguments = @($runnerData.profiles.fixture.arguments) + @('-ReportedAttemptId', '00000000-0000-0000-0000-000000000001')
+    }
+    $runnerData.profiles['flood-output'] = [ordered]@{
+        executable = 'pwsh'
+        arguments = @($runnerData.profiles.fixture.arguments) + @('-OutputBytes', [string] (17MB))
+    }
+    Write-Data $script:runnerConfig $runnerData
+
     $replicatedWorkers = 1..3 | ForEach-Object {
         Get-TestWorker "replicated-0$_" (Initialize-TestRepository "replicated-repo-0$_")
     }
     $replicated = Invoke-Campaign (Get-TestCampaign 'replicated' 'ReplicatedTargets' $replicatedWorkers) 'replicated'
     Assert-Test ($replicated.Data.status -eq 'Completed') 'ReplicatedTargets did not complete'
     Assert-Test ($replicated.Data.maximumObservedConcurrency -ge 2) 'ReplicatedTargets did not prove concurrency'
+    $resultDirectories = @($replicated.Data.workers | ForEach-Object { Split-Path -Parent ([string] $_.resultPath) })
+    Assert-Test ((@($resultDirectories | Sort-Object -Unique)).Count -eq 3 -and
+        @($resultDirectories | Where-Object { -not $_.StartsWith((Join-Path $replicated.Runtime 'results') + [IO.Path]::DirectorySeparatorChar) }).Count -eq 0) `
+        'Concurrent workers did not receive isolated result directories'
     $replicatedPrompt = Get-Content -LiteralPath (Join-Path $replicated.Runtime 'prompts/replicated-01.txt') -Raw
     Assert-Test ($replicatedPrompt.Contains('Fixture operator instruction.')) 'Campaign operator instructions were not routed to the worker'
     Assert-Test ($replicatedPrompt.Contains("Remain on the assigned branch '")) 'Assigned branch boundary was not routed to the worker'
@@ -181,13 +205,46 @@ try {
     Assert-Test ($independent.Data.status -eq 'Completed') 'IndependentFeatures did not complete'
     Assert-Test ((@($independent.Data.workers.worktree | Sort-Object -Unique)).Count -eq 3) 'Independent worktrees are not unique'
 
+    $staleRepository = Initialize-TestRepository 'stale-result-repo'
+    $staleWorker = Get-TestWorker 'stale-worker' $staleRepository
+    $staleWorker.runnerProfile = 'stale-result'
+    $staleCampaign = Get-TestCampaign 'stale-result' 'IndependentFeatures' @($staleWorker)
+    $staleRoot = Join-Path $tempRoot 'stale-result'
+    [void](New-Item -ItemType Directory -Path $staleRoot)
+    $staleManifest = Join-Path $staleRoot 'campaign.json'
+    Write-Data $staleManifest $staleCampaign
+    $staleOutput = @(& pwsh -NoProfile -File $coordinator -Action Start -Manifest $staleManifest `
+        -RunnerConfig $script:runnerConfig -State (Join-Path $staleRoot 'state.json') `
+        -RuntimeRoot (Join-Path $staleRoot 'runtime') 2>&1)
+    $staleStateData = Get-Content -LiteralPath (Join-Path $staleRoot 'state.json') -Raw | ConvertFrom-Json
+    Assert-Test ($staleStateData.status -eq 'Failed' -and
+        $staleStateData.workers[0].status -eq 'Failed' -and
+        $staleStateData.workers[0].summary -match 'aktuellen Ausfuehrungsversuch') `
+        'A worker result with a replayed attempt ID was accepted.'
+
+    $floodRepo = Initialize-TestRepository 'flood-output-repo'
+    $floodWorker = Get-TestWorker 'flood-output-worker' $floodRepo
+    $floodWorker.runnerProfile = 'flood-output'
+    $floodCampaign = Get-TestCampaign 'flood-output' 'IndependentFeatures' @($floodWorker)
+    $floodRoot = Join-Path $tempRoot 'flood-output'
+    [void](New-Item -ItemType Directory -Path $floodRoot)
+    $floodManifest = Join-Path $floodRoot 'campaign.json'
+    $floodState = Join-Path $floodRoot 'state.json'
+    Write-Data $floodManifest $floodCampaign
+    & pwsh -NoProfile -File $coordinator -Action Start -Manifest $floodManifest `
+        -RunnerConfig $script:runnerConfig -State $floodState -RuntimeRoot (Join-Path $floodRoot 'runtime') | Out-Null
+    $floodStateData = Get-Content -LiteralPath $floodState -Raw | ConvertFrom-Json
+    Assert-Test ($floodStateData.status -eq 'Failed' -and
+        $floodStateData.workers[0].summary -match 'output limit') `
+        "A worker exceeded the log quota without being blocked: $($floodStateData.status), $($floodStateData.workers[0].summary)"
+
     $alternativeRepo = Initialize-TestRepository 'alternative-repo'
     $alternativeWorkers = 1..3 | ForEach-Object { Get-TestWorker "alternative-0$_" $alternativeRepo }
     $alternative = Invoke-Campaign (Get-TestCampaign 'alternatives' 'AlternativeSolutions' $alternativeWorkers) 'alternatives'
     Assert-Test ($alternative.Data.status -eq 'AwaitingSelection') 'AlternativeSolutions did not await selection'
-    & pwsh -NoProfile -File $coordinator -Action Consolidate -Manifest $alternative.Manifest -RunnerConfig $script:runnerConfig -State $alternative.State 2>$null
+    & pwsh -NoProfile -File $coordinator -Action Consolidate -Manifest $alternative.Manifest -RunnerConfig $script:runnerConfig -State $alternative.State -RuntimeRoot $alternative.Runtime 2>$null
     Assert-Test ($LASTEXITCODE -ne 0) 'Alternative consolidation accepted missing human selection'
-    & pwsh -NoProfile -File $coordinator -Action Consolidate -Manifest $alternative.Manifest -RunnerConfig $script:runnerConfig -State $alternative.State -SelectedWorker 'alternative-02' | Out-Null
+    & pwsh -NoProfile -File $coordinator -Action Consolidate -Manifest $alternative.Manifest -RunnerConfig $script:runnerConfig -State $alternative.State -RuntimeRoot $alternative.Runtime -SelectedWorker 'alternative-02' | Out-Null
     Assert-Test ($LASTEXITCODE -eq 0) 'Selected alternative consolidation failed'
 
     $pipelineRepo = Initialize-TestRepository 'pipeline-repo'
@@ -235,6 +292,26 @@ try {
     & pwsh -NoProfile -File $coordinator -Action Validate -Manifest $invalidPath -RunnerConfig $script:runnerConfig 2>$null
     Assert-Test ($LASTEXITCODE -ne 0) 'DAG cycle was accepted'
 
+    $linkedHandoff = Get-TestCampaign 'linked-handoff' 'Pipeline' @(
+        (Get-TestWorker 'linked-producer' (Initialize-TestRepository 'linked-handoff-repo')),
+        (Get-TestWorker 'linked-consumer' (Join-Path $tempRoot 'linked-handoff-repo') @('linked-producer'))
+    )
+    $linkedHandoff.workers[0].handoffs = @([ordered]@{
+        consumerWorkerId = 'linked-consumer'; path = 'handoffs/linked.json'
+    })
+    $linkedHandoff.workers[0].runnerProfile = 'symlink-handoff'
+    $linkedPath = Join-Path $tempRoot 'linked-handoff.json'
+    Write-Data $linkedPath $linkedHandoff
+    $linkedOutput = & pwsh -NoProfile -File $coordinator -Action Start -Manifest $linkedPath `
+        -RunnerConfig $script:runnerConfig -State (Join-Path $tempRoot 'linked-handoff-state.json') `
+        -RuntimeRoot (Join-Path $tempRoot 'linked-handoff-runtime') 2>&1
+    $linkedState = Get-Content (Join-Path $tempRoot 'linked-handoff-state.json') -Raw | ConvertFrom-Json
+    $linkedWorker = @($linkedState.workers | Where-Object workerId -eq 'linked-producer')[0]
+    Assert-Test ($linkedState.status -eq 'Failed' -and $linkedWorker.status -eq 'Failed') `
+        "External handoff symlink was accepted: $($linkedOutput -join ' | ')"
+    Assert-Test ([string]$linkedWorker.summary -match 'Handoff enthaelt Symlink') `
+        "External handoff symlink failed for an unrelated reason: $($linkedWorker.summary)"
+
     $invalidBaseWorker = Get-TestCampaign 'invalid-base-worker' 'Pipeline' @(
         (Get-TestWorker 'base-a' $pipelineRepo),
         (Get-TestWorker 'base-b' $pipelineRepo)
@@ -265,14 +342,96 @@ try {
         -RunnerConfig $script:runnerConfig 2>$null
     Assert-Test ($LASTEXITCODE -ne 0) 'Missing campaign fallback profile was accepted'
 
+    foreach ($unsafeInput in @('../outside.md', '/tmp/outside.md', 'subdir/../README.md', 'subdir\README.md')) {
+        $unsafeCampaign = Get-TestCampaign 'unsafe-feature-input' 'ReplicatedTargets' @(
+            (Get-TestWorker 'unsafe-input-a' $pipelineRepo)
+        )
+        $unsafeCampaign.workers[0].featureInput = $unsafeInput
+        $unsafePath = Join-Path $tempRoot "unsafe-input-$([guid]::NewGuid()).json"
+        Write-Data $unsafePath $unsafeCampaign
+        & pwsh -NoProfile -File $coordinator -Action Validate -Manifest $unsafePath `
+            -RunnerConfig $script:runnerConfig 2>$null
+        Assert-Test ($LASTEXITCODE -ne 0) "Unsafe featureInput was accepted: $unsafeInput"
+    }
+
+    $symlinkRepo = Initialize-TestRepository 'symlink-feature-input-repo'
+    $outsideInput = Join-Path $tempRoot 'outside-feature-input.md'
+    'external feature input' | Set-Content -LiteralPath $outsideInput -Encoding utf8NoBOM
+    [void](New-Item -ItemType SymbolicLink -Path (Join-Path $symlinkRepo 'input.md') -Target $outsideInput)
+    & git -C $symlinkRepo add input.md
+    & git -C $symlinkRepo commit -m 'test: linked input' | Out-Null
+    $symlinkCampaign = Get-TestCampaign 'symlink-feature-input' 'ReplicatedTargets' @(
+        (Get-TestWorker 'symlink-input-a' $symlinkRepo)
+    )
+    $symlinkCampaign.workers[0].featureInput = 'input.md'
+    $symlinkPath = Join-Path $tempRoot 'symlink-feature-input.json'
+    Write-Data $symlinkPath $symlinkCampaign
+    $symlinkOutput = & pwsh -NoProfile -File $coordinator -Action Start -Manifest $symlinkPath `
+        -RunnerConfig $script:runnerConfig -State (Join-Path $tempRoot 'symlink-state.json') `
+        -RuntimeRoot (Join-Path $tempRoot 'symlink-runtime') 2>&1
+    Assert-Test ($LASTEXITCODE -ne 0) 'External featureInput symlink was accepted'
+    Assert-Test (($symlinkOutput -join "`n") -match 'featureInput verlaesst das Repository') `
+        'External featureInput symlink failed for an unrelated reason'
+
+    $retiredNative = Get-TestCampaign 'retired-native' 'ReplicatedTargets' @(
+        (Get-TestWorker 'retired-a' $pipelineRepo)
+    )
+    $retiredNative.runnerProfile = 'native-codex-field'
+    $retiredNativePath = Join-Path $tempRoot 'retired-native.json'
+    Write-Data $retiredNativePath $retiredNative
+    & pwsh -NoProfile -File $coordinator -Action Start -Manifest $retiredNativePath `
+        -RunnerConfig $script:runnerConfig 2>$null
+    Assert-Test ($LASTEXITCODE -ne 0) 'Saved native field profile was accepted by coordinator'
+
+    $retiredAdmin = Get-TestCampaign 'retired-admin' 'ReplicatedTargets' @(
+        (Get-TestWorker 'retired-b' $pipelineRepo)
+    )
+    $retiredAdmin.consolidation.mergeProfile = 'github-owner-development'
+    $retiredAdminPath = Join-Path $tempRoot 'retired-admin.json'
+    Write-Data $retiredAdminPath $retiredAdmin
+    & pwsh -NoProfile -File $coordinator -Action Start -Manifest $retiredAdminPath `
+        -RunnerConfig $script:runnerConfig 2>$null
+    Assert-Test ($LASTEXITCODE -ne 0) 'Saved admin merge profile was accepted by coordinator'
+
+    $renamedUnsafe = Get-TestCampaign 'renamed-unsafe' 'ReplicatedTargets' @(
+        (Get-TestWorker 'renamed-a' $pipelineRepo)
+    )
+    $renamedUnsafePath = Join-Path $tempRoot 'renamed-unsafe.json'
+    Write-Data $renamedUnsafePath $renamedUnsafe
+    $unsafeRunners = Get-Content -LiteralPath $script:runnerConfig -Raw | ConvertFrom-Json -AsHashtable
+    $unsafeRunners.profiles.fixture.arguments += '--sandbox=danger-full-access'
+    $unsafeRunnerPath = Join-Path $tempRoot 'renamed-unsafe-runners.json'
+    Write-Data $unsafeRunnerPath $unsafeRunners
+    & pwsh -NoProfile -File $coordinator -Action Start -Manifest $renamedUnsafePath `
+        -RunnerConfig $unsafeRunnerPath 2>$null
+    Assert-Test ($LASTEXITCODE -ne 0) 'Renamed native bypass command was accepted by coordinator'
+
     $legacyMergeCampaign = Get-TestCampaign 'legacy-merge-read' 'ReplicatedTargets' @(
         (Get-TestWorker 'legacy-merge-a' $pipelineRepo)
     ) -DeliveryMode 'MergeAndSync'
     [void]$legacyMergeCampaign.consolidation.Remove('mergeProfile')
     $legacyMergePath = Join-Path $tempRoot 'legacy-merge-read.json'
     Write-Data $legacyMergePath $legacyMergeCampaign
-    & pwsh -NoProfile -File $coordinator -Action Validate -Manifest $legacyMergePath -RunnerConfig $script:runnerConfig | Out-Null
-    Assert-Test ($LASTEXITCODE -eq 0) 'Schema 1.0 MergeAndSync manifest without mergeProfile was not readable'
+    & pwsh -NoProfile -File $coordinator -Action Validate -Manifest $legacyMergePath -RunnerConfig $script:runnerConfig 2>$null | Out-Null
+    Assert-Test ($LASTEXITCODE -ne 0) 'Fixture manifest without a merge profile bypassed the autonomous gate'
+    $legacyMergeCampaign.consolidation.mergeProfile = 'fixture-merge'
+    Write-Data $legacyMergePath $legacyMergeCampaign
+
+    $unapprovedMergeState = Join-Path $tempRoot 'unapproved-merge-state.json'
+    Write-Data $unapprovedMergeState ([ordered]@{
+        campaignId = $legacyMergeCampaign.campaignId
+        status = 'ReadyForConsolidation'
+        phase = 'Consolidation'
+    })
+    $unapprovedBefore = Get-Content -LiteralPath $unapprovedMergeState -Raw
+    $unapprovedOutput = @(& pwsh -NoProfile -File $coordinator -Action Resume -Manifest $legacyMergePath `
+        -RunnerConfig $script:runnerConfig -State $unapprovedMergeState 2>&1)
+    Assert-Test ($LASTEXITCODE -ne 0) 'Resume entered merge consolidation without explicit -Merge'
+    Assert-Test ((($unapprovedOutput -join ' ') -match 'erfordert ein ausdrueckliches') -and
+        (($unapprovedOutput -join ' ') -match '-Merge')) `
+        "Rejected Resume did not report the explicit merge authorization boundary: $($unapprovedOutput -join ' ')"
+    Assert-Test ((Get-Content -LiteralPath $unapprovedMergeState -Raw) -ceq $unapprovedBefore) `
+        'Rejected Resume changed merge state'
 
     $stopRepo = Initialize-TestRepository 'stop-resume-repo'
     $stopWorkers = 1..3 | ForEach-Object { Get-TestWorker "stop-0$_" $stopRepo }

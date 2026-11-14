@@ -37,7 +37,10 @@
       "autonomousStatePath": "N/A",
       "autonomousStateSha256": "N/A",
       "resultPath": "N/A",
+      "resultSha256": "N/A",
       "prUrl": null,
+      "prNumber": null,
+      "prBaseRepository": null,
       "mergeCommitSha": null,
       "providerState": "NotChecked",
       "baseRefName": null,
@@ -64,6 +67,7 @@
       "status": "Pending",
       "attemptCount": 0,
       "exitCode": null,
+      "receiptSha256": "N/A",
       "startedAt": null,
       "completedAt": null,
       "summary": "Not started."

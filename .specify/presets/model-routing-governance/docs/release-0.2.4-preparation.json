@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "presetId": "model-routing-governance",
+  "packageVersion": "0.2.4",
+  "historicalPublicationVersion": "0.1.6",
+  "previousReleaseVersion": "0.2.3",
+  "candidate_status": "Prepared",
+  "release_status": "NotEstablishedAtPreparation",
+  "runtimeChanged": true,
+  "generatorSchemaChanged": false,
+  "changeKind": "DiscoveryCompatibility",
+  "authorizationReference": "User-authorized local compatibility candidate and bounded live test. Adds current agy aliases, bounded CLI help parsing, dynamic Copilot effort flags and OpenCode 2.2.5 transport while preserving Codex and historical agy behavior. No publication authority.",
+  "preparedAt": "2026-11-04T00:00:00+01:00",
+  "sourceCommit": "282a5d7c9df5587fabf4f2164d837a4f1003c8fc",
+  "externalPublicationEvidence": "https://github.com/hindermath/spec-kit-preset-model-routing-governance/releases/tag/v0.2.4"
+}

@@ -533,9 +533,29 @@ function Get-HBNpmAgentTools {
     )
 }
 
+function Assert-HBNpmAgentProbeContract {
+    param([Parameter(Mandatory)] $Tool)
+
+    $id = [string]$Tool.id
+    $arguments = @(
+        if ($Tool.PSObject.Properties.Name -contains 'args') {
+            $Tool.args | ForEach-Object { [string]$_ }
+        }
+    )
+    if ($id -cnotin @('codex', 'claude', 'copilot') -or
+        [string]$Tool.command -cne $id -or
+        $arguments.Count -ne 1 -or
+        $arguments[0] -cne '--version') {
+        throw "untrusted npm registry field: ${id}"
+    }
+}
+
 function Test-HBNpmAgentTool {
     param([Parameter(Mandatory)] $Tool)
 
+    # DE: Version und Integritaet allein autorisieren keinen Prozessstart.
+    # EN: Version and integrity alone do not authorize a process launch.
+    Assert-HBNpmAgentProbeContract -Tool $Tool
     $command = Get-Command $Tool.command -ErrorAction SilentlyContinue
     if (-not $command) { return $false }
 

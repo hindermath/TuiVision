@@ -13,6 +13,13 @@
     before fetches or changes. Local operations never fall back to the host;
     provider credentials remain on the host.
 
+    Der gepruefte Bundle-Transport laedt die 21 kanonischen Remotes in frische
+    Host-Bare-Repositories und importiert nur Tracking-Refs in der Sandbox.
+    Dry-run veraendert keine Ziel-Refs; CheckOnly fuehrt keinen Merge aus.
+    Verified bundle transport downloads the 21 canonical remotes into fresh
+    host bare repositories and imports only tracking refs inside the sandbox.
+    Dry-run changes no target refs; CheckOnly never merges.
+
     Completes bounded fetch attempts for Level 0 and every active Git target
     before any domain mutation. Only clean canonical behind-only branches are
     fast-forwarded. It then synchronizes the local home baseline, checks the
@@ -445,6 +452,9 @@ if ($CiGate) {
         $ciArguments.Add($env:HB_CI_REPOSITORY_ID)
     }
     if ($env:HB_CI_FIXTURE_HEAD) {
+        if (-not $WhatIfPreference) {
+            throw 'HB_CI_FIXTURE_HEAD ist nur in der CI-Vorschau erlaubt / is preview-only.'
+        }
         $ciArguments.Add('--fixture-head')
         $ciArguments.Add($env:HB_CI_FIXTURE_HEAD)
     }
@@ -815,14 +825,6 @@ if ($EventStream) {
     ) + [IO.Path]::DirectorySeparatorChar
     if (-not $EventStream.StartsWith($eventPrefix, [StringComparison]::OrdinalIgnoreCase)) {
         Write-Host 'Fehler / Error: Event-Pfad liegt außerhalb des privaten Evidence-Verzeichnisses / event path is outside private evidence.' -ForegroundColor Red
-        exit 2
-    }
-    New-Item -ItemType Directory -Path (Split-Path -Parent $EventStream) -Force | Out-Null
-    [IO.File]::WriteAllText($EventStream, '', [Text.UTF8Encoding]::new($false))
-    $identity = [Security.Principal.WindowsIdentity]::GetCurrent().Name
-    & icacls $EventStream /inheritance:r /grant:r "${identity}:(F)" | Out-Null
-    if ($LASTEXITCODE -ne 0) {
-        Write-Host 'Fehler / Error: Event-Datei konnte nicht auf den aktuellen Benutzer begrenzt werden / event file could not be restricted to the current user.' -ForegroundColor Red
         exit 2
     }
 }

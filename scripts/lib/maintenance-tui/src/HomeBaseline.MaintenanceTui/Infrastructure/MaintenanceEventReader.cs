@@ -6,6 +6,8 @@ namespace HomeBaseline.MaintenanceTui.Infrastructure;
 
 public sealed class MaintenanceEventReader
 {
+    private const int MaximumRecordCharacters = 65_536;
+    private const int MaximumPendingCharacters = 131_072;
     private static readonly HashSet<string> AllowedProperties = new(StringComparer.Ordinal)
     {
         "schemaVersion",
@@ -44,6 +46,12 @@ public sealed class MaintenanceEventReader
             return [];
         }
 
+        if (_pending.Length + content.Length > MaximumPendingCharacters)
+        {
+            _pending.Clear();
+            Degrade(EventDegradationReason.InvalidSchema);
+            return [];
+        }
         _pending.Append(content);
         var records = new List<MaintenanceEvent>();
         while (true)
@@ -58,7 +66,7 @@ public sealed class MaintenanceEventReader
             var line = snapshot[..newline].TrimEnd('\r');
             _pending.Remove(0, newline + 1);
             _byteOffset += Encoding.UTF8.GetByteCount(snapshot[..(newline + 1)]);
-            if (line.Length == 0)
+            if (line.Length == 0 || line.Length > MaximumRecordCharacters)
             {
                 Degrade(EventDegradationReason.InvalidSchema);
                 continue;
@@ -72,6 +80,12 @@ public sealed class MaintenanceEventReader
         }
 
         return records;
+    }
+
+    public void DegradeForOverflow()
+    {
+        _pending.Clear();
+        Degrade(EventDegradationReason.InvalidSchema);
     }
 
     private MaintenanceEvent? Parse(string line)

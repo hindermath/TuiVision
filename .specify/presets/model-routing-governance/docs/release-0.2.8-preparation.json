@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "presetId": "model-routing-governance",
+  "packageVersion": "0.2.8",
+  "historicalPublicationVersion": "0.1.6",
+  "candidate_status": "Prepared",
+  "release_status": "NotEstablishedAtPreparation",
+  "sourceCommit": "54c07d23f78c81dc81eb490b26241074e67282d9",
+  "previousReleaseVersion": "0.2.7",
+  "externalPublicationEvidence": "https://github.com/hindermath/spec-kit-preset-model-routing-governance/releases/tag/v0.2.8",
+  "runtimeChanged": false,
+  "changeKind": "DocumentationCorrection",
+  "authorizationReference": "Thorsten Hindermann, 2026-11-08: submit the next Model Routing Governance preset; correct the discovered publication-link blocker before catalog submission.",
+  "generatorSchemaChanged": false,
+  "preparedAt": "2026-11-08T01:30:00Z"
+}

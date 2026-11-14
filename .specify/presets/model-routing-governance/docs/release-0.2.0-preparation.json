@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "presetId": "model-routing-governance",
+  "packageVersion": "0.2.0",
+  "historicalPublicationVersion": "0.1.6",
+  "candidate_status": "Prepared",
+  "release_status": "NotEstablishedAtPreparation",
+  "runtimeChanged": true,
+  "changeKind": "AdditiveAdapters",
+  "authorizationReference": "User requests 2026-11-03: initial adapter PR, then broad-selection improvement with DeliveryMode MergeAndSync and admin bypass after exact-head green checks. No release, preset installation or rollout.",
+  "generatorSchemaChanged": false,
+  "preparedAt": "2026-11-03T19:38:19+01:00",
+  "sourceCommit": "b35ee208959ec133e51ad557820a393b9bdddbf4",
+  "externalPublicationEvidence": "https://github.com/hindermath/spec-kit-preset-model-routing-governance/releases/tag/v0.2.0"
+}

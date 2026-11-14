@@ -6,7 +6,9 @@ $ErrorActionPreference = 'Stop'
 
 $PresetRoot = Split-Path -Parent (Split-Path -Parent $PSCommandPath)
 $TempRoot = Join-Path ([IO.Path]::GetTempPath()) "intake-sequencing-$([Guid]::NewGuid())"
+$OutsideRoot = "${TempRoot}-outside"
 New-Item -ItemType Directory -Path (Join-Path $TempRoot 'intakes') -Force | Out-Null
+New-Item -ItemType Directory -Path $OutsideRoot -Force | Out-Null
 
 function Get-NormalizedHash([string]$Path) {
     $Utf8 = [Text.UTF8Encoding]::new($false, $true)
@@ -95,6 +97,50 @@ function Reset-Fixture {
     Save-Json $script:Receipt (Join-Path $TempRoot 'receipt.json')
 }
 
+function Initialize-DeleteFixture {
+    Reset-Fixture
+    Copy-Item (Join-Path $TempRoot 'manifest.json') (Join-Path $TempRoot 'prior-manifest.json') -Force
+    Copy-Item (Join-Path $TempRoot 'receipt.json') (Join-Path $TempRoot 'prior-receipt.json') -Force
+    $script:Manifest.status = 'Deleted'
+    Save-Json $script:Manifest (Join-Path $TempRoot 'manifest.json')
+    $script:Receipt.receiptId = '44444444-4444-4444-8444-444444444444'
+    $script:Receipt.operation.type = 'Delete'
+    $script:Receipt.status = 'Deleted'
+    $script:Receipt.manifest.normalizedSha256 = Get-NormalizedHash (Join-Path $TempRoot 'manifest.json')
+    $script:Receipt.supersedes.receiptPath = 'prior-receipt.json'
+    $script:Receipt.supersedes.receiptNormalizedSha256 = Get-NormalizedHash (Join-Path $TempRoot 'prior-receipt.json')
+    $script:Receipt.supersedes.manifestArchivePath = 'prior-manifest.json'
+    $script:Receipt.supersedes.manifestArchiveSha256 = Get-NormalizedHash (Join-Path $TempRoot 'prior-manifest.json')
+    $script:Tombstone = [ordered]@{
+        schemaVersion = '1.0'
+        documentType = 'IntakeSeriesTombstone'
+        seriesId = $script:Manifest.seriesId
+        deletedAt = '2026-07-25T00:00:00Z'
+        authorityEvidence = 'Explicit fixture delete authority'
+        reason = 'Fixture deletion'
+        archiveManifestPath = $script:Receipt.supersedes.manifestArchivePath
+        archiveManifestSha256 = $script:Receipt.supersedes.manifestArchiveSha256
+        intakeDocumentsDeleted = $false
+    }
+    Save-Json $script:Tombstone (Join-Path $TempRoot 'tombstone.json')
+    $script:Receipt.tombstone.path = 'tombstone.json'
+    $script:Receipt.tombstone.normalizedSha256 = Get-NormalizedHash (Join-Path $TempRoot 'tombstone.json')
+    Save-Json $script:Receipt (Join-Path $TempRoot 'receipt.json')
+}
+
+function Initialize-UpdateFixture {
+    Reset-Fixture
+    Copy-Item (Join-Path $TempRoot 'manifest.json') (Join-Path $TempRoot 'prior-manifest.json') -Force
+    Copy-Item (Join-Path $TempRoot 'receipt.json') (Join-Path $TempRoot 'prior-receipt.json') -Force
+    $script:Receipt.receiptId = '44444444-4444-4444-8444-444444444444'
+    $script:Receipt.operation.type = 'Update'
+    $script:Receipt.supersedes.receiptPath = 'prior-receipt.json'
+    $script:Receipt.supersedes.receiptNormalizedSha256 = Get-NormalizedHash (Join-Path $TempRoot 'prior-receipt.json')
+    $script:Receipt.supersedes.manifestArchivePath = 'prior-manifest.json'
+    $script:Receipt.supersedes.manifestArchiveSha256 = Get-NormalizedHash (Join-Path $TempRoot 'prior-manifest.json')
+    Save-Json $script:Receipt (Join-Path $TempRoot 'receipt.json')
+}
+
 function Invoke-NegativeCase([scriptblock]$Mutation, [string]$ExpectedClass) {
     Reset-Fixture
     & $Mutation $script:Manifest
@@ -109,6 +155,21 @@ try {
     foreach ($Shell in @('Bash', 'PowerShell')) {
         Invoke-Validator $Shell manifest 0
         Invoke-Validator $Shell receipt 0
+    }
+
+    # DE: Metadatenpatches duerfen bestehende Receipts nicht ungueltig machen.
+    # EN: Metadata patches must preserve valid receipts from earlier releases.
+    foreach ($GeneratorVersion in @('0.2.10', '0.2.11')) {
+        Reset-Fixture
+        $script:Receipt.generator.version = $GeneratorVersion
+        Save-Json $script:Receipt (Join-Path $TempRoot 'receipt.json')
+        foreach ($Shell in @('Bash', 'PowerShell')) {
+            $Before = (Get-FileHash (Join-Path $TempRoot 'receipt.json') -Algorithm SHA256).Hash
+            Invoke-Validator $Shell receipt 0
+            if ((Get-FileHash (Join-Path $TempRoot 'receipt.json') -Algorithm SHA256).Hash -ne $Before) {
+                throw 'Receipt validation changed the metadata fixture'
+            }
+        }
     }
 
     Reset-Fixture
@@ -132,10 +193,31 @@ try {
         $M.roots = @()
         $M.dependencies = @()
     } 'ISG003'
+    Invoke-NegativeCase { param($M) $M.status = 'Completed' } 'ISG009'
+    Reset-Fixture
+    $script:Manifest.status = 'Completed'
+    foreach ($Target in $script:Manifest.orderedTargets) { $Target.status = 'Completed' }
+    Save-Json $script:Manifest (Join-Path $TempRoot 'manifest.json')
+    foreach ($Shell in @('Bash', 'PowerShell')) { Invoke-Validator $Shell manifest 0 }
 
     Invoke-NegativeCase { param($M) $M.orderedTargets[1].path = '../escape.md' } 'ISG003'
     Invoke-NegativeCase { param($M) $M.orderedTargets[1].path = 'intakes/a.md' } 'ISG003'
     Invoke-NegativeCase { param($M) $M.orderedTargets[1].normalizedSha256 = '0' * 64 } 'ISG004'
+    Reset-Fixture
+    $outsideTarget = Join-Path $OutsideRoot 'a.md'
+    Copy-Item (Join-Path $TempRoot 'intakes/a.md') $outsideTarget
+    Remove-Item (Join-Path $TempRoot 'intakes/a.md')
+    New-Item -ItemType SymbolicLink -Path (Join-Path $TempRoot 'intakes/a.md') -Target $outsideTarget | Out-Null
+    foreach ($Shell in @('Bash', 'PowerShell')) { Invoke-Validator $Shell manifest 2 'ISG004' }
+    Remove-Item (Join-Path $TempRoot 'intakes/a.md') -Force
+    Reset-Fixture
+    $outsideManifest = Join-Path $OutsideRoot 'manifest.json'
+    Copy-Item (Join-Path $TempRoot 'manifest.json') $outsideManifest
+    Remove-Item (Join-Path $TempRoot 'manifest.json')
+    New-Item -ItemType SymbolicLink -Path (Join-Path $TempRoot 'manifest.json') -Target $outsideManifest | Out-Null
+    foreach ($Shell in @('Bash', 'PowerShell')) { Invoke-Validator $Shell receipt 2 'ISR004' }
+    Remove-Item (Join-Path $TempRoot 'manifest.json') -Force
+    Reset-Fixture
     Invoke-NegativeCase { param($M) $M.dependencies[0].to = 'intakes/missing.md' } 'ISG005'
     Invoke-NegativeCase { param($M) $M.dependencies[0].to = 'intakes/a.md' } 'ISG005'
     Invoke-NegativeCase { param($M) $M.dependencies[0].kind = 'Unknown' } 'ISG006'
@@ -186,21 +268,129 @@ try {
         Invoke-Validator $Shell receipt 2 'ISR006'
     }
 
-    Reset-Fixture
-    $script:Receipt.operation.type = 'Delete'
-    $script:Receipt.status = 'Deleted'
-    [IO.File]::WriteAllText((Join-Path $TempRoot 'prior-receipt.json'), "{}`n", [Text.UTF8Encoding]::new($false))
-    [IO.File]::WriteAllText((Join-Path $TempRoot 'prior-manifest.json'), "{}`n", [Text.UTF8Encoding]::new($false))
-    $script:Receipt.supersedes.receiptPath = 'prior-receipt.json'
+    Initialize-UpdateFixture
+    foreach ($Shell in @('Bash', 'PowerShell')) { Invoke-Validator $Shell receipt 0 }
+
+    Initialize-UpdateFixture
+    $priorManifest = Get-Content (Join-Path $TempRoot 'prior-manifest.json') -Raw | ConvertFrom-Json -AsHashtable
+    $priorManifest.orderedTargets[0].path = 'intakes/archived-old.md'
+    $priorManifest.roots = @('intakes/archived-old.md')
+    $priorManifest.dependencies[0].from = 'intakes/archived-old.md'
+    Save-Json $priorManifest (Join-Path $TempRoot 'prior-manifest.json')
+    $priorReceipt = Get-Content (Join-Path $TempRoot 'prior-receipt.json') -Raw | ConvertFrom-Json -AsHashtable
+    $priorReceipt.manifest.normalizedSha256 = Get-NormalizedHash (Join-Path $TempRoot 'prior-manifest.json')
+    Save-Json $priorReceipt (Join-Path $TempRoot 'prior-receipt.json')
+    $script:Receipt.supersedes.manifestArchiveSha256 = $priorReceipt.manifest.normalizedSha256
     $script:Receipt.supersedes.receiptNormalizedSha256 = Get-NormalizedHash (Join-Path $TempRoot 'prior-receipt.json')
-    $script:Receipt.supersedes.manifestArchivePath = 'prior-manifest.json'
-    $script:Receipt.supersedes.manifestArchiveSha256 = Get-NormalizedHash (Join-Path $TempRoot 'prior-manifest.json')
+    Save-Json $script:Receipt (Join-Path $TempRoot 'receipt.json')
+    foreach ($Shell in @('Bash', 'PowerShell')) { Invoke-Validator $Shell receipt 0 }
+
+    Initialize-UpdateFixture
+    $priorReceipt = Get-Content (Join-Path $TempRoot 'prior-receipt.json') -Raw | ConvertFrom-Json -AsHashtable
+    $priorReceipt.operation.Remove('operationId')
+    Save-Json $priorReceipt (Join-Path $TempRoot 'prior-receipt.json')
+    $script:Receipt.supersedes.receiptNormalizedSha256 = Get-NormalizedHash (Join-Path $TempRoot 'prior-receipt.json')
+    Save-Json $script:Receipt (Join-Path $TempRoot 'receipt.json')
+    foreach ($Shell in @('Bash', 'PowerShell')) { Invoke-Validator $Shell receipt 2 'ISR006' }
+
+    Initialize-UpdateFixture
+    $priorReceipt = Get-Content (Join-Path $TempRoot 'prior-receipt.json') -Raw | ConvertFrom-Json -AsHashtable
+    $priorReceipt.Remove('supersedes')
+    Save-Json $priorReceipt (Join-Path $TempRoot 'prior-receipt.json')
+    $script:Receipt.supersedes.receiptNormalizedSha256 = Get-NormalizedHash (Join-Path $TempRoot 'prior-receipt.json')
+    Save-Json $script:Receipt (Join-Path $TempRoot 'receipt.json')
+    foreach ($Shell in @('Bash', 'PowerShell')) { Invoke-Validator $Shell receipt 2 'ISR006' }
+
+    Initialize-UpdateFixture
+    $priorManifest = Get-Content (Join-Path $TempRoot 'prior-manifest.json') -Raw | ConvertFrom-Json -AsHashtable
+    $priorManifest.orderedTargets = @()
+    Save-Json $priorManifest (Join-Path $TempRoot 'prior-manifest.json')
+    $priorReceipt = Get-Content (Join-Path $TempRoot 'prior-receipt.json') -Raw | ConvertFrom-Json -AsHashtable
+    $priorReceipt.manifest.normalizedSha256 = Get-NormalizedHash (Join-Path $TempRoot 'prior-manifest.json')
+    Save-Json $priorReceipt (Join-Path $TempRoot 'prior-receipt.json')
+    $script:Receipt.supersedes.manifestArchiveSha256 = $priorReceipt.manifest.normalizedSha256
+    $script:Receipt.supersedes.receiptNormalizedSha256 = Get-NormalizedHash (Join-Path $TempRoot 'prior-receipt.json')
+    Save-Json $script:Receipt (Join-Path $TempRoot 'receipt.json')
+    foreach ($Shell in @('Bash', 'PowerShell')) { Invoke-Validator $Shell receipt 2 'ISR006' }
+
+    foreach ($badArchive in @('windows-traversal', 'object-root')) {
+        Initialize-UpdateFixture
+        $priorManifest = Get-Content (Join-Path $TempRoot 'prior-manifest.json') -Raw | ConvertFrom-Json -AsHashtable
+        if ($badArchive -eq 'windows-traversal') {
+            $priorManifest.orderedTargets[0].path = '..\outside.md'
+        } else {
+            $priorManifest.roots = @(@{ unexpected = 'object' })
+        }
+        Save-Json $priorManifest (Join-Path $TempRoot 'prior-manifest.json')
+        $priorReceipt = Get-Content (Join-Path $TempRoot 'prior-receipt.json') -Raw | ConvertFrom-Json -AsHashtable
+        $priorReceipt.manifest.normalizedSha256 = Get-NormalizedHash (Join-Path $TempRoot 'prior-manifest.json')
+        Save-Json $priorReceipt (Join-Path $TempRoot 'prior-receipt.json')
+        $script:Receipt.supersedes.manifestArchiveSha256 = $priorReceipt.manifest.normalizedSha256
+        $script:Receipt.supersedes.receiptNormalizedSha256 = Get-NormalizedHash (Join-Path $TempRoot 'prior-receipt.json')
+        Save-Json $script:Receipt (Join-Path $TempRoot 'receipt.json')
+        foreach ($Shell in @('Bash', 'PowerShell')) { Invoke-Validator $Shell receipt 2 'ISR006' }
+    }
+
+    Initialize-UpdateFixture
+    $priorReceipt = Get-Content (Join-Path $TempRoot 'prior-receipt.json') -Raw | ConvertFrom-Json -AsHashtable
+    $priorReceipt.operation.type = 'Update'
+    Save-Json $priorReceipt (Join-Path $TempRoot 'prior-receipt.json')
+    $script:Receipt.supersedes.receiptNormalizedSha256 = Get-NormalizedHash (Join-Path $TempRoot 'prior-receipt.json')
+    Save-Json $script:Receipt (Join-Path $TempRoot 'receipt.json')
+    foreach ($Shell in @('Bash', 'PowerShell')) { Invoke-Validator $Shell receipt 2 'ISR006' }
+
+    Initialize-DeleteFixture
+    foreach ($Shell in @('Bash', 'PowerShell')) { Invoke-Validator $Shell receipt 0 }
+    $script:Receipt.tombstone.path = 'N/A'
+    $script:Receipt.tombstone.normalizedSha256 = 'N/A'
     Save-Json $script:Receipt (Join-Path $TempRoot 'receipt.json')
     foreach ($Shell in @('Bash', 'PowerShell')) {
         Invoke-Validator $Shell receipt 2 'ISR007'
     }
 
+    $outsidePrior = Join-Path $OutsideRoot 'prior-receipt.json'
+    Copy-Item (Join-Path $TempRoot 'prior-receipt.json') $outsidePrior
+    Remove-Item (Join-Path $TempRoot 'prior-receipt.json')
+    New-Item -ItemType SymbolicLink -Path (Join-Path $TempRoot 'prior-receipt.json') -Target $outsidePrior | Out-Null
+    foreach ($Shell in @('Bash', 'PowerShell')) { Invoke-Validator $Shell receipt 2 'ISR006' }
+    Remove-Item (Join-Path $TempRoot 'prior-receipt.json') -Force
+    Copy-Item $outsidePrior (Join-Path $TempRoot 'prior-receipt.json')
+
+    Initialize-DeleteFixture
+    $script:Tombstone.seriesId = '55555555-5555-4555-8555-555555555555'
+    Save-Json $script:Tombstone (Join-Path $TempRoot 'tombstone.json')
+    $script:Receipt.tombstone.normalizedSha256 = Get-NormalizedHash (Join-Path $TempRoot 'tombstone.json')
+    Save-Json $script:Receipt (Join-Path $TempRoot 'receipt.json')
+    foreach ($Shell in @('Bash', 'PowerShell')) { Invoke-Validator $Shell receipt 2 'ISR007' }
+
+    Initialize-DeleteFixture
+    $script:Tombstone.archiveManifestPath = 'unrelated-manifest.json'
+    Save-Json $script:Tombstone (Join-Path $TempRoot 'tombstone.json')
+    $script:Receipt.tombstone.normalizedSha256 = Get-NormalizedHash (Join-Path $TempRoot 'tombstone.json')
+    Save-Json $script:Receipt (Join-Path $TempRoot 'receipt.json')
+    foreach ($Shell in @('Bash', 'PowerShell')) { Invoke-Validator $Shell receipt 2 'ISR007' }
+
+    Initialize-DeleteFixture
+    $priorReceipt = Get-Content (Join-Path $TempRoot 'prior-receipt.json') -Raw | ConvertFrom-Json -AsHashtable
+    $priorReceipt.seriesId = '55555555-5555-4555-8555-555555555555'
+    Save-Json $priorReceipt (Join-Path $TempRoot 'prior-receipt.json')
+    $script:Receipt.supersedes.receiptNormalizedSha256 = Get-NormalizedHash (Join-Path $TempRoot 'prior-receipt.json')
+    Save-Json $script:Receipt (Join-Path $TempRoot 'receipt.json')
+    foreach ($Shell in @('Bash', 'PowerShell')) { Invoke-Validator $Shell receipt 2 'ISR006' }
+
+    Initialize-DeleteFixture
+
+    $outsideTombstone = Join-Path $OutsideRoot 'tombstone.json'
+    Copy-Item (Join-Path $TempRoot 'tombstone.json') $outsideTombstone
+    $script:Receipt.tombstone.path = 'tombstone.json'
+    $script:Receipt.tombstone.normalizedSha256 = Get-NormalizedHash $outsideTombstone
+    Remove-Item (Join-Path $TempRoot 'tombstone.json') -Force
+    New-Item -ItemType SymbolicLink -Path (Join-Path $TempRoot 'tombstone.json') -Target $outsideTombstone | Out-Null
+    Save-Json $script:Receipt (Join-Path $TempRoot 'receipt.json')
+    foreach ($Shell in @('Bash', 'PowerShell')) { Invoke-Validator $Shell receipt 2 'ISR007' }
+
     Write-Output 'PASS: intake sequencing validator parity and negative cases'
 } finally {
     Remove-Item -LiteralPath $TempRoot -Recurse -Force -ErrorAction SilentlyContinue
+    Remove-Item -LiteralPath $OutsideRoot -Recurse -Force -ErrorAction SilentlyContinue
 }

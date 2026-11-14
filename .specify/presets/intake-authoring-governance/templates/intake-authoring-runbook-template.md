@@ -170,3 +170,15 @@ target cannot reside in the archive through a symlink. Unknown series or target
 states are errors. Existing receipt targets and repository file sources undergo
 containment checks, including parent directories, before reading. A failure
 grants no repair/execution authority and changes no historical evidence.
+
+## Nutzungshilfe / Reader help
+
+DE: Einen klar begrenzten Arbeitsauftrag mit Herkunft und Änderungsrechten vorbereiten. Diese Vorlage ist ein auszufüllender Starter, kein bestandener Nachweis. Vorhandene passende Evidence weiterverwenden.
+Die bestehenden technischen Feldnamen und Statuswerte nicht übersetzen oder
+nur zum Bestehen eines Tests verändern. Einführung, Begriffe, Beispiel,
+Ergebnis und Fehlerhilfe stehen im [deutschen Leserpfad](https://github.com/hindermath/spec-kit-preset-intake-authoring-governance/blob/main/docs/user-guide.md).
+
+EN: Prepare a bounded work request with provenance and change authority. This template is a starter to complete, not passed evidence. Reuse suitable existing evidence.
+Keep technical field names and states unchanged; never alter them just to pass.
+See the [English reader path](https://github.com/hindermath/spec-kit-preset-intake-authoring-governance/blob/main/docs/user-guide.EN.md)
+for introduction, terms, example, result and troubleshooting.

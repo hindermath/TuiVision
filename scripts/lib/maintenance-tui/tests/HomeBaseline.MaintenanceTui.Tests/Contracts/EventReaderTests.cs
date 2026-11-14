@@ -92,4 +92,16 @@ public sealed class EventReaderTests
 
         Assert.AreEqual(EventDegradationReason.InvalidSchema, reader.State.DegradationReason);
     }
+
+    [TestMethod]
+    public void OversizedIncompleteRecordIsDiscardedAndDegrades()
+    {
+        var reader = new MaintenanceEventReader(Guid.NewGuid());
+
+        reader.Feed(new string('x', 140_000));
+
+        Assert.AreEqual(EventPresentationMode.Degraded, reader.State.PresentationMode);
+        Assert.AreEqual(EventDegradationReason.InvalidSchema, reader.State.DegradationReason);
+        Assert.AreEqual(0, reader.Feed("\n").Count);
+    }
 }

@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "2.0",
+  "documentType": "IntakeReceipt",
+  "receiptId": "f904f58d-94b9-43f2-b7b1-f9f229edea7c",
+  "intakeId": "c1c35d3f-af1b-4716-8d6b-740ee26f96a2",
+  "generator": {
+    "preset": "intake-authoring-governance",
+    "version": "0.2.1"
+  },
+  "createdAt": "2026-07-26T20:00:00Z",
+  "operation": {
+    "operationId": "9f3784b1-ce1b-4d97-81e0-16c3cee2ddd7",
+    "type": "Update",
+    "authorityEvidence": "User-approved two-PR Pflichtenheft and intake consolidation plan"
+  },
+  "status": "ReadyForReview",
+  "target": {
+    "path": "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+    "normalizedSha256": "d1f6a20535f90b78d00f7f6974a32156d7c08eeb77ebad9961a41ffbe3f84858"
+  },
+  "sources": [
+    {
+      "sourceId": "SRC001",
+      "order": 1,
+      "kind": "File",
+      "label": "Archived predecessor intake",
+      "location": "Repository",
+      "path": "requirements/intakes/history/lastenheft-sandbox-gestuetzte-secure-development-haertung/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "requestedUrl": "N/A",
+      "finalUrl": "N/A",
+      "retrievedAt": "N/A",
+      "httpStatus": "N/A",
+      "contentType": "N/A",
+      "contentLength": "N/A",
+      "etag": "N/A",
+      "lastModified": "N/A",
+      "redirectChain": [],
+      "rawSha256": "N/A",
+      "normalizedSha256": "9ccdac18a9fe52b759a70e34764d611463f59d11ca24011cf1780be10228a512",
+      "gitBlob": "N/A",
+      "proofBoundary": "Repository file and normalized SHA-256"
+    }
+  ],
+  "profile": "level2-lastenheft",
+  "languagePolicy": "GermanFirstEnglishSecond",
+  "decisions": [
+    {
+      "id": "IAD001",
+      "status": "Answered",
+      "question": "Welcher Zielpfad ist nach der Konsolidierung verbindlich?",
+      "answer": "requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+      "evidence": "specs/requirements-reconciliation-20260726/migration-proposal.json"
+    },
+    {
+      "id": "IAD002",
+      "status": "Answered",
+      "question": "Welche Delivery Authority gilt?",
+      "answer": "LocalImplementation",
+      "evidence": "The migration grants no remote delivery authority."
+    }
+  ],
+  "openDecisionIds": [],
+  "questionCount": 0,
+  "agentSurface": {
+    "specifyCanonicalId": "speckit.specify",
+    "specifyInvocation": "$speckit-specify",
+    "autonomousCanonicalId": "speckit.autonomous",
+    "autonomousInvocation": "$speckit-autonomous"
+  },
+  "deliveryAuthority": "LocalImplementation",
+  "authorityEvidence": "Default: this migration grants no remote delivery authority.",
+  "promptState": "Enabled",
+  "provenanceMode": "Supersession",
+  "supersedes": {
+    "receiptPath": "specs/intake-authoring-receipts/history/sandbox-gestuetzte-secure-development-haertung.schema-1.1.json",
+    "targetNormalizedSha256": "9ccdac18a9fe52b759a70e34764d611463f59d11ca24011cf1780be10228a512",
+    "archiveTargetPath": "requirements/intakes/history/lastenheft-sandbox-gestuetzte-secure-development-haertung/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md",
+    "archiveReceiptPath": "specs/intake-authoring-receipts/history/sandbox-gestuetzte-secure-development-haertung.schema-1.1.json"
+  },
+  "legacyAdoption": {
+    "evidenceType": "N/A",
+    "priorTargetNormalizedSha256": "N/A",
+    "priorGitBlob": "N/A"
+  },
+  "updateAuthorized": true,
+  "updateAuthorityEvidence": "User-approved migration preserves the existing intake identity and predecessor evidence.",
+  "series": {
+    "seriesId": "a73dda7c-163b-4530-97f2-fd9eea5e8986",
+    "manifestPath": "requirements/intakes/series/tui-vision-delivery/manifest.json",
+    "order": 5,
+    "role": "OrderedMember",
+    "supersedesIntakeIds": []
+  },
+  "nextAction": "$speckit-intake-review requirements/intakes/active/Lastenheft_Sandbox-gestuetzte-Secure-Development-Haertung.md"
+}

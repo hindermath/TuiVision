@@ -1,0 +1,14 @@
+{
+  "release_status": "NotEstablishedAtPreparation",
+  "candidate_status": "Prepared",
+  "packageVersion": "0.2.5",
+  "presetId": "cross-platform-governance",
+  "externalPublicationEvidence": "https://github.com/hindermath/spec-kit-preset-cross-platform-governance/releases/tag/v0.2.5",
+  "documentationPr": "https://github.com/hindermath/spec-kit-preset-cross-platform-governance/pull/7",
+  "schemaVersion": 1,
+  "historicalPublicationVersion": "0.2.4",
+  "runtimeChanged": false,
+  "generatorSchemaChanged": false,
+  "preparedAt": "2026-10-24T12:50:04.9732310+00:00",
+  "sourceCommit": "7cba774308f88372c8a4f19057189a74ff94a6fc"
+}

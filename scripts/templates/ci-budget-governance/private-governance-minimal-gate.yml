@@ -1,0 +1,94 @@
+# home-baseline-schema-version: 1.0
+# home-baseline-workflow-id: private-governance-minimal-gate
+# home-baseline-full-build: false
+# home-baseline-path-dependent: true
+# home-baseline-technical-gates-ready: false
+# home-baseline-gate-id: build-contract
+# home-baseline-gate-id: security-contract
+# home-baseline-gate-id: governance-contract
+# home-baseline-gate-id: dependency-contract
+# home-baseline-gate-id: product-contract
+# home-baseline-gate-id: documentation-contract
+# home-baseline-product-job: casetracker-csharp
+# home-baseline-product-job: casetracker-go
+# home-baseline-product-job: casetracker-java
+# home-baseline-product-job: casetracker-python
+# home-baseline-product-job: casetracker-rust
+# home-baseline-product-job: casetracker-swift
+name: home-baseline/ci-minimal-gate
+
+on:
+  pull_request:
+    paths:
+      - '**/*.csproj'
+      - '**/*.fsproj'
+      - '**/*.sln'
+      - '**/Makefile'
+      - 'scripts/**'
+      - '!scripts/tests/**'
+      - 'scripts/hooks/**'
+      - 'scripts/scan-agent-secrets.*'
+      - 'docs/security/**'
+      - 'constitution.md'
+      - '.specify/**'
+      - 'AGENTS.md'
+      - 'CLAUDE.md'
+      - 'GEMINI.md'
+      - '.github/copilot-instructions.md'
+      - '.github/agents/copilot-instructions.md'
+      - '.github/workflows/home-baseline-ci-minimal-gate.yml'
+      - '!.specify/runtime/**'
+      - '**/package-lock.json'
+      - '**/packages.lock.json'
+      - '**/requirements.txt'
+      - 'scripts/config/*registry.json'
+      - 'SecureCaseTrackerProjects/SecureCaseTracker-CSharp/**'
+      - 'SecureCaseTrackerProjects/SecureCaseTracker-Go/**'
+      - 'SecureCaseTrackerProjects/SecureCaseTracker-Java/**'
+      - 'SecureCaseTrackerProjects/SecureCaseTracker-Python/**'
+      - 'SecureCaseTrackerProjects/SecureCaseTracker-Rust/**'
+      - 'SecureCaseTrackerProjects/SecureCaseTracker-Swift/**'
+      - 'README*.md'
+      - 'docs/**'
+      - 'specs/**'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  ci-minimal-gate:
+    name: home-baseline/ci-minimal-gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Validate pull-request identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          import os
+          import pathlib
+          import re
+
+          event_path = pathlib.Path(os.environ["GITHUB_EVENT_PATH"])
+          event = json.loads(event_path.read_text(encoding="utf-8"))
+          pull_request = event.get("pull_request")
+          if os.environ.get("GITHUB_EVENT_NAME") != "pull_request" or not isinstance(pull_request, dict):
+              raise SystemExit("expected a pull_request event")
+          head_sha = str(pull_request.get("head", {}).get("sha", ""))
+          base_ref = str(pull_request.get("base", {}).get("ref", ""))
+          if re.fullmatch(r"[0-9a-f]{40}", head_sha) is None or not base_ref:
+              raise SystemExit("pull-request identity is incomplete")
+          print("home-baseline/ci-minimal-gate: pull-request identity valid")
+          PY
+      - name: Block activation until technical gates are installed
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "Technical build, security, dependency, product, documentation and governance gates are not installed." >&2
+          exit 1

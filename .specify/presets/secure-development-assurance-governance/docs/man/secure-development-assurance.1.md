@@ -26,6 +26,21 @@ Security-Governance-Voraussetzung.
 Status ist strikt read-only. Review validiert genau ein Gate. Beide Varianten
 erteilen keine menschliche Freigabe und keine Zertifizierung.
 
+## ACTIVE METADATA
+
+Versionen, Checklisten-Dokument-IDs und die Sammelband-Baseline werden exakt
+im ersten zusammenhängenden Metadatenblock vor Inhaltsabschnitten geprüft.
+Die Richtlinie benötigt je genau einen Abschnitt `## Dokumenten-Metadaten`
+und `## Document Metadata` mit der passenden ersten Versionstabelle.
+Fließtexttreffer, Versionspräfixe und doppelte Felder/Abschnitte blockieren
+mit Exit 2 und einer Diagnose samt Pfad/Feld. Historientabellen bleiben erlaubt.
+
+Versions, checklist IDs and the compendium baseline must be exact, unique
+active metadata. Both named guideline language sections and their first
+version table are required. Matching body text or prefixes cannot mask drift;
+duplicate fields/sections fail closed. Legacy sources require an explicit
+migration and fresh evidence, never retrospective edits to historical evidence.
+
 ## GATES
 
 - `baseline` — Baseline, Manifest und kontrollierte Dokumente;
@@ -88,6 +103,9 @@ Ein einzelnes Risiko steht in `[{...}]`, nicht in `{...}`.
 Ein leeres Array ist zulässig, jedoch nicht bei `ReadyWithAcceptedRisks`.
 Fehlende optionale `acceptedRisks` bleiben bei anderen Ergebnissen zulässig.
 Die vorhandenen Pflichtfelder jedes Risikos gelten unverändert.
+`acceptedRisks.reviewedAt` muss einen bereits erreichten Zeitpunkt bezeichnen;
+UTC-Offsets werden als absoluter Zeitpunkt verglichen. Ein zukünftiges
+Reviewdatum blockiert `ReadyWithAcceptedRisks`.
 
 *From v0.1.3, review requires exactly one dated directory with the full,
 case-sensitive context ID. Suffix matches and duplicate dated contexts are
@@ -99,3 +117,7 @@ array; one risk uses [{...}], not {...}. Null, booleans, numbers and strings
 are invalid. Empty arrays are allowed except for ReadyWithAcceptedRisks.
 Other outcomes may omit the optional field. Risk metadata requirements and
 all human decision boundaries remain unchanged.*
+
+*`acceptedRisks.reviewedAt` must be an instant that has already occurred. UTC
+offsets are compared as absolute time; a future review instant blocks
+`ReadyWithAcceptedRisks`.*

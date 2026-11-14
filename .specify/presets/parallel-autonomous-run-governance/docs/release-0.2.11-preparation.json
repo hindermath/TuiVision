@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "presetId": "parallel-autonomous-run-governance",
+  "packageVersion": "0.2.11",
+  "historicalPublicationVersion": "0.2.8",
+  "candidate_status": "Prepared",
+  "release_status": "NotEstablishedAtPreparation",
+  "sourceCommit": "d94a6535cfe425c78c1a9becca3442477b091044",
+  "previousReleaseVersion": "0.2.10",
+  "externalPublicationEvidence": "https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance/releases/tag/v0.2.11",
+  "runtimeChanged": true,
+  "metadataCorrectionApproved": true,
+  "runtimeChangeApproved": true,
+  "changeKind": "SecurityHardening",
+  "authorizationReference": "Thorsten Hindermann, 2026-11-08: publish all affected security-fixed presets; DeliveryMode MergeAndSync with Admin-Bypass.",
+  "generatorSchemaChanged": false,
+  "preparedAt": "2026-11-08T00:43:30.224731+00:00"
+}

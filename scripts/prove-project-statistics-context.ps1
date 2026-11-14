@@ -64,7 +64,7 @@ try {
     $headCommit = Invoke-ContextProofCommand git @('rev-parse', 'HEAD')
     $before = Get-ContextProofHashSet $root
     $null = New-Item -ItemType Directory -Path $evidence
-    $receipt = Get-Content docs/maintenance/project-statistics-installation-v010.json -Raw | ConvertFrom-Json
+    $receipt = Get-Content docs/maintenance/project-statistics-installation-2026-11-13.json -Raw | ConvertFrom-Json
     foreach ($file in $receipt.installedPayloadFiles) {
         if ((Get-FileHash -LiteralPath (Join-Path $root "$packageRelative/$($file.path)")).Hash.ToLowerInvariant() -cne $file.sha256) { throw "Package drift: $($file.path)" }
     }

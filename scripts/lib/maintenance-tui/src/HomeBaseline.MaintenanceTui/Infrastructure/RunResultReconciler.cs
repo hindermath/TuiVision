@@ -57,9 +57,14 @@ public sealed class RunResultReconciler
         var nextAction = mismatches.Count == 0
             ? "N/A"
             : "Bericht, Ereignisse und Exitcode prüfen / review report, events, and exit code.";
+        // A successful child exit cannot override missing or contradictory final
+        // evidence. Preserve an existing failure code; otherwise fail closed.
+        var effectiveExitCode = mismatches.Count > 0 && processExitCode == 0
+            ? 1
+            : processExitCode;
 
         return new ReconciledRunResult(
-            processExitCode,
+            effectiveExitCode,
             report,
             completionEvent,
             displayStatus,

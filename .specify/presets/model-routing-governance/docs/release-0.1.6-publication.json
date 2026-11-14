@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "presetId": "model-routing-governance",
+  "version": "0.1.6",
+  "repository": "https://github.com/hindermath/spec-kit-preset-model-routing-governance",
+  "candidate_status": "HistoricalCandidate",
+  "release_status": "Published",
+  "tag": "v0.1.6",
+  "tagCommit": "99c7c13b3ef2e154cf4f62f43262ade3fbe8d2a9",
+  "verifiedAt": "2026-10-24T10:55:37.1712020+00:00",
+  "release": {
+    "id": 422326321,
+    "url": "https://github.com/hindermath/spec-kit-preset-model-routing-governance/releases/tag/v0.1.6",
+    "publishedAt": "2026-10-23T21:29:33.0000000+00:00",
+    "preRelease": false,
+    "draft": false
+  },
+  "archive": {
+    "sha256": "94648588b4e6ec8c839da579d7321026821fa2cf4378db05c6ad3cdd4dc05dad",
+    "url": "https://github.com/hindermath/spec-kit-preset-model-routing-governance/archive/refs/tags/v0.1.6.zip",
+    "status": "Verified",
+    "verifiedAt": "2026-10-24T10:55:37.1712020+00:00",
+    "bytes": 40594
+  },
+  "evidenceComplete": true,
+  "historicalDocumentSha256": "34b79e751e5f925b5c40298499fedcb32d56e7becffffc3bb37326c400bcb570",
+  "comparison": {
+    "fromTag": "v0.1.4",
+    "toTag": "v0.1.6",
+    "toCommit": "99c7c13b3ef2e154cf4f62f43262ade3fbe8d2a9",
+    "url": "https://github.com/hindermath/spec-kit-preset-model-routing-governance/compare/6e000cce39aebc9ff2b8a4e401080a13f461f830...99c7c13b3ef2e154cf4f62f43262ade3fbe8d2a9",
+    "fromCommit": "6e000cce39aebc9ff2b8a4e401080a13f461f830"
+  },
+  "improvements": [
+    {
+      "introducedIn": "v0.1.6",
+      "type": "DocumentationUsability",
+      "sourcePaths": [
+        "commands/speckit.model-routing-refresh.md",
+        "templates/agent-file-addendum.md",
+        "docs/user-guide.md"
+      ],
+      "problem": {
+        "de": "Policy-Namen konnten als vollständig implementierte Harness-Adapter missverstanden werden.",
+        "en": "Policy names could be mistaken for fully implemented harness adapters."
+      },
+      "description": {
+        "de": "Der stabile Stand erklärt automatische Profile nur für Codex und Antigravity. Claude, Copilot und OpenCode haben damit noch keinen automatischen Adapterpfad. Status, Refresh und möglicher späterer Runner-Preflight sind getrennt.",
+        "en": "The stable release explains automatic profiles only for Codex and Antigravity. Claude, Copilot and OpenCode do not thereby gain an automatic adapter path. Status, refresh and a possible later runner preflight are distinct."
+      },
+      "benefit": {
+        "de": "Grenzen und möglicher Kontingentverbrauch sind sichtbar; keine neue dynamische Auswahl oder Modellwechselgarantie wird behauptet.",
+        "en": "Limits and possible quota use are visible; no new dynamic selection or model-switch guarantee is claimed."
+      },
+      "commit": "99c7c13b3ef2e154cf4f62f43262ade3fbe8d2a9"
+    },
+    {
+      "introducedIn": "v0.1.6",
+      "type": "DocumentationUsability",
+      "sourcePaths": [
+        "docs/user-guide.md",
+        "docs/user-guide.EN.md",
+        "tests/test-documentation-closeout.ps1"
+      ],
+      "problem": {
+        "de": "Ein kurzer README-Einstieg erklärte die vollständigen Leserpfade und Grenzen noch nicht gleichwertig.",
+        "en": "The short README entry did not yet explain the complete reader journey and limits equally."
+      },
+      "description": {
+        "de": "Deutsch-/Englisch-Leitfäden, Command-/Vorlagen-Erklärungen und Dokumentationsregressionen wurden ergänzt. Frühere Einstiegsverbesserungen und der letzte Patch werden getrennt ausgewiesen.",
+        "en": "German/English guides, command/template explanations and documentation regressions were added. Earlier entry-point improvements and the final patch are reported separately."
+      },
+      "benefit": {
+        "de": "Lernende finden Voraussetzungen, Beispiel, Ergebnis und Fehlerhilfe. Neue Textklarheit ist keine neue Runtime-Funktion oder menschliche Abnahme.",
+        "en": "Learners can find prerequisites, an example, its result and troubleshooting. Clearer text is not a new runtime feature or human acceptance."
+      },
+      "commit": "99c7c13b3ef2e154cf4f62f43262ade3fbe8d2a9"
+    }
+  ],
+  "historicalValidation": {
+    "checks": [
+      {
+        "name": "Reader paths (ubuntu-24.04)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-model-routing-governance/actions/runs/39992122387/job/120546219440",
+        "startedAt": "2026-10-23T17:05:07Z",
+        "completedAt": "2026-10-23T17:05:15Z",
+        "head": "cc7fc652d7adb12229dd243d6ffe66448bf50f6f"
+      },
+      {
+        "name": "Reader paths (windows-2022)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-model-routing-governance/actions/runs/39992122387/job/120546219264",
+        "startedAt": "2026-10-23T17:05:06Z",
+        "completedAt": "2026-10-23T17:05:16Z",
+        "head": "cc7fc652d7adb12229dd243d6ffe66448bf50f6f"
+      },
+      {
+        "name": "Reader paths (macos-15)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-model-routing-governance/actions/runs/39992122387/job/120546218848",
+        "startedAt": "2026-10-23T17:07:19Z",
+        "completedAt": "2026-10-23T17:07:26Z",
+        "head": "cc7fc652d7adb12229dd243d6ffe66448bf50f6f"
+      }
+    ],
+    "pr": "https://github.com/hindermath/spec-kit-preset-model-routing-governance/pull/9",
+    "mergeCommit": "99c7c13b3ef2e154cf4f62f43262ade3fbe8d2a9",
+    "reviewedHead": "cc7fc652d7adb12229dd243d6ffe66448bf50f6f"
+  },
+  "newDocumentationReview": "Pending exact-head human review; no merge or publication authority.",
+  "boundary": "Documentation source only; no new package, runtime behavior, approval, installation, catalog update or cancelled dynamic routing."
+}

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "model-routing-governance",
+  "version": "0.2.0",
+  "tag": "v0.2.0",
+  "commit": "9735fe0012c41ea5241674b749c1d4f166848e8c",
+  "repository": "https://github.com/hindermath/spec-kit-preset-model-routing-governance",
+  "releaseUrl": "https://github.com/hindermath/spec-kit-preset-model-routing-governance/releases/tag/v0.2.0",
+  "archiveUrl": "https://github.com/hindermath/spec-kit-preset-model-routing-governance/archive/refs/tags/v0.2.0.zip",
+  "archiveSha256": "41691da49e10b7ce387a57bb3dc990410edb481ead0b3953f35a7004aa8038ab",
+  "archiveBytes": 93677,
+  "archiveFiles": 45,
+  "archivePayloadMatchesCommit": true,
+  "verifiedAt": "2026-11-03T21:04:54.303425+01:00",
+  "release_status": "Published",
+  "releaseId": 433158232,
+  "publishedAt": "2026-11-03T20:02:08Z"
+}

@@ -9,6 +9,19 @@ metadata:
 
 # Secure Development Status
 
+## Routing / Routing
+
+Im bestehenden Model-Routing gilt `fast-mechanical`: vorhandene Ergebnisse
+prüfen und verständlich berichten. Der Vertrag steht in `model-routing.json`.
+Er richtet keine Modelle ein und wechselt keinen laufenden Chat um.
+Der direkte Validator ist eine modellfreie Skriptprüfung. Fehlende Verträge
+oder unpassende lokale Profile dürfen nicht durch Raten umgangen werden.
+
+*Stable routing uses fast-mechanical to check and explain existing results.
+The model-routing.json contract neither configures models nor switches a live
+chat. The direct validator is model-free. Never guess around missing contracts
+or unsuitable local profiles.*
+
 Syntax:
 
 ~~~text
@@ -57,3 +70,15 @@ Inspect the selected evidence directory without changing it. Validate the
 complete baseline binding and all four gates. Report every gate, the worst
 overall outcome, all four human decision boundaries, and the exact recorded
 next action. Never infer an approval or certification from technical success.
+
+## Nutzungshilfe / Reader help
+
+DE: Projektgeführte Sicherheitsnachweise auf Bindung und Konsistenz prüfen; technische Ergebnisse und menschliche Entscheidungen trennen. Diese Command-Erklärung ändert keine Berechtigungen oder Voraussetzungen.
+Die bestehenden technischen Feldnamen und Statuswerte nicht übersetzen oder
+nur zum Bestehen eines Tests verändern. Einführung, Begriffe, Beispiel,
+Ergebnis und Fehlerhilfe stehen im [deutschen Leserpfad](https://github.com/hindermath/spec-kit-preset-secure-development-assurance-governance/blob/main/docs/user-guide.md).
+
+EN: Check binding and consistency of project-owned security evidence; separate technical results from human decisions. This command explanation changes no authority or prerequisites.
+Keep technical field names and states unchanged; never alter them just to pass.
+See the [English reader path](https://github.com/hindermath/spec-kit-preset-secure-development-assurance-governance/blob/main/docs/user-guide.EN.md)
+for introduction, terms, example, result and troubleshooting.

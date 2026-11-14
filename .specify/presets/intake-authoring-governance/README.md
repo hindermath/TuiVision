@@ -1,12 +1,85 @@
 # Intake Authoring Governance Preset
 
-Aktuelle Version / Current version: **0.3.4**. Dieser Patch schliesst physische
-Collection-Aliase und unbekannte Lifecycle-Zustaende aus. Authoring prueft auch
-bestehende Receipt-Ziele und Quellen vor dem Lesen gegen die Repository-Grenze.
+<!-- current-package: 0.3.14 -->
 
-This patch rejects physical collection aliases and unknown lifecycle states.
-Authoring also checks existing receipt targets and sources for repository
-containment before reading. Earlier feature versions below describe history.
+Paketkennung: **v0.3.14**. [Vorbereitung und Veröffentlichungsgrenze](docs/release-0.3.14-validation.md). Die Release-Seite und der externe Archivnachweis belegen die Veröffentlichung, nicht dieser Vorbereitungsstand. Frühere Versionsnachweise unten bleiben historisch.
+
+<span lang="en">Package identity: v0.3.14. The release page and external archive evidence prove publication, not this preparation snapshot. Earlier version records below remain historical.</span>
+
+[Release-Abschluss und Verbesserungsprofil / Publication closeout and improvement profile](docs/release-0.3.9-validation.md).
+
+Der unten verlinkte Basispaket-Nachweis bleibt historisch; dieses Paket nimmt die Quellenkorrekturen als neue Version auf.
+
+<span lang="en">The linked base-package evidence remains historical; this package includes the source corrections as a new version.</span>
+
+**Leserpfad / Reader path:** [Deutsch: Einstieg, Begriffe und Fehlerhilfe](docs/user-guide.md) · [English: start, terms and troubleshooting](docs/user-guide.EN.md).
+
+Historisches Basispaket **v0.3.9**. Der [Release-Stand](https://github.com/hindermath/spec-kit-preset-intake-authoring-governance/releases) wird getrennt geprüft; ein Commit auf main ist noch keine Veröffentlichung oder Installation.
+
+*Historical base package v0.3.9. The release page records actual publication separately; a main-branch commit is not publication or installation.*
+
+
+Patch **0.3.9** liefert die verbesserte zweisprachige Einstiegs- und
+Kompositionsdokumentation. Verhalten und Berechtigungsgrenzen bleiben erhalten.
+[Release-Nachweis / Release record](docs/release-0.3.9-validation.md).
+
+*Patch 0.3.9 packages the improved bilingual getting-started and composition
+guide. Behavior and authority boundaries remain unchanged.*
+
+Paketversion / Package version: **0.3.14**. Der Installationsbefehl steht
+auf einer Zeile und bindet das genaue Release-ZIP, damit die automatische
+Community-Prüfung ihn direkt auswerten kann. Die Generatorvorlage bindet
+0.3.14; bekannte Schema-2-Receipts einschließlich 0.3.6, 0.3.7, 0.3.8, 0.3.9, 0.3.10, 0.3.11 und 0.3.12 bleiben
+gültig und unverändert. Dieser Patch gleicht die DE-/EN-Anleitung aneinander an.
+Keine neue Command-, Schema-, Prioritäts- oder Ausführungsberechtigung.
+
+The installation command is a single line bound to the exact release ZIP for
+automatic community validation. The generator template binds 0.3.14 and keeps
+known schema-2 receipts, including 0.3.6 through 0.3.12, valid without rewriting
+them. This patch aligns the German/English instructions. No new command,
+schema, priority or execution authority is introduced.
+See [patch preparation and documentation](docs/release-0.3.9-validation.md).
+
+Version **0.3.6**: Laufende `Active`-Serien mit
+mindestens einem `Active`-Mitglied bleiben ohne weiteren `Eligible`-Kandidaten
+gueltig; `eligibleCandidate` ist dann `N/A`. `Ready` verlangt weiterhin genau
+einen Kandidaten. Mehrfachkandidaten, Hash-, Pfad- und Abhaengigkeitsfehler
+bleiben gesperrt. Schema, Commands und Prioritaet bleiben gleich.
+
+Running Active series with an Active member may have no additional Eligible
+candidate. The candidate remains N/A; this grants no execution authority.
+Ready still requires exactly one candidate, and all integrity checks remain.
+Documentation target combination (not a new field-test claim): Authoring 0.3.10, Review 0.2.7, Sequencing 0.2.11.
+
+Fuer die Python-basierten Pruefungen eine gepflegte Python-Version verwenden.
+macOS-System-Python 3.9 kann gueltige UTC-Zeitstempel mit sieben Nachkommastellen
+abweisen. Die Release-Pruefung verwendet lokal Python 3.14 und in Intake-CI 3.12.
+*Use a maintained Python runtime for Python-backed validation. macOS system
+Python 3.9 can reject valid UTC timestamps with seven fractional digits.
+Release validation uses Python 3.14 locally and 3.12 in Intake CI.*
+Each preset remains independently installable; historical evidence is preserved.
+
+Gemeinsame Konfigurationsvalidatoren akzeptieren auch die bereits etablierte,
+leere `Idle`-Serie. `Idle` darf keine Ziele, Wurzeln oder Abhaengigkeiten
+enthalten; DirectoryStrict verlangt zusaetzlich ein leeres aktives Inventar.
+Indizes eigenstaendiger verschachtelter Git-Repositories sind keine Duplikate
+des uebergeordneten Projekts. Gewoehnliche doppelte Indizes bleiben gesperrt.
+
+*The shared validators also accept established empty Idle series, without
+targets, roots or dependencies. DirectoryStrict additionally requires an
+empty active inventory. Nested Git checkouts own their index; ordinary
+duplicate indexes still fail. This aligns all three Intake presets.*
+
+Version **0.3.5** veroeffentlicht die
+Korrektur fuer Receipts der eigenen Generatorversion. Beide Validatoren
+akzeptieren die aktuelle Vorlage und bekannte Schema-2-Generatoren, darunter
+0.3.4; unbekannte Versionen und unzulaessige Schema-Kombinationen bleiben gesperrt.
+
+This patch publishes current-generator receipt compatibility. Both validators
+accept the shipped template and known schema-2 generators, including 0.3.4,
+while rejecting unknown versions and invalid schema/version combinations.
+Earlier physical-boundary and lifecycle hardening remains unchanged.
+See [generator compatibility](docs/generator-version-compatibility.md).
 See [boundary hardening](docs/lifecycle-boundary-hardening.md).
 
 Optional, stackable intake-authoring governance for GitHub Spec Kit. Version
@@ -14,7 +87,7 @@ Optional, stackable intake-authoring governance for GitHub Spec Kit. Version
 `0.3.0` governs traceable intake Create, Read, Update, logical Delete, bounded
 public HTTPS sources, and explicitly approved intake series.
 
-Version `0.3.0` carries a project-profile learner contract into new or updated
+Version `0.3.9` carries a project-profile learner contract into new or updated
 intakes: declared audience, assumed prior knowledge, first-use terminology, and
 text-first dependencies, status, decisions, and next actions. It does not
 hard-code a country, occupation, or language into the portable preset.
@@ -28,6 +101,46 @@ Recommended priority: `64`, after Agent Parity (`60`) and before Intake Review
 `>=0.8.3` is required.
 
 ## Why This Preset Exists / Warum dieses Preset existiert
+
+### Einstieg und Phasengrenzen / Getting Started and Phase Boundaries
+
+Ein Intake ist ein begrenzter Arbeitsauftrag; sein Receipt enthält Herkunft
+und Hashbindungen. Das [Manifest](preset.yml) registriert eigene Commands und
+Starter, keine automatisch gestartete Authoring-Phase vor jedem Specify.
+Nach Installation Operation, Quellen, Policy und Ziel ausdrücklich wählen.
+Leere JSON-Starter sind keine gültigen Receipts oder abgeschlossenen Vorgänge.
+
+*An intake is a bounded work request; its receipt records provenance and
+hashes. The [manifest](preset.yml) registers standalone commands/starters,
+not automatic authoring before every Specify. Explicitly choose operation,
+sources, policy and target. Empty JSON starters are not valid receipts or
+completed operations.*
+
+Beispiel: Genau einen neuen Intake aus `planning/order-import-notes.md`
+erstellen lassen, materielle Fragen klären, Intake/Receipt sichten und Status
+prüfen. Erforderlichen Intake-Review gesondert beauftragen. `ReadyForReview`
+ist weder `Ready` noch Start-/Lieferfreigabe. Bestehende Ziele benötigen
+autorisiertes Update; historische Receipts nicht passend umschreiben.
+
+*Example: create exactly one new intake from planning/order-import-notes.md,
+resolve material questions, inspect intake/receipt and check status. Separately
+request any required Intake Review. ReadyForReview is not Ready or execution
+authority. Existing targets need authorized Update; preserve old receipts.*
+
+Priorität steuert die Auflösung, nicht die Abfolge Authoring → Review →
+freigegebener Feature-Lauf. Kleinere Zahlen haben höhere Priorität;
+gleichnamige Starter können durch andere Presets oder Overrides ersetzt
+werden. Eigene Kombinationen prüfen. Status/Read starten keine Folgephase;
+Installation migriert keine Sammlung.
+
+*Priority controls resolution, not authoring -> review -> authorized execution.
+Lower numbers have higher precedence; presets/overrides can replace same-name
+starters. Check custom combinations. Status/Read start no next phase;
+installation migrates no collection.*
+
+Leserpfad / Reader path: [Install](#install) →
+[Quick Start](#quick-start--schnellstart) → [Output](#output--ausgabe) →
+[Status](#status--statuspruefung) → [Review Handoff](#review-handoff--uebergabe-an-review).
 
 Planungen beginnen oft als Chattext, Notiz oder mehrere Dateien. Direktes
 Specify aus solchen Quellen kann Scope, Nicht-Ziele, Nachweise oder
@@ -63,12 +176,10 @@ and freshness without writing.*
 ## Install
 
 ```bash
-specify preset add \
-  --from https://github.com/hindermath/spec-kit-preset-intake-authoring-governance/archive/refs/tags/v0.3.4.zip \
-  --priority 64
+specify preset add --from https://github.com/hindermath/spec-kit-preset-intake-authoring-governance/archive/refs/tags/v0.3.14.zip --priority 64
 specify preset list
 specify preset info intake-authoring-governance
-specify preset resolve
+specify preset resolve intake-authoring-policy-template
 ```
 
 The preset is optional. Installation alone does not require authoring or make
@@ -142,7 +253,7 @@ Bleiben danach wesentliche Fragen offen, wird die Arbeit nicht verworfen. Das
 Preset speichert einen klar markierten Entwurf:
 
 ```text
-Status: NeedsClarification
+Status: Veröffentlichung über die Release-Seite prüfen / verify publication on the release page
 Prompt state: Blocked
 BLOCKED - DO NOT RUN
 ```
@@ -207,6 +318,8 @@ supersede. With explicit current update authority, use provenance mode
 `LegacyAdoption`. Record the prior normalized target hash as an ordered source,
 plus either its exact Git blob or a clearly bounded snapshot-only proof. Keep
 the same target path and never fabricate an earlier receipt.
+The validators read Git blobs only up to 8 MiB; use bounded snapshot evidence
+or split the source if the historical blob is larger.
 
 Ein bestehender Intake aus der Zeit vor diesem Preset besitzt kein
 wahrheitsgemaesses Vorgänger-Receipt. Mit ausdruecklicher aktueller
@@ -214,6 +327,8 @@ Update-Autoritaet wird `LegacyAdoption` verwendet. Der vorherige normalisierte
 Zielhash wird als geordnete Quelle und zusammen mit dem exakten Git-Blob oder
 einer klar begrenzten Snapshot-Evidence festgehalten. Der Zielpfad bleibt
 unveraendert; ein frueheres Receipt wird nicht erfunden.
+Die Validatoren lesen Git-Blobs nur bis 8 MiB; bei groesseren historischen
+Blobs ist begrenzte Snapshot-Evidence oder eine Aufteilung der Quelle noetig.
 
 ## Source Contract / Quellenvertrag
 
@@ -264,6 +379,21 @@ Only explicit approval of that proposal permits writes. All members are staged
 and validated before any active member is published. Failure cannot leave a
 partially active series. The next action is Intake Review mode `Series`; review
 does not start automatically.
+
+Completed Create/Update operations, including series operations, bind each
+published target to the approved proposal. The proposal JSON contains a
+`targets` array in publication order. Each entry names `path`,
+`normalizedSha256`, and `receiptPath`. The operation validator checks the exact
+target set, published file contents, and receipt identity against its
+`operationId`; an empty or merely claimed publication cannot complete.
+
+Abgeschlossene Create-/Update-Operationen einschließlich Serien binden jedes
+veröffentlichte Ziel an den freigegebenen Vorschlag. Dessen JSON enthält
+`targets` in Veröffentlichungsreihenfolge; jeder Eintrag nennt `path`,
+`normalizedSha256` und `receiptPath`. Der Validator prüft die genaue Zielmenge,
+Dateiinhalte und den vollständigen Receipt samt `operationId`.
+Bei Delete-/DeleteSeries-Operationen ohne neu veröffentlichte Ziele ist
+`targets` eine leere Liste.
 
 ## Language And Accessibility / Sprache und Barrierefreiheit
 
@@ -447,6 +577,8 @@ with active series members. RIG017 reports lifecycle mismatches without moving
 files or granting repair authority.*
 
 Pruefnachweis und Release-Grenzen / Validation and release boundaries: [Lifecycle evidence](docs/completed-series-lifecycle.md).
+
+Generator-Kompatibilitaet / Generator compatibility: [Current release validation](docs/generator-version-compatibility.md).
 
 ## Historische Authoring-Receipts / Historical Authoring Receipts
 

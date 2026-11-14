@@ -54,3 +54,24 @@ remain binding. This is technical revalidation; the 157 control dispositions and
 human acceptance boundaries remain. Git history and `reviewSnapshot` retain the
 original observation. Current evidence:
 `../../../maintenance/intake-lifecycle-preset-rollout.md`.
+
+## Historischer Audit und Sicherheitsrollout 2026-11-13
+
+Der Audit bleibt unverändert ein historischer Nachweis. Seine 16 durch den
+Sicherheitsrollout geänderten Eingaben sind als byteidentische Git-Kopien mit
+Quellrevision und Hash im [Eingabemanifest](../../rl-se-inputs-20261113/manifest.json)
+erhalten. Die Tests prüfen diese expliziten Kopien; geänderte Auditdaten,
+Bindungen oder Kopien scheitern weiterhin. Ein erfolgreiches Ergebnis ist keine
+aktuelle Sicherheitsbewertung der neuen Presets. Deren aktuelle Versionen,
+Quellen, Regressionstests und CI werden im getrennten Rolloutnachweis geführt.
+Keine Kontrolldisposition oder menschliche Freigabe wurde geändert.
+
+## Historical audit and security rollout 2026-11-13
+
+The audit remains unchanged historical evidence. Its 16 inputs changed by the
+security rollout are preserved as byte-identical Git copies with source revision
+and hashes in the [input manifest](../../rl-se-inputs-20261113/manifest.json).
+Tests verify these explicit copies; changed audit data, bindings or copies still
+fail. A successful result is not a current security assessment of the new
+presets. Their current versions, sources, regression tests and CI belong to the
+separate rollout evidence. No control decision or human approval was changed.

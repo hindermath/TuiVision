@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "presetId": "intake-review-governance",
+  "version": "0.2.6",
+  "repository": "https://github.com/hindermath/spec-kit-preset-intake-review-governance",
+  "candidate_status": "HistoricalCandidate",
+  "release_status": "Published",
+  "tag": "v0.2.6",
+  "tagCommit": "4838ab546d4f6f6c892152469cf336297e303384",
+  "verifiedAt": "2026-10-24T10:55:41.5308760+00:00",
+  "release": {
+    "id": 422326314,
+    "url": "https://github.com/hindermath/spec-kit-preset-intake-review-governance/releases/tag/v0.2.6",
+    "publishedAt": "2026-10-23T21:29:32.0000000+00:00",
+    "preRelease": false,
+    "draft": false
+  },
+  "archive": {
+    "sha256": "fa02a2fa1ed44b2041ecd209f0ad1f96ec32b40bf5f3a867e58fd7012e3aa90b",
+    "url": "https://github.com/hindermath/spec-kit-preset-intake-review-governance/archive/refs/tags/v0.2.6.zip",
+    "status": "Verified",
+    "verifiedAt": "2026-10-24T10:55:41.5308760+00:00",
+    "bytes": 83308
+  },
+  "evidenceComplete": true,
+  "historicalDocumentSha256": "c3da5fe8d52f64bab4f248ccb53d91fbbb13e6f435afb78665a8baaeeebe52c4",
+  "comparison": {
+    "fromTag": "v0.2.3",
+    "toTag": "v0.2.6",
+    "toCommit": "4838ab546d4f6f6c892152469cf336297e303384",
+    "url": "https://github.com/hindermath/spec-kit-preset-intake-review-governance/compare/91462b4f47e64b9585c0f7d440a80449d7eb64c0...4838ab546d4f6f6c892152469cf336297e303384",
+    "fromCommit": "91462b4f47e64b9585c0f7d440a80449d7eb64c0"
+  },
+  "improvements": [
+    {
+      "introducedIn": "v0.2.4",
+      "type": "ValidatorRuntime",
+      "sourcePaths": [
+        "scripts/validate-intake-governance-config.py",
+        "tests/test-intake-governance-config.ps1"
+      ],
+      "problem": {
+        "de": "Idle, laufende Serien ohne weiteren Kandidaten und verschachtelte Git-Repositories mussten einheitlich behandelt werden.",
+        "en": "Idle, running series with no additional candidate and nested Git repositories needed consistent handling."
+      },
+      "description": {
+        "de": "Der gemeinsame Validator und positive/negative Fixtures stimmen diese Zustände ab. Mehrdeutigkeit, ungültige Pfade, Hashes und Zustände bleiben blockiert.",
+        "en": "The shared validator and positive/negative fixtures align these states. Ambiguity and invalid paths, hashes or states remain blocked."
+      },
+      "benefit": {
+        "de": "Zusammen installierte Intake-Presets bewerten denselben Projektzustand konsistent; es startet kein nachgelagerter Lauf.",
+        "en": "Combined Intake presets assess the same project state consistently; they start no downstream run."
+      },
+      "commit": "f0f9b3536a58f8c90a79119565af8190809a4bdb"
+    },
+    {
+      "introducedIn": "v0.2.6",
+      "type": "DocumentationUsability",
+      "sourcePaths": [
+        "docs/user-guide.md",
+        "docs/user-guide.EN.md",
+        "tests/test-documentation-closeout.ps1"
+      ],
+      "problem": {
+        "de": "Ein kurzer README-Einstieg erklärte die vollständigen Leserpfade und Grenzen noch nicht gleichwertig.",
+        "en": "The short README entry did not yet explain the complete reader journey and limits equally."
+      },
+      "description": {
+        "de": "Deutsch-/Englisch-Leitfäden, Command-/Vorlagen-Erklärungen und Dokumentationsregressionen wurden ergänzt. Frühere Einstiegsverbesserungen und der letzte Patch werden getrennt ausgewiesen.",
+        "en": "German/English guides, command/template explanations and documentation regressions were added. Earlier entry-point improvements and the final patch are reported separately."
+      },
+      "benefit": {
+        "de": "Lernende finden Voraussetzungen, Beispiel, Ergebnis und Fehlerhilfe. Neue Textklarheit ist keine neue Runtime-Funktion oder menschliche Abnahme.",
+        "en": "Learners can find prerequisites, an example, its result and troubleshooting. Clearer text is not a new runtime feature or human acceptance."
+      },
+      "commit": "4838ab546d4f6f6c892152469cf336297e303384"
+    }
+  ],
+  "historicalValidation": {
+    "checks": [
+      {
+        "name": "lifecycle (windows-latest)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-intake-review-governance/actions/runs/39992120958/job/120546214870",
+        "startedAt": "2026-10-23T17:05:06Z",
+        "completedAt": "2026-10-23T17:06:14Z",
+        "head": "77e21a0131d131f69b2741e5f2fca7715b3bcbaf"
+      },
+      {
+        "name": "lifecycle (macos-latest)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-intake-review-governance/actions/runs/39992120958/job/120546214805",
+        "startedAt": "2026-10-23T17:07:36Z",
+        "completedAt": "2026-10-23T17:08:30Z",
+        "head": "77e21a0131d131f69b2741e5f2fca7715b3bcbaf"
+      },
+      {
+        "name": "lifecycle (ubuntu-latest)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-intake-review-governance/actions/runs/39992120958/job/120546214581",
+        "startedAt": "2026-10-23T17:05:05Z",
+        "completedAt": "2026-10-23T17:05:47Z",
+        "head": "77e21a0131d131f69b2741e5f2fca7715b3bcbaf"
+      },
+      {
+        "name": "Reader paths (windows-2022)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-intake-review-governance/actions/runs/39992120960/job/120546214432",
+        "startedAt": "2026-10-23T17:05:03Z",
+        "completedAt": "2026-10-23T17:05:15Z",
+        "head": "77e21a0131d131f69b2741e5f2fca7715b3bcbaf"
+      },
+      {
+        "name": "Reader paths (ubuntu-24.04)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-intake-review-governance/actions/runs/39992120960/job/120546214324",
+        "startedAt": "2026-10-23T17:05:08Z",
+        "completedAt": "2026-10-23T17:05:16Z",
+        "head": "77e21a0131d131f69b2741e5f2fca7715b3bcbaf"
+      },
+      {
+        "name": "Reader paths (macos-15)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-intake-review-governance/actions/runs/39992120960/job/120546214047",
+        "startedAt": "2026-10-23T17:05:23Z",
+        "completedAt": "2026-10-23T17:05:32Z",
+        "head": "77e21a0131d131f69b2741e5f2fca7715b3bcbaf"
+      }
+    ],
+    "pr": "https://github.com/hindermath/spec-kit-preset-intake-review-governance/pull/13",
+    "mergeCommit": "4838ab546d4f6f6c892152469cf336297e303384",
+    "reviewedHead": "77e21a0131d131f69b2741e5f2fca7715b3bcbaf"
+  },
+  "newDocumentationReview": "Pending exact-head human review; no merge or publication authority.",
+  "boundary": "Documentation source only; no new package, runtime behavior, approval, installation, catalog update or cancelled dynamic routing."
+}

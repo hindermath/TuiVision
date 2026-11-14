@@ -33,6 +33,7 @@ from urllib.parse import urlsplit
 receipt_path = Path(sys.argv[1])
 repo = Path(sys.argv[2]).resolve()
 errors = []
+MAX_LEGACY_BLOB_BYTES = 8 * 1024 * 1024
 
 def required_text(obj, key, label):
     value = obj.get(key) if isinstance(obj, dict) else None
@@ -117,6 +118,9 @@ def has_secret(text):
     return any(re.search(pattern, text) for pattern in patterns)
 
 try:
+    receipt_path = receipt_path.resolve(strict=True)
+    if not receipt_path.is_relative_to(repo):
+        raise ValueError("receipt path resolves outside the repository")
     receipt_raw = receipt_path.read_bytes()
     receipt_text = normalized_bytes(receipt_path).decode("utf-8")
     data = json.loads(receipt_raw.decode("utf-8-sig"))
@@ -126,7 +130,7 @@ except Exception as exc:
 if not isinstance(data, dict):
     errors.append("receipt root must be an object")
     data = {}
-if has_secret(receipt_text):
+if has_secret(receipt_text) or has_secret(json.dumps(data, ensure_ascii=False)):
     errors.append("receipt contains a credential or private key pattern")
 
 schema_version = data.get("schemaVersion")
@@ -161,8 +165,16 @@ generator_version = required_text(generator, "version", "generator")
 accepted_generators = {
     "1.0": {"0.1.0"},
     "1.1": {"0.1.1"},
-    "2.0": {"0.2.0", "0.2.1", "0.3.0", "0.3.1", "0.3.2", "0.3.4"},
+    "2.0": {"0.2.0", "0.2.1", "0.3.0", "0.3.1", "0.3.2", "0.3.3", "0.3.4", "0.3.5", "0.3.6", "0.3.7", "0.3.8", "0.3.9", "0.3.10", "0.3.11", "0.3.12", "0.3.13"},
 }.get(schema_version, set())
+# DE: Das eigene Release muss seine Schema-2-Vorlage akzeptieren; keine fremden Versionen.
+# EN: Accept this release's schema-2 template without accepting arbitrary versions.
+preset_metadata = Path(sys.argv[3]).parent / "preset.yml"
+if schema_version == "2.0" and preset_metadata.is_file():
+    match = re.search(r'^\s+version:\s*"?([0-9]+\.[0-9]+\.[0-9]+)"?\s*$',
+                      preset_metadata.read_text(encoding="utf-8"), re.MULTILINE)
+    if match:
+        accepted_generators.add(match.group(1))
 if accepted_generators and generator_version not in accepted_generators:
     errors.append(
         f"generator.version must be one of {sorted(accepted_generators)} "
@@ -506,6 +518,13 @@ else:
                 errors.append("legacyAdoption.priorGitBlob must be a Git object id")
             else:
                 try:
+                    size_result = subprocess.run(
+                        ["git", "-C", str(repo), "cat-file", "-s", legacy_blob],
+                        check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
+                    )
+                    blob_size = int(size_result.stdout.strip())
+                    if blob_size < 0 or blob_size > MAX_LEGACY_BLOB_BYTES:
+                        raise ValueError("legacy Git blob exceeds 8 MiB limit")
                     completed = subprocess.run(
                         ["git", "-C", str(repo), "cat-file", "blob", legacy_blob],
                         check=True,
@@ -538,6 +557,41 @@ else:
                         errors.append(f"{label} must be repository-relative")
                     elif not (repo / value).is_file():
                         errors.append(f"archived supersession evidence missing: {value}")
+                if all(relative(value) and (repo / value).is_file()
+                       for value in (old_receipt, archive_target, archive_receipt)):
+                    try:
+                        prior_path = (repo / old_receipt).resolve(strict=True)
+                        archived_target = (repo / archive_target).resolve(strict=True)
+                        archived_receipt = (repo / archive_receipt).resolve(strict=True)
+                        if any(not path.is_relative_to(repo)
+                               for path in (prior_path, archived_target, archived_receipt)):
+                            raise ValueError("supersession evidence resolves outside repository")
+                        current_target = repo / target_path_text
+                        if (archived_receipt.samefile(prior_path) or
+                                (current_target.is_file() and archived_target.samefile(current_target))):
+                            raise ValueError("supersession archive must be separate from active evidence")
+                        prior = json.loads(prior_path.read_text(encoding="utf-8-sig"))
+                        prior_target = prior.get("target", {})
+                        prior_id = prior.get("receiptId")
+                        if not isinstance(prior_id, str) or uuid.UUID(prior_id).int == 0:
+                            raise ValueError("archived predecessor has no valid receiptId")
+                        prior_operation = prior.get("operation", {})
+                        if (prior.get("schemaVersion") not in ("1.0", "1.1", "2.0")
+                                or uuid.UUID(prior_id) == uuid.UUID(receipt_id)
+                                or prior.get("status") not in ("ReadyForReview", "NeedsClarification")
+                                or not isinstance(prior_target, dict)
+                                or prior_target.get("path") != target_path_text
+                                or prior_target.get("normalizedSha256") != old_target_hash
+                                or (prior.get("schemaVersion") == "2.0" and
+                                    (prior.get("documentType") != "IntakeReceipt" or
+                                     uuid.UUID(prior.get("intakeId")) != uuid.UUID(data.get("intakeId")) or
+                                     not isinstance(prior_operation, dict) or
+                                     prior_operation.get("type") not in ("Create", "Update")))
+                                or prior_path.read_bytes() != archived_receipt.read_bytes()
+                                or digest(archived_target) != old_target_hash):
+                            raise ValueError("archived predecessor does not match intake identity and target hash")
+                    except (OSError, UnicodeDecodeError, ValueError, TypeError, AttributeError) as exc:
+                        errors.append(f"supersession predecessor is not bound: {exc}")
         series = data.get("series")
         if not isinstance(series, dict):
             errors.append("series must be an object")

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0",
+  "active": false,
+  "applied": false,
+  "target": "default_branch",
+  "rulesetName": "home-baseline/private-governance-default",
+  "enforcement": "active",
+  "pullRequestRequired": true,
+  "requiredApprovingReviews": 1,
+  "requiredStatusChecks": ["home-baseline/ci-minimal-gate"],
+  "requireStatusChecksToPass": true,
+  "strictStatusChecks": true,
+  "bypassActors": [
+    {
+      "actor_id": 5,
+      "actor_type": "RepositoryRole",
+      "bypass_mode": "pull_request"
+    }
+  ],
+  "blockedWritePaths": ["api", "direct", "web"],
+  "adminBypassNormalPath": false,
+  "remoteConverged": false
+}

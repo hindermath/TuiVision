@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "2.0",
+  "documentType": "IntakeReceipt",
+  "receiptId": "2e99a694-e1f1-44b3-a11b-79324c78c7e7",
+  "intakeId": "cd7f53e3-3a5d-4f14-b5a7-e2ceb0b63f1e",
+  "generator": {
+    "preset": "intake-authoring-governance",
+    "version": "0.2.1"
+  },
+  "createdAt": "2026-07-26T20:00:00Z",
+  "operation": {
+    "operationId": "57ab133f-5c75-4ce5-b424-9a06a8301639",
+    "type": "Update",
+    "authorityEvidence": "User-approved two-PR Pflichtenheft and intake consolidation plan"
+  },
+  "status": "ReadyForReview",
+  "target": {
+    "path": "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+    "normalizedSha256": "b7dbf455ff4e84b336ffe3cca3ff184e1897860592d4f53fb52f1776e7eb9e91"
+  },
+  "sources": [
+    {
+      "sourceId": "SRC001",
+      "order": 1,
+      "kind": "File",
+      "label": "Archived predecessor intake",
+      "location": "Repository",
+      "path": "requirements/intakes/history/lastenheft-constitution-change/Lastenheft_Constitution_Change.md",
+      "requestedUrl": "N/A",
+      "finalUrl": "N/A",
+      "retrievedAt": "N/A",
+      "httpStatus": "N/A",
+      "contentType": "N/A",
+      "contentLength": "N/A",
+      "etag": "N/A",
+      "lastModified": "N/A",
+      "redirectChain": [],
+      "rawSha256": "N/A",
+      "normalizedSha256": "448884c87b2d3ae44792b77a73b91d61384039563a944d1857c2eb66cbc99381",
+      "gitBlob": "N/A",
+      "proofBoundary": "Repository file and normalized SHA-256"
+    }
+  ],
+  "profile": "level2-lastenheft",
+  "languagePolicy": "GermanFirstEnglishSecond",
+  "decisions": [
+    {
+      "id": "IAD001",
+      "status": "Answered",
+      "question": "Welcher Zielpfad ist nach der Konsolidierung verbindlich?",
+      "answer": "requirements/intakes/active/Lastenheft_Constitution_Change.md",
+      "evidence": "specs/requirements-reconciliation-20260726/migration-proposal.json"
+    },
+    {
+      "id": "IAD002",
+      "status": "Answered",
+      "question": "Welche Delivery Authority gilt?",
+      "answer": "LocalImplementation",
+      "evidence": "The migration grants no remote delivery authority."
+    }
+  ],
+  "openDecisionIds": [],
+  "questionCount": 0,
+  "agentSurface": {
+    "specifyCanonicalId": "speckit.specify",
+    "specifyInvocation": "$speckit-specify",
+    "autonomousCanonicalId": "speckit.autonomous",
+    "autonomousInvocation": "$speckit-autonomous"
+  },
+  "deliveryAuthority": "LocalImplementation",
+  "authorityEvidence": "Default: this migration grants no remote delivery authority.",
+  "promptState": "Enabled",
+  "provenanceMode": "Supersession",
+  "supersedes": {
+    "receiptPath": "specs/intake-authoring-receipts/history/constitution-change.schema-1.1.json",
+    "targetNormalizedSha256": "448884c87b2d3ae44792b77a73b91d61384039563a944d1857c2eb66cbc99381",
+    "archiveTargetPath": "requirements/intakes/history/lastenheft-constitution-change/Lastenheft_Constitution_Change.md",
+    "archiveReceiptPath": "specs/intake-authoring-receipts/history/constitution-change.schema-1.1.json"
+  },
+  "legacyAdoption": {
+    "evidenceType": "N/A",
+    "priorTargetNormalizedSha256": "N/A",
+    "priorGitBlob": "N/A"
+  },
+  "updateAuthorized": true,
+  "updateAuthorityEvidence": "User-approved migration preserves the existing intake identity and predecessor evidence.",
+  "series": {
+    "seriesId": "a73dda7c-163b-4530-97f2-fd9eea5e8986",
+    "manifestPath": "requirements/intakes/series/tui-vision-delivery/manifest.json",
+    "order": 4,
+    "role": "OrderedMember",
+    "supersedesIntakeIds": []
+  },
+  "nextAction": "$speckit-intake-review requirements/intakes/active/Lastenheft_Constitution_Change.md"
+}

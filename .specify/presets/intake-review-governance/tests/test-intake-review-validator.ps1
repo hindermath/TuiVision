@@ -6,7 +6,9 @@ $ErrorActionPreference = 'Stop'
 
 $PresetRoot = Split-Path -Parent (Split-Path -Parent $PSCommandPath)
 $TempRoot = Join-Path ([IO.Path]::GetTempPath()) "intake-review-$([Guid]::NewGuid())"
+$OutsideRoot = "${TempRoot}-outside"
 New-Item -ItemType Directory -Path (Join-Path $TempRoot 'intakes') -Force | Out-Null
+New-Item -ItemType Directory -Path $OutsideRoot -Force | Out-Null
 
 function Get-NormalizedHash([string]$Path) {
     $Utf8 = [Text.UTF8Encoding]::new($false, $true)
@@ -23,7 +25,7 @@ function Invoke-Validator([string]$Kind, [int]$ExpectedExit) {
             --result (Join-Path $TempRoot 'result.json') --repo $TempRoot 2>&1
     }
     if ($LASTEXITCODE -ne $ExpectedExit) {
-        throw "$Kind expected exit $ExpectedExit, got $LASTEXITCODE`: $Output"
+        throw "$Kind at test line $($MyInvocation.ScriptLineNumber) expected exit $ExpectedExit, got $LASTEXITCODE`: $Output"
     }
     return ($Output -join "`n")
 }
@@ -150,6 +152,78 @@ try {
     $Result | ConvertTo-Json -Depth 20 | Set-Content -LiteralPath (Join-Path $TempRoot 'result.json') -Encoding utf8NoBOM
     [void](Invoke-Validator Bash 2); [void](Invoke-Validator PowerShell 2)
 
+    $Result.findings = @([ordered]@{
+        id = 'IR001'; severity = 'Medium'; category = 'Security'; target = 'intakes/a.md'
+        disposition = 'AcceptedRisk'; owner = 'Human reviewer'; evidence = 'review evidence'
+        reevaluationTrigger = 'next review'
+    })
+    $Result.summary.medium = 1
+    $Result.acceptedRisks[0].acceptedByType = 'Human'
+    $Result.acceptedRisks[0].owner = 'Human reviewer'
+    $Result.acceptedRisks[0].severity = 'Medium'
+    $Result | ConvertTo-Json -Depth 20 | Set-Content -LiteralPath (Join-Path $TempRoot 'result.json') -Encoding utf8NoBOM
+    [void](Invoke-Validator Bash 0); [void](Invoke-Validator PowerShell 0)
+
+    $ValidFindings = $Result.findings
+    $Result.findings = $ValidFindings[0]
+    $Result | ConvertTo-Json -Depth 20 | Set-Content -LiteralPath (Join-Path $TempRoot 'result.json') -Encoding utf8NoBOM
+    [void](Invoke-Validator Bash 2); [void](Invoke-Validator PowerShell 2)
+    $Result.findings = $ValidFindings
+
+    $ValidRisks = $Result.acceptedRisks
+    $Result.acceptedRisks = $ValidRisks[0]
+    $Result | ConvertTo-Json -Depth 20 | Set-Content -LiteralPath (Join-Path $TempRoot 'result.json') -Encoding utf8NoBOM
+    [void](Invoke-Validator Bash 2); [void](Invoke-Validator PowerShell 2)
+    $Result.acceptedRisks = $ValidRisks
+
+    $Result.findings[0].severity = 'medium'
+    $Result | ConvertTo-Json -Depth 20 | Set-Content -LiteralPath (Join-Path $TempRoot 'result.json') -Encoding utf8NoBOM
+    [void](Invoke-Validator Bash 2); [void](Invoke-Validator PowerShell 2)
+    $Result.findings[0].severity = 'Medium'
+
+    $Result.acceptedRisks[0].acceptedByType = 'human'
+    $Result | ConvertTo-Json -Depth 20 | Set-Content -LiteralPath (Join-Path $TempRoot 'result.json') -Encoding utf8NoBOM
+    [void](Invoke-Validator Bash 2); [void](Invoke-Validator PowerShell 2)
+    $Result.acceptedRisks[0].acceptedByType = 'Human'
+
+    $Result.acceptedRisks[0].findingId = 'IR999'
+    $Result | ConvertTo-Json -Depth 20 | Set-Content -LiteralPath (Join-Path $TempRoot 'result.json') -Encoding utf8NoBOM
+    [void](Invoke-Validator Bash 2); [void](Invoke-Validator PowerShell 2)
+    $Result.acceptedRisks[0].findingId = 'IR001'
+
+    $Result.acceptedRisks[0].severity = 'Low'
+    $Result | ConvertTo-Json -Depth 20 | Set-Content -LiteralPath (Join-Path $TempRoot 'result.json') -Encoding utf8NoBOM
+    [void](Invoke-Validator Bash 2); [void](Invoke-Validator PowerShell 2)
+    $Result.acceptedRisks[0].severity = 'Medium'
+
+    $Result.findings[0].id = @('IR001')
+    $Result | ConvertTo-Json -Depth 20 | Set-Content -LiteralPath (Join-Path $TempRoot 'result.json') -Encoding utf8NoBOM
+    [void](Invoke-Validator Bash 2); [void](Invoke-Validator PowerShell 2)
+    $Result.findings[0].id = 'IR001'
+
+    $Result.findings[0].id = 'ir001'
+    $Result.acceptedRisks[0].findingId = 'ir001'
+    $Result | ConvertTo-Json -Depth 20 | Set-Content -LiteralPath (Join-Path $TempRoot 'result.json') -Encoding utf8NoBOM
+    [void](Invoke-Validator Bash 2); [void](Invoke-Validator PowerShell 2)
+    $Result.findings[0].id = 'IR001'
+    $Result.acceptedRisks[0].findingId = 'IR001'
+
+    $Result.acceptedRisks[0].findingId = @('IR001')
+    $Result | ConvertTo-Json -Depth 20 | Set-Content -LiteralPath (Join-Path $TempRoot 'result.json') -Encoding utf8NoBOM
+    [void](Invoke-Validator Bash 2); [void](Invoke-Validator PowerShell 2)
+    $Result.acceptedRisks[0].findingId = 'IR001'
+
+    $Result.status = 'Ready'
+    $Result.acceptedRisks = @()
+    $Result.findings[0].disposition = 'Open'
+    $Result | ConvertTo-Json -Depth 20 | Set-Content -LiteralPath (Join-Path $TempRoot 'result.json') -Encoding utf8NoBOM
+    [void](Invoke-Validator Bash 2); [void](Invoke-Validator PowerShell 2)
+
+    $Result.status = 'ready'
+    $Result | ConvertTo-Json -Depth 20 | Set-Content -LiteralPath (Join-Path $TempRoot 'result.json') -Encoding utf8NoBOM
+    [void](Invoke-Validator Bash 2); [void](Invoke-Validator PowerShell 2)
+    $Result.status = 'Ready'
+
     Reset-SeriesFixture
     $BashSeriesPass = Invoke-Validator Bash 0
     $PowerShellSeriesPass = Invoke-Validator PowerShell 0
@@ -231,8 +305,97 @@ try {
         param($Request, $Result)
         $Request.series.roots = @('intakes/a.md', 'intakes/b.md')
     }
+    Invoke-SeriesCase -ExpectedClass 'coverage.individual' -Mutation {
+        param($Request, $Result)
+        $Result.coverage.individual = @('intakes/a.md', 'intakes/a.md', 'intakes/c.md')
+    }
+    Invoke-SeriesCase -ExpectedClass 'questions[0]' -Mutation {
+        param($Request, $Result)
+        $Result.questions = @('not an object')
+    }
+    Invoke-SeriesCase -ExpectedClass 'questions[0].answer' -Mutation {
+        param($Request, $Result)
+        $Result.questions = @([ordered]@{
+            id = 'IRA001'; status = 'Answered'; owner = 'Maintainer'; question = 'Proceed?'; evidence = 'review'
+        })
+    }
+    Invoke-SeriesCase -ExpectedClass 'questions must be an array' -Mutation {
+        param($Request, $Result)
+        $Result.questions = [ordered]@{
+            id = 'IRA001'; status = 'Answered'; owner = 'Maintainer'; question = 'Proceed?'; answer = 'Yes'; evidence = 'review'
+        }
+    }
+    Invoke-SeriesCase -ExpectedClass 'accepted status cannot have unanswered questions' -Mutation {
+        param($Request, $Result)
+        $Result.questions = @([ordered]@{
+            id = 'IRA001'; status = 'answered'; owner = 'Maintainer'; question = 'Proceed?'; answer = 'Yes'; evidence = 'review'
+        })
+    }
+
+    Reset-SeriesFixture
+    $insideTarget = Join-Path $TempRoot 'intakes/a.md'
+    $outsideTarget = Join-Path $OutsideRoot 'a.md'
+    Copy-Item -LiteralPath $insideTarget -Destination $outsideTarget
+    Remove-Item -LiteralPath $insideTarget
+    [void](New-Item -ItemType SymbolicLink -Path $insideTarget -Target $outsideTarget)
+    foreach ($shell in @('Bash', 'PowerShell')) {
+        $output = Invoke-Validator $shell 2
+        if ($output -notmatch 'outside repository') { throw "$shell did not identify external target symlink: $output" }
+    }
+    Remove-Item -LiteralPath $insideTarget -Force
+
+    Reset-SeriesFixture
+    $insideRequest = Join-Path $TempRoot 'request.json'
+    $outsideRequest = Join-Path $OutsideRoot 'request.json'
+    Copy-Item -LiteralPath $insideRequest -Destination $outsideRequest
+    Remove-Item -LiteralPath $insideRequest
+    [void](New-Item -ItemType SymbolicLink -Path $insideRequest -Target $outsideRequest)
+    foreach ($shell in @('Bash', 'PowerShell')) {
+        $output = Invoke-Validator $shell 2
+        if ($output -notmatch 'outside repository') { throw "$shell did not identify external request symlink: $output" }
+    }
+
+    $fieldRoot = Join-Path $TempRoot 'field/evidence/immutable'
+    $fieldRepo = Join-Path $TempRoot 'field/runtime/worktrees/example-unit-03'
+    [void](New-Item -ItemType Directory -Path $fieldRoot -Force)
+    [void](New-Item -ItemType Directory -Path $fieldRepo -Force)
+    $fieldCampaign = [ordered]@{
+        schemaVersion = '1.0'; deliveryMode = 'LocalImplementation'
+        workers = @([ordered]@{
+            workerId = 'example-unit-00'; repository = 'N/A'; featureInput = '../../../outside.md'; dependsOn = @()
+        })
+    }
+    Save-Json $fieldCampaign (Join-Path $fieldRoot 'parallel-campaign.json')
+    Save-Json ([ordered]@{ schemaVersion = '1.0'; profiles = [ordered]@{} }) `
+        (Join-Path $fieldRoot 'parallel-runner-profiles.json')
+    $fieldScript = Join-Path $PresetRoot 'tests/test-secure-casetracker-field.ps1'
+    $fieldOutput = & pwsh -NoProfile -File $fieldScript -EvidenceRoot $fieldRoot `
+        -CoordinatorPath $fieldScript 2>&1
+    if ($LASTEXITCODE -eq 0 -or ($fieldOutput -join "`n") -notmatch 'Unsicherer featureInput') {
+        throw "Field fixture accepted traversal or failed elsewhere: $fieldOutput"
+    }
+    $fieldCampaign.workers[0].workerId = '../escape-unit-00'
+    $fieldCampaign.workers[0].featureInput = 'safe.md'
+    Save-Json $fieldCampaign (Join-Path $fieldRoot 'parallel-campaign.json')
+    $fieldOutput = & pwsh -NoProfile -File $fieldScript -EvidenceRoot $fieldRoot `
+        -CoordinatorPath $fieldScript 2>&1
+    if ($LASTEXITCODE -eq 0 -or ($fieldOutput -join "`n") -notmatch 'Unsicherer workerId') {
+        throw "Field fixture accepted workerId traversal or failed elsewhere: $fieldOutput"
+    }
+    $fieldCampaign.workers[0].workerId = 'example-unit-00'
+    $fieldCampaign.workers[0].featureInput = 'linked.md'
+    Save-Json $fieldCampaign (Join-Path $fieldRoot 'parallel-campaign.json')
+    $outsideFieldInput = Join-Path $TempRoot 'field/outside.md'
+    'external fixture input' | Set-Content -LiteralPath $outsideFieldInput -Encoding utf8NoBOM
+    [void](New-Item -ItemType SymbolicLink -Path (Join-Path $fieldRepo 'linked.md') -Target $outsideFieldInput)
+    $fieldOutput = & pwsh -NoProfile -File $fieldScript -EvidenceRoot $fieldRoot `
+        -CoordinatorPath $fieldScript 2>&1
+    if ($LASTEXITCODE -eq 0 -or ($fieldOutput -join "`n") -notmatch 'featureInput verlaesst') {
+        throw "Field fixture accepted external featureInput symlink or failed elsewhere: $fieldOutput"
+    }
 
     Write-Output 'PASS: intake-review validator parity, Series 1.1 graph contract, and negative cases'
 } finally {
     Remove-Item -LiteralPath $TempRoot -Recurse -Force -ErrorAction SilentlyContinue
+    Remove-Item -LiteralPath $OutsideRoot -Recurse -Force -ErrorAction SilentlyContinue
 }

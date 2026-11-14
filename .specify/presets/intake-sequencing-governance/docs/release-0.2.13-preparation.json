@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "presetId": "intake-sequencing-governance",
+  "packageVersion": "0.2.13",
+  "historicalPublicationVersion": "0.2.10",
+  "candidate_status": "Prepared",
+  "release_status": "NotEstablishedAtPreparation",
+  "sourceCommit": "9b09f9356b74dc9329418da6817964ea85b34530",
+  "previousReleaseVersion": "0.2.12",
+  "externalPublicationEvidence": "https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/releases/tag/v0.2.13",
+  "runtimeChanged": false,
+  "generatorSchemaChanged": false,
+  "changeKind": "DocumentationCorrection",
+  "authorizationReference": "User authorized source PR preparation for v0.2.13; merge and publication require separate approval.",
+  "preparedAt": "2026-11-12T06:58:17.883944+00:00"
+}

@@ -14,6 +14,26 @@ pwsh -NoProfile -File scripts/maintain-agentic-winget-apps.ps1 [-WhatIf] [-Compa
 
 ## Beschreibung / Description
 
+`-MslOnly` begrenzt die Wartung auf sechs stabile MSL-Toolchains samt
+Abhaengigkeiten. `-CompareOnly` und `-WhatIf` bleiben ohne Installation oder
+Benutzer-PATH-Aenderung. `-ResultFile` schreibt optional atomare JSON-Evidence
+mit sechs `mslToolchains`-Eintraegen. Versionsgebundene WinGet-ID-Vorlagen
+werden aus stabilen Releases aufgeloest. Admin-Gates bleiben verbindlich.
+
+Vergleich und Vorschau führen nur die im Code fest freigegebenen
+Versionsproben aus. Registry-Daten können weder Programm noch Argumente einer
+primären oder begleitenden MSL-Probe autorisieren.
+
+*Compare and preview execute only version probes fixed in code policy.
+Registry data cannot authorize an executable or arguments for primary or
+companion MSL probes.*
+[Quellen und Nachweisgrenzen](https://github.com/hindermath/home-baseline/blob/main/docs/maintenance/msl-toolchains.md).
+
+*Use `-MslOnly` for the six stable MSL toolchains and dependencies. Comparison
+and WhatIf do not change installations or the user PATH. Optional `-ResultFile`
+writes atomic JSON evidence including six MSL results. Versioned WinGet ID
+templates are resolved from stable releases. Administrator gates still apply.*
+
 Das Werkzeug liest
 `scripts/config/winget-apps-registry.json` und gleicht die Windows-Toolchain fuer
 agentische Entwicklung ab. Zusaetzlich liest es
@@ -35,9 +55,14 @@ aus und installiert fehlende Required-Pakete per `winget install --id <Id>
 --exact`.
 CLI-Versionsproben werden nach fuenf Sekunden beendet, damit interaktive oder
 festhaengende Agenten-CLIs den Wartungslauf nicht blockieren.
+Eine fehlende `specify`-CLI wird ausschließlich aus dem in der Code-Policy
+freigegebenen vollständigen Spec-Kit-Commit installiert. Abweichende Registry-
+Argumente werden vor einem `uv`-Aufruf abgelehnt.
 Jeder WinGet-Unterprozess besitzt ebenfalls eine harte Zeitgrenze. Leseproben
 verwenden hoechstens 30 Sekunden. Bei einem Timeout wird der vollstaendige
-Prozessbaum beendet und begrenzt abgewartet. Upgrade- und Installationsschritte
+Prozessbaum beendet und begrenzt abgewartet. Eine feste Ausgabegrenze meldet
+einen Überlauf als Fehler; abgeschnittene Ausgabe wird nie als vollständiger
+Paketstatus ausgewertet. Upgrade- und Installationsschritte
 ohne aktuelle Admin-Prompt-Autoritaet werden nicht gestartet und als
 `DEFERRED_ADMIN_REQUIRED` gemeldet; UAC wird nicht umgangen.
 
@@ -57,9 +82,13 @@ Required PowerShell modules are installed and checked from
 module maintainer. A normal run refreshes WinGet sources, runs `winget upgrade --all`, and installs
 missing required packages via `winget install --id <Id> --exact`. CLI version
 probes stop after five seconds so interactive or stuck agent CLIs cannot block
-maintenance. Every WinGet subprocess also has a hard timeout, with read probes
+maintenance. A missing `specify` CLI is installed only from the full Spec Kit
+commit approved in code policy; differing registry arguments are rejected
+before invoking `uv`. Every WinGet subprocess also has a hard timeout, with read probes
 capped at 30 seconds. On timeout, the complete process tree is terminated and
-awaited for a bounded interval. Upgrade and install steps without current
+awaited for a bounded interval. A fixed output limit also fails closed, so
+truncated output is never treated as a complete package status. Upgrade and
+install steps without current
 administrator-prompt authority are not started and are reported as
 `DEFERRED_ADMIN_REQUIRED`; UAC is never bypassed.*
 
@@ -73,21 +102,39 @@ the installed WinGet version, it uses `winget source update` as a compatible
 fallback. Package IDs are checked with `winget search --id <Id> --exact` before
 installation.*
 
-Eine alternative npm-Agent-Registry ist nur ein Auswahlmanifest fuer bekannte
-Tool-IDs und Required-/Optional-Scope. Ausfuehrbare Befehle, Argumente und
-Paketnamen werden aus der eingecheckten kanonischen Policy uebernommen;
-Abweichungen werden vor jeder Probe abgelehnt.
-Die npm-Fallbacks sind mit exakter Version und SRI-Integritaet gepinnt. Nur das
-von `npm pack` verifizierte lokale Archiv wird installiert. Git-basierte
-CLI-Werkzeuge verwenden eine vollstaendige Commit-ID.
+## Dokumentwerkzeuge (Document tools)
 
-*An alternative npm-agent registry is a selection manifest only for known tool
-IDs and required/optional scope. Executables, arguments, and package names are
-taken from the checked-in canonical policy; deviations are rejected before any
-probe.*
-*npm fallbacks are pinned by exact version and SRI integrity. Only the local
-archive verified from `npm pack` is installed. Git-based CLI tools use a full
-commit ID.*
+Pandoc (`JohnMacFarlane.Pandoc`) und Typst CLI (`Typst.Typst`) sind
+Pflichtpakete. Nach der Paketpflege werden `pandoc --version` und
+`typst --version` geprueft. Die Community-Erweiterung Tinymist Typst
+(`myriad-dreamin.tinymist`) ist in VS Code Pflicht und verwaltet ihren
+Language Server selbst. Das separate Paket `Myriad-Dreamin.Tinymist` bleibt
+optional und wird nur mit `-IncludeOptional` nachinstalliert. Eine fehlende
+optionale `tinymist`-CLI blockiert den Pflichtstatus nicht.
+`-WhatIf` und `-CompareOnly` installieren keine Dokumentwerkzeuge.
+
+*Pandoc (`JohnMacFarlane.Pandoc`) and Typst CLI (`Typst.Typst`) are required
+packages, checked with `pandoc --version` and `typst --version` after package
+maintenance. The community-maintained Tinymist Typst extension
+(`myriad-dreamin.tinymist`) is required in VS Code and manages its own
+language server. Standalone `Myriad-Dreamin.Tinymist` remains optional and
+is installed only with `-IncludeOptional`. A missing optional `tinymist`
+CLI does not block required status. `-WhatIf` and `-CompareOnly` do not
+install document tools.*
+
+PDF-Smoke-Test in einem temporaeren Verzeichnis / PDF smoke test in a temporary
+directory:
+
+```powershell
+pandoc input.md --standalone --to typst --output input.typ
+typst compile input.typ output.pdf
+```
+
+Die erzeugte PDF-Datei belegt die Konvertierung und Kompilierung. Die
+Barrierefreiheit der Ausgabe benoetigt eine eigene inhaltliche Pruefung.
+
+*The generated PDF proves conversion and compilation. Output accessibility
+requires a separate semantic review.*
 
 ## Optionen / Options
 
@@ -97,7 +144,7 @@ commit ID.*
 | `-CompareOnly` | Nur Registry-Drift melden, nichts installieren oder upgraden |
 | `-Registry PATH` | Alternative Registry-Datei verwenden |
 | `-VSCodeRegistry PATH` | Alternative VS-Code-Extension-Registry verwenden |
-| `-NpmAgentRegistry PATH` | Alternatives Auswahlmanifest fuer bekannte npm-Agent-CLI-IDs verwenden |
+| `-NpmAgentRegistry PATH` | Alternative npm-Agent-CLI-Registry verwenden; Proben bleiben auf die im Code freigegebenen Befehle und Argumente begrenzt / use an alternate npm agent registry; probes remain limited to code-approved commands and arguments |
 | `-PowerShellModuleRegistry PATH` | Alternative PowerShell-Modul-Registry verwenden |
 | `-SkipUpgrade` | WinGet-Update und `winget upgrade --all` ueberspringen |
 | `-SkipVSCodeExtensions` | VS-Code-Extensions weder installieren noch vergleichen |
@@ -119,12 +166,14 @@ pwsh -NoProfile -File scripts/maintain-agentic-winget-apps.ps1
 | Code | Bedeutung / Meaning |
 |---:|---|
 | `0` | Aktuell oder erfolgreich / Current or successful |
+| `1` | Fehlende oder unbrauchbare Pflichtpakete, CLIs oder Extensions, auch in der Vorschau / Missing or unusable required packages, CLIs, or extensions, including preview |
 | `2` | Betriebsfehler oder widerspruechlicher Paketstatus / Operational error or contradictory package status |
 | `75` | `DEFERRED_ADMIN_REQUIRED`; sicher erneut mit aktueller Autoritaet ausfuehren / safely rerun with current authority |
 
 ## Abschlusskriterien / Closeout Criteria
 
 - `gitleaks version` funktioniert.
+- `pandoc --version` und `typst --version` funktionieren; `myriad-dreamin.tinymist` ist installiert. / Both document CLIs work and the required Typst extension is installed.
 - `syft version` und `specify --version` funktionieren.
 - `codex --version`, `claude --version`, `agy --version` und
   `copilot --help` funktionieren.

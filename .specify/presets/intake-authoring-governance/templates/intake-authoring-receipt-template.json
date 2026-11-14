@@ -5,7 +5,7 @@
   "intakeId": "00000000-0000-0000-0000-000000000000",
   "generator": {
     "preset": "intake-authoring-governance",
-    "version": "0.3.4"
+    "version": "0.3.14"
   },
   "createdAt": "1970-01-01T00:00:00Z",
   "operation": {
@@ -44,7 +44,9 @@
   "profile": "generic-markdown",
   "languagePolicy": "RepositoryPolicyOrDominantSource",
   "decisions": [],
-  "openDecisionIds": ["IAD001"],
+  "openDecisionIds": [
+    "IAD001"
+  ],
   "questionCount": 0,
   "agentSurface": {
     "specifyCanonicalId": "speckit.specify",

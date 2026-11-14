@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "presetId": "intake-sequencing-governance",
+  "version": "0.2.10",
+  "repository": "https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance",
+  "candidate_status": "HistoricalCandidate",
+  "release_status": "Published",
+  "tag": "v0.2.10",
+  "tagCommit": "ccb6c223c51ba685f650f2ce5238299cb73b1f31",
+  "verifiedAt": "2026-10-24T10:55:43.7164120+00:00",
+  "release": {
+    "id": 422326300,
+    "url": "https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/releases/tag/v0.2.10",
+    "publishedAt": "2026-10-23T21:29:31.0000000+00:00",
+    "preRelease": false,
+    "draft": false
+  },
+  "archive": {
+    "sha256": "0da5d751a89b9ae68a75c2f590b449599d98d4a0ed7fe4c2bcd935e90a197678",
+    "url": "https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/archive/refs/tags/v0.2.10.zip",
+    "status": "Verified",
+    "verifiedAt": "2026-10-24T10:55:43.7164120+00:00",
+    "bytes": 85913
+  },
+  "evidenceComplete": true,
+  "historicalDocumentSha256": "1dc6f5743067c0477e82c2ffef710aaf1abc19edcda38a12f43e74e4b6431df4",
+  "comparison": {
+    "fromTag": "v0.2.6",
+    "toTag": "v0.2.10",
+    "toCommit": "ccb6c223c51ba685f650f2ce5238299cb73b1f31",
+    "url": "https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/compare/8aa137fcc95faf4e145ee408a1ee3790cac1873a...ccb6c223c51ba685f650f2ce5238299cb73b1f31",
+    "fromCommit": "8aa137fcc95faf4e145ee408a1ee3790cac1873a"
+  },
+  "improvements": [
+    {
+      "introducedIn": "v0.2.7",
+      "type": "ValidatorRuntime",
+      "sourcePaths": [
+        "scripts/validate-intake-governance-config.py",
+        "tests/test-intake-governance-config.ps1"
+      ],
+      "problem": {
+        "de": "Idle, laufende Serien ohne weiteren Kandidaten und verschachtelte Git-Repositories mussten einheitlich behandelt werden.",
+        "en": "Idle, running series with no additional candidate and nested Git repositories needed consistent handling."
+      },
+      "description": {
+        "de": "Der gemeinsame Validator und positive/negative Fixtures stimmen diese Zustände ab. Mehrdeutigkeit, ungültige Pfade, Hashes und Zustände bleiben blockiert.",
+        "en": "The shared validator and positive/negative fixtures align these states. Ambiguity and invalid paths, hashes or states remain blocked."
+      },
+      "benefit": {
+        "de": "Zusammen installierte Intake-Presets bewerten denselben Projektzustand konsistent; es startet kein nachgelagerter Lauf.",
+        "en": "Combined Intake presets assess the same project state consistently; they start no downstream run."
+      },
+      "commit": "74f6b343b79c93f6fcbfe9db1c111e9eb3aeeee8"
+    },
+    {
+      "introducedIn": "v0.2.10",
+      "type": "Compatibility",
+      "sourcePaths": [
+        "templates/intake-series-receipt-template.json",
+        "tests/test-template-integrity.ps1"
+      ],
+      "problem": {
+        "de": "Paket-, Generator- und Schema-Versionen durften nicht verwechselt werden.",
+        "en": "Package, generator and schema versions must not be confused."
+      },
+      "description": {
+        "de": "Die ausgelieferte Receipt-Vorlage nennt Generator 0.2.10. Frühere Releases 0.2.7 bis 0.2.9 banden ihre eigenen Generatorstände; das ist keine neue Schema-Version.",
+        "en": "The shipped receipt template names generator 0.2.10. Earlier releases 0.2.7–0.2.9 bound their own generator versions; this introduces no new schema."
+      },
+      "benefit": {
+        "de": "Die Herkunft neuer Receipts bleibt überprüfbar, ohne historische Receipts umzuschreiben.",
+        "en": "New receipt provenance is verifiable without rewriting historical receipts."
+      },
+      "commit": "ccb6c223c51ba685f650f2ce5238299cb73b1f31"
+    },
+    {
+      "introducedIn": "v0.2.10",
+      "type": "DocumentationUsability",
+      "sourcePaths": [
+        "docs/user-guide.md",
+        "docs/user-guide.EN.md",
+        "tests/test-documentation-closeout.ps1"
+      ],
+      "problem": {
+        "de": "Ein kurzer README-Einstieg erklärte die vollständigen Leserpfade und Grenzen noch nicht gleichwertig.",
+        "en": "The short README entry did not yet explain the complete reader journey and limits equally."
+      },
+      "description": {
+        "de": "Deutsch-/Englisch-Leitfäden, Command-/Vorlagen-Erklärungen und Dokumentationsregressionen wurden ergänzt. Frühere Einstiegsverbesserungen und der letzte Patch werden getrennt ausgewiesen.",
+        "en": "German/English guides, command/template explanations and documentation regressions were added. Earlier entry-point improvements and the final patch are reported separately."
+      },
+      "benefit": {
+        "de": "Lernende finden Voraussetzungen, Beispiel, Ergebnis und Fehlerhilfe. Neue Textklarheit ist keine neue Runtime-Funktion oder menschliche Abnahme.",
+        "en": "Learners can find prerequisites, an example, its result and troubleshooting. Clearer text is not a new runtime feature or human acceptance."
+      },
+      "commit": "ccb6c223c51ba685f650f2ce5238299cb73b1f31"
+    }
+  ],
+  "historicalValidation": {
+    "checks": [
+      {
+        "name": "Reader paths (ubuntu-24.04)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/actions/runs/39992116203/job/120546197524",
+        "startedAt": "2026-10-23T17:04:54Z",
+        "completedAt": "2026-10-23T17:05:06Z",
+        "head": "026f9e7908ff64db9aa18d50c3a5de487f70bcc3"
+      },
+      {
+        "name": "Reader paths (windows-2022)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/actions/runs/39992116203/job/120546197480",
+        "startedAt": "2026-10-23T17:04:55Z",
+        "completedAt": "2026-10-23T17:05:05Z",
+        "head": "026f9e7908ff64db9aa18d50c3a5de487f70bcc3"
+      },
+      {
+        "name": "Reader paths (macos-15)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/actions/runs/39992116203/job/120546196996",
+        "startedAt": "2026-10-23T17:04:56Z",
+        "completedAt": "2026-10-23T17:05:04Z",
+        "head": "026f9e7908ff64db9aa18d50c3a5de487f70bcc3"
+      },
+      {
+        "name": "lifecycle (ubuntu-latest)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/actions/runs/39992116081/job/120546196961",
+        "startedAt": "2026-10-23T17:04:54Z",
+        "completedAt": "2026-10-23T17:05:41Z",
+        "head": "026f9e7908ff64db9aa18d50c3a5de487f70bcc3"
+      },
+      {
+        "name": "lifecycle (windows-latest)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/actions/runs/39992116081/job/120546196922",
+        "startedAt": "2026-10-23T17:04:54Z",
+        "completedAt": "2026-10-23T17:05:40Z",
+        "head": "026f9e7908ff64db9aa18d50c3a5de487f70bcc3"
+      },
+      {
+        "name": "lifecycle (macos-latest)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/actions/runs/39992116081/job/120546196407",
+        "startedAt": "2026-10-23T17:05:19Z",
+        "completedAt": "2026-10-23T17:06:23Z",
+        "head": "026f9e7908ff64db9aa18d50c3a5de487f70bcc3"
+      }
+    ],
+    "pr": "https://github.com/hindermath/spec-kit-preset-intake-sequencing-governance/pull/15",
+    "mergeCommit": "ccb6c223c51ba685f650f2ce5238299cb73b1f31",
+    "reviewedHead": "026f9e7908ff64db9aa18d50c3a5de487f70bcc3"
+  },
+  "newDocumentationReview": "Pending exact-head human review; no merge or publication authority.",
+  "boundary": "Documentation source only; no new package, runtime behavior, approval, installation, catalog update or cancelled dynamic routing."
+}

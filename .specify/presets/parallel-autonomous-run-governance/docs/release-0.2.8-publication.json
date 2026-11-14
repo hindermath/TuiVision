@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "presetId": "parallel-autonomous-run-governance",
+  "version": "0.2.8",
+  "repository": "https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance",
+  "candidate_status": "HistoricalCandidate",
+  "release_status": "Published",
+  "tag": "v0.2.8",
+  "tagCommit": "63bbf78b51fe00385b34f52cc568dbf2928954ad",
+  "verifiedAt": "2026-10-24T10:55:49.0300300+00:00",
+  "release": {
+    "id": 422326327,
+    "url": "https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance/releases/tag/v0.2.8",
+    "publishedAt": "2026-10-23T21:29:33.0000000+00:00",
+    "preRelease": false,
+    "draft": false
+  },
+  "archive": {
+    "sha256": "36598b775b14fe070dc50700409b3e6cec8fc06b9fb2f80cf1906af1ac3560b7",
+    "url": "https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance/archive/refs/tags/v0.2.8.zip",
+    "status": "Verified",
+    "verifiedAt": "2026-10-24T10:55:49.0300300+00:00",
+    "bytes": 133081
+  },
+  "evidenceComplete": true,
+  "historicalDocumentSha256": "86a51abd377fd7fad41402f22220b06f2d7c7c50f50f8f0692243834e520ac1b",
+  "comparison": {
+    "fromTag": "v0.2.6",
+    "toTag": "v0.2.8",
+    "toCommit": "63bbf78b51fe00385b34f52cc568dbf2928954ad",
+    "url": "https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance/compare/0139ceeac5240db831c544331f8f181a4721709e...63bbf78b51fe00385b34f52cc568dbf2928954ad",
+    "fromCommit": "0139ceeac5240db831c544331f8f181a4721709e"
+  },
+  "improvements": [
+    {
+      "introducedIn": "v0.2.8",
+      "type": "DocumentationUsability",
+      "sourcePaths": [
+        "docs/getting-started.md",
+        "docs/compatibility.md"
+      ],
+      "problem": {
+        "de": "Erstlaufbeispiele und aktuelle Kombinationen mit Autonomous Run konnten unterschiedliche Stände suggerieren.",
+        "en": "First-run examples and current Autonomous Run combinations could suggest inconsistent versions."
+      },
+      "description": {
+        "de": "0.2.7 verbesserte den Einstieg; 0.2.8 stimmt Erstlauf und Kompatibilität ab und ergänzt Dokumentationsregressionen.",
+        "en": "0.2.7 improved entry guidance; 0.2.8 aligns first-run and compatibility guidance and adds documentation regressions."
+      },
+      "benefit": {
+        "de": "Mindestvoraussetzung, Beispielkombination und geprüfte Kombination bleiben unterscheidbar; keine neue Scheduler-Funktion oder Remote-Autorität.",
+        "en": "Minimum requirement, example combination and tested combination remain distinct; no new scheduler feature or remote authority."
+      },
+      "commit": "63bbf78b51fe00385b34f52cc568dbf2928954ad"
+    },
+    {
+      "introducedIn": "v0.2.8",
+      "type": "DocumentationUsability",
+      "sourcePaths": [
+        "docs/user-guide.md",
+        "docs/user-guide.EN.md",
+        "tests/test-documentation-closeout.ps1"
+      ],
+      "problem": {
+        "de": "Ein kurzer README-Einstieg erklärte die vollständigen Leserpfade und Grenzen noch nicht gleichwertig.",
+        "en": "The short README entry did not yet explain the complete reader journey and limits equally."
+      },
+      "description": {
+        "de": "Deutsch-/Englisch-Leitfäden, Command-/Vorlagen-Erklärungen und Dokumentationsregressionen wurden ergänzt. Frühere Einstiegsverbesserungen und der letzte Patch werden getrennt ausgewiesen.",
+        "en": "German/English guides, command/template explanations and documentation regressions were added. Earlier entry-point improvements and the final patch are reported separately."
+      },
+      "benefit": {
+        "de": "Lernende finden Voraussetzungen, Beispiel, Ergebnis und Fehlerhilfe. Neue Textklarheit ist keine neue Runtime-Funktion oder menschliche Abnahme.",
+        "en": "Learners can find prerequisites, an example, its result and troubleshooting. Clearer text is not a new runtime feature or human acceptance."
+      },
+      "commit": "63bbf78b51fe00385b34f52cc568dbf2928954ad"
+    }
+  ],
+  "historicalValidation": {
+    "checks": [
+      {
+        "name": "Documentation (ubuntu-24.04)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance/actions/runs/39992122319/job/120546219998",
+        "startedAt": "2026-10-23T17:05:03Z",
+        "completedAt": "2026-10-23T17:05:13Z",
+        "head": "36ab26a6a3985a5195399f579814eaacf51b34ac"
+      },
+      {
+        "name": "Documentation (windows-2022)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance/actions/runs/39992122319/job/120546219508",
+        "startedAt": "2026-10-23T17:05:03Z",
+        "completedAt": "2026-10-23T17:05:14Z",
+        "head": "36ab26a6a3985a5195399f579814eaacf51b34ac"
+      },
+      {
+        "name": "Documentation (macos-15)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance/actions/runs/39992122319/job/120546219080",
+        "startedAt": "2026-10-23T17:06:59Z",
+        "completedAt": "2026-10-23T17:07:07Z",
+        "head": "36ab26a6a3985a5195399f579814eaacf51b34ac"
+      },
+      {
+        "name": "Reader paths (ubuntu-24.04)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance/actions/runs/39992122115/job/120546218342",
+        "startedAt": "2026-10-23T17:05:07Z",
+        "completedAt": "2026-10-23T17:05:16Z",
+        "head": "36ab26a6a3985a5195399f579814eaacf51b34ac"
+      },
+      {
+        "name": "Reader paths (windows-2022)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance/actions/runs/39992122115/job/120546218222",
+        "startedAt": "2026-10-23T17:05:07Z",
+        "completedAt": "2026-10-23T17:05:19Z",
+        "head": "36ab26a6a3985a5195399f579814eaacf51b34ac"
+      },
+      {
+        "name": "Reader paths (macos-15)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance/actions/runs/39992122115/job/120546217952",
+        "startedAt": "2026-10-23T17:07:01Z",
+        "completedAt": "2026-10-23T17:07:08Z",
+        "head": "36ab26a6a3985a5195399f579814eaacf51b34ac"
+      }
+    ],
+    "pr": "https://github.com/hindermath/spec-kit-preset-parallel-autonomous-run-governance/pull/14",
+    "mergeCommit": "63bbf78b51fe00385b34f52cc568dbf2928954ad",
+    "reviewedHead": "36ab26a6a3985a5195399f579814eaacf51b34ac"
+  },
+  "newDocumentationReview": "Pending exact-head human review; no merge or publication authority.",
+  "boundary": "Documentation source only; no new package, runtime behavior, approval, installation, catalog update or cancelled dynamic routing."
+}

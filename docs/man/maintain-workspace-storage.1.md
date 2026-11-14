@@ -53,29 +53,32 @@ Benutzerzugriff.
 ## NON-MSL ADAPTERS
 
 `C64Projects/cc65` verwendet absichtlich C89 und 6502-Assembly für 8-Bit-
-Kompatibilität. Safe entfernt nur vorab geprüfte, ignorierte und nicht
-getrackte Artefaktgruppen für Hostwerkzeuge, Laufzeitbibliotheken, generierte
-Dokumentation und Regression-Arbeitsverzeichnisse. Sample- und Targettest-Nachweise wie
+Kompatibilität. Safe führt nur vorab geprüfte native `make ... clean`-Gruppen
+für Hostwerkzeuge, Laufzeitbibliotheken, generierte Dokumentation und
+Regression-Arbeitsverzeichnisse aus. Sample- und Targettest-Nachweise wie
 Disk-Images, Zielbinärdateien, Maps, Labels und Debuglisten bleiben erhalten.
-Makefiles werden in keinem Modus ausgewertet. Deep erweitert nur die
-Eignungsentscheidung auf alle deklarierten Gruppen; die direkte Löschgrenze
-prüft Containment sowie Ignore-/Untracked-Status unmittelbar erneut.
+`make zap` wird nie verwendet; Root-`make clean` gehört nur zu `deep`. Weicht
+dessen Scope-Prüfung im autorisierten, sauberen und nicht beschäftigten
+Updatepfad von den deklarierten Pfaden ab, protokolliert Deep die Scope-Warnung
+und fällt auf die einzeln geprüften Safe-Gruppen zurück. Check-only und Dry-run
+leiten den Plan ausschließlich aus Policy und Dateisystemzustand ab und werten
+kein Makefile aus.
 
-*No Makefile is evaluated in any mode. Safe and deep remove only declared,
-ignored and untracked artifact groups through the same revalidating direct
-deletion boundary. Sample and target-test evidence remains protected.*
+*`make zap` is never used, and root `make clean` belongs to `deep` only. If its
+scope check in the authorized, clean, idle update path exceeds the declared
+paths, Deep records the scope warning and falls back to the individually
+proven Safe groups. Check-only and dry-run derive the plan from policy and
+filesystem state only and do not evaluate a Makefile.*
 
 `CLionProjects/tvision` bleibt wegen Quell-/ABI-Kompatibilität C++14. Ein
 CMake-Buildverzeichnis wird nur akzeptiert, wenn sein `CMakeCache.txt` auf
 eine Repo-interne Quelle mit getrackter `CMakeLists.txt` zeigt. Verschachtelte
-`_deps`-Builds werden dedupliziert. Der echte Lauf führt keine generierten
-CMake-Regeln aus, sondern entfernt den verifizierten Buildbaum direkt nach
-erneuter Grenzprüfung.
+`_deps`-Builds werden dedupliziert. Der echte Lauf verwendet zunächst
+`cmake --build <DIR> --target clean` und entfernt danach den verifizierten
+Buildbaum.
 
-*A CMake build directory is accepted only when its cache points to an in-repo
-source with a tracked `CMakeLists.txt`. Nested `_deps` builds are deduplicated.
-Generated CMake rules are never executed; the verified build tree is removed
-directly after renewed boundary checks. Unknown non-MSL repositories are
+*The curated non-MSL adapters preserve each repository's constitutional
+justification and compensating controls. Unknown non-MSL repositories are
 reported but never handled by generic deletion rules.*
 
 ## CACHE AND CONTAINER BOUNDARIES
@@ -89,6 +92,18 @@ reported but never handled by generic deletion rules.*
 - Podman auf macOS: Socket wird pro Lauf aus `podman machine inspect`
   ermittelt und als existierender Unix-Socket verifiziert. TCP-Fallbacks und
   gespeicherte Hostpfade sind unzulässig.
+
+Für npm wird das tatsächlich konfigurierte Cache-Verzeichnis einschließlich
+`.npmrc` schreibfrei ermittelt. Es muss ein eigenes Verzeichnis innerhalb des
+verifizierten Home sein und darf nicht selbst ein Symlink sein. Genau dieser
+geprüfte Pfad wird für `verify` und `clean` an npm gebunden. Ist er nicht
+prüfbar, bleibt die npm-Wartung aus und der Bericht zeigt eine Warnung.
+
+*For npm, the effective cache directory, including `.npmrc` settings, is read
+without changing it. It must be a separate directory inside the verified home
+and must not itself be a symlink. The verified path is bound to both `verify`
+and `clean`. If it cannot be verified, npm maintenance is skipped and the
+report shows a warning.*
 
 Cargo-, Maven-, Gradle- und Swift-Dependency-Stores bleiben in Version 1
 unberührt.
