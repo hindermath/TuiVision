@@ -10,7 +10,7 @@ Koordinaten und Serialisierung einordnen.
 
 ### Voraussetzungen
 
-- Git und .NET SDK 10
+- Git und .NET SDK 11 + .NET Runtime 10
 - ein Terminal mit mindestens 80 Spalten und 25 Zeilen
 - ein lokaler Checkout des Repositories
 
@@ -64,7 +64,7 @@ and serialization.
 
 ### Prerequisites
 
-- Git and .NET SDK 10
+- Git and .NET SDK 11 + .NET Runtime 10
 - a terminal with at least 80 columns and 25 rows
 - a local checkout of the repository
 
