@@ -14,8 +14,8 @@ exercise. The linked guides remain the detailed sources.*
 
 ## Gemeinsame Voraussetzungen / Shared Prerequisites
 
-- **P1**: Repository-Wurzel, .NET SDK 10 und ein Terminal; zuerst
-  [Getting Started](getting-started.md) lesen. / Repository root, .NET SDK 10,
+- **P1**: Repository-Wurzel, .NET SDK 11 + .NET Runtime 10 und ein Terminal; zuerst
+  [Getting Started](getting-started.md) lesen. / Repository root, .NET SDK 11 + .NET Runtime 10,
   and a terminal; read Getting Started first.
 - **P2**: P1 plus ein Terminal, dessen Capability/Fallback du bewusst prüfen
   kannst. / P1 plus a terminal whose capability or fallback you can review.

@@ -24,7 +24,7 @@ Verwendete Tools:
 1. Repository ist lokal auf beiden Systemen ausgecheckt.
 2. Auf beiden Systemen sind `gh`, `specify`, `codex`, `claude`, `copilot` und `agy` installiert; `gh`, `codex`, `claude`, `copilot` und `agy` sind authentifiziert.
 3. GitHub-Remote `origin` zeigt auf `https://github.com/hindermath/TuiVision.git`.
-4. .NET SDK 10 ist auf beiden Systemen verfuegbar (`dotnet --info`).
+4. .NET SDK 11 und .NET Runtime 10 sind auf beiden Systemen verfuegbar (`dotnet --info`).
 5. Node `24.x` LTS und `npm` sind auf beiden Systemen verfuegbar.
 6. `lynx` ist auf beiden Systemen installiert.
 7. Im Repo wurde unter `tests/web-a11y/` einmalig `npm install` und `npx playwright install chromium` ausgefuehrt.

@@ -28,6 +28,7 @@ Agentic-AI workflows. It is not an official Turbo Vision continuation.
 
 ## Scope
 
+- Build: .NET SDK 11 (siehe `global.json` / see `global.json`)
 - Target framework: .NET 10 (`net10.0`)
 - Runtime model: managed .NET Core code
 - Goal: example port and reference implementation
