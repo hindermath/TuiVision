@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.6.1](https://github.com/hindermath/TuiVision/compare/v0.6.0...v0.6.1) (2026-11-23)
+
+
+### Documentation / Dokumentation
+
+* refresh dependency update statistics evidence ([1135ae5](https://github.com/hindermath/TuiVision/commit/1135ae5d24ad96f41305e212cbab119a50021357))
+* refresh dependency update statistics evidence ([0a1ac0a](https://github.com/hindermath/TuiVision/commit/0a1ac0a7b7f449043408fc71924827d2e0c5cb79))
+* refresh dependency update statistics evidence ([7003c74](https://github.com/hindermath/TuiVision/commit/7003c74d4d17947f9c57705a9a389c8a002ab1a7))
+* refresh statistics for dependency update ([5366a88](https://github.com/hindermath/TuiVision/commit/5366a88112855bf7431b21b9b218cca741cb8fb3))
+* regenerate Profile 2 after evidence refresh ([cb272b7](https://github.com/hindermath/TuiVision/commit/cb272b7807d44e0e1754382235113c218c317bfe))
+* regenerate Profile 2 after evidence refresh ([6e17b8f](https://github.com/hindermath/TuiVision/commit/6e17b8f165716d4c86db99eb44bb1f9abe41c793))
+
 ## [0.6.0](https://github.com/hindermath/TuiVision/compare/v0.5.0...v0.6.0) (2026-11-20)
 
 
